@@ -329,7 +329,8 @@ themes:
   # # This theme will use the default bootstrap styling for DSpace components
   # - name: BASE_THEME_NAME
   #
-  - name: 'dspace'
+  # - name: 'dspace'
+  - name: 'dspace-simple'
     headTags:
     - tagName: link
       attributes:
