@@ -1,0 +1,28 @@
+<div class="background-image-container mt-ncs">
+  <picture class="background-image">
+    <source type="image/webp" srcset="assets/dspace-simple/images/dandy-full.webp 2000w, assets/dspace-simple/images/dandy-half.webp 1200w, assets/dspace-simple/images/dandy-tall.webp 768w">
+    <source type="image/jpg" srcset="assets/dspace-simple/images/dandy-full.jpg 2000w, assets/dspace-simple/images/dandy-half.jpg 1200w, assets/dspace-simple/images/dandy-tall.jpg 768w">
+    <img alt [src]="'assets/dspace-simple/images/dandy-full.jpg'">
+    <!-- without the []="''" Firefox downloads both the fallback and the resolved image -->
+  </picture>
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid text-white shadow-lg p-5">
+      <div>
+        <h1 class="display-3">PEDSnet Variable Dictionary</h1>
+        <p class="lead">Explore a wealth of clinical, environmental, and health data from over 13 million children. Discover variables and codesets used in previous studies to inspire your research.</p>
+        <div class="mt-4">
+          <a href="community-list" class="btn btn-subtle btn-lg">Explore Variables</a>
+        </div>
+      </div>
+      <div class="mt-4">
+        <h4>Repository Information:</h4>
+        <ul>
+          <li><strong>Codeset:</strong> A collection of codes (e.g., diagnosis or procedure codes) used for a given clinical concept.</li>
+          <li><strong>Variable Definition:</strong> The logic for determining (levels of) a variable, which may include one or more codesets.</li>
+          <li><strong>Computable Phenotype:</strong> A complex variable definition that uses multiple other variables to assess or determine a healthcare concept.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <small class="credits text-light">Photo by <a href="https://www.pexels.com/@inspiredimages" class="text-light">@inspiredimages</a></small>
+</div>

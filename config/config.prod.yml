@@ -1,14 +1,230 @@
+debug: true
+
 ui:
   ssl: false
   host: localhost
   port: 4000
   nameSpace: /
- 
-# This example is valid if your Backend is publicly available at https://api.mydspace.edu/server/
-# The REST settings MUST correspond to the primary/public URL of the backend. Usually, this means they must be kept in sync
-# with the value of "dspace.server.url" in the backend's local.cfg
+  rateLimiter:
+    windowMs: 60000 # 1 minute
+    max: 500 # limit each IP to 500 requests per windowMs
+  useProxies: true
+
 rest:
   ssl: true
   host: pedsdspace01.research.chop.edu
   port: 443
   nameSpace: /server
+
+cache:
+  msToLive:
+    default: 900000 # 15 minutes
+  control: max-age=604800 # revalidate browser
+  autoSync:
+    defaultTime: 0
+    maxBufferSize: 100
+    timePerMethod:
+      PATCH: 3 # time in seconds
+  serverSide:
+    debug: false
+    botCache:
+      max: 1000
+      timeToLive: 86400000 # 1 day
+      allowStale: true
+    anonymousCache:
+      max: 0
+      timeToLive: 10000 # 10 seconds
+      allowStale: true
+
+auth:
+  ui:
+    timeUntilIdle: 900000 # 15 minutes
+    idleGracePeriod: 300000 # 5 minutes
+  rest:
+    timeLeftBeforeTokenRefresh: 120000 # 2 minutes
+
+form:
+  spellCheck: true
+  validatorMap:
+    required: required
+    regex: pattern
+
+notifications:
+  rtl: false
+  position:
+    - top
+    - right
+  maxStack: 8
+  timeOut: 5000 # 5 second
+  clickToClose: true
+  animate: scale
+
+submission:
+  autosave:
+    metadata: []
+    timer: 0
+  icons:
+    metadata:
+      - name: dc.author
+        style: fas fa-user
+      - name: default
+        style: ''
+    authority:
+      confidence:
+        - value: 600
+          style: text-success
+        - value: 500
+          style: text-info
+        - value: 400
+          style: text-warning
+        - value: default
+          style: text-muted
+
+defaultLanguage: en
+
+languages:
+  - code: en
+    label: English
+    active: true
+  - code: ca
+    label: Català
+    active: true
+  - code: cs
+    label: Čeština
+    active: true
+  - code: de
+    label: Deutsch
+    active: true
+  - code: es
+    label: Español
+    active: true
+  - code: fr
+    label: Français
+    active: true
+  - code: gd
+    label: Gàidhlig
+    active: true
+  - code: it
+    label: Italiano
+    active: true
+  - code: lv
+    label: Latviešu
+    active: true
+  - code: hu
+    label: Magyar
+    active: true
+  - code: nl
+    label: Nederlands
+    active: true
+  - code: pl
+    label: Polski
+    active: true
+  - code: pt-PT
+    label: Português
+    active: true
+  - code: pt-BR
+    label: Português do Brasil
+    active: true
+  - code: sr-lat
+    label: Srpski (lat)
+    active: true
+  - code: fi
+    label: Suomi
+    active: true
+  - code: sv
+    label: Svenska
+    active: true
+  - code: tr
+    label: Türkçe
+    active: true
+  - code: vi
+    label: Tiếng Việt
+    active: true
+  - code: kk
+    label: Қазақ
+    active: true
+  - code: bn
+    label: বাংলা
+    active: true
+  - code: hi
+    label: हिंदी
+    active: true
+  - code: el
+    label: Ελληνικά
+    active: true
+  - code: sr-cyr
+    label: Српски
+    active: true
+  - code: uk
+    label: Yкраї́нська
+    active: true
+
+
+browseBy:
+  oneYearLimit: 10
+  fiveYearLimit: 30
+  defaultLowerLimit: 1900
+  showThumbnails: true
+  pageSize: 20
+
+communityList:
+  pageSize: 20
+
+homePage:
+  recentSubmissions:
+    pageSize: 5
+    sortField: 'dc.date.accessioned'
+  topLevelCommunityList:
+    pageSize: 5
+
+item:
+  edit:
+    undoTimeout: 10000 # 10 seconds
+  showAccessStatuses: false
+  bitstream:
+    pageSize: 5
+
+collection:
+  edit:
+    undoTimeout: 10000 # 10 seconds
+
+themes:
+  - name: 'dspace-simple'
+    headTags:
+    - tagName: link
+      attributes:
+        rel: icon
+        href: assets/dspace-simple/images/favicons/favicon.ico
+        sizes: any
+    - tagName: link
+      attributes:
+        rel: apple-touch-icon
+        href: assets/dspace/images/favicons/apple-touch-icon.png
+    - tagName: link
+      attributes:
+        rel: manifest
+        href: assets/dspace/images/favicons/manifest.webmanifest
+
+bundle:
+  standardBundles: [ ORIGINAL, THUMBNAIL, LICENSE ]
+
+mediaViewer:
+  image: false
+  video: false
+
+info:
+  enableEndUserAgreement: true
+  enablePrivacyStatement: true
+
+markdown:
+  enabled: false
+  mathjax: false
+
+vocabularies:
+  - filter: 'subject'
+    vocabulary: 'srsc'
+    enabled: true
+
+comcolSelectionSort:
+  sortField: 'dc.title'
+  sortDirection: 'ASC'

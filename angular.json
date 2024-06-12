@@ -61,9 +61,9 @@
                 "bundleName": "dspace-theme"
               },
               {
-                "input": "src/themes/dspace-exercise/styles/theme.scss",
+                "input": "src/themes/dspace-simple/styles/theme.scss",
                 "inject": false,
-                "bundleName": "dspace-theme"
+                "bundleName": "dspace-simple-theme"
               }
             ],
             "scripts": [],
