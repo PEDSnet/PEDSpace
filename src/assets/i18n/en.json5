@@ -508,7 +508,7 @@
 
   "admin.access-control.groups.form.return": "Back",
 
-  "admin.access-control.groups.form.tooltip.editGroupPage": "On this page, you can modify the properties and members of a group. In the top section, you can edit the group name and description, unless this is an admin group for a collection or Category, in which case the group name and description are auto-generated and cannot be edited. In the following sections, you can edit group membership. See [the wiki](https://wiki.lyrasis.org/display/DSDOC7x/Create+or+manage+a+user+group) for more details.",
+  "admin.access-control.groups.form.tooltip.editGroupPage": "On this page, you can modify the properties and members of a group. In the top section, you can edit the group name and description, unless this is an admin group for a collection or category, in which case the group name and description are auto-generated and cannot be edited. In the following sections, you can edit group membership. See [the wiki](https://wiki.lyrasis.org/display/DSDOC7x/Create+or+manage+a+user+group) for more details.",
 
   "admin.access-control.groups.form.tooltip.editGroup.addEpeople": "To add or remove an EPerson to/from this group, either click the 'Browse All' button or use the search bar below to search for users (use the dropdown to the left of the search bar to choose whether to search by metadata or by email). Then click the plus icon for each user you wish to add in the list below, or the trash can icon for each user you wish to remove. The list below may have several pages: use the page controls below the list to navigate to the next pages.",
 
@@ -1146,7 +1146,7 @@
 
   "communityList.tabTitle": "Category List",
 
-  "communityList.title": "List of Categories",
+  "communityList.title": "List of Communities",
 
   "communityList.showMore": "Show More",
 
@@ -1156,7 +1156,7 @@
 
   "community.create.sub-head": "Create a Sub-Category for Category {{ parent }}",
 
-  "community.curate.header": "Curate Category: {{Category}}",
+  "community.curate.header": "Curate Category: {{category}}",
 
   "community.delete.cancel": "Cancel",
 
@@ -1168,11 +1168,11 @@
 
   "community.delete.notification.fail": "Category could not be deleted",
 
-  "community.delete.notification.success": "Successfully deleted Category",
+  "community.delete.notification.success": "Successfully deleted category",
 
-  "community.delete.text": "Are you sure you want to delete Category \"{{ dso }}\"",
+  "community.delete.text": "Are you sure you want to delete category \"{{ dso }}\"",
 
-  "community.edit.delete": "Delete this Category",
+  "community.edit.delete": "Delete this category",
 
   "community.edit.head": "Edit Category",
 
@@ -1190,7 +1190,7 @@
 
   "community.edit.logo.notifications.delete.success.title": "Logo deleted",
 
-  "community.edit.logo.notifications.delete.success.content": "Successfully deleted the Category's logo",
+  "community.edit.logo.notifications.delete.success.content": "Successfully deleted the category's logo",
 
   "community.edit.logo.notifications.delete.error.title": "Error deleting logo",
 
@@ -1242,7 +1242,7 @@
 
   "comcol-role.edit.collection-admin.name": "Administrators",
 
-  "comcol-role.edit.community-admin.description": "Category administrators can create sub-Categories or collections, and manage or assign management for those sub-Categories or collections. In addition, they decide who can submit items to any sub-collections, edit item metadata (after submission), and add (map) existing items from other collections (subject to authorization).",
+  "comcol-role.edit.community-admin.description": "Category administrators can create sub-categories or collections, and manage or assign management for those sub-categories or collections. In addition, they decide who can submit items to any sub-collections, edit item metadata (after submission), and add (map) existing items from other collections (subject to authorization).",
 
   "comcol-role.edit.collection-admin.description": "Collection administrators decide who can submit items to the collection, edit item metadata (after submission), and add (map) existing items from other collections to this collection (subject to authorization for that collection).",
 
@@ -1258,7 +1258,7 @@
 
   "comcol-role.edit.bitstream_read.name": "Default bitstream read access",
 
-  "comcol-role.edit.bitstream_read.description": "Category administrators can create sub-Categories or collections, and manage or assign management for those sub-Categories or collections. In addition, they decide who can submit items to any sub-collections, edit item metadata (after submission), and add (map) existing items from other collections (subject to authorization).",
+  "comcol-role.edit.bitstream_read.description": "Category administrators can create sub-categories or collections, and manage or assign management for those sub-categories or collections. In addition, they decide who can submit items to any sub-collections, edit item metadata (after submission), and add (map) existing items from other collections (subject to authorization).",
 
   "comcol-role.edit.bitstream_read.anonymous-group": "Default read for incoming bitstreams is currently set to Anonymous.",
 
@@ -1282,7 +1282,7 @@
 
   "community.form.description": "Introductory text (HTML)",
 
-  "community.form.errors.title.required": "Please enter a Category name",
+  "community.form.errors.title.required": "Please enter a category name",
 
   "community.form.rights": "Copyright text (HTML)",
 
@@ -1290,19 +1290,19 @@
 
   "community.form.title": "Name",
 
-  "community.page.edit": "Edit this Category",
+  "community.page.edit": "Edit this category",
 
-  "community.page.handle": "Permanent URI for this Category",
+  "community.page.handle": "Permanent URI for this category",
 
   "community.page.license": "License",
 
   "community.page.news": "News",
 
-  "community.all-lists.head": "SubCategories and Collections",
+  "community.all-lists.head": "Subcategories and Collections",
 
   "community.sub-collection-list.head": "Collections in this Category",
 
-  "community.sub-community-list.head": "Categories in this Category",
+  "community.sub-community-list.head": "Communities in this Category",
 
   "cookies.consent.accept-all": "Accept all",
 
@@ -1434,13 +1434,13 @@
 
   "dso-selector.create.collection.sub-level": "Create a new collection in",
 
-  "dso-selector.create.community.head": "New Category",
+  "dso-selector.create.community.head": "New category",
 
   "dso-selector.create.community.or-divider": "or",
 
-  "dso-selector.create.community.sub-level": "Create a new Category in",
+  "dso-selector.create.community.sub-level": "Create a new category in",
 
-  "dso-selector.create.community.top-level": "Create a new top-level Category",
+  "dso-selector.create.community.top-level": "Create a new top-level category",
 
   "dso-selector.create.item.head": "New item",
 
@@ -1450,7 +1450,7 @@
 
   "dso-selector.edit.collection.head": "Edit collection",
 
-  "dso-selector.edit.community.head": "Edit Category",
+  "dso-selector.edit.community.head": "Edit category",
 
   "dso-selector.edit.item.head": "Edit item",
 
@@ -1474,7 +1474,7 @@
 
   "dso-selector.set-scope.community.or-divider": "or",
 
-  "dso-selector.set-scope.community.input-header": "Search for a Category or collection",
+  "dso-selector.set-scope.community.input-header": "Search for a category or collection",
 
   "dso-selector.claim.item.head": "Profile tips",
 
@@ -1560,7 +1560,7 @@
 
   "error.collections": "Error fetching collections",
 
-  "error.community": "Error fetching Category",
+  "error.community": "Error fetching category",
 
   "error.identifier": "No item found for the identifier",
 
@@ -1580,11 +1580,11 @@
 
   "error.sub-collections": "Error fetching sub-collections",
 
-  "error.sub-communities": "Error fetching sub-Categories",
+  "error.sub-communities": "Error fetching sub-categories",
 
   "error.submission.sections.init-form-error": "An error occurred during section initialize, please check your input-form configuration. Details are below : <br> <br>",
 
-  "error.top-level-communities": "Error fetching top-level Categories",
+  "error.top-level-communities": "Error fetching top-level categories",
 
   "error.validation.license.notgranted": "You must grant this license to complete your submission. If you are unable to grant this license at this time you may save your work and return later or remove the submission.",
 
@@ -1838,9 +1838,9 @@
 
   "home.title": "Home",
 
-  "home.top-level-communities.head": "Categories in DSpace",
+  "home.top-level-communities.head": "Communities in DSpace",
 
-  "home.top-level-communities.help": "Select a Category to browse its collections.",
+  "home.top-level-communities.help": "Select a category to browse its collections.",
 
   "info.end-user-agreement.accept": "I have read and I agree to the End User Agreement",
 
@@ -2742,7 +2742,7 @@
 
   "loading.content-source": "Loading content source...",
 
-  "loading.community": "Loading Category...",
+  "loading.community": "Loading category...",
 
   "loading.default": "Loading...",
 
@@ -2760,9 +2760,9 @@
 
   "loading.sub-collections": "Loading sub-collections...",
 
-  "loading.sub-communities": "Loading sub-Categories...",
+  "loading.sub-communities": "Loading sub-categories...",
 
-  "loading.top-level-communities": "Loading top-level Categories...",
+  "loading.top-level-communities": "Loading top-level categories...",
 
   "login.form.email": "Email address",
 
@@ -2832,7 +2832,7 @@
 
   "menu.section.browse_global_by_title": "By Title",
 
-  "menu.section.browse_global_communities_and_collections": "Categories & Collections",
+  "menu.section.browse_global_communities_and_collections": "Communities & Collections",
 
   "menu.section.control_panel": "Control Panel",
 
@@ -4662,7 +4662,7 @@
 
   "subscriptions.collection": "Subscriptions for collections",
 
-  "subscriptions.community": "Subscriptions for Categories",
+  "subscriptions.community": "Subscriptions for categories",
 
   "subscriptions.subscription_type": "Subscription type",
 
@@ -5186,7 +5186,7 @@
 
   "collection-access-control-title": "This form allows you to perform changes to the access conditions of all the items owned by this collection. Changes may be performed to either all Item metadata or all content (bitstreams).",
 
-  "community-access-control-title": "This form allows you to perform changes to the access conditions of all the items owned by any collection under this Category. Changes may be performed to either all Item metadata or all content (bitstreams).",
+  "community-access-control-title": "This form allows you to perform changes to the access conditions of all the items owned by any collection under this category. Changes may be performed to either all Item metadata or all content (bitstreams).",
 
   "access-control-item-header-toggle": "Item's Metadata",
 
