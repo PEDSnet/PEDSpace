@@ -57,6 +57,17 @@
     }
   }
 
+  .btn-subtle {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-subtle:hover, .btn-subtle:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
   .jumbotron {
     background-color: transparent;
   }
@@ -71,22 +82,5 @@
 }
 
 
-  // .btn-subtle {
-  //   color: #ffffff;
-  //   background-color: rgba(255, 255, 255, 0.2);
-  //   border: 1px solid rgba(255, 255, 255, 0.3);
-  // }
 
-  // .btn-subtle:hover, .btn-subtle:focus {
-  //   background-color: rgba(255, 255, 255, 0.3);
-  //   border-color: rgba(255, 255, 255, 0.5);
-  // }
 
-  // a {
-  //   color: var(--ds-home-news-link-color);
-
-    // @include hover {
-    //   color: var(--ds-home-news-link-hover-color);
-//     }
-//   }
-// }
