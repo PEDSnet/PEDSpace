@@ -2,7 +2,7 @@
   display: block;
 
   div.background-image-container {
-    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
     position: relative;
 
     .background-image > img {
@@ -17,31 +17,33 @@
       object-position: bottom;
     }
 
-    // .container {
-    //   position: relative;
-    //   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    .container {
+      position: relative;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 
-    //   &:before, &:after {
-    //     content: '';
-    //     display: block;
-    //     width: var(--ds-banner-background-gradient-width);
-    //     height: 100%;
-    //     top: 0;
-    //     position: absolute;
-    //   }
+      &:before, &:after {
+        content: '';
+        display: block;
+        width: var(--ds-banner-background-gradient-width);
+        height: 100%;
+        top: 0;
+        position: absolute;
+      }
 
-    //   &:before {
-    //     background: linear-gradient(to left, var(--ds-banner-text-background), transparent);
-    //     left: calc(-1 * var(--ds-banner-background-gradient-width));
-    //   }
+      &:before {
+        background: linear-gradient(to left, var(--ds-banner-text-background), transparent);
+        left: calc(-1 * var(--ds-banner-background-gradient-width));
 
-    //   &:after {
-    //     background: linear-gradient(to right, var(--ds-banner-text-background), transparent);
-    //     right: calc(-1 * var(--ds-banner-background-gradient-width));
-    //   }
+      }
 
-    //   background-color: rgba(0, 0, 0, 0.6);
-    // }
+      &:after {
+        background: linear-gradient(to right, var(--ds-banner-text-background), transparent);
+        right: calc(-1 * var(--ds-banner-background-gradient-width));
+      }
+
+      background-color: var(--ds-banner-text-background);
+    }
+
 
     small.credits {
       a {
@@ -56,19 +58,7 @@
   }
 
   .jumbotron {
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-  }
-
-  .btn-subtle {
-    color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-  }
-
-  .btn-subtle:hover, .btn-subtle:focus {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.5);
+    background-color: transparent;
   }
 
   a {
@@ -79,3 +69,24 @@
     }
   }
 }
+
+
+  // .btn-subtle {
+  //   color: #ffffff;
+  //   background-color: rgba(255, 255, 255, 0.2);
+  //   border: 1px solid rgba(255, 255, 255, 0.3);
+  // }
+
+  // .btn-subtle:hover, .btn-subtle:focus {
+  //   background-color: rgba(255, 255, 255, 0.3);
+  //   border-color: rgba(255, 255, 255, 0.5);
+  // }
+
+  // a {
+  //   color: var(--ds-home-news-link-color);
+
+    // @include hover {
+    //   color: var(--ds-home-news-link-hover-color);
+//     }
+//   }
+// }
