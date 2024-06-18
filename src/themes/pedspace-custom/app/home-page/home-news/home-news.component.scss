@@ -68,22 +68,23 @@
     }
   }
 
+  // #{darken($link-color, 15%)}
   .btn-primary {
     background-color: #0D4254; /* Midnight green */
     border-color: #0D4254; /* Midnight green */
-    color: #FBF7F9; /* Snow */
+    color: #D8EDDF; /* Honeydew */
 
     &:hover, &:focus {
       background-color: #0A3240; /* Darker shade of Midnight green */
       border-color: #0A3240; /* Darker shade of Midnight green */
-      color: #D8EDDF; /* Honeydew */
+      color: #{darken(#D8EDDF, 15%)}; /* Honeydew */
     }
   }
 
   .btn-secondary {
     background-color: #3B1516; /* Black Bean */
     border-color: #3B1516; /* Black Bean */
-    color: #FBF7F9; /* Snow */
+    color: #D8EDDF; /* Honeydew */
 
     &:hover, &:focus {
       background-color: #2A1011; /* Darker shade of Black Bean */
