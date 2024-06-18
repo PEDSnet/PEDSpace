@@ -32,7 +32,7 @@
 
   "error-page.description.404": "page not found",
 
-  "error-page.orcid.generic-error": "An error occurred during login via ORCID. Make sure you have shared your ORCID account email address with PEDSpace. If the error persists, contact the administrator",
+  "error-page.orcid.generic-error": "An error occurred during login via ORCID. Make sure you have shared your ORCID account email address with DSpace. If the error persists, contact the administrator",
 
   "access-status.embargo.listelement.badge": "Embargo",
 
@@ -144,7 +144,7 @@
 
   "admin.registries.metadata.breadcrumbs": "Metadata registry",
 
-  "admin.registries.metadata.description": "The metadata registry maintains a list of all metadata fields available in the repository. These fields may be divided amongst multiple schemas. However, PEDSpace requires the qualified Dublin Core schema.",
+  "admin.registries.metadata.description": "The metadata registry maintains a list of all metadata fields available in the repository. These fields may be divided amongst multiple schemas. However, DSpace requires the qualified Dublin Core schema.",
 
   "admin.registries.metadata.form.create": "Create metadata schema",
 
@@ -328,7 +328,7 @@
 
   "admin.access-control.epeople.form.table.name": "Name",
 
-  "admin.access-control.epeople.form.table.collectionOrCommunity": "Collection/Category",
+  "admin.access-control.epeople.form.table.collectionOrCommunity": "Collection/Community",
 
   "admin.access-control.epeople.form.memberOfNoGroups": "This EPerson is not a member of any groups",
 
@@ -366,7 +366,7 @@
 
   "admin.access-control.groups.table.name": "Name",
 
-  "admin.access-control.groups.table.collectionOrCommunity": "Collection/Category",
+  "admin.access-control.groups.table.collectionOrCommunity": "Collection/Community",
 
   "admin.access-control.groups.table.members": "Members",
 
@@ -394,7 +394,7 @@
 
   "admin.access-control.groups.form.groupName": "Group name",
 
-  "admin.access-control.groups.form.groupCommunity": "Category or Collection",
+  "admin.access-control.groups.form.groupCommunity": "Community or Collection",
 
   "admin.access-control.groups.form.groupDescription": "Description",
 
@@ -482,7 +482,7 @@
 
   "admin.access-control.groups.form.subgroups-list.table.name": "Name",
 
-  "admin.access-control.groups.form.subgroups-list.table.collectionOrCommunity": "Collection/Category",
+  "admin.access-control.groups.form.subgroups-list.table.collectionOrCommunity": "Collection/Community",
 
   "admin.access-control.groups.form.subgroups-list.table.edit": "Remove / Add",
 
@@ -508,7 +508,7 @@
 
   "admin.access-control.groups.form.return": "Back",
 
-  "admin.access-control.groups.form.tooltip.editGroupPage": "On this page, you can modify the properties and members of a group. In the top section, you can edit the group name and description, unless this is an admin group for a collection or category, in which case the group name and description are auto-generated and cannot be edited. In the following sections, you can edit group membership. See [the wiki](https://wiki.lyrasis.org/display/DSDOC7x/Create+or+manage+a+user+group) for more details.",
+  "admin.access-control.groups.form.tooltip.editGroupPage": "On this page, you can modify the properties and members of a group. In the top section, you can edit the group name and description, unless this is an admin group for a collection or community, in which case the group name and description are auto-generated and cannot be edited. In the following sections, you can edit group membership. See [the wiki](https://wiki.lyrasis.org/display/DSDOC7x/Create+or+manage+a+user+group) for more details.",
 
   "admin.access-control.groups.form.tooltip.editGroup.addEpeople": "To add or remove an EPerson to/from this group, either click the 'Browse All' button or use the search bar below to search for users (use the dropdown to the left of the search bar to choose whether to search by metadata or by email). Then click the plus icon for each user you wish to add in the list below, or the trash can icon for each user you wish to remove. The list below may have several pages: use the page controls below the list to navigate to the next pages.",
 
@@ -882,7 +882,7 @@
 
   "collection.create.notifications.success": "Successfully created the Collection",
 
-  "collection.create.sub-head": "Create a Collection for Category {{ parent }}",
+  "collection.create.sub-head": "Create a Collection for Community {{ parent }}",
 
   "collection.curate.header": "Curate Collection: {{collection}}",
 
@@ -1142,21 +1142,21 @@
 
   "collection.source.update.notifications.error.title": "Server Error",
 
-  "communityList.breadcrumbs": "Category List",
+  "communityList.breadcrumbs": "Community List",
 
-  "communityList.tabTitle": "Category List",
+  "communityList.tabTitle": "Community List",
 
-  "communityList.title": "List of Categories",
+  "communityList.title": "List of Communities",
 
   "communityList.showMore": "Show More",
 
-  "community.create.head": "Create a Category",
+  "community.create.head": "Create a Community",
 
-  "community.create.notifications.success": "Successfully created the Category",
+  "community.create.notifications.success": "Successfully created the Community",
 
-  "community.create.sub-head": "Create a Sub-Category for Category {{ parent }}",
+  "community.create.sub-head": "Create a Sub-Community for Community {{ parent }}",
 
-  "community.curate.header": "Curate Category: {{category}}",
+  "community.curate.header": "Curate Community: {{community}}",
 
   "community.delete.cancel": "Cancel",
 
@@ -1164,67 +1164,67 @@
 
   "community.delete.processing": "Deleting...",
 
-  "community.delete.head": "Delete Category",
+  "community.delete.head": "Delete Community",
 
-  "community.delete.notification.fail": "Category could not be deleted",
+  "community.delete.notification.fail": "Community could not be deleted",
 
-  "community.delete.notification.success": "Successfully deleted category",
+  "community.delete.notification.success": "Successfully deleted community",
 
-  "community.delete.text": "Are you sure you want to delete category \"{{ dso }}\"",
+  "community.delete.text": "Are you sure you want to delete community \"{{ dso }}\"",
 
-  "community.edit.delete": "Delete this category",
+  "community.edit.delete": "Delete this community",
 
-  "community.edit.head": "Edit Category",
+  "community.edit.head": "Edit Community",
 
-  "community.edit.breadcrumbs": "Edit Category",
+  "community.edit.breadcrumbs": "Edit Community",
 
   "community.edit.logo.delete.title": "Delete logo",
 
   "community.edit.logo.delete-undo.title": "Undo delete",
 
-  "community.edit.logo.label": "Category logo",
+  "community.edit.logo.label": "Community logo",
 
-  "community.edit.logo.notifications.add.error": "Uploading Category logo failed. Please verify the content before retrying.",
+  "community.edit.logo.notifications.add.error": "Uploading Community logo failed. Please verify the content before retrying.",
 
-  "community.edit.logo.notifications.add.success": "Upload Category logo successful.",
+  "community.edit.logo.notifications.add.success": "Upload Community logo successful.",
 
   "community.edit.logo.notifications.delete.success.title": "Logo deleted",
 
-  "community.edit.logo.notifications.delete.success.content": "Successfully deleted the category's logo",
+  "community.edit.logo.notifications.delete.success.content": "Successfully deleted the community's logo",
 
   "community.edit.logo.notifications.delete.error.title": "Error deleting logo",
 
-  "community.edit.logo.upload": "Drop a Category Logo to upload",
+  "community.edit.logo.upload": "Drop a Community Logo to upload",
 
-  "community.edit.notifications.success": "Successfully edited the Category",
+  "community.edit.notifications.success": "Successfully edited the Community",
 
   "community.edit.notifications.unauthorized": "You do not have privileges to make this change",
 
-  "community.edit.notifications.error": "An error occured while editing the Category",
+  "community.edit.notifications.error": "An error occured while editing the Community",
 
   "community.edit.return": "Back",
 
   "community.edit.tabs.curate.head": "Curate",
 
-  "community.edit.tabs.curate.title": "Category Edit - Curate",
+  "community.edit.tabs.curate.title": "Community Edit - Curate",
 
   "community.edit.tabs.access-control.head": "Access Control",
 
-  "community.edit.tabs.access-control.title": "Category Edit - Access Control",
+  "community.edit.tabs.access-control.title": "Community Edit - Access Control",
 
   "community.edit.tabs.metadata.head": "Edit Metadata",
 
-  "community.edit.tabs.metadata.title": "Category Edit - Metadata",
+  "community.edit.tabs.metadata.title": "Community Edit - Metadata",
 
   "community.edit.tabs.roles.head": "Assign Roles",
 
-  "community.edit.tabs.roles.title": "Category Edit - Roles",
+  "community.edit.tabs.roles.title": "Community Edit - Roles",
 
   "community.edit.tabs.authorizations.head": "Authorizations",
 
-  "community.edit.tabs.authorizations.title": "Category Edit - Authorizations",
+  "community.edit.tabs.authorizations.title": "Community Edit - Authorizations",
 
-  "community.listelement.badge": "Category",
+  "community.listelement.badge": "Community",
 
   "comcol-role.edit.no-group": "None",
 
@@ -1242,7 +1242,7 @@
 
   "comcol-role.edit.collection-admin.name": "Administrators",
 
-  "comcol-role.edit.community-admin.description": "Category administrators can create sub-categories or collections, and manage or assign management for those sub-categories or collections. In addition, they decide who can submit items to any sub-collections, edit item metadata (after submission), and add (map) existing items from other collections (subject to authorization).",
+  "comcol-role.edit.community-admin.description": "Community administrators can create sub-communities or collections, and manage or assign management for those sub-communities or collections. In addition, they decide who can submit items to any sub-collections, edit item metadata (after submission), and add (map) existing items from other collections (subject to authorization).",
 
   "comcol-role.edit.collection-admin.description": "Collection administrators decide who can submit items to the collection, edit item metadata (after submission), and add (map) existing items from other collections to this collection (subject to authorization for that collection).",
 
@@ -1258,7 +1258,7 @@
 
   "comcol-role.edit.bitstream_read.name": "Default bitstream read access",
 
-  "comcol-role.edit.bitstream_read.description": "Category administrators can create sub-categories or collections, and manage or assign management for those sub-categories or collections. In addition, they decide who can submit items to any sub-collections, edit item metadata (after submission), and add (map) existing items from other collections (subject to authorization).",
+  "comcol-role.edit.bitstream_read.description": "Community administrators can create sub-communities or collections, and manage or assign management for those sub-communities or collections. In addition, they decide who can submit items to any sub-collections, edit item metadata (after submission), and add (map) existing items from other collections (subject to authorization).",
 
   "comcol-role.edit.bitstream_read.anonymous-group": "Default read for incoming bitstreams is currently set to Anonymous.",
 
@@ -1282,7 +1282,7 @@
 
   "community.form.description": "Introductory text (HTML)",
 
-  "community.form.errors.title.required": "Please enter a category name",
+  "community.form.errors.title.required": "Please enter a community name",
 
   "community.form.rights": "Copyright text (HTML)",
 
@@ -1290,19 +1290,19 @@
 
   "community.form.title": "Name",
 
-  "community.page.edit": "Edit this category",
+  "community.page.edit": "Edit this community",
 
-  "community.page.handle": "Permanent URI for this category",
+  "community.page.handle": "Permanent URI for this community",
 
   "community.page.license": "License",
 
   "community.page.news": "News",
 
-  "community.all-lists.head": "Subcategories and Collections",
+  "community.all-lists.head": "Subcommunities and Collections",
 
-  "community.sub-collection-list.head": "Collections in this Category",
+  "community.sub-collection-list.head": "Collections in this Community",
 
-  "community.sub-community-list.head": "Categories in this Category",
+  "community.sub-community-list.head": "Communities in this Community",
 
   "cookies.consent.accept-all": "Accept all",
 
@@ -1434,13 +1434,13 @@
 
   "dso-selector.create.collection.sub-level": "Create a new collection in",
 
-  "dso-selector.create.community.head": "New category",
+  "dso-selector.create.community.head": "New community",
 
   "dso-selector.create.community.or-divider": "or",
 
-  "dso-selector.create.community.sub-level": "Create a new category in",
+  "dso-selector.create.community.sub-level": "Create a new community in",
 
-  "dso-selector.create.community.top-level": "Create a new top-level category",
+  "dso-selector.create.community.top-level": "Create a new top-level community",
 
   "dso-selector.create.item.head": "New item",
 
@@ -1450,7 +1450,7 @@
 
   "dso-selector.edit.collection.head": "Edit collection",
 
-  "dso-selector.edit.community.head": "Edit category",
+  "dso-selector.edit.community.head": "Edit community",
 
   "dso-selector.edit.item.head": "Edit item",
 
@@ -1470,11 +1470,11 @@
 
   "dso-selector.set-scope.community.head": "Select a search scope",
 
-  "dso-selector.set-scope.community.button": "Search all of PEDSpace",
+  "dso-selector.set-scope.community.button": "Search all of DSpace",
 
   "dso-selector.set-scope.community.or-divider": "or",
 
-  "dso-selector.set-scope.community.input-header": "Search for a category or collection",
+  "dso-selector.set-scope.community.input-header": "Search for a community or collection",
 
   "dso-selector.claim.item.head": "Profile tips",
 
@@ -1560,7 +1560,7 @@
 
   "error.collections": "Error fetching collections",
 
-  "error.community": "Error fetching category",
+  "error.community": "Error fetching community",
 
   "error.identifier": "No item found for the identifier",
 
@@ -1580,11 +1580,11 @@
 
   "error.sub-collections": "Error fetching sub-collections",
 
-  "error.sub-communities": "Error fetching sub-categories",
+  "error.sub-communities": "Error fetching sub-communities",
 
   "error.submission.sections.init-form-error": "An error occurred during section initialize, please check your input-form configuration. Details are below : <br> <br>",
 
-  "error.top-level-communities": "Error fetching top-level categories",
+  "error.top-level-communities": "Error fetching top-level communities",
 
   "error.validation.license.notgranted": "You must grant this license to complete your submission. If you are unable to grant this license at this time you may save your work and return later or remove the submission.",
 
@@ -1838,9 +1838,9 @@
 
   "home.title": "Home",
 
-  "home.top-level-communities.head": "Categories in PEDSpace",
+  "home.top-level-communities.head": "Communities in DSpace",
 
-  "home.top-level-communities.help": "Select a category to browse its collections.",
+  "home.top-level-communities.help": "Select a community to browse its collections.",
 
   "info.end-user-agreement.accept": "I have read and I agree to the End User Agreement",
 
@@ -1872,7 +1872,7 @@
 
   "info.feedback.title": "Feedback",
 
-  "info.feedback.info": "Thanks for sharing your feedback about the PEDSpace system. Your comments are appreciated!",
+  "info.feedback.info": "Thanks for sharing your feedback about the DSpace system. Your comments are appreciated!",
 
   "info.feedback.email_help": "This address will be used to follow up on your feedback.",
 
@@ -2742,7 +2742,7 @@
 
   "loading.content-source": "Loading content source...",
 
-  "loading.community": "Loading category...",
+  "loading.community": "Loading community...",
 
   "loading.default": "Loading...",
 
@@ -2760,15 +2760,15 @@
 
   "loading.sub-collections": "Loading sub-collections...",
 
-  "loading.sub-communities": "Loading sub-categories...",
+  "loading.sub-communities": "Loading sub-communities...",
 
-  "loading.top-level-communities": "Loading top-level categories...",
+  "loading.top-level-communities": "Loading top-level communities...",
 
   "login.form.email": "Email address",
 
   "login.form.forgot-password": "Have you forgotten your password?",
 
-  "login.form.header": "Please log in to PEDSpace",
+  "login.form.header": "Please log in to DSpace",
 
   "login.form.new-user": "New user? Click here to register.",
 
@@ -2786,7 +2786,7 @@
 
   "login.breadcrumbs": "Login",
 
-  "logout.form.header": "Log out from PEDSpace",
+  "logout.form.header": "Log out from DSpace",
 
   "logout.form.submit": "Log out",
 
@@ -2810,7 +2810,7 @@
 
   "menu.section.admin_search": "Admin Search",
 
-  "menu.section.browse_community": "This Category",
+  "menu.section.browse_community": "This Community",
 
   "menu.section.browse_community_by_author": "By Author",
 
@@ -2818,7 +2818,7 @@
 
   "menu.section.browse_community_by_title": "By Title",
 
-  "menu.section.browse_global": "All of PEDSpace",
+  "menu.section.browse_global": "All of DSpace",
 
   "menu.section.browse_global_by_author": "By Author",
 
@@ -2832,7 +2832,7 @@
 
   "menu.section.browse_global_by_title": "By Title",
 
-  "menu.section.browse_global_communities_and_collections": "Categories & Collections",
+  "menu.section.browse_global_communities_and_collections": "Communities & Collections",
 
   "menu.section.control_panel": "Control Panel",
 
@@ -2842,7 +2842,7 @@
 
   "menu.section.edit_collection": "Collection",
 
-  "menu.section.edit_community": "Category",
+  "menu.section.edit_community": "Community",
 
   "menu.section.edit_item": "Item",
 
@@ -2850,7 +2850,7 @@
 
   "menu.section.export_collection": "Collection",
 
-  "menu.section.export_community": "Category",
+  "menu.section.export_community": "Community",
 
   "menu.section.export_item": "Item",
 
@@ -2900,7 +2900,7 @@
 
   "menu.section.new_collection": "Collection",
 
-  "menu.section.new_community": "Category",
+  "menu.section.new_community": "Community",
 
   "menu.section.new_item": "Item",
 
@@ -2954,7 +2954,7 @@
 
   "metadata-export-search.submit.error": "Starting the export has failed",
 
-  "mydspace.breadcrumbs": "MyPEDSpace",
+  "mydspace.breadcrumbs": "MyDSpace",
 
   "mydspace.description": "",
 
@@ -3026,7 +3026,7 @@
 
   "mydspace.status.mydspaceWorkspace": "Workspace",
 
-  "mydspace.title": "MyPEDSpace",
+  "mydspace.title": "MyDSpace",
 
   "mydspace.upload.upload-failed": "Error creating new workspace. Please verify the content uploaded before retry.",
 
@@ -3038,9 +3038,9 @@
 
   "mydspace.view-btn": "View",
 
-  "nav.browse.header": "All of PEDSpace",
+  "nav.browse.header": "All of DSpace",
 
-  "nav.community-browse.header": "By Category",
+  "nav.community-browse.header": "By Community",
 
   "nav.context-help-toggle": "Toggle context help",
 
@@ -3054,7 +3054,7 @@
 
   "nav.main.description": "Main navigation bar",
 
-  "nav.mydspace": "MyPEDSpace",
+  "nav.mydspace": "MyDSpace",
 
   "nav.profile": "Profile",
 
@@ -3414,7 +3414,7 @@
 
   "register-page.registration.header": "New user registration",
 
-  "register-page.registration.info": "Register an account to subscribe to collections for email updates, and submit new items to PEDSpace.",
+  "register-page.registration.info": "Register an account to subscribe to collections for email updates, and submit new items to DSpace.",
 
   "register-page.registration.email": "Email Address *",
 
@@ -3496,9 +3496,9 @@
 
   "repository.image.logo": "Repository logo",
 
-  "repository.title": "PEDSpace Repository",
+  "repository.title": "DSpace Repository",
 
-  "repository.title.prefix": "PEDSpace Repository :: ",
+  "repository.title.prefix": "DSpace Repository :: ",
 
   "resource-policies.add.button": "Add",
 
@@ -3510,7 +3510,7 @@
 
   "resource-policies.add.for.item": "Add a new Item policy",
 
-  "resource-policies.add.for.community": "Add a new Category policy",
+  "resource-policies.add.for.community": "Add a new Community policy",
 
   "resource-policies.add.for.collection": "Add a new Collection policy",
 
@@ -3610,7 +3610,7 @@
 
   "resource-policies.table.headers.title.for.item": "Policies for Item",
 
-  "resource-policies.table.headers.title.for.community": "Policies for Category",
+  "resource-policies.table.headers.title.for.community": "Policies for Community",
 
   "resource-policies.table.headers.title.for.collection": "Policies for Collection",
 
@@ -3842,7 +3842,7 @@
 
   "search.form.search_dspace": "All repository",
 
-  "search.form.scope.all": "All of PEDSpace",
+  "search.form.scope.all": "All of DSpace",
 
   "search.results.head": "Search Results",
 
@@ -3976,9 +3976,9 @@
 
   "submission.import-external.title.none": "Import metadata from an external source",
 
-  "submission.import-external.page.hint": "Enter a query above to find items from the web to import in to PEDSpace.",
+  "submission.import-external.page.hint": "Enter a query above to find items from the web to import in to DSpace.",
 
-  "submission.import-external.back-to-my-dspace": "Back to MyPEDSpace",
+  "submission.import-external.back-to-my-dspace": "Back to MyDSpace",
 
   "submission.import-external.search.placeholder": "Search the external source",
 
@@ -4662,7 +4662,7 @@
 
   "subscriptions.collection": "Subscriptions for collections",
 
-  "subscriptions.community": "Subscriptions for categories",
+  "subscriptions.community": "Subscriptions for communities",
 
   "subscriptions.subscription_type": "Subscription type",
 
@@ -4724,7 +4724,7 @@
 
   "subscriptions.table.not-available-message": "The subscribed item has been deleted, or you don't currently have the permission to view it",
 
-  "subscriptions.table.empty.message": "You do not have any subscriptions at this time. To subscribe to email updates for a Category or Collection, use the subscription button on the object's page.",
+  "subscriptions.table.empty.message": "You do not have any subscriptions at this time. To subscribe to email updates for a Community or Collection, use the subscription button on the object's page.",
 
   "thumbnail.default.alt": "Thumbnail Image",
 
@@ -4742,7 +4742,7 @@
 
   "thumbnail.person.placeholder": "No Profile Picture Available",
 
-  "title": "PEDSpace",
+  "title": "DSpace",
 
   "vocabulary-treeview.header": "Hierarchical tree view",
 
@@ -5186,7 +5186,7 @@
 
   "collection-access-control-title": "This form allows you to perform changes to the access conditions of all the items owned by this collection. Changes may be performed to either all Item metadata or all content (bitstreams).",
 
-  "community-access-control-title": "This form allows you to perform changes to the access conditions of all the items owned by any collection under this category. Changes may be performed to either all Item metadata or all content (bitstreams).",
+  "community-access-control-title": "This form allows you to perform changes to the access conditions of all the items owned by any collection under this community. Changes may be performed to either all Item metadata or all content (bitstreams).",
 
   "access-control-item-header-toggle": "Item's Metadata",
 
