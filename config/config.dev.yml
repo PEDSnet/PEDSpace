@@ -330,7 +330,7 @@ themes:
   # - name: BASE_THEME_NAME
   #
   # - name: 'dspace'
-  - name: 'dspace-simple'
+  - name: 'dspace-custom'
     headTags:
     - tagName: link
       attributes:

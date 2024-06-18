@@ -64,6 +64,11 @@
                 "input": "src/themes/dspace-simple/styles/theme.scss",
                 "inject": false,
                 "bundleName": "dspace-simple-theme"
+              },
+              {
+                "input": "src/themes/dspace-custom/styles/theme.scss",
+                "inject": false,
+                "bundleName": "dspace-custom-theme"
               }
             ],
             "scripts": [],
