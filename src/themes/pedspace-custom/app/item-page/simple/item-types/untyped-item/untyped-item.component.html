@@ -142,7 +142,10 @@
     </div>
   </div>
 </ng-container>
-<div *ngIf="!(object?.metadata['dc.relation']?.length > 0)"></div>
+<div *ngIf="!(object?.metadata['dc.relation']?.length > 0)"> 
+  <!-- add a line break here -->
+  <br>
+</div>
 
 <ds-generic-item-page-field [item]="object" [fields]="['dc.rights']">
 </ds-generic-item-page-field>
