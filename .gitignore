@@ -41,3 +41,4 @@ package-lock.json
 junit.xml
 
 /src/mirador-viewer/config.local.js
+*_backup
