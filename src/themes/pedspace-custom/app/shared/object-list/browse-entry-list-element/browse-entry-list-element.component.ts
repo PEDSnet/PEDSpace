@@ -14,6 +14,6 @@ import {
   // templateUrl: './browse-entry-list-element.component.html',
   templateUrl: '../../../../../../app/shared/object-list/browse-entry-list-element/browse-entry-list-element.component.html',
 })
-@listableObjectComponent(BrowseEntry, ViewMode.ListElement, Context.Any, 'custom')
+@listableObjectComponent(BrowseEntry, ViewMode.ListElement, Context.Any, 'pedspace-custom')
 export class BrowseEntryListElementComponent extends BaseComponent {
 }

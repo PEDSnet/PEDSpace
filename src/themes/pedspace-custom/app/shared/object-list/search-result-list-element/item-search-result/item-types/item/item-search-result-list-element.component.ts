@@ -11,8 +11,8 @@ import {
 } from '../../../../../../../../../app/shared/object-list/search-result-list-element/item-search-result/item-types/item/item-search-result-list-element.component';
 import { Context } from '../../../../../../../../../app/core/shared/context.model';
 
-@listableObjectComponent('PublicationSearchResult', ViewMode.ListElement, Context.Any, 'custom')
-@listableObjectComponent(ItemSearchResult, ViewMode.ListElement, Context.Any, 'custom')
+@listableObjectComponent('PublicationSearchResult', ViewMode.ListElement, Context.Any, 'pedspace-custom')
+@listableObjectComponent(ItemSearchResult, ViewMode.ListElement, Context.Any, 'pedspace-custom')
 @Component({
   selector: 'ds-item-search-result-list-element',
   // styleUrls: ['./item-search-result-list-element.component.scss'],

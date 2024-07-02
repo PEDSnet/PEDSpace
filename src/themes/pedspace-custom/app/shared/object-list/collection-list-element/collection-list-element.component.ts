@@ -10,7 +10,7 @@ import {
 } from '../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import {Context} from '../../../../../../app/core/shared/context.model';
 
-@listableObjectComponent(Collection, ViewMode.ListElement, Context.Any, 'custom')
+@listableObjectComponent(Collection, ViewMode.ListElement, Context.Any, 'pedspace-custom')
 
 @Component({
   selector: 'ds-collection-list-element',

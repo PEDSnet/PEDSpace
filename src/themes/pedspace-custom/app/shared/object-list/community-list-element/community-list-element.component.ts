@@ -8,7 +8,7 @@ import { ViewMode } from '../../../../../../app/core/shared/view-mode.model';
 import { listableObjectComponent } from '../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import {Context} from '../../../../../../app/core/shared/context.model';
 
-@listableObjectComponent(Community,  ViewMode.ListElement, Context.Any, 'custom')
+@listableObjectComponent(Community,  ViewMode.ListElement, Context.Any, 'pedspace-custom')
 
 @Component({
   selector: 'ds-community-list-element',
