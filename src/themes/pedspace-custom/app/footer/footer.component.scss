@@ -1,0 +1,59 @@
+:host {
+  footer {
+    background-color: var(--ds-footer-bg);
+    text-align: center;
+    z-index: var(--ds-footer-z-index);
+    border-top: var(--ds-footer-border);
+    padding: var(--ds-footer-padding);
+    color: white; // Ensure all text is white
+
+    p {
+      margin: 0;
+      color: white; // Ensure paragraph text is white
+    }
+
+    div > img {
+      height: var(--ds-footer-logo-height);
+    }
+
+    .top-footer {
+      background-color: var(--ds-top-footer-bg);
+      padding: var(--ds-footer-padding);
+      margin: calc(var(--ds-footer-padding) * -1);
+      color: white; // Ensure top footer text is white
+
+      p, a {
+        color: white; // Ensure all text and links in top footer are white
+      }
+    }
+
+    .bottom-footer {
+      ul {
+        li {
+          display: inline-flex;
+
+          a {
+            padding: 0 calc(var(--bs-spacer) / 2);
+            color: white; // Ensure links are white
+          }
+
+          &:not(:last-child) {
+            &:after {
+              content: '';
+              border-right: 1px var(--bs-secondary) solid;
+            }
+          }
+        }
+      }
+      color: white; // Ensure bottom footer text is white
+    }
+
+    .disclaimer {
+      font-size: 0.8rem; // Smaller font size
+      line-height: 1.2;  // Tighter line spacing
+      max-width: 800px;  // Limit width for better centering
+      margin: 0 auto;    // Center the disclaimer text
+      color: white;      // Ensure disclaimer text is white
+    }
+  }
+}
