@@ -130,9 +130,19 @@
 <!-- Gray Boxes -->
 <div class="row gray-boxes-container">
   <div class="col-xs-12 col-md-6 gray-box">
-<!-- SYNC - ARBRITRARY COMMIT TO SYNC PEDSPACE AND PCORNET DSPACE REPO -->
+    <!-- for each element in dc.relation.uri up to 5 elements, 
+     print the value of the element (which will be a url) and render it as clickable -->
+    <ds-generic-item-page-field [item]="object" [fields]="['dc.relation']" [label]="'item.preview.dc.relation'">
+    </ds-generic-item-page-field>
   </div>
   <div class="col-xs-12 col-md-6 gray-box">
-
+    <ds-generic-item-page-field [item]="object" [fields]="['dc.relation.isreferencedby']" [label]="'item.preview.dc.relation.isreferencedby'">
+    </ds-generic-item-page-field>
   </div>
 </div>
+
+<ds-generic-item-page-field [item]="object" [fields]="['dc.rights']">
+</ds-generic-item-page-field>
+
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+  <img src="https://i.creativecommons.org/l/by/4.0/88x31.png" alt="Creative Commons License"> </a>
