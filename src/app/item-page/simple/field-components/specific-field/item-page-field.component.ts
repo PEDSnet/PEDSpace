@@ -17,8 +17,7 @@ import { getRemoteDataPayload } from '../../../../core/shared/operators';
 })
 export class ItemPageFieldComponent {
 
-    constructor(protected browseDefinitionDataService: BrowseDefinitionDataService) {
-    }
+    constructor(protected browseDefinitionDataService: BrowseDefinitionDataService) {}
 
     /**
      * The item to display metadata for
@@ -28,28 +27,28 @@ export class ItemPageFieldComponent {
     /**
      * Whether the {@link MarkdownPipe} should be used to render this metadata.
      */
-    enableMarkdown = false;
+    @Input() enableMarkdown = false;
 
     /**
      * Fields (schema.element.qualifier) used to render their values.
      */
-    fields: string[];
+    @Input() fields: string[];
 
     /**
      * Label i18n key for the rendered metadata
      */
-    label: string;
+    @Input() label: string;
 
     /**
      * Separator string between multiple values of the metadata fields defined
      * @type {string}
      */
-    separator = '<br/>';
+    @Input() separator = '<br/>';
 
     /**
      * Whether any valid HTTP(S) URL should be rendered as a link
      */
-    urlRegex?: string;
+    @Input() urlRegex?: string;
 
     /**
      * Return browse definition that matches any field used in this component if it is configured as a browse
