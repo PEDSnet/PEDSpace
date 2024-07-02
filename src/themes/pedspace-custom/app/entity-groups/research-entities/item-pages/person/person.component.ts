@@ -8,7 +8,7 @@ import {
 } from '../../../../../../../app/entity-groups/research-entities/item-pages/person/person.component';
 import { Context } from '../../../../../../../app/core/shared/context.model';
 
-@listableObjectComponent('Person', ViewMode.StandalonePage, Context.Any, 'custom')
+@listableObjectComponent('Person', ViewMode.StandalonePage, Context.Any, 'pedspace-custom')
 @Component({
   selector: 'ds-person',
   // styleUrls: ['./person.component.scss'],

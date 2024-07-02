@@ -8,7 +8,7 @@ import { PublicationComponent as BaseComponent } from '../../../../../../../app/
  * Component that represents a publication Item page
  */
 
-@listableObjectComponent('Publication', ViewMode.StandalonePage, Context.Any, 'custom')
+@listableObjectComponent('Publication', ViewMode.StandalonePage, Context.Any, 'pedspace-custom')
 @Component({
   selector: 'ds-publication',
   // styleUrls: ['./publication.component.scss'],

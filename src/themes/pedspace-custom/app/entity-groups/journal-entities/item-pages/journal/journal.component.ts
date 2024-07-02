@@ -8,7 +8,7 @@ import {
 } from '../../../../../../../app/entity-groups/journal-entities/item-pages/journal/journal.component';
 import { Context } from '../../../../../../../app/core/shared/context.model';
 
-@listableObjectComponent('Journal', ViewMode.StandalonePage, Context.Any, 'custom')
+@listableObjectComponent('Journal', ViewMode.StandalonePage, Context.Any, 'pedspace-custom')
 @Component({
   selector: 'ds-journal',
   // styleUrls: ['./journal.component.scss'],

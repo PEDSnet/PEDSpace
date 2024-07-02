@@ -12,7 +12,7 @@ import {
 /**
  * Component that represents an untyped Item page
  */
-@listableObjectComponent(Item, ViewMode.StandalonePage, Context.Any, 'custom')
+@listableObjectComponent(Item, ViewMode.StandalonePage, Context.Any, 'pedspace-custom')
 @Component({
   selector: 'ds-untyped-item',
   // styleUrls: ['./untyped-item.component.scss'],
