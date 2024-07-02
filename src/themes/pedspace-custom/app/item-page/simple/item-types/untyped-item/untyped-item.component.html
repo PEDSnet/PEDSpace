@@ -127,19 +127,21 @@
     </div>
   </div>
 </div>
-<!-- Gray Boxes -->
-<div class="row gray-boxes-container">
-  <div class="col-xs-12 col-md-6 gray-box">
-    <!-- for each element in dc.relation.uri up to 5 elements, 
-     print the value of the element (which will be a url) and render it as clickable -->
-    <ds-generic-item-page-field [item]="object" [fields]="['dc.relation']" [label]="'item.preview.dc.relation'">
-    </ds-generic-item-page-field>
+<ng-container *ngIf="object?.metadata['dc.relation']?.length > 0">
+  <!-- Gray Boxes -->
+  <div class="row gray-boxes-container">
+    <div class="col-xs-12 col-md-6 gray-box">
+      <!-- for each element in dc.relation.uri up to 5 elements, 
+       print the value of the element (which will be a url) and render it as clickable -->
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.relation']" [label]="'item.preview.dc.relation'">
+      </ds-generic-item-page-field>
+    </div>
+    <div class="col-xs-12 col-md-6 gray-box">
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.relation.isreferencedby']" [label]="'item.preview.dc.relation.isreferencedby'">
+      </ds-generic-item-page-field>
+    </div>
   </div>
-  <div class="col-xs-12 col-md-6 gray-box">
-    <ds-generic-item-page-field [item]="object" [fields]="['dc.relation.isreferencedby']" [label]="'item.preview.dc.relation.isreferencedby'">
-    </ds-generic-item-page-field>
-  </div>
-</div>
+</ng-container>
 
 <ds-generic-item-page-field [item]="object" [fields]="['dc.rights']">
 </ds-generic-item-page-field>
