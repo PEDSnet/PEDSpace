@@ -335,7 +335,7 @@ themes:
     - tagName: link
       attributes:
         rel: icon
-        href: assets/pedspace-custom/images/favicons/favicon.ico
+        href: assets/pedspace-custom/images/favicon/favicon.ico
         sizes: any
     - tagName: link
       attributes:
