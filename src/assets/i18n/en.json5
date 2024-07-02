@@ -795,6 +795,10 @@
   "browse.metadata.subject": "Subject",
 
   "browse.metadata.title": "Title",
+  
+  "browse.metadata.type": "Type",
+  
+  "browse.metadata.type.breadcrumbs": "Type",
 
   "browse.metadata.author.breadcrumbs": "Browse by Author",
 
@@ -918,7 +922,7 @@
 
   "collection.edit.item-mapper.description": "This is the item mapper tool that allows domain administrators to map items from other collections into this domain. You can search for items from other collections and map them, or browse the list of currently mapped items.",
 
-  "collection.edit.item-mapper.head": "Item Mapper - Map Items from Other Collections",
+  "collection.edit.item-mapper.head": "Item Mapper - Map Items from Other Domains",
 
   "collection.edit.item-mapper.no-search": "Please enter a query to search",
 
@@ -1062,13 +1066,15 @@
 
   "collection.form.license": "License",
 
-  "collection.form.provenance": "Provenance",
+  "collection.form.person.page.orcid.sync-profile.affiliation": "Provenance",
 
   "collection.form.rights": "Copyright text (HTML)",
 
   "collection.form.tableofcontents": "News (HTML)",
 
   "collection.form.title": "Name",
+  
+  "collection.form.provenance": "Provenance",
 
   "collection.form.entityType": "Entity Type",
 
@@ -1270,7 +1276,7 @@
 
   "comcol-role.edit.finaleditor.description": "Final editors are able to edit the metadata of incoming submissions, but will not be able to reject them.",
 
-  "comcol-role.edit.reviewer.name": "Reviewers",
+  "comcol-role.edit.reviewer.name": "Reviewer(s)",
 
   "comcol-role.edit.reviewer.description": "Reviewers are able to accept or reject incoming submissions. However, they are not able to edit the submission's metadata.",
 
@@ -1298,9 +1304,9 @@
 
   "community.page.news": "News",
 
-  "community.all-lists.head": "Subcommunities and Collections",
+  "community.all-lists.head": "Subcommunities and Domains",
 
-  "community.sub-collection-list.head": "Collections in this Collection",
+  "community.sub-collection-list.head": "Domains in this Collection",
 
   "community.sub-community-list.head": "Collections in this Collection",
 
@@ -2058,7 +2064,7 @@
 
   "item.edit.item-mapper.description": "This is the item mapper tool that allows administrators to map this item to other collections. You can search for collections and map them, or browse the list of collections the item is currently mapped to.",
 
-  "item.edit.item-mapper.head": "Item Mapper - Map Item to Collections",
+  "item.edit.item-mapper.head": "Item Mapper - Map Item to Domains",
 
   "item.edit.item-mapper.item": "Item: \"<b>{{name}}</b>\"",
 
@@ -2310,7 +2316,7 @@
 
   "item.edit.tabs.status.labels.itemPage": "Item Page",
 
-  "item.edit.tabs.status.labels.lastModified": "Last Modified",
+  "item.edit.tabs.status.labels.lastModified": "Last Modified:",
 
   "item.edit.tabs.status.title": "Item Edit -  Status",
 
@@ -2341,6 +2347,8 @@
   "item.listelement.badge": "Item",
 
   "item.page.description": "Description",
+  
+  "item.page.description.cohort": "Cohort Description",
 
   "item.page.journal-issn": "Journal ISSN",
 
@@ -2382,7 +2390,7 @@
 
   "item.page.citation": "Citation",
 
-  "item.page.collections": "Collections",
+  "item.page.collections": "Domains",
 
   "item.page.collections.loading": "Loading...",
 
@@ -2428,7 +2436,9 @@
 
   "item.page.relationships.isOrgUnitOfProject": "Research Projects",
 
-  "item.page.subject": "Keywords",
+  "item.page.subject": "Vocabularies",
+  
+  "item.page.subject.mesh": "Clinical Subject",
 
   "item.page.uri": "URI",
 
@@ -2454,7 +2464,7 @@
 
   "item.preview.dc.contributor.author": "Authors:",
 
-  "item.preview.dc.date.issued": "Published date:",
+  "item.preview.dc.date.issued": "Created:",
 
   "item.preview.dc.description.abstract": "Abstract:",
 
@@ -2473,6 +2483,8 @@
   "item.preview.oaire.citation.volume": "Volume",
 
   "item.preview.dc.relation.issn": "ISSN",
+  
+  "item.preview.dc.relation.uri": "Development Code",
 
   "item.preview.dc.identifier.isbn": "ISBN",
 
@@ -2831,8 +2843,10 @@
   "menu.section.browse_global_by_nsi": "By Norwegian Science Index",
 
   "menu.section.browse_global_by_title": "By Title",
+  
+  "menu.section.browse_global_by_type": "By Type",
 
-  "menu.section.browse_global_communities_and_collections": "Collections & Collections",
+  "menu.section.browse_global_communities_and_collections": "Collections & Domains",
 
   "menu.section.control_panel": "Control Panel",
 
@@ -2996,7 +3010,7 @@
 
   "mydspace.results.no-authors": "No Authors",
 
-  "mydspace.results.no-collections": "No Collections",
+  "mydspace.results.no-collections": "No Domains",
 
   "mydspace.results.no-date": "No Date",
 
@@ -3458,7 +3472,7 @@
 
   "relationships.add.error.title": "Unable to add relationship",
 
-  "relationships.isAuthorOf": "Authors",
+  "relationships.isAuthorOf": "Creator(s)",
 
   "relationships.isAuthorOf.Person": "Authors (persons)",
 
@@ -3496,9 +3510,9 @@
 
   "repository.image.logo": "Repository logo",
 
-  "repository.title": "PEDSpace Repository",
+  "repository.title": "PEDSpace",
 
-  "repository.title.prefix": "PEDSpace Repository :: ",
+  "repository.title.prefix": "PEDSpace :: ",
 
   "resource-policies.add.button": "Add",
 
@@ -4576,7 +4590,7 @@
 
   "submission.sections.sherpa.record.information.date.created": "Date Created",
 
-  "submission.sections.sherpa.record.information.date.modified": "Last Modified",
+  "submission.sections.sherpa.record.information.date.modified": "Last Modified:",
 
   "submission.sections.sherpa.record.information.uri": "URI",
 
@@ -4962,7 +4976,7 @@
 
   "person.page.orcid.save.preference.changes": "Update settings",
 
-  "person.page.orcid.sync-profile.affiliation": "Affiliation",
+  "person.page.orcid.sync-profile.affiliation": "Affiliation(s)",
 
   "person.page.orcid.sync-profile.biographical": "Biographical data",
 
