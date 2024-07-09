@@ -19,8 +19,6 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 
 
@@ -96,7 +94,7 @@ When completed, PEDSpace is intended to host and serve PEDSnet-generated data on
 * [![Spring][Spring]][Spring-url]
 * [![PostgreSQL][PostgreSQL]][PostgreSQL-url]
 * [![Angular][Angular.io]][Angular-url]
-* [![Bootstrap][Bootstrap-url]][Bootstrap-url]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![Apache Solr][Solr]][Solr-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
