@@ -59,17 +59,8 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -90,12 +81,13 @@ When completed, PEDSpace is intended to host and serve PEDSnet-generated data on
 
 ### Built With
 
-* [![Java][Java]][Java-url]
-* [![Spring][Spring]][Spring-url]
-* [![PostgreSQL][PostgreSQL]][PostgreSQL-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![Apache Solr][Solr]][Solr-url]
+[![Java][Java]][Java-url]
+[![Spring][Spring]][Spring-url]
+[![PostgreSQL][PostgreSQL]][PostgreSQL-url]
+[![Angular][Angular.io]][Angular-url]
+[![Bootstrap][Bootstrap.com]][Bootstrap-url]
+[![Apache Solr][Solr]][Solr-url]
+[![Apache Tomcat][Tomcat]][Tomcat-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -108,13 +100,6 @@ When completed, PEDSpace is intended to host and serve PEDSnet-generated data on
     - [ ] Nested Feature
 
 See the [open issues](https://github.com/PEDSnet/PEDSpace/issues) or the [project board](insert-link-here) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -163,3 +148,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [Bootstrap-url]: https://getbootstrap.com/
 [Solr]: https://img.shields.io/badge/Apache_Solr-D9411E?style=for-the-badge&logo=apache-solr&logoColor=white
 [Solr-url]: https://solr.apache.org/
+[Tomcat]: https://img.shields.io/badge/Apache_Tomcat-F8DC75?style=for-the-badge&logo=apache-tomcat&logoColor=black
+[Tomcat-url]: https://tomcat.apache.org/
+
+
+
