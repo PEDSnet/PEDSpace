@@ -108,6 +108,7 @@ See the [open issues](https://github.com/PEDSnet/PEDSpace/issues) or the [projec
 
 - Arta Seyedian (seyediana1@chop.edu)
 - Annabel Pinkney (pinkneya1@chop.edu)
+- Alex Sharrock (shorrocka@chop.edu)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
