@@ -32,7 +32,7 @@
 
 <h3 align="center"><a href="https://pedsdspace01.research.chop.edu/home">PEDSpace</a></h3>
 
-  <p align="center">
+  <p align="left">
 	PEDSpace is a robust implementation of the 	<a href="https://github.com/DSpace/DSpace" target="_blank">open-source DSpace software bundle</a>, designed to store and retrieve digital assets generated during PEDSnet studies. PEDSpace serves as a centralized hub where digital assets are made readily accessible to researchers, clinicians, and stakeholders worldwide.
     <br />
     <a href="https://wiki.lyrasis.org/display/DSDOC8x/Introduction"><strong>Learn more about DSpace »</strong></a>
@@ -44,7 +44,7 @@
     ·
     <a href="https://github.com/PEDSnet/PEDSpace/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
-  <p>*PEDSpace is currently behind the CHOP firewall, meaning that you would need a VPN connection to view it. We eventually intend on making it publicly available.</p>
+  <p>*PEDSpace is currently behind the CHOP firewall, meaning that you need a VPN connection to view. We eventually intend on making it publicly available.</p>
 </div>
 
 
@@ -73,7 +73,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://pedsdspace01.research.chop.edu/home)
 
-When completed, PEDSpace is intended to host and serve PEDSnet-generated data on demand, as well as accept submissions from qualified users.
+PEDSpace is an open source repository application intended to host and serve PEDSnet-generated data on demand, as well as accept submissions from qualified users.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -106,9 +106,15 @@ See the [open issues](https://github.com/PEDSnet/PEDSpace/issues) or the [projec
 <!-- CONTACT -->
 ## Contact
 
+For technical queries:
 - Arta Seyedian (seyediana1@chop.edu)
+- Alex Shorrock (shorrocka@chop.edu)
+
+For metadata or deposit-related queries:
 - Annabel Pinkney (pinkneya1@chop.edu)
-- Alex Sharrock (shorrocka@chop.edu)
+
+For questions about PEDSnet
+- Morgan Botforf (botdorfm@chop.edu)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
