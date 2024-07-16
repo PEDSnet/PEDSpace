@@ -34,6 +34,8 @@
 
   <p align="left">
 	PEDSpace is a robust implementation of the 	<a href="https://github.com/DSpace/DSpace" target="_blank">open-source DSpace software bundle</a>, designed to store and retrieve digital assets generated during PEDSnet studies. PEDSpace serves as a centralized hub where digital assets are made readily accessible to researchers, clinicians, and stakeholders worldwide.
+  </p>
+  <p alight="center">
     <br />
     <a href="https://wiki.lyrasis.org/display/DSDOC8x/Introduction"><strong>Learn more about DSpace »</strong></a>
     <br />
