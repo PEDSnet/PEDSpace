@@ -1,0 +1,128 @@
+<ds-results-back-button *ngIf="showBackButton$ | async" [back]="back"></ds-results-back-button>
+
+<div class="container">
+  <div class="row" *ngIf="iiifEnabled">
+    <div class="col-12">
+      <ds-mirador-viewer id="iiif-viewer" [object]="object" [searchable]="iiifSearchEnabled"
+        [query]="iiifQuery$ | async">
+      </ds-mirador-viewer>
+    </div>
+  </div>
+
+  <div *ngIf="object?.metadata['dc.type']?.length > 0">
+    <ds-generic-item-page-field class="badge" [item]="object" [fields]="['dc.type']"></ds-generic-item-page-field>
+  </div>
+
+  <ds-item-page-title-field [item]="object" class="mr-auto">
+  </ds-item-page-title-field>
+  <ds-dso-edit-menu></ds-dso-edit-menu>
+
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <!-- Date Created -->
+      <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'item.preview.dc.date.issued'"
+        separator=", "></ds-item-page-date-field>
+      <!-- Date Modified -->
+      <ds-item-page-date-field [item]="object" [fields]="['dc.date']" [label]="'item.preview.dc.date'"
+        separator="; "></ds-item-page-date-field>
+
+      <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
+        <ds-media-viewer [item]="object"></ds-media-viewer>
+      </div>
+
+      <!-- Download link(s) -->
+      <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['journal.title']" [label]="'item.page.journal-title'">
+      </ds-generic-item-page-field>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['journal.identifier.issn']"
+        [label]="'item.page.journal-issn'">
+      </ds-generic-item-page-field>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['journalvolume.identifier.name']"
+        [label]="'item.page.volume-title'">
+      </ds-generic-item-page-field>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.publisher']" [label]="'item.page.publisher'">
+      </ds-generic-item-page-field>
+    </div>
+
+    <div class="col-12 col-md-8">
+      <ng-container *ngIf="object?.metadata['dc.subject.other']?.length > 0">
+        <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.other']"
+          [label]="'item.preview.dc.subject.other'"></ds-generic-item-page-field>
+      </ng-container>
+
+      <ds-item-page-abstract-field [item]="object" [label]="'item.page.abstract'"></ds-item-page-abstract-field>
+
+      <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
+        [itemType]="'Person'" [metadataFields]="['dc.contributor.author', 'dc.creator']"
+        [label]="'item.preview.dc.contributor.author' | translate">
+      </ds-metadata-representation-list>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.advisor']"
+        [label]="'item.preview.dc.contributor.advisor'">
+      </ds-generic-item-page-field>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
+        [label]="'item.preview.dc.contributor.other'">
+      </ds-generic-item-page-field>
+
+      <ng-container *ngIf="object?.metadata['dc.description.provenance']?.length > 0">
+        <h2 class="simple-view-element-header">{{ 'collection.form.provenance' | translate }}</h2>
+        <p>{{ object?.metadata['dc.description.provenance'][0]?.value }}</p>
+      </ng-container>
+
+      <ng-container *ngIf="object?.metadata['dc.description']?.length > 0">
+        <div class="description-field">
+          <ng-container *ngFor="let metadata of object.metadata['dc.description']; let i = index">
+            <div *ngIf="i === 0" class="cohort-description-label">
+              <h2 class="simple-view-element-header">{{ 'item.page.description' | translate }}</h2>
+              <p>{{ metadata.value }}</p>
+            </div>
+            <div *ngIf="i === 1" class="cohort-description-label">
+              <h2 class="simple-view-element-header">{{ 'item.page.description.cohort' | translate }}</h2>
+              <p class="preserve-line-breaks">{{ metadata.value }}</p>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
+      </ds-item-page-uri-field>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.subject']" [separator]="', '"
+        [label]="'item.page.subject'"></ds-generic-item-page-field>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="';<br>'"
+        [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
+
+      <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
+      </ds-item-page-cc-license-field>
+
+      <div>
+        <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="button">
+          <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="object?.metadata['dc.relation']?.length > 0">
+    <div class="row gray-boxes-container">
+      <div class="col-12 col-md-6 gray-box">
+        <ds-generic-item-page-field [item]="object" [fields]="['dc.relation']" [label]="'item.preview.dc.relation'">
+        </ds-generic-item-page-field>
+      </div>
+      <div class="col-12 col-md-6 gray-box">
+        <ds-generic-item-page-field [item]="object" [fields]="['dc.relation.isreferencedby']"
+          [label]="'item.preview.dc.relation.isreferencedby'">
+        </ds-generic-item-page-field>
+      </div>
+    </div>
+  </ng-container>
+  <div *ngIf="!(object?.metadata['dc.relation']?.length > 0)">
+    <br>
+  </div>
+</div>

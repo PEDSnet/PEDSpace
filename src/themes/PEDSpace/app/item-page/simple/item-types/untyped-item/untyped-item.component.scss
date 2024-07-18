@@ -1,0 +1,68 @@
+@import '../../../../../../../styles/variables.scss';
+  
+.badge-container {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 0.5em; 
+    margin-bottom: 0.5em;
+}
+
+.badge-container .badge {
+    display: inline-block;
+    padding: 0.5em 1em; 
+    font-size: 90%; 
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    background-color: rgb(47, 89, 164);
+    color: #fff;
+}
+
+.simple-view-element-header {
+    font-size: 1.25rem; 
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: rgb(52, 58, 64);
+    font-family: Signika, -apple-system, "system-ui", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+h2 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: rgb(52, 58, 64);
+    font-family: Signika, -apple-system, "system-ui", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 20px; 
+}
+
+.gray-boxes-container {
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .gray-box {
+    background-color: #f0f0f0;
+    padding: 1em;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1em;
+    flex: 0 0 45%; 
+    overflow-wrap: break-word;
+  }
+  
+  .gray-box h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .gray-box p {
+    font-size: 1rem;
+    color: #666;
+  }
