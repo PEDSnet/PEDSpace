@@ -381,7 +381,7 @@ themes:
     - tagName: link
       attributes:
         rel: icon
-        href: assets/PEDSpace/images/favicons/favicon.ico
+        href: assets/PEDSpace/images/favicon/favicon.ico
         sizes: any
     - tagName: link
       attributes:
