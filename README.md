@@ -96,10 +96,18 @@ PEDSpace is an open source repository application intended to host and serve PED
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+### DSpace 8.0 Upgrade and Enhancements
+
+- [x] Upgrade DSpace to version 8.0
+- [x] Adapt and test custom theme for DSpace 8.0
+- [ ] Configure and initialize entity types and relationships
+- [ ] Set up email functionality and SMTP server
+- [ ] Implement deposit forms and workflow system
+- [ ] Resolve version information display issue
+- [ ] Implement default "item created" sort for search queries
+- [ ] Develop process for handling non-character sequences in data
+- [ ] Make PEDSpace site publicly accessible with proper security measures
+- [ ] Update user guides and administrative documentation for DSpace 8.0
 
 See the [open issues](https://github.com/PEDSnet/PEDSpace/issues) or the [project board](insert-link-here) for a full list of proposed features (and known issues).
 
