@@ -381,8 +381,13 @@ themes:
     - tagName: link
       attributes:
         rel: icon
-        href: assets/PEDSpace/images/favicon/favicon.ico
+        href: assets/PEDSpace/images/favicons/favicon.ico
         sizes: any
+    # - tagName: link
+    #   attributes:
+    #     rel: icon
+    #     href: assets/PEDSpace/images/favicons/favicon.svg
+    #     sizes: any
     - tagName: link
       attributes:
         rel: apple-touch-icon
