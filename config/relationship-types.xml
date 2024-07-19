@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE relationships SYSTEM "relationship-types.dtd">
 
+<!-- Don't forget to call the following command after committing changes:
+cat  /data/dspace-angular-dspace-8.0/config/relationship-types.xml > ../dspace/config/entities/relationship-types.xml -->
+
+
 <relationships>
     <!-- OrgUnit and Person relationship -->
     <type>
