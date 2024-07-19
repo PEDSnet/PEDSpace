@@ -4,11 +4,13 @@
 <!-- From https://wiki.lyrasis.org/display/DSDOC8x/Configurable+Entities#ConfigurableEntities-DefaultEntityModels -->
 
 <!-- Don't forget to call the following command after committing changes:
-cat  /data/dspace-angular-dspace-8.0/config/relationship-types.xml > ../dspace/config/entities/relationship-types.xml -->
+cat  /data/dspace-angular-dspace-8.0/config/relationship-types.xml > /data/dspace/config/entities/relationship-types.xml -->
 
 <!-- Also don't forget to init the entities:
 # The -f command requires a full path to an Entities model configuration file.
-[dspace]/bin/dspace initialize-entities -f [dspace]/config/entities/relationship-types.xml -->
+sudo -u dspace bash;
+/data/dspace/bin/dspace initialize-entities -f /data/dspace/config/entities/relationship-types.xml 
+ -->
 
 <relationships>
     <!-- OrgUnit and Person relationship -->
