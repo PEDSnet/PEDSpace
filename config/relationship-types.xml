@@ -23,7 +23,7 @@ sudo -u dspace bash;
             <min>0</min>
         </leftCardinality>
         <rightCardinality>
-            <min>1</min>
+            <min>0</min>
         </rightCardinality>
         <copyToRight>true</copyToRight> <!-- Copy OrgUnit metadata to Person -->
     </type>
@@ -38,7 +38,7 @@ sudo -u dspace bash;
             <min>0</min>
         </leftCardinality>
         <rightCardinality>
-            <min>1</min>
+            <min>0</min>
         </rightCardinality>
     </type>
     <type>
@@ -50,7 +50,7 @@ sudo -u dspace bash;
             <min>0</min>
         </leftCardinality>
         <rightCardinality>
-            <min>1</min>
+            <min>0</min>
         </rightCardinality>
     </type>
     <type>
@@ -62,7 +62,7 @@ sudo -u dspace bash;
             <min>0</min>
         </leftCardinality>
         <rightCardinality>
-            <min>1</min>
+            <min>0</min>
         </rightCardinality>
     </type>
     <type>
@@ -74,7 +74,7 @@ sudo -u dspace bash;
             <min>0</min>
         </leftCardinality>
         <rightCardinality>
-            <min>1</min>
+            <min>0</min>
         </rightCardinality>
     </type>
     <type>
@@ -86,7 +86,7 @@ sudo -u dspace bash;
             <min>0</min>
         </leftCardinality>
         <rightCardinality>
-            <min>1</min>
+            <min>0</min>
         </rightCardinality>
         <copyToRight>true</copyToRight> <!-- Copy Person metadata to ConceptSet -->
     </type>
