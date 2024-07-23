@@ -1,6 +1,7 @@
 import {
   AsyncPipe,
   NgIf,
+  CommonModule
 } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -33,7 +34,7 @@ import { ThemedResultsBackButtonComponent } from '../../../../../../../app/share
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 
 /**
- * Component that represents a publication Item page
+ * Component that represents a Study Item page
  */
 
 @listableObjectComponent('Study',
@@ -48,6 +49,7 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
   standalone: true,
   imports: [NgIf,
     ThemedResultsBackButtonComponent,
+    CommonModule,
     MiradorViewerComponent,
     ThemedItemPageTitleFieldComponent,
     DsoEditMenuComponent,
