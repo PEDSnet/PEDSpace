@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE relationships SYSTEM "relationship-types.dtd">
 
-<!-- From https://wiki.lyrasis.org/display/DSDOC8x/Configurable+Entities#ConfigurableEntities-DefaultEntityModels -->
+<!-- From
+https://wiki.lyrasis.org/display/DSDOC8x/Configurable+Entities#ConfigurableEntities-DefaultEntityModels -->
 
 <!-- Don't forget to call the following command after committing changes:
-cat  /data/dspace-angular-dspace-8.0/config/relationship-types.xml > /data/dspace/config/entities/relationship-types.xml -->
+cat  /data/dspace-angular-dspace-8.0/config/relationship-types.xml >
+/data/dspace/config/entities/relationship-types.xml -->
 
 <!-- Also don't forget to init the entities:
 # The -f command requires a full path to an Entities model configuration file.
@@ -13,7 +15,7 @@ sudo -u dspace bash;
  -->
 
 <relationships>
-    <!-- OrgUnit and Person relationship -->
+    <!-- OrgUnit relationships -->
     <type>
         <leftType>OrgUnit</leftType>
         <rightType>Person</rightType>
@@ -25,10 +27,73 @@ sudo -u dspace bash;
         <rightCardinality>
             <min>0</min>
         </rightCardinality>
-        <copyToRight>true</copyToRight> <!-- Copy OrgUnit metadata to Person -->
+    </type>
+    <type>
+        <leftType>OrgUnit</leftType>
+        <rightType>ConceptSet</rightType>
+        <leftwardType>hasConceptSet</leftwardType>
+        <rightwardType>isAssociatedWithOrgUnit</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+    <type>
+        <leftType>OrgUnit</leftType>
+        <rightType>Study</rightType>
+        <leftwardType>conductsStudy</leftwardType>
+        <rightwardType>isConductedByOrgUnit</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
     </type>
 
-    <!-- Person creates various entities -->
+    <!-- Person relationships -->
+    <type>
+        <leftType>Person</leftType>
+        <rightType>ConceptSet</rightType>
+        <leftwardType>createsConceptSet</leftwardType>
+        <rightwardType>isCreatedByPerson</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+    <type>
+        <leftType>Person</leftType>
+        <rightType>Study</rightType>
+        <leftwardType>conductsStudy</leftwardType>
+        <rightwardType>isConductedByPerson</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- ConceptSet relationships -->
+    <type>
+        <leftType>ConceptSet</leftType>
+        <rightType>Study</rightType>
+        <leftwardType>isUsedInStudy</leftwardType>
+        <rightwardType>usesConceptSet</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Existing relationships -->
     <type>
         <leftType>Person</leftType>
         <rightType>DQCheck</rightType>
@@ -66,33 +131,6 @@ sudo -u dspace bash;
         </rightCardinality>
     </type>
     <type>
-        <leftType>Person</leftType>
-        <rightType>Study</rightType>
-        <leftwardType>conductsStudy</leftwardType>
-        <rightwardType>isConductedByPerson</rightwardType>
-        <leftCardinality>
-            <min>0</min>
-        </leftCardinality>
-        <rightCardinality>
-            <min>0</min>
-        </rightCardinality>
-    </type>
-    <type>
-        <leftType>Person</leftType>
-        <rightType>ConceptSet</rightType>
-        <leftwardType>createsConceptSet</leftwardType>
-        <rightwardType>isCreatedByPerson</rightwardType>
-        <leftCardinality>
-            <min>0</min>
-        </leftCardinality>
-        <rightCardinality>
-            <min>0</min>
-        </rightCardinality>
-        <copyToRight>true</copyToRight> <!-- Copy Person metadata to ConceptSet -->
-    </type>
-
-    <!-- Study relationships -->
-    <type>
         <leftType>Study</leftType>
         <rightType>Phenotype</rightType>
         <leftwardType>resultsInPhenotype</leftwardType>
@@ -105,25 +143,34 @@ sudo -u dspace bash;
         </rightCardinality>
     </type>
     <type>
-        <leftType>Study</leftType>
-        <rightType>ConceptSet</rightType>
-        <leftwardType>resultsInConceptSet</leftwardType>
-        <rightwardType>isResultOfStudy</rightwardType>
+        <leftType>ConceptSet</leftType>
+        <rightType>Phenotype</rightType>
+        <leftwardType>informsPhenotype</leftwardType>
+        <rightwardType>isInformedByConceptSet</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
         <rightCardinality>
             <min>0</min>
         </rightCardinality>
-        <copyToRight>true</copyToRight> <!-- Copy Study metadata to ConceptSet -->
     </type>
-
-    <!-- ConceptSet and Phenotype relationship -->
     <type>
         <leftType>ConceptSet</leftType>
-        <rightType>Phenotype</rightType>
-        <leftwardType>informsPhenotype</leftwardType>
-        <rightwardType>isInformedByConceptSet</rightwardType>
+        <rightType>DQCheck</rightType>
+        <leftwardType>isDQCheckOfConceptSet</leftwardType>
+        <rightwardType>isConceptSetOfDQCheck</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+    <type>
+        <leftType>ConceptSet</leftType>
+        <rightType>Documentation</rightType>
+        <leftwardType>isDocumentationOfConceptSet</leftwardType>
+        <rightwardType>isConceptSetOfDocumentation</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
