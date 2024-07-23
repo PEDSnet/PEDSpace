@@ -18,8 +18,8 @@ sudo -u dspace bash;
     <type>
         <leftType>OrgUnit</leftType>
         <rightType>Person</rightType>
-        <leftwardType>isOrgUnitOfPerson</leftwardType>
-        <rightwardType>isMemberOfOrgUnit</rightwardType>
+        <leftwardType>isMemberOfOrgUnit</leftwardType>
+        <rightwardType>isOrgUnitOfPerson</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
