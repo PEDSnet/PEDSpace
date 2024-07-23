@@ -415,41 +415,5 @@
             </util:list>
         </property>
     </bean>
-
-    <!-- Person and Phenotype relationships -->
-    <util:map id="isAuthorOfPhenotypeMap">
-        <entry key="dc.contributor.author" value-ref="personPhenotype_name"/>
-    </util:map>
-    <bean class="org.dspace.content.virtual.Concatenate" id="personPhenotype_name">
-        <property name="fields">
-            <util:list>
-                <value>person.familyName</value>
-                <value>person.givenName</value>
-            </util:list>
-        </property>
-        <property name="separator">
-            <value>, </value>
-        </property>
-    </bean>
-
-    <util:map id="isPhenotypeOfAuthorMap">
-        <entry key="person.authoredPhenotype" value-ref="phenotypePerson_title"/>
-    </util:map>
-    <bean class="org.dspace.content.virtual.Collected" id="phenotypePerson_title">
-        <property name="fields">
-            <util:list>
-                <value>dc.title</value>
-            </util:list>
-        </property>
-    </bean>
-
-    <util:map id="isEditorOfPhenotypeMap">
-        <entry key="dc.contributor.editor" value-ref="personPhenotype_name"/>
-    </util:map>
-
-    <util:map id="isPhenotypeOfEditorMap">
-        <entry key="person.editedPhenotype" value-ref="phenotypePerson_title"/>
-    </util:map>
-
 </beans>
 <!-- sudo cp /data/dspace-angular-dspace-8.0/config/virtual-metadata.xml /data/dspace/config/spring/api/virtual-metadata.xml -->
