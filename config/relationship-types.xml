@@ -18,8 +18,8 @@ sudo -u dspace bash;
     <type>
         <leftType>OrgUnit</leftType>
         <rightType>Person</rightType>
-        <leftwardType>hasPerson</leftwardType>
-        <rightwardType>isPartOfOrgUnit</rightwardType>
+        <leftwardType>isOrgUnitOfPerson</leftwardType>
+        <rightwardType>isMemberOfOrgUnit</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
@@ -30,8 +30,8 @@ sudo -u dspace bash;
     <type>
         <leftType>OrgUnit</leftType>
         <rightType>ConceptSet</rightType>
-        <leftwardType>hasConceptSet</leftwardType>
-        <rightwardType>isAssociatedWithOrgUnit</rightwardType>
+        <leftwardType>isConceptSetOfOrgUnit</leftwardType>
+        <rightwardType>isOrgUnitOfConceptSet</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
@@ -42,8 +42,8 @@ sudo -u dspace bash;
     <type>
         <leftType>OrgUnit</leftType>
         <rightType>Study</rightType>
-        <leftwardType>conductsStudy</leftwardType>
-        <rightwardType>isConductedByOrgUnit</rightwardType>
+        <leftwardType>isStudyOfOrgUnit</leftwardType>
+        <rightwardType>isOrgUnitOfStudy</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
@@ -56,8 +56,20 @@ sudo -u dspace bash;
     <type>
         <leftType>Person</leftType>
         <rightType>ConceptSet</rightType>
-        <leftwardType>createsConceptSet</leftwardType>
-        <rightwardType>isCreatedByPerson</rightwardType>
+        <leftwardType>isAuthorOfConceptSet</leftwardType>
+        <rightwardType>isConceptSetOfAuthor</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+    <type>
+        <leftType>Person</leftType>
+        <rightType>ConceptSet</rightType>
+        <leftwardType>isEditorOfConceptSet</leftwardType>
+        <rightwardType>isConceptSetOfEditor</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
@@ -68,8 +80,20 @@ sudo -u dspace bash;
     <type>
         <leftType>Person</leftType>
         <rightType>Study</rightType>
-        <leftwardType>conductsStudy</leftwardType>
-        <rightwardType>isConductedByPerson</rightwardType>
+        <leftwardType>isStudyOfAuthor</leftwardType>
+        <rightwardType>isAuthorOfStudy</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+    <type>
+        <leftType>Person</leftType>
+        <rightType>Study</rightType>
+        <leftwardType>isStudyOfEditor</leftwardType>
+        <rightwardType>isEditorOfStudy</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
@@ -82,8 +106,8 @@ sudo -u dspace bash;
     <type>
         <leftType>ConceptSet</leftType>
         <rightType>Study</rightType>
-        <leftwardType>isUsedInStudy</leftwardType>
-        <rightwardType>usesConceptSet</rightwardType>
+        <leftwardType>isStudyOfConceptSet</leftwardType>
+        <rightwardType>isConceptSetOfStudy</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
@@ -96,8 +120,8 @@ sudo -u dspace bash;
     <type>
         <leftType>Person</leftType>
         <rightType>DQCheck</rightType>
-        <leftwardType>createsDQCheck</leftwardType>
-        <rightwardType>isCreatedByPerson</rightwardType>
+        <leftwardType>isDQCheckOfPerson</leftwardType>
+        <rightwardType>isPersonOfDQCheck</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
@@ -108,8 +132,20 @@ sudo -u dspace bash;
     <type>
         <leftType>Person</leftType>
         <rightType>Documentation</rightType>
-        <leftwardType>createsDocumentation</leftwardType>
-        <rightwardType>isCreatedByPerson</rightwardType>
+        <leftwardType>isDocumentationOfAuthor</leftwardType>
+        <rightwardType>isAuthorOfDocumentation</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+    <type>
+        <leftType>Person</leftType>
+        <rightType>Documentation</rightType>
+        <leftwardType>isDocumentationOfEditor</leftwardType>
+        <rightwardType>isEditorOfDocumentation</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
@@ -120,8 +156,20 @@ sudo -u dspace bash;
     <type>
         <leftType>Person</leftType>
         <rightType>Phenotype</rightType>
-        <leftwardType>createsPhenotype</leftwardType>
-        <rightwardType>isCreatedByPerson</rightwardType>
+        <leftwardType>isPhenotypeOfAuthor</leftwardType>
+        <rightwardType>isAuthorOfPhenotype</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+    <type>
+        <leftType>Person</leftType>
+        <rightType>Phenotype</rightType>
+        <leftwardType>isPhenotypeOfEditor</leftwardType>
+        <rightwardType>isEditorOfPhenotype</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
@@ -132,8 +180,8 @@ sudo -u dspace bash;
     <type>
         <leftType>Study</leftType>
         <rightType>Phenotype</rightType>
-        <leftwardType>resultsInPhenotype</leftwardType>
-        <rightwardType>isResultOfStudy</rightwardType>
+        <leftwardType>isPhenotypeOfStudy</leftwardType>
+        <rightwardType>isStudyOfPhenotype</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
@@ -144,8 +192,8 @@ sudo -u dspace bash;
     <type>
         <leftType>ConceptSet</leftType>
         <rightType>Phenotype</rightType>
-        <leftwardType>informsPhenotype</leftwardType>
-        <rightwardType>isInformedByConceptSet</rightwardType>
+        <leftwardType>isPhenotypeOfConceptSet</leftwardType>
+        <rightwardType>isConceptSetOfPhenotype</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
