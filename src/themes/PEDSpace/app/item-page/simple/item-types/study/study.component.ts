@@ -43,7 +43,7 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
   selector: 'ds-publication',
   // styleUrls: ['./publication.component.scss'],
   styleUrls: ['../../../../../../../app/item-page/simple/item-types/publication/publication.component.scss'],
-  templateUrl: './publication.component.html',
+  templateUrl: './study.component.html',
   // templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,

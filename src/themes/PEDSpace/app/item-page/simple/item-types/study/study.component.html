@@ -99,20 +99,8 @@
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
       <div class="col-xs-12 col-md-7">
-        <ds-related-items [parentItem]="object" [relationType]="'isOrgUnitOfStudy'"
-          [label]="'relationships.isOrgUnitOf' | translate">
-        </ds-related-items>
-        <ds-related-items [parentItem]="object" [relationType]="'isAuthorOfStudy'"
-          [label]="'relationships.isAuthorOf' | translate">
-        </ds-related-items>
-        <ds-related-items [parentItem]="object" [relationType]="'isEditorOfStudy'"
-          [label]="'relationships.isEditorOf' | translate">
-        </ds-related-items>
-        <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfStudy'"
+        <ds-related-items [parentItem]="object" [relationType]="'isStudyofConceptSet'"
           [label]="'relationships.isConceptSetOf' | translate">
-        </ds-related-items>
-        <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfStudy'"
-          [label]="'relationships.isPhenotypeOf' | translate">
         </ds-related-items>
       </div>
 
