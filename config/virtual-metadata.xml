@@ -416,4 +416,4 @@
         </property>
     </bean>
 </beans>
-<!-- sudo cp /data/dspace-angular-dspace-8.0/config/virtual-metadata.xml /data/dspace/config/spring/api/virtual-metadata.xml -->
+<!-- cp /data/dspace-angular-dspace-8.0/config/virtual-metadata.xml /data/dspace/config/spring/api/virtual-metadata.xml -->
