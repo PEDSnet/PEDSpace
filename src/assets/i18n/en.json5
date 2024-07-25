@@ -6765,7 +6765,6 @@
   "item.page.cc.license.disclaimer": "Except where otherwised noted, this item's license is described as",
 
   "browse.search-form.placeholder": "Search the repository",
-,
 
   "conceptset.listelement.badge": "Concept Set",
 
@@ -6791,6 +6790,202 @@
 
   "publication.listelement.badge": "Publication",
 
-  "study.listelement.badge": "Study"
+  "study.listelement.badge": "Study",
+
+  "relationships.conductsstudy": "conductsStudy",
+
+  "relationships.createsconceptset": "createsConceptSet",
+
+  "relationships.createsdocumentation": "createsDocumentation",
+
+  "relationships.createsdqcheck": "createsDQCheck",
+
+  "relationships.createsphenotype": "createsPhenotype",
+
+  "relationships.hasconceptset": "hasConceptSet",
+
+  "relationships.hasperson": "hasPerson",
+
+  "relationships.informsphenotype": "informsPhenotype",
+
+  "relationships.isassociatedwithorgunit": "isAssociatedWithOrgUnit",
+
+  "relationships.isauthorofconceptset": "isAuthorOfConceptSet",
+
+  "relationships.isauthorofdocumentation": "isAuthorOfDocumentation",
+
+  "relationships.isauthorofphenotype": "isAuthorOfPhenotype",
+
+  "relationships.isauthorofpublication": "isAuthorOfPublication",
+
+  "relationships.isauthorofstudy": "isAuthorOfStudy",
+
+  "relationships.isconceptsetofauthor": "isConceptSetOfAuthor",
+
+  "relationships.isconceptsetofdocumentation": "isConceptSetOfDocumentation",
+
+  "relationships.isconceptsetofdqcheck": "isConceptSetOfDQCheck",
+
+  "relationships.isconceptsetofeditor": "isConceptSetOfEditor",
+
+  "relationships.isconceptsetoforgunit": "isConceptSetOfOrgUnit",
+
+  "relationships.isconceptsetofphenotype": "isConceptSetOfPhenotype",
+
+  "relationships.isconceptsetofstudy": "isConceptSetOfStudy",
+
+  "relationships.isconductedbyorgunit": "isConductedByOrgUnit",
+
+  "relationships.isconductedbyperson": "isConductedByPerson",
+
+  "relationships.iscreatedbyperson": "isCreatedByPerson",
+
+  "relationships.isdocumentationofauthor": "isDocumentationOfAuthor",
+
+  "relationships.isdocumentationofconceptset": "isDocumentationOfConceptSet",
+
+  "relationships.isdocumentationofeditor": "isDocumentationOfEditor",
+
+  "relationships.isdqcheckofconceptset": "isDQCheckOfConceptSet",
+
+  "relationships.isdqcheckofperson": "isDQCheckOfPerson",
+
+  "relationships.iseditorofconceptset": "isEditorOfConceptSet",
+
+  "relationships.iseditorofdocumentation": "isEditorOfDocumentation",
+
+  "relationships.iseditorofphenotype": "isEditorOfPhenotype",
+
+  "relationships.iseditorofstudy": "isEditorOfStudy",
+
+  "relationships.isinformedbyconceptset": "isInformedByConceptSet",
+
+  "relationships.isissueofjournalvolume": "isIssueOfJournalVolume",
+
+  "relationships.isjournalissueofpublication": "isJournalIssueOfPublication",
+
+  "relationships.isjournalofvolume": "isJournalOfVolume",
+
+  "relationships.isjournalvolumeofissue": "isJournalVolumeOfIssue",
+
+  "relationships.ismemberoforgunit": "isMemberOfOrgUnit",
+
+  "relationships.ismemberoforgunit": "isMemberOfOrgUnit",
+
+  "relationships.isorgunitofconceptset": "isOrgUnitOfConceptSet",
+
+  "relationships.isorgunitofperson": "isOrgUnitOfPerson",
+
+  "relationships.isorgunitofperson": "isOrgUnitOfPerson",
+
+  "relationships.isorgunitofproject": "isOrgUnitOfProject",
+
+  "relationships.isorgunitofpublication": "isOrgUnitOfPublication",
+
+  "relationships.isorgunitofstudy": "isOrgUnitOfStudy",
+
+  "relationships.ispartoforgunit": "isPartOfOrgUnit",
+
+  "relationships.ispersonofdqcheck": "isPersonOfDQCheck",
+
+  "relationships.ispersonoforgunit": "isPersonOfOrgUnit",
+
+  "relationships.ispersonofproject": "isPersonOfProject",
+
+  "relationships.isphenotypeofauthor": "isPhenotypeOfAuthor",
+
+  "relationships.isphenotypeofconceptset": "isPhenotypeOfConceptSet",
+
+  "relationships.isphenotypeofeditor": "isPhenotypeOfEditor",
+
+  "relationships.isphenotypeofstudy": "isPhenotypeOfStudy",
+
+  "relationships.isprojectoforgunit": "isProjectOfOrgUnit",
+
+  "relationships.isprojectofperson": "isProjectOfPerson",
+
+  "relationships.isprojectofpublication": "isProjectOfPublication",
+
+  "relationships.ispublicationofauthor": "isPublicationOfAuthor",
+
+  "relationships.ispublicationofjournalissue": "isPublicationOfJournalIssue",
+
+  "relationships.ispublicationoforgunit": "isPublicationOfOrgUnit",
+
+  "relationships.ispublicationofproject": "isPublicationOfProject",
+
+  "relationships.isresultofstudy": "isResultOfStudy",
+
+  "relationships.isstudyofauthor": "isStudyOfAuthor",
+
+  "relationships.isstudyofconceptset": "isStudyOfConceptSet",
+
+  "relationships.isstudyofeditor": "isStudyOfEditor",
+
+  "relationships.isstudyoforgunit": "isStudyOfOrgUnit",
+
+  "relationships.isstudyofphenotype": "isStudyOfPhenotype",
+
+  "relationships.isusedinstudy": "Is Used in Study",
+
+  "relationships.isvolumeofjournal": "isVolumeOfJournal",
+
+  "relationships.resultsInConceptSet": "Related Concept Sets",
+
+  "relationships.resultsinphenotype": "Related Phenotypes",
+
+  "relationships.usesconceptset": "Uses Concept Set",
+
+  "conceptset.listelement.badge": "ConceptSet",
+
+  "documentation.listelement.badge": "Documentation",
+
+  "dqcheck.listelement.badge": "DQCheck",
+
+  "journal.listelement.badge": "Journal",
+
+  "journalissue.listelement.badge": "JournalIssue",
+
+  "journalvolume.listelement.badge": "JournalVolume",
+
+  "none.listelement.badge": "none",
+
+  "orgunit.listelement.badge": "OrgUnit",
+
+  "person.listelement.badge": "Person",
+
+  "phenotype.listelement.badge": "Phenotype",
+
+  "project.listelement.badge": "Project",
+
+  "publication.listelement.badge": "Publication",
+
+  "study.listelement.badge": "Study",
+
+  "conceptset.page.titleprefix": "Concept Set:",
+
+  "documentation.page.titleprefix": "Documentation:",
+
+  "dqcheck.page.titleprefix": "DQ Check:",
+
+  "journal.page.titleprefix": "Journal:",
+
+  "journalissue.page.titleprefix": "Journal Issue:",
+
+  "journalvolume.page.titleprefix": "Journal Volume:",
+
+  "none.page.titleprefix": "None:",
+
+  "orgunit.page.titleprefix": "Organization Unit:",
+
+  "person.page.titleprefix": "Person:",
+
+  "phenotype.page.titleprefix": "Phenotype:",
+
+  "project.page.titleprefix": "Project:",
+
+  "publication.page.titleprefix": "Publication:",
+
+  "study.page.titleprefix": "Study:"
 
 }
