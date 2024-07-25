@@ -69,6 +69,6 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
     TranslateModule,
     ItemPageCcLicenseFieldComponent],
 })
-export class PublicationComponent extends BaseComponent {
+export class ConceptSetComponent extends BaseComponent {
 
 }

@@ -12,6 +12,7 @@ import { HeaderNavbarWrapperComponent } from './app/header-nav-wrapper/header-na
 import { HomeNewsComponent } from './app/home-page/home-news/home-news.component';
 import { TopLevelCommunityListComponent } from './app/home-page/top-level-community-list/top-level-community-list.component';
 import { StudyComponent } from './app/item-page/simple/item-types/study/study.component';
+import { ConceptSetComponent } from './app/item-page/simple/item-types/conceptset/conceptset.component';
 import { UntypedItemComponent } from './app/item-page/simple/item-types/untyped-item/untyped-item.component';
 import { NavbarComponent } from './app/navbar/navbar.component';
 import { SearchNavbarComponent } from './app/search-navbar/search-navbar.component';
@@ -43,6 +44,7 @@ const ENTRY_COMPONENTS = [
   JournalVolumeComponent,
   PersonComponent,
   StudyComponent,
+  ConceptSetComponent,
   UntypedItemComponent,
   CommunityListElementComponent,
   CollectionListElementComponent,
