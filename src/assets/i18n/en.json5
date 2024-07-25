@@ -6765,4 +6765,32 @@
   "item.page.cc.license.disclaimer": "Except where otherwised noted, this item's license is described as",
 
   "browse.search-form.placeholder": "Search the repository",
+,
+
+  "conceptset.listelement.badge": "Concept Set",
+
+  "documentation.listelement.badge": "Documentation",
+
+  "dqcheck.listelement.badge": "DQCheck",
+
+  "journal.listelement.badge": "Journal",
+
+  "journalissue.listelement.badge": "Journal Issue",
+
+  "journalvolume.listelement.badge": "Journal Volume",
+
+  "none.listelement.badge": "Item",
+
+  "orgunit.listelement.badge": "Org Unit",
+
+  "person.listelement.badge": "Person",
+
+  "phenotype.listelement.badge": "Phenotype",
+
+  "project.listelement.badge": "Project",
+
+  "publication.listelement.badge": "Publication",
+
+  "study.listelement.badge": "Study"
+
 }
