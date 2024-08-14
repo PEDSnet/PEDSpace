@@ -56,14 +56,14 @@
 
       <ds-item-page-abstract-field [item]="object" [label]="'item.page.abstract'"></ds-item-page-abstract-field>
 
-      <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
+      <!-- <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
         [itemType]="'Person'" [metadataFields]="['dc.contributor.author', 'dc.creator']"
         [label]="'item.preview.dc.contributor.author' | translate">
-      </ds-metadata-representation-list>
+      </ds-metadata-representation-list> -->
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.advisor']"
+      <!-- <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.advisor']"
         [label]="'item.preview.dc.contributor.advisor'">
-      </ds-generic-item-page-field>
+      </ds-generic-item-page-field> -->
 
       <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
         [label]="'item.preview.dc.contributor.other'">
@@ -99,7 +99,7 @@
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
         <div class="col-xs-12 col-md-7">
-          <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfStudy'"
+          <ds-related-items [parentItem]="object" [relationType]="'relationships.isResultOf.Study'"
             [label]="'relationships.isConceptSetOfStudy' | translate">
           </ds-related-items>
         
