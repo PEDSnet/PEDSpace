@@ -68,12 +68,11 @@
       <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
         [label]="'item.preview.dc.contributor.other'">
       </ds-generic-item-page-field>
-
-      <ng-container *ngIf="object?.metadata['dc.description.provenance']?.length > 0">
-        <h2 class="simple-view-element-header">{{ 'collection.form.provenance' | translate }}</h2>
-        <p>{{ object?.metadata['dc.description.provenance'][0]?.value }}</p>
-      </ng-container>
-
+      
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']"
+        [label]="'collection.form.provenance'">
+      </ds-generic-item-page-field>
+      
       <ng-container *ngIf="object?.metadata['dc.description']?.length > 0">
         <div class="description-field">
           <ng-container *ngFor="let metadata of object.metadata['dc.description']; let i = index">
