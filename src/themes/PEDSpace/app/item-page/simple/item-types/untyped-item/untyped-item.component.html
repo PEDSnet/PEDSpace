@@ -78,7 +78,7 @@
           <ng-container *ngFor="let metadata of object.metadata['dc.description']; let i = index">
             <div *ngIf="i === 0" class="cohort-description-label">
               <h2 class="simple-view-element-header">{{ 'item.page.description' | translate }}</h2>
-              <p>{{ metadata.value }}</p>
+              <p class="preserve-line-breaks">{{ metadata.value }}</p>
             </div>
             <div *ngIf="i === 1" class="cohort-description-label">
               <h2 class="simple-view-element-header">{{ 'item.page.description.cohort' | translate }}</h2>
