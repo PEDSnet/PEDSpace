@@ -71,6 +71,8 @@
                 <value>organization.legalName</value>
             </util:list>
         </property>
+        <property name="useForPlace" value="true"/>
+        <property name="populateWithNameVariant" value="true"/>
     </bean>
 
     <util:map id="isMemberOfOrgUnitMap">
@@ -225,6 +227,8 @@
                 <value>dc.title</value>
             </util:list>
         </property>
+        <property name="useForPlace" value="true"/>
+        <property name="populateWithNameVariant" value="true"/>
     </bean>
 
     <!-- Person and DQCheck relationships -->
