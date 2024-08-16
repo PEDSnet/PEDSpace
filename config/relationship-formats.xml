@@ -5,6 +5,7 @@
     </dspace-header>
     <!-- When done, run the following line: -->
     <!-- cat /data/dspace-angular-dspace-8.0/config/relationship-formats.xml > /data/dspace/config/registries/relationship-formats.xml -->
+    <!-- /data/dspace/bin/dspace registry-loader -metadata /data/dspace/config/registries/relationship-formats.xml -->
     <dc-schema>
         <name>relation</name>
         <namespace>http://dspace.org/relation</namespace>

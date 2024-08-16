@@ -98,8 +98,8 @@
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
         <div class="col-xs-12 col-md-7">
-          <ds-related-items [parentItem]="object" [relationType]="'relationships.isResultOf.Study'"
-            [label]="'relationships.isConceptSetOfStudy' | translate">
+          <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfStudy'"
+            [label]="'relationships.isConceptSetOf.Study' | translate">
           </ds-related-items>
         
           <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfConceptSet'"

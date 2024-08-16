@@ -4199,6 +4199,10 @@
   "relationships.isContributorOf.Person": "Contributor",
 
   "relationships.isFundingAgencyOf.OrgUnit": "Funder",
+ 
+  "relationships.isStudyOf.ConceptSet": "Related Concept Set",
+  
+  "relationships.isConceptSetOf.Study": "Related Study",
 
   "repository.image.logo": "Repository logo",
 
@@ -6791,150 +6795,6 @@
   "publication.listelement.badge": "Publication",
 
   "study.listelement.badge": "Study",
-
-  "relationships.conductsstudy": "conductsStudy",
-
-  "relationships.createsconceptset": "createsConceptSet",
-
-  "relationships.createsdocumentation": "createsDocumentation",
-
-  "relationships.createsdqcheck": "createsDQCheck",
-
-  "relationships.createsphenotype": "createsPhenotype",
-
-  "relationships.hasconceptset": "hasConceptSet",
-
-  "relationships.hasperson": "hasPerson",
-
-  "relationships.informsphenotype": "informsPhenotype",
-
-  "relationships.isassociatedwithorgunit": "isAssociatedWithOrgUnit",
-
-  "relationships.isauthorofconceptset": "isAuthorOfConceptSet",
-
-  "relationships.isauthorofdocumentation": "isAuthorOfDocumentation",
-
-  "relationships.isauthorofphenotype": "isAuthorOfPhenotype",
-
-  "relationships.isauthorofpublication": "isAuthorOfPublication",
-
-  "relationships.isauthorofstudy": "isAuthorOfStudy",
-
-  "relationships.isconceptsetofauthor": "isConceptSetOfAuthor",
-
-  "relationships.isconceptsetofdocumentation": "isConceptSetOfDocumentation",
-
-  "relationships.isconceptsetofdqcheck": "isConceptSetOfDQCheck",
-
-  "relationships.isconceptsetofeditor": "isConceptSetOfEditor",
-
-  "relationships.isconceptsetoforgunit": "isConceptSetOfOrgUnit",
-
-  "relationships.isconceptsetofphenotype": "isConceptSetOfPhenotype",
-
-  "relationships.isconceptsetofstudy": "isConceptSetOfStudy",
-
-  "relationships.isconductedbyorgunit": "isConductedByOrgUnit",
-
-  "relationships.isconductedbyperson": "isConductedByPerson",
-
-  "relationships.iscreatedbyperson": "isCreatedByPerson",
-
-  "relationships.isdocumentationofauthor": "isDocumentationOfAuthor",
-
-  "relationships.isdocumentationofconceptset": "isDocumentationOfConceptSet",
-
-  "relationships.isdocumentationofeditor": "isDocumentationOfEditor",
-
-  "relationships.isdqcheckofconceptset": "isDQCheckOfConceptSet",
-
-  "relationships.isdqcheckofperson": "isDQCheckOfPerson",
-
-  "relationships.iseditorofconceptset": "isEditorOfConceptSet",
-
-  "relationships.iseditorofdocumentation": "isEditorOfDocumentation",
-
-  "relationships.iseditorofphenotype": "isEditorOfPhenotype",
-
-  "relationships.iseditorofstudy": "isEditorOfStudy",
-
-  "relationships.isinformedbyconceptset": "isInformedByConceptSet",
-
-  "relationships.isissueofjournalvolume": "isIssueOfJournalVolume",
-
-  "relationships.isjournalissueofpublication": "isJournalIssueOfPublication",
-
-  "relationships.isjournalofvolume": "isJournalOfVolume",
-
-  "relationships.isjournalvolumeofissue": "isJournalVolumeOfIssue",
-
-  "relationships.ismemberoforgunit": "isMemberOfOrgUnit",
-
-  "relationships.ismemberoforgunit": "isMemberOfOrgUnit",
-
-  "relationships.isorgunitofconceptset": "isOrgUnitOfConceptSet",
-
-  "relationships.isorgunitofperson": "isOrgUnitOfPerson",
-
-  "relationships.isorgunitofperson": "isOrgUnitOfPerson",
-
-  "relationships.isorgunitofproject": "isOrgUnitOfProject",
-
-  "relationships.isorgunitofpublication": "isOrgUnitOfPublication",
-
-  "relationships.isorgunitofstudy": "isOrgUnitOfStudy",
-
-  "relationships.ispartoforgunit": "isPartOfOrgUnit",
-
-  "relationships.ispersonofdqcheck": "isPersonOfDQCheck",
-
-  "relationships.ispersonoforgunit": "isPersonOfOrgUnit",
-
-  "relationships.ispersonofproject": "isPersonOfProject",
-
-  "relationships.isphenotypeofauthor": "isPhenotypeOfAuthor",
-
-  "relationships.isphenotypeofconceptset": "isPhenotypeOfConceptSet",
-
-  "relationships.isphenotypeofeditor": "isPhenotypeOfEditor",
-
-  "relationships.isphenotypeofstudy": "isPhenotypeOfStudy",
-
-  "relationships.isprojectoforgunit": "isProjectOfOrgUnit",
-
-  "relationships.isprojectofperson": "isProjectOfPerson",
-
-  "relationships.isprojectofpublication": "isProjectOfPublication",
-
-  "relationships.ispublicationofauthor": "isPublicationOfAuthor",
-
-  "relationships.ispublicationofjournalissue": "isPublicationOfJournalIssue",
-
-  "relationships.ispublicationoforgunit": "isPublicationOfOrgUnit",
-
-  "relationships.ispublicationofproject": "isPublicationOfProject",
-
-  "relationships.isresultofstudy": "isResultOfStudy",
-
-  "relationships.isstudyofauthor": "isStudyOfAuthor",
-
-  "relationships.isstudyofconceptset": "isStudyOfConceptSet",
-
-  "relationships.isstudyofeditor": "isStudyOfEditor",
-
-  "relationships.isstudyoforgunit": "isStudyOfOrgUnit",
-
-  "relationships.isstudyofphenotype": "isStudyOfPhenotype",
-
-  "relationships.isusedinstudy": "Is Used in Study",
-
-  "relationships.isvolumeofjournal": "isVolumeOfJournal",
-
-  "relationships.resultsInConceptSet": "Related Concept Sets",
-
-  "relationships.resultsinphenotype": "Related Phenotypes",
-
-  "relationships.usesconceptset": "Uses Concept Set",
 
   "conceptset.listelement.badge": "ConceptSet",
 

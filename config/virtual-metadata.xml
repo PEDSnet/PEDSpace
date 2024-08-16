@@ -154,7 +154,6 @@
         </property>
     </bean>
 
-
     <util:map id="isConceptSetOfPhenotypeMap">
         <entry key="dc.relation" value-ref="phenotypeConceptSet_subject"/>
     </util:map>
@@ -167,3 +166,4 @@
     </bean>
 </beans>
 <!-- cat /data/dspace-angular-dspace-8.0/config/virtual-metadata.xml > /data/dspace/config/spring/api/virtual-metadata.xml -->
+<!-- /data/dspace/bin/dspace initialize-entities -f /data/dspace/config/spring/api/virtual-metadata.xml -->
