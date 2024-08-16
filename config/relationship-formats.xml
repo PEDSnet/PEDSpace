@@ -49,89 +49,10 @@
             add, remove or edit values.</scope_note>
     </dc-type>
 
-    <!-- OrgUnit and ConceptSet relationships -->
-    <dc-type>
-        <schema>relation</schema>
-        <element>isConceptSetOfOrgUnit</element>
-        <scope_note>Contains all uuids of the "latest" CONCEPT SETS that the current ORGANIZATIONAL
-            UNIT links to via a relationship. In other words, this stores all relationships pointing
-            from the current ORGANIZATIONAL UNIT to any CONCEPT SET where the CONCEPT SET is marked
-            as "latest". Internally used by DSpace. Do not manually add, remove or edit values.</scope_note>
-    </dc-type>
-    <dc-type>
-        <schema>relation</schema>
-        <element>isConceptSetOfOrgUnit</element>
-        <qualifier>latestForDiscovery</qualifier>
-        <scope_note>Contains all uuids of CONCEPT SETS which link to the current ORGANIZATIONAL UNIT
-            via a "latest" relationship. In other words, this stores all relationships pointing to
-            the current ORGANIZATIONAL UNIT from any CONCEPT SET, implying that the ORGANIZATIONAL
-            UNIT is marked as "latest". Internally used by DSpace to support versioning. Do not
-            manually add, remove or edit values.</scope_note>
-    </dc-type>
-
-    <dc-type>
-        <schema>relation</schema>
-        <element>isOrgUnitOfConceptSet</element>
-        <scope_note>Contains all uuids of the "latest" ORGANIZATIONAL UNITS that the current CONCEPT
-            SET links to via a relationship. In other words, this stores all relationships pointing
-            from the current CONCEPT SET to any ORGANIZATIONAL UNIT where the ORGANIZATIONAL UNIT is
-            marked as "latest". Internally used by DSpace. Do not manually add, remove or edit
-            values.</scope_note>
-    </dc-type>
-    <dc-type>
-        <schema>relation</schema>
-        <element>isOrgUnitOfConceptSet</element>
-        <qualifier>latestForDiscovery</qualifier>
-        <scope_note>Contains all uuids of ORGANIZATIONAL UNITS which link to the current CONCEPT SET
-            via a "latest" relationship. In other words, this stores all relationships pointing to
-            the current CONCEPT SET from any ORGANIZATIONAL UNIT, implying that the CONCEPT SET is
-            marked as "latest". Internally used by DSpace to support versioning. Do not manually
-            add, remove or edit values.</scope_note>
-    </dc-type>
-
-    <!-- OrgUnit and Study relationships -->
-    <dc-type>
-        <schema>relation</schema>
-        <element>isStudyOfOrgUnit</element>
-        <scope_note>Contains all uuids of the "latest" STUDIES that the current ORGANIZATIONAL UNIT
-            links to via a relationship. In other words, this stores all relationships pointing from
-            the current ORGANIZATIONAL UNIT to any STUDY where the STUDY is marked as "latest".
-            Internally used by DSpace. Do not manually add, remove or edit values.</scope_note>
-    </dc-type>
-    <dc-type>
-        <schema>relation</schema>
-        <element>isStudyOfOrgUnit</element>
-        <qualifier>latestForDiscovery</qualifier>
-        <scope_note>Contains all uuids of STUDIES which link to the current ORGANIZATIONAL UNIT via
-            a "latest" relationship. In other words, this stores all relationships pointing to the
-            current ORGANIZATIONAL UNIT from any STUDY, implying that the ORGANIZATIONAL UNIT is
-            marked as "latest". Internally used by DSpace to support versioning. Do not manually
-            add, remove or edit values.</scope_note>
-    </dc-type>
-
-    <dc-type>
-        <schema>relation</schema>
-        <element>isOrgUnitOfStudy</element>
-        <scope_note>Contains all uuids of the "latest" ORGANIZATIONAL UNITS that the current STUDY
-            links to via a relationship. In other words, this stores all relationships pointing from
-            the current STUDY to any ORGANIZATIONAL UNIT where the ORGANIZATIONAL UNIT is marked as
-            "latest". Internally used by DSpace. Do not manually add, remove or edit values.</scope_note>
-    </dc-type>
-    <dc-type>
-        <schema>relation</schema>
-        <element>isOrgUnitOfStudy</element>
-        <qualifier>latestForDiscovery</qualifier>
-        <scope_note>Contains all uuids of ORGANIZATIONAL UNITS which link to the current STUDY via a
-            "latest" relationship. In other words, this stores all relationships pointing to the
-            current STUDY from any ORGANIZATIONAL UNIT, implying that the STUDY is marked as
-            "latest". Internally used by DSpace to support versioning. Do not manually add, remove
-            or edit values.</scope_note>
-    </dc-type>
-
     <!-- Person and ConceptSet relationships -->
     <dc-type>
         <schema>relation</schema>
-        <element>isAuthorOfConceptSet</element>
+        <element>isPersonOfConceptSet</element>
         <scope_note>Contains all uuids of the "latest" PERSONS that the current CONCEPT SET links to
             via an authorship relationship. In other words, this stores all relationships pointing
             from the current CONCEPT SET to any PERSON where the PERSON is marked as "latest".
@@ -139,7 +60,7 @@
     </dc-type>
     <dc-type>
         <schema>relation</schema>
-        <element>isAuthorOfConceptSet</element>
+        <element>isPersonOfConceptSet</element>
         <qualifier>latestForDiscovery</qualifier>
         <scope_note>Contains all uuids of PERSONS which link to the current CONCEPT SET via a
             "latest" authorship relationship. In other words, this stores all relationships pointing
@@ -150,7 +71,7 @@
 
     <dc-type>
         <schema>relation</schema>
-        <element>isConceptSetOfAuthor</element>
+        <element>isConceptSetOfPerson</element>
         <scope_note>Contains all uuids of the "latest" CONCEPT SETS that the current PERSON links to
             via an authorship relationship. In other words, this stores all relationships pointing
             from the current PERSON to any CONCEPT SET where the CONCEPT SET is marked as "latest".
@@ -158,7 +79,7 @@
     </dc-type>
     <dc-type>
         <schema>relation</schema>
-        <element>isConceptSetOfAuthor</element>
+        <element>isConceptSetOfPerson</element>
         <qualifier>latestForDiscovery</qualifier>
         <scope_note>Contains all uuids of CONCEPT SETS which link to the current PERSON via a
             "latest" authorship relationship. In other words, this stores all relationships pointing
@@ -170,7 +91,7 @@
     <!-- Person and Study relationships -->
     <dc-type>
         <schema>relation</schema>
-        <element>isAuthorOfStudy</element>
+        <element>isPersonOfStudy</element>
         <scope_note>Contains all uuids of the "latest" PERSONS that the current STUDY links to via
             an authorship relationship. In other words, this stores all relationships pointing from
             the current STUDY to any PERSON where the PERSON is marked as "latest". Internally used
@@ -178,7 +99,7 @@
     </dc-type>
     <dc-type>
         <schema>relation</schema>
-        <element>isAuthorOfStudy</element>
+        <element>isPersonOfStudy</element>
         <qualifier>latestForDiscovery</qualifier>
         <scope_note>Contains all uuids of PERSONS which link to the current STUDY via a "latest"
             authorship relationship. In other words, this stores all relationships pointing to the
@@ -188,7 +109,7 @@
 
     <dc-type>
         <schema>relation</schema>
-        <element>isStudyOfAuthor</element>
+        <element>isStudyOfPerson</element>
         <scope_note>Contains all uuids of the "latest" STUDIES that the current PERSON links to via
             an authorship relationship. In other words, this stores all relationships pointing from
             the current PERSON to any STUDY where the STUDY is marked as "latest". Internally used
@@ -196,7 +117,7 @@
     </dc-type>
     <dc-type>
         <schema>relation</schema>
-        <element>isStudyOfAuthor</element>
+        <element>isStudyOfPerson</element>
         <qualifier>latestForDiscovery</qualifier>
         <scope_note>Contains all uuids of STUDIES which link to the current PERSON via a "latest"
             authorship relationship. In other words, this stores all relationships pointing to the
@@ -287,7 +208,7 @@
     <!-- Person and Documentation relationships (continued) -->
     <dc-type>
         <schema>relation</schema>
-        <element>isAuthorOfDocumentation</element>
+        <element>isPersonOfDocumentation</element>
         <scope_note>Contains all uuids of the "latest" PERSONS that the current DOCUMENTATION links
             to via an authorship relationship. In other words, this stores all relationships
             pointing from the current DOCUMENTATION to any PERSON where the PERSON is marked as
@@ -295,7 +216,7 @@
     </dc-type>
     <dc-type>
         <schema>relation</schema>
-        <element>isAuthorOfDocumentation</element>
+        <element>isPersonOfDocumentation</element>
         <qualifier>latestForDiscovery</qualifier>
         <scope_note>Contains all uuids of PERSONS which link to the current DOCUMENTATION via a
             "latest" authorship relationship. In other words, this stores all relationships pointing
@@ -306,7 +227,7 @@
 
     <dc-type>
         <schema>relation</schema>
-        <element>isDocumentationOfAuthor</element>
+        <element>isDocumentationOfPerson</element>
         <scope_note>Contains all uuids of the "latest" DOCUMENTATION that the current PERSON links
             to via an authorship relationship. In other words, this stores all relationships
             pointing from the current PERSON to any DOCUMENTATION where the DOCUMENTATION is marked
@@ -314,7 +235,7 @@
     </dc-type>
     <dc-type>
         <schema>relation</schema>
-        <element>isDocumentationOfAuthor</element>
+        <element>isDocumentationOfPerson</element>
         <qualifier>latestForDiscovery</qualifier>
         <scope_note>Contains all uuids of DOCUMENTATION which link to the current PERSON via a
             "latest" authorship relationship. In other words, this stores all relationships pointing
@@ -326,7 +247,7 @@
     <!-- Person and Phenotype relationships -->
     <dc-type>
         <schema>relation</schema>
-        <element>isAuthorOfPhenotype</element>
+        <element>isPersonOfPhenotype</element>
         <scope_note>Contains all uuids of the "latest" PERSONS that the current PHENOTYPE links to
             via an authorship relationship. In other words, this stores all relationships pointing
             from the current PHENOTYPE to any PERSON where the PERSON is marked as "latest".
@@ -334,7 +255,7 @@
     </dc-type>
     <dc-type>
         <schema>relation</schema>
-        <element>isAuthorOfPhenotype</element>
+        <element>isPersonOfPhenotype</element>
         <qualifier>latestForDiscovery</qualifier>
         <scope_note>Contains all uuids of PERSONS which link to the current PHENOTYPE via a "latest"
             authorship relationship. In other words, this stores all relationships pointing to the
@@ -345,7 +266,7 @@
 
     <dc-type>
         <schema>relation</schema>
-        <element>isPhenotypeOfAuthor</element>
+        <element>isPhenotypeOfPerson</element>
         <scope_note>Contains all uuids of the "latest" PHENOTYPES that the current PERSON links to
             via an authorship relationship. In other words, this stores all relationships pointing
             from the current PERSON to any PHENOTYPE where the PHENOTYPE is marked as "latest".
@@ -353,7 +274,7 @@
     </dc-type>
     <dc-type>
         <schema>relation</schema>
-        <element>isPhenotypeOfAuthor</element>
+        <element>isPhenotypeOfPerson</element>
         <qualifier>latestForDiscovery</qualifier>
         <scope_note>Contains all uuids of PHENOTYPES which link to the current PERSON via a "latest"
             authorship relationship. In other words, this stores all relationships pointing to the
@@ -434,84 +355,6 @@
         <scope_note>Contains all uuids of CONCEPT SETS which link to the current PHENOTYPE via a
             "latest" relationship. In other words, this stores all relationships pointing to the
             current PHENOTYPE from any CONCEPT SET, implying that the PHENOTYPE is marked as
-            "latest". Internally used by DSpace to support versioning. Do not manually add, remove
-            or edit values.</scope_note>
-    </dc-type>
-
-    <!-- ConceptSet and DQCheck relationships -->
-    <dc-type>
-        <schema>relation</schema>
-        <element>isDQCheckOfConceptSet</element>
-        <scope_note>Contains all uuids of the "latest" DQ CHECKS that the current CONCEPT SET links
-            to via a relationship. In other words, this stores all relationships pointing from the
-            current CONCEPT SET to any DQ CHECK where the DQ CHECK is marked as "latest". Internally
-            used by DSpace. Do not manually add, remove or edit values.</scope_note>
-    </dc-type>
-    <dc-type>
-        <schema>relation</schema>
-        <element>isDQCheckOfConceptSet</element>
-        <qualifier>latestForDiscovery</qualifier>
-        <scope_note>Contains all uuids of DQ CHECKS which link to the current CONCEPT SET via a
-            "latest" relationship. In other words, this stores all relationships pointing to the
-            current CONCEPT SET from any DQ CHECK, implying that the CONCEPT SET is marked as
-            "latest". Internally used by DSpace to support versioning. Do not manually add, remove
-            or edit values.</scope_note>
-    </dc-type>
-
-    <dc-type>
-        <schema>relation</schema>
-        <element>isConceptSetOfDQCheck</element>
-        <scope_note>Contains all uuids of the "latest" CONCEPT SETS that the current DQ CHECK links
-            to via a relationship. In other words, this stores all relationships pointing from the
-            current DQ CHECK to any CONCEPT SET where the CONCEPT SET is marked as "latest".
-            Internally used by DSpace. Do not manually add, remove or edit values.</scope_note>
-    </dc-type>
-    <dc-type>
-        <schema>relation</schema>
-        <element>isConceptSetOfDQCheck</element>
-        <qualifier>latestForDiscovery</qualifier>
-        <scope_note>Contains all uuids of CONCEPT SETS which link to the current DQ CHECK via a
-            "latest" relationship. In other words, this stores all relationships pointing to the
-            current DQ CHECK from any CONCEPT SET, implying that the DQ CHECK is marked as "latest".
-            Internally used by DSpace to support versioning. Do not manually add, remove or edit
-            values.</scope_note>
-    </dc-type>
-
-    <!-- ConceptSet and Documentation relationships -->
-    <dc-type>
-        <schema>relation</schema>
-        <element>isDocumentationOfConceptSet</element>
-        <scope_note>Contains all uuids of the "latest" DOCUMENTATION that the current CONCEPT SET
-            links to via a relationship. In other words, this stores all relationships pointing from
-            the current CONCEPT SET to any DOCUMENTATION where the DOCUMENTATION is marked as
-            "latest". Internally used by DSpace. Do not manually add, remove or edit values.</scope_note>
-    </dc-type>
-    <dc-type>
-        <schema>relation</schema>
-        <element>isDocumentationOfConceptSet</element>
-        <qualifier>latestForDiscovery</qualifier>
-        <scope_note>Contains all uuids of DOCUMENTATION which link to the current CONCEPT SET via a
-            "latest" relationship. In other words, this stores all relationships pointing to the
-            current CONCEPT SET from any DOCUMENTATION, implying that the CONCEPT SET is marked as
-            "latest". Internally used by DSpace to support versioning. Do not manually add, remove
-            or edit values.</scope_note>
-    </dc-type>
-
-    <dc-type>
-        <schema>relation</schema>
-        <element>isConceptSetOfDocumentation</element>
-        <scope_note>Contains all uuids of the "latest" CONCEPT SETS that the current DOCUMENTATION
-            links to via a relationship. In other words, this stores all relationships pointing from
-            the current DOCUMENTATION to any CONCEPT SET where the CONCEPT SET is marked as
-            "latest". Internally used by DSpace. Do not manually add, remove or edit values.</scope_note>
-    </dc-type>
-    <dc-type>
-        <schema>relation</schema>
-        <element>isConceptSetOfDocumentation</element>
-        <qualifier>latestForDiscovery</qualifier>
-        <scope_note>Contains all uuids of CONCEPT SETS which link to the current DOCUMENTATION via a
-            "latest" relationship. In other words, this stores all relationships pointing to the
-            current DOCUMENTATION from any CONCEPT SET, implying that the DOCUMENTATION is marked as
             "latest". Internally used by DSpace to support versioning. Do not manually add, remove
             or edit values.</scope_note>
     </dc-type>
