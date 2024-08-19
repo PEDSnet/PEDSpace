@@ -4200,7 +4200,7 @@
 
   "relationships.isFundingAgencyOf.OrgUnit": "Funder",
  
-  "relationships.isStudyOf.person": "Related Person",
+  "relationships.isStudyOf.Person": "Related Person",
 
   "relationships.isStudyOf.ConceptSet": "Related Concept Set",
   
