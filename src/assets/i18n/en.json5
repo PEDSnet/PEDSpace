@@ -1030,6 +1030,8 @@
 
   "browse.metadata.srsc": "Subject Category",
 
+  "browse.metadata.vocab": "Browse by Vocabulary",
+
   "browse.metadata.author.breadcrumbs": "Browse by Author",
 
   "browse.metadata.type.breadcrumbs": "Browse by Type",
@@ -1037,6 +1039,8 @@
   "browse.metadata.dateissued.breadcrumbs": "Browse by Date",
 
   "browse.metadata.subject.breadcrumbs": "Browse by Subject",
+ 
+  "browse.metadata.vocab.breadcrumbs": "Browse by Vocabulary",
 
   "browse.metadata.srsc.breadcrumbs": "Browse by Subject Category",
 
