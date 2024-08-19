@@ -6846,6 +6846,32 @@
 
   "publication.page.titleprefix": "Publication:",
 
-  "study.page.titleprefix": "Study:"
+  "study.page.titleprefix": "Study:",
+
+  "conceptset.page.edit": "Edit Concept Set",
+
+  "documentation.page.edit": "Edit Documentation",
+
+  "dqcheck.page.edit": "Edit DQ Check",
+
+  "journal.page.edit": "Edit Journal",
+
+  "journalissue.page.edit": "Edit Journal Issue",
+
+  "journalvolume.page.edit": "Edit Journal Volume",
+
+  "none.page.edit": "Edit None",
+
+  "orgunit.page.edit": "Edit Organization Unit",
+
+  "person.page.edit": "Edit Person",
+
+  "phenotype.page.edit": "Edit Phenotype",
+
+  "project.page.edit": "Edit Project",
+
+  "publication.page.edit": "Edit Publication",
+
+  "study.page.edit": "Edit Study"
 
 }
