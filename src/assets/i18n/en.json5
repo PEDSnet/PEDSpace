@@ -4212,6 +4212,8 @@
 
   "relationships.isConceptSetOf.Phenotype": "Related Phenotype",
 
+  "relationships.isDocumentationOf.Person": "Related Person",
+
   "repository.image.logo": "Repository logo",
 
   "repository.title": "PEDSpace",
