@@ -1032,6 +1032,8 @@
 
   "browse.metadata.author.breadcrumbs": "Browse by Author",
 
+  "browse.metadata.type.breadcrumbs": "Browse by Type",
+
   "browse.metadata.dateissued.breadcrumbs": "Browse by Date",
 
   "browse.metadata.subject.breadcrumbs": "Browse by Subject",
