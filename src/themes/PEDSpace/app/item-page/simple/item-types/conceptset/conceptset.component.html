@@ -69,8 +69,7 @@
         [label]="'item.preview.dc.contributor.other'">
       </ds-generic-item-page-field>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']"
-        [label]="'collection.form.provenance'">
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
       </ds-generic-item-page-field>
 
       <ng-container *ngIf="object?.metadata['dc.description']?.length > 0">
@@ -97,39 +96,20 @@
       <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="';<br>'"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
-        <div class="col-xs-12 col-md-7">
-          <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfStudy'"
-            [label]="'relationships.isConceptSetOf.Study' | translate">
-          </ds-related-items>
-        
-          <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfConceptSet'"
-            [label]="'relationships.isPhenotypeOfConceptSet' | translate">
-          </ds-related-items>
-        
-          <ds-related-items [parentItem]="object" [relationType]="'isAuthorOfConceptSet'"
-            [label]="'relationships.isAuthorOfConceptSet' | translate">
-          </ds-related-items>
-        
-          <ds-related-items [parentItem]="object" [relationType]="'isEditorOfConceptSet'"
-            [label]="'relationships.isEditorOfConceptSet' | translate">
-          </ds-related-items>
-        
-          <ds-related-items [parentItem]="object" [relationType]="'isOrgUnitOfConceptSet'"
-            [label]="'relationships.isOrgUnitOfConceptSet' | translate">
-          </ds-related-items>
-        
-          <ds-related-items [parentItem]="object" [relationType]="'isDQCheckOfConceptSet'"
-            [label]="'relationships.isDQCheckOfConceptSet' | translate">
-          </ds-related-items>
-        
-          <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfConceptSet'"
-            [label]="'relationships.isDocumentationOfConceptSet' | translate">
-          </ds-related-items>
-        
-          <ds-related-items [parentItem]="object" [relationType]="'isInformedByConceptSet'"
-            [label]="'relationships.isInformedByConceptSet' | translate">
-          </ds-related-items>
-        </div>
+      <div class="col-xs-12 col-md-7">
+
+        <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfPerson'"
+          [label]="'relationships.isConceptSetOf.Person' | translate">
+        </ds-related-items>
+
+        <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfStudy'"
+          [label]="'relationships.isConceptSetOf.Study' | translate">
+        </ds-related-items>
+
+        <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfPhenotype'"
+          [label]="'relationships.isConceptSetOf.Phenotype' | translate">
+        </ds-related-items>
+      </div>
 
       <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
       </ds-item-page-cc-license-field>

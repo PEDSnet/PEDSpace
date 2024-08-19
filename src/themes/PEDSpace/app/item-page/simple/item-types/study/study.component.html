@@ -98,36 +98,16 @@
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
       <div class="col-xs-12 col-md-7">
+        <ds-related-items [parentItem]="object" [relationType]="'isPersonOfStudy'"
+          [label]="'relationships.isStudyOf.Person' | translate">
+        </ds-related-items>
+
         <ds-related-items [parentItem]="object" [relationType]="'isStudyOfConceptSet'"
           [label]="'relationships.isStudyOf.ConceptSet' | translate">
         </ds-related-items>
 
         <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfStudy'"
-          [label]="'relationships.isPhenotypeOfStudy' | translate">
-        </ds-related-items>
-
-        <ds-related-items [parentItem]="object" [relationType]="'isAuthorOfStudy'"
-          [label]="'relationships.isAuthorOfStudy' | translate">
-        </ds-related-items>
-
-        <ds-related-items [parentItem]="object" [relationType]="'isEditorOfStudy'"
-          [label]="'relationships.isEditorOfStudy' | translate">
-        </ds-related-items>
-
-        <ds-related-items [parentItem]="object" [relationType]="'isOrgUnitOfStudy'"
-          [label]="'relationships.isOrgUnitOfStudy' | translate">
-        </ds-related-items>
-
-        <ds-related-items [parentItem]="object" [relationType]="'usesConceptSet'"
-          [label]="'relationships.usesConceptSet' | translate">
-        </ds-related-items>
-
-        <ds-related-items [parentItem]="object" [relationType]="'isConductedByPerson'"
-          [label]="'relationships.isConductedByPerson' | translate">
-        </ds-related-items>
-
-        <ds-related-items [parentItem]="object" [relationType]="'isConductedByOrgUnit'"
-          [label]="'relationships.isConductedByOrgUnit' | translate">
+          [label]="'relationships.isStudyOf.Phenotype' | translate">
         </ds-related-items>
       </div>
 
