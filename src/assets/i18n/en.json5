@@ -4200,9 +4200,17 @@
 
   "relationships.isFundingAgencyOf.OrgUnit": "Funder",
  
+  "relationships.isStudyOf.person": "Related Person",
+
   "relationships.isStudyOf.ConceptSet": "Related Concept Set",
   
+  "relationships.isStudyOf.Phenotype": "Related Phenotype",
+  
   "relationships.isConceptSetOf.Study": "Related Study",
+
+  "relationships.isConceptSetOf.Person": "Related Person",
+
+  "relationships.isConceptSetOf.Phenotype": "Related Phenotype",
 
   "repository.image.logo": "Repository logo",
 
