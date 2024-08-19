@@ -4213,6 +4213,8 @@
   "relationships.isConceptSetOf.Phenotype": "Related Phenotype",
 
   "relationships.isDocumentationOf.Person": "Related Person",
+  
+  "relationships.isDQCheckOf.Person": "Related Person",
 
   "repository.image.logo": "Repository logo",
 
