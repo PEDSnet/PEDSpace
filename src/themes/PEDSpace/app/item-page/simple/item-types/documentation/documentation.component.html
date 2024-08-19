@@ -9,9 +9,9 @@
     </div>
   </div>
 
-  <div *ngIf="object?.metadata['dc.type']?.length > 0">
-    <ds-generic-item-page-field class="badge" [item]="object" [fields]="['dc.type']"></ds-generic-item-page-field>
-  </div>
+  <ds-generic-item-page-field class="badge" [item]="object"
+    [fields]="['dspace.entity.type']"></ds-generic-item-page-field>
+
 
   <ds-item-page-title-field [item]="object" class="mr-auto">
   </ds-item-page-title-field>

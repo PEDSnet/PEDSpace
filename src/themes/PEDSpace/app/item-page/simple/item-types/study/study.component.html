@@ -9,9 +9,8 @@
     </div>
   </div>
 
-  <div *ngIf="object?.metadata['dc.type']?.length > 0">
-    <ds-generic-item-page-field class="badge" [item]="object" [fields]="['dc.type']"></ds-generic-item-page-field>
-  </div>
+  <ds-generic-item-page-field class="badge" [item]="object"
+    [fields]="['dspace.entity.type']"></ds-generic-item-page-field>
 
   <ds-item-page-title-field [item]="object" class="mr-auto">
   </ds-item-page-title-field>
@@ -68,11 +67,10 @@
       <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
         [label]="'item.preview.dc.contributor.other'">
       </ds-generic-item-page-field>
-      
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']"
-        [label]="'collection.form.provenance'">
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
       </ds-generic-item-page-field>
-      
+
       <ng-container *ngIf="object?.metadata['dc.description']?.length > 0">
         <div class="description-field">
           <ng-container *ngFor="let metadata of object.metadata['dc.description']; let i = index">
