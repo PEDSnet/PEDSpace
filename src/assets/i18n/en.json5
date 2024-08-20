@@ -2812,37 +2812,35 @@
 
   "item.page.image.alt.ROR": "ROR logo",
 
-  "item.preview.dc.identifier.uri": "Identifier:",
+  "item.preview.dc.identifier.uri": "Identifier",
 
   "item.preview.dc.contributor.author": "Creators",
   
   "item.preview.dc.contributor.advisor": "Reviewers",
   
-  "item.preview.dc.contributor.other": "Affiliations",
+  "item.preview.dc.contributor.other": "Affiliation(s)",
 
-  "item.preview.dc.date": "Last Modified:",
+  "item.preview.dc.date": "Last Modified",
 
-  "item.preview.dc.date.issued": "Created:",
+  "item.preview.dc.date.issued": "Created",
 
-  "item.preview.dc.description.abstract": "Abstract:",
+  "item.preview.dc.description.abstract": "Abstract",
 
-  "item.preview.dc.identifier.other": "Other identifier:",
+  "item.preview.dc.identifier.other": "Other identifier",
 
-  "item.preview.dc.language.iso": "Language:",
+  "item.preview.dc.language.iso": "Language",
 
-  "item.preview.dc.subject": "Specifications:",
+  "item.preview.dc.subject": "Specifications",
   
-  "item.preview.dc.subject.other": "Tags:",
+  "item.preview.local.description.viz": "Visualization Output",
   
-  "item.preview.local.description.viz": "Visualization Output:",
+  "item.preview.local.description.raw": "Raw Output",
   
-  "item.preview.local.description.raw": "Raw Output:",
-  
-  "item.preview.dc.subject.other": "Tags:",
+  "item.preview.dc.subject.other": "Tags",
 
-  "item.preview.dc.title": "Title:",
+  "item.preview.dc.title": "Title",
 
-  "item.preview.dc.type": "Type:",
+  "item.preview.dc.type": "Type",
 
   "item.preview.oaire.citation.issue": "Issue",
 

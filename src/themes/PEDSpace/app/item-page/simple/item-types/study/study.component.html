@@ -48,10 +48,10 @@
     </div>
 
     <div class="col-12 col-md-8">
-      <ng-container *ngIf="object?.metadata['dc.subject.other']?.length > 0">
-        <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.other']"
-          [label]="'item.preview.dc.subject.other'"></ds-generic-item-page-field>
-      </ng-container>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.other']" [separator]="', '"
+        [label]="'item.preview.dc.subject.other'"></ds-generic-item-page-field>
+
 
       <ds-item-page-abstract-field [item]="object" [label]="'item.page.abstract'"></ds-item-page-abstract-field>
 
@@ -75,11 +75,11 @@
         <div class="description-field">
           <ng-container *ngFor="let metadata of object.metadata['dc.description']; let i = index">
             <div *ngIf="i === 0" class="cohort-description-label">
-              <h2 class="simple-view-element-header">{{ 'item.page.description' | translate }}</h2>
+              <h4 class="simple-view-element-header">{{ 'item.page.description' | translate }}</h4>
               <p class="preserve-line-breaks">{{ metadata.value }}</p>
             </div>
             <div *ngIf="i === 1" class="cohort-description-label">
-              <h2 class="simple-view-element-header">{{ 'item.page.description.cohort' | translate }}</h2>
+              <h4 class="simple-view-element-header">{{ 'item.page.description.cohort' | translate }}</h4>
               <p class="preserve-line-breaks">{{ metadata.value }}</p>
             </div>
           </ng-container>
@@ -92,7 +92,7 @@
       <ds-generic-item-page-field [item]="object" [fields]="['local.subject.vocab']" [separator]="', '"
         [label]="'item.page.subject'"></ds-generic-item-page-field>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="';<br>'"
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="', '"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
       <div class="col-xs-12 col-md-7">
