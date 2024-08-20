@@ -50,12 +50,25 @@
     </div>
 
     <div class="col-12 col-md-8">
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.subject']" [separator]="', '"
+      [label]="'item.page.subject'"></ds-generic-item-page-field>
+
       <ng-container *ngIf="object?.metadata['dc.subject.other']?.length > 0">
         <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.other']"
           [label]="'item.preview.dc.subject.other'"></ds-generic-item-page-field>
       </ng-container>
 
       <ds-item-page-abstract-field [item]="object" [label]="'item.page.abstract'"></ds-item-page-abstract-field>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.other']"
+      [label]="'item.preview.dc.subject.other'"></ds-generic-item-page-field>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['local.description.viz']"
+      [label]="'item.preview.local.description.viz'"></ds-generic-item-page-field>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['local.description.raw']"
+      [label]="'item.preview.local.description.raw'"></ds-generic-item-page-field>
 
       <!-- <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
         [itemType]="'Person'" [metadataFields]="['dc.contributor.author', 'dc.creator']"
@@ -90,9 +103,6 @@
 
       <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
       </ds-item-page-uri-field>
-
-      <ds-generic-item-page-field [item]="object" [fields]="['local.subject.vocab']" [separator]="', '"
-        [label]="'item.page.subject'"></ds-generic-item-page-field>
 
       <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="';<br>'"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>

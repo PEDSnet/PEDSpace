@@ -1032,9 +1032,9 @@
 
   "browse.metadata.srsc": "Subject Category",
 
-  "browse.metadata.vocab": "Browse by Vocabulary",
+  "browse.metadata.vocab": "Vocabulary",
   
-  "browse.metadata.specs": "Browse by Specification",
+  "browse.metadata.specs": "Specification",
 
   "browse.metadata.author.breadcrumbs": "Browse by Author",
 
@@ -1046,7 +1046,7 @@
 
   "browse.metadata.subject.breadcrumbs": "Browse by Subject",
  
-  "browse.metadata.vocab.breadcrumbs": "Browse by Vocabulary",
+  "browse.metadata.vocab.breadcrumbs": "Vocabulary",
   
   "browse.metadata.specs.breadcrumbs": "Browse by Specification",
 
@@ -3289,6 +3289,8 @@
   "menu.section.browse_global_by_subject": "By Clincal Subject",
   
   "menu.section.browse_global_by_vocab": "By Vocabulary",
+  
+  "menu.section.browse_global_by_specs": "By Specification",
 
   "menu.section.browse_global_by_srsc": "By Subject Category",
 
