@@ -34,7 +34,7 @@ import { ThemedResultsBackButtonComponent } from '../../../../../../../app/share
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 
 /**
- * Component that represents a Study Item page
+ * Component that represents a Documentation Item page
  */
 
 @listableObjectComponent('Documentation',
