@@ -1033,6 +1033,8 @@
   "browse.metadata.srsc": "Subject Category",
 
   "browse.metadata.vocab": "Browse by Vocabulary",
+  
+  "browse.metadata.specs": "Browse by Specification",
 
   "browse.metadata.author.breadcrumbs": "Browse by Author",
 
@@ -1045,6 +1047,8 @@
   "browse.metadata.subject.breadcrumbs": "Browse by Subject",
  
   "browse.metadata.vocab.breadcrumbs": "Browse by Vocabulary",
+  
+  "browse.metadata.specs.breadcrumbs": "Browse by Specification",
 
   "browse.metadata.srsc.breadcrumbs": "Browse by Subject Category",
 
@@ -2776,7 +2780,7 @@
 
   "item.page.relationships.isOrgUnitOfProject": "Research Projects",
 
-  "item.page.subject": "Vocabularies",
+  "item.page.subject": "Specifications",
   
   "item.page.subject.mesh": "Clinical Subjects",
 
@@ -2827,6 +2831,12 @@
   "item.preview.dc.language.iso": "Language:",
 
   "item.preview.dc.subject": "Specifications:",
+  
+  "item.preview.dc.subject.other": "Tags:",
+  
+  "item.preview.local.description.viz": "Visualization Output:",
+  
+  "item.preview.local.description.raw": "Raw Output:",
   
   "item.preview.dc.subject.other": "Tags:",
 
