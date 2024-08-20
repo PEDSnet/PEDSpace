@@ -2822,7 +2822,7 @@
 
   "item.preview.dc.language.iso": "Language:",
 
-  "item.preview.dc.subject": "Subjects:",
+  "item.preview.dc.subject": "Specifications:",
   
   "item.preview.dc.subject.other": "Tags:",
 
@@ -3268,9 +3268,13 @@
   
   "menu.section.browse_global_by_type": "By Type",
   
+  "menu.section.browse_global_by_tag": "By Tag",
+  
   "menu.section.browse_global_by_relation": "By Relation",
 
-  "menu.section.browse_global_by_subject": "By Subject",
+  "menu.section.browse_global_by_subject": "By Clincal Subject",
+  
+  "menu.section.browse_global_by_vocab": "By Vocabulary",
 
   "menu.section.browse_global_by_srsc": "By Subject Category",
 
