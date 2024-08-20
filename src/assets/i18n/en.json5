@@ -1021,6 +1021,8 @@
   "browse.metadata.relation": "Relation",
   
   "browse.metadata.type": "Type",
+  
+  "browse.metadata.tag": "Tag",
 
   "browse.metadata.dateissued": "Issue Date",
 
@@ -1035,6 +1037,8 @@
   "browse.metadata.author.breadcrumbs": "Browse by Author",
 
   "browse.metadata.type.breadcrumbs": "Browse by Type",
+  
+  "browse.metadata.tag.breadcrumbs": "Browse by Tag",
 
   "browse.metadata.dateissued.breadcrumbs": "Browse by Date",
 
