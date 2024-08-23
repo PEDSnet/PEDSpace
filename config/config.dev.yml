@@ -427,7 +427,7 @@ markdown:
 # Take a look at the filter-vocabulary-config.ts file for documentation on how the options are obtained
 vocabularies:
   - filter: 'subject'
-    vocabulary: 'srsc'
+    vocabulary: 'dc_subject'
     enabled: true
 
 # Default collection/community sorting order at Advanced search, Create/update community and collection when there are not a query.
