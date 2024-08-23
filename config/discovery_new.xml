@@ -46,7 +46,6 @@
     <bean id="solrServiceIndexComparisonPlugin" class="org.dspace.discovery.SolrServiceIndexComparisonPlugin" scope="prototype"/>
 
 
-
     <!--Bean that is used for mapping communities/collections to certain discovery configurations. THIS WILL ALLOW US TO HAVE DIFFERENT FACET SEARCH BARS BASED ON THE ENTITY TYPE-->
     <bean id="org.dspace.discovery.configuration.DiscoveryConfigurationService" class="org.dspace.discovery.configuration.DiscoveryConfigurationService">
         <property name="map">
@@ -353,7 +352,7 @@
                         <ref bean="sortScore"/>
                         <ref bean="sortTitle"/>
                         <ref bean="sortDateIssued"/>
-                        
+
                     </list>
                 </property>
             </bean>
@@ -518,7 +517,7 @@
         <property name="spellCheckEnabled" value="true"/>
     </bean>
 
-<!-- Entity-based configuration settings-->
+<!-- NEW Entity-based configuration settings-->
         <bean id="person" class="org.dspace.discovery.configuration.DiscoveryConfiguration" scope="prototype">
             <property name="id" value="person"/>
             <property name="indexAlways" value="true"/>
@@ -3208,7 +3207,7 @@
                 </property>
             </bean>
 
-            <bean id="searchFilterVocabulary" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+            <bean id="searchFilterVocabulary" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
                 <property name="indexFieldName" value="itemVocab" />
                 <property name="metadataFields">
                     <list>
@@ -3217,7 +3216,7 @@
                 </property>
             </bean>
 
-            <bean id="searchFilterTags" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+            <bean id="searchFilterTags" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
                 <property name="indexFieldName" value="itemTags" />
                 <property name="metadataFields">
                     <list>
@@ -3226,7 +3225,7 @@
                 </property>
             </bean>
 
-            <bean id="searchFilterClinicalSubject" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+            <bean id="searchFilterClinicalSubject" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
                 <property name="indexFieldName" value="itemClinicalSubject" />
                 <property name="metadataFields">
                     <list>
