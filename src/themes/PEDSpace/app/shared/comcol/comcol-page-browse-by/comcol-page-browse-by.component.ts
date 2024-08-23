@@ -42,7 +42,7 @@ export class FilterTypePipe implements PipeTransform {
     TranslateModule,
     AsyncPipe,
     NgIf,
-    FilterTypePipe,
+    // FilterTypePipe,
   ],
 })
 export class ComcolPageBrowseByComponent extends BaseComponent {
