@@ -1012,6 +1012,14 @@
 
   "browse.comcol.by.title": "By Title",
 
+  "browse.comcol.by.tag": "By Tag",
+
+  "browse.comcol.by.type": "By Type",
+
+  "browse.comcol.by.vocab": "By Vocabulary",
+
+  "browse.comcol.by.specs": "By Specification",
+
   "browse.comcol.head": "Browse",
 
   "browse.empty": "No items to show.",
