@@ -197,7 +197,7 @@
                     <input-type>tag</input-type>
                     <hint>Enter appropriate subject keywords or phrases.</hint>
                     <required></required>
-                    <vocabulary>dc_subject</vocabulary>
+                    <vocabulary closed="true">dc_subject</vocabulary>
                 </field>
             </row>
             <row>
