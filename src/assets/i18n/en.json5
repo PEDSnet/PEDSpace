@@ -1039,6 +1039,10 @@
   "browse.metadata.title": "Title",
 
   "browse.metadata.srsc": "Subject Category",
+  
+  "browse.metadata.dc_subject": "Subject Category",
+  
+  "browse.metadata.dc_subject.description": "Browse by Subject Category",
 
   "browse.metadata.vocab": "Vocabulary",
   
@@ -1059,7 +1063,11 @@
   "browse.metadata.specs.breadcrumbs": "Browse by Specification",
 
   "browse.metadata.srsc.breadcrumbs": "Browse by Subject Category",
+  
+  "browse.metadata.dc_subject.breadcrumbs": "Browse by Subject Category",
 
+  "browse.metadata.dc_subject.tree.descrption": "Select a subject to add as search filter",
+  
   "browse.metadata.srsc.tree.descrption": "Select a subject to add as search filter",
 
   "browse.metadata.nsi.breadcrumbs": "Browse by Norwegian Science Index",
@@ -2837,8 +2845,6 @@
   "item.preview.dc.identifier.other": "Other identifier",
 
   "item.preview.dc.language.iso": "Language",
-
-  "item.preview.dc.subject": "Specifications",
   
   "item.preview.local.description.viz": "Visualization Output",
   
@@ -3299,6 +3305,8 @@
   "menu.section.browse_global_by_specs": "By Specification",
 
   "menu.section.browse_global_by_srsc": "By Subject Category",
+
+  "menu.section.browse_global_by_dc_subject": "By Subject Category",
 
   "menu.section.browse_global_by_nsi": "By Norwegian Science Index",
 
@@ -5677,6 +5685,8 @@
   "vocabulary-treeview.tree.description.nsi": "The Norwegian Science Index",
 
   "vocabulary-treeview.tree.description.srsc": "Research Subject Categories",
+  
+  "vocabulary-treeview.tree.description.dc_subject": "Research Subject Categories",
 
   "vocabulary-treeview.info": "Select a subject to add as search filter",
 
