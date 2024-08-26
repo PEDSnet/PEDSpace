@@ -3211,7 +3211,7 @@
                 <property name="indexFieldName" value="itemVocab" />
                 <property name="metadataFields">
                     <list>
-                        <value>dc.subject.other</value>
+                        <value>dc.subject</value>
                     </list>
                 </property>
             </bean>
