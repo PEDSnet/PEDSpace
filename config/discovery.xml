@@ -188,7 +188,7 @@
                 <ref bean="searchFilterAuthor"/>
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterDateCreated"/>
-                <ref bean="searchFilterTags"/>
+                <ref bean="searchFilterSubject"/>
                 <ref bean="searchFilterClinicalSubject"/>
                 <ref bean="searchFilterEntityType"/>
             </list>
@@ -214,7 +214,6 @@
                 <!-- New Search Filters -->
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterDateCreated"/>
-                <ref bean="searchFilterTags"/>
                 <ref bean="searchFilterClinicalSubject"/>
             </list>
         </property>
@@ -2593,14 +2592,13 @@
         <property name="indexFieldName" value="subject"/>
         <property name="metadataFields">
             <list>
-                <value>dc.subject.*</value>
+                <value>dc.subject</value>
             </list>
         </property>
         <property name="facetLimit" value="5"/>
         <property name="sortOrderSidebar" value="COUNT"/>
         <property name="sortOrderFilterPage" value="COUNT"/>
         <property name="splitter" value="::"/>
-
     </bean>
 
     <bean id="searchFilterIssued" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -3442,8 +3440,8 @@
         <property name="exposeMinAndMaxValue" value="true"/>
     </bean>
     
-    <bean id="searchFilterTags" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
-        <property name="indexFieldName" value="itemTags" />
+    <!-- <bean id="searchFilterTags" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
+        <property name="indexFieldName" value="subject" />
         <property name="metadataFields">
             <list>
                 <value>dc.subject</value>
@@ -3453,7 +3451,21 @@
         <property name="sortOrderSidebar" value="COUNT"/>
         <property name="sortOrderFilterPage" value="COUNT"/>
         <property name="splitter" value="::"/>
-    </bean>
+    </bean> -->
+
+    <!-- <bean id="searchFilterSubject" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
+        <property name="indexFieldName" value="subject"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.subject.*</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
+        <property name="splitter" value="::"/>
+
+    </bean> -->
     
     <bean id="searchFilterClinicalSubject" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
         <property name="indexFieldName" value="itemClinicalSubject" />
