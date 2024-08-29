@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE item-submission SYSTEM "item-submission.dtd">
+<!DOCTYPE item-submission SYSTEM "/data/dspace/config/item-submission.dtd">
 
 <!-- Configurable Submission configuration file -->
 
