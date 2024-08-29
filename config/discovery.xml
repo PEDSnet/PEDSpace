@@ -185,10 +185,11 @@
         <!--Which sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
-                <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubject" />
-                <ref bean="searchFilterIssued" />
-                <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterAuthor"/>
+                <ref bean="searchFilterAffiliation"/>
+                <ref bean="searchFilteDateCreated"/>
+                <ref bean="searchFilterTags"/>
+                <ref bean="searchFilterClinicalSubject"/>
                 <ref bean="searchFilterEntityType"/>
             </list>
         </property>
@@ -210,6 +211,11 @@
                 <ref bean="searchFilterIsOrgUnitOfPublicationRelation"/>
                 <ref bean="searchFilterIsPublicationOfJournalIssueRelation"/>
                 <ref bean="searchFilterIsJournalOfPublicationRelation"/>
+                <!-- New Search Filters -->
+                <ref bean="searchFilterAffiliation"/>
+                <ref bean="searchFilteDateCreated"/>
+                <ref bean="searchFilterTags"/>
+                <ref bean="searchFilterClinicalSubject"/>
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -3399,6 +3405,67 @@
         <property name="metadataField" value="dc.date.issued"/>
         <property name="type" value="date"/>
         <property name="defaultSortOrder" value="desc"/>
+    </bean>
+
+    <!-- New Section -->
+
+    <!-- New Filters -->
+
+    <bean id="searchFilterAffiliation" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="itemAffiliation" />
+        <property name="metadataFields">
+            <list>
+                <value>dc.contributor.other</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
+        <property name="isOpenByDefault" value="true"/>
+        <property name="pageSize" value="10"/>
+        <property name="exposeMinAndMaxValue" value="true"/>
+    </bean>
+    
+    <bean id="searchFilterDateCreated" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="dateCreated"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.date.created</value>
+            </list>
+        </property>
+        <property name="type" value="date"/>
+        <property name="facetLimit" value="5"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+        <property name="exposeMinAndMaxValue" value="true"/>
+    </bean>
+    
+    <bean id="searchFilterTags" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
+        <property name="indexFieldName" value="itemTags" />
+        <property name="metadataFields">
+            <list>
+                <value>dc.subject</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
+        <property name="splitter" value="::"/>
+    </bean>
+    
+    <bean id="searchFilterClinicalSubject" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
+        <property name="indexFieldName" value="itemClinicalSubject" />
+        <property name="metadataFields">
+            <list>
+                <value>dc.subject.mesh</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
+        <property name="splitter" value="::"/>
     </bean>
 
 </beans>
