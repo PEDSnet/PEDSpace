@@ -1,0 +1,1013 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node id="CS" label="Clinical Subject">
+	<isComposedBy>
+		<node id="CS01" label="Anatomy">
+			<isComposedBy>
+				<node id="CS01.01" label="Body Regions">
+                    <isComposedBy>
+                        <node id="CS01.0101" label="Anatomic Landmarks"></node>
+                        <node id="CS01.0102" label="Breast">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0103" label="Extremities">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0104" label="Head">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0105" label="Neck">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0106" label="Organs at Risk"></node>
+                        <node id="CS01.0107" label="Perineum"></node>
+                        <node id="CS01.0108" label="Torso">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0109" label="Transplant Donor Site"></node>
+                        <node id="CS01.0110" label="Transplants">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0111" label="Trigger Points"></node>
+                        <node id="CS01.0112" label="Viscera"></node>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.02" label="Musculoskeletal System">
+                    <isComposedBy>
+                        <node id="CS01.0201" label="Aponeurosis"></node>
+                        <node id="CS01.0202" label="Cartilage">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0203" label="Fascia">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0204" label="Ligaments">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0205" label="Muscles">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0206" label="Myotendinous Junction"></node>
+                        <node id="CS01.0207" label="Skeleton">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0208" label="Tendons">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                    </isComposedBy>
+    			</node>
+				<node id="CS01.03" label="Digestive System">
+                    <isComposedBy>
+                        <node id="CS01.0301" label="Biliary Tract">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0302" label="Gastrointestinal Tract">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0303" label="Liver">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0304" label="Pancreas">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.04" label="Respiratory System">
+                    <isComposedBy>
+                        <node id="CS01.0401" label="Larynx">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0402" label="Lung">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0403" label="Nose">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0404" label="Pharynx">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0405" label="Pleura"/>
+                        <node id="CS01.0406" label="Respiratory Mucosa">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0407" label="Trachea"/>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.05" label="Urogenital System">
+                    <isComposedBy>
+                        <node id="CS01.0501" label="Genitalia">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0502" label="Urinary Tract">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.06" label="Endocrine System">
+                    <isComposedBy>
+                        <node id="CS01.0601" label="Chromaffin System">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0602" label="Endocrine Glands">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0603" label="Enteroendocrine Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0604" label="Neurosecretory Systems">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.07" label="Cardiovascular System">
+                    <isComposedBy>
+                        <node id="CS01.0701" label="Blood Vessels">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0702" label="Blood-Air Barrier"/>
+                        <node id="CS01.0703" label="Blood-Aqueous Barrier"/>
+                        <node id="CS01.0704" label="Blood-Brain Barrier"/>
+                        <node id="CS01.0705" label="Blood-Nerve Barrier"/>
+                        <node id="CS01.0706" label="Blood-Retinal Barrier"/>
+                        <node id="CS01.0707" label="Blood-Testis Barrier"/>
+                        <node id="CS01.0708" label="Glomerular Filtration Barrier"/>
+                        <node id="CS01.0709" label="Glymphatic System"/>
+                        <node id="CS01.0710" label="Heart"/>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.08" label="Nervous System">
+                    <isComposedBy>
+                        <node id="CS01.0801" label="Central Nervous System">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0802" label="Ganglia">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0803" label="Nerve Net">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0804" label="Neural Pathways">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0805" label="Neuroglia">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0806" label="Neurons">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0807" label="Neurosecretory Systems">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0808" label="Paripheral Nervous System">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0809" label="Synapses">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.09" label="Sense Organs">
+                    <isComposedBy>
+                        <node id="CS01.0901" label="Ear">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0902" label="Eye">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0903" label="Nose">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0904" label="Taste Buds">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.0905" label="Vestibular System">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.10" label="Tissues">
+                    <isComposedBy>
+                        <node id="CS01.1001" label="Body Fluid Compartments">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1002" label="Connective Tissue">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1003" label="Epithelium">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1004" label="Exocrine Glands">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1005" label="Lymphoid Tissue">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1006" label="Membranes">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1007" label="Muscles">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1008" label="Nerve Tissue">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1009" label="Organoids">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1010" label="Parenchymal Tissue"/>
+                        <node id="CS01.1011" label="Peritoneal Stomata"/>
+                        <node id="CS01.1012" label="Margins of Excision"/>
+                        <node id="CS01.1013" label="Surginally-Created Structures">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.11" label="Cells">
+                    <isComposedBy>
+                        <node id="CS01.1102" label="Acinar Cells"/>
+                        <node id="CS01.1103" label="Allogeneic Cells"/>
+                        <node id="CS01.1141" label="Antibody-Producing Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1142" label="Antigen-Presenting Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1143" label="Blood Cells ">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1144" label="Bone Marrow Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1145" label="Cells, Cultured">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1146" label="Cells, Immobilized">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1147" label="Cellular Structures ">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1148" label="Chromaffin Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1149" label="Connective Tissue Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1150" label="Endocrine Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1151" label="Epidermal Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1152" label="Epithelial Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1153" label="Erythroid Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1154" label="Eukaryotic Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1155" label="Germ Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1156" label="Giant Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1157" label="Hepatic Stellate Cells"/>
+                        <node id="CS01.1158" label="Mesophyll Cells"/>
+                        <node id="CS01.1159" label="Muscle Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1160" label="Myeloid Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1161" label="Neoplastic Cells, Circulating">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1162" label="Neuroglia">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1163" label="Neurons">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1164" label="Oxyphil Cells"/>
+                        <node id="CS01.1165" label="Pancreatic Stellate Cells"/>
+                        <node id="CS01.1166" label="Pericytes"/>
+                        <node id="CS01.1167" label="Phagocytes">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1169" label="Prokaryotic Cells"/>
+                        <node id="CS01.1170" label="Protoplasts"/>
+                        <node id="CS01.1171" label="Reed-Sternberg Cells"/>
+                        <node id="CS01.1172" label="Spheroplasts"/>
+                        <node id="CS01.1173" label="Spores"/>
+                        <node id="CS01.1174" label="Stem Cells">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1175" label="Thymocytes"/>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.12" label="Fluids and Secretions">
+                    <isComposedBy>
+                        <node id="CS01.1201" label="Amniotic Fluid"/>
+                        <node id="CS01.1202" label="Bodily Secretions">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1203" label="Body Fluids">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1204" label="Exudates and Trasudates">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1205" label="Feces">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1206" label="Gastrointestinal Contents"/>
+                        <node id="CS01.1207" label="Hyalin"/>
+                        <node id="CS01.1208" label="Milk">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1209" label="Secretome"/>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.13" label="Stomatognathic System">
+                    <isComposedBy>
+                        <node id="CS01.1301" label="Cheek"/>
+                        <node id="CS01.1302" label="Facial Muscles"/>
+                        <node id="CS01.1303" label="Jaw">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1304" label="Masticatory Muscles">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1305" label="Mouth">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1306" label="Pharynx">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1307" label="Temporomandibular Joint">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.14" label="Hemic and Immune Systems">
+                    <isComposedBy>
+                        <node id="CS01.1401" label="Blood">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1402" label="Hematopoietic System">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1403" label="Immune System">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.15" label="Embryonic Structures">
+                    <isComposedBy>
+                        <node id="CS01.1501" label="Blastomeres"/>
+                        <node id="CS01.1502" label="Branchial Region"/>
+                        <node id="CS01.1503" label="Cleavage Stage, Ovum"/>
+                        <node id="CS01.1504" label="Cloaca"/>
+                        <node id="CS01.1505" label="Ectodermal Placodes"/>
+                        <node id="CS01.1506" label="Embryo, Mammalian">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1508" label="Fetus">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1509" label="Gastrula"/>
+                        <node id="CS01.1510" label="Germ Layers">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1511" label="Gestational Sac"/>
+                        <node id="CS01.1512" label="Gubernaculum"/>
+                        <node id="CS01.1513" label="Limb Buds"/>
+                        <node id="CS01.1514" label="Mesonephros"/>
+                        <node id="CS01.1515" label="Morula"/>
+                        <node id="CS01.1516" label="Mullerian Ducts"/>
+                        <node id="CS01.1517" label="Neural Crest"/>
+                        <node id="CS01.1518" label="Neural Plate"/>
+                        <node id="CS01.1519" label="Neural Tube"/>
+                        <node id="CS01.1520" label="Notochord"/>
+                        <node id="CS01.1521" label="Organizers, Embryonic"/>
+                        <node id="CS01.1522" label="Ovum">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1523" label="Placenta">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1524" label="Primitive Streak"/>
+                        <node id="CS01.1525" label="Pronephros">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1526" label="Urachus"/>
+                        <node id="CS01.1527" label="Vitelline Duct"/>
+                        <node id="CS01.1528" label="Wolffian Ducts"/>
+                        <node id="CS01.1529" label="Zygote"/>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.16" label="Integumentary System">
+                    <isComposedBy>
+                        <node id="CS01.1601" label="Hair">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1602" label="Nails">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1603" label="Skin">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.17" label="Bacterial Structures">
+                    <isComposedBy>
+                        <node id="CS01.1701" label="Bacterial Capsules"/>
+                        <node id="CS01.1702" label="Bacterial Chromatophores"/>
+                        <node id="CS01.1703" label="Bacterial Outer Membrane"/>
+                        <node id="CS01.1704" label="Biofilms">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1705" label="Chromosomes, Bacterial">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS01.1706" label="Fimbriae, Bacterial"/>
+                        <node id="CS01.1707" label="Magnetosomes"/>
+                        <node id="CS01.1708" label="Pili, Sex"/>
+                        <node id="CS01.1709" label="Purple Membrane"/>
+                        <node id="CS01.1710" label="Ribosome Subunits, Large, Bacterial"/>
+                        <node id="CS01.1711" label="Ribosome Subunits, Small, Bacterial"/>
+                    </isComposedBy>
+				</node>
+				<node id="CS01.18" label="Viral Structures">
+                    <isComposedBy>
+                        <node id="CS01.1801" label="Artificial Virus-Like Particles"/>
+                        <node id="CS01.1802" label="Occlusion Bodies, Viral"/>
+                        <node id="CS01.1803" label="Virion">
+                            <isComposedBy>
+                                <node id="CS01.1803.01" label="Nucleocapsid">
+                                    <isComposedBy>
+                                        <node id="CS01.1803.0101" label="Capsid"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS01.1803.02" label="Viral Envelope"/>
+                            </isComposedBy>
+                        </node>
+                    </isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+		<node id="CS02" label="Analytical, Diagnostic and Therapeutic Techniques, and Equipment">
+            <isComposedBy>
+                <node id="CS02.01" label="Diagnosis">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS02.02" label="Therapeutics">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS02.03" label="Anesthesia and Analgesia">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS02.04" label="Surgical Procedures, Operative">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS02.05" label="Investigative Techniques">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS02.06" label="Dentistry">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS02.07" label="Equipment and Supplies">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+			</isComposedBy>
+		</node>
+		<node id="CS03" label="Disciplines and Occupations">
+            <isComposedBy>
+                <node id="CS03.01" label="Natural Science Disciplines">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS03.02" label="Health Occupations">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+			</isComposedBy>
+		</node>
+		<node id="CS04" label="Diseases">
+            <isComposedBy>
+                <node id="CS04.01" label="Infections">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.02" label="Neoplasms">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.03" label="Musculoskeletal Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.04" label="Digestive System Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.05" label="Stomatognathic Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.06" label="Respiratory Tract Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.07" label="Otorhinolaryngologic Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.08" label="Nervous System Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.09" label="Eye Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.10" label="Urogenital Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.11" label="Cardiovascular Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.12" label="Hemic and Lymphatic Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.13" label="Congenital, Hereditary, and Neonatal Diseases and Abnormalities">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.14" label="Skin and Connective Tissue Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.15" label="Nutritional and Metabolic Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.16" label="Endocrine System Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.17" label="Immune System Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.18" label="Disorders of Environmental Origin">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.19" label="Pathological Conditions, Signs and Symptoms">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.20" label="Occupational Diseases">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.21" label="Chemically-Induced Disorders">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS04.22" label="Wounds and Injuries">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+			</isComposedBy>
+		</node>
+		<node id="CS05" label="Health Care">
+            <isComposedBy>
+                <node id="CS05.01" label="Population Characteristics">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS05.02" label="Health Care Facilities, Manpower, and Services">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS05.03" label="Health Care Economics and Organizations">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS05.04" label="Health Services Administration">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS05.05" label="Health Care Quality, Access, and Evaluation">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS05.06" label="Environment and Public Health">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+			</isComposedBy>
+		</node>
+		<node id="CS06" label="Named Groups">
+			<isComposedBy>
+                <node id="CS06.01" label="Persons">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+			</isComposedBy>
+		</node>
+		<node id="CS07" label="Pharmacologic Classification">
+			<isComposedBy>
+				<node id="CS07.01" label=""></node>	
+			</isComposedBy>
+		</node>
+		<node id="CS08" label="Phenomena and Processes">
+			<isComposedBy>
+				<node id="CS08.01" label="Physical Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.02" label="Chemical Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.03" label="Metabolism">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.04" label="Cell Physiological Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.05" label="Genetic Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.06" label="Microbiological Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.07" label="Physiological Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.08" label="Reproductive and Urinary Physiological Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.09" label="Circulatory and Respiratory Physiological Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.10" label="Digestive System and Oral Physiological Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.11" label="Musculoskeletal and Neural Physiological Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.12" label="Immune System Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.13" label="Integumentary System Physiological Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.14" label="Ocular Physiological Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.15" label="Biological Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS08.16" label="Mathematical Concepts">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+			</isComposedBy>
+		</node>
+		<node id="CS09" label="Psychiatry and Psychology">
+			<isComposedBy>
+				<node id="CS09.01" label="Behavior and Behavior Mechanisms">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS09.02" label="Psychological Phenomena">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS09.03" label="Mental Disorders">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS09.04" label="Behavioral Disciplines and Activities">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>		
+			</isComposedBy>
+		</node>
+        <node id="CS10" label="Organisms">
+            <isComposedBy>
+                <node id="CS10.01" label="Eukaryota">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS10.02" label="Archaea">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS10.03" label="Bacteria">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS10.04" label="Viruses">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+                <node id="CS10.05" label="Organism Forms">
+                    <isComposedBy>
+                        <node id="" label=""></node>
+                    </isComposedBy>
+                </node>
+			</isComposedBy>
+        </node>
+	</isComposedBy>
+	<hasNote>Taxonomy derived from Medical Subject Headings by the National Library of Medicine and Established Pharmaceutical Classes by DailyMed</hasNote>
+</node>
