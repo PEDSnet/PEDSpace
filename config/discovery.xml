@@ -187,7 +187,7 @@
             <list>
                 <ref bean="searchFilterAuthor"/>
                 <ref bean="searchFilterAffiliation"/>
-                <ref bean="searchFilteDateCreated"/>
+                <ref bean="searchFilterDateCreated"/>
                 <ref bean="searchFilterTags"/>
                 <ref bean="searchFilterClinicalSubject"/>
                 <ref bean="searchFilterEntityType"/>
@@ -213,7 +213,7 @@
                 <ref bean="searchFilterIsJournalOfPublicationRelation"/>
                 <!-- New Search Filters -->
                 <ref bean="searchFilterAffiliation"/>
-                <ref bean="searchFilteDateCreated"/>
+                <ref bean="searchFilterDateCreated"/>
                 <ref bean="searchFilterTags"/>
                 <ref bean="searchFilterClinicalSubject"/>
             </list>
