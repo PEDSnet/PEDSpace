@@ -4452,6 +4452,26 @@
 
   "search.filters.applied.operator.query": "",
 
+  "search.filters.filter.itemAffiliation.head": "Affiliation",
+  
+  "search.filters.filter.dateCreated.head": "Date Created",
+
+  "search.filters.filter.itemTags.head": "Tags",
+    
+  "search.filters.filter.itemTags.label": "Tags",
+  
+  "search.filters.filter.itemTags.placeholder": "Tags...",
+  
+  "search.filters.filter.itemClinicalSubject.head": "Clinical Subject",
+
+  "search.filters.filter.itemClinicalSubject.label": "Clinical Subject",
+  
+  "search.filters.filter.itemClinicalSubject.placeholder": "Terms...",
+  
+  "search.filters.filter.dateCreated.max.label": "End",
+  
+  "search.filters.filter.dateCreated.min.label": "Start",
+
   "search.filters.filter.title.head": "Title",
 
   "search.filters.filter.title.placeholder": "Title",
