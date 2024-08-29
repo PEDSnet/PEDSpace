@@ -513,7 +513,7 @@
                         <dc-qualifier>other</dc-qualifier>
                         <repeatable>true</repeatable>
                         <label>Vocabularies</label>
-                        <input-type>onebox</input-type>
+                        <input-type>tag</input-type>
                         <hint>Enter the medical ontologies used in the concept set.</hint>
                         <required>At least one ontology must be referenced.</required>
                         <vocabulary closed="true">dc_subject_other</vocabulary>
