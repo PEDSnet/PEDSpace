@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <node id="Tags" label="Tags">
 	<isComposedBy>
-		<node id="STUDY" label="Study">
+		<node id="STUDY" label="Study"> 
 			<isComposedBy>
 				<node id="STUDY.1" label="Case-Control Study">
 				</node>
 				<node id="STUDY.2" label="Clinical Study">
-					<isComposedBy>
-						<node id="STUDY.201" label="Clinical Trial"></node>
-						<node id="STUDY.202" label="Observational Study"></node>
-					</isComposedBy>
+						<isComposedBy>
+							<node id="STUDY.201" label="Clinical Trial"></node>
+							<node id="STUDY.202" label="Observational Study"></node>
+						</isComposedBy>
 				</node>
 				<node id="STUDY.3" label="Cohort Study">
-					<isComposedBy>
-						<node id="STUDY.301" label="Follow-Up Study">
-						</node>
-						<node id="STUDY.302" label="Longitudinal Study">
-						</node>
-						<node id="STUDY.304" label="Prospective Study">
-						</node>
-						<node id="STUDY.305" label="Retrospective Study">
-						</node>
-					</isComposedBy>
+						<isComposedBy>
+							<node id="STUDY.301" label="Follow-Up Study">
+							</node>
+							<node id="STUDY.302" label="Longitudinal Study">
+							</node>
+							<node id="STUDY.304" label="Prospective Study">
+							</node>
+							<node id="STUDY.305" label="Retrospective Study">
+							</node>
+						</isComposedBy>
 				</node>
 				<node id="STUDY.4" label="Comparative Study">
 				</node>
@@ -102,111 +102,110 @@
 					</isComposedBy>
 				</node>
 			</isComposedBy>
-
 		</node>
-		<node id="DQ" label="Data Quality Check Categorizations">
-			<isComposedBy>
-				<node id="DQ.1" label="Data Quality Characterization">
-					<isComposedBy>
-						<node id="DQ.101" label="Data Concordance">
-						</node>
-						<node id="DQ.102" label="Data Conformance">
-						</node>
-						<node id="DQ.103" label="Data Completeness">
-						</node>
-						<node id="DQ.104" label="Data Consistency">
-						</node>
-						<node id="DQ.105" label="Information Representation">
-						</node>
-						<node id="DQ.106" label="Data Plausibility">
-						</node>
-					</isComposedBy>
-				</node>
-				<node id="DQ.2" label="Dataset Evaluation Strategy">
-					<isComposedBy>
-						<node id="DQ.201" label="Analysis Level">
-							<isComposedBy>
-								<node id="DQ.201.1" label="Person-Level Analysis"></node>
-								<node id="DQ.201.2" label="Visit-Level Analysis"></node>
-							</isComposedBy>
-						</node>
-						<node id="DQ.202" label="Temporal Evaluation">
-							<isComposedBy>
-								<node id="DQ.202.1" label="Time-Based Analysis"></node>
-								<node id="DQ.202.2" label="Not Time-Based"></node>
-							</isComposedBy>
-						</node>
-						<node id="DQ.203" label="Data Source Comparison">
-							<isComposedBy>
-								<node id="DQ.203.1" label="Multi-Site Analysis"></node>
-								<node id="DQ.203.2" label="Single Site"></node>
-							</isComposedBy>
-						</node>
-						<node id="DQ.204" label="Data Anomaly Detection">
-							<isComposedBy>
-								<node id="DQ.204.1" label="Time Series Anomalies"></node>
-								<node id="DQ.204.2" label="Distance From Mean"></node>
-								<node id="DQ.204.3" label="Jaccard Similarity Index"></node>
-								<node id="DQ.204.4" label="Hotspots Outlier Detection"></node>
-								<node id="DQ.204.5" label="Seasonal-Trend Decomposition Using LOESS"></node>
-								<node id="DQ.204.6" label="Euclidean Distance"></node>
-							</isComposedBy>
-						</node>
-						<node id="DQ.205" label="Exploratory Analysis">
-							<isComposedBy>
-								<node id="DQ.205.1" label="Time Series Exporation"></node>
-								<node id="DQ.205.2" label="Attrition Counts"></node>
-								<node id="DQ.205.3" label="Frequency Distribution"></node>
-								<node id="DQ.205.4" label="Time Between Events"></node>
-							</isComposedBy>
-						</node>
-						<node id="DQ.206" label="Data Quality Communication">
-							<isComposedBy>
-								<node id="DQ.206.1" label="Data Visualization">
-									<isComposedBy>
-										<node id="DQ.206.101" label="Bar Graph"></node>
-										<node id="DQ.206.102" label="Control Chart"></node>
-										<node id="DQ.206.103" label="Dot and Star Plot"></node>
-										<node id="DQ.206.104" label="Histogram"></node>
-										<node id="DQ.206.105" label="Heatmap"></node>
-										<node id="DQ.206.106" label="Line Graph"></node>
-										<node id="DQ.206.107" label="Radial Bar Graph"></node>
-									</isComposedBy>
-								</node>
-							</isComposedBy>
-						</node>
-					</isComposedBy>
-				</node>
-				<node id="DQ.3" label="Quality Probe">
-					<isComposedBy>
-						<node id="DQ.301" label="Misclassification Detection"></node>
-						<node id="DQ.302" label="Eligibility Criteria Assessment"></node>
-						<node id="DQ.303" label="Missing Expected Data"></node>
-						<node id="DQ.304" label="Information Density"></node>
-						<node id="DQ.305" label="Selection Error or Bias"></node>
-						<node id="DQ.306" label="Temporality Inconsistency"></node>
-						<node id="DQ.307" label="Anomalous Value from Internal Distribution"></node>
-						<node id="DQ.308" label="Temporal Consistency Check"></node>
-						<node id="DQ.309" label="Data Representation Errors"></node>
-						<node id="DQ.310" label="Missing Required Data"></node>
-						<node id="DQ.311" label="External Benchmarking"></node>
-						<node id="DQ.312" label="Clinical Data Quality Assessment">
-							<isComposedBy>
-								<node id="DQ.312.1" label="Clinical Consistency"></node>
-								<node id="DQ.312.2" label="Clinical Follow-Up"></node>
-								<node id="DQ.312.3" label="Clinical Complexity"></node>
-								<node id="DQ.312.4" label="Confirmatory Clinical Data"></node>
-								<node id="DQ.312.5" label="Expected Clinical Event Representation"></node>
-								<node id="DQ.312.6" label="Selection Error or Bias Detection"></node>
-								<node id="DQ.312.7" label="Targeted Patient Population"></node>
-								<node id="DQ.312.8" label="Utilization Patterns"></node>
-								<node id="DQ.312.9" label="Valid Diagnostic Criteria"></node>
-							</isComposedBy>
-						</node>
-					</isComposedBy>
-				</node>
-			</isComposedBy>
-		</node>
+        <node id="DQ" label="Data Quality Check Categorizations">
+            <isComposedBy>
+                <node id="DQ.1" label="Data Quality Characterization">
+                   <isComposedBy>
+                        <node id="DQ.101" label="Data Concordance">
+                        </node>
+                        <node id="DQ.102" label="Data Conformance">
+                        </node>
+                        <node id="DQ.103" label="Data Completeness">
+                        </node>
+                        <node id="DQ.104" label="Data Consistency">
+                        </node>
+                        <node id="DQ.105" label="Information Representation">
+                        </node>
+                        <node id="DQ.106" label="Data Plausibility">
+                        </node>
+                   </isComposedBy>
+                </node>
+                <node id="DQ.2" label="Dataset Evaluation Strategy">
+                            <isComposedBy>
+                                <node id="DQ.201" label="Analysis Level">
+                                    <isComposedBy>
+                                        <node id="DQ.201.1" label="Person-Level Analysis"></node>
+                                        <node id="DQ.201.2" label="Visit-Level Analysis"></node>
+                                    </isComposedBy>
+                                </node>
+                                <node id="DQ.202" label="Temporal Evaluation">
+                                    <isComposedBy>
+                                        <node id="DQ.202.1" label="Time-Based Analysis"></node>
+                                        <node id="DQ.202.2" label="Not Time-Based"></node>
+                                    </isComposedBy>
+                                </node>
+                                <node id="DQ.203" label="Data Source Comparison">
+                                    <isComposedBy>
+                                        <node id="DQ.203.1" label="Multi-Site Analysis"></node>
+                                        <node id="DQ.203.2" label="Single Site"></node>
+                                    </isComposedBy>
+                                </node>
+                                <node id="DQ.204" label="Data Anomaly Detection">
+                                    <isComposedBy>
+                                        <node id="DQ.204.1" label="Time Series Anomalies"></node>
+                                        <node id="DQ.204.2" label="Distance From Mean"></node>
+                                        <node id="DQ.204.3" label="Jaccard Similarity Index"></node>
+                                        <node id="DQ.204.4" label="Hotspots Outlier Detection"></node>
+                                        <node id="DQ.204.5" label="Seasonal-Trend Decomposition Using LOESS"></node>
+                                        <node id="DQ.204.6" label="Euclidean Distance"></node>
+                                    </isComposedBy>
+                                </node>						
+                                <node id="DQ.205" label="Exploratory Analysis">
+                                    <isComposedBy>
+                                        <node id="DQ.205.1" label="Time Series Exporation"></node>
+                                        <node id="DQ.205.2" label="Attrition Counts"></node>
+                                        <node id="DQ.205.3" label="Frequency Distribution"></node>
+                                        <node id="DQ.205.4" label="Time Between Events"></node>
+                                    </isComposedBy>
+                                </node>
+                                <node id="DQ.206" label="Data Quality Communication">
+                                    <isComposedBy>
+                                        <node id="DQ.206.1" label="Data Visualization">
+                                            <isComposedBy>
+                                                <node id="DQ.206.101" label="Bar Graph"></node>
+                                                <node id="DQ.206.102" label="Control Chart"></node>
+                                                <node id="DQ.206.103" label="Dot and Star Plot"></node>
+                                                <node id="DQ.206.104" label="Histogram"></node>
+                                                <node id="DQ.206.105" label="Heatmap"></node>
+                                                <node id="DQ.206.106" label="Line Graph"></node>
+                                                <node id="DQ.206.107" label="Radial Bar Graph"></node>
+                                            </isComposedBy>
+                                        </node>
+                                    </isComposedBy>
+                                </node>
+                            </isComposedBy>
+                </node>
+                <node id="DQ.3" label="Quality Probe">
+                            <isComposedBy>
+                                <node id="DQ.301" label="Misclassification Detection"></node>
+                                <node id="DQ.302" label="Eligibility Criteria Assessment"></node>
+                                <node id="DQ.303" label="Missing Expected Data"></node>
+                                <node id="DQ.304" label="Information Density"></node>
+                                <node id="DQ.305" label="Selection Error or Bias"></node>
+                                <node id="DQ.306" label="Temporality Inconsistency"></node>
+                                <node id="DQ.307" label="Anomalous Value from Internal Distribution"></node>
+                                <node id="DQ.308" label="Temporal Consistency Check"></node>
+                                <node id="DQ.309" label="Data Representation Errors"></node>
+                                <node id="DQ.310" label="Missing Required Data"></node>
+                                <node id="DQ.311" label="External Benchmarking"></node>
+                                <node id="DQ.312" label="Clinical Data Quality Assessment">
+                                    <isComposedBy>
+                                        <node id="DQ.312.1" label="Clinical Consistency"></node>
+                                        <node id="DQ.312.2" label="Clinical Follow-Up"></node>
+                                        <node id="DQ.312.3" label="Clinical Complexity"></node>
+                                        <node id="DQ.312.4" label="Confirmatory Clinical Data"></node>
+                                        <node id="DQ.312.5" label="Expected Clinical Event Representation"></node>
+                                        <node id="DQ.312.6" label="Selection Error or Bias Detection"></node>
+                                        <node id="DQ.312.7" label="Targeted Patient Population"></node>
+                                        <node id="DQ.312.8" label="Utilization Patterns"></node>
+                                        <node id="DQ.312.9" label="Valid Diagnostic Criteria"></node>
+                                    </isComposedBy>
+                                </node>
+                            </isComposedBy>
+                </node>
+            </isComposedBy>
+        </node>
 		<node id="CP" label="Computable Phenotyping">
 		</node>
 	</isComposedBy>
