@@ -56,13 +56,13 @@
             PLEASE NOTICE THAT YOU WILL HAVE TO RESTART DSPACE
             - - - - - -
         -->
-        <name-map collection-entity-type="Publication" submission-name="Publication"/>
         <name-map collection-entity-type="Person" submission-name="Person"/>
-        <name-map collection-entity-type="Project" submission-name="Project"/>
         <name-map collection-entity-type="OrgUnit" submission-name="OrgUnit"/>
-        <name-map collection-entity-type="Journal" submission-name="Journal"/>
-        <name-map collection-entity-type="JournalVolume" submission-name="JournalVolume"/>
-        <name-map collection-entity-type="JournalIssue" submission-name="JournalIssue"/>
+        <name-map collection-entity-type="Study" submission-name="Study"/>
+        <name-map collection-entity-type="ConceptSet" submission-name="ConceptSet"/>
+        <name-map collection-entity-type="Phenotype" submission-name="Phenotype"/>
+        <name-map collection-entity-type="DQCheck" submission-name="DQCheck"/>
+        <name-map collection-entity-type="Documentation" submission-name="Documentation"/>
 
         <!-- Example of configuration using a community handle to map an Item Submission Process.
 
@@ -73,8 +73,6 @@
         -->
 
     </submission-map>
-
-
 
     <!-- The 'step-definitions' allows you to define steps which you may wish -->
     <!-- to "share" amongst multiple submission-item definitions. In order to -->
@@ -153,6 +151,32 @@
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
             <type>submission-form</type>
         </step-definition>
+
+        <!-- NEW ENTITY BASED STEP DEFINITIONS-->
+        <step-definition id="DQCheckForm" mandatory="true">
+            <heading>submit.progressbar.describe.stepone</heading>
+            <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+            <type>submission-form</type>
+        </step-definition>
+
+        <step-definition id="ConceptSetForm" mandatory="true">
+            <heading>submit.progressbar.describe.stepone</heading>
+            <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+            <type>submission-form</type>
+        </step-definition>
+
+        <step-definition id="StudyForm" mandatory="true">
+            <heading>submit.progressbar.describe.stepone</heading>
+            <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+            <type>submission-form</type>
+        </step-definition>
+
+        <step-definition id="DocumentationForm" mandatory="true">
+            <heading>submit.progressbar.describe.stepone</heading>
+            <processing-class></processing-class>
+            <type>submission-form</type>
+        </step-definition>
+
 
         <step-definition id="upload">
             <heading>submit.progressbar.upload</heading>
@@ -311,20 +335,39 @@
             <step id="license"/>
         </submission-process>
 
-        <!--
-        Submission Process for 'Publication' Entities.
-        These are not to be confused with default Items, as Publications may be linked with other Entities
-        (e.g. Person, JournalIssue, etc).
-        To enable: create a collection for Publications and add it to the <submission-map> tag linking to this process
-         -->
-        <submission-process name="Publication">
+
+        <submission-process name="ConceptSet">
             <step id="collection"/>
-            <!-- Publications use a custom first step, but share page 2 with "traditional" Item form -->
-            <step id="publicationStep"/>
-            <step id="traditionalpagetwo"/>
+            <step id="ConceptSetForm"/>
             <step id="upload"/>
-            <step id="license"/>
+            <step id="duplicates"/>
+            <step id="itemAccessConditions"/>
+            <step id="cclicense"/>
         </submission-process>
+
+        <submission-process name="Study">
+            <step id="collection"/>
+            <step id="StudyForm"/>
+            <step id="cclicense"></step>
+        </submission-process>
+
+        <submission-process name="DQCheck">
+            <step id="collection"/>
+            <step id="DQCheckForm"/>
+            <step id="upload"/>
+            <step id="cclicense"/>
+        </submission-process>
+
+        <submission-process name="Documentation">
+            <step id="collection"/>
+            <step id="DocumentationForm"/>
+            <step id="upload"/>
+            <step id="duplicates"/>
+            <step id="itemAccessConditions"/>
+            <step id="cclicense"/>
+        </submission-process>
+
+
 
         <!--
         Submission Process for 'Person' Entities
@@ -333,17 +376,6 @@
         <submission-process name="Person">
             <step id="collection"/>
             <step id="personStep"/>
-            <step id="upload"/>
-            <step id="license"/>
-        </submission-process>
-
-        <!--
-        Submission Process for 'Pproject' Entities
-        To enable: create a collection for Projects and add it to the <submission-map> tag linking to this process
-         -->
-        <submission-process name="Project">
-            <step id="collection"/>
-            <step id="projectStep"/>
             <step id="upload"/>
             <step id="license"/>
         </submission-process>
@@ -358,6 +390,34 @@
             <step id="upload"/>
             <step id="license"/>
         </submission-process>
+
+
+        <!--
+        Submission Process for 'Publication' Entities.
+        These are not to be confused with default Items, as Publications may be linked with other Entities
+        (e.g. Person, JournalIssue, etc).
+        To enable: create a collection for Publications and add it to the <submission-map> tag linking to this process
+         -->
+        <submission-process name="Publication">
+            <step id="collection"/>
+            <!-- Publications use a custom first step, but share page 2 with "traditional" Item form -->
+            <step id="publicationStep"/>
+            <step id="traditionalpagetwo"/>
+            <step id="upload"/>
+            <step id="license"/>
+        </submission-process>
+        
+        <!--
+        Submission Process for 'Pproject' Entities
+        To enable: create a collection for Projects and add it to the <submission-map> tag linking to this process
+         -->
+         <submission-process name="Project">
+            <step id="collection"/>
+            <step id="projectStep"/>
+            <step id="upload"/>
+            <step id="license"/>
+        </submission-process>
+
 
         <!--
         Submission Process for 'Journal' Entities
