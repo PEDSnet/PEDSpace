@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE input-forms SYSTEM "submission-forms.dtd">
+<!DOCTYPE input-forms SYSTEM "/data/dspace/config/submission-forms.dtd">
 
 
 <input-forms>
@@ -191,7 +191,6 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
-                    <!-- An input-type of tag MUST be marked as repeatable -->
                     <repeatable>true</repeatable>
                     <label>Subject Keywords</label>
                     <input-type>tag</input-type>
@@ -348,10 +347,10 @@
                         <repeatable>true</repeatable>
                         <label>Check Specifications</label>
                         <input-type>onebox</input-type>
-                        <hint>At minimum add one tag to the check for each of the following categories. Use the subject tree for Data Quality Check Categorizations for assistance. 
+                        <hint>At minimum, add one tag to the check for each of the following categories. Use the subject tree for Data Quality Check Categorizations for assistance. 
                             Data quality characterization; analysis level; temporal evaluation; data source;anomaly or exploratory investigation; visualization output(s); quality probe; and clinical data quality assessment type.</hint>
                         <required>Specification tags are required.</required>
-                        <vocabulary>dc_subject</vocabulary>
+                        <vocabulary closed="true">dc_subject</vocabulary>
                     </field>
                 </row>
                 <row>
@@ -501,7 +500,8 @@
                         <label>Description</label>
                         <input-type>textarea</input-type>
                         <hint>Enter a description of the clinical concept measured by this code set and the purpose or intention of the code set within the context of a study. Why did you develop this concept set? Were you trying to define a cohort or investigate a study variable? Was it intended to be broad (prioritizing sensitivity) or narrow (prioritizing specificity)? What kind of topics are included in this concept set? Were there any limitations placed on this concept set?
-                            E.g., This broad concept set was intended to identify patients with cleft lip, cleft palate, or cleft lip and palate to define a study cohort.E.g., This medication concept set includes the following ingredients: Azilsartan, Candesartan, Eprosartan, Irbesartan, Losartan, Olmesartan, Telmisartan, and Valsartan. Combinations included. 
+                            E.g., This broad concept set was intended to identify patients with cleft lip, cleft palate, or cleft lip and palate to define a study cohort. 
+                            E.g., This medication concept set includes the following ingredients: Azilsartan, Candesartan, Eprosartan, Irbesartan, Losartan, Olmesartan, Telmisartan, and Valsartan. Combinations are included. 
                             PLEASE PROVIDE AS MUCH DETAIL AS POSSIBLE.</hint>
                         <required></required>
                     </field>
@@ -513,10 +513,10 @@
                         <dc-qualifier>other</dc-qualifier>
                         <repeatable>true</repeatable>
                         <label>Vocabularies</label>
-                        <input-type>tag</input-type>
+                        <input-type>onebox</input-type>
                         <hint>Enter the medical ontologies used in the concept set.</hint>
                         <required>At least one ontology must be referenced.</required>
-                        <vocabulary>dc_subject_other</vocabulary>
+                        <vocabulary closed="true">dc_subject_other</vocabulary>
                     </field>
                 </row>
                 <row>
@@ -527,9 +527,9 @@
                         <repeatable>true</repeatable>
                         <label>Tags</label>
                         <input-type>onebox</input-type>
-                        <hint>Enter terms that classify the concept set. You should declare the data model the set was created against here, the level of review, the medication class level, and variable-relationship.</hint>
+                        <hint>Enter terms that classify the concept set. You should tag the data model the set was created against, the level of review, the medication class level, and variable-relationship.</hint>
                         <required>At least one tag must be applied to the concept set.</required>
-                        <vocabulary>dc_subject</vocabulary>
+                        <vocabulary closed="true">dc_subject</vocabulary>
                     </field>
                 </row>
                 <row>
@@ -539,10 +539,10 @@
                         <dc-qualifier>mesh</dc-qualifier>
                         <repeatable>true</repeatable>
                         <label>Clinical Subject</label>
-                        <input-type>tag</input-type>
-                        <hint>Tag the clinical subject most associated with the concept set, then input terms for up to two term hierarchies higher, and others as applicable.</hint>
+                        <input-type>onebox</input-type>
+                        <hint>Tag the clinical subject most associated with the concept set, then input terms for up to two term hierarchy-levels higher and others as applicable.</hint>
                         <required>At least two clinical subject heading must be applied to the concept set.</required>
-                        <vocabulary>dc_mesh</vocabulary>
+                        <vocabulary closed="true">dc_subject_mesh</vocabulary>
                     </field>
                 </row>
                 <row>
@@ -708,7 +708,7 @@
                         <input-type>onebox</input-type>
                         <hint>Enter terms that classify the Study.</hint>
                         <required>At least one tag must be applied to the study.</required>
-                        <vocabulary>dc_subject</vocabulary>
+                        <vocabulary closed="true">dc_subject</vocabulary>
                     </field>
                 </row>
                 <row>
@@ -719,12 +719,11 @@
                         <repeatable>true</repeatable>
                         <label>Concept Sets Used</label>
                         <input-type>onebox</input-type>
-                        <hint>Apply the clinical subject(s) most associated with the study, then input terms for up to two term hierarchies higher, and others as applicable.</hint>
+                        <hint>Apply the clinical subject(s) most associated with the study, then input terms for up to two term hierarchy-levels higher, and others as applicable.</hint>
                         <required>At least one clinical subject heading must be applied to the study.</required>
-                        <vocabulary>dc_mesh</vocabulary>
+                        <vocabulary closed="true">dc_subject_mesh</vocabulary>
                     </field>
                 </row>
-
                 <row>
                     <field>
                         <dc-schema>dc</dc-schema>
@@ -733,7 +732,7 @@
                         <repeatable>true</repeatable>
                         <label>Publications</label>
                         <input-type>onebox</input-type>
-                        <hint>Enter the DOI of any subsequent publication of the study.</hint>
+                        <hint>Enter the DOI of any subsequent publication from the study.</hint>
                         <required></required>
                     </field>
                 </row>
@@ -868,7 +867,7 @@
                         <dc-element>provenance</dc-element>
                         <dc-qualifier></dc-qualifier>
                         <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
-                        <repeatable>falce</repeatable>
+                        <repeatable>false</repeatable>
                         <label>Provenance</label>
                         <input-type>textarea</input-type>
                         <hint>Enter provenance information associated with the item if applicable.</hint>
@@ -882,10 +881,10 @@
                         <dc-qualifier></dc-qualifier>
                         <repeatable>true</repeatable>
                         <label>Tags</label>
-                        <input-type>tag</input-type>
+                        <input-type>onebox</input-type>
                         <hint>Apply tags to the item as applicable.</hint>
                         <required></required>
-                        <vocabulary>dc_subject</vocabulary>
+                        <vocabulary closed="true">dc_subject</vocabulary>
                     </field>
                 </row>
                 <row>

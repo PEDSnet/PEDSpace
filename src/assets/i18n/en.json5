@@ -1007,6 +1007,8 @@
   "browse.comcol.by.subject": "By Subject",
 
   "browse.comcol.by.srsc": "By Subject Category",
+  
+  "browse.comcol.by.dc_subject": "By Subject Category",
 
   "browse.comcol.by.nsi": "By Norwegian Science Index",
 
@@ -3304,11 +3306,7 @@
   
   "menu.section.browse_global_by_specs": "By Specification",
 
-  "menu.section.browse_global_by_srsc": "By Subject Category",
-
   "menu.section.browse_global_by_dc_subject": "By Subject Category",
-
-  "menu.section.browse_global_by_nsi": "By Norwegian Science Index",
 
   "menu.section.browse_global_by_title": "By Title",
 
@@ -4453,6 +4451,14 @@
   "search.filters.applied.operator.query": "",
 
   "search.filters.filter.itemAffiliation.head": "Affiliation",
+  
+  "search.filters.filter.itemVocabulary.head": "Vocabulary",
+  
+  "search.filters.filter.itemVocabulary.head": "Vocabulary",
+  
+  "search.filters.filter.itemVocabulary.label": "Search Vocabulary",
+  
+  "search.filters.filter.itemVocabulary.placeholder": "Vocabulary...",
   
   "search.filters.filter.dateCreated.head": "Date Created",
 

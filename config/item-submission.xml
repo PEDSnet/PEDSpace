@@ -173,7 +173,7 @@
 
         <step-definition id="DocumentationForm" mandatory="true">
             <heading>submit.progressbar.describe.stepone</heading>
-            <processing-class></processing-class>
+            <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
             <type>submission-form</type>
         </step-definition>
 

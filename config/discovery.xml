@@ -190,6 +190,7 @@
                 <ref bean="searchFilterDateCreated"/>
                 <ref bean="searchFilterSubject"/>
                 <ref bean="searchFilterClinicalSubject"/>
+                <ref bean="searchFilterVocabulary"/>
                 <ref bean="searchFilterEntityType"/>
             </list>
         </property>
@@ -202,6 +203,7 @@
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterVocabulary"/>
                 <ref bean="searchFilterContentInOriginalBundle"/>
                 <ref bean="searchFilterFileNameInOriginalBundle" />
                 <ref bean="searchFilterFileDescriptionInOriginalBundle" />
@@ -3441,7 +3443,7 @@
     </bean>
     
     <!-- <bean id="searchFilterTags" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
-        <property name="indexFieldName" value="subject" />
+        <property name="indexFieldName" value="tags" />
         <property name="metadataFields">
             <list>
                 <value>dc.subject</value>
@@ -3453,20 +3455,6 @@
         <property name="splitter" value="::"/>
     </bean> -->
 
-    <!-- <bean id="searchFilterSubject" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
-        <property name="indexFieldName" value="subject"/>
-        <property name="metadataFields">
-            <list>
-                <value>dc.subject.*</value>
-            </list>
-        </property>
-        <property name="facetLimit" value="5"/>
-        <property name="sortOrderSidebar" value="COUNT"/>
-        <property name="sortOrderFilterPage" value="COUNT"/>
-        <property name="splitter" value="::"/>
-
-    </bean> -->
-    
     <bean id="searchFilterClinicalSubject" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
         <property name="indexFieldName" value="itemClinicalSubject" />
         <property name="metadataFields">
@@ -3478,6 +3466,18 @@
         <property name="sortOrderSidebar" value="COUNT"/>
         <property name="sortOrderFilterPage" value="COUNT"/>
         <property name="splitter" value="::"/>
+    </bean>
+
+    <bean id="searchFilterVocabulary" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="itemVocabulary" />
+        <property name="metadataFields">
+            <list>
+                <value>dc.subject.other</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5"/>
+        <property name="sortOrderSidebar" value="COUNT"/>
+        <property name="sortOrderFilterPage" value="COUNT"/>
     </bean>
 
 </beans>
