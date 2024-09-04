@@ -271,7 +271,7 @@
                 </row> 
                 <row>
                     <relation-field>
-                        <relationship-type>isPersonofConceptSet</relationship-type>
+                        <relationship-type>isPersonOfConceptSet</relationship-type>
                         <search-configuration>person</search-configuration>
                         <repeatable>false</repeatable>
                         <label>Check Creator(s)</label>
@@ -287,7 +287,7 @@
                 </row>
                 <row>
                     <relation-field>
-                        <relationship-type>isOrgUnitofPerson</relationship-type>
+                        <relationship-type>isOrgUnitOfPerson</relationship-type>
                         <search-configuration>orgunit</search-configuration>
                         <repeatable>false</repeatable>
                         <label>Affliated Organization(s)</label>
@@ -424,7 +424,7 @@
                 </row>
                 <row>
                     <relation-field>
-                        <relationship-type>isPersonofConceptSet</relationship-type>
+                        <relationship-type>isPersonOfConceptSet</relationship-type>
                         <search-configuration>person</search-configuration>
                         <repeatable>true</repeatable>
                         <label>Creator(s)</label>
@@ -445,7 +445,7 @@
                 </row>
                 <row>
                     <relation-field>
-                        <relationship-type>isPersonofConceptSet</relationship-type>
+                        <relationship-type>isPersonOfConceptSet</relationship-type>
                         <search-configuration>person</search-configuration>
                         <repeatable>true</repeatable>
                         <label>Reviewer(s)</label>
@@ -464,7 +464,7 @@
                 </row>
                 <row>
                     <relation-field>
-                        <relationship-type>isOrgUnitofPerson</relationship-type>
+                        <relationship-type>isOrgUnitOfPerson</relationship-type>
                         <search-configuration>orgunit</search-configuration>
                         <repeatable>true</repeatable>
                         <label>Affliated Organization(s)</label>
@@ -547,7 +547,7 @@
                 </row>
                 <row>
                     <relation-field>
-                        <relationship-type>isStudyofConceptSet</relationship-type>
+                        <relationship-type>isStudyOfConceptSet</relationship-type>
                         <search-configuration>study</search-configuration>
                         <repeatable>true</repeatable>
                         <label>Related Study</label>
@@ -629,7 +629,7 @@
                 </row>
                 <row>
                     <relation-field>
-                        <relationship-type>isPersonofStudy</relationship-type>
+                        <relationship-type>isPersonOfStudy</relationship-type>
                         <search-configuration>person</search-configuration>
                         <repeatable>true</repeatable>
                         <label>Principle Investigator</label>
@@ -646,7 +646,7 @@
                 </row>
                 <row>
                     <relation-field>
-                        <relationship-type>isOrgUnitofPerson</relationship-type>
+                        <relationship-type>isOrgUnitOfPerson</relationship-type>
                         <search-configuration>orgunit</search-configuration>
                         <repeatable>true</repeatable>
                         <label>Affliated Organization(s)</label>
@@ -795,7 +795,7 @@
                 </row>
                 <row>
                     <relation-field>
-                        <relationship-type>isPersonofDocument</relationship-type>
+                        <relationship-type>isPersonOfDocument</relationship-type>
                         <search-configuration>person</search-configuration>
                         <repeatable>true</repeatable>
                         <label>Creator(s)</label>
@@ -811,7 +811,7 @@
                 </row>
                 <row>
                     <relation-field>
-                        <relationship-type>isOrgUnitofPerson</relationship-type>
+                        <relationship-type>isOrgUnitOfPerson</relationship-type>
                         <search-configuration>orgunit</search-configuration>
                         <repeatable>true</repeatable>
                         <label>Affliated Organization(s)</label>
