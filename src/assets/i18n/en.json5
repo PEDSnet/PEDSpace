@@ -4483,6 +4483,10 @@
   "search.filters.filter.itemAffiliation.label": "Search Affiliation",
   
   "search.filters.filter.itemAffiliation.placeholder": "Affiliation...",
+
+  "search.filters.filter.itemVocabulary.label": "Search Vocabulary",
+  
+  "search.filters.filter.itemVocabulary.placeholder": "Vocabulary...",
   
   "search.filters.filter.itemVocabulary.head": "Vocabulary",
   
