@@ -4035,6 +4035,30 @@
   "publication-relationships.search.results.head": "Publication Search Results",
 
   "publication.search.title": "Publication Search",
+  
+  "study.search.results.head": "Study Search Results",
+
+  "study-relationships.search.results.head": "Study Search Results",
+
+  "study.search.title": "Study Search",
+  
+  "conceptset.search.results.head": "Concept Set Search Results",
+
+  "conceptset-relationships.search.results.head": "Concept Set Search Results",
+
+  "conceptset.search.title": "Concept Set Search",
+
+  "phenotype.search.results.head": "Phenotype Search Results",
+
+  "phenotype-relationships.search.results.head": "Phenotype Search Results",
+
+  "phenotype.search.title": "Phenotype Search",
+
+  "dqcheck.search.results.head": "Data Quality Check Search Results",
+
+  "dqcheck-relationships.search.results.head": "Data Quality Check Search Results",
+
+  "dqcheck.search.title": "Data Quality Check Search",
 
   "media-viewer.next": "Next",
 
@@ -4450,6 +4474,8 @@
 
   "search.filters.applied.operator.query": "",
 
+  "search.filters.filter.itemFunder.head": "Funders",
+  
   "search.filters.filter.itemAffiliation.head": "Affiliation",
   
   "search.filters.filter.itemAffiliation.label": "Search Affiliation",
