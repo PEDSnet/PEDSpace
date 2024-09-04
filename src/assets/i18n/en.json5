@@ -4476,6 +4476,8 @@
 
   "search.filters.filter.itemFunder.head": "Funders",
   
+  "search.filters.filter.itemVocab.head": "Vocabulary",
+  
   "search.filters.filter.itemAffiliation.head": "Affiliation",
   
   "search.filters.filter.itemAffiliation.label": "Search Affiliation",
@@ -6919,8 +6921,10 @@
   "dqcheck.listelement.badge": "DQCheck",
 
   "journal.listelement.badge": "Journal",
+  "journal.listelement.badge": "Journal"
+  ,
 
-  "journalissue.listelement.badge": "JournalIssue",
+  "journalissue.itemVocab.badge": "Vocabulary",
 
   "journalvolume.listelement.badge": "JournalVolume",
 
