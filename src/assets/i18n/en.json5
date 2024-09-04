@@ -5146,6 +5146,12 @@
 
   "submission.sections.describe.relationship-lookup.title.isProjectOfPublication": "Projects",
 
+  "submission.sections.describe.relationship-lookup.title.isPersonOfConceptSet": "Authors",
+  
+  "submission.sections.describe.relationship-lookup.title.isPersonOfStudy": "Authors",
+  
+  "submission.sections.describe.relationship-lookup.title.isPersonOfDocument": "Authors",
+
   "submission.sections.describe.relationship-lookup.title.isFundingAgencyOfProject": "Funder of the Project",
 
   "submission.sections.describe.relationship-lookup.selection-tab.search-form.placeholder": "Search...",
