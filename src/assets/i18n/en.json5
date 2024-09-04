@@ -4261,22 +4261,14 @@
   "relationships.isContributorOf.Person": "Contributor",
 
   "relationships.isFundingAgencyOf.OrgUnit": "Funder",
- 
-  "relationships.isStudyOf.Person": "Related Person",
 
-  "relationships.isStudyOf.ConceptSet": "Related Concept Set",
+  "relationships.isConceptSetOf": "Related Concept Set",
   
-  "relationships.isStudyOf.Phenotype": "Related Phenotype",
+  "relationships.isStudyOf": "Related Study",
+
+  "relationships.isPhenotypeOf": "Related Phenotype",
   
-  "relationships.isConceptSetOf.Study": "Related Study",
-
-  "relationships.isConceptSetOf.Person": "Related Person",
-
-  "relationships.isConceptSetOf.Phenotype": "Related Phenotype",
-
-  "relationships.isDocumentationOf.Person": "Related Person",
-  
-  "relationships.isDQCheckOf.Person": "Related Person",
+  "relationships.isPersonOf": "Related Person",
 
   "repository.image.logo": "Repository logo",
 
@@ -4492,9 +4484,9 @@
   
   "search.filters.filter.itemVocabulary.head": "Vocabulary",
   
-  "search.filters.filter.itemVocabulary.label": "Search Vocabulary",
+  "search.filters.filter.itemVocab.label": "Search Vocabulary",
   
-  "search.filters.filter.itemVocabulary.placeholder": "Vocabulary...",
+  "search.filters.filter.itemVocab.placeholder": "Vocabulary...",
   
   "search.filters.filter.dateCreated.head": "Date Created",
 
@@ -5109,6 +5101,14 @@
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isAuthorOfPublication": "Local Authors ({{ count }})",
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isJournalOfPublication": "Local Journals ({{ count }})",
+  
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.Study": "Local Studies ({{ count }})",
+  
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.ConceptSets": "Local Concept Sets ({{ count }})",
+  
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.Documentation": "Local Documentation ({{ count }})",
+  
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.dqCheck": "Local Data Quality Check ({{ count }})",
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.Project": "Local Projects ({{ count }})",
 
@@ -5185,6 +5185,14 @@
   "submission.sections.describe.relationship-lookup.title.isPersonOfDocument": "Authors",
 
   "submission.sections.describe.relationship-lookup.title.isFundingAgencyOfProject": "Funder of the Project",
+
+  "submission.sections.describe.relationship-lookup.title.Study": "Studies",
+  
+  "submission.sections.describe.relationship-lookup.title.ConceptSet": "Concept Sets",
+  
+  "submission.sections.describe.relationship-lookup.title.dqCheck": "Data Quality Checks",
+
+  "submission.sections.describe.relationship-lookup.title.Documentation": "Documentation",
 
   "submission.sections.describe.relationship-lookup.selection-tab.search-form.placeholder": "Search...",
 
