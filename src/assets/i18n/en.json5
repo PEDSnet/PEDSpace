@@ -5104,7 +5104,7 @@
   
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.Study": "Local Studies ({{ count }})",
   
-  "submission.sections.describe.relationship-lookup.search-tab.tab-title.ConceptSets": "Local Concept Sets ({{ count }})",
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.ConceptSet": "Local Concept Sets ({{ count }})",
   
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.Documentation": "Local Documentation ({{ count }})",
   
