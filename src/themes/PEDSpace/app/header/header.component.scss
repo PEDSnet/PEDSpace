@@ -9,7 +9,7 @@
 
 .navbar-brand img {
   @media screen and (max-width: map-get($grid-breakpoints, md)) {
-    height: var(--ds-header-logo-height-xs);
+    height: var(--ds-header-logo-height);
   }
 }
 .navbar-toggler .navbar-toggler-icon {
