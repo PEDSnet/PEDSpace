@@ -436,11 +436,6 @@
                             <dc-qualifier>author</dc-qualifier>
                             <input-type>onebox</input-type>
                         </linked-metadata-field>
-                        <regex>\w+(,)+\w+</regex>
-                        <!-- You may choose to validate author names via a Regular Expression if it's appropriate for
-                            your institution. The below regex requires a comma to be present in the author field.
-                            However, this is disabled by default to support organizations as authors, etc. -->
-                        <!--<regex>\w+(,)+\w+</regex>-->
                     </relation-field>
                 </row>
                 <row>
@@ -513,7 +508,7 @@
                         <dc-qualifier>other</dc-qualifier>
                         <repeatable>true</repeatable>
                         <label>Vocabularies</label>
-                        <input-type>tag</input-type>
+                        <input-type>onebox</input-type>
                         <hint>Enter the medical ontologies used in the concept set.</hint>
                         <required>At least one ontology must be referenced.</required>
                         <vocabulary closed="true">dc_subject_other</vocabulary>

@@ -660,11 +660,876 @@
             <isComposedBy>
                 <node id="CS02.01" label="Diagnosis">
                     <isComposedBy>
-                        <node id="" label=""></node>
+                        <node id="CS02.0101" label="Clinical Decision-Making">
+                            <isComposedBy>
+                                <node id="CS02.0101.01" label="Clinical Reasoning">
+                                    <isComposedBy>
+                                        <node id="CS02.0101.0101" label="Clinical Relevance"></node>
+                                    </isComposedBy>
+                                </node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS02.0102" label="Delayed Diagnosis"/>
+                        <node id="CS02.0103" label="Diagnosis, Computer-Assisted">
+                            <isComposedBy>
+                                <node id="CS02.0103.01" label="Image Interpretation, Computer-Assisted">
+                                    <isComposedBy>
+                                        <node id="CS02.0103.0101" label="Radiographic Image Interpretation, Computer Assisted"></node>
+                                    </isComposedBy>
+                                </node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS02.0104" label="Diagnosis, Differential"/>
+                        <node id="CS02.0105" label="Diagnosis, Dual (Psychiatry)"/>
+                        <node id="CS02.0106" label="Diagnostic Errors">
+                            <isComposedBy>
+                                <node id="CS02.0106.01" label="False Negative Reactions"></node>
+                                <node id="CS02.0106.02" label="False Positive Reactions"></node>
+                                <node id="CS02.0106.03" label="Observer Variation"></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS02.0107" label="Diagnostic Techniques and Procedures">
+                            <isComposedBy>
+                                <node id="CS02.0107.01" label="Age Determination by Skeleton"/>
+                                <node id="CS02.0107.02" label="Autopsy">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.0201" label="Postmortem Imaging"></node>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.03" label="Breath Tests">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.0301" label="Fractional Exhaled Nitric Oxide Testing"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.04" label="Clinical Laboratory Techniques">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.0401" label="Clinical Chemistry Tests">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0402" label="COVID-19 Testing">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node> 
+                                        <node id="CS02.0107.0403" label="Cytological Techniques">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0404" label="Genetic Testing">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0405" label="Hematologic Tests">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0406" label="Histological Techniques">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0407" label="Immunologic Tests">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0408" label="Laboratory Critical Values"/>
+                                        <node id="CS02.0107.0408" label="Metabolic Clearance Rate"/>
+                                        <node id="CS02.0107.0410" label="Microbiological Techniques">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0411" label="Molecular Diagnostic Techniques">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0412" label="Neonatal Screening"/>
+                                        <node id="CS02.0107.0413" label="Occult Blood"/>
+                                        <node id="CS02.0107.0414" label="Parasite Load">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0415" label="Parasitic Sensitivity Tests"/>
+                                        <node id="CS02.0107.0416" label="Pre-Analytical Phase"/>
+                                        <node id="CS02.0107.0417" label="Pregnancy Tests">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0418" label="Radioligand Assay"/>
+                                        <node id="CS02.0107.0419" label="Rapid Diagnostic Tests"/>
+                                        <node id="CS02.0107.0420" label="Semen Analysis">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0421" label="Sex Determination Analysis">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0422" label="Specimen Handling">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.05" label="Diagnostic Imaging">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.0501" label="Cardiac Imaging Techniques">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0502" label="Dacryocystography"/>
+                                        <node id="CS02.0107.0503" label="Forensic Imaging"/>
+                                        <node id="CS02.0107.0504" label="Image Interpretation, Computer-Assisted">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0505" label="Imaging, Three-Dimensional">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0506" label="Microscopy">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0507" label="Microwave Imaging"/>
+                                        <node id="CS02.0107.0508" label="Molecular Imaging">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0509" label="Multimodal Imaging">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0510" label="Neuroimaging">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0511" label="Optical Imaging">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0512" label="Photography">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0513" label="Postmortem Imaging"/>
+                                        <node id="CS02.0107.0514" label="Radiography">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0515" label="Radiomics"/>
+                                        <node id="CS02.0107.0516" label="Radionuclide Imaging">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0517" label="Respiratory-Gated Imaging Techniques"/>
+                                        <node id="CS02.0107.0518" label="Spectroscopy, Near-Infrared"/>
+                                        <node id="CS02.0107.0519" label="Stroboscopy"/>
+                                        <node id="CS02.0107.0520" label="Subtraction Technique">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0521" label="Terahertz Imaging"/>
+                                        <node id="CS02.0107.0522" label="Thermography"/>
+                                        <node id="CS02.0107.0523" label="Tomography">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0524" label="Ultrasonography">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0525" label="Voltage-Sensitive Dye Imaging"/>
+                                        <node id="CS02.0107.0526" label="Whole Body Imaging"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.06" label="Diagnostic Self Evaluation"/>
+                                <node id="CS02.0107.07" label="Diagnostic Techniques, Cardiovascular">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.0701" label="Angiography">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0702" label="Angioscopy"/>
+                                        <node id="CS02.0107.0703" label="Blood Circulation Time"/>
+                                        <node id="CS02.0107.0704" label="Blood Flow Velocity"/>
+                                        <node id="CS02.0107.0705" label="Blood Pressure Determination">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0706" label="Blood Volume Determination"/>
+                                        <node id="CS02.0107.0707" label="Capillary Fragility"/>
+                                        <node id="CS02.0107.0708" label="Carotid Intima-Media Thickness"/>
+                                        <node id="CS02.0107.0709" label="Heart Function Tests">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0710" label="Hemodynamic Monitoring"/>
+                                        <node id="CS02.0107.0711" label="Laser-Doppler Flowmetry"/>
+                                        <node id="CS02.0107.0712" label="Microscopic Angioscopy"/>
+                                        <node id="CS02.0107.0713" label="Perfusion Index"/>
+                                        <node id="CS02.0107.0714" label="Plethysmography">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0715" label="Pulse Wave Analysis">
+                                            <isComposedBy>
+                                                <node id="" label=""></node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0716" label="Tilt-Table Test"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.08" label="Diagnostic Techniques, Digestive System">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.0801" label="Cholangiography">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.0801.01" label="Cholangiopancreatography, Endoscopic Retrograde"/>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.0802" label="Cholangiopancreatography, Magnetic Resonance"/>
+                                        <node id="CS02.0107.0803" label="Cholecystography"/>
+                                        <node id="CS02.0107.0804" label="Colonography, Computed Tomographic"/>
+                                        <node id="CS02.0107.0805" label="Endoscopy, Digestive System">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.0805.01" label="Cholangiopancreatography, Endoscopic Retrograde"/>
+                                                <node id="CS02.0107.0805.02" label="Endoscopy, Gastrointestinal">
+                                                    <isComposedBy>
+                                                        <node id="CS02.0107.0805.0201" label="Balloon Enteroscopy">
+                                                            <isComposedBy>
+                                                                <node id="CS02.0107.0805.0201.01" label="Double-Balloon Enteroscopy"/>
+                                                                <node id="CS02.0107.0805.0201.02" label="Single-Balloon Enteroscopy"/>
+                                                            </isComposedBy>
+                                                        </node>
+                                                        <node id="CS02.0107.0805.0202" label="Colonoscopy">
+                                                            <isComposedBy>
+                                                                <node id="CS02.0107.0805.0202.01" label="Sigmoidoscopy"/>
+                                                            </isComposedBy>
+                                                        </node>
+                                                        <node id="CS02.0107.0805.0203" label="Duodenoscopy"/>
+                                                        <node id="CS02.0107.0805.0204" label="Endoscopic Mucosal Resection"/>
+                                                        <node id="CS02.0107.0805.0205" label="Esophagoscopy"/>
+                                                        <node id="CS02.0107.0805.0206" label="Gastroscopy"/>
+                                                        <node id="CS02.0107.0805.0207" label="Proctoscopy"/>
+                                                    </isComposedBy>
+                                                </node>
+                                            </isComposedBy>
+                                        </node> 
+                                        <node id="CS02.0107.0806" label="Esophageal pH Monitoring"/>
+                                        <node id="CS02.0107.0807" label="Gastric Acidity Determination"/>
+                                        <node id="CS02.0107.0808" label="Gastrointestinal Transit"/>
+                                        <node id="CS02.0107.0809" label="Lactose Tolerance Test"/>
+                                        <node id="CS02.0107.0810" label="Liver Function Tests"/>
+                                        <node id="CS02.0107.0811" label="Pancreatic Function Tests"/>
+                                        <node id="CS02.0107.0812" label="Portography"/>
+                                        <node id="CS02.0107.0813" label="Sialography"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.09" label="Diagnostic Techniques, Endocrine">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.0901" label="Adrenal Cortex Function Tests"/>
+                                        <node id="CS02.0107.0902" label="Blood Glucose Self-Monitoring"/>
+                                        <node id="CS02.0107.0903" label="Continuous Glucose Monitoring"/>
+                                        <node id="CS02.0107.0904" label="Glucose Tolerance Test"/>
+                                        <node id="CS02.0107.0905" label="Ovarian Function Tests"/>
+                                        <node id="CS02.0107.0906" label="Pituitary-Adrenal Function Tests"/>
+                                        <node id="CS02.0107.0907" label="Pituitary Function Tests"/>
+                                        <node id="CS02.0107.0908" label="Radioligand Assay"/>
+                                        <node id="CS02.0107.0909" label="Thyroid Function Tests"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.10" label="Diagnostic Techniques, Neurological">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.1001" label="Electrocorticograph"/>
+                                        <node id="CS02.0107.1002" label="Electroencephalography">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.1002.01" label="Brain Waves">
+                                                    <isComposedBy>
+                                                        <node id="CS02.0107.1002.0101" label="Alpha Rhythm"/>
+                                                        <node id="CS02.0107.1002.0102" label="Beta Rhythm"/>
+                                                        <node id="CS02.0107.1002.0103" label="Delta Rhythm"/>
+                                                        <node id="CS02.0107.1002.0104" label="Gamma Rhythm"/>
+                                                        <node id="CS02.0107.1002.0105" label="Theta Rhythm"/>
+                                                    </isComposedBy>
+                                                </node>
+                                                <node id="CS02.0107.1002.02" label="Electroencephalography Phase Synchronization">
+                                                    <isComposedBy>
+                                                        <node id="CS02.0107.1002.0201" label="Cortical Synchronization"/>
+                                                    </isComposedBy>
+                                                </node>
+                                            </isComposedBy>
+                                        </node> 
+                                        <node id="CS02.0107.1003" label="Local Field Potential Measurement"/>
+                                        <node id="CS02.0107.1004" label="Magnetoencephalography"/>
+                                        <node id="CS02.0107.1005" label="Nerve Conduction Studies"/>
+                                        <node id="CS02.0107.1006" label="Neuroendoscopy"/>
+                                        <node id="CS02.0107.1007" label="Neuroimaging">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.1007.01" label="Brain Cortical Thickness"/>
+                                                <node id="CS02.0107.1007.02" label="Diffusion Tensor Imaging"/>
+                                                <node id="CS02.0107.1007.03" label="Functional Neuroimaging">
+                                                    <isComposedBy>
+                                                        <node id="CS02.0107.1007.0301" label="Brain Mapping">
+                                                            <isComposedBy>
+                                                                <node id="CS02.0107.1007.0301.01" label="Connectome"/>
+                                                            </isComposedBy>
+                                                        </node>
+                                                        <node id="CS02.0107.1007.0302" label="Dopaminergic Imaging"/>
+                                                    </isComposedBy>
+                                                </node>
+                                                <node id="CS02.0107.1007.04" label="Neuroradiography">
+                                                    <isComposedBy>
+                                                        <node id="CS02.0107.1007.0401" label="Cerebral Angiography"/>
+                                                        <node id="CS02.0107.1007.0402" label="Cerebral Ventriculography"/>
+                                                        <node id="CS02.0107.1007.0403" label="Echocephalography">
+                                                            <isComposedBy>
+                                                                <node id="CS02.0107.1007.0403.01" label="Ultrasonography, Doppler, Transcranial"/>
+                                                            </isComposedBy>
+                                                        </node>
+                                                        <node id="CS02.0107.1007.0404" label="Myelography">
+                                                            <isComposedBy>
+                                                                <node id="CS02.0107.1007.0404.01" label="Magnetic Resonance Myelography"/>
+                                                            </isComposedBy>
+                                                        </node>
+                                                        <node id="CS02.0107.1007.0405" label="Pneumoencephalography"/>
+                                                    </isComposedBy>
+                                                </node>
+                                            </isComposedBy>
+                                        </node> 
+                                        <node id="CS02.0107.1008" label="Neurologic Examination">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.1008.01" label="Reflex">
+                                                    <isComposedBy>
+                                                        <node id="CS02.0107.1008.0101" label="Diving, Reflex"/>
+                                                        <node id="CS02.0107.1008.0102" label="Reflex, Abdominal"/>
+                                                        <node id="CS02.0107.1008.0103" label="Reflex, Abnormal"/>
+                                                        <node id="CS02.0107.1008.0104" label="Reflex, Acoustic"/>
+                                                        <node id="CS02.0107.1008.0105" label="Reflex, Babinski"/>
+                                                        <node id="CS02.0107.1008.0106" label="Reflex, Pupillary"/>
+                                                        <node id="CS02.0107.1008.0107" label="Reflex, Righting"/>
+                                                        <node id="CS02.0107.1008.0108" label="Reflex, Stretch"/>
+                                                        <node id="CS02.0107.1008.0109" label="Reflex, Startle"/>
+                                                    </isComposedBy>
+                                                </node>
+                                            </isComposedBy>
+
+                                        </node> 
+                                        <node id="CS02.0107.1009" label="Olfactometry"/>
+                                        <node id="CS02.0107.1010" label="Spinal Puncture"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.11" label="Diagnostic Techniques, Obstetrical and Gynecological">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.1101" label="Colposcopy"/>
+                                        <node id="CS02.0107.1102" label="Culdoscopy"/>
+                                        <node id="CS02.0107.1103" label="Fallopian Tube Patency Tests"/>
+                                        <node id="CS02.0107.1104" label="Fetal Monitoring">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.1104.01" label="Cardiotocography"/>
+                                            </isComposedBy>
+                                        </node> 
+                                        <node id="CS02.0107.1105" label="Hysterosalpingography"/>
+                                        <node id="CS02.0107.1106" label="Hysteroscopy"/>
+                                        <node id="CS02.0107.1107" label="Ovarian Function Tests">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.1107.01" label="Ovulation Detection"/>
+                                                <node id="CS02.0107.1107.02" label="Ovulation Prediction"/>
+                                            </isComposedBy>
+                                        </node> 
+                                        <node id="CS02.0107.1108" label="Pelvimetry"/>
+                                        <node id="CS02.0107.1109" label="Placental Function Tests"/>
+                                        <node id="CS02.0107.1110" label="Pregnancy Tests">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.1110.01" label="Pregnancy Tests, Immunologic"/>
+                                            </isComposedBy>
+                                        </node>  
+                                        <node id="CS02.0107.1111" label="Preimplantation Diagnosis"/>
+                                        <node id="CS02.0107.1112" label="Prenatal Diagnosis">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.1112.01" label="Amniocentesis"/>
+                                                <node id="CS02.0107.1112.02" label="Chorionic Villi Sampling"/>
+                                                <node id="CS02.0107.1112.03" label="Fetoscopy"/>
+                                                <node id="CS02.0107.1112.04" label="Maternal Serum Screening Tests"/>
+                                                <node id="CS02.0107.1112.05" label="Noninvasive Prenatal Testing"/>
+                                                <node id="CS02.0107.1112.06" label="Ultrasonography, Prenatal">
+                                                    <isComposedBy>
+                                                        <node id="CS02.0107.1112.0601" label="Cervical Length Measurement"/>
+                                                        <node id="CS02.0107.1112.0602" label="Nuchal Translucency Measurement"/>
+                                                    </isComposedBy>
+                                                </node>
+                                            </isComposedBy>
+                                        </node> 
+                                        <node id="CS02.0107.1113" label="Ultrasonography, Mammary"/>
+                                        <node id="CS02.0107.1114" label="Uterine Monitoring"/>
+                                        <node id="CS02.0107.1115" label="Vaginal Smears"/>
+                                    </isComposedBy>
+                                </node> 
+                                <node id="CS02.0107.12" label="Diagnostic Techniques, Ophthalmological">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.1201" label="Aberrometry"/>
+                                        <node id="CS02.0107.1202" label="Corneal Pachymetry"/>
+                                        <node id="CS02.0107.1203" label="Corneal Topography"/>
+                                        <node id="CS02.0107.1204" label="Electroretinography"/>
+                                        <node id="CS02.0107.1205" label="Eye Movement Measurements">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.1205.01" label="Electronystagmography"/>
+                                                <node id="CS02.0107.1205.02" label="Electroculography"/>
+                                                <node id="CS02.0107.1205.03" label="Eye-Tracking Technology"/>
+                                            </isComposedBy>
+                                        </node> 
+                                        <node id="CS02.0107.1206" label="Flicker Fusion"/>
+                                        <node id="CS02.0107.1207" label="Fluorescein Angiography"/>
+                                        <node id="CS02.0107.1208" label="Fluorophotometry"/>
+                                        <node id="CS02.0107.1209" label="Gonioscopy"/>
+                                        <node id="CS02.0107.1210" label="Ophthalmodynamometry"/>
+                                        <node id="CS02.0107.1211" label="Ophthalmoscopy">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.1211.01" label="Retinoscopy"/>
+                                            </isComposedBy>
+                                        </node> 
+                                        <node id="CS02.0107.1212" label="Scanning Laser Polarimetry"/>
+                                        <node id="CS02.0107.1213" label="Slit Lamp Microscopy"/>
+                                        <node id="CS02.0107.1214" label="Tonometry, Ocular"/>
+                                        <node id="CS02.0107.1215" label="Vision Tests">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.1215.01" label="Color Perception Tests"/>
+                                                <node id="CS02.0107.1215.02" label="Refraction, Ocular"/>
+                                                <node id="CS02.0107.1215.03" label="Vision Screening"/>
+                                                <node id="CS02.0107.1215.04" label="Visual Acuity">
+                                                    <isComposedBy>
+                                                        <node id="CS02.0107.1215.0401" label="Contrast Sensitivity"/>
+                                                        <node id="CS02.0107.1215.0402" label="Emmetropia"/>
+                                                    </isComposedBy>
+                                                </node>
+                                                <node id="CS02.0107.1215.05" label="Visual Field Tests"/>
+                                            </isComposedBy>
+                                        </node> 
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.13" label="Diagnostic Techniques, Otological">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.1301" label="Hearing Tests">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.1301.01" label="Acoustic Impedance Tests"/>
+                                                <node id="CS02.0107.1301.02" label="Audiometry">
+                                                    <isComposedBy>
+                                                        <node id="CS02.0107.1301.0201" label="Audiometry, Evoked Response"/>
+                                                        <node id="CS02.0107.1301.0202" label="Audiometry, Pure-Tone"/>
+                                                        <node id="CS02.0107.1301.0203" label="Audiometry, Speech">
+                                                            <isComposedBy>
+                                                                <node id="CS02.0107.1301.0203.01" label="Speech Discrimination Tests"/>
+                                                                <node id="CS02.0107.1301.0203.02" label="Speech Reception Threshold Test"/>
+                                                            </isComposedBy>
+                                                        </node>
+                                                        <node id="CS02.0107.1301.0204" label="Psychoacoustics"/>
+                                                    </isComposedBy>
+                                                </node>
+                                                <node id="CS02.0107.1301.03" label="Dichotic Listening Tests"/>
+                                                <node id="CS02.0107.1301.04" label="Recruitment Detection, Audiologic"/>
+                                            </isComposedBy>
+                                        </node> 
+                                        <node id="CS02.0107.1302" label="Otoscopy"/>
+                                        <node id="CS02.0107.1303" label="Vestibular Function Tests">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.1303.01" label="Caloric Tests"/>
+                                                <node id="CS02.0107.1303.02" label="Electronystagmography"/>
+                                                <node id="CS02.0107.1303.03" label="Head Impulse Test"/>
+                                            </isComposedBy>
+                                        </node> 
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.14" label="Diagnostic Techniques, Radioisotope">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.1401" label="Radioimmunoassay"/>
+                                        <node id="CS02.0107.1402" label="Radioisotope Dilution Technique"/>
+                                        <node id="CS02.0107.1403" label="Radioligand Assay"/>
+                                        <node id="CS02.0107.1404" label=" Radionuclide Imaging"></node> 
+                                        <node id="CS02.0107.1405" label="Schilling Test"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.15" label="Diagnostic Techniques, Respiratory System">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.1501" label="Bronchography"/>
+                                        <node id="CS02.0107.1502" label="Bronchoscopy"/>
+                                        <node id="CS02.0107.1503" label="Laryngoscopy"/>
+                                        <node id="CS02.0107.1504" label="Mass Chest X-Ray"/>
+                                        <node id="CS02.0107.1505" label="Mucociliary Clearance"/>
+                                        <node id="CS02.0107.1506" label="Nasal Provocation Tests"/>
+                                        <node id="CS02.0107.1507" label="Respiratory Function Tests"></node>
+                                        <node id="CS02.0107.1508" label="Respiratory Sounds"/>
+                                        <node id="CS02.0107.1509" label="Respiratory-Gated Imaging Techniques"/>
+                                        <node id="CS02.0107.1510" label="Rhinomanometry"/>
+                                        <node id="CS02.0107.1511" label="Rhinometry, Acoustic"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.16" label="Diagnostic Techniques, Surgical">
+                                    <isComposedBy>
+                                        <node id="" label="Biopsy"></node>
+                                        <node id="CS02.0107.1601" label="Endoscopy"></node>
+                                        <node id="CS02.0107.1602" label="Pneumomediastinum, Diagnostic"/>
+                                        <node id="CS02.0107.1603" label="Pneumoperitoneum, Artificial"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.17" label="Diagnostic Techniques, Urological">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.1701" label="Antibody-Coated Bacteria Test, Urinary"/>
+                                        <node id="CS02.0107.1702" label="Cystoscopy"/>
+                                        <node id="CS02.0107.1703" label="Kidney Function Tests"></node>
+                                        <node id="CS02.0107.1704" label="Nephrostomy, Percutaneous"/>
+                                        <node id="CS02.0107.1705" label="Ureteroscopy"/>
+                                        <node id="CS02.0107.1706" label="Urinalysis"></node>
+                                        <node id="CS02.0107.1707" label="Urinary Catheterization"/>
+                                        <node id="CS02.0107.1708" label=" Urography"></node>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.18" label="Diagnostic Tests, Routine">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.1801" label="Motion Capture"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.19" label="Direct-To-Consumer Screening and Testing"/>
+                                <node id="CS02.0107.20" label="Disability Evaluation">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.2001" label="Work Capacity Evaluation"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.21" label="Electrodiagnosis">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.2101" label="Electrocardiography"></node>
+                                        <node id="CS02.0107.2102" label="Electrocorticography"/>
+                                        <node id="CS02.0107.2103" label="Electroencephalography"></node>
+                                        <node id="CS02.0107.2104" label="Electrokymography"/>
+                                        <node id="CS02.0107.2105" label="Electromyography"/>
+                                        <node id="CS02.0107.2106" label="Electronystagmography"/>
+                                        <node id="CS02.0107.2107" label="Electrophysiologic Techniques, Cardiac"/>
+                                        <node id="CS02.0107.2108" label="Electroretinography"/>
+                                        <node id="CS02.0107.2110" label="Eye Movement Measurements"></node>
+                                        <node id="CS02.0107.2111" label="Local Field Potential Measurement"/>
+                                        <node id="CS02.0107.2112" label="Magnetocardiography"/>
+                                        <node id="CS02.0107.2113" label="Magnetoencephalography"/>
+                                        <node id="CS02.0107.2114" label="Nerve Conduction Studies"/>
+                                        <node id="CS02.0107.2115" label="Plethysmography, Impedance"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.22" label="Insufflation"/>
+                                <node id="CS02.0107.23" label="Kymography">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.2301" label="Electrokymography"></node>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.24" label="Mass Screening">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.2401" label="Anonymous Testing"/>
+                                        <node id="CS02.0107.2402" label="Mass Chest X-Ray"/>
+                                        <node id="CS02.0107.2403" label="Multiphasic Screening"/>
+                                        <node id="CS02.0107.2404" label="Neonatal Screening"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.25" label="Traditional Pulse Diagnosis"/>
+                                <node id="CS02.0107.26" label="Surgical Clearance"/>
+                                <node id="CS02.0107.27" label=" Medical History Taking">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.2701" label="Cornell Medical Index"/>
+                                        <node id="CS02.0107.2702" label="Reproductive History"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.28" label="Monitoring, Physiologic">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.2801" label="Actigraphy"/>
+                                        <node id="CS02.0107.2802" label="Blood Glucose Self-Monitoring"/>
+                                        <node id="CS02.0107.2803" label="Continuous Glucose Monitoring"/>
+                                        <node id="CS02.0107.2804" label="Drug Monitoring"/>
+                                        <node id="CS02.0107.2805" label="Esophageal pH Monitoring"/>
+                                        <node id="CS02.0107.2806" label="Fetal Monitoring"></node>
+                                        <node id="CS02.0107.2807" label="Hemodynamic Monitoring"/>
+                                        <node id="CS02.0107.2808" label="Monitoring, Ambulatory"></node>
+                                        <node id="CS02.0107.2809" label="Monitoring, Immunologic"></node>
+                                        <node id="CS02.0107.2810" label="Monitoring, Intraoperative"></node>
+                                        <node id="CS02.0107.2811" label="Neuromuscular Monitoring"/>
+                                        <node id="CS02.0107.2812" label="Neurophysiological Monitoring"></node> 
+                                        <node id="CS02.0107.2813" label="Polysomnography"/>
+                                        <node id="CS02.0107.2814" label="Telemetry"></node> 
+                                        <node id="CS02.0107.2815" label="Uterine Monitoring"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.29" label="Myography">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.2901" label="Electromyography"/>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.30" label="Photoacoustic Techniques"/>
+                                <node id="CS02.0107.31" label="Physical Examination">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.3101" label="Anthropometry">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.3101.01" label="Cephalometry"/>
+                                                <node id="CS02.0107.3101.02" label="Digit Ratios"/>
+                                                <node id="CS02.0107.3101.03" label="Kinanthropometry"/>
+                                                <node id="CS02.0107.3101.04" label="Odontometry">
+                                                    <isComposedBy>
+                                                        <node id="CS02.0107.3101.0401" label="Age Determination by Teeth"/>
+                                                    </isComposedBy>
+                                                </node>
+                                                <node id="CS02.0107.3101.05" label="Pelvimetry"/>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.3102" label="Apgar Score"/>
+                                        <node id="CS02.0107.3103" label="Auscultation">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.3103.01" label="Heart Auscultation"/>
+                                            </isComposedBy>
+                                        </node> 
+                                        <node id="CS02.0107.3104" label="Blood Pressure Determination"/>
+                                        <node id="CS02.0107.3105" label="Body Constitution">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.3105.01" label="Body Weights and Measures">
+                                                    <isComposedBy>
+                                                        <node id="CS02.0107.3105.0101" label="Body Fat Distribution">
+                                                            <isComposedBy>
+                                                                <node id="CS02.0107.3105.0101.01" label="Adiposity"/>
+                                                            </isComposedBy>
+                                                        </node>
+                                                        <node id="CS02.0107.3105.0102" label="Body Mass Index"/>
+                                                        <node id="CS02.0107.3105.0103" label="Body Size">
+                                                            <isComposedBy>
+                                                                <node id="CS02.0107.3105.0103.01" label="Body Height">
+                                                                    <isComposedBy>
+                                                                        <node id="CS02.0107.3105.0103.01" label="Crown-Rump Length"/>
+                                                                    </isComposedBy>
+                                                                </node>
+                                                                <node id="CS02.0107.3105.0103.02" label="Body Weight">
+                                                                    <isComposedBy>
+                                                                        <node id="CS02.0107.3105.0103.0201" label="Birth Weight"/>
+                                                                        <node id="CS02.0107.3105.0103.0202" label="Fetal Weight"/>
+                                                                        <node id="CS02.0107.3105.0103.0203" label="Ideal Body Weight"/>
+                                                                    </isComposedBy>
+                                                                </node>
+                                                                <node id="CS02.0107.3105.0103.03" label="Sagittal Abdominal Diameter"/>
+                                                                <node id="CS02.0107.3105.0103.04" label="Waist Circumference">
+                                                                    <isComposedBy>
+                                                                        <node id="CS02.0107.3105.0103.0401" label="Lipid Accumulation Product"></node>
+                                                                    </isComposedBy>
+                                                                </node>
+                                                                <node id="CS02.0107.3105.0103.05" label="Waist-Height Ratio"/>
+                                                            </isComposedBy>
+                                                        </node>
+                                                        <node id="CS02.0107.3105.0104" label="Body Surface Area"/>
+                                                        <node id="CS02.0107.3105.0105" label="Organ Size">
+                                                            <isComposedBy>
+                                                                <node id="CS02.0107.3105.0105.01" label="Axial Length, Eye"/>
+                                                            </isComposedBy>
+                                                        </node>
+                                                        <node id="CS02.0107.3105.0106" label="Skinfold Thickness"/>
+                                                        <node id="CS02.0107.3105.0107" label="Waist-Hip Ratio"/>
+                                                    </isComposedBy>
+                                                </node>
+                                                <node id="CS02.0107.3105.02" label="Breast Density"/>
+                                                <node id="CS02.0107.3105.03" label="Physical Appearance, Body">
+                                                    <isComposedBy>
+                                                        <node id="CS02.0107.3105.0301" label="Body Height">
+                                                            <isComposedBy>
+                                                                <node id="CS02.0107.3105.0301.01" label="Crown-Rump Length"/>
+                                                            </isComposedBy>
+                                                        </node>
+                                                        <node id="CS02.0107.3105.0302" label="Body Weight">
+                                                            <isComposedBy>
+                                                                <node id="CS02.0107.3105.0302.01" label="Birth Weight"/>
+                                                                <node id="CS02.0107.3105.0302.02" label="Fetal Weight"/>
+                                                                <node id="CS02.0107.3105.0302.03" label="Ideal Body Weight"/>
+                                                                <node id="CS02.0107.3105.0302.03" label="Overweight"/>
+                                                                <node id="CS02.0107.3105.0302.03" label="Thinness"/>
+                                                            </isComposedBy>
+                                                        </node>
+                                                        <node id="CS02.0107.3105.0303" label="Skin Pigmentation"/>
+                                                        <node id="CS02.0107.3105.0304" label="Somatotypes"/>
+                                                    </isComposedBy>
+                                                </node>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.3106" label="Facial Expression"/>
+                                        <node id="CS02.0107.3107" label="Facies"/>
+                                        <node id="CS02.0107.3112" label="Gait">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.3112.01" label="Gait Analysis"/>
+                                                <node id="CS02.0107.3112.02" label="Walking Speed"/>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.3109" label="Gynecological Examination"/>
+                                        <node id="CS02.0107.3110" label="Heart Rate Determination"/>
+                                        <node id="CS02.0107.3111" label=" Metabolic Equivalent"/>
+                                        <node id="CS02.0107.3112" label="Muscle Strength">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.3112.01" label="Hand Strength"/>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.3113" label="Neurologic Examination">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.3113.01" label="Abnormal Involuntary Movement Scale"/>
+                                                <node id="CS02.0107.3113.02" label="Pain Measurement"/>
+                                                <node id="CS02.0107.3113.03" label="Reflex"/>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.3114" label="Palpation">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.3114" label="Digital Rectal Examination"/>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.3115" label="Percussion"/>
+                                        <node id="CS02.0107.3116" label="Pigmentation">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.3116" label="Skin Pigmentation"/>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.3117" label="Range of Motion, Articular">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.3117.01" label="Arthrometry, Articular"/>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.3118" label="Self-Examination">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.3118.01" label="Breast Self-Examination"/>
+                                            </isComposedBy>
+                                        </node>
+                                        <node id="CS02.0107.3119" label="Vital Signs">
+                                            <isComposedBy>
+                                                <node id="CS02.0107.3119.01" label="Blood Pressure"/>
+                                                <node id="CS02.0107.3119.02" label="Body Temperature"/>
+                                                <node id="CS02.0107.3119.03" label="Heart Rate"/>
+                                                <node id="CS02.0107.3119.04" label="Respiratory Rate"/>
+                                            </isComposedBy>
+                                        </node>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.32" label="Premarital Examinations"/>
+                                <node id="CS02.0107.33" label="Psychophysics">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.3301" label="Psychoacoustics"></node>
+                                        <node id="CS02.0107.3302" label="Signal Detection, Psychological"></node>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.34" label="Speech Production Measurement">
+                                    <isComposedBy>
+                                        <node id="CS02.0107.3401" label="Speech Articulation Tests"></node>
+                                    </isComposedBy>
+                                </node>
+                                <node id="CS02.0107.35" label="Symptom Assessment"/>
+                                <node id="CS02.0107.36" label="Visual Analog Scale"/>
+                                <node id="CS02.0107.37" label="Xenodiagnosis"/>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS02.0108" label="Early Diagnosis">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="CS02.0109" label="Incidental Findings"/>
+                        <node id="CS02.0110" label="Overdiagnosis"/>
+                        <node id="CS02.0111" label="Prodromal Symptoms"/>
+                        <node id="CS02.0112" label="Prognosis">
+                            <isComposedBy>
+                                <node id="" label=""></node>
+                            </isComposedBy>
+                        </node>
+                        <node id="" label="Theranostic Nanomedicine"/>
                     </isComposedBy>
                 </node>
                 <node id="CS02.02" label="Therapeutics">
                     <isComposedBy>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
+                        <node id="" label=""></node>
                         <node id="" label=""></node>
                     </isComposedBy>
                 </node>

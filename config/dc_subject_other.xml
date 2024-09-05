@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This is the controlled vocabulary used for VOCABCheck entity types referenced by the field dc.subject-->
+<!-- This is the controlled vocabulary used for dc.subject.other-->
 <node id="VOCAB" label="Medical Ontologies">
 	<isComposedBy>
         <node id="VOCAB.1" label="RxNorm"></node>
         <node id="VOCAB.2" label="RxNorm Extension"></node>
         <node id="VOCAB.3" label="NDC"></node>
         <node id="VOCAB.4" label="ICD-03"></node>
+        <node id="VOCAB.35" label="ICD-9"></node>
         <node id="VOCAB.5" label="ICD-9-CM"></node>
         <node id="VOCAB.6" label="ICD-9-Proc"></node>
         <node id="VOCAB.7" label="ICD-10"></node>
@@ -13,6 +14,7 @@
         <node id="VOCAB.9" label="ICD-10-PCS"></node>
         <node id="VOCAB.10" label="ICD-10-GM"></node>
         <node id="VOCAB.11" label="ICD-10-CN"></node>
+        <node id="VOCAB.36" label="ICD-11"></node>
         <node id="VOCAB.12" label="ICD-11-CM"></node>
         <node id="VOCAB.13" label="ICD-11-PCS"></node>
         <node id="VOCAB.14" label="LOINC"></node>
