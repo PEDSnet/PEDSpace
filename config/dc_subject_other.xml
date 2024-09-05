@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This is the controlled vocabulary used for VOCABCheck entity types referenced by the field dc.subject-->
+<!-- This is the controlled vocabulary used for dc.subject.other-->
 <node id="VOCAB" label="Medical Ontologies">
 	<isComposedBy>
         <node id="VOCAB.1" label="RxNorm"></node>
