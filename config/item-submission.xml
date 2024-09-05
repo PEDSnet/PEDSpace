@@ -340,7 +340,6 @@
             <step id="collection"/>
             <step id="ConceptSetForm"/>
             <step id="upload"/>
-            <step id="duplicates"/>
             <step id="itemAccessConditions"/>
             <step id="cclicense"/>
         </submission-process>
@@ -362,7 +361,6 @@
             <step id="collection"/>
             <step id="DocumentationForm"/>
             <step id="upload"/>
-            <step id="duplicates"/>
             <step id="itemAccessConditions"/>
             <step id="cclicense"/>
         </submission-process>
