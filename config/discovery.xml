@@ -1325,6 +1325,7 @@
                 <ref bean="searchFilterIsOrgUnitOfPersonRelation"/>
                 <ref bean="searchFilterIsProjectOfPersonRelation"/>
                 <ref bean="searchFilterIsPublicationOfAuthorRelation"/>
+                <ref bean="searchFilterIsConceptSetOfPersonRelation"/>
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -1385,6 +1386,7 @@
                 <ref bean="searchFilterIsOrgUnitOfPersonRelation"/>
                 <ref bean="searchFilterIsProjectOfPersonRelation"/>
                 <ref bean="searchFilterIsPublicationOfAuthorRelation"/>
+                <ref bean="searchFilterIsPersonOfConceptSetRelation"/>
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -3254,12 +3256,13 @@
                 <ref bean="searchFilterVocabulary"/>
                 <ref bean="searchFilterSubject"/>
                 <ref bean="searchFilterClinicalSubject"/>
-                <ref bean="searchFilterIsConceptSetOfStudyRelation"/>
+                <ref bean="searchFilterAuthor"/>
             </list>
         </property>
         <!--The search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
+                <ref bean="searchFilterAuthor"/>
                 <ref bean="searchFilterSubject"/>
                 <ref bean="searchFilterIdentifier"/>
                 <ref bean="searchFilterCreated"/>
@@ -3268,6 +3271,7 @@
                 <ref bean="searchFilterVocabulary"/>
                 <ref bean="searchFilterClinicalSubject"/>
                 <ref bean="searchFilterIsConceptSetOfStudyRelation"/>
+                <ref bean="searchFilterIsConceptSetOfPersonRelation"/>
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -3940,7 +3944,7 @@
         <property name="isOpenByDefault" value="false"/>
         <property name="pageSize" value="10"/>
     </bean>
-    <bean id="searchFilterIsConceptSetOfStudyRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+    <bean id="searchFilterIsConceptSetOfStudyRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
         <property name="indexFieldName" value="isConceptSetOfStudy"/>
         <property name="metadataFields">
             <list>
@@ -3995,6 +3999,16 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfConceptSet.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+    <bean id="searchFilterIsConceptSetOfPersonRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isConceptSetOfPerson"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isConceptSetOfPerson.latestForDiscovery</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false"/>
