@@ -1003,6 +1003,8 @@
   "browse.comcol.by.author": "By Author",
 
   "browse.comcol.by.dateissued": "By Issue Date",
+  
+  "browse.comcol.by.datecreated": "By Date",
 
   "browse.comcol.by.subject": "By Subject",
 
@@ -1035,6 +1037,8 @@
   "browse.metadata.tag": "Tag",
 
   "browse.metadata.dateissued": "Issue Date",
+  
+  "browse.metadata.datecreated": "Date",
 
   "browse.metadata.subject": "Subject",
 
@@ -1057,6 +1061,8 @@
   "browse.metadata.tag.breadcrumbs": "Browse by Tag",
 
   "browse.metadata.dateissued.breadcrumbs": "Browse by Date",
+  
+  "browse.metadata.datecreated.breadcrumbs": "Browse by Date",
 
   "browse.metadata.subject.breadcrumbs": "Browse by Subject",
  
@@ -3293,6 +3299,8 @@
   "menu.section.browse_global_by_author": "By Author",
 
   "menu.section.browse_global_by_dateissued": "By Issue Date",
+  
+  "menu.section.browse_global_by_datecreated": "By Date",
   
   "menu.section.browse_global_by_type": "By Type",
   

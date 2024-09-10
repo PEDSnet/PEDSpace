@@ -195,11 +195,11 @@
             <list>
                 <ref bean="searchFilterAuthor"/>
                 <ref bean="searchFilterAffiliation"/>
-                <ref bean="searchFilterDateCreated"/>
+                <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterSubject"/>
                 <ref bean="searchFilterClinicalSubject"/>
                 <ref bean="searchFilterVocabulary"/>
-                <ref bean="searchFilterEntityType"/>
+                <!-- <ref bean="searchFilterEntityType"/> -->
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -223,7 +223,7 @@
                 <ref bean="searchFilterIsJournalOfPublicationRelation"/>
                 <!-- New Search Filters -->
                 <ref bean="searchFilterAffiliation"/>
-                <ref bean="searchFilterDateCreated"/>
+                <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterClinicalSubject"/>
             </list>
         </property>
@@ -4109,7 +4109,7 @@
         <property name="exposeMinAndMaxValue" value="true"/>
     </bean>
     <!-- New Filters -->
-    <bean id="searchFilterDateCreated" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+    <!-- <bean id="searchFilterDateCreated" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="dateCreated"/>
         <property name="metadataFields">
             <list>
@@ -4123,7 +4123,7 @@
         <property name="isOpenByDefault" value="false"/>
         <property name="pageSize" value="10"/>
         <property name="exposeMinAndMaxValue" value="true"/>
-    </bean>
+    </bean> -->
     <!-- <bean id="searchFilterTags" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
         <property name="indexFieldName" value="tags" />
         <property name="metadataFields">
