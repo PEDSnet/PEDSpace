@@ -96,15 +96,15 @@
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
       <div class="col-xs-12 col-md-7">
-        <ds-related-items [parentItem]="object" [relationType]="'isStudyOfPerson'"
+        <ds-related-items [parentItem]="object" [relationType]="'isPersonOfStudy'"
           [label]="'relationships.isPersonOf' | translate">
         </ds-related-items>
 
-        <ds-related-items [parentItem]="object" [relationType]="'isStudyOfConceptSet'"
+        <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfStudy'"
           [label]="'relationships.isConceptSetOf' | translate">
         </ds-related-items>
 
-        <ds-related-items [parentItem]="object" [relationType]="'isStudyOfPhenotype'"
+        <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfStudy'"
           [label]="'relationships.isPhenotypeOf' | translate">
         </ds-related-items>
       </div>
