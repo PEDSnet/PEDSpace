@@ -121,12 +121,14 @@
                             <isComposedBy>
                                 <node id="DQ.201.1" label="Person-Level Analysis"/>
                                 <node id="DQ.201.2" label="Visit-Level Analysis"/>
+								<node id="DQ.201.3" label="Event-Level"/>
+								<node id="DQ.201.4" label="Across Time"/>
                             </isComposedBy>
                         </node>
                         <node id="DQ.202" label="Temporal Evaluation">
                             <isComposedBy>
-                                <node id="DQ.202.1" label="Time-Based Analysis"/>
-                                <node id="DQ.202.2" label="Not Time-Based"/>
+                                <node id="DQ.202.1" label="Longitudinal Analysis"/>
+                                <node id="DQ.202.2" label="Cross-Sectional Analysis"/>
                             </isComposedBy>
                         </node>
                         <node id="DQ.203" label="Data Source Comparison">
