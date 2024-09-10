@@ -125,6 +125,10 @@ export class MetadataValuesComponent implements OnChanges {
     return queryParams;
   }
 
+    getLastItem(value: string): string {
+    const parts = value.split('::');
+    return parts[parts.length - 1];
+  }
 
   /**
    * Checks if the given link value is an internal link.
