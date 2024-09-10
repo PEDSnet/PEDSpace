@@ -18,16 +18,16 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { ComcolPageBrowseByComponent as BaseComponent } from '../../../../../../app/shared/comcol/comcol-page-browse-by/comcol-page-browse-by.component';
 
-// @Pipe({
-//   name: 'filterType',
-//   standalone: true,
-// })
-// export class FilterTypePipe implements PipeTransform {
-//   transform(options: any[]): any[] {
-//     // this is where we crudely filter out unwanted metadata fields by dc schema name ie. 'dc.type' or 'browse.comcol.by.srsc'
-//     return options.filter(option => !option.id.includes('type') && !option.id.includes('srsc'));
-//   }
-// }
+@Pipe({
+  name: 'filterType',
+  standalone: true,
+})
+export class FilterTypePipe implements PipeTransform {
+  transform(options: any[]): any[] {
+    // this is where we crudely filter out unwanted metadata fields by dc schema name ie. 'dc.type' or 'browse.comcol.by.srsc'
+    return options.filter(option => !option.id.includes('type') && !option.id.includes('srsc'));
+  }
+}
 
 @Component({
   selector: 'ds-themed-comcol-page-browse-by',
@@ -42,7 +42,7 @@ import { ComcolPageBrowseByComponent as BaseComponent } from '../../../../../../
     TranslateModule,
     AsyncPipe,
     NgIf,
-    // FilterTypePipe,
+    FilterTypePipe,
   ],
 })
 export class ComcolPageBrowseByComponent extends BaseComponent {
