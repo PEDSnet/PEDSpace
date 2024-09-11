@@ -1,3 +1,14 @@
+## This is a script I generated that traverses the vocabulary XML file and updates the database with 
+# the hierarchical paths of the vocabulary terms.
+# Configure the file at `config.ini` with the database connection details and the path to the XML file.
+# The script can be run with the following options:
+# - `--dry-run` to simulate the changes without committing them to the database.
+# - `--test-connection` to test the database connection.
+# You can choose which term you will use to test the connection by changing the `sample_term` variable.
+
+global sample_term
+sample_term = "Data Anomaly Method"
+
 import xml.etree.ElementTree as ET
 import psycopg2
 import logging
@@ -43,7 +54,7 @@ def test_connection(config):
         logging.info(f"Successfully connected to the database. There are {result[0]} rows in the metadatavalue table.")
         
         # Test the search query with a parent node term
-        sample_term = "Data Anomaly Method"
+        
         cursor.execute("SELECT COUNT(*) FROM metadatavalue WHERE text_value = %s;", (sample_term,))
         result = cursor.fetchone()
         
