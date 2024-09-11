@@ -32,11 +32,13 @@
         </form>
 
         <ng-container *ngIf="shouldShowSlider()">
-            <nouislider [connect]="true" [config]="config" [min]="min" [max]="max" [step]="1"
-                        [dsDebounce]="250" (onDebounce)="onSubmit()"
-                        (keydown)="startKeyboardControl()" (keyup)="stopKeyboardControl()"
-                        [(ngModel)]="range" ngDefaultControl>
-            </nouislider>
+        
+          <nouislider [connect]="true" [config]="config" [min]="min" [max]="max" [step]="1"
+          (change)="onSubmit()"
+          (keydown)="startKeyboardControl()" (keyup)="stopKeyboardControl()"
+          [(ngModel)]="range" ngDefaultControl>
+          </nouislider>
+
         </ng-container>
       <ng-container *ngFor="let page of (facetValues$ | async)">
         <div [@facetLoad]="animationState">
