@@ -63,7 +63,7 @@ export class SearchRangeFilterComponent extends SearchFacetFilterComponent imple
   /**
    * Fallback minimum for the range
    */
-  min = 2015;
+  min = 1950;
 
   /**
    * i18n Label to use for minimum field
@@ -90,6 +90,11 @@ export class SearchRangeFilterComponent extends SearchFacetFilterComponent imple
    * The current range of the filter
    */
   range: [number | undefined, number | undefined];
+
+  /**
+   * The range currently selected by the slider
+   */
+  sliderRange: [number | undefined, number | undefined];
 
   /**
    * Whether the sider is being controlled by the keyboard.
@@ -146,6 +151,15 @@ export class SearchRangeFilterComponent extends SearchFacetFilterComponent imple
   }
 
   /**
+   * Updates the sliderRange property with the current slider range.
+   * This method is called whenever the slider value changes, but it does not immediately apply the changes.
+   * @param range - The current range selected by the slider
+   */
+  onSliderChange(range: [number | undefined, number | undefined]): void {
+    this.sliderRange = range;
+  }
+
+  /**
    * Submits new custom range values to the range filter from the widget
    */
   onSubmit() {
@@ -182,5 +196,4 @@ export class SearchRangeFilterComponent extends SearchFacetFilterComponent imple
   shouldShowSlider(): boolean {
     return isPlatformBrowser(this.platformId);
   }
-
 }
