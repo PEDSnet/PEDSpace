@@ -5770,9 +5770,9 @@
 
   "vocabulary-treeview.tree.description.srsc": "Research Subject Categories",
   
-  "vocabulary-treeview.tree.description.dc_subject": "Research Subject Categories",
+  "vocabulary-treeview.tree.description.dc_subject": "Resource Classifications",
   
-  "vocabulary-treeview.tree.description.dc_subject_mesh": "Research Clinical Subject Categories",
+  "vocabulary-treeview.tree.description.dc_subject_mesh": "Medical Subject Heading (MeSH) Classifications",
 
   "vocabulary-treeview.info": "Select a subject to add as search filter",
 
