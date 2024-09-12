@@ -85,6 +85,11 @@ export class MetadataValuesComponent implements OnChanges {
    */
   @Input() img?: ImageField;
 
+  /**
+   * Whether the metadata value should be rendered as a button
+   */
+  @Input() renderAsButton = false;
+
   hasValue = hasValue;
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -125,9 +130,21 @@ export class MetadataValuesComponent implements OnChanges {
     return queryParams;
   }
 
-    getLastItem(value: string): string {
+  /**
+   * Get the last item in a string separated by '::'
+   * @param value The string to split
+   */
+  getLastItem(value: string): string {
     const parts = value.split('::');
     return parts[parts.length - 1];
+  }
+
+  /**
+   * Should the metadata value be rendered as a button?
+   * @param mdValue The metadata value to check
+   */
+  shouldRenderAsButton(mdValue: MetadataValue): boolean {
+    return this.renderAsButton;
   }
 
   /**

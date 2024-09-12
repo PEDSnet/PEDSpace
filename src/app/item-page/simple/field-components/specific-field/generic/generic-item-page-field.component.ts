@@ -52,5 +52,10 @@ export class GenericItemPageFieldComponent extends ItemPageFieldComponent {
    */
   @Input() urlRegex?: string;
 
+  /**
+   * Whether the metadata value should be rendered as a button
+   */
+  @Input() renderAsButton = false;
+
 
 }

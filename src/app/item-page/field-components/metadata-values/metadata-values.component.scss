@@ -1,0 +1,36 @@
+// @import '../../../../styles/variables';
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
+
+.ds-metadata-value {
+  &.btn {
+    margin: 0.2rem;
+    transition: all 0.3s ease;
+    
+    &.btn-outline-primary {
+      color: $western-red;
+      border-color: $western-red;
+      background-color: transparent;
+      
+      &:hover, &:focus {
+        color: $snow;
+        background-color: $china-rose;
+      }
+    }
+  }
+}
+
+.ds-browse-link {
+  color: $western-red;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  
+  &:hover, &:focus {
+    color: darken($western-red, 15%);
+    text-decoration: underline;
+  }
+}
+
+// .separator {
+//   color: $gray-700;
+//   margin: 0 0.5rem;
+// }
