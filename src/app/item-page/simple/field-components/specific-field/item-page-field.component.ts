@@ -75,6 +75,11 @@ export class ItemPageFieldComponent {
     @Input() renderAsButton = false;
 
     /**
+     * The type of entity that the metadata is being displayed for
+     */
+    @Input() entityType?: string;
+
+    /**
      * Return browse definition that matches any field used in this component if it is configured as a browse
      * link in dspace.cfg (webui.browse.link.<n>)
      */

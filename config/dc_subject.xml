@@ -196,6 +196,7 @@
                                 <node id="DQ.302.07" label="Targeted Patient Population"/>
                                 <node id="DQ.302.08" label="Utilization Patterns"/>
                                 <node id="DQ.302.09" label="Valid Diagnostic Criteria"/>
+								<node id="DQ.302.10" label="Clinical Data Distributions"/>
                             </isComposedBy>
                         </node>
                     </isComposedBy>

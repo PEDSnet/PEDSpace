@@ -49,9 +49,9 @@
 
 <!-- Render value as a button to browse index -->
 <ng-template #buttonlink let-value="value" let-mdValue="mdValue">
-  <button class="btn btn-outline-primary btn-sm ds-metadata-value"
-      [routerLink]="['/browse', browseDefinition.id]"
-      [queryParams]="getQueryParams(value)">
+  <button [ngClass]="['btn', 'btn-sm', 'ds-metadata-value', getButtonClass(value)]"
+          [routerLink]="['/browse', browseDefinition.id]"
+          [queryParams]="getQueryParams(value)">
     {{ value.includes('::') ? getLastItem(value) : value }}
-</button>
+  </button>
 </ng-template>

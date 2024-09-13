@@ -5,15 +5,48 @@
   &.btn {
     margin: 0.2rem;
     transition: all 0.3s ease;
-    
+
     &.btn-outline-primary {
       color: $western-red;
       border-color: $western-red;
       background-color: transparent;
-      
+
       &:hover, &:focus {
         color: $snow;
-        background-color: $china-rose;
+        background-color: $western-red;
+      }
+    }
+
+    &.btn-dq-category {
+      color: $snow;
+      border-color: $china-rose;
+      background-color: $china-rose;
+
+      &:hover, &:focus {
+        color: $china-rose;
+        background-color: $snow;
+      }
+    }
+
+    &.btn-dataset-eval-strategy {
+      color: $snow;
+      border-color: $midnight-green;
+      background-color: $midnight-green;
+
+      &:hover, &:focus {
+        color: $midnight-green;
+        background-color: $snow;
+      }
+    }
+
+    &.btn-error-detection-approach {
+      color: $black-bean;
+      border-color: $honeydew;
+      background-color: $honeydew;
+
+      &:hover, &:focus {
+        color: $black-bean;
+        background-color: $snow;
       }
     }
   }

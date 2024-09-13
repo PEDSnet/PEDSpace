@@ -3,6 +3,7 @@ import {
   NgFor,
   NgIf,
   NgTemplateOutlet,
+  NgClass
 } from '@angular/common';
 import {
   Component,
@@ -36,7 +37,7 @@ import { ImageField } from '../../simple/field-components/specific-field/image-f
   styleUrls: ['./metadata-values.component.scss'],
   templateUrl: './metadata-values.component.html',
   standalone: true,
-  imports: [MetadataFieldWrapperComponent, NgFor, NgTemplateOutlet, NgIf, RouterLink, AsyncPipe, TranslateModule, MarkdownDirective],
+  imports: [MetadataFieldWrapperComponent, NgFor, NgTemplateOutlet, NgIf, RouterLink, AsyncPipe, TranslateModule, MarkdownDirective, NgClass],
 })
 export class MetadataValuesComponent implements OnChanges {
 
@@ -89,6 +90,11 @@ export class MetadataValuesComponent implements OnChanges {
    * Whether the metadata value should be rendered as a button
    */
   @Input() renderAsButton = false;
+
+  /**
+   * The entity type of the metadata values
+   */
+  @Input() entityType: string;
 
   hasValue = hasValue;
 
@@ -154,5 +160,33 @@ export class MetadataValuesComponent implements OnChanges {
    */
   hasInternalLink(linkValue: string): boolean {
     return linkValue.startsWith(environment.ui.baseUrl);
+  }
+
+  /**
+   * Get the class for a button based on the value.
+   * @param value The value to get the class for.
+   */
+  getButtonClass(value: string): string {
+    console.log('getButtonClass called with:', value);
+    console.log('entityType:', this.entityType);
+  
+    if (!this.entityType || this.entityType !== 'DQCheck') {
+      console.log('Returning btn-outline-primary due to entityType');
+      return 'btn-outline-primary';
+    }
+  
+    if (value.includes('Data Quality Category')) {
+      console.log('Returning btn-dq-category');
+      return 'btn-dq-category';
+    } else if (value.includes('Dataset Evaluation Strategy')) {
+      console.log('Returning btn-dataset-eval-strategy');
+      return 'btn-dataset-eval-strategy';
+    } else if (value.includes('Error Detection Approach')) {
+      console.log('Returning btn-error-detection-approach');
+      return 'btn-error-detection-approach';
+    } else {
+      console.log('Returning btn-outline-primary as default');
+      return 'btn-outline-primary';
+    }
   }
 }
