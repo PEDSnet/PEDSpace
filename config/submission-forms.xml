@@ -242,6 +242,18 @@
             <form name="DQCheckForm">
                 <row>
                     <field>
+                        <dc-schema>dspace</dc-schema>
+                        <dc-element>entity</dc-element>
+                        <dc-qualifier>type</dc-qualifier>
+                        <repeatable>false</repeatable>
+                        <label>Resource Type</label>
+                        <input-type value-pairs-name="EntityType">dropdown</input-type>
+                        <hint>Select the item type.</hint>
+                        <required>You must select a type for this item.</required>
+                    </field>
+                </row>
+                <row>
+                    <field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>title</dc-element>
                         <dc-qualifier></dc-qualifier>
@@ -381,6 +393,18 @@
 
          <!-- Concept Set Form-->
             <form name="ConceptSetForm">
+                <row>
+                    <field>
+                        <dc-schema>dspace</dc-schema>
+                        <dc-element>entity</dc-element>
+                        <dc-qualifier>type</dc-qualifier>
+                        <repeatable>false</repeatable>
+                        <label>Resource Type</label>
+                        <input-type value-pairs-name="EntityType">dropdown</input-type>
+                        <hint>Select the item type.</hint>
+                        <required>You must select a type for this item.</required>
+                    </field>
+                </row>
                 <row>
                     <field>
                         <dc-schema>dc</dc-schema>
@@ -574,6 +598,18 @@
             <form name="StudyForm">
                 <row>
                     <field>
+                        <dc-schema>dspace</dc-schema>
+                        <dc-element>entity</dc-element>
+                        <dc-qualifier>type</dc-qualifier>
+                        <repeatable>false</repeatable>
+                        <label>Resource Type</label>
+                        <input-type value-pairs-name="EntityType">dropdown</input-type>
+                        <hint>Select the item type.</hint>
+                        <required>You must select a type for this item.</required>
+                    </field>
+                </row>
+                <row>
+                    <field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>title</dc-element>
                         <dc-qualifier></dc-qualifier>
@@ -735,6 +771,18 @@
 
          <!-- Documentation Form-->
             <form name="DocumentationForm">
+                <row>
+                    <field>
+                        <dc-schema>dspace</dc-schema>
+                        <dc-element>entity</dc-element>
+                        <dc-qualifier>type</dc-qualifier>
+                        <repeatable>false</repeatable>
+                        <label>Resource Type</label>
+                        <input-type value-pairs-name="EntityType">dropdown</input-type>
+                        <hint>Select the item type.</hint>
+                        <required>You must select a type for this item.</required>
+                    </field>
+                </row>
                 <row>
                     <field>
                         <dc-schema>dc</dc-schema>
@@ -2187,6 +2235,29 @@
             <pair>
                 <displayed-value>ISBN</displayed-value>
                 <stored-value>isbn</stored-value>
+            </pair>
+        </value-pairs>
+
+        <value-pairs value-pairs-name="EntityType" dc-term="type">
+            <pair>
+                <displayed-value>Concept Set</displayed-value>
+                <stored-value>ConceptSet</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Computable Phenotype</displayed-value>
+                <stored-value>Phenotype</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Study or Query</displayed-value>
+                <stored-value>Study</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Other Resource</displayed-value>
+                <stored-value>Documentation</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Data Quality Check</displayed-value>
+                <stored-value>DQCheck</stored-value>
             </pair>
         </value-pairs>
 
