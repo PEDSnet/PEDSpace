@@ -103,7 +103,7 @@
 				</node>
 			</isComposedBy>	
 		</node>
-        <node id="DQ" label="Data Quality Check Categorizations">
+		<node id="DQ" label="Data Quality Check Categorizations">
             <isComposedBy>
                 <node id="DQ.1" label="Data Quality Category">
                    <isComposedBy>
@@ -121,8 +121,7 @@
                             <isComposedBy>
                                 <node id="DQ.201.1" label="Person-Level Analysis"/>
                                 <node id="DQ.201.2" label="Visit-Level Analysis"/>
-								<node id="DQ.201.3" label="Event-Level"/>
-								<node id="DQ.201.4" label="Across Time"/>
+								<node id="DQ.201.3" label="Event-Level Analysis"/>
                             </isComposedBy>
                         </node>
                         <node id="DQ.202" label="Temporal Evaluation">
@@ -134,7 +133,7 @@
                         <node id="DQ.203" label="Data Source Comparison">
                             <isComposedBy>
                                 <node id="DQ.203.1" label="Multi-Site Analysis"/>
-                                <node id="DQ.203.2" label="Single Site"/>
+                                <node id="DQ.203.2" label="Single Site Analysis"/>
                             </isComposedBy>
                         </node>
                         <node id="DQ.204" label="Data Anomaly Method">
@@ -149,7 +148,7 @@
                         </node>						
                         <node id="DQ.205" label="Exploratory Analysis">
                             <isComposedBy>
-                                <node id="DQ.205.1" label="Time Series Exporation"/>
+                                <node id="DQ.205.1" label="Time Series Exploration"/>
                                 <node id="DQ.205.2" label="Attrition Counts"/>
 								<node id="DQ.205.3" label="Frequency Distribution"/>
                                 <node id="DQ.205.4" label="Time Between Events"/>
@@ -177,9 +176,8 @@
 								<node id="DQ.301.03" label="Missing Expected Data"/>
 								<node id="DQ.301.04" label="Information Density"/>
 								<node id="DQ.301.05" label="Selection Error or Bias"/>
-								<node id="DQ.301.06" label="Temporality Inconsistency"/>
-								<node id="DQ.301.07" label="Anomalous Value from Internal Distribution"/>
-								<node id="DQ.301.08" label="Temporal Consistency Check"/>
+								<node id="DQ.301.07" label="Anomalous Values from Internal Distributions"/>
+								<node id="DQ.301.08" label="Temporality Consistency Check"/>
 								<node id="DQ.301.09" label="Data Representation Errors"/>
 								<node id="DQ.301.10" label="Missing Required Data"/>
 								<node id="DQ.301.11" label="External Benchmarking"/>
