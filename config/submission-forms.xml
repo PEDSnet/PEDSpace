@@ -528,6 +528,19 @@
                 <row>
                     <field>
                         <dc-schema>dc</dc-schema>
+                        <dc-element>provenance</dc-element>
+                        <dc-qualifier></dc-qualifier>
+                        <repeatable>true</repeatable>
+                        <label>Provenance</label>
+                        <input-type>onebox</input-type>
+                        <hint>Input the name of the study this concept set was created for, and what role this concept set played in the study (e.g., exclusion criteria, confounder, etc.) 
+                            If this concept set was not developed for a study enter, "This code set was developed in the course of query formation for a prospective study."</hint>
+                        <required>At least the name of the study must be entered. Do not use shorthand to abbreviate the study, rather, write the full title.</required>
+                    </field>
+                </row>
+                <row>
+                    <field>
+                        <dc-schema>dc</dc-schema>
                         <dc-element>subject</dc-element>
                         <dc-qualifier>other</dc-qualifier>
                         <repeatable>true</repeatable>
@@ -570,11 +583,10 @@
                         <search-configuration>study</search-configuration>
                         <repeatable>true</repeatable>
                         <label>Related Study</label>
-                        <hint>Select the standard name of the study or studies this concept set was used for, if applicable. 
-                            Otherwise enter, "This code set was developed in the course of query formation for a prospective study."</hint>
+                        <hint>Link the concept set to the study or studies this concept set was used in, if applicable.</hint>
                         <linked-metadata-field>
                             <dc-schema>dc</dc-schema>
-                            <dc-element>provenance</dc-element>
+                            <dc-element>relation</dc-element>
                             <dc-qualifier></dc-qualifier>
                             <input-type>onebox</input-type>
                         </linked-metadata-field>
@@ -909,7 +921,6 @@
                         <dc-schema>dc</dc-schema>
                         <dc-element>provenance</dc-element>
                         <dc-qualifier></dc-qualifier>
-                        <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
                         <repeatable>false</repeatable>
                         <label>Provenance</label>
                         <input-type>textarea</input-type>
