@@ -566,7 +566,7 @@
                 </row>
                 <row>
                     <relation-field>
-                        <relationship-type>isStudyOfConceptSet</relationship-type>
+                        <relationship-type>isConceptSetOfStudy</relationship-type>
                         <search-configuration>study</search-configuration>
                         <repeatable>true</repeatable>
                         <label>Related Study</label>
