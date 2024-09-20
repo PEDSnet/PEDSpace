@@ -54,21 +54,10 @@
 		</node>
 		<node id="CS" label="Concept Set Development">
 			<isComposedBy>
-				<node id="CS.1" label="Concept Set Development Programs">
-					<isComposedBy>
-						<node id="CS.101" label="R Studio"/>
-						<node id="CS.102" label="PostgreSQL"/>
-						<node id="CS.103" label="Atlas"/>
-						<node id="CS.104" label="Athena"/>
-					</isComposedBy>
-				</node>
 				<node id="CS.2" label="Concept Set Development Strategy">
 					<isComposedBy>
 						<node id="CS.201" label="Broad"/>
 						<node id="CS.202" label="Specific"/>
-						<node id="CS.203" label="Refresh"/>
-						<node id="CS.204" label="Derivative"/>
-						<node id="CS.205" label="Study Implementation"/>
 						<node id="CS.207" label="Cohort Characterization">
 							<isComposedBy>
 								<node id="CS.207.1" label="Cohort Definition"/>
@@ -82,6 +71,29 @@
 								<node id="CS.208.2" label="Independent Variable"/>
 								<node id="CS.208.3" label="Dependent Variable"/>
 								<node id="CS.208.4" label="Confounder"/>
+							</isComposedBy>
+						</node>
+						<node id="CS.209" label="Medication Characterization">
+							<isComposedBy>
+								<node id="CS.209.1" label="Dose Form Group"/>
+								<node id="CS.209.2" label="Dose Form"/>
+								<node id="CS.209.3" label="Brand Pack Name"/>
+								<node id="CS.209.4" label="Semantic Branded Drug"/>
+								<node id="CS.209.5" label="Semantic Branded Drug Group"/>
+								<node id="CS.209.6" label="Semantic Branded Drug Form Precise"/>
+								<node id="CS.209.7" label="Semantic Branded Drug Form"/>
+								<node id="CS.209.8" label="Semantic Branded Drug Component"/>
+								<node id="CS.209.9" label="Brand Name"/>
+								<node id="CS.209.10" label="Generic Pack"/>
+								<node id="CS.209.11" label="Semantic Clinical Drug"/>
+								<node id="CS.209.12" label="Semantic Clinical Drug Form Group Precise"/>
+								<node id="CS.209.13" label="Semantic Clinical Drug Group"/>
+								<node id="CS.209.14" label="Semantic Clinical Drug Form Precise"/>
+								<node id="CS.209.15" label="Semantic Clinical Drug Form"/>
+								<node id="CS.209.16" label="Semantic Clinical Drug Component"/>
+								<node id="CS.209.17" label="Multiple Ingredients"/>
+								<node id="CS.209.18" label="Precise Ingredient"/>
+								<node id="CS.209.19" label="Ingredient"/>
 							</isComposedBy>
 						</node>
 					</isComposedBy>
@@ -98,7 +110,7 @@
 					<isComposedBy>
 						<node id="CS.401" label="PCORnet Data Model"/>
 						<node id="CS.402" label="PEDSnet Data Model"/>
-						<node id="CS.403" label="OMOP"/>
+						<node id="CS.403" label="OMOP Data Model"/>
 					</isComposedBy>
 				</node>
 			</isComposedBy>	
