@@ -195,11 +195,12 @@
             <list>
                 <ref bean="searchFilterAuthor"/>
                 <ref bean="searchFilterAffiliation"/>
+                <ref bean="searchFilterFunder"/>
                 <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterSubject"/>
                 <ref bean="searchFilterClinicalSubject"/>
                 <ref bean="searchFilterVocabulary"/>
-                <!-- <ref bean="searchFilterEntityType"/> -->
+                <ref bean="searchFilterEntityType"/>
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -4035,6 +4036,15 @@
         <property name="sortOrderFilterPage" value="COUNT"/>
         <property name="splitter" value="::"/>
     </bean>
+    <bean id="searchFilterFunder" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
+        <property name="indexFieldName" value="itemFunder" />
+        <property name="metadataFields">
+            <list>
+                <value>dc.contributor</value>
+            </list>
+        </property>
+    </bean>
+    
     <!-- <bean id="searchFilterTags" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
         <property name="indexFieldName" value="itemTags" />
         <property name="metadataFields">
