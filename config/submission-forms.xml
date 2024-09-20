@@ -248,8 +248,8 @@
                         <repeatable>false</repeatable>
                         <label>Resource Type</label>
                         <input-type value-pairs-name="EntityType">dropdown</input-type>
-                        <hint>Select the item type.</hint>
-                        <required>You must select a type for this item.</required>
+                        <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                        <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
                     </field>
                 </row>
                 <row>
@@ -401,8 +401,8 @@
                         <repeatable>false</repeatable>
                         <label>Resource Type</label>
                         <input-type value-pairs-name="EntityType">dropdown</input-type>
-                        <hint>Select the item type.</hint>
-                        <required>You must select a type for this item.</required>
+                        <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                        <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
                     </field>
                 </row>
                 <row>
@@ -616,8 +616,8 @@
                         <repeatable>false</repeatable>
                         <label>Resource Type</label>
                         <input-type value-pairs-name="EntityType">dropdown</input-type>
-                        <hint>Select the item type.</hint>
-                        <required>You must select a type for this item.</required>
+                        <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                        <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
                     </field>
                 </row>
                 <row>
@@ -675,8 +675,8 @@
                         <relationship-type>isPersonOfStudy</relationship-type>
                         <search-configuration>person</search-configuration>
                         <repeatable>true</repeatable>
-                        <label>Principle Investigator</label>
-                        <hint>Enter the name(s) of the PI(s) (Family name, Given names).</hint>                            
+                        <label>Principle Investigator(s)</label>
+                        <hint>Enter the name(s) of the PI(s) or Query Requestors (Family name, Given names).</hint>                            
                         <linked-metadata-field>
                             <dc-schema>dc</dc-schema>
                             <dc-element>contributor</dc-element>
@@ -760,7 +760,7 @@
                         <dc-element>subject</dc-element>
                         <dc-qualifier>mesh</dc-qualifier>
                         <repeatable>true</repeatable>
-                        <label>Concept Sets Used</label>
+                        <label>Clinical Subjects</label>
                         <input-type>onebox</input-type>
                         <hint>Apply the clinical subject(s) most associated with the study, then input terms for up to two term hierarchy-levels higher, and others as applicable.</hint>
                         <required>At least one clinical subject heading must be applied to the study.</required>
@@ -775,9 +775,24 @@
                         <repeatable>true</repeatable>
                         <label>Publications</label>
                         <input-type>onebox</input-type>
-                        <hint>Enter the DOI of any subsequent publication from the study.</hint>
+                        <hint>Enter the DOI of any subsequent manuscript publication from the study.</hint>
                         <required></required>
                     </field>
+                </row>
+                <row>
+                    <relation-field>
+                        <relationship-type>isStudySetOfConceptSet</relationship-type>
+                        <search-configuration>ConceptSet</search-configuration>
+                        <repeatable>true</repeatable>
+                        <label>Related Concept Sets</label>
+                        <hint>Link the study to any concept sets used in the course of research, if applicable.</hint>
+                        <linked-metadata-field>
+                            <dc-schema>dc</dc-schema>
+                            <dc-element>relation</dc-element>
+                            <dc-qualifier></dc-qualifier>
+                            <input-type>onebox</input-type>
+                        </linked-metadata-field>
+                    </relation-field>
                 </row>
             </form>
 
@@ -791,8 +806,8 @@
                         <repeatable>false</repeatable>
                         <label>Resource Type</label>
                         <input-type value-pairs-name="EntityType">dropdown</input-type>
-                        <hint>Select the item type.</hint>
-                        <required>You must select a type for this item.</required>
+                        <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                        <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
                     </field>
                 </row>
                 <row>
