@@ -781,8 +781,8 @@
                 </row>
                 <row>
                     <relation-field>
-                        <relationship-type>isStudySetOfConceptSet</relationship-type>
-                        <search-configuration>ConceptSet</search-configuration>
+                        <relationship-type>isStudyOfConceptSet</relationship-type>
+                        <search-configuration>conceptset</search-configuration>
                         <repeatable>true</repeatable>
                         <label>Related Concept Sets</label>
                         <hint>Link the study to any concept sets used in the course of research, if applicable.</hint>
