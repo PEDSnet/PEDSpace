@@ -96,12 +96,33 @@ export class MetadataValuesComponent implements OnChanges {
    */
   @Input() entityType: string;
 
+  /**
+   * Template string for inserting the metadata value into a sentence
+   */
+    @Input() sentenceTemplate?: string;
+
+  /**
+   * Parts of the sentenceTemplate split at [value]
+   */
+  sentenceTemplateParts: string[] | null = null;
+
   hasValue = hasValue;
 
   ngOnChanges(changes: SimpleChanges): void {
     this.renderMarkdown = !!this.appConfig.markdown.enabled && this.enableMarkdown;
+  
+    // Process the sentenceTemplate
+    if (this.sentenceTemplate && this.sentenceTemplate !== '[value]') {
+      // Split the sentence template and trim any extra spaces before/after parts
+      const parts = this.sentenceTemplate.split('[value]');
+      
+      // Ensure there are no leading/trailing spaces in parts
+      this.sentenceTemplateParts = parts.map(part => part.trim());
+    } else {
+      this.sentenceTemplateParts = null;
+    }
   }
-
+  
   /**
    * Does this metadata value have a configured link to a browse definition?
    */

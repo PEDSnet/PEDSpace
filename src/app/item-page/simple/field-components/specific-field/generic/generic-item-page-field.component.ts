@@ -17,7 +17,7 @@ import { ItemPageFieldComponent } from '../item-page-field.component';
 /**
  * This component can be used to represent metadata on a simple item page.
  * It is the most generic way of displaying metadata values
- * It expects 4 parameters: The item, a separator, the metadata keys and an i18n key
+ * It expects 5 parameters: The item, a separator, the metadata keys, an i18n key, and a sentence template
  */
 export class GenericItemPageFieldComponent extends ItemPageFieldComponent {
 
@@ -62,6 +62,11 @@ export class GenericItemPageFieldComponent extends ItemPageFieldComponent {
    */
   @Input() entityType: string;
 
-
+  /**
+   * Template string for inserting the metadata value into a sentence
+   * Use [value] as a placeholder for the metadata value
+   * @type {string}
+   */
+  @Input() sentenceTemplate?: string;
 
 }

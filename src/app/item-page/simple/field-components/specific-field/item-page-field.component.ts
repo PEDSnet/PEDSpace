@@ -80,6 +80,11 @@ export class ItemPageFieldComponent {
     @Input() entityType?: string;
 
     /**
+     * Template string for inserting the metadata value into a sentence
+     */
+    @Input() sentenceTemplate?: string;
+
+    /**
      * Return browse definition that matches any field used in this component if it is configured as a browse
      * link in dspace.cfg (webui.browse.link.<n>)
      */

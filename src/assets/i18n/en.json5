@@ -2838,6 +2838,10 @@
 
   "item.preview.dc.identifier.uri": "Identifier",
 
+  "item.preview.dc.contributor.author": "Funder(s)",
+  
+  "item.preview.dc.contributor": "Funder(s)",
+  
   "item.preview.dc.contributor.author": "Creators",
   
   "item.preview.dc.contributor.advisor": "Reviewers",
