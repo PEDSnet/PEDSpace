@@ -7,7 +7,7 @@ import {
   ChangeDetectionStrategy,
   Component,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 
@@ -32,6 +32,8 @@ import { MetadataFieldWrapperComponent } from '../../../../../../../app/shared/m
 import { listableObjectComponent } from '../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
+import { AuthService } from 'src/app/core/auth/auth.service';
+import { RouteService } from 'src/app/core/services/route.service';
 
 /**
  * Component that represents a Concept Set Item page
@@ -70,5 +72,19 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
     ItemPageCcLicenseFieldComponent],
 })
 export class ConceptSetComponent extends BaseComponent {
+  isLoggedIn: boolean = false;
+  constructor(
+    protected authService: AuthService,
+    protected routeService: RouteService,
+    protected router: Router
+  ) {
+    super(routeService, router);
+  }
+  ngOnInit(): void {
+    super.ngOnInit();
+    this.authService.isAuthenticated().subscribe((loggedIn: boolean) => {
+      this.isLoggedIn = loggedIn;
+    });
+  }
 
 }

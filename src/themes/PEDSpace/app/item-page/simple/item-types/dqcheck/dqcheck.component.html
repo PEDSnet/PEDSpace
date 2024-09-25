@@ -93,9 +93,10 @@
         </div>
       </ng-container>
 
-      <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
-      </ds-item-page-uri-field>
-
+      <ng-container *ngIf="isLoggedIn">
+        <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
+        </ds-item-page-uri-field>
+      </ng-container>     
       <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="', '"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 

@@ -3,7 +3,7 @@ import {
   NgIf,
 } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { Context } from '../../../../../../../app/core/shared/context.model';
@@ -17,8 +17,9 @@ import { MetadataFieldWrapperComponent } from '../../../../../../../app/shared/m
 import { listableObjectComponent } from '../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
+import { RouteService } from 'src/app/core/services/route.service';
 
-@listableObjectComponent('JournalIssue', ViewMode.StandalonePage, Context.Any, 'PEDSpace')
+@listableObjectComponent('JournalIssue', ViewMode.StandalonePage, Context.Any, 'PCORnet-custom-7')
 @Component({
   selector: 'ds-journal-issue',
   // styleUrls: ['./journal-issue.component.scss'],
@@ -32,4 +33,10 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
  * The component for displaying metadata and relations of an item of the type Journal Issue
  */
 export class JournalIssueComponent extends BaseComponent {
+  constructor(
+    protected routeService: RouteService,
+    protected router: Router
+  ) {
+    super(routeService, router);
+  }
 }
