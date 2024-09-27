@@ -4436,6 +4436,8 @@
 
   "search.filters.remove": "Remove filter of type {{ type }} with value {{ value }}",
 
+  "search.filters.applied.f.itemQuality": "Quality",
+  
   "search.filters.applied.f.title": "Title",
 
   "search.filters.applied.f.author": "Author",
