@@ -102,6 +102,7 @@ import { ThumbnailComponent } from './app/thumbnail/thumbnail.component';
 import { WorkflowItemDeleteComponent } from './app/workflowitems-edit-page/workflow-item-delete/workflow-item-delete.component';
 import { WorkflowItemSendBackComponent } from './app/workflowitems-edit-page/workflow-item-send-back/workflow-item-send-back.component';
 import { WorkspaceItemsDeletePageComponent } from './app/workspaceitems-edit-page/workspaceitems-delete-page/workspaceitems-delete-page.component';
+import { VerificationBadgeComponent } from './app/shared/object-collection/shared/badges/verification-badge/verification-badge.component';
 
 const DECLARATIONS = [
   FileSectionComponent,
@@ -161,6 +162,7 @@ const DECLARATIONS = [
   SearchFiltersComponent,
   SearchSidebarComponent,
   BadgesComponent,
+  VerificationBadgeComponent,
   StatusBadgeComponent,
   TypeBadgeComponent,
   MyDSpaceStatusBadgeComponent,
