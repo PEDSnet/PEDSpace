@@ -1,0 +1,20 @@
+@import "src/styles/_variables.scss";
+@import "src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss";
+
+.badge-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem; 
+  }
+  
+  ds-type-badge {
+    order: 1; 
+  }
+  
+  ds-verification-badge {
+    order: 2; 
+    margin-left: auto; 
+  }

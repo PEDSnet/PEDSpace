@@ -1000,6 +1000,8 @@
 
   "browse.back.all-results": "All browse results",
 
+  "browse.comcol.by.quality": "By Quality",
+  
   "browse.comcol.by.author": "By Author",
 
   "browse.comcol.by.dateissued": "By Issue Date",
@@ -3124,6 +3126,12 @@
 
   "itemtemplate.edit.metadata.save-button": "Save",
 
+  "studyspecific.listelement.badge": "Study Specific",
+  
+  "verified.listelement.badge": "Verified",
+  
+  "deprecated.listelement.badge": "Deprecated",
+  
   "journal.listelement.badge": "Journal",
 
   "journal.page.description": "Description",
@@ -3290,6 +3298,8 @@
 
   "menu.section.admin_search": "Admin Search",
 
+  "menu.section.browse_by_quality": "By Quality",
+  
   "menu.section.browse_community": "This Collection",
 
   "menu.section.browse_community_by_author": "By Author",
@@ -4478,6 +4488,8 @@
 
   "search.filters.applied.operator.query": "",
 
+  "search.filters.filter.itemQuality.head": "Quality",
+  
   "search.filters.filter.itemFunder.head": "Funders",
   
   "search.filters.filter.itemVocab.head": "Vocabulary",

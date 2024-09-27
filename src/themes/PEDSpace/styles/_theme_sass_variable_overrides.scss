@@ -3,52 +3,52 @@
 // still uses Sass variables internally. So if you want to override bootstrap (or other sass
 // variables) you can do so here. Their CSS counterparts will include the changes you make here
 
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" ;
 
 $navbar-dark-color: #FFFFFF;
 
 /* Reassign color vars to semantic color scheme */
-$midnight-green: #0D4254 !default; /* Midnight green */
-$cambridge-blue: #8BBBB2 !default; /* Cambridge Blue */
-$honeydew: #D8EDDF !default; /* Honeydew */
-$snow: #FBF7F9 !default; /* Snow */
-$black-bean: #3B1516 !default; /* Black Bean */
-$china-rose: #935870 !default; /* China Rose */
-$western-red: #C1666B !default; /* Western Red */
-$tomato: #FE654F !default; /* Tomato */
-$mauve: #E4C1F9 !default; /* Mauve */
-$tropical-indigo: #9381ff !default; /* Tropical Indigo */
-$puce: #c984a7 !default; /* Puce */
+$midnight-green: #0D4254 ; /* Midnight green */
+$cambridge-blue: #8BBBB2 ; /* Cambridge Blue */
+$honeydew: #D8EDDF ; /* Honeydew */
+$snow: #FBF7F9 ; /* Snow */
+$black-bean: #3B1516 ; /* Black Bean */
+$china-rose: #935870 ; /* China Rose */
+$western-red: #C1666B ; /* Western Red */
+$tomato: #FE654F ; /* Tomato */
+$mauve: #E4C1F9 ; /* Mauve */
+$tropical-indigo: #9381ff ; /* Tropical Indigo */
+$puce: #c984a7 ; /* Puce */
 
-$blue: $midnight-green !default; /* 42, 68, 84 */
-$green: $cambridge-blue !default; /* 154, 188, 179 */
-$cyan: $cambridge-blue !default; /* For consistent color scheme */
-$yellow: $western-red !default; /* Western Red */
-$red: $tomato !default;
-$dark: $black-bean !default; /* 133, 89, 112 */
+$blue: $midnight-green ; /* 42, 68, 84 */
+$green: $cambridge-blue ; /* 154, 188, 179 */
+$cyan: $cambridge-blue ; /* For consistent color scheme */
+$yellow: $western-red ; /* Western Red */
+$red: $tomato ;
+$dark: $black-bean ; /* 133, 89, 112 */
 
-$gray-800: #343a40 !default;
-$gray-700: #495057 !default;
-$gray-400: #ced4da !default;
-$gray-100: $snow !default; /* Snow color */
+$gray-800: #343a40 ;
+$gray-700: #495057 ;
+$gray-400: #ced4da ;
+$gray-100: $snow ; /* Snow color */
 
-$body-color: $gray-800 !default; // Bootstrap $gray-800
+$body-color: $gray-800 ; // Bootstrap $gray-800
 
-$link-color: $western-red !default; // Bootstrap $blue
-$link-hover-color: darken($link-color, 15%) !default; // Bootstrap $blue
+$link-color: $western-red ; // Bootstrap $blue
+$link-hover-color: darken($link-color, 15%) ; // Bootstrap $blue
 
-$table-accent-bg: $gray-100 !default; // Bootstrap $gray-100
-$table-hover-bg: $gray-400 !default; // Bootstrap $gray-400
+$table-accent-bg: $gray-100 ; // Bootstrap $gray-100
+$table-hover-bg: $gray-400 ; // Bootstrap $gray-400
 
-$yiq-contrasted-threshold: 170 !default;
+$yiq-contrasted-threshold: 170 ;
 
 $theme-colors: (
         primary: $midnight-green,
         secondary: $china-rose,
         success: $cambridge-blue,
-        info: $honeydew,
+        info: $tropical-indigo,
         warning: $yellow,
         danger: $red,
         light: $snow,
         dark: $black-bean
-) !default;
+);

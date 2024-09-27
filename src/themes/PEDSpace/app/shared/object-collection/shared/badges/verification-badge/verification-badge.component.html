@@ -1,4 +1,12 @@
-<span *ngIf="verificationStatus">
-    <span class="badge badge-secondary ml-1">{{ verificationStatus | translate }}</span>
+<ng-container *ngIf="verificationStatus">
+  <span 
+    class="badge" 
+    [ngClass]="{
+      'badge-secondary': !verificationStatus.includes('verified') && !verificationStatus.includes('deprecated'),
+      'badge-check': verificationStatus.includes('verified'),
+      'badge-negative': verificationStatus.includes('deprecated'),
+      'badge-study-specific': verificationStatus.includes('study')
+    }">
+    {{ verificationStatus | translate }}
   </span>
-  
+</ng-container>

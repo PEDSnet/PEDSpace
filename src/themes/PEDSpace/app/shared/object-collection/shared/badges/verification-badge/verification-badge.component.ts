@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { NgIf, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { TypeBadgeComponent as BaseComponent } from 'src/app/shared/object-collection/shared/badges/type-badge/type-badge.component';
@@ -9,7 +9,7 @@ import { TypeBadgeComponent as BaseComponent } from 'src/app/shared/object-colle
   templateUrl: './verification-badge.component.html',
   // templateUrl: '../../../../../../../../app/shared/object-collection/shared/badges/type-badge/type-badge.component.html',
   standalone: true,
-  imports: [NgIf, TranslateModule],
+  imports: [NgIf, NgClass, TranslateModule],
 })
 export class VerificationBadgeComponent extends BaseComponent {
   _verificationStatus: string;
@@ -19,7 +19,7 @@ export class VerificationBadgeComponent extends BaseComponent {
   }
 
   private setVerificationStatus() {
-    this._verificationStatus = `${this.object.firstMetadataValue('local.quality.status').toLowerCase()}.listelement.badge`;
+    this._verificationStatus = `${this.object.firstMetadataValue('local.quality.status').toLowerCase().split(" ").join("")}.listelement.badge`;
     // this._typeMessage = `${renderType.name.toLowerCase()}.listelement.badge`;
 
   }
@@ -27,4 +27,6 @@ export class VerificationBadgeComponent extends BaseComponent {
   get verificationStatus(): string {
     return this._verificationStatus;
   }
+
+  
 }

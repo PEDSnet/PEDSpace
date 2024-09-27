@@ -25,7 +25,7 @@ import { ComcolPageBrowseByComponent as BaseComponent } from '../../../../../../
 export class FilterTypePipe implements PipeTransform {
   transform(options: any[]): any[] {
     // this is where we crudely filter out unwanted metadata fields by dc schema name ie. 'dc.type' or 'browse.comcol.by.srsc'
-    return options.filter(option => !option.id.includes('type') && !option.id.includes('srsc'));
+    return options.filter(option => !option.id.includes('type') && !option.id.includes('srsc') && !option.id.includes('quality'));
   }
 }
 
