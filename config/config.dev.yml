@@ -1,5 +1,5 @@
 # NOTE: will log all redux actions and transfers in console
-debug: true
+debug: false
 
 # Angular Universal server settings
 # NOTE: these settings define where Node.js will start your UI application. Therefore, these
