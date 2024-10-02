@@ -395,6 +395,17 @@
             <form name="ConceptSetForm">
                 <row>
                     <field>
+                        <dc-schema>local</dc-schema>
+                        <dc-element>quality</dc-element>
+                        <dc-qualifier>status</dc-qualifier>
+                        <repeatable>false</repeatable>
+                        <label>Quality</label>
+                        <input-type value-pairs-name="conceptset_quality">dropdown</input-type>
+                        <hint>Select the quality of the Concept Set.</hint>
+                    </field>
+                </row>
+                <row>
+                    <field>
                         <dc-schema>dspace</dc-schema>
                         <dc-element>entity</dc-element>
                         <dc-qualifier>type</dc-qualifier>
@@ -2848,6 +2859,17 @@
             <pair>
                 <displayed-value>Other</displayed-value>
                 <stored-value></stored-value>
+            </pair>
+        </value-pairs>
+
+        <value-pairs value-pairs-name="conceptset_quality" dc-term="quality">
+            <pair>
+                <displayed-value>Verirfied</displayed-value>
+                <stored-value>Verified</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Deprecated</displayed-value>
+                <stored-value>Deprecated</stored-value>
             </pair>
         </value-pairs>
 
