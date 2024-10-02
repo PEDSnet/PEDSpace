@@ -27,10 +27,10 @@
 <br />
 <div align="center">
   <a href="https://github.com/PEDSnet/PEDSpace">
-    <img src="images/logo.png" alt="Logo">
+    <img src="src/themes/PEDSpace/assets/images/PEDSnetLogoSmall-modified.png" alt="Logo">
   </a>
 
-<h3 align="center"><a href="https://pedsdspace01.research.chop.edu/home">PEDSpace</a></h3>
+<h3 align="center"><a href="https://pedsdspaceprod.research.chop.edu/home">PEDSpace</a></h3>
 
   <p align="left">
 	PEDSpace is a robust implementation of the 	<a href="https://github.com/DSpace/DSpace" target="_blank">open-source DSpace software bundle</a>, designed to store and retrieve digital assets generated during PEDSnet studies. PEDSpace serves as a centralized hub where digital assets are made readily accessible to researchers, clinicians, and stakeholders worldwide.
@@ -40,7 +40,7 @@
     <a href="https://wiki.lyrasis.org/display/DSDOC8x/Introduction"><strong>Learn more about DSpace »</strong></a>
     <br />
     <br />
-    <a href="https://pedsdspace01.research.chop.edu/home">View Demo*</a>
+    <a href="https://pedsdspaceprod.research.chop.edu/home">View Production Instance</a>
     ·
     <a href="https://github.com/PEDSnet/PEDSpace/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
@@ -101,8 +101,8 @@ PEDSpace is an open source repository application intended to host and serve PED
 - [x] Upgrade DSpace to version 8.0
 - [x] Adapt and test custom theme for DSpace 8.0
 - [x] Configure and initialize entity types and relationships
-- [ ] Set up email functionality and SMTP server
-- [ ] Implement deposit forms and workflow system
+- [x] Set up email functionality and SMTP server
+- [x] Implement deposit forms and workflow system
 - [x] Resolve version information display issue
 - [x] Implement default "item created" sort for search queries
 - [ ] Develop process for handling non-character sequences in data
