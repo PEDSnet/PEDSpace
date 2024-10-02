@@ -1,12 +1,27 @@
 <ng-container *ngIf="verificationStatus">
-  <span 
-    class="badge" 
-    [ngClass]="{
-      'badge-secondary': !verificationStatus.includes('verified') && !verificationStatus.includes('deprecated'),
-      'badge-check': verificationStatus.includes('verified'),
-      'badge-negative': verificationStatus.includes('deprecated'),
-      'badge-study-specific': verificationStatus.includes('study')
-    }">
-    {{ verificationStatus | translate }}
-  </span>
+  <ng-container *ngIf="browseDefinition$ | async as browseDefinition; else simpleBadge">
+    <a [routerLink]="['/browse', browseDefinition.id]"
+       [queryParams]="getQueryParams(verificationStatus)"
+       class="badge" 
+       [ngClass]="{
+         'badge-secondary': !verificationStatus.includes('verified') && !verificationStatus.includes('deprecated'),
+         'badge-check': verificationStatus.includes('verified'),
+         'badge-negative': verificationStatus.includes('deprecated'),
+         'badge-study-specific': verificationStatus.includes('study')
+       }">
+      {{ getDisplayValue(verificationStatus) | translate }}
+    </a>
+  </ng-container>
+  <ng-template #simpleBadge>
+    <span 
+      class="badge" 
+      [ngClass]="{
+        'badge-secondary': !verificationStatus.includes('verified') && !verificationStatus.includes('deprecated'),
+        'badge-check': verificationStatus.includes('verified'),
+        'badge-negative': verificationStatus.includes('deprecated'),
+        'badge-study-specific': verificationStatus.includes('study')
+      }">
+      {{ verificationStatus | translate }}
+    </span>
+  </ng-template>
 </ng-container>

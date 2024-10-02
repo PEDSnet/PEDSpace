@@ -8,8 +8,9 @@
     </div>
   </div>
 
-  <ds-generic-item-page-field class="badge" [item]="object"
-    [fields]="['dspace.entity.type']"></ds-generic-item-page-field>
+  <div class="d-flex">
+    <ds-badges *ngIf="showLabel" [object]="object" [context]="context" [showAccessStatus]="true"></ds-badges>
+  </div>
 
   <ds-item-page-title-field [item]="object" class="mr-auto">
   </ds-item-page-title-field>

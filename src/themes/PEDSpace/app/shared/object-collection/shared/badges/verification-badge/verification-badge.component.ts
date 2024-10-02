@@ -1,32 +1,69 @@
-import { NgIf, NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { NgIf, NgClass, AsyncPipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { TypeBadgeComponent as BaseComponent } from 'src/app/shared/object-collection/shared/badges/type-badge/type-badge.component';
+import { BrowseDefinitionDataService } from 'src/app/core/browse/browse-definition-data.service';
+import { BrowseDefinition } from 'src/app/core/shared/browse-definition.model';
+import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
 
 @Component({
   selector: 'ds-verification-badge',
   styleUrls: ['./verification-badge.component.scss'],
   templateUrl: './verification-badge.component.html',
-  // templateUrl: '../../../../../../../../app/shared/object-collection/shared/badges/type-badge/type-badge.component.html',
   standalone: true,
-  imports: [NgIf, NgClass, TranslateModule],
+  imports: [NgIf, NgClass, TranslateModule, RouterModule, AsyncPipe],
 })
-export class VerificationBadgeComponent extends BaseComponent {
+export class VerificationBadgeComponent extends BaseComponent implements OnInit {
   _verificationStatus: string;
+  browseDefinition$: Observable<BrowseDefinition>;
+
+  constructor(private browseDefinitionDataService: BrowseDefinitionDataService) {
+    super();
+  }
 
   ngOnInit() {
     this.setVerificationStatus();
+    this.initBrowseDefinition();
+    console.log('VerificationBadgeComponent ngOnInit');
+    console.log('this.object:', this.object);
+    console.log('this.verificationStatus:', this.verificationStatus);
   }
 
   private setVerificationStatus() {
-    this._verificationStatus = `${this.object.firstMetadataValue('local.quality.status').toLowerCase().split(" ").join("")}.listelement.badge`;
-    // this._typeMessage = `${renderType.name.toLowerCase()}.listelement.badge`;
+    const status = this.object.firstMetadataValue('local.quality.status');
+    this._verificationStatus = status ? `${status.toLowerCase().split(" ").join("")}.listelement.badge` : '';
+    console.log('setVerificationStatus:', this._verificationStatus);
+  }
 
+  private initBrowseDefinition() {
+    const fields = ['local.quality.status'];
+    this.browseDefinition$ = this.browseDefinitionDataService.findByFields(fields).pipe(
+      getFirstCompletedRemoteData(),
+      map((def) => def.payload),
+      tap(browseDefinition => console.log('browseDefinition:', browseDefinition))
+    );
   }
 
   get verificationStatus(): string {
     return this._verificationStatus;
   }
 
-  
+  getDisplayValue(value: string): string {
+    console.log('getDisplayValue input:', value);
+    const displayValue = value.split('.')[0].split('').map((char, index) => 
+      index === 0 ? char.toUpperCase() : char
+    ).join('');
+    console.log('getDisplayValue output:', displayValue);
+    return displayValue;
+  }
+
+  getQueryParams(value: string) {
+    console.log('getQueryParams input:', value);
+    const actualValue = this.object?.firstMetadataValue('local.quality.status') || value;
+    console.log('getQueryParams actualValue:', actualValue);
+    return { value: actualValue };
+  }
 }

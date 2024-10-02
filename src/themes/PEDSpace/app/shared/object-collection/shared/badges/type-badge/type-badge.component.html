@@ -1,4 +1,13 @@
-<span *ngIf="typeMessage">
-    <span class="badge badge-type">{{ typeMessage | translate }}</span>
-  </span>
-  
+<ng-container *ngIf="typeMessage">
+  <ng-container *ngIf="browseDefinition$ | async as browseDefinition; else simpleBadge">
+    <a [routerLink]="['/browse', browseDefinition.id]"
+       [queryParams]="getQueryParams(typeMessage)"
+       class="badge badge-type"
+       [ngClass]="getTypeClass()">
+      {{ getDisplayValue(typeMessage) | translate }}
+    </a>
+  </ng-container>
+  <ng-template #simpleBadge>
+    <span class="badge badge-type" [ngClass]="getTypeClass()">{{ typeMessage | translate }}</span>
+  </ng-template>
+</ng-container>

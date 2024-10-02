@@ -1030,6 +1030,10 @@
 
   "browse.empty": "No items to show.",
 
+  "browse.metadata.quality": "Quality",
+  
+  "browse.metadata.quality.breadcrumbs": "Quality",
+  
   "browse.metadata.author": "Author",
   
   "browse.metadata.relation": "Relation",

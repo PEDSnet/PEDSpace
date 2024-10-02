@@ -32,6 +32,7 @@ import { ThemedResultsBackButtonComponent } from '../../../../../../../app/share
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { RouteService } from 'src/app/core/services/route.service';
+import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
 
 /**
  * Component that represents an untyped Item page
@@ -50,6 +51,7 @@ import { RouteService } from 'src/app/core/services/route.service';
   standalone: true,
   imports: [
     NgIf,
+    ThemedBadgesComponent,
     CommonModule,
     ThemedResultsBackButtonComponent,
     MiradorViewerComponent,
@@ -72,7 +74,10 @@ import { RouteService } from 'src/app/core/services/route.service';
   ],
 })
 export class UntypedItemComponent extends BaseComponent {
+  context: Context = Context.Any;
+
   isLoggedIn: boolean = false;
+  
   constructor(
     protected authService: AuthService,
     protected routeService: RouteService,
