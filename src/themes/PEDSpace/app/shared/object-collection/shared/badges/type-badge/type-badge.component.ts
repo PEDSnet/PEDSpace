@@ -12,7 +12,6 @@ import { TypeBadgeComponent as BaseComponent } from 'src/app/shared/object-colle
 import { BrowseDefinitionDataService } from 'src/app/core/browse/browse-definition-data.service';
 import { BrowseDefinition } from 'src/app/core/shared/browse-definition.model';
 import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
-import { ResourceType } from 'src/app/core/shared/resource-type';
 
 @Component({
   selector: 'ds-themed-type-badge',
@@ -30,8 +29,6 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
 
   ngOnInit() {
     console.log('TypeBadgeComponent ngOnInit');
-    console.log('this.object:', this.object);
-    console.log('this.object.type:', this.object?.type);
     console.log('this.typeMessage:', this.typeMessage);
     this.initBrowseDefinition();
   }
@@ -43,13 +40,6 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
       map((def) => def.payload),
       tap(browseDefinition => console.log('browseDefinition:', browseDefinition))
     );
-  }
-
-  getDisplayValue(value: string): string {
-    console.log('getDisplayValue input:', value);
-    const displayValue = value === 'ConceptSet' ? 'Concept Set' : value;
-    console.log('getDisplayValue output:', displayValue);
-    return displayValue;
   }
 
   getQueryParams(value: string) {

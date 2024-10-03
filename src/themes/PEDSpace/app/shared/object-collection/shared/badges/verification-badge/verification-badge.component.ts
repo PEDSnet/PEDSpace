@@ -51,14 +51,15 @@ export class VerificationBadgeComponent extends BaseComponent implements OnInit 
     return this._verificationStatus;
   }
 
-  getDisplayValue(value: string): string {
-    console.log('getDisplayValue input:', value);
-    const displayValue = value.split('.')[0].split('').map((char, index) => 
-      index === 0 ? char.toUpperCase() : char
-    ).join('');
-    console.log('getDisplayValue output:', displayValue);
-    return displayValue;
-  }
+  // Redundant method
+  // getDisplayValue(value: string): string {
+  //   console.log('getDisplayValue input:', value);
+  //   const displayValue = value.split('.')[0].split('').map((char, index) => 
+  //     index === 0 ? char.toUpperCase() : char
+  //   ).join('');
+  //   console.log('getDisplayValue output:', displayValue);
+  //   return displayValue;
+  // }
 
   getQueryParams(value: string) {
     console.log('getQueryParams input:', value);

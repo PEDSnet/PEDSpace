@@ -6938,7 +6938,7 @@
 
   "documentation.listelement.badge": "Documentation",
 
-  "dqcheck.listelement.badge": "DQCheck",
+  "dqcheck.listelement.badge": "Data Quality Check",
 
   "journal.listelement.badge": "Journal",
 
@@ -6964,11 +6964,7 @@
 
   "documentation.listelement.badge": "Documentation",
 
-  "dqcheck.listelement.badge": "DQCheck",
-
   "journal.listelement.badge": "Journal",
-  "journal.listelement.badge": "Journal"
-  ,
 
   "journalissue.itemVocab.badge": "Vocabulary",
 

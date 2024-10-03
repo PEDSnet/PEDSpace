@@ -4,7 +4,7 @@
        [queryParams]="getQueryParams(typeMessage)"
        class="badge badge-type"
        [ngClass]="getTypeClass()">
-      {{ getDisplayValue(typeMessage) | translate }}
+      {{ typeMessage | translate }}
     </a>
   </ng-container>
   <ng-template #simpleBadge>

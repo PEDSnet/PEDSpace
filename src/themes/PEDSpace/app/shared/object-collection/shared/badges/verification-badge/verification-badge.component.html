@@ -9,7 +9,8 @@
          'badge-negative': verificationStatus.includes('deprecated'),
          'badge-study-specific': verificationStatus.includes('study')
        }">
-      {{ getDisplayValue(verificationStatus) | translate }}
+      <!-- {{ getDisplayValue(verificationStatus) | translate }} -->
+      {{ verificationStatus | translate }}
     </a>
   </ng-container>
   <ng-template #simpleBadge>
