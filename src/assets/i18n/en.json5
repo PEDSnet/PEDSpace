@@ -1360,6 +1360,14 @@
 
   "collection.listelement.badge": "Domain",
 
+  "documentation.collection.listelement.badge": "Documentation Domain",
+  
+  "conceptset.collection.listelement.badge": "Concept Set Domain",
+  
+  "dqcheck.collection.listelement.badge": "DQ Check Domain",
+  
+  "study.collection.listelement.badge": "Study Domain",
+
   "collection.logo": "Domain logo",
 
   "collection.page.browse.search.head": "Search",

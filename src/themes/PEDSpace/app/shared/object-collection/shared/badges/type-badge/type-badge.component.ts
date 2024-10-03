@@ -52,6 +52,14 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
     return { value: actualValue };
   }
 
+  getCombinedTypeMessage(): string {
+    const objectType = this.object?.firstMetadataValue('dspace.entity.type');
+    if (objectType && this.typeMessage === 'collection.listelement.badge') {
+      return `${objectType.toLowerCase()}.${this.typeMessage}`;
+    }
+    return this.typeMessage;
+  }
+
   getTypeClass(): string {
     const objectType = this.object?.firstMetadataValue('dspace.entity.type');
     console.log('getTypeClass objectType:', objectType);
