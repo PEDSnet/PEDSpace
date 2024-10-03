@@ -1,7 +1,10 @@
 import {
   AsyncPipe,
   NgIf,
-  NgClass
+  NgClass,
+  NgSwitch,
+  NgSwitchCase,
+  NgSwitchDefault
 } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -18,7 +21,7 @@ import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
   styleUrls: ['./type-badge.component.scss'],
   templateUrl: './type-badge.component.html',
   standalone: true,
-  imports: [NgIf, NgClass, TranslateModule, RouterModule, AsyncPipe],
+  imports: [NgIf, NgClass, NgSwitch, NgSwitchCase, NgSwitchDefault, TranslateModule, RouterModule, AsyncPipe],
 })
 export class TypeBadgeComponent extends BaseComponent implements OnInit {
   browseDefinition$: Observable<BrowseDefinition>;
@@ -50,19 +53,40 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
   }
 
   getTypeClass(): string {
-    const objectType = this.object?.firstMetadataValue('dspace.entity.type') || this.typeMessage;
+    const objectType = this.object?.firstMetadataValue('dspace.entity.type');
     console.log('getTypeClass objectType:', objectType);
+    console.log('getTypeClass typeMessage:', this.typeMessage);
+  
+    let baseClass = '';
+    let specificClass = '';
+  
+    switch (this.typeMessage) {
+      case 'community.listelement.badge':
+        return 'badge-community'; 
+      case 'collection.listelement.badge':
+        baseClass = 'badge-collection';
+        break;
+      default:
+        baseClass = 'badge-item';
+    }
+
     switch (objectType) {
       case 'ConceptSet':
-        return 'badge-conceptset';
+        specificClass = 'badge-conceptset';
+        break;
       case 'DQCheck':
-        return 'badge-dqcheck';
+        specificClass = 'badge-dqcheck';
+        break;
       case 'Documentation':
-        return 'badge-documentation';
+        specificClass = 'badge-documentation';
+        break;
       case 'Study':
-        return 'badge-study';
-      default:
-        return 'badge-default';
+        specificClass = 'badge-study';
+        break;
     }
+  
+    const result = `${baseClass} ${specificClass}`.trim();
+    console.log('getTypeClass result:', result);
+    return result;
   }
 }

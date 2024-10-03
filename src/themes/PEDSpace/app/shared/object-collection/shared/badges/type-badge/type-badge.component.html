@@ -1,13 +1,21 @@
 <ng-container *ngIf="typeMessage">
   <ng-container *ngIf="browseDefinition$ | async as browseDefinition; else simpleBadge">
-    <a [routerLink]="['/browse', browseDefinition.id]"
-       [queryParams]="getQueryParams(typeMessage)"
-       class="badge badge-type"
-       [ngClass]="getTypeClass()">
-      {{ typeMessage | translate }}
-    </a>
+    <ng-container [ngSwitch]="typeMessage">
+      <a *ngSwitchDefault
+         [routerLink]="['/browse', browseDefinition.id]"
+         [queryParams]="getQueryParams(typeMessage)"
+         class="badge badge-type"
+         [ngClass]="[getTypeClass()]">
+        {{ typeMessage | translate }}
+      </a>
+      <span *ngSwitchCase="'community.listelement.badge'"
+            class="badge badge-type"
+            [ngClass]="[getTypeClass()]">
+        {{ typeMessage | translate }}
+      </span>
+    </ng-container>
   </ng-container>
   <ng-template #simpleBadge>
-    <span class="badge badge-type" [ngClass]="getTypeClass()">{{ typeMessage | translate }}</span>
+    <span class="badge badge-type" [ngClass]="[getTypeClass()]">{{ typeMessage | translate }}</span>
   </ng-template>
 </ng-container>
