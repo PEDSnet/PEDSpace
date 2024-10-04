@@ -88,6 +88,10 @@
 
       <div class="col-xs-12 col-md-7">
 
+        <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfConceptSet'"
+          [label]="'relationships.isPhenotypeOf' | translate">
+        </ds-related-items>
+
         <ds-related-items [parentItem]="object" [relationType]="'isPersonOfConceptSet'"
           [label]="'relationships.isPersonOf' | translate">
         </ds-related-items>
@@ -96,8 +100,8 @@
           [label]="'relationships.isStudyOf' | translate">
         </ds-related-items>
 
-        <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfConceptSet'"
-          [label]="'relationships.isPhenotypeOf' | translate">
+        <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfConceptSet'"
+          [label]="'relationships.isConceptSetOf' | translate">
         </ds-related-items>
       </div>
 

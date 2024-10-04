@@ -96,6 +96,10 @@
           [label]="'relationships.isPersonOf' | translate">
         </ds-related-items>
 
+        <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfDocumentation'"
+          [label]="'relationships.isDocumentationOf' | translate">
+        </ds-related-items>
+
       </div>
 
       <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
