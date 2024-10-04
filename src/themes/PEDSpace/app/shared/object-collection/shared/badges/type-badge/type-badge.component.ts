@@ -91,6 +91,9 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
       case 'Study':
         specificClass = 'badge-study';
         break;
+      case 'Phenotype':
+        specificClass = 'badge-phenotype';
+        break;
     }
   
     const result = `${baseClass} ${specificClass}`.trim();

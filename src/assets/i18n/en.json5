@@ -1367,6 +1367,8 @@
   "dqcheck.collection.listelement.badge": "DQ Check Domain",
   
   "study.collection.listelement.badge": "Study Domain",
+  
+  "phenotype.collection.listelement.badge": "Phenotype Domain",
 
   "collection.logo": "Domain logo",
 
