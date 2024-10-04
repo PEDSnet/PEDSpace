@@ -13,6 +13,11 @@
             [ngClass]="[getTypeClass()]">
         {{ getCombinedTypeMessage() | translate }}
       </span>
+      <span *ngSwitchCase="'collection.listelement.badge'"
+            class="badge badge-type"
+            [ngClass]="[getTypeClass()]">
+        {{ getCombinedTypeMessage() | translate }}
+      </span>
     </ng-container>
   </ng-container>
   <ng-template #simpleBadge>
