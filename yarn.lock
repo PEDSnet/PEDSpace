@@ -8444,6 +8444,11 @@ mute-stream@1.0.0:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-1.0.0.tgz#e31bd9fe62f0aed23520aa4324ea6671531e013e"
   integrity sha512-avsJQhyd+680gKXyG/sQc0nXaC6rBkPOfyHYcFb9+hdkqQkR9bdnkJ0AMZhke0oesPqIO+mFFJ+IdBc7mst4IA==
 
+n@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/n/-/n-10.0.0.tgz#51763909c00e8ec25db8fa67accbefeaca8c7756"
+  integrity sha512-DUo92Hiufg66paQRSsUuXrZk/0NVt28iuzUZxdwVtCRaS9VEYadduJjSYmsjYKgkpdV7sT9Mn2Epp9YfsjuVuw==
+
 nanoid@^3.3.7:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.7.tgz#d0c301a691bc8d54efa0a2226ccf3fe2fd656bd8"
