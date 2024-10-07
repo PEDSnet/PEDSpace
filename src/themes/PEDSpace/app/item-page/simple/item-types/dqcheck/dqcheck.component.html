@@ -34,15 +34,10 @@
 
       <!-- Download link(s) -->
       <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
-      
-      <ds-generic-item-page-field 
-      [renderAsButton]="true" 
-      [item]="object" 
-      [fields]="['dc.subject']" 
-      [separator]="'<br>'"
-      [label]="'item.preview.dc.subject'"
-      [entityType]="object?.metadata['dspace.entity.type']?.[0]?.value">
-    </ds-generic-item-page-field>
+
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject']" [separator]="'<br>'"
+        [label]="'item.preview.dc.subject'" [entityType]="object?.metadata['dspace.entity.type']?.[0]?.value">
+      </ds-generic-item-page-field>
 
       <ds-generic-item-page-field [item]="object" [fields]="['dc.publisher']" [label]="'item.page.publisher'">
       </ds-generic-item-page-field>
@@ -71,11 +66,11 @@
       <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
         [label]="'item.preview.dc.contributor.other'">
       </ds-generic-item-page-field>
-      
+
       <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor']" [label]="'item.preview.dc.contributor'"
         [sentenceTemplate]="'This research was made possible through the generous support of [value].'">
       </ds-generic-item-page-field>
-      
+
       <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
       </ds-generic-item-page-field>
 
@@ -97,21 +92,21 @@
       <ng-container *ngIf="isLoggedIn">
         <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
         </ds-item-page-uri-field>
-      </ng-container>     
+      </ng-container>
       <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="', '"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
-      <div class="col-xs-12 col-md-7">
+      <ds-related-items [parentItem]="object" [relationType]="'isPersonOfDQCheck'"
+        [label]="'relationships.isPersonOf' | translate">
+      </ds-related-items>
 
-        <ds-related-items [parentItem]="object" [relationType]="'isPersonOfDQCheck'"
-          [label]="'relationships.isPersonOf' | translate">
-        </ds-related-items>
+      <ds-related-items [parentItem]="object" [relationType]="'isDQCheckOfDQCheck'"
+        [label]="'relationships.isdDQCheckOf' | translate">
+      </ds-related-items>
 
-        <ds-related-items [parentItem]="object" [relationType]="'isDQCheckOfDQCheck'"
-          [label]="'relationships.isdDQCheckOf' | translate">
-        </ds-related-items>
-
-      </div>
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.relation.isreferencedby']"
+        [label]="'item.preview.dc.relation.isreferencedby'" [enableMarkdown]="true">
+      </ds-generic-item-page-field>
 
       <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
       </ds-item-page-cc-license-field>

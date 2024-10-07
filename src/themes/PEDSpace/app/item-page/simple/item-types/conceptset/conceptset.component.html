@@ -53,7 +53,7 @@
       <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
         [label]="'item.preview.dc.contributor.other'">
       </ds-generic-item-page-field>
-      
+
       <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor']" [label]="'item.preview.dc.contributor'"
         [sentenceTemplate]="'This research was made possible through the generous support of [value].'">
       </ds-generic-item-page-field>
@@ -79,31 +79,35 @@
       <ng-container *ngIf="isLoggedIn">
         <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
         </ds-item-page-uri-field>
-      </ng-container>     
+      </ng-container>
       <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.other']" [separator]="', '"
         [label]="'browse.metadata.vocab'"></ds-generic-item-page-field>
 
       <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="', '"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
-      <div class="col-xs-12 col-md-7">
 
-        <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfConceptSet'"
-          [label]="'relationships.isPhenotypeOf' | translate">
-        </ds-related-items>
 
-        <ds-related-items [parentItem]="object" [relationType]="'isPersonOfConceptSet'"
-          [label]="'relationships.isPersonOf' | translate">
-        </ds-related-items>
+      <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfConceptSet'"
+        [label]="'relationships.isPhenotypeOf' | translate">
+      </ds-related-items>
 
-        <ds-related-items [parentItem]="object" [relationType]="'isStudyOfConceptSet'"
-          [label]="'relationships.isStudyOf' | translate">
-        </ds-related-items>
+      <ds-related-items [parentItem]="object" [relationType]="'isPersonOfConceptSet'"
+        [label]="'relationships.isPersonOf' | translate">
+      </ds-related-items>
 
-        <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfConceptSet'"
-          [label]="'relationships.isConceptSetOf' | translate">
-        </ds-related-items>
-      </div>
+      <ds-related-items [parentItem]="object" [relationType]="'isStudyOfConceptSet'"
+        [label]="'relationships.isStudyOf' | translate">
+      </ds-related-items>
+
+      <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfConceptSet'"
+        [label]="'relationships.isConceptSetOf' | translate">
+      </ds-related-items>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.relation.isreferencedby']"
+        [label]="'item.preview.dc.relation.isreferencedby'" [enableMarkdown]="true">
+      </ds-generic-item-page-field>
+
 
       <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
       </ds-item-page-cc-license-field>
