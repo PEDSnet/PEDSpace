@@ -1,0 +1,14 @@
+{
+    "apps": [
+        {
+           "name": "dspace-ui",
+           "cwd": "/data/dspace-angular-ui",
+           "script": "dist/server/main.js",
+	   "instances": "max",
+	   "exec_mode": "cluster",
+           "env": {
+              "NODE_ENV": "production"
+           }
+        }
+    ]
+}
