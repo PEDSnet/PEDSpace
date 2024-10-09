@@ -188,25 +188,25 @@ export class MetadataValuesComponent implements OnChanges {
    * @param value The value to get the class for.
    */
   getButtonClass(value: string): string {
-    console.log('getButtonClass called with:', value);
-    console.log('entityType:', this.entityType);
+    // console.log('getButtonClass called with:', value);
+    // console.log('entityType:', this.entityType);
   
     if (!this.entityType || this.entityType !== 'DQCheck') {
-      console.log('Returning btn-outline-primary due to entityType');
+      // console.log('Returning btn-outline-primary due to entityType');
       return 'btn-outline-primary';
     }
   
     if (value.includes('Data Quality Category')) {
-      console.log('Returning btn-dq-category');
+      // console.log('Returning btn-dq-category');
       return 'btn-dq-category';
     } else if (value.includes('Dataset Evaluation Strategy')) {
-      console.log('Returning btn-dataset-eval-strategy');
+      // console.log('Returning btn-dataset-eval-strategy');
       return 'btn-dataset-eval-strategy';
     } else if (value.includes('Error Detection Approach')) {
-      console.log('Returning btn-error-detection-approach');
+      // console.log('Returning btn-error-detection-approach');
       return 'btn-error-detection-approach';
     } else {
-      console.log('Returning btn-outline-primary as default');
+      // console.log('Returning btn-outline-primary as default');
       return 'btn-outline-primary';
     }
   }

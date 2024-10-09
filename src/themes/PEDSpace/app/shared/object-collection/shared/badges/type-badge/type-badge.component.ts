@@ -31,24 +31,24 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('TypeBadgeComponent ngOnInit');
-    console.log('this.typeMessage:', this.typeMessage);
-    this.initBrowseDefinition();
+    // // console.log('TypeBadgeComponent ngOnInit');
+    // console.log('this.typeMessage:', this.typeMessage);
+    // this.initBrowseDefinition();
   }
 
-  private initBrowseDefinition() {
-    const fields = ['dspace.entity.type'];
-    this.browseDefinition$ = this.browseDefinitionDataService.findByFields(fields).pipe(
-      getFirstCompletedRemoteData(),
-      map((def) => def.payload),
-      tap(browseDefinition => console.log('browseDefinition:', browseDefinition))
-    );
-  }
+  // private initBrowseDefinition() {
+  //   const fields = ['dspace.entity.type'];
+  //   this.browseDefinition$ = this.browseDefinitionDataService.findByFields(fields).pipe(
+  //     getFirstCompletedRemoteData(),
+  //     map((def) => def.payload),
+  //     tap(browseDefinition => console.log('browseDefinition:', browseDefinition))
+  //   );
+  // }
 
   getQueryParams(value: string) {
-    console.log('getQueryParams input:', value);
+    // console.log('getQueryParams input:', value);
     const actualValue = this.object?.firstMetadataValue('dspace.entity.type') || value;
-    console.log('getQueryParams actualValue:', actualValue);
+    // console.log('getQueryParams actualValue:', actualValue);
     return { value: actualValue };
   }
 
@@ -62,8 +62,8 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
 
   getTypeClass(): string {
     const objectType = this.object?.firstMetadataValue('dspace.entity.type');
-    console.log('getTypeClass objectType:', objectType);
-    console.log('getTypeClass typeMessage:', this.typeMessage);
+    // console.log('getTypeClass objectType:', objectType);
+    // console.log('getTypeClass typeMessage:', this.typeMessage);
   
     let baseClass = '';
     let specificClass = '';
@@ -97,7 +97,7 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
     }
   
     const result = `${baseClass} ${specificClass}`.trim();
-    console.log('getTypeClass result:', result);
+    // console.log('getTypeClass result:', result);
     return result;
   }
 }
