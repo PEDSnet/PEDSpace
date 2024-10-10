@@ -32,18 +32,18 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
 
   ngOnInit() {
     // // console.log('TypeBadgeComponent ngOnInit');
-    // console.log('this.typeMessage:', this.typeMessage);
-    // this.initBrowseDefinition();
+    console.log('this.typeMessage:', this.typeMessage);
+    this.initBrowseDefinition();
   }
 
-  // private initBrowseDefinition() {
-  //   const fields = ['dspace.entity.type'];
-  //   this.browseDefinition$ = this.browseDefinitionDataService.findByFields(fields).pipe(
-  //     getFirstCompletedRemoteData(),
-  //     map((def) => def.payload),
-  //     tap(browseDefinition => console.log('browseDefinition:', browseDefinition))
-  //   );
-  // }
+  private initBrowseDefinition() {
+    const fields = ['dspace.entity.type'];
+    this.browseDefinition$ = this.browseDefinitionDataService.findByFields(fields).pipe(
+      getFirstCompletedRemoteData(),
+      map((def) => def.payload),
+      tap(browseDefinition => console.log('browseDefinition:', browseDefinition))
+    );
+  }
 
   getQueryParams(value: string) {
     // console.log('getQueryParams input:', value);
