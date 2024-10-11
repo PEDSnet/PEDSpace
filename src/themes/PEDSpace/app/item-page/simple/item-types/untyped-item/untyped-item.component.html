@@ -74,20 +74,7 @@
       <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
       </ds-generic-item-page-field>
 
-      <ng-container *ngIf="object?.metadata['dc.description']?.length > 0">
-        <div class="description-field">
-          <ng-container *ngFor="let metadata of object.metadata['dc.description']; let i = index">
-            <div *ngIf="i === 0" class="cohort-description-label">
-              <h4 class="simple-view-element-header">{{ 'item.page.description' | translate }}</h4>
-              <p class="preserve-line-breaks">{{ metadata.value }}</p>
-            </div>
-            <div *ngIf="i === 1" class="cohort-description-label">
-              <h4 class="simple-view-element-header">{{ 'item.page.description.cohort' | translate }}</h4>
-              <p class="preserve-line-breaks">{{ metadata.value }}</p>
-            </div>
-          </ng-container>
-        </div>
-      </ng-container>
+<ds-item-page-description-field [item]="object" [label]="'item.page.description'"></ds-item-page-description-field>
 
       <ng-container *ngIf="isLoggedIn">
         <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">

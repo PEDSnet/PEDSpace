@@ -35,6 +35,8 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { RouteService } from 'src/app/core/services/route.service';
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
+import { ItemPageExternalPublicationFieldComponent } from '../../field-components/specific-field/external/item-page-external-publication.component';
+import { ItemPageDescriptionFieldComponent } from '../../field-components/specific-field/description/item-page-description.component';
 
 /**
  * Component that represents a Study Item page
@@ -50,7 +52,8 @@ import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/b
   // templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf,
+  imports: [ItemPageExternalPublicationFieldComponent, 
+    ItemPageDescriptionFieldComponent, NgIf,
     ThemedBadgesComponent,
     ThemedResultsBackButtonComponent,
     CommonModule,

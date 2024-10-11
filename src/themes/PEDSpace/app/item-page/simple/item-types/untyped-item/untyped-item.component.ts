@@ -33,6 +33,8 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { RouteService } from 'src/app/core/services/route.service';
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
+import { ItemPageExternalPublicationFieldComponent } from '../../field-components/specific-field/external/item-page-external-publication.component';
+import { ItemPageDescriptionFieldComponent } from '../../field-components/specific-field/description/item-page-description.component';
 
 /**
  * Component that represents an untyped Item page
@@ -51,6 +53,8 @@ import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/b
   standalone: true,
   imports: [
     NgIf,
+    ItemPageExternalPublicationFieldComponent,
+    ItemPageDescriptionFieldComponent,
     ThemedBadgesComponent,
     CommonModule,
     ThemedResultsBackButtonComponent,

@@ -103,6 +103,8 @@ import { WorkflowItemDeleteComponent } from './app/workflowitems-edit-page/workf
 import { WorkflowItemSendBackComponent } from './app/workflowitems-edit-page/workflow-item-send-back/workflow-item-send-back.component';
 import { WorkspaceItemsDeletePageComponent } from './app/workspaceitems-edit-page/workspaceitems-delete-page/workspaceitems-delete-page.component';
 import { VerificationBadgeComponent } from './app/shared/object-collection/shared/badges/verification-badge/verification-badge.component';
+import { ItemPageDescriptionFieldComponent } from './app/item-page/simple/field-components/specific-field/description/item-page-description.component';
+import { ItemPageExternalPublicationFieldComponent } from './app/item-page/simple/field-components/specific-field/external/item-page-external-publication.component';
 
 const DECLARATIONS = [
   FileSectionComponent,
@@ -196,6 +198,8 @@ const DECLARATIONS = [
   ProfilePageMetadataFormComponent,
   SubmissionUploadFilesComponent,
   ComcolPageContentComponent,
+  ItemPageDescriptionFieldComponent,
+  ItemPageExternalPublicationFieldComponent
 ];
 
 @NgModule({
