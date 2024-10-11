@@ -1,0 +1,112 @@
+<ds-results-back-button *ngIf="showBackButton$ | async" [back]="back"></ds-results-back-button>
+<div class="container">
+  <div class="row" *ngIf="iiifEnabled">
+    <div class="col-12">
+      <ds-mirador-viewer id="iiif-viewer" [object]="object" [searchable]="iiifSearchEnabled"
+        [query]="iiifQuery$ | async">
+      </ds-mirador-viewer>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <ds-badges *ngIf="showLabel" [object]="object" [context]="context" [showAccessStatus]="true"></ds-badges>
+  </div>
+
+  <ds-item-page-title-field [item]="object" class="mr-auto">
+  </ds-item-page-title-field>
+  <ds-dso-edit-menu></ds-dso-edit-menu>
+
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <!-- Date Created -->
+      <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'item.preview.dc.date.issued'"
+        separator=", "></ds-item-page-date-field>
+      <!-- Date Modified -->
+      <ds-item-page-date-field [item]="object" [fields]="['dc.date']" [label]="'item.preview.dc.date'"
+        separator="; "></ds-item-page-date-field>
+
+      <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
+        <ds-media-viewer [item]="object"></ds-media-viewer>
+      </div>
+
+      <!-- Download link(s) -->
+      <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
+
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject']" [separator]="'<br>'"
+        [label]="'item.preview.dc.subject'"></ds-generic-item-page-field>
+
+    </div>
+
+    <div class="col-12 col-md-8">
+
+      <ds-item-page-abstract-field [item]="object" [label]="'item.page.abstract'"></ds-item-page-abstract-field>
+
+      <!-- <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
+        [itemType]="'Person'" [metadataFields]="['dc.contributor.author', 'dc.creator']"
+        [label]="'item.preview.dc.contributor.author' | translate">
+      </ds-metadata-representation-list> -->
+
+      <!-- <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.advisor']"
+        [label]="'item.preview.dc.contributor.advisor'">
+      </ds-generic-item-page-field> -->
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
+        [label]="'item.preview.dc.contributor.other'">
+      </ds-generic-item-page-field>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor']" [label]="'item.preview.dc.contributor'"
+        [sentenceTemplate]="'This research was made possible through the generous support of [value].'">
+      </ds-generic-item-page-field>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
+      </ds-generic-item-page-field>
+
+      <ds-item-page-description-field [item]="object" [label]="'item.page.description'"></ds-item-page-description-field>
+
+      <ng-container *ngIf="isLoggedIn">
+        <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
+        </ds-item-page-uri-field>
+      </ng-container>
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.other']" [separator]="', '"
+        [label]="'browse.metadata.vocab'"></ds-generic-item-page-field>
+
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="', '"
+        [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
+
+
+
+      <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfPhenotype'"
+        [label]="'relationships.isConceptSetOf' | translate">
+      </ds-related-items>
+
+      <ds-related-items [parentItem]="object" [relationType]="'isPersonOfPhenotype'"
+        [label]="'relationships.isPersonOf' | translate">
+      </ds-related-items>
+
+      <ds-related-items [parentItem]="object" [relationType]="'isStudyOfPhenotype'"
+        [label]="'relationships.isStudyOf' | translate">
+      </ds-related-items>
+
+      <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfPhenotype'"
+        [label]="'relationships.isPhenotypeOf' | translate">
+      </ds-related-items>
+
+      <ds-item-page-external-publication-field [item]="object"
+        [label]="'item.preview.dc.relation.isreferencedby'">
+      </ds-item-page-external-publication-field>
+
+      <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
+      </ds-item-page-cc-license-field>
+
+      <div>
+        <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="button">
+          <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!(object?.metadata['dc.relation']?.length > 0)">
+    <br>
+  </div>
+</div>

@@ -35,6 +35,7 @@ import { StartsWithDateComponent } from './app/shared/starts-with/date/starts-wi
 import { StartsWithTextComponent } from './app/shared/starts-with/text/starts-with-text.component';
 import { DQCheckComponent } from './app/item-page/simple/item-types/dqcheck/dqcheck.component';
 import { DocumentationComponent } from './app/item-page/simple/item-types/documentation/documentation.component';
+import { PhenotypeComponent } from './app/item-page/simple/item-types/phenotype/phenotype.component';
 
 /**
  * Add components that use a custom decorator to ENTRY_COMPONENTS as well as DECLARATIONS.
@@ -49,6 +50,7 @@ const ENTRY_COMPONENTS = [
   PersonComponent,
   StudyComponent,
   ConceptSetComponent,
+  PhenotypeComponent,
   UntypedItemComponent,
   CommunityListElementComponent,
   CollectionListElementComponent,
