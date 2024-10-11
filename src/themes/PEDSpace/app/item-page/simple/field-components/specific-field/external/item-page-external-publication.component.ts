@@ -44,7 +44,7 @@ export class ItemPageExternalPublicationFieldComponent extends ItemPageFieldComp
     /**
      * Label i18n key for the rendered metadata
      */
-    @Input() label = 'item.page.external';
+    @Input() label = 'item.preview.dc.relation.isreferencedby';
 
     /**
      * Use the {@link MarkdownDirective} to render dc.description.abstract values
