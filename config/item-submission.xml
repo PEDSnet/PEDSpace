@@ -340,6 +340,7 @@
             <step id="collection"/>
             <step id="ConceptSetForm"/>
             <step id="upload"/>
+            <step id="extractionstep"/>
             <step id="itemAccessConditions"/>
             <step id="cclicense"/>
         </submission-process>
@@ -347,13 +348,16 @@
         <submission-process name="Study">
             <step id="collection"/>
             <step id="StudyForm"/>
-            <step id="cclicense"></step>
+            <step id="cclicense"/>
+            <step id="upload"/>
+            <step id="extractionstep"/>
         </submission-process>
 
         <submission-process name="DQCheck">
             <step id="collection"/>
             <step id="DQCheckForm"/>
             <step id="upload"/>
+            <step id="extractionstep"/>
             <step id="cclicense"/>
         </submission-process>
 
@@ -361,6 +365,7 @@
             <step id="collection"/>
             <step id="DocumentationForm"/>
             <step id="upload"/>
+            <step id="extractionstep"/>
             <step id="itemAccessConditions"/>
             <step id="cclicense"/>
         </submission-process>
