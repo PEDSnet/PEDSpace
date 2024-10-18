@@ -1,3 +1,4 @@
 config.*.yml
 !config.dev.yml
 !config.example.yml
+dbip-city-lite-2024-10.mmdb
