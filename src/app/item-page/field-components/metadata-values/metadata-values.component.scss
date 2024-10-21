@@ -1,6 +1,10 @@
 // @import '../../../../styles/variables';
 @import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
 
+$mauve: #E4C1F9;
+$tropical-indigo: #9381ff;
+$puce: #c984a7;
+
 .ds-metadata-value {
   &.btn {
     margin: 0.2rem;
@@ -30,22 +34,22 @@
 
     &.btn-dataset-eval-strategy {
       color: $snow;
-      border-color: $midnight-green;
-      background-color: $midnight-green;
+      border-color: $puce;
+      background-color: $puce;
 
       &:hover, &:focus {
-        color: $midnight-green;
+        color: $puce;
         background-color: $snow;
       }
     }
 
     &.btn-error-detection-approach {
-      color: $black-bean;
-      border-color: $honeydew;
-      background-color: $honeydew;
+      color: $snow;
+      border-color: $tropical-indigo;
+      background-color: $tropical-indigo;
 
       &:hover, &:focus {
-        color: $black-bean;
+        color: $tropical-indigo;
         background-color: $snow;
       }
     }
