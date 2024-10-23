@@ -177,12 +177,18 @@
             <type>submission-form</type>
         </step-definition>
 
+        <step-definition id="PhenotypeForm" mandatory="true">
+            <heading>submit.progressbar.describe.stepone</heading>
+            <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+            <type>submission-form</type>
+        </step-definition>
 
         <step-definition id="upload">
             <heading>submit.progressbar.upload</heading>
             <processing-class>org.dspace.app.rest.submit.step.UploadStep</processing-class>
             <type>upload</type>
         </step-definition>
+
         <step-definition id="license">
             <heading>submit.progressbar.license</heading>
             <processing-class>org.dspace.app.rest.submit.step.LicenseStep</processing-class>
@@ -348,9 +354,9 @@
         <submission-process name="Study">
             <step id="collection"/>
             <step id="StudyForm"/>
-            <step id="cclicense"/>
             <step id="upload"/>
             <step id="extractionstep"/>
+            <step id="cclicense"/>
         </submission-process>
 
         <submission-process name="DQCheck">
@@ -370,6 +376,14 @@
             <step id="cclicense"/>
         </submission-process>
 
+        <submission-process name="Phenotype">
+            <step id="collection"/>
+            <step id="PhenotypeForm"/>
+            <step id="upload"/>
+            <step id="extractionstep"/>
+            <step id="itemAccessConditions"/>
+            <step id="cclicense"/>
+        </submission-process>
 
 
         <!--
