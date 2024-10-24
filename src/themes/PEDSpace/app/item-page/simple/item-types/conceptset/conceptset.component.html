@@ -8,9 +8,9 @@
     </div>
   </div>
 
-  <div class="d-flex">
-    <ds-badges *ngIf="showLabel" [object]="object" [context]="context" [showAccessStatus]="true"></ds-badges>
-  </div>
+  <!-- <div class="d-flex">
+    <ds-badges *ngIf="showLabel" [object]="object" [showAccessStatus]="true"></ds-badges>
+  </div> -->
 
   <ds-item-page-title-field [item]="object" class="mr-auto">
   </ds-item-page-title-field>
@@ -63,10 +63,10 @@
 
       <ds-item-page-description-field [item]="object" [label]="'item.page.description'"></ds-item-page-description-field>
 
-      <ng-container *ngIf="isLoggedIn">
-        <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
-        </ds-item-page-uri-field>
-      </ng-container>
+      <!-- <ng-container *ngIf="isLoggedIn"> -->
+      <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
+      </ds-item-page-uri-field>
+      <!-- </ng-container> -->
       <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.other']" [separator]="', '"
         [label]="'browse.metadata.vocab'"></ds-generic-item-page-field>
 

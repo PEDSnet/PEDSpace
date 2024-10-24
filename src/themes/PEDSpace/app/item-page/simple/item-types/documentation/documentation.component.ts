@@ -77,22 +77,22 @@ import { ItemPageDescriptionFieldComponent } from '../../field-components/specif
     ItemPageCcLicenseFieldComponent],
 })
 export class DocumentationComponent extends BaseComponent {
-  context: Context = Context.Any;
+  // context: Context = Context.Any;
 
-  isLoggedIn: boolean = false;
+  // isLoggedIn: boolean = false;
   
-  constructor(
-    protected authService: AuthService,
-    protected routeService: RouteService,
-    protected router: Router
-  ) {
-    super(routeService, router);
-  }
-  ngOnInit(): void {
-    super.ngOnInit();
-    this.authService.isAuthenticated().subscribe((loggedIn: boolean) => {
-      this.isLoggedIn = loggedIn;
-    });
-  }
+  // constructor(
+  //   protected authService: AuthService,
+  //   protected routeService: RouteService,
+  //   protected router: Router
+  // ) {
+  //   super(routeService, router);
+  // }
+  // ngOnInit(): void {
+  //   super.ngOnInit();
+  //   this.authService.isAuthenticated().subscribe((loggedIn: boolean) => {
+  //     this.isLoggedIn = loggedIn;
+  //   });
+  // }
 
 }

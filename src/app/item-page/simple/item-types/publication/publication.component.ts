@@ -27,7 +27,7 @@ import { ItemPageUriFieldComponent } from '../../field-components/specific-field
 import { ThemedMetadataRepresentationListComponent } from '../../metadata-representation-list/themed-metadata-representation-list.component';
 import { RelatedItemsComponent } from '../../related-items/related-items-component';
 import { ItemComponent } from '../shared/item.component';
-import { RouteService } from 'src/app/core/services/route.service';
+// import { RouteService } from 'src/app/core/services/route.service';
 
 /**
  * Component that represents a publication Item page
@@ -43,10 +43,9 @@ import { RouteService } from 'src/app/core/services/route.service';
   imports: [NgIf, ThemedResultsBackButtonComponent, MiradorViewerComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, ThemedMediaViewerComponent, ThemedFileSectionComponent, ItemPageDateFieldComponent, ThemedMetadataRepresentationListComponent, GenericItemPageFieldComponent, RelatedItemsComponent, ItemPageAbstractFieldComponent, ItemPageUriFieldComponent, CollectionsComponent, RouterLink, AsyncPipe, TranslateModule],
 })
 export class PublicationComponent extends ItemComponent {
-  constructor(
-    protected routeService: RouteService,
-    protected router: Router
-  ) {
-    super(routeService, router);
-  }
+//   constructor(
+//     protected routeService: RouteService,
+//     protected router: Router
+//   ) {
+//     super(routeService, router);
 }
