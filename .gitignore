@@ -43,3 +43,4 @@ junit.xml
 
 /src/mirador-viewer/config.local.js
 src/assets/i18n/spaceJSON.sh
+original-changes.patch

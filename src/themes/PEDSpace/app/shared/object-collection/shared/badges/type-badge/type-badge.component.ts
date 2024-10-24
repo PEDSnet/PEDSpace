@@ -6,15 +6,15 @@ import {
   NgSwitchCase,
   NgSwitchDefault
 } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+// import { Observable } from 'rxjs';
+// import { map, tap } from 'rxjs/operators';
 import { TypeBadgeComponent as BaseComponent } from 'src/app/shared/object-collection/shared/badges/type-badge/type-badge.component';
-import { BrowseDefinitionDataService } from 'src/app/core/browse/browse-definition-data.service';
-import { BrowseDefinition } from 'src/app/core/shared/browse-definition.model';
-import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
+// import { BrowseDefinitionDataService } from 'src/app/core/browse/browse-definition-data.service';
+// import { BrowseDefinition } from 'src/app/core/shared/browse-definition.model';
+// import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
 
 @Component({
   selector: 'ds-themed-type-badge',
@@ -24,31 +24,31 @@ import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
   imports: [NgIf, NgClass, NgSwitch, NgSwitchCase, NgSwitchDefault, TranslateModule, RouterModule, AsyncPipe],
 })
 export class TypeBadgeComponent extends BaseComponent implements OnInit {
-  browseDefinition$: Observable<BrowseDefinition>;
 
-  constructor(private browseDefinitionDataService: BrowseDefinitionDataService) {
-    super();
-  }
+  @Input() interactive = false; // New property to control clickable state
+  
+  // browseDefinition$: Observable<BrowseDefinition>;
+
+  // constructor(private browseDefinitionDataService: BrowseDefinitionDataService) {
+  //   super();
+  // }
 
   ngOnInit() {
-    // // console.log('TypeBadgeComponent ngOnInit');
-    console.log('this.typeMessage:', this.typeMessage);
-    this.initBrowseDefinition();
+    // console.log('this.typeMessage:', this.typeMessage);
+    // this.initBrowseDefinition();
   }
 
-  private initBrowseDefinition() {
-    const fields = ['dspace.entity.type'];
-    this.browseDefinition$ = this.browseDefinitionDataService.findByFields(fields).pipe(
-      getFirstCompletedRemoteData(),
-      map((def) => def.payload),
-      tap(browseDefinition => console.log('browseDefinition:', browseDefinition))
-    );
-  }
+  // private initBrowseDefinition() {
+  //   const fields = ['dspace.entity.type'];
+  //   this.browseDefinition$ = this.browseDefinitionDataService.findByFields(fields).pipe(
+  //     getFirstCompletedRemoteData(),
+  //     map((def) => def.payload),
+  //     tap(browseDefinition => console.log('browseDefinition:', browseDefinition))
+  //   );
+  // }
 
   getQueryParams(value: string) {
-    // console.log('getQueryParams input:', value);
     const actualValue = this.object?.firstMetadataValue('dspace.entity.type') || value;
-    // console.log('getQueryParams actualValue:', actualValue);
     return { value: actualValue };
   }
 
@@ -62,15 +62,13 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
 
   getTypeClass(): string {
     const objectType = this.object?.firstMetadataValue('dspace.entity.type');
-    // console.log('getTypeClass objectType:', objectType);
-    // console.log('getTypeClass typeMessage:', this.typeMessage);
-  
     let baseClass = '';
     let specificClass = '';
+    let interactiveClass = this.interactive ? '' : 'non-interactive';
   
     switch (this.typeMessage) {
       case 'community.listelement.badge':
-        return 'badge-community'; 
+        return `badge-community ${interactiveClass}`; 
       case 'collection.listelement.badge':
         baseClass = 'badge-collection';
         break;
@@ -96,8 +94,10 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
         break;
     }
   
-    const result = `${baseClass} ${specificClass}`.trim();
-    // console.log('getTypeClass result:', result);
-    return result;
+    return `${baseClass} ${specificClass} ${interactiveClass}`.trim();
+  }
+
+  shouldBeClickable(): boolean {
+    return this.interactive && this.typeMessage !== 'community.listelement.badge';
   }
 }

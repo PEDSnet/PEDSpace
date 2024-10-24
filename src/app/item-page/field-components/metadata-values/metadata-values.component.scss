@@ -1,4 +1,3 @@
-// @import '../../../../styles/variables';
 @import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
 
 $mauve: #E4C1F9;
@@ -6,13 +5,27 @@ $tropical-indigo: #9381ff;
 $puce: #c984a7;
 
 .ds-metadata-value {
-  &.btn {
+  &.btn, &.badge {
     margin: 0.2rem;
-    transition: all 0.3s ease;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    font-weight: 500;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
     &.btn-outline-primary {
       color: $western-red;
-      border-color: $western-red;
+      border: 1px solid $western-red;
       background-color: transparent;
 
       &:hover, &:focus {
@@ -23,7 +36,7 @@ $puce: #c984a7;
 
     &.btn-dq-category {
       color: $snow;
-      border-color: $china-rose;
+      border: 1px solid $china-rose;
       background-color: $china-rose;
 
       &:hover, &:focus {
@@ -34,7 +47,7 @@ $puce: #c984a7;
 
     &.btn-dataset-eval-strategy {
       color: $snow;
-      border-color: $puce;
+      border: 1px solid $puce;
       background-color: $puce;
 
       &:hover, &:focus {
@@ -45,13 +58,36 @@ $puce: #c984a7;
 
     &.btn-error-detection-approach {
       color: $snow;
-      border-color: $tropical-indigo;
+      border: 1px solid $tropical-indigo;
       background-color: $tropical-indigo;
 
       &:hover, &:focus {
         color: $tropical-indigo;
         background-color: $snow;
       }
+    }
+  }
+
+  // Special styling for badge variant
+  &.badge {
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.5s;
+    }
+
+    &:hover::after {
+      transform: translateX(100%);
     }
   }
 }
@@ -66,8 +102,3 @@ $puce: #c984a7;
     text-decoration: underline;
   }
 }
-
-// .separator {
-//   color: $gray-700;
-//   margin: 0 0.5rem;
-// }

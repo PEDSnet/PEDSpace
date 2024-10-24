@@ -1,13 +1,13 @@
 import { NgIf, NgClass, AsyncPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+// import { Observable } from 'rxjs';
+// import { map, tap } from 'rxjs/operators';
 import { TypeBadgeComponent as BaseComponent } from 'src/app/shared/object-collection/shared/badges/type-badge/type-badge.component';
-import { BrowseDefinitionDataService } from 'src/app/core/browse/browse-definition-data.service';
-import { BrowseDefinition } from 'src/app/core/shared/browse-definition.model';
-import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
+// import { BrowseDefinitionDataService } from 'src/app/core/browse/browse-definition-data.service';
+// import { BrowseDefinition } from 'src/app/core/shared/browse-definition.model';
+// import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
 
 @Component({
   selector: 'ds-verification-badge',
@@ -17,19 +17,21 @@ import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
   imports: [NgIf, NgClass, TranslateModule, RouterModule, AsyncPipe],
 })
 export class VerificationBadgeComponent extends BaseComponent implements OnInit {
-  _verificationStatus: string;
-  browseDefinition$: Observable<BrowseDefinition>;
+  @Input() nonClickable = true;
 
-  constructor(private browseDefinitionDataService: BrowseDefinitionDataService) {
-    super();
-  }
+  _verificationStatus: string;
+  // browseDefinition$: Observable<BrowseDefinition>;
+
+  // constructor(private browseDefinitionDataService: BrowseDefinitionDataService) {
+  //   super();
+  // }
 
   ngOnInit() {
     this.setVerificationStatus();
-    this.initBrowseDefinition();
-    console.log('VerificationBadgeComponent ngOnInit');
-    console.log('this.object:', this.object);
-    console.log('this.verificationStatus:', this.verificationStatus);
+    // this.initBrowseDefinition();
+    // console.log('VerificationBadgeComponent ngOnInit');
+    // console.log('this.object:', this.object);
+    // console.log('this.verificationStatus:', this.verificationStatus);
   }
 
   private setVerificationStatus() {
@@ -38,33 +40,32 @@ export class VerificationBadgeComponent extends BaseComponent implements OnInit 
     console.log('setVerificationStatus:', this._verificationStatus);
   }
 
-  private initBrowseDefinition() {
-    const fields = ['local.quality.status'];
-    this.browseDefinition$ = this.browseDefinitionDataService.findByFields(fields).pipe(
-      getFirstCompletedRemoteData(),
-      map((def) => def.payload),
-      tap(browseDefinition => console.log('browseDefinition:', browseDefinition))
-    );
-  }
+  // private initBrowseDefinition() {
+  //   const fields = ['local.quality.status'];
+  //   this.browseDefinition$ = this.browseDefinitionDataService.findByFields(fields).pipe(
+  //     getFirstCompletedRemoteData(),
+  //     map((def) => def.payload),
+  //     tap(browseDefinition => console.log('browseDefinition:', browseDefinition))
+  //   );
+  // }
 
   get verificationStatus(): string {
     return this._verificationStatus;
   }
 
-  // Redundant method
-  // getDisplayValue(value: string): string {
-  //   console.log('getDisplayValue input:', value);
-  //   const displayValue = value.split('.')[0].split('').map((char, index) => 
-  //     index === 0 ? char.toUpperCase() : char
-  //   ).join('');
-  //   console.log('getDisplayValue output:', displayValue);
-  //   return displayValue;
-  // }
-
-  getQueryParams(value: string) {
-    console.log('getQueryParams input:', value);
-    const actualValue = this.object?.firstMetadataValue('local.quality.status') || value;
-    console.log('getQueryParams actualValue:', actualValue);
-    return { value: actualValue };
+  getBadgeClasses() {
+    return {
+      'badge-secondary': !this.verificationStatus.includes('verified') && !this.verificationStatus.includes('deprecated'),
+      'badge-check': this.verificationStatus.includes('verified'),
+      'badge-negative': this.verificationStatus.includes('deprecated'),
+      'badge-study-specific': this.verificationStatus.includes('study')
+    };
   }
+
+  // getQueryParams(value: string) {
+  //   console.log('getQueryParams input:', value);
+  //   const actualValue = this.object?.firstMetadataValue('local.quality.status') || value;
+  //   console.log('getQueryParams actualValue:', actualValue);
+  //   return { value: actualValue };
+  // }
 }
