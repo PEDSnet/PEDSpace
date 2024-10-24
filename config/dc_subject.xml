@@ -41,6 +41,7 @@
 						<node id="STUDY.904" label="PKIDS Study"/>
 						<node id="STUDY.905" label="P50"/>
 						<node id="STUDY.906" label="Infrastructure Study"/>
+						<node id="STUDY.907" label="P30 PEDSnet Scholars Study"/>
 					</isComposedBy>
 				</node>
 				<node id="STUDY.10" label="Meta-Analysis"/>
@@ -213,7 +214,92 @@
                 </node>
             </isComposedBy>
         </node>
-		<node id="CP" label="Computable Phenotyping"/>
+		<node id="CP" label="Computable Phenotyping">
+			<isComposedBy>
+				<node id="CP01" label="Phenotype Development Strategy">
+					<isComposedBy>
+						<node id="CP01.01" label="Rules-Based (Structured Data-Only)"/>
+						<node id="CP01.02" label="Natural Language Processing"/>
+						<node id="CP01.03" label="Machine Learning, Unsupervised"/>
+						<node id="CP01.04" label="Machine Learning, Semi-Supervised"/>
+						<node id="CP01.05" label="Machine Learning, Supervised"/>
+						<node id="CP01.06" label="Other"/>
+					</isComposedBy>
+				</node>		
+				<node id="CP02" label="Content Data Model">
+					<isComposedBy>
+						<node id="CP02.01" label="OMOP Data Model"/>
+						<node id="CP02.02" label="PEDSnet Data Model"/>
+						<node id="CP02.03" label="PCORnet Data Model"/>
+					</isComposedBy>
+				</node>
+				<node id="CP03" label="Phenotype Evaluation">
+					<isComposedBy>
+						<node id="CP03.01" label="Specificity Measure"/>
+						<node id="CP03.02" label="Sensitivity Measure"/>
+						<node id="CP03.03" label="Negative Predictive Value (NPV)"/>
+						<node id="CP03.04" label="Positive Predictive Value (PPV)"/>
+						<node id="CP03.05" label="Area Under Curve (AUC)"/>
+						<node id="CP03.06" label="Validated"/>
+						<node id="CP03.07" label="Clinician Reviewed"/>
+					</isComposedBy>
+				</node>
+				<node id="CP04" label="Variable Characterization">
+					<isComposedBy>
+						<node id="CP04.01" label="Primary Outcome/Exposure"/>
+						<node id="CP04.02" label="Secondary Outcome/Exposure"/>
+						<node id="CP04.03" label="Cohort Definition (Inclusion or Exclusion Criteria)"/>
+						<node id="CP04.04" label="Comorbidity or Covariate"/>
+					</isComposedBy>
+				</node>
+				<node id="CP05" label="Development Population">
+					<isComposedBy>
+						<node id="CP05.01" label="Age Groups">
+							<isComposedBy>
+								<node id="CP05.0101" label="Adolescent Patient Population"/>
+								<node id="CP05.0102" label="Adult Patient Population"/>
+								<node id="CP05.0103" label="Infant Patient Population"/>
+								<node id="CP05.0104" label="Child Patient Population"/>
+								<node id="CP05.0105" label="Elderly Patient Population"/>
+								<node id="CP05.0105" label="All Ages Patient Population"/>
+							</isComposedBy>
+						</node>
+						<node id="CP05.02" label="Sex and Gender Groups">
+							<isComposedBy>
+								<node id="CP05.0201" label="Male Patient Population (Sex Assigned at Birth)"/>
+								<node id="CP05.0202" label="Female Patient Population (Sex Assigned at Birth)"/>
+								<node id="CP05.0203" label="Intersex Patient Population (Sex Assigned at Birth"/>
+								<node id="CP05.0204" label="Transgender Patient Population"/>
+								<node id="CP05.0205" label="Non-Binary Patient Population"/>
+								<node id="CP05.0206" label="All Gender Identities Patient Population"/>
+								<node id="CP05.0207" label="Sex Assigned at Birth Patient Population"/>
+							</isComposedBy>
+						</node>
+						<node id="CP05.03" label="Ethnicity Groups">
+							<isComposedBy>
+								<node id="CP05.0301" label="Hispanic or Latinx Patient Population">
+									<hasNote>Latinx in this case refers male-identifying, female-identifying, and gender-expansive people of Latin American origin or descent (del Río-González, 2021)</hasNote>
+								</node>
+								<node id="CP05.0302" label="Non-Hispanic or Latinx Patient Population">
+									<hasNote>Latinx in this case refers male-identifying, female-identifying, and gender-expansive people of Latin American origin or descent (del Río-González, 2021)</hasNote>
+								</node>
+								<node id="CP05.0303" label="All Ethnic Groups Patient Population (No Restrictions)"/>
+							</isComposedBy>
+						</node>
+						<node id="CP05.04" label="Racial Groups">
+							<isComposedBy>
+								<node id="CP05.0401" label="American Indian or Alaska Native Patient Population"/>
+								<node id="CP05.0402" label="Asian Patient Population"/>
+								<node id="CP05.0403" label="Black or African American Patient Population"/>
+								<node id="CP05.0404" label="Native Hawaiian or Other Pacific Islander Patient Population"/>
+								<node id="CP05.0405" label="White Patient Population"/>
+								<node id="CP05.0406" label="All Racial Groups Patient Population (No Restrictions)"/>
+							</isComposedBy>
+						</node>
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>	
 	</isComposedBy>
 	<hasNote>Taxonomy developed by Annabel Pinkney and Hanieh Razzaghi</hasNote>
 </node> 
