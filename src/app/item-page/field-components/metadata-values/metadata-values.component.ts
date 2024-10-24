@@ -106,6 +106,11 @@ export class MetadataValuesComponent implements OnChanges {
    */
   sentenceTemplateParts: string[] | null = null;
 
+  /**
+   * Whether the metadata value should be rendered as a non-clickable badge
+   */
+  @Input() renderAsBadge = false;
+
   hasValue = hasValue;
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -171,7 +176,7 @@ export class MetadataValuesComponent implements OnChanges {
    * @param mdValue The metadata value to check
    */
   shouldRenderAsButton(mdValue: MetadataValue): boolean {
-    return this.renderAsButton;
+    return this.renderAsButton && !this.renderAsBadge;
   }
 
   /**
@@ -183,31 +188,28 @@ export class MetadataValuesComponent implements OnChanges {
     return linkValue.startsWith(environment.ui.baseUrl);
   }
 
-  /**
-   * Get the class for a button based on the value.
-   * @param value The value to get the class for.
-   */
   getButtonClass(value: string): string {
-    // console.log('getButtonClass called with:', value);
-    // console.log('entityType:', this.entityType);
-  
     if (!this.entityType || this.entityType !== 'DQCheck') {
-      // console.log('Returning btn-outline-primary due to entityType');
       return 'btn-outline-primary';
     }
   
     if (value.includes('Data Quality Category')) {
-      // console.log('Returning btn-dq-category');
       return 'btn-dq-category';
     } else if (value.includes('Dataset Evaluation Strategy')) {
-      // console.log('Returning btn-dataset-eval-strategy');
       return 'btn-dataset-eval-strategy';
     } else if (value.includes('Error Detection Approach')) {
-      // console.log('Returning btn-error-detection-approach');
       return 'btn-error-detection-approach';
     } else {
-      // console.log('Returning btn-outline-primary as default');
       return 'btn-outline-primary';
     }
   }
+
+  /**
+   * Should the metadata value be rendered as a badge?
+   * @param mdValue The metadata value to check
+   */
+  shouldRenderAsBadge(mdValue: MetadataValue): boolean {
+    return this.renderAsBadge;
+  }
+  
 }

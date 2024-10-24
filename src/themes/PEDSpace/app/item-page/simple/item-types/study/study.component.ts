@@ -32,8 +32,8 @@ import { MetadataFieldWrapperComponent } from '../../../../../../../app/shared/m
 import { listableObjectComponent } from '../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
-import { AuthService } from 'src/app/core/auth/auth.service';
-import { RouteService } from 'src/app/core/services/route.service';
+// import { AuthService } from 'src/app/core/auth/auth.service';
+// import { RouteService } from 'src/app/core/services/route.service';
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
 import { ItemPageExternalPublicationFieldComponent } from '../../field-components/specific-field/external/item-page-external-publication.component';
 import { ItemPageDescriptionFieldComponent } from '../../field-components/specific-field/description/item-page-description.component';
@@ -77,22 +77,22 @@ import { ItemPageDescriptionFieldComponent } from '../../field-components/specif
     ItemPageCcLicenseFieldComponent],
 })
 export class StudyComponent extends BaseComponent {
-  context: Context = Context.Any;
+  // context: Context = Context.Any;
 
-  isLoggedIn: boolean = false;
+  // isLoggedIn: boolean = false;
   
-  constructor(
-    protected authService: AuthService,
-    protected routeService: RouteService,
-    protected router: Router
-  ) {
-    super(routeService, router);
-  }
-  ngOnInit(): void {
-    super.ngOnInit();
-    this.authService.isAuthenticated().subscribe((loggedIn: boolean) => {
-      this.isLoggedIn = loggedIn;
-    });
-  }
+  // constructor(
+  //   protected authService: AuthService,
+  //   protected routeService: RouteService,
+  //   protected router: Router
+  // ) {
+  //   super(routeService, router);
+  // }
+  // ngOnInit(): void {
+  //   super.ngOnInit();
+  //   this.authService.isAuthenticated().subscribe((loggedIn: boolean) => {
+  //     this.isLoggedIn = loggedIn;
+  //   });
+  // }
 
 }

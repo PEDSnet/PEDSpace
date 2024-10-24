@@ -11,7 +11,7 @@
 
 
   <div class="d-flex">
-    <ds-badges *ngIf="showLabel" [object]="object" [context]="context" [showAccessStatus]="true"></ds-badges>
+    <ds-badges *ngIf="showLabel" [object]="object" [showAccessStatus]="true"></ds-badges>
   </div>
 
 
@@ -76,10 +76,10 @@
 
 <ds-item-page-description-field [item]="object" [label]="'item.page.description'"></ds-item-page-description-field>
 
-      <ng-container *ngIf="isLoggedIn">
-        <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
-        </ds-item-page-uri-field>
-      </ng-container>
+      <!-- <ng-container *ngIf="isLoggedIn"> -->
+      <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
+      </ds-item-page-uri-field>
+      <!-- </ng-container> -->
       <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="', '"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 

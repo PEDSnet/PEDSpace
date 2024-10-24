@@ -19,7 +19,7 @@ import { ThemedResultsBackButtonComponent } from '../../../../../../../app/share
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { RouteService } from 'src/app/core/services/route.service';
 
-@listableObjectComponent('JournalIssue', ViewMode.StandalonePage, Context.Any, 'PCORnet-custom-7')
+@listableObjectComponent('JournalIssue', ViewMode.StandalonePage, Context.Any, 'PEDSpace')
 @Component({
   selector: 'ds-journal-issue',
   // styleUrls: ['./journal-issue.component.scss'],
@@ -33,10 +33,10 @@ import { RouteService } from 'src/app/core/services/route.service';
  * The component for displaying metadata and relations of an item of the type Journal Issue
  */
 export class JournalIssueComponent extends BaseComponent {
-  constructor(
-    protected routeService: RouteService,
-    protected router: Router
-  ) {
-    super(routeService, router);
-  }
+  // constructor(
+  //   protected routeService: RouteService,
+  //   protected router: Router
+  // ) {
+  //   super(routeService, router);
+  // }
 }

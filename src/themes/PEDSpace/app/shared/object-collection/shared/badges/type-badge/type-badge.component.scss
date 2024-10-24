@@ -17,7 +17,6 @@ $documentation-icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 $study-icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-school'%3E%3Cpath d='M14 22v-4a2 2 0 1 0-4 0v4'/%3E%3Cpath d='m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2'/%3E%3Cpath d='M18 5v17'/%3E%3Cpath d='m4 6 8-4 8 4'/%3E%3Cpath d='M6 5v17'/%3E%3Ccircle cx='12' cy='9' r='2'/%3E%3C/svg%3E";
 $collection-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJveGVzIj48cGF0aCBkPSJNMi45NyAxMi45MkEyIDIgMCAwIDAgMiAxNC42M3YzLjI0YTIgMiAwIDAgMCAuOTcgMS43MWwzIDEuOGEyIDIgMCAwIDAgMi4wNiAwTDEyIDE5di01LjVsLTUtMy00LjAzIDIuNDJaIi8+PHBhdGggZD0ibTcgMTYuNS00Ljc0LTIuODUiLz48cGF0aCBkPSJtNyAxNi41IDUtMyIvPjxwYXRoIGQ9Ik03IDE2LjV2NS4xNyIvPjxwYXRoIGQ9Ik0xMiAxMy41VjE5bDMuOTcgMi4zOGEyIDIgMCAwIDAgMi4wNiAwbDMtMS44YTIgMiAwIDAgMCAuOTctMS43MXYtMy4yNGEyIDIgMCAwIDAtLjk3LTEuNzFMMTcgMTAuNWwtNSAzWiIvPjxwYXRoIGQ9Im0xNyAxNi41LTUtMyIvPjxwYXRoIGQ9Im0xNyAxNi41IDQuNzQtMi44NSIvPjxwYXRoIGQ9Ik0xNyAxNi41djUuMTciLz48cGF0aCBkPSJNNy45NyA0LjQyQTIgMiAwIDAgMCA3IDYuMTN2NC4zN2w1IDMgNS0zVjYuMTNhMiAyIDAgMCAwLS45Ny0xLjcxbC0zLTEuOGEyIDIgMCAwIDAtMi4wNiAwbC0zIDEuOFoiLz48cGF0aCBkPSJNMTIgOCA3LjI2IDUuMTUiLz48cGF0aCBkPSJtMTIgOCA0Ljc0LTIuODUiLz48cGF0aCBkPSJNMTIgMTMuNVY4Ii8+PC9zdmc+";
 $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWRuYSI+PHBhdGggZD0ibTEwIDE2IDEuNSAxLjUiLz48cGF0aCBkPSJtMTQgOC0xLjUtMS41Ii8+PHBhdGggZD0iTTE1IDJjLTEuNzk4IDEuOTk4LTIuNTE4IDMuOTk1LTIuODA3IDUuOTkzIi8+PHBhdGggZD0ibTE2LjUgMTAuNSAxIDEiLz48cGF0aCBkPSJtMTcgNi0yLjg5MS0yLjg5MSIvPjxwYXRoIGQ9Ik0yIDE1YzYuNjY3LTYgMTMuMzMzIDAgMjAtNiIvPjxwYXRoIGQ9Im0yMCA5IC44OTEuODkxIi8+PHBhdGggZD0iTTMuMTA5IDE0LjEwOSA0IDE1Ii8+PHBhdGggZD0ibTYuNSAxMi41IDEgMSIvPjxwYXRoIGQ9Im03IDE4IDIuODkxIDIuODkxIi8+PHBhdGggZD0iTTkgMjJjMS43OTgtMS45OTggMi41MTgtMy45OTUgMi44MDctNS45OTMiLz48L3N2Zz4=";
-
 .badge-type {
     color: white;
     padding: 5px 10px 5px 30px;
@@ -41,6 +40,40 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
         transition: all 0.3s ease;
     }
 
+    // Interactive states only apply to clickable elements that aren't communities
+    &:not(.non-interactive):not(.badge-community) {
+        cursor: pointer;
+        
+        &:hover, &:focus {
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+            &::before {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    // Non-interactive badges get a subtle animation on hover
+    &.non-interactive {
+        cursor: default;
+        
+        &:hover {
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+                transform: translateX(-100%);
+                animation: shine 1.5s infinite;
+            }
+        }
+    }
     &:not(.badge-community):hover, &:not(.badge-community):focus {
         color: white;
         text-decoration: none;
@@ -237,6 +270,11 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
             background-image: repeating-linear-gradient(45deg, darken(theme-color('info'), 30%) 0, darken(theme-color('info'), 30%) 1px, darken(theme-color('info'), 25%) 0, darken(theme-color('info'), 25%) 50%);
             transform: translateY(-2px);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    }
+    @keyframes shine {
+        100% {
+            transform: translateX(100%);
         }
     }
 }

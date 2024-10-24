@@ -70,7 +70,13 @@ export class ItemPageFieldComponent {
     img: ImageField;
 
     /**
+     * Whether the metadata value should be rendered as a non-interactive badge
+     */
+    @Input() renderAsBadge = false;
+
+    /**
      * Whether the metadata value should be rendered as a button
+     * Note: renderAsBadge takes precedence over renderAsButton
      */
     @Input() renderAsButton = false;
 
