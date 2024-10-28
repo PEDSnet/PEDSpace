@@ -114,4 +114,17 @@
       color: #D8EDDF; /* Honeydew */
     }
   }
+  
+  .btn-custom {
+    background-color: #004B87; /* Deep Sea Blue */
+    border-color: #004B87; /* Deep Sea Blue */
+    color: #D8EDDF; /* Honeydew */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+  
+    &:hover, &:focus {
+      background-color: darken(#004B87, 10%);
+      border-color: darken(#004B87, 10%);
+      color: #D8EDDF;
+    }
+  }
 }
