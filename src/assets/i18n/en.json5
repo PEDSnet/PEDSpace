@@ -4531,6 +4531,12 @@
   "search.filters.filter.itemVocab.placeholder": "Vocabulary...",
   
   "search.filters.filter.dateCreated.head": "Date Created",
+  
+  "search.filters.filter.dateModified.head": "Date Modified",
+  
+  "search.filters.filter.dateModified.min.label": "Start",
+  
+  "search.filters.filter.dateModified.max.label": "End",
 
   "search.filters.filter.itemTags.head": "Tags",
     
