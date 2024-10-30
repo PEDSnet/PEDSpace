@@ -15,7 +15,7 @@ export class HomeNewsComponent extends BaseComponent implements OnInit {
   ipAddressMatch: boolean = false; // For storing if IP matches
   showDevOnProdMessage: boolean = false;
 
-  private targetIpAddress = 'pedsdspaceprod.research.chop.edu'; // Production IP
+  private targetIpAddress = 'pedsnetapps.chop.edu'; 
 
   constructor() {
     super();
