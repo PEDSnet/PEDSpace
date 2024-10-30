@@ -67,7 +67,7 @@
               }
             ],
             "scripts": [],
-            "baseHref": "/"
+            "baseHref": "/metadata/"
           },
           "configurations": {
             "development": {
@@ -116,7 +116,9 @@
           "options": {
             "allowedHosts": [
               "pedsdspace01.research.chop.edu",
-              "pedsdspaceprod.research.chop.edu"
+              "pedsdspaceprod.research.chop.edu",
+              "pedsnetapps.chop.edu",
+              "login.windows.net"
             ],
             "buildTarget": "dspace-angular:build",
             "port": 4000
