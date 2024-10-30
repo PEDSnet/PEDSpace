@@ -1,14 +1,14 @@
 <ng-container *ngIf="typeMessage">
-  <!-- <ng-container *ngIf="browseDefinition$ | async as browseDefinition; else simpleBadge"> -->
+  <ng-container *ngIf="browseDefinition$ | async as browseDefinition; else simpleBadge">
     <ng-container [ngSwitch]="shouldBeClickable()">
       <!-- Clickable badge -->
-      <!-- <a *ngSwitchCase="true"
+      <a *ngSwitchCase="true"
          [routerLink]="['/browse', browseDefinition.id]"
          [queryParams]="getQueryParams(typeMessage)"
          class="badge badge-type"
          [ngClass]="[getTypeClass()]">
         {{ getCombinedTypeMessage() | translate }}
-      </a> -->
+      </a>
       
       <!-- Non-clickable badge -->
       <span *ngSwitchCase="false"
@@ -17,7 +17,7 @@
         {{ getCombinedTypeMessage() | translate }}
       </span>
     </ng-container>
-  <!-- </ng-container> -->
+  </ng-container>
   
   <ng-template #simpleBadge>
     <span class="badge badge-type" [ngClass]="[getTypeClass()]">

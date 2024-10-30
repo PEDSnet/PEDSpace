@@ -9,12 +9,12 @@ import {
 import { Component, OnInit, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-// import { Observable } from 'rxjs';
-// import { map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { TypeBadgeComponent as BaseComponent } from 'src/app/shared/object-collection/shared/badges/type-badge/type-badge.component';
-// import { BrowseDefinitionDataService } from 'src/app/core/browse/browse-definition-data.service';
-// import { BrowseDefinition } from 'src/app/core/shared/browse-definition.model';
-// import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
+import { BrowseDefinitionDataService } from 'src/app/core/browse/browse-definition-data.service';
+import { BrowseDefinition } from 'src/app/core/shared/browse-definition.model';
+import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
 
 @Component({
   selector: 'ds-themed-type-badge',
@@ -25,27 +25,26 @@ import { TypeBadgeComponent as BaseComponent } from 'src/app/shared/object-colle
 })
 export class TypeBadgeComponent extends BaseComponent implements OnInit {
 
-  @Input() interactive = false; // New property to control clickable state
+  @Input() interactive = true; 
   
-  // browseDefinition$: Observable<BrowseDefinition>;
+  browseDefinition$: Observable<BrowseDefinition>;
 
-  // constructor(private browseDefinitionDataService: BrowseDefinitionDataService) {
-  //   super();
-  // }
+  constructor(private browseDefinitionDataService: BrowseDefinitionDataService) {
+    super();
+  }
 
   ngOnInit() {
     // console.log('this.typeMessage:', this.typeMessage);
-    // this.initBrowseDefinition();
+    this.initBrowseDefinition();
   }
 
-  // private initBrowseDefinition() {
-  //   const fields = ['dspace.entity.type'];
-  //   this.browseDefinition$ = this.browseDefinitionDataService.findByFields(fields).pipe(
-  //     getFirstCompletedRemoteData(),
-  //     map((def) => def.payload),
-  //     tap(browseDefinition => console.log('browseDefinition:', browseDefinition))
-  //   );
-  // }
+  private initBrowseDefinition() {
+    const fields = ['dspace.entity.type'];
+    this.browseDefinition$ = this.browseDefinitionDataService.findByFields(fields).pipe(
+      getFirstCompletedRemoteData(),
+      map((def) => def.payload)
+    );
+  }
 
   getQueryParams(value: string) {
     const actualValue = this.object?.firstMetadataValue('dspace.entity.type') || value;

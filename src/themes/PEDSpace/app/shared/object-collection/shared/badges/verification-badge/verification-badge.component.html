@@ -1,13 +1,12 @@
 <ng-container *ngIf="verificationStatus">
-  <!-- <ng-container *ngIf="browseDefinition$ | async as browseDefinition"> -->
-    <!-- <ng-container *ngTemplateOutlet="nonClickable ? staticBadge : clickableBadge; 
-             context: { $implicit: browseDefinition }"> -->
+  <ng-container *ngIf="browseDefinition$ | async as browseDefinition"> 
+    <ng-container *ngTemplateOutlet="nonClickable ? staticBadge : clickableBadge; 
+             context: { $implicit: browseDefinition }">
     <ng-container *ngTemplateOutlet="staticBadge">
     </ng-container>
-  <!-- </ng-container> -->
+  </ng-container>
 </ng-container>
 
-<!-- 
 <ng-template #clickableBadge let-browseDefinition>
   <a [routerLink]="['/browse', browseDefinition.id]"
      [queryParams]="getQueryParams(verificationStatus)"
@@ -15,7 +14,7 @@
      [ngClass]="getBadgeClasses()">
     {{ verificationStatus | translate }}
   </a>
-</ng-template> -->
+</ng-template>
 
 <!-- Non-clickable badge template -->
 <ng-template #staticBadge>
