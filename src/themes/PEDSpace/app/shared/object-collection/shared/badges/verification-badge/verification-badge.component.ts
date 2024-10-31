@@ -1,4 +1,4 @@
-import { NgIf, NgClass, AsyncPipe } from '@angular/common';
+import { NgIf, NgClass, AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -14,7 +14,7 @@ import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
   styleUrls: ['./verification-badge.component.scss'],
   templateUrl: './verification-badge.component.html',
   standalone: true,
-  imports: [NgIf, NgClass, TranslateModule, RouterModule, AsyncPipe],
+  imports: [NgIf, NgClass, TranslateModule, RouterModule, AsyncPipe, NgTemplateOutlet],
 })
 export class VerificationBadgeComponent extends BaseComponent implements OnInit {
   @Input() nonClickable = false;
