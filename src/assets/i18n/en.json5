@@ -4454,6 +4454,10 @@
 
   "search.filters.applied.f.itemQuality": "Quality",
   
+  "search.filters.applied.f.itemFunder": "Funder",
+
+  "search.filters.applied.f.itemAffiliation": "Affiliation",
+  
   "search.filters.applied.f.title": "Title",
 
   "search.filters.applied.f.author": "Author",
@@ -4508,7 +4512,11 @@
 
   "search.filters.filter.itemQuality.head": "Quality",
   
-  "search.filters.filter.itemFunder.head": "Funders",
+  "search.filters.filter.itemFunder.head": "Funder",
+  
+  "search.filters.filter.itemFunder.label": "Funder",
+
+  "search.filters.filter.itemFunder.placeholder": "Funder...",
   
   "search.filters.filter.itemVocab.head": "Vocabulary",
   
