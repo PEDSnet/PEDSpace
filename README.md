@@ -30,7 +30,7 @@
     <img src="src/themes/PEDSpace/assets/images/PEDSnetLogoSmall-modified.png" alt="Logo">
   </a>
 
-<h3 align="center"><a href="https://pedsdspaceprod.research.chop.edu/home">PEDSpace</a></h3>
+<h3 align="center"><a href="https://pedsnetapps.chop.edu/metadata/">PEDSpace</a></h3>
 
   <p align="left">
 	PEDSpace is a robust implementation of the 	<a href="https://github.com/DSpace/DSpace" target="_blank">open-source DSpace software bundle</a>, designed to store and retrieve digital assets generated during PEDSnet studies. PEDSpace serves as a centralized hub where digital assets are made readily accessible to researchers, clinicians, and stakeholders worldwide.
@@ -40,7 +40,7 @@
     <a href="https://wiki.lyrasis.org/display/DSDOC8x/Introduction"><strong>Learn more about DSpace »</strong></a>
     <br />
     <br />
-    <a href="https://pedsdspaceprod.research.chop.edu/home">View Production Instance</a>
+    <a href="https://pedsnetapps.chop.edu/metadata/">View Production Instance</a>
     ·
     <a href="https://github.com/PEDSnet/PEDSpace/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
