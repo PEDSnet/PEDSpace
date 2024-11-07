@@ -67,8 +67,12 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
   
     switch (this.typeMessage) {
       case 'community.listelement.badge':
+        this.interactive = false;
         return `badge-community ${interactiveClass}`; 
       case 'collection.listelement.badge':
+        if (!objectType) {
+          this.interactive = false;
+        }
         baseClass = 'badge-collection';
         break;
       default:
