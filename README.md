@@ -105,8 +105,8 @@ PEDSpace is an open source repository application intended to host and serve PED
 - [x] Implement deposit forms and workflow system
 - [x] Resolve version information display issue
 - [x] Implement default "item created" sort for search queries
-- [ ] Develop process for handling non-character sequences in data
-- [ ] Make PEDSpace site publicly accessible with proper security measures
+- [x] Develop process for handling non-character sequences in data
+- [x] Make PEDSpace site publicly accessible with proper security measures
 - [ ] Update user guides and administrative documentation for DSpace 8.0
 
 See the [open issues](https://github.com/PEDSnet/PEDSpace/issues) or the [project board](https://github.com/orgs/PEDSnet/projects/2) for a full list of proposed features (and known issues).
