@@ -4,7 +4,7 @@
 $tomato: #FE654F;
 $mauve: #E4C1F9;
 $tropical-indigo: #9381ff;
-$puce: #c984a7;
+$quinacridone-magenta: #8A3D63;
 $seafoam-green: #A4D5E1;
 
 // Cool CSS pattersn
@@ -179,7 +179,7 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     }
 
     &.badge-study {
-        background-color: $puce;
+        background-color: $quinacridone-magenta;
         transition: all 0.3s ease;
 
         &::before {
@@ -188,21 +188,21 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
         }
 
         &:not(.badge-community):hover, &:not(.badge-community):focus {
-            background-color: darken($puce, 10%);
+            background-color: darken($quinacridone-magenta, 10%);
         }
 
         &.badge-collection {
-            border: 2px solid $puce;
-            background-color: $puce;
+            border: 2px solid $quinacridone-magenta;
+            background-color: $quinacridone-magenta;
             opacity: 0.9;
             background-size: 10px 10px;
-            background-image: repeating-linear-gradient(45deg, darken($puce, 10%) 0, darken($puce, 10%) 1px, $puce 0, $puce 50%);
+            background-image: repeating-linear-gradient(45deg, darken($quinacridone-magenta, 10%) 0, darken($quinacridone-magenta, 10%) 1px, $quinacridone-magenta 0, $quinacridone-magenta 50%);
             transition: all 0.3s ease;
 
             &:hover, &:focus {
                 opacity: 1;
-                background-color: darken($puce, 15%);
-                background-image: repeating-linear-gradient(45deg, darken($puce, 25%) 0, darken($puce, 25%) 1px, darken($puce, 15%) 0, darken($puce, 15%) 50%);
+                background-color: darken($quinacridone-magenta, 15%);
+                background-image: repeating-linear-gradient(45deg, darken($quinacridone-magenta, 25%) 0, darken($quinacridone-magenta, 25%) 1px, darken($quinacridone-magenta, 15%) 0, darken($quinacridone-magenta, 15%) 50%);
                 transform: translateY(-2px);
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             }

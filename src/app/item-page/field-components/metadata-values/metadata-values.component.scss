@@ -2,7 +2,7 @@
 
 $mauve: #E4C1F9;
 $tropical-indigo: #9381ff;
-$puce: #c984a7;
+$quinacridone-magenta: #8A3D63;
 
 .ds-metadata-value {
   &.btn, &.badge {
@@ -24,13 +24,13 @@ $puce: #c984a7;
     }
 
     &.btn-outline-primary {
-      color: $bittersweet-shimmer;
-      border: 1px solid $bittersweet-shimmer;
+      color: $cordovan;
+      border: 1px solid $cordovan;
       background-color: transparent;
 
       &:hover, &:focus {
         color: $snow;
-        background-color: $bittersweet-shimmer;
+        background-color: $cordovan;
       }
     }
 
@@ -47,11 +47,11 @@ $puce: #c984a7;
 
     &.btn-dataset-eval-strategy {
       color: $snow;
-      border: 1px solid $puce;
-      background-color: $puce;
+      border: 1px solid $quinacridone-magenta;
+      background-color: $quinacridone-magenta;
 
       &:hover, &:focus {
-        color: $puce;
+        color: $quinacridone-magenta;
         background-color: $snow;
       }
     }
@@ -93,12 +93,12 @@ $puce: #c984a7;
 }
 
 .ds-browse-link {
-  color: $bittersweet-shimmer;
+  color: $cordovan;
   text-decoration: none;
   transition: color 0.3s ease;
   
   &:hover, &:focus {
-    color: darken($bittersweet-shimmer, 15%);
+    color: darken($cordovan, 15%);
     text-decoration: underline;
   }
 }
