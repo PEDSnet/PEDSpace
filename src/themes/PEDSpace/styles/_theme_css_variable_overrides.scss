@@ -15,5 +15,55 @@
   // --dqcheck: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWZpbGUtc3RhY2siPjxwYXRoIGQ9Ik0yMSA3aC0zYTIgMiAwIDAgMS0yLTJWMiIvPjxwYXRoIGQ9Ik0yMSA2djYuNWMwIC44LS43IDEuNS0xLjUgMS41aC03Yy0uOCAwLTEuNS0uNy0xLjUtMS41di05YzAtLjguNy0xLjUgMS41LTEuNUgxN1oiLz48cGF0aCBkPSJNNyA4djguOGMwIC4zLjIuNi40LjguMi4yLjUuNC44LjRIMTUiLz48cGF0aCBkPSJNMyAxMnY4LjhjMCAuMy4yLjYuNC44LjIuMi41LjQuOC40SDExIi8+PC9zdmc+");
   // --documentation: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-book-open-text'%3E%3Cpath d='M12 7v14'/%3E%3Cpath d='M16 12h2'/%3E%3Cpath d='M16 8h2'/%3E%3Cpath d='M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z'/%3E%3Cpath d='M6 12h2'/%3E%3Cpath d='M6 8h2'/%3E%3C/svg%3E");
   // --study: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-school'%3E%3Cpath d='M14 22v-4a2 2 0 1 0-4 0v4'/%3E%3Cpath d='m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2'/%3E%3Cpath d='M18 5v17'/%3E%3Cpath d='m4 6 8-4 8 4'/%3E%3Cpath d='M6 5v17'/%3E%3Ccircle cx='12' cy='9' r='2'/%3E%3C/svg%3E");
+  --link-focus-outline: 2px solid #ffbf47;
+  --link-decoration: underline;
+}
+
+a {
+  text-decoration: var(--link-decoration);
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+
+  &:hover,
+  &:focus {
+    text-decoration: none; // Optionally remove underline on hover for visual feedback
+  }
+
+  &:focus {
+    outline: var(--link-focus-outline);
+    outline-offset: 4px; 
+  }
+}
+a:focus-visible {
+  outline: var(--link-focus-outline);
+  outline-offset: 4px;
+}
+
+.facet-filter, .setting-option {
+  background-color: var(--bs-light);
+  border-radius: var(--bs-border-radius);
+
+  &.p-3 {
+    // Needs !important because the original bootstrap class uses it
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .badge-secondary {
+    background-color: var(--bs-primary);
+  }
+
+  h4 {
+    font-size: 1.1rem;
+  }
+}
+
+// Additional global styles to ensure overall accessibility
+body {
+  font-size: 1rem; // Ensures text is readable and scalable
+  line-height: 1.5;
+}
+
+a:active {
+  color: var(--link-hover-color);
 }
 

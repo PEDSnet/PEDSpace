@@ -24,13 +24,13 @@ $puce: #c984a7;
     }
 
     &.btn-outline-primary {
-      color: $western-red;
-      border: 1px solid $western-red;
+      color: $bittersweet-shimmer;
+      border: 1px solid $bittersweet-shimmer;
       background-color: transparent;
 
       &:hover, &:focus {
         color: $snow;
-        background-color: $western-red;
+        background-color: $bittersweet-shimmer;
       }
     }
 
@@ -93,12 +93,12 @@ $puce: #c984a7;
 }
 
 .ds-browse-link {
-  color: $western-red;
+  color: $bittersweet-shimmer;
   text-decoration: none;
   transition: color 0.3s ease;
   
   &:hover, &:focus {
-    color: darken($western-red, 15%);
+    color: darken($bittersweet-shimmer, 15%);
     text-decoration: underline;
   }
 }
