@@ -14,7 +14,7 @@ $honeydew: #D8EDDF ; /* Honeydew */
 $snow: #FBF7F9 ; /* Snow */
 $black-bean: #3B1516 ; /* Black Bean */
 $china-rose: #935870 ; /* China Rose */
-$western-red: #C1666B ; /* Western Red */
+$redwood: #AC625F ; /* Redwood */
 $tomato: #FE654F ; /* Tomato */
 $mauve: #E4C1F9 ; /* Mauve */
 $tropical-indigo: #9381ff ; /* Tropical Indigo */
@@ -30,7 +30,7 @@ $charcoal: #36454F; /* Charcoal */
 $blue: $midnight-green ; /* 42, 68, 84 */
 $green: $cambridge-blue ; /* 154, 188, 179 */
 $cyan: $cambridge-blue ; /* For consistent color scheme */
-$yellow: $western-red ; /* Western Red */
+$yellow: $redwood ; /* Redwood */
 $red: $tomato ;
 $dark: $black-bean ; /* 133, 89, 112 */
 
@@ -41,7 +41,7 @@ $gray-100: $snow ; /* Snow color */
 
 $body-color: $gray-800 ; // Bootstrap $gray-800
 
-$link-color: $western-red ; // Bootstrap $blue
+$link-color: $redwood ; // Bootstrap $blue
 $link-hover-color: darken($link-color, 15%) ; // Bootstrap $blue
 
 $table-accent-bg: $gray-100 ; // Bootstrap $gray-100

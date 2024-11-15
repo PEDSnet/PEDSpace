@@ -24,13 +24,13 @@ $puce: #c984a7;
     }
 
     &.btn-outline-primary {
-      color: $western-red;
-      border: 1px solid $western-red;
+      color: $black-bean;
+      border: 1px solid $redwood;
       background-color: transparent;
 
       &:hover, &:focus {
-        color: $snow;
-        background-color: $western-red;
+        color: $black-bean;
+        background-color: $redwood;
       }
     }
 
@@ -46,23 +46,23 @@ $puce: #c984a7;
     }
 
     &.btn-dataset-eval-strategy {
-      color: $snow;
+      color: $black-bean;
       border: 1px solid $puce;
       background-color: $puce;
 
       &:hover, &:focus {
-        color: $puce;
+        color: $black-bean;
         background-color: $snow;
       }
     }
 
     &.btn-error-detection-approach {
-      color: $snow;
+      color: $black-bean;
       border: 1px solid $tropical-indigo;
       background-color: $tropical-indigo;
 
       &:hover, &:focus {
-        color: $tropical-indigo;
+        color: $black-bean;
         background-color: $snow;
       }
     }
@@ -84,21 +84,55 @@ $puce: #c984a7;
       background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
       transform: translateX(-100%);
       transition: transform 0.5s;
-    }
+        }
 
-    &:hover::after {
+        &:hover::after {
       transform: translateX(100%);
+        }
+      }
     }
-  }
-}
 
-.ds-browse-link {
-  color: $western-red;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  
-  &:hover, &:focus {
-    color: darken($western-red, 15%);
-    text-decoration: underline;
-  }
-}
+    .ds-browse-link {
+      // Ensure sufficient color contrast (WCAG 1.4.3)
+      color: $redwood;
+      text-decoration: underline;
+      text-underline-offset: 0.2em; // Improve underline visibility
+      transition: all 0.3s ease;
+      cursor: pointer;
+      // Ensure interactive elements are operable (WCAG 2.1)
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.5rem;
+      border: 1px solid transparent; // Added for smooth transition
+      
+      // Remove outline for mouse, keep for keyboard (WCAG 2.4.7)
+      &:focus-visible {
+      color: darken($redwood, 25%);
+      text-decoration: underline;
+      outline: 3px solid darken($redwood, 25%);
+      outline-offset: 3px;
+      border-radius: 2px;
+      // High contrast mode support
+      @media screen and (-ms-high-contrast: active) {
+        outline: 2px solid currentColor;
+      }
+      }
+
+      &:hover {
+      color: darken($redwood, 25%);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      border: 1px solid darken($redwood, 25%); // Added box outline on hover
+      border-radius: 2px;
+      }
+
+      &:active {
+      color: darken($redwood, 30%);
+      transform: scale(0.98);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      transform: none;
+      }
+    }
