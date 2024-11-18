@@ -18,23 +18,23 @@ $study-icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width
 $collection-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJveGVzIj48cGF0aCBkPSJNMi45NyAxMi45MkEyIDIgMCAwIDAgMiAxNC42M3YzLjI0YTIgMiAwIDAgMCAuOTcgMS43MWwzIDEuOGEyIDIgMCAwIDAgMi4wNiAwTDEyIDE5di01LjVsLTUtMy00LjAzIDIuNDJaIi8+PHBhdGggZD0ibTcgMTYuNS00Ljc0LTIuODUiLz48cGF0aCBkPSJtNyAxNi41IDUtMyIvPjxwYXRoIGQ9Ik03IDE2LjV2NS4xNyIvPjxwYXRoIGQ9Ik0xMiAxMy41VjE5bDMuOTcgMi4zOGEyIDIgMCAwIDAgMi4wNiAwbDMtMS44YTIgMiAwIDAgMCAuOTctMS43MXYtMy4yNGEyIDIgMCAwIDAtLjk3LTEuNzFMMTcgMTAuNWwtNSAzWiIvPjxwYXRoIGQ9Im0xNyAxNi41LTUtMyIvPjxwYXRoIGQ9Im0xNyAxNi41IDQuNzQtMi44NSIvPjxwYXRoIGQ9Ik0xNyAxNi41djUuMTciLz48cGF0aCBkPSJNNy45NyA0LjQyQTIgMiAwIDAgMCA3IDYuMTN2NC4zN2w1IDMgNS0zVjYuMTNhMiAyIDAgMCAwLS45Ny0xLjcxbC0zLTEuOGEyIDIgMCAwIDAtMi4wNiAwbC0zIDEuOFoiLz48cGF0aCBkPSJNMTIgOCA3LjI2IDUuMTUiLz48cGF0aCBkPSJtMTIgOCA0Ljc0LTIuODUiLz48cGF0aCBkPSJNMTIgMTMuNVY4Ii8+PC9zdmc+";
 $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWRuYSI+PHBhdGggZD0ibTEwIDE2IDEuNSAxLjUiLz48cGF0aCBkPSJtMTQgOC0xLjUtMS41Ii8+PHBhdGggZD0iTTE1IDJjLTEuNzk4IDEuOTk4LTIuNTE4IDMuOTk1LTIuODA3IDUuOTkzIi8+PHBhdGggZD0ibTE2LjUgMTAuNSAxIDEiLz48cGF0aCBkPSJtMTcgNi0yLjg5MS0yLjg5MSIvPjxwYXRoIGQ9Ik0yIDE1YzYuNjY3LTYgMTMuMzMzIDAgMjAtNiIvPjxwYXRoIGQ9Im0yMCA5IC44OTEuODkxIi8+PHBhdGggZD0iTTMuMTA5IDE0LjEwOSA0IDE1Ii8+PHBhdGggZD0ibTYuNSAxMi41IDEgMSIvPjxwYXRoIGQ9Im03IDE4IDIuODkxIDIuODkxIi8+PHBhdGggZD0iTTkgMjJjMS43OTgtMS45OTggMi41MTgtMy45OTUgMi44MDctNS45OTMiLz48L3N2Zz4=";
 .badge-type {
-    color: white;
+    color: $black-bean;
     padding: 5px 10px 5px 30px;
     border-radius: 5px;
     display: inline-flex;
     align-items: center;
     position: relative;
     font-weight: bold;
-    text-decoration: none;
+    text-decoration: underline;
     transition: all 0.3s ease;
-    
+    //$black-bean
     &::before {
         content: '';
         position: absolute;
         left: 10px;
         width: 16px;
         height: 16px;
-        background-color: white;
+        background-color: $black-bean;
         mask-size: cover;
         -webkit-mask-size: cover;
         transition: all 0.3s ease;
@@ -45,7 +45,7 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
         cursor: pointer;
         
         &:hover, &:focus {
-            color: white;
+            color: $black-bean;
             text-decoration: none;
             transform: translateY(-2px);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -75,7 +75,7 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
         }
     }
     &:not(.badge-community):hover, &:not(.badge-community):focus {
-        color: white;
+        color: $black-bean;
         text-decoration: none;
         transform: translateY(-2px);
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -95,7 +95,7 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
         }
 
         &:not(.badge-community):hover, &:not(.badge-community):focus {
-            background-color: darken($dusty-rose, 10%);
+            background-color: lighten($dusty-rose, 10%);
         }
 
         &.badge-collection {
@@ -103,13 +103,13 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
             background-color: $dusty-rose;
             opacity: 0.9;
             background-size: 10px 10px;
-            background-image: repeating-linear-gradient(45deg, darken($dusty-rose, 10%) 0, darken($dusty-rose, 10%) 1px, $dusty-rose 0, $dusty-rose 50%);
+            background-image: repeating-linear-gradient(45deg, lighten($dusty-rose, 10%) 0, lighten($dusty-rose, 10%) 1px, $dusty-rose 0, $dusty-rose 50%);
             transition: all 0.3s ease;
 
             &:hover, &:focus {
                 opacity: 1;
-                background-color: darken($dusty-rose, 15%);
-                background-image: repeating-linear-gradient(45deg, darken($dusty-rose, 25%) 0, darken($dusty-rose, 25%) 1px, darken($dusty-rose, 15%) 0, darken($dusty-rose, 15%) 50%);
+                background-color: lighten($dusty-rose, 15%);
+                background-image: repeating-linear-gradient(45deg, lighten($dusty-rose, 25%) 0, lighten($dusty-rose, 25%) 1px, lighten($dusty-rose, 15%) 0, lighten($dusty-rose, 15%) 50%);
                 transform: translateY(-2px);
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             }
@@ -126,7 +126,7 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
         }
 
         &:not(.badge-community):hover, &:not(.badge-community):focus {
-            background-color: darken($mauve, 10%);
+            background-color: lighten($mauve, 10%);
         }
 
         &.badge-collection {
@@ -134,13 +134,13 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
             background-color: $mauve;
             opacity: 0.9;
             background-size: 10px 10px;
-            background-image: repeating-linear-gradient(45deg, darken($mauve, 10%) 0, darken($mauve, 10%) 1px, $mauve 0, $mauve 50%);
+            background-image: repeating-linear-gradient(45deg, lighten($mauve, 10%) 0, lighten($mauve, 10%) 1px, $mauve 0, $mauve 50%);
             transition: all 0.3s ease;
 
             &:hover, &:focus {
                 opacity: 1;
-                background-color: darken($mauve, 15%);
-                background-image: repeating-linear-gradient(45deg, darken($mauve, 25%) 0, darken($mauve, 25%) 1px, darken($mauve, 15%) 0, darken($mauve, 15%) 50%);
+                background-color: lighten($mauve, 15%);
+                background-image: repeating-linear-gradient(45deg, lighten($mauve, 25%) 0, lighten($mauve, 25%) 1px, lighten($mauve, 15%) 0, lighten($mauve, 15%) 50%);
                 transform: translateY(-2px);
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             }
@@ -157,7 +157,7 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
         }
 
         &:not(.badge-community):hover, &:not(.badge-community):focus {
-            background-color: darken($tropical-indigo, 10%);
+            background-color: lighten($tropical-indigo, 10%);
         }
 
         &.badge-collection {
@@ -165,13 +165,13 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
             background-color: $tropical-indigo;
             opacity: 0.9;
             background-size: 10px 10px;
-            background-image: repeating-linear-gradient(45deg, darken($tropical-indigo, 10%) 0, darken($tropical-indigo, 10%) 1px, $tropical-indigo 0, $tropical-indigo 50%);
+            background-image: repeating-linear-gradient(45deg, lighten($tropical-indigo, 10%) 0, lighten($tropical-indigo, 10%) 1px, $tropical-indigo 0, $tropical-indigo 50%);
             transition: all 0.3s ease;
 
             &:hover, &:focus {
                 opacity: 1;
-                background-color: darken($tropical-indigo, 15%);
-                background-image: repeating-linear-gradient(45deg, darken($tropical-indigo, 25%) 0, darken($tropical-indigo, 25%) 1px, darken($tropical-indigo, 15%) 0, darken($tropical-indigo, 15%) 50%);
+                background-color: lighten($tropical-indigo, 15%);
+                background-image: repeating-linear-gradient(45deg, lighten($tropical-indigo, 25%) 0, lighten($tropical-indigo, 25%) 1px, lighten($tropical-indigo, 15%) 0, lighten($tropical-indigo, 15%) 50%);
                 transform: translateY(-2px);
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             }
@@ -188,7 +188,7 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
         }
 
         &:not(.badge-community):hover, &:not(.badge-community):focus {
-            background-color: darken($quinacridone-magenta, 10%);
+            background-color: lighten($puce, 10%);
         }
 
         &.badge-collection {
@@ -196,13 +196,13 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
             background-color: $quinacridone-magenta;
             opacity: 0.9;
             background-size: 10px 10px;
-            background-image: repeating-linear-gradient(45deg, darken($quinacridone-magenta, 10%) 0, darken($quinacridone-magenta, 10%) 1px, $quinacridone-magenta 0, $quinacridone-magenta 50%);
+            background-image: repeating-linear-gradient(45deg, lighten($puce, 10%) 0, lighten($puce, 10%) 1px, $puce 0, $puce 50%);
             transition: all 0.3s ease;
 
             &:hover, &:focus {
                 opacity: 1;
-                background-color: darken($quinacridone-magenta, 15%);
-                background-image: repeating-linear-gradient(45deg, darken($quinacridone-magenta, 25%) 0, darken($quinacridone-magenta, 25%) 1px, darken($quinacridone-magenta, 15%) 0, darken($quinacridone-magenta, 15%) 50%);
+                background-color: lighten($puce, 15%);
+                background-image: repeating-linear-gradient(45deg, lighten($puce, 25%) 0, lighten($puce, 25%) 1px, lighten($puce, 15%) 0, lighten($puce, 15%) 50%);
                 transform: translateY(-2px);
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             }
@@ -219,7 +219,7 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
         }
 
         &:not(.badge-community):hover, &:not(.badge-community):focus {
-            background-color: darken($seafoam-green, 10%);
+            background-color: lighten($seafoam-green, 10%);
         }
 
         &.badge-collection {
@@ -227,13 +227,13 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
             background-color: $seafoam-green;
             opacity: 0.9;
             background-size: 10px 10px;
-            background-image: repeating-linear-gradient(45deg, darken($seafoam-green, 10%) 0, darken($seafoam-green, 10%) 1px, $seafoam-green 0, $seafoam-green 50%);
+            background-image: repeating-linear-gradient(45deg, lighten($seafoam-green, 10%) 0, lighten($seafoam-green, 10%) 1px, $seafoam-green 0, $seafoam-green 50%);
             transition: all 0.3s ease;
 
             &:hover, &:focus {
                 opacity: 1;
-                background-color: darken($seafoam-green, 15%);
-                background-image: repeating-linear-gradient(45deg, darken($seafoam-green, 25%) 0, darken($seafoam-green, 25%) 1px, darken($seafoam-green, 15%) 0, darken($seafoam-green, 15%) 50%);
+                background-color: lighten($seafoam-green, 15%);
+                background-image: repeating-linear-gradient(45deg, lighten($seafoam-green, 25%) 0, lighten($seafoam-green, 25%) 1px, lighten($seafoam-green, 15%) 0, lighten($seafoam-green, 15%) 50%);
                 transform: translateY(-2px);
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             }
@@ -252,11 +252,11 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     }
 
     &.badge-collection:not([class*="badge-conceptset"]):not([class*="badge-dqcheck"]):not([class*="badge-documentation"]):not([class*="badge-study"]):not([class*="badge-phenotype"]) {
-        background-color: darken(theme-color('info'), 15%);
+        background-color: lighten(theme-color('info'), 15%);
         border: 2px solid theme-color('info');
         opacity: 0.9;
         background-size: 10px 10px;
-        background-image: repeating-linear-gradient(45deg, darken(theme-color('info'), 20%) 0, darken(theme-color('info'), 20%) 1px, darken(theme-color('info'), 15%) 0, darken(theme-color('info'), 15%) 50%);
+        background-image: repeating-linear-gradient(45deg, lighten(theme-color('info'), 20%) 0, lighten(theme-color('info'), 20%) 1px, lighten(theme-color('info'), 15%) 0, lighten(theme-color('info'), 15%) 50%);
         transition: all 0.3s ease;
         
         &::before {
@@ -266,8 +266,8 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
 
         &:hover, &:focus {
             opacity: 1;
-            background-color: darken(theme-color('info'), 25%);
-            background-image: repeating-linear-gradient(45deg, darken(theme-color('info'), 30%) 0, darken(theme-color('info'), 30%) 1px, darken(theme-color('info'), 25%) 0, darken(theme-color('info'), 25%) 50%);
+            background-color: lighten(theme-color('info'), 25%);
+            background-image: repeating-linear-gradient(45deg, lighten(theme-color('info'), 30%) 0, lighten(theme-color('info'), 30%) 1px, lighten(theme-color('info'), 25%) 0, lighten(theme-color('info'), 25%) 50%);
             transform: translateY(-2px);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }

@@ -1,5 +1,40 @@
-:host {
   .ds-menu-item {
     display: inline-block;
+    position: relative; // Optional: For any future positioning needs
+    text-decoration: underline;
+    color: #381918;
+    cursor: pointer;
+    transition: text-decoration 0.3s ease, color 0.3s ease;
+
+    // Hover state for .ds-menu-item
+    &:hover {
+      text-decoration: none;
+      color: darken(#381918, 10%); // Optional: Darken color on hover for feedback
+    }
+
+    // Disabled state
+    &.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: none;
+      text-decoration: none; // Remove underline for disabled state
+      color: #A0A0A0; // Optional: Change color to indicate disabled state
+    }
+
+    // Targeting child elements like <a>, <span>, etc.
+    a,
+    span,
+    .child-text {
+      text-decoration: inherit;
+      color: inherit;
+      transition: inherit;
+    }
+
+    // Hover state for child elements
+    &:hover a,
+    &:hover span,
+    &:hover .child-text {
+      text-decoration: none;
+      color: inherit; // Or adjust if you want different behavior for children
+    }
   }
-}
