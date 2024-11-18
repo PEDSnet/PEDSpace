@@ -24,12 +24,12 @@ $puce: #c984a7;
     }
 
     &.btn-outline-primary {
-      color: $black-bean;
+      color: $redwood;
       border: 1px solid $redwood;
       background-color: transparent;
 
       &:hover, &:focus {
-        color: $black-bean;
+        color: $snow;
         background-color: $redwood;
       }
     }
