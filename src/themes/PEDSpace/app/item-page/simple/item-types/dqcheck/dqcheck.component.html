@@ -48,11 +48,11 @@
 
       <ds-item-page-abstract-field [item]="object" [label]="'item.page.abstract'"></ds-item-page-abstract-field>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['local.description.viz']"
-        [label]="'item.preview.local.description.viz'"></ds-generic-item-page-field>
+      <ds-item-page-local-field [item]="object" [fields]="['local.description.viz']"
+        [label]="'item.preview.local.description.viz'"></ds-item-page-local-field>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['local.description.raw']"
-        [label]="'item.preview.local.description.raw'"></ds-generic-item-page-field>
+      <ds-item-page-local-field [item]="object" [fields]="['local.description.raw']"
+        [label]="'item.preview.local.description.raw'"></ds-item-page-local-field>
 
       <!-- <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
         [itemType]="'Person'" [metadataFields]="['dc.contributor.author', 'dc.creator']"
@@ -74,7 +74,8 @@
       <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
       </ds-generic-item-page-field>
 
-<ds-item-page-description-field [item]="object" [label]="'item.page.description'"></ds-item-page-description-field>
+      <ds-item-page-description-field [item]="object"
+        [label]="'item.page.description'"></ds-item-page-description-field>
 
       <!-- <ng-container *ngIf="isLoggedIn"> -->
       <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
@@ -91,10 +92,9 @@
         [label]="'relationships.isdDQCheckOf' | translate">
       </ds-related-items>
 
-      <ds-item-page-external-publication-field [item]="object"
-        [label]="'item.preview.dc.relation.isreferencedby'">
+      <ds-item-page-external-publication-field [item]="object" [label]="'item.preview.dc.relation.isreferencedby'">
       </ds-item-page-external-publication-field>
-      
+
       <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
       </ds-item-page-cc-license-field>
 

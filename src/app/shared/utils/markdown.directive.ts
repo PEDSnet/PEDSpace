@@ -23,7 +23,11 @@ import { environment } from '../../../environments/environment';
 import { MathService } from '../../core/shared/math.service';
 import { isEmpty } from '../empty.util';
 
-const markdownItLoader = async () => (await import('markdown-it')).default;
+const markdownItLoader = async () => {
+  const markdownIt = await import('markdown-it');
+  const markdownItAttrs = await import('markdown-it-attrs');
+  return markdownIt.default;
+};
 type LazyMarkdownIt = ReturnType<typeof markdownItLoader>;
 const MARKDOWN_IT = new InjectionToken<LazyMarkdownIt>(
   'Lazily loaded MarkdownIt',
@@ -37,6 +41,7 @@ const MARKDOWN_IT = new InjectionToken<LazyMarkdownIt>(
 export class MarkdownDirective implements OnInit, OnDestroy {
 
   @Input() dsMarkdown: string;
+  @Input() pruneEmptyRows: boolean = true; // New Input for pruning
   private alive$ = new Subject<boolean>();
 
   el: HTMLElement;
@@ -65,6 +70,15 @@ export class MarkdownDirective implements OnInit, OnDestroy {
       typographer: true, 
     });
 
+    md.enable(['table']);
+
+    try {
+      const markdownItAttrs = (await import('markdown-it-attrs')).default;
+      md.use(markdownItAttrs);
+    } catch (error) {
+      console.error('Failed to load markdown-it-attrs:', error);
+    }
+
     // Customize the link rendering to add target and rel attributes
     const defaultRender = md.renderer.rules.link_open || function(tokens, idx, options, env, self) {
       return self.renderToken(tokens, idx, options);
@@ -92,7 +106,14 @@ export class MarkdownDirective implements OnInit, OnDestroy {
 
     const html = md.render(value);
     const sanitizedHtml = this.sanitizer.sanitize(SecurityContext.HTML, html);
-    this.el.innerHTML = sanitizedHtml;
+
+    let finalHtml = sanitizedHtml;
+
+    if (this.pruneEmptyRows) {
+      finalHtml = this.removeEmptyTableRows(sanitizedHtml);
+    }
+
+    this.el.innerHTML = `<div class="markdown-container table-responsive">${finalHtml}</div>`;
 
     if (environment.markdown.mathjax) {
       this.renderMathjax();
@@ -134,6 +155,39 @@ export class MarkdownDirective implements OnInit, OnDestroy {
     return `https://${trimmedUrl}`;
   }
 
+  /**
+   * Parses the HTML string, removes any empty table rows, and returns the cleaned HTML string.
+   * @param html The sanitized HTML string to process.
+   * @returns The cleaned HTML string with empty table rows removed.
+   */
+  private removeEmptyTableRows(html: string): string {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    const tables = doc.querySelectorAll('table');
+
+    tables.forEach(table => {
+      const rows = table.querySelectorAll('tr');
+
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('th, td');
+        let isEmpty = true;
+
+        cells.forEach(cell => {
+          const text = cell.textContent?.trim().replace(/\u00a0/g, '');
+          if (text && text !== '') {
+            isEmpty = false;
+          }
+        });
+
+        if (isEmpty) {
+          row.remove();
+        }
+      });
+    });
+
+    return doc.body.innerHTML;
+  }
 
   private renderMathjax() {
     this.mathService.ready().pipe(

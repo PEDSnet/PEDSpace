@@ -37,6 +37,7 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
 import { ItemPageExternalPublicationFieldComponent } from '../../field-components/specific-field/external/item-page-external-publication.component';
 import { ItemPageDescriptionFieldComponent } from '../../field-components/specific-field/description/item-page-description.component';
+import { ItemPageLocalFieldComponent } from '../../field-components/specific-field/local/item-page-local.component';
 
 /**
  * Component that represents a DQCheck Item page
@@ -46,8 +47,8 @@ import { ItemPageDescriptionFieldComponent } from '../../field-components/specif
   ViewMode.StandalonePage, Context.Any, 'PEDSpace')
 @Component({
   selector: 'ds-publication',
-  // styleUrls: ['./publication.component.scss'],
-  styleUrls: ['../../../../../../../app/item-page/simple/item-types/publication/publication.component.scss'],
+  styleUrls: ['./dqcheck.component.scss'],
+  // styleUrls: ['../../../../../../../app/item-page/simple/item-types/publication/publication.component.scss'],
   templateUrl: './dqcheck.component.html',
   // templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -74,7 +75,8 @@ import { ItemPageDescriptionFieldComponent } from '../../field-components/specif
     RouterLink,
     AsyncPipe,
     TranslateModule,
-    ItemPageCcLicenseFieldComponent],
+    ItemPageCcLicenseFieldComponent,
+    ItemPageLocalFieldComponent],
 })
 export class DQCheckComponent extends BaseComponent {
   // context: Context = Context.Any;

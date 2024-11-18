@@ -105,6 +105,7 @@ import { WorkspaceItemsDeletePageComponent } from './app/workspaceitems-edit-pag
 import { VerificationBadgeComponent } from './app/shared/object-collection/shared/badges/verification-badge/verification-badge.component';
 import { ItemPageDescriptionFieldComponent } from './app/item-page/simple/field-components/specific-field/description/item-page-description.component';
 import { ItemPageExternalPublicationFieldComponent } from './app/item-page/simple/field-components/specific-field/external/item-page-external-publication.component';
+import { ItemPageLocalFieldComponent } from './app/item-page/simple/field-components/specific-field/local/item-page-local.component';
 
 const DECLARATIONS = [
   FileSectionComponent,
@@ -199,7 +200,8 @@ const DECLARATIONS = [
   SubmissionUploadFilesComponent,
   ComcolPageContentComponent,
   ItemPageDescriptionFieldComponent,
-  ItemPageExternalPublicationFieldComponent
+  ItemPageExternalPublicationFieldComponent,
+  ItemPageLocalFieldComponent
 ];
 
 @NgModule({
