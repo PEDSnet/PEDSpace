@@ -4,7 +4,6 @@
 $tomato: #FE654F;
 $mauve: #E4C1F9;
 $tropical-indigo: #9381ff;
-$quinacridone-magenta: #8A3D63;
 $seafoam-green: #A4D5E1;
 
 // Cool CSS pattersn
@@ -179,7 +178,7 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     }
 
     &.badge-study {
-        background-color: $quinacridone-magenta;
+        background-color: $puce;
         transition: all 0.3s ease;
 
         &::before {
@@ -192,8 +191,8 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
         }
 
         &.badge-collection {
-            border: 2px solid $quinacridone-magenta;
-            background-color: $quinacridone-magenta;
+            border: 2px solid $puce;
+            background-color: $puce;
             opacity: 0.9;
             background-size: 10px 10px;
             background-image: repeating-linear-gradient(45deg, lighten($puce, 10%) 0, lighten($puce, 10%) 1px, $puce 0, $puce 50%);
