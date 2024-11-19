@@ -405,7 +405,7 @@ bundle:
 # For images, this enables a gallery viewer where you can zoom or page through images.
 # For videos, this enables embedded video streaming
 mediaViewer:
-  image: false
+  image: true
   video: false
 
 # Whether the end user agreement is required before users use the repository.
