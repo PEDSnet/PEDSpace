@@ -2853,6 +2853,8 @@
   "item.page.image.alt.ROR": "ROR logo",
 
   "item.preview.dc.identifier.uri": "Identifier",
+  
+  "item.preview.local.dqcheck.requirement": "Data Requirements",
 
   "item.preview.dc.contributor.author": "Funder(s)",
   
