@@ -25,7 +25,7 @@ import { isEmpty } from '../empty.util';
 
 const markdownItLoader = async () => {
   const markdownIt = await import('markdown-it');
-  // const markdownItAttrs = await import('markdown-it-attrs');
+  const markdownItAttrs = await import('markdown-it-attrs');
   return markdownIt.default;
 };
 type LazyMarkdownIt = ReturnType<typeof markdownItLoader>;
@@ -41,7 +41,7 @@ const MARKDOWN_IT = new InjectionToken<LazyMarkdownIt>(
 export class MarkdownDirective implements OnInit, OnDestroy {
 
   @Input() dsMarkdown: string;
-  @Input() pruneEmptyRows: boolean = true; // New Input for pruning
+  @Input() pruneEmptyRows: boolean = false; // New Input for pruning
   private alive$ = new Subject<boolean>();
 
   el: HTMLElement;
@@ -72,12 +72,12 @@ export class MarkdownDirective implements OnInit, OnDestroy {
 
     md.enable(['table']);
 
-    // try {
-    //   const markdownItAttrs = (await import('markdown-it-attrs')).default;
-    //   md.use(markdownItAttrs);
-    // } catch (error) {
-    //   console.error('Failed to load markdown-it-attrs:', error);
-    // }
+    try {
+      const markdownItAttrs = (await import('markdown-it-attrs')).default;
+      md.use(markdownItAttrs);
+    } catch (error) {
+      console.error('Failed to load markdown-it-attrs:', error);
+    }
 
     // Customize the link rendering to add target and rel attributes
     const defaultRender = md.renderer.rules.link_open || function(tokens, idx, options, env, self) {
