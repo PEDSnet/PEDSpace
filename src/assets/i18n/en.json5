@@ -1000,7 +1000,7 @@
 
   "browse.back.all-results": "All browse results",
 
-  "browse.comcol.by.quality": "By Quality",
+  "browse.comcol.by.quality": "By Research Suitability",
   
   "browse.comcol.by.author": "By Author",
 
@@ -1030,9 +1030,9 @@
 
   "browse.empty": "No items to show.",
 
-  "browse.metadata.quality": "Quality",
+  "browse.metadata.quality": "Research Suitability",
   
-  "browse.metadata.quality.breadcrumbs": "Quality",
+  "browse.metadata.quality.breadcrumbs": "Research Suitability",
   
   "browse.metadata.author": "Author",
   
@@ -3142,9 +3142,9 @@
 
   "itemtemplate.edit.metadata.save-button": "Save",
 
-  "studyspecific.listelement.badge": "Study Specific",
+  "studyspecific.listelement.badge": "Needs Refinement",
   
-  "verified.listelement.badge": "Verified",
+  "verified.listelement.badge": "Research-Ready",
   
   "deprecated.listelement.badge": "Deprecated",
   
@@ -3314,9 +3314,9 @@
 
   "menu.section.admin_search": "Admin Search",
 
-  "menu.section.browse_global_by_quality": "By Quality",
+  "menu.section.browse_global_by_quality": "By Research-Readiness",
   
-  "menu.section.browse_by_quality": "By Quality",
+  "menu.section.browse_by_quality": "By Research-Readiness",
   
   "menu.section.browse_community": "This Collection",
 
@@ -4454,7 +4454,7 @@
 
   "search.filters.remove": "Remove filter of type {{ type }} with value {{ value }}",
 
-  "search.filters.applied.f.itemQuality": "Quality",
+  "search.filters.applied.f.itemQuality": "Research Suitability",
   
   "search.filters.applied.f.itemFunder": "Funder",
 
@@ -4512,7 +4512,7 @@
 
   "search.filters.applied.operator.query": "",
 
-  "search.filters.filter.itemQuality.head": "Quality",
+  "search.filters.filter.itemQuality.head": "Research Suitability",
   
   "search.filters.filter.itemFunder.head": "Funder",
   
