@@ -1002,6 +1002,10 @@
 
   "browse.comcol.by.quality": "By Research Suitability",
   
+  "browse.comcol.by.requirement": "By Data Quality Check Requirement",
+  
+  "browse.comcol.by.requirement.breadcrumbs": "By Data Quality Check Requirement",
+  
   "browse.comcol.by.author": "By Author",
 
   "browse.comcol.by.dateissued": "By Issue Date",
@@ -1033,6 +1037,8 @@
   "browse.metadata.quality": "Research Suitability",
   
   "browse.metadata.quality.breadcrumbs": "Research Suitability",
+  
+  "browse.metadata.requirement.breadcrumbs": "Data Requirement",
   
   "browse.metadata.author": "Author",
   
@@ -3317,6 +3323,10 @@
   "menu.section.browse_global_by_quality": "By Research-Readiness",
   
   "menu.section.browse_by_quality": "By Research-Readiness",
+  
+  "menu.section.browse_global_by_requirement": "By Data Quality Module Requirement",
+  
+  "menu.section.browse_by_requirement": "By Data Quality Module Requirement",
   
   "menu.section.browse_community": "This Collection",
 
