@@ -5,111 +5,60 @@
 
 /* Styling tables for DQ Check */
 // TODO: Turn on markdown attrs and target the DQ check tables
-.dqcheck-table {
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1em 0;
-    font-family: Arial, sans-serif; /* Optional: Set a font */
-    table-layout: fixed; /* Enables fixed layout for consistent column widths */
+
+.facet-filter,
+.setting-option {
+  background-color: var(--bs-light);
+  border-radius: var(--bs-border-radius);
+
+  &.p-3 {
+    // Needs !important because the original bootstrap class uses it
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
 
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left; /* Align text to the left */
-    overflow: hidden; /* Prevent content overflow */
-    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+  .badge-secondary {
+    background-color: var(--bs-primary);
   }
 
-  th {
-    background-color: #f4f4f4;
-    font-weight: bold;
+  h4 {
+    font-size: 1.1rem
+  }
+}
+
+// WCAG Compliance for all links everywhere
+a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: all 0.3s ease;
+
+  &:focus-visible {
+    text-decoration: none;
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 2px;
+    text-decoration-thickness: 2px;
   }
 
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
+  &:hover {
+    text-decoration: none;
+    // text-decoration-thickness: 2px;
+    // outline: 1px solid currentColor;
+    // outline-offset: 2px;
+    // border-radius: 2px;
   }
 
-  tr:hover {
-    background-color: #f1f1f1;
+  &:active {
+    transform: scale(0.98);
   }
 
-  /* Responsive Tables */
-  .table-responsive {
-    overflow-x: auto;
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    transform: none;
   }
 
-  /* Define specific widths for the first two columns */
-  th:nth-child(1), td:nth-child(1) {
-    width: 20%; /* Adjust as needed */
-  }
-
-  th:nth-child(2), td:nth-child(2) {
-    width: 20%; /* Adjust as needed */
-  }
-
-  /* Force the "Definition" column to wrap text */
-  th:nth-child(3), td:nth-child(3) {
-    width: 60%; /* Remaining width */
-    white-space: normal; /* Allow text to wrap */
-    word-wrap: break-word; /* Break long words */
-    word-break: break-word; /* Break long words */
-  }
-
-  .facet-filter, .setting-option {
-    background-color: var(--bs-light);
-    border-radius: var(--bs-border-radius);
-
-    &.p-3 {
-      // Needs !important because the original bootstrap class uses it
-      padding-top: 0.5rem !important;
-      padding-bottom: 0.5rem !important;
-    }
-
-    .badge-secondary {
-      background-color: var(--bs-primary);
-    }
-
-    h4 {
-      font-size: 1.1rem
-    }
-  }
-
-  // WCAG Compliance for all links everywhere
-  a {
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    transition: all 0.3s ease;
-    
-    &:focus-visible {
-      text-decoration: none;
-      outline: 3px solid currentColor;
-      outline-offset: 3px;
-      border-radius: 2px;
-      text-decoration-thickness: 2px;
-    }
-
-    &:hover {
-      text-decoration: none;
-      // text-decoration-thickness: 2px;
-      // outline: 1px solid currentColor;
-      // outline-offset: 2px;
-      // border-radius: 2px;
-    }
-
-    &:active {
-      transform: scale(0.98);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      transition: none;
-      transform: none;
-    }
-
-    // High contrast mode support
-    @media screen and (-ms-high-contrast: active) {
-      outline: 2px solid currentColor;
-    }
+  // High contrast mode support
+  @media screen and (-ms-high-contrast: active) {
+    outline: 2px solid currentColor;
   }
 }
