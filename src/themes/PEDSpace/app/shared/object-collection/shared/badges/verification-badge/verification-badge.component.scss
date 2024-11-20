@@ -8,7 +8,7 @@ $study-specific: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
 .badge-check,
 .badge-negative,
 .badge-study-specific {
-    color: white;
+    color: $black-bean;
     padding: 5px 10px 5px 30px; 
     border-radius: 5px;
     display: inline-flex;
@@ -69,13 +69,13 @@ $study-specific: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     background-color: theme-color('success');
     
     &::before {
-        background-color: white;
+        background-color: $black-bean;
         mask-image: url($check);
         mask-size: cover;
     }
 
     &:hover, &:focus {
-        background-color: darken(theme-color('success'), 10%);
+        background-color: lighten(theme-color('success'), 10%);
     }
 }
 
@@ -83,13 +83,13 @@ $study-specific: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     background-color: theme-color('danger');
     
     &::before {
-        background-color: white;
+        background-color: $black-bean;
         mask-image: url($negative);
         mask-size: cover;
     }
 
     &:hover, &:focus {
-        background-color: darken(theme-color('danger'), 10%);
+        background-color: lighten(theme-color('danger'), 10%);
     }
 }
 
@@ -97,12 +97,12 @@ $study-specific: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     background-color: theme-color('warning');
     
     &::before {
-        background-color: white;
+        background-color: $black-bean;
         mask-image: url($study-specific);
         mask-size: cover;
     }
 
     &:hover, &:focus {
-        background-color: darken(theme-color('warning'), 10%);
+        background-color: lighten(theme-color('warning'), 10%);
     }
 }
