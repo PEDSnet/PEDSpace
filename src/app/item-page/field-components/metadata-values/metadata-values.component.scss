@@ -160,11 +160,13 @@ $quinacridone-magenta: #8A3D63;
   &:focus {
     background-color: #e0e0e0;
     outline: none; 
-    box-shadow: 0 0 0 2px #8ACE00; 
+    box-shadow: 0 0 0 2px #8ACE00;
     margin: 0.2rem;
+    font-weight: bold;
   }
 
   &:active {
     background-color: #d0d0d0;
+    font-weight: bold;
   }
 }
