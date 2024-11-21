@@ -69,4 +69,9 @@ export class GenericItemPageFieldComponent extends ItemPageFieldComponent {
    */
   @Input() sentenceTemplate?: string;
 
+  /**
+   * Flag to indicate if the DQ check requirement is enabled
+   */
+  @Input() isDQCheckRequirement = false;
+
 }

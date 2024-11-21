@@ -91,6 +91,11 @@ export class ItemPageFieldComponent {
     @Input() sentenceTemplate?: string;
 
     /**
+     * Flag to indicate special styling for 'local.dqcheck.requirement'
+     */
+    isDQCheckRequirement: boolean = false;
+
+    /**
      * Return browse definition that matches any field used in this component if it is configured as a browse
      * link in dspace.cfg (webui.browse.link.<n>)
      */

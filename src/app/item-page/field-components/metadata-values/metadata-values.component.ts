@@ -6,6 +6,8 @@ import {
   NgClass
 } from '@angular/common';
 import {
+  TemplateRef,
+  ViewChild,
   Component,
   Inject,
   Input,
@@ -40,6 +42,9 @@ import { ImageField } from '../../simple/field-components/specific-field/image-f
   imports: [MetadataFieldWrapperComponent, NgFor, NgTemplateOutlet, NgIf, RouterLink, AsyncPipe, TranslateModule, MarkdownDirective, NgClass],
 })
 export class MetadataValuesComponent implements OnChanges {
+  
+    @ViewChild('isDQCheckRequirementTemplate') isDQCheckRequirementTemplate: TemplateRef<any>;
+
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
@@ -78,6 +83,10 @@ export class MetadataValuesComponent implements OnChanges {
    */
   renderMarkdown;
 
+  /**
+   * Input flag to apply special styling
+   */
+  @Input() isDQCheckRequirement: boolean = false;
 
   @Input() browseDefinition?: BrowseDefinition;
 
@@ -210,6 +219,5 @@ export class MetadataValuesComponent implements OnChanges {
    */
   shouldRenderAsBadge(mdValue: MetadataValue): boolean {
     return this.renderAsBadge;
-  }
-  
+  }  
 }
