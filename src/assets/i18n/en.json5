@@ -5836,6 +5836,8 @@
   
   "vocabulary-treeview.tree.description.dc_subject_mesh": "Medical Subject Heading (MeSH) Classifications",
 
+  "vocabulary-treeview.tree.description.dc_subject_other": "Vocabularies",
+
   "vocabulary-treeview.info": "Select a subject to add as search filter",
 
   "uploader.browse": "browse",
