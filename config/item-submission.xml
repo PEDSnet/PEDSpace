@@ -346,7 +346,6 @@
             <step id="collection"/>
             <step id="ConceptSetForm"/>
             <step id="upload"/>
-            <step id="extractionstep"/>
             <step id="itemAccessConditions"/>
             <step id="cclicense"/>
         </submission-process>
@@ -355,7 +354,6 @@
             <step id="collection"/>
             <step id="StudyForm"/>
             <step id="upload"/>
-            <step id="extractionstep"/>
             <step id="cclicense"/>
         </submission-process>
 
@@ -363,7 +361,6 @@
             <step id="collection"/>
             <step id="DQCheckForm"/>
             <step id="upload"/>
-            <step id="extractionstep"/>
             <step id="cclicense"/>
         </submission-process>
 
@@ -371,7 +368,6 @@
             <step id="collection"/>
             <step id="DocumentationForm"/>
             <step id="upload"/>
-            <step id="extractionstep"/>
             <step id="itemAccessConditions"/>
             <step id="cclicense"/>
         </submission-process>
@@ -380,7 +376,6 @@
             <step id="collection"/>
             <step id="PhenotypeForm"/>
             <step id="upload"/>
-            <step id="extractionstep"/>
             <step id="itemAccessConditions"/>
             <step id="cclicense"/>
         </submission-process>
