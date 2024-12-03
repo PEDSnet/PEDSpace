@@ -3150,9 +3150,9 @@
 
   "itemtemplate.edit.metadata.save-button": "Save",
 
-  "studyspecific.listelement.badge": "Needs Refinement",
+  "needsrefinement.listelement.badge": "Needs Refinement",
   
-  "verified.listelement.badge": "Research-Ready",
+  "research-ready.listelement.badge": "Research-Ready",
   
   "deprecated.listelement.badge": "Deprecated",
   

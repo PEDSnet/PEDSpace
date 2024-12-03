@@ -54,10 +54,10 @@ export class VerificationBadgeComponent extends BaseComponent implements OnInit 
 
   getBadgeClasses() {
     return {
-      'badge-secondary': !this.verificationStatus.includes('verified') && !this.verificationStatus.includes('deprecated'),
-      'badge-check': this.verificationStatus.includes('verified'),
+      'badge-check': this.verificationStatus.includes('research-ready'),
       'badge-negative': this.verificationStatus.includes('deprecated'),
-      'badge-study-specific': this.verificationStatus.includes('study')
+      'badge-study-specific': this.verificationStatus.includes('needs'),
+      'badge-secondary': !this.verificationStatus.includes('research-ready') && !this.verificationStatus.includes('deprecated') && !this.verificationStatus.includes('needs'),
     };
   }
 
