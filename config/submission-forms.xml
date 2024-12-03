@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE input-forms SYSTEM "/data/dspace/config/submission-forms.dtd">
-
-
 <input-forms>
-
     <!-- The form-definitions map lays out the detailed definition of all the -->
     <!-- submission forms. Each separate form set has a unique name as an     -->
     <!-- attribute. This name matches one of the names in the form-map. One   -->
@@ -19,7 +16,6 @@
     <!-- an input-type. Each field also may hold optional elements: DC        -->
     <!-- qualifier name, a repeatable flag, and a text string whose presence  -->
     <!-- serves as a 'this field is required' flag.                           -->
-
     <form-definitions>
         <!-- Form used for entering in Bitstream/File metadata after uploading a file -->
         <form name="bitstream-metadata">
@@ -47,7 +43,6 @@
                 </field>
             </row>
         </form>
-
         <!-- Form which defines the first page/section of the "traditional" DSpace submission process,
              often used when depositing normal Items (i.e. Items which are not Entities). -->
         <form name="traditionalpageone">
@@ -101,7 +96,6 @@
                     </hint>
                     <required>You must enter at least the year.</required>
                 </field>
-
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>publisher</dc-element>
@@ -182,7 +176,6 @@
                 </field>
             </row>
         </form>
-
         <!-- Form which defines the second page/section of the "traditional" DSpace submission process,
              often used when depositing normal Items. -->
         <form name="traditionalpagetwo">
@@ -236,320 +229,318 @@
                 </field>
             </row>
         </form>
-
         <!-- NEW ENTITY-BASED FORM DEFINITIONS-->
-         <!-- Data Quality Check Form-->
-            <form name="DQCheckForm">
-                <row>
-                    <field>
-                        <dc-schema>dspace</dc-schema>
-                        <dc-element>entity</dc-element>
-                        <dc-qualifier>type</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Resource Type</label>
-                        <input-type value-pairs-name="EntityType">dropdown</input-type>
-                        <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
-                        <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>title</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Check Title</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter the main title of the item. Use title case. Format the check name as Check Domain: Single or multiple site, anomaly or exploratory, temporal measurement. 
+        <!-- Data Quality Check Form-->
+        <form name="DQCheckForm">
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Check Title</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the main title of the item. Use title case. Format the check name as Check Domain: Single or multiple site, anomaly or exploratory, temporal measurement. 
                             E.g., "Patient-Facts: Multiple Sites, Anomaly Detection, Measuring Across Time"
                         </hint>
-                        <required>You must enter a title for this item.</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>date</dc-element>
-                        <dc-qualifier>created</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Date Created</label>
-                        <style>col-sm-4</style>
-                        <input-type>date</input-type>
-                        <hint>Please give the that the check was finalized.
+                    <required>You must enter a title for this item.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>created</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Date Created</label>
+                    <style>col-sm-4</style>
+                    <input-type>date</input-type>
+                    <hint>Please give the that the check was finalized.
                             You may leave out the day and/or month if necessary.
                         </hint>
-                        <required>You must enter at least the year.</required>
-                    </field>
-                </row> 
-                <row>
-                    <relation-field>
-                        <relationship-type>isPersonOfConceptSet</relationship-type>
-                        <search-configuration>person</search-configuration>
-                        <repeatable>false</repeatable>
-                        <label>Check Creator(s)</label>
-                        <hint>Enter "PEDSnet" as the creator of the check.</hint>
-                        <linked-metadata-field>
-                            <dc-schema>dc</dc-schema>
-                            <dc-element>contributor</dc-element>
-                            <dc-qualifier>author</dc-qualifier>
-                            <input-type>onebox</input-type>
-                        </linked-metadata-field>
-                        <required>You must enter "PEDSnet."</required>
-                    </relation-field>
-                </row>
-                <row>
-                    <relation-field>
-                        <relationship-type>isOrgUnitOfPerson</relationship-type>
-                        <search-configuration>orgunit</search-configuration>
-                        <repeatable>false</repeatable>
-                        <label>Affliated Organization(s)</label>
-                        <hint>Enter "Children's Hosptial of Philadelphia" as the creator affiliation.</hint>
-                        <linked-metadata-field>
-                            <dc-schema>dc</dc-schema>
-                            <dc-element>contributor</dc-element>
-                            <dc-qualifier>other</dc-qualifier>
-                            <input-type>onebox</input-type>
-                        </linked-metadata-field>
-                        <required>You must enter "Children's Hosptial of Philadelphia."</required>
-                    </relation-field>
-                </row>
-                <row>
-                    <field>
+                    <required>You must enter at least the year.</required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPersonOfConceptSet</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Check Creator(s)</label>
+                    <hint>Enter "PEDSnet" as the creator of the check.</hint>
+                    <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
-                        <dc-element>description</dc-element>
-                        <dc-qualifier>abstract</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Check Description</label>
-                        <input-type>textarea</input-type>
-                        <hint>Enter a brief general description of the check. At minimum, this description should include a purpose statement of the check and some reference as to when it should be used during a study.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>local</dc-schema>
-                        <dc-element>description</dc-element>
-                        <dc-qualifier>raw</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Raw Data Output Description</label>
-                        <input-type>textarea</input-type>
-                        <hint>Enter the column names of the tabular output produced by this check and any additional pertinent information about the raw output.
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>author</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required>You must enter "PEDSnet."</required>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isOrgUnitOfPerson</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Affliated Organization(s)</label>
+                    <hint>Enter "Children's Hosptial of Philadelphia" as the creator affiliation.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>other</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required>You must enter "Children's Hosptial of Philadelphia."</required>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>abstract</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Check Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a brief general description of the check. At minimum, this description should include a purpose statement of the check and some reference as to when it should be used during a study.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>raw</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Raw Data Output Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter the column names of the tabular output produced by this check and any additional pertinent information about the raw output.
                             Use complete sentences.
                         </hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>local</dc-schema>
-                        <dc-element>description</dc-element>
-                        <dc-qualifier>viz</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Visualization Output Description</label>
-                        <input-type>textarea</input-type>
-                        <hint>Describe the visualization produced by the check. Use complete sentences.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>subject</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Check Specifications</label>
-                        <input-type>onebox</input-type>
-                        <hint>At minimum, add one tag to the check for each of the following categories. Use the subject tree for Data Quality Check Categorizations for assistance. 
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>viz</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Visualization Output Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Describe the visualization produced by the check. Use complete sentences.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Check Specifications</label>
+                    <input-type>onebox</input-type>
+                    <hint>At minimum, add one tag to the check for each of the following categories. Use the subject tree for Data Quality Check Categorizations for assistance. 
                             Data quality characterization; analysis level; temporal evaluation; data source;anomaly or exploratory investigation; visualization output(s); quality probe; and clinical data quality assessment type.</hint>
-                        <required>Specification tags are required.</required>
-                        <vocabulary closed="true">dc_subject</vocabulary>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier>uri</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>GitHub Link</label>
-                        <input-type>onebox</input-type>
-                        <hint>Insert the permanent url to the R function code for the check in a GitHub repository.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>source</dc-element>
-                        <dc-qualifier>uri</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Shiny Link</label>
-                        <input-type>onebox</input-type>
-                        <hint>Insert the permanent url to the Shiny application page that pertains to this check.</hint>
-                        <required></required>
-                    </field>
-                </row>
-            </form>
-
-         <!-- Concept Set Form-->
-            <form name="ConceptSetForm">
-                <row>
-                    <field>
-                        <dc-schema>dspace</dc-schema>
-                        <dc-element>entity</dc-element>
-                        <dc-qualifier>type</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Resource Type</label>
-                        <input-type value-pairs-name="EntityType">dropdown</input-type>
-                        <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
-                        <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>title</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Title</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter the title of the concept set. Use title case. E.g., Anti-Diabetic Agents, Oral</hint>
-                        <required>You must enter a title for this item.</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>date</dc-element>
-                        <dc-qualifier>created</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Date Created</label>
-                        <input-type>date</input-type>
-                        <hint>Input the date that the concept set was first created (version 1). 
+                    <required>Specification tags are required.</required>
+                    <vocabulary closed="true">dc_subject</vocabulary>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>relation</dc-element>
+                    <dc-qualifier>uri</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>GitHub Link</label>
+                    <input-type>onebox</input-type>
+                    <hint>Insert the permanent url to the R function code for the check in a GitHub repository.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>source</dc-element>
+                    <dc-qualifier>uri</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Shiny Link</label>
+                    <input-type>onebox</input-type>
+                    <hint>Insert the permanent url to the Shiny application page that pertains to this check.</hint>
+                    <required></required>
+                </field>
+            </row>
+        </form>
+        <!-- Concept Set Form-->
+        <form name="ConceptSetForm">
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Title</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the title of the concept set. Use title case. E.g., Anti-Diabetic Agents, Oral</hint>
+                    <required>You must enter a title for this item.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>created</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Date Created</label>
+                    <input-type>date</input-type>
+                    <hint>Input the date that the concept set was first created (version 1). 
                             If the exact date is unknown, enter the first of the month.
                         </hint>
-                        <required>You must enter at least the year.</required>
-                    </field>
-                </row>
-                <row>
-                    <relation-field>
-                        <relationship-type>isPersonOfConceptSet</relationship-type>
-                        <search-configuration>person</search-configuration>
-                        <repeatable>true</repeatable>
-                        <label>Creator(s)</label>
-                        <hint>Enter the name(s) of the creator(s). 
+                    <required>You must enter at least the year.</required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPersonOfConceptSet</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Creator(s)</label>
+                    <hint>Enter the name(s) of the creator(s). 
                             (Family name, Given names)</hint>
-                        <linked-metadata-field>
-                            <dc-schema>dc</dc-schema>
-                            <dc-element>contributor</dc-element>
-                            <dc-qualifier>author</dc-qualifier>
-                            <input-type>onebox</input-type>
-                        </linked-metadata-field>
-                    </relation-field>
-                </row>
-                <row>
-                    <relation-field>
-                        <relationship-type>isPersonOfConceptSet</relationship-type>
-                        <search-configuration>person</search-configuration>
-                        <repeatable>true</repeatable>
-                        <label>Reviewer(s)</label>
-                        <hint>Enter the concept set reviewer(s) name(s) (Family name, Given names).</hint>
-                        <linked-metadata-field>
-                            <dc-schema>dc</dc-schema>
-                            <dc-element>contributor</dc-element>
-                            <dc-qualifier>advisor</dc-qualifier>
-                            <input-type>onebox</input-type>
-                        </linked-metadata-field>
-                        <!-- You may choose to validate author names via a Regular Expression if it's appropriate for
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>author</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPersonOfConceptSet</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Reviewer(s)</label>
+                    <hint>Enter the concept set reviewer(s) name(s) (Family name, Given names).</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>advisor</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <!-- You may choose to validate author names via a Regular Expression if it's appropriate for
                             your institution. The below regex requires a comma to be present in the author field.
                             However, this is disabled by default to support organizations as authors, etc. -->
-                        <!--<regex>\w+(,)+\w+</regex>-->
-                    </relation-field>
-                </row>
-                <row>
-                    <relation-field>
-                        <relationship-type>isOrgUnitOfPerson</relationship-type>
-                        <search-configuration>orgunit</search-configuration>
-                        <repeatable>true</repeatable>
-                        <label>Affliated Organization(s)</label>
-                        <hint>Enter the name(s) of the institutions employing any of the individuals named in Creator or Reviewer.</hint>
-                        <linked-metadata-field>
-                            <dc-schema>dc</dc-schema>
-                            <dc-element>contributor</dc-element>
-                            <dc-qualifier>other</dc-qualifier>
-                            <input-type>onebox</input-type>
-                        </linked-metadata-field>
-                        <required></required>
-                    </relation-field>
-                </row>
-                <row>
-                    <field>
+                    <!--<regex>\w+(,)+\w+</regex>-->
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isOrgUnitOfPerson</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Affliated Organization(s)</label>
+                    <hint>Enter the name(s) of the institutions employing any of the individuals named in Creator or Reviewer.</hint>
+                    <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
-                        <dc-element>description</dc-element>
-                        <dc-qualifier>abstract</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Intention</label>
-                        <input-type>textarea</input-type>
-                        <hint>Enter one sentence describing the intention of your concept set.
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>other</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>abstract</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Intention</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter one sentence describing the intention of your concept set.
                             E.g., Concept set intended to identify patients with a diagnosis of asthma to define a study cohort.</hint>
-                        <required>You must input at least one sentence.</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>description</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Description</label>
-                        <input-type>textarea</input-type>
-                        <hint>Enter a description of the clinical concept measured by this code set and the purpose or intention of the code set within the context of a study. Why did you develop this concept set? Were you trying to define a cohort or investigate a study variable? Was it intended to be broad (prioritizing sensitivity) or narrow (prioritizing specificity)? What kind of topics are included in this concept set? Were there any limitations placed on this concept set?
+                    <required>You must input at least one sentence.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a description of the clinical concept measured by this code set and the purpose or intention of the code set within the context of a study. Why did you develop this concept set? Were you trying to define a cohort or investigate a study variable? Was it intended to be broad (prioritizing sensitivity) or narrow (prioritizing specificity)? What kind of topics are included in this concept set? Were there any limitations placed on this concept set?
                             E.g., This broad concept set was intended to identify patients with cleft lip, cleft palate, or cleft lip and palate to define a study cohort. 
                             E.g., This medication concept set includes the following ingredients: Azilsartan, Candesartan, Eprosartan, Irbesartan, Losartan, Olmesartan, Telmisartan, and Valsartan. Combinations are included. 
                             PLEASE PROVIDE AS MUCH DETAIL AS POSSIBLE.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>provenance</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Provenance</label>
-                        <input-type>onebox</input-type>
-                        <hint>Input the name of the study this concept set was created for, and what role this concept set played in the study (e.g., exclusion criteria, confounder, etc.) 
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>provenance</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Provenance</label>
+                    <input-type>onebox</input-type>
+                    <hint>Input the name of the study this concept set was created for, and what role this concept set played in the study (e.g., exclusion criteria, confounder, etc.) 
                             If this concept set was not developed for a study enter, "This code set was developed in the course of query formation for a prospective study."</hint>
-                        <required>At least the name of the study must be entered. Do not use shorthand to abbreviate the study, rather, write the full title.</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>subject</dc-element>
-                        <dc-qualifier>other</dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Vocabularies</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter the medical ontologies used in the concept set.</hint>
-                        <required>At least one ontology must be referenced.</required>
-                        <vocabulary closed="true">dc_subject_other</vocabulary>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>subject</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Tags</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter terms that classify the concept set. You should tag the data model the set was created against, the level of review, the medication class level, and variable-relationship.</hint>
-                        <required>At least one tag must be applied to the concept set.</required>
-                        <vocabulary closed="true">dc_subject</vocabulary>
-                    </field>
-                </row>
-                <!-- <row>
+                    <required>At least the name of the study must be entered. Do not use shorthand to abbreviate the study, rather, write the full title.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Vocabularies</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the medical ontologies used in the concept set.</hint>
+                    <required>At least one ontology must be referenced.</required>
+                    <vocabulary closed="true">dc_subject_other</vocabulary>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Tags</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter terms that classify the concept set. You should tag the data model the set was created against, the level of review, the medication class level, and variable-relationship.</hint>
+                    <required>At least one tag must be applied to the concept set.</required>
+                    <vocabulary closed="true">dc_subject</vocabulary>
+                </field>
+            </row>
+            <!-- <row>
                     <field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>subject</dc-element>
@@ -562,7 +553,7 @@
                         <vocabulary closed="true">dc_subject_mesh</vocabulary>
                     </field>
                 </row> -->
-                <!-- <row>
+            <!-- <row>
                     <relation-field>
                         <relationship-type>isConceptSetOfStudy</relationship-type>
                         <search-configuration>study</search-configuration>
@@ -577,180 +568,178 @@
                         </linked-metadata-field>
                     </relation-field>
                 </row> -->
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier>url</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Development Code</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter a link to the BitBucket or GitHub repository where the development code is stored.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>local</dc-schema>
-                        <dc-element>quality</dc-element>
-                        <dc-qualifier>status</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Quality</label>
-                        <input-type value-pairs-name="conceptset_quality">dropdown</input-type>
-                        <hint>Select the quality of the Concept Set.</hint>
-                    </field>
-                </row>
-            </form>
-
-         <!-- Study Form-->
-            <form name="StudyForm">
-                <row>
-                    <field>
-                        <dc-schema>dspace</dc-schema>
-                        <dc-element>entity</dc-element>
-                        <dc-qualifier>type</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Resource Type</label>
-                        <input-type value-pairs-name="EntityType">dropdown</input-type>
-                        <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
-                        <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>title</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Study Name</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter the official study title. Use title case. Do not use shorthand. 
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>relation</dc-element>
+                    <dc-qualifier>url</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Development Code</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter a link to the BitBucket or GitHub repository where the development code is stored.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>quality</dc-element>
+                    <dc-qualifier>status</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Quality</label>
+                    <input-type value-pairs-name="conceptset_quality">dropdown</input-type>
+                    <hint>Select the quality of the Concept Set.</hint>
+                </field>
+            </row>
+        </form>
+        <!-- Study Form-->
+        <form name="StudyForm">
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Study Name</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the official study title. Use title case. Do not use shorthand. 
                             E.g., The Researching COVID to Enhance Recovery (RECOVER) Post-Acute Sequelae of SARS-CoV-2 (PASC) Electronic Health Record (EHR) Cohort Study</hint>
-                        <required>You must enter a title for this item.</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>title</dc-element>
-                        <dc-qualifier>alternative</dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Other Titles</label>
-                        <input-type>onebox</input-type>
-                        <hint>If the study has any alternative titles or sub-titles please enter them here.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>date</dc-element>
-                        <dc-qualifier>created</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Study Start Date</label>
-                        <style>col-sm-4</style>
-                        <input-type>date</input-type>
-                        <hint>Enter the date the study began. If an exact day is unknown, approximate to the first of the month.</hint>
-                        <required>You must enter at least the year.</required>
-                    </field>
-
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>date</dc-element>
-                        <dc-qualifier>created</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Study End Date</label>
-                        <style>col-sm-8</style>
-                        <input-type>date</input-type>
-                        <hint>Enter the date the study ended, if applicable. If an exact day is unknown, approximate to the first of the month.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <relation-field>
-                        <relationship-type>isPersonOfStudy</relationship-type>
-                        <search-configuration>person</search-configuration>
-                        <repeatable>true</repeatable>
-                        <label>Principle Investigator(s)</label>
-                        <hint>Enter the name(s) of the PI(s) or Query Requestors (Family name, Given names).</hint>                            
-                        <linked-metadata-field>
-                            <dc-schema>dc</dc-schema>
-                            <dc-element>contributor</dc-element>
-                            <dc-qualifier>author</dc-qualifier>
-                            <input-type>onebox</input-type>
-                        </linked-metadata-field>
-                        <externalsources>orcid</externalsources>
-                        <required></required>                        
-                    </relation-field>
-                </row>
-                <row>
-                    <relation-field>
-                        <relationship-type>isOrgUnitOfPerson</relationship-type>
-                        <search-configuration>orgunit</search-configuration>
-                        <repeatable>true</repeatable>
-                        <label>Affliated Organization(s)</label>
-                        <hint>Enter the name(s) of the institutions employing any of the individuals listed as PIs above or associated with the study.</hint>
-                        <linked-metadata-field>
-                            <dc-schema>dc</dc-schema>
-                            <dc-element>contributor</dc-element>
-                            <dc-qualifier>other</dc-qualifier>
-                            <input-type>onebox</input-type>
-                        </linked-metadata-field>
-                        <required></required>
-                    </relation-field>
-                </row>
-                <row>
-                    <field>
+                    <required>You must enter a title for this item.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <dc-qualifier>alternative</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Other Titles</label>
+                    <input-type>onebox</input-type>
+                    <hint>If the study has any alternative titles or sub-titles please enter them here.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>created</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Study Start Date</label>
+                    <style>col-sm-4</style>
+                    <input-type>date</input-type>
+                    <hint>Enter the date the study began. If an exact day is unknown, approximate to the first of the month.</hint>
+                    <required>You must enter at least the year.</required>
+                </field>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>created</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Study End Date</label>
+                    <style>col-sm-8</style>
+                    <input-type>date</input-type>
+                    <hint>Enter the date the study ended, if applicable. If an exact day is unknown, approximate to the first of the month.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPersonOfStudy</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Principle Investigator(s)</label>
+                    <hint>Enter the name(s) of the PI(s) or Query Requestors (Family name, Given names).</hint>
+                    <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>contributor</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Funding Organization(s)</label>
+                        <dc-qualifier>author</dc-qualifier>
                         <input-type>onebox</input-type>
-                        <hint>Enter the name(s) of the organizations who funded or provided financial assitance to the study.
+                    </linked-metadata-field>
+                    <externalsources>orcid</externalsources>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isOrgUnitOfPerson</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Affliated Organization(s)</label>
+                    <hint>Enter the name(s) of the institutions employing any of the individuals listed as PIs above or associated with the study.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>other</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Funding Organization(s)</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the name(s) of the organizations who funded or provided financial assitance to the study.
                             Please format as: "Study made possible thanks to the generous support of [Enter Org Name]."
                         </hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>description</dc-element>
-                        <dc-qualifier>abstract</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Study Abstract</label>
-                        <input-type>textarea</input-type>
-                        <hint>Enter a brief, 1-3 sentence overview of the study purpose and design.</hint>
-                        <required>You must provide some descriptive context for the study.</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>description</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Cohort Description</label>
-                        <input-type>textarea</input-type>
-                        <hint>Enter a description of the intended cohort characteristics and the cohort formation strategy.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>subject</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Tags</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter terms that classify the Study.</hint>
-                        <required>At least one tag must be applied to the study.</required>
-                        <vocabulary closed="true">dc_subject</vocabulary>
-                    </field>
-                </row>
-                <!-- <row>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>abstract</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Study Abstract</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a brief, 1-3 sentence overview of the study purpose and design.</hint>
+                    <required>You must provide some descriptive context for the study.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Cohort Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a description of the intended cohort characteristics and the cohort formation strategy.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Tags</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter terms that classify the Study.</hint>
+                    <required>At least one tag must be applied to the study.</required>
+                    <vocabulary closed="true">dc_subject</vocabulary>
+                </field>
+            </row>
+            <!-- <row>
                     <field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>subject</dc-element>
@@ -763,388 +752,383 @@
                         <vocabulary closed="true">dc_subject_mesh</vocabulary>
                     </field>
                 </row> -->
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier>isreferencedby</dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Publications</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter a citation for any subsequent manuscript publication from this study. 
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>relation</dc-element>
+                    <dc-qualifier>isreferencedby</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Publications</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter a citation for any subsequent manuscript publication from this study. 
                             Markdown format is accepted. Please provide a linked DOI for each publication using "[]()".
                         </hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <relation-field>
-                        <relationship-type>isStudyOfConceptSet</relationship-type>
-                        <search-configuration>conceptset</search-configuration>
-                        <repeatable>true</repeatable>
-                        <label>Related Concept Sets</label>
-                        <hint>Link the study to any concept sets used in the course of research, if applicable.</hint>
-                        <linked-metadata-field>
-                            <dc-schema>dc</dc-schema>
-                            <dc-element>relation</dc-element>
-                            <dc-qualifier></dc-qualifier>
-                            <input-type>onebox</input-type>
-                        </linked-metadata-field>
-                    </relation-field>
-                </row>
-            </form>
-
-         <!-- Documentation Form-->
-            <form name="DocumentationForm">
-                <row>
-                    <field>
-                        <dc-schema>dspace</dc-schema>
-                        <dc-element>entity</dc-element>
-                        <dc-qualifier>type</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Resource Type</label>
-                        <input-type value-pairs-name="EntityType">dropdown</input-type>
-                        <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
-                        <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>title</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Title</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter the main title of the item.</hint>
-                        <required>You must enter a main title for this item.</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>title</dc-element>
-                        <dc-qualifier>alternative</dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Other Titles</label>
-                        <input-type>onebox</input-type>
-                        <hint>If the item has any alternative titles, please enter them here.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>date</dc-element>
-                        <dc-qualifier>created</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Date Created</label>
-                        <style>col-sm-4</style>
-                        <input-type>date</input-type>
-                        <hint>Input the date that the item was first created (version 1). 
-                            If the exact date is unknown, enter the first of the month.
-                        </hint>
-                        <required>You must enter at least the year.</required>
-                    </field>
-    
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>date</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Date Last Modified</label>
-                        <style>col-sm-8</style>
-                        <input-type>date</input-type>
-                        <hint>Input the date that the item was last modified. This field should only be used if subsequent versions of this concept set have been created.
-                            If the exact date is unknown, enter the first of the month.
-                        </hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <relation-field>
-                        <relationship-type>isPersonOfDocument</relationship-type>
-                        <search-configuration>person</search-configuration>
-                        <repeatable>true</repeatable>
-                        <label>Creator(s)</label>
-                        <hint>Enter the creator's name (Family name, Given names).</hint>
-                        <linked-metadata-field>
-                            <dc-schema>dc</dc-schema>
-                            <dc-element>contributor</dc-element>
-                            <dc-qualifier>author</dc-qualifier>
-                            <input-type>onebox</input-type>
-                        </linked-metadata-field>
-                        <required>You must enter at least one creator for your item.</required>
-                    </relation-field>
-                </row>
-                <row>
-                    <relation-field>
-                        <relationship-type>isOrgUnitOfPerson</relationship-type>
-                        <search-configuration>orgunit</search-configuration>
-                        <repeatable>true</repeatable>
-                        <label>Affliated Organization(s)</label>
-                        <hint>Enter the name(s) of the institutions employing any of the individuals listed as creators.</hint>
-                        <linked-metadata-field>
-                            <dc-schema>dc</dc-schema>
-                            <dc-element>contributor</dc-element>
-                            <dc-qualifier>other</dc-qualifier>
-                            <input-type>onebox</input-type>
-                        </linked-metadata-field>
-                        <required></required>
-                    </relation-field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>publisher</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Publisher</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter the name of the publisher if applicable.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>description</dc-element>
-                        <dc-qualifier>abstract</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Abstract</label>
-                        <input-type>textarea</input-type>
-                        <hint>Enter a brief, 1-2 sentence introductory description of the item.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>description</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Description</label>
-                        <input-type>textarea</input-type>
-                        <hint>Enter a full description of the item.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>provenance</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Provenance</label>
-                        <input-type>textarea</input-type>
-                        <hint>Enter provenance information associated with the item if applicable.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>subject</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Tags</label>
-                        <input-type>onebox</input-type>
-                        <hint>Apply tags to the item as applicable.</hint>
-                        <required></required>
-                        <vocabulary closed="true">dc_subject</vocabulary>
-                    </field>
-                </row>
-                <row>
-                    <field>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isStudyOfConceptSet</relationship-type>
+                    <search-configuration>conceptset</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Concept Sets</label>
+                    <hint>Link the study to any concept sets used in the course of research, if applicable.</hint>
+                    <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>relation</dc-element>
-                        <dc-qualifier>uri</dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Related Content</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter permanent links to related external resources as applicable. E.g., GitHub Repository link.</hint>
-                        <required></required>
-                    </field>
-                </row>
-            </form>
-
-         <!-- Phenotype Form-->
-            <form name="PhenotypeForm">
-                <row>
-                    <field>
-                        <dc-schema>dspace</dc-schema>
-                        <dc-element>entity</dc-element>
-                        <dc-qualifier>type</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Resource Type</label>
-                        <input-type value-pairs-name="EntityType">dropdown</input-type>
-                        <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
-                        <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>title</dc-element>
                         <dc-qualifier></dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Title</label>
                         <input-type>onebox</input-type>
-                        <hint>Enter a unique title of the phenotype. Use title case. E.g., Anti-Diabetic Agents, Oral</hint>
-                        <required>You must enter a title for this item.</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
+                    </linked-metadata-field>
+                </relation-field>
+            </row>
+        </form>
+        <!-- Documentation Form-->
+        <form name="DocumentationForm">
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Title</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the main title of the item.</hint>
+                    <required>You must enter a main title for this item.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <dc-qualifier>alternative</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Other Titles</label>
+                    <input-type>onebox</input-type>
+                    <hint>If the item has any alternative titles, please enter them here.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>created</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Date Created</label>
+                    <style>col-sm-4</style>
+                    <input-type>date</input-type>
+                    <hint>Input the date that the item was first created (version 1). 
+                            If the exact date is unknown, enter the first of the month.
+                        </hint>
+                    <required>You must enter at least the year.</required>
+                </field>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Date Last Modified</label>
+                    <style>col-sm-8</style>
+                    <input-type>date</input-type>
+                    <hint>Input the date that the item was last modified. This field should only be used if subsequent versions of this concept set have been created.
+                            If the exact date is unknown, enter the first of the month.
+                        </hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPersonOfDocument</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Creator(s)</label>
+                    <hint>Enter the creator's name (Family name, Given names).</hint>
+                    <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
-                        <dc-element>date</dc-element>
-                        <dc-qualifier>created</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Date Created</label>
-                        <input-type>date</input-type>
-                        <hint>Input the date that the phenotype was first created (version 1). 
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>author</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required>You must enter at least one creator for your item.</required>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isOrgUnitOfPerson</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Affliated Organization(s)</label>
+                    <hint>Enter the name(s) of the institutions employing any of the individuals listed as creators.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>other</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>publisher</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Publisher</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the name of the publisher if applicable.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>abstract</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Abstract</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a brief, 1-2 sentence introductory description of the item.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a full description of the item.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>provenance</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Provenance</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter provenance information associated with the item if applicable.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Tags</label>
+                    <input-type>onebox</input-type>
+                    <hint>Apply tags to the item as applicable.</hint>
+                    <required></required>
+                    <vocabulary closed="true">dc_subject</vocabulary>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>relation</dc-element>
+                    <dc-qualifier>uri</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Related Content</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter permanent links to related external resources as applicable. E.g., GitHub Repository link.</hint>
+                    <required></required>
+                </field>
+            </row>
+        </form>
+        <!-- Phenotype Form-->
+        <form name="PhenotypeForm">
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Title</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter a unique title of the phenotype. Use title case. E.g., Anti-Diabetic Agents, Oral</hint>
+                    <required>You must enter a title for this item.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>created</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Date Created</label>
+                    <input-type>date</input-type>
+                    <hint>Input the date that the phenotype was first created (version 1). 
                             If the exact date is unknown, enter the nearest month.
                         </hint>
-                        <required>You must enter at least the year.</required>
-                    </field>
-                </row>
-                <row>
-                    <relation-field>
-                        <relationship-type>isPersonOfConceptSet</relationship-type>
-                        <search-configuration>person</search-configuration>
-                        <repeatable>true</repeatable>
-                        <label>Creator(s)</label>
-                        <hint>Enter the name(s) of the creator(s). 
+                    <required>You must enter at least the year.</required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPersonOfConceptSet</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Creator(s)</label>
+                    <hint>Enter the name(s) of the creator(s). 
                             (Family name, Given names)</hint>
-                        <linked-metadata-field>
-                            <dc-schema>dc</dc-schema>
-                            <dc-element>contributor</dc-element>
-                            <dc-qualifier>author</dc-qualifier>
-                            <input-type>onebox</input-type>
-                        </linked-metadata-field>
-                    </relation-field>
-                </row>
-                <row>
-                    <relation-field>
-                        <relationship-type>isOrgUnitOfPerson</relationship-type>
-                        <search-configuration>orgunit</search-configuration>
-                        <repeatable>true</repeatable>
-                        <label>Affliated Organization(s)</label>
-                        <hint>Enter the name(s) of the institutions employing any of the individuals named in Creator.</hint>
-                        <linked-metadata-field>
-                            <dc-schema>dc</dc-schema>
-                            <dc-element>contributor</dc-element>
-                            <dc-qualifier>other</dc-qualifier>
-                            <input-type>onebox</input-type>
-                        </linked-metadata-field>
-                        <required></required>
-                    </relation-field>
-                </row>
-                <row>
-                    <field>
+                    <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
-                        <dc-element>description</dc-element>
-                        <dc-qualifier>abstract</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Description of Phenotype</label>
-                        <input-type>textarea</input-type>
-                        <hint>Enter a few sentences describing the intention and characteristics of your phenotype.
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>author</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isOrgUnitOfPerson</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Affliated Organization(s)</label>
+                    <hint>Enter the name(s) of the institutions employing any of the individuals named in Creator.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>other</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>abstract</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Description of Phenotype</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a few sentences describing the intention and characteristics of your phenotype.
                             E.g., Concept set intended to identify patients with a diagnosis of asthma to define a study cohort.</hint>
-                        <required>You must input at least one sentence.</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>description</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Description of Algorithm</label>
-                        <input-type>textarea</input-type>
-                        <hint>Enter a description of the phenotype algorithm. Possible topics for discussion include development approach and rationale,
+                    <required>You must input at least one sentence.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Description of Algorithm</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a description of the phenotype algorithm. Possible topics for discussion include development approach and rationale,
                             directions for code use or implementation, and logic defined by the algorithm to define the phenotype. 
                             Markdown formatting is accepted.</hint>
-                        <required>You must input at least one sentence.</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>provenance</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Provenance</label>
-                        <input-type>onebox</input-type>
-                        <hint>Input the name of the study this phenotype was created for, and briefly describe the role the phenotype played in the study. 
+                    <required>You must input at least one sentence.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>provenance</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Provenance</label>
+                    <input-type>onebox</input-type>
+                    <hint>Input the name of the study this phenotype was created for, and briefly describe the role the phenotype played in the study. 
                             If the phenotype was used in more than one study, please list and describe each usage in chronological order. </hint>
-                        <required>At least the name of the study must be entered. Do not use shorthand to abbreviate the study, rather, write the full title.</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>subject</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Tags</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter terms that classify the phenotype.</hint>
-                        <required>At least one tag must be applied to the phenotype.</required>
-                        <vocabulary closed="true">dc_subject</vocabulary>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>subject</dc-element>
-                        <dc-qualifier>mesh</dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Clinical Subject</label>
-                        <input-type>onebox</input-type>
-                        <hint>Tag the clinical subject most associated with the phenotype, then input terms for up to two term hierarchy-levels higher and others as applicable.</hint>
-                        <required>At least two clinical subject headings should be applied to the phenotype.</required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>subject</dc-element>
-                        <dc-qualifier>other</dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Algorithm Components (Vocabularies)</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter the medical ontologies used in the algorithm.</hint>
-                        <required></required>
-                        <vocabulary closed="true">dc_subject_other</vocabulary>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier>url</dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Development Code/Related Resources</label>
-                        <input-type>onebox</input-type>
-                        <hint>Enter links to useful resources for analysts (this is not a public field). For example, the BitBucket or GitHub repository where the 
+                    <required>At least the name of the study must be entered. Do not use shorthand to abbreviate the study, rather, write the full title.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Tags</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter terms that classify the phenotype.</hint>
+                    <required>At least one tag must be applied to the phenotype.</required>
+                    <vocabulary closed="true">dc_subject</vocabulary>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>mesh</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Clinical Subject</label>
+                    <input-type>onebox</input-type>
+                    <hint>Tag the clinical subject most associated with the phenotype, then input terms for up to two term hierarchy-levels higher and others as applicable.</hint>
+                    <required>At least two clinical subject headings should be applied to the phenotype.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Algorithm Components (Vocabularies)</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the medical ontologies used in the algorithm.</hint>
+                    <required></required>
+                    <vocabulary closed="true">dc_subject_other</vocabulary>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>relation</dc-element>
+                    <dc-qualifier>url</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Development Code/Related Resources</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter links to useful resources for analysts (this is not a public field). For example, the BitBucket or GitHub repository where the 
                             development code is stored. Links to Jira tickets or Confluence documentation is also appropriate.</hint>
-                        <required></required>
-                    </field>
-                </row>
-                <row>
-                    <field>
-                        <dc-schema>local</dc-schema>
-                        <dc-element>quality</dc-element>
-                        <dc-qualifier>status</dc-qualifier>
-                        <repeatable>false</repeatable>
-                        <label>Quality</label>
-                        <input-type value-pairs-name="conceptset_quality">dropdown</input-type>
-                        <hint>Select the quality of the Concept Set.</hint>
-                    </field>
-                </row>
-             </form>
-
-
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>quality</dc-element>
+                    <dc-qualifier>status</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Quality</label>
+                    <input-type value-pairs-name="conceptset_quality">dropdown</input-type>
+                    <hint>Select the quality of the Concept Set.</hint>
+                </field>
+            </row>
+        </form>
         <!-- Form which defines the *first* metadata page/section for depositing Publication Entities.
              Since Publication Entities are very similar to normal Items, this is nearly identical to the
              'traditionalpageone' form. The only difference is the Author field can be used to link the
@@ -1209,7 +1193,6 @@
                     </hint>
                     <required>You must enter at least the year.</required>
                 </field>
-
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>publisher</dc-element>
@@ -1291,7 +1274,6 @@
                 </field>
             </row>
         </form>
-
         <!-- Form which defines the metadata page/section for depositing Person Entities -->
         <form name="personStep">
             <row>
@@ -1349,16 +1331,16 @@
                     <hint>Enter the birth date of the person</hint>
                 </field>
             </row>
-<!--            <row>-->
-<!--                <field>-->
-<!--                    <dc-schema>person</dc-schema>-->
-<!--                    <dc-element>identifier</dc-element>-->
-<!--                    <dc-qualifier>staffid</dc-qualifier>-->
-<!--                    <label>Staff ID</label>-->
-<!--                    <input-type>onebox</input-type>-->
-<!--                    <hint>Enter the staff id of the person</hint>-->
-<!--                </field>-->
-<!--            </row>-->
+            <!--            <row>-->
+            <!--                <field>-->
+            <!--                    <dc-schema>person</dc-schema>-->
+            <!--                    <dc-element>identifier</dc-element>-->
+            <!--                    <dc-qualifier>staffid</dc-qualifier>-->
+            <!--                    <label>Staff ID</label>-->
+            <!--                    <input-type>onebox</input-type>-->
+            <!--                    <hint>Enter the staff id of the person</hint>-->
+            <!--                </field>-->
+            <!--            </row>-->
             <row>
                 <field>
                     <dc-schema>person</dc-schema>
@@ -1369,7 +1351,6 @@
                 </field>
             </row>
         </form>
-
         <!-- Form which defines the metadata page/section for depositing Project Entities -->
         <form name="projectStep">
             <row>
@@ -1390,36 +1371,36 @@
                     <hint>Enter the id of the project</hint>
                 </field>
             </row>
-<!--            <row>-->
-<!--                <field>-->
-<!--                    <dc-schema>project</dc-schema>-->
-<!--                    <dc-element>identifier</dc-element>-->
-<!--                    <dc-qualifier>status</dc-qualifier>-->
-<!--                    <label>Status</label>-->
-<!--                    <input-type value-pairs-name="project_status">dropdown</input-type>-->
-<!--                    <hint>Enter the status of the project</hint>-->
-<!--                </field>-->
-<!--            </row>-->
-<!--            <row>-->
-<!--                <field>-->
-<!--                    <dc-schema>project</dc-schema>-->
-<!--                    <dc-element>identifier</dc-element>-->
-<!--                    <dc-qualifier>startdate</dc-qualifier>-->
-<!--                    <label>Start date</label>-->
-<!--                    <input-type>date</input-type>-->
-<!--                    <hint>Enter the start date of the project</hint>-->
-<!--                </field>-->
-<!--            </row>-->
-<!--            <row>-->
-<!--                <field>-->
-<!--                    <dc-schema>project</dc-schema>-->
-<!--                    <dc-element>identifier</dc-element>-->
-<!--                    <dc-qualifier>expectedcompletion</dc-qualifier>-->
-<!--                    <label>Expected Completion</label>-->
-<!--                    <input-type>date</input-type>-->
-<!--                    <hint>Enter the expected completion date of the project</hint>-->
-<!--                </field>-->
-<!--            </row>-->
+            <!--            <row>-->
+            <!--                <field>-->
+            <!--                    <dc-schema>project</dc-schema>-->
+            <!--                    <dc-element>identifier</dc-element>-->
+            <!--                    <dc-qualifier>status</dc-qualifier>-->
+            <!--                    <label>Status</label>-->
+            <!--                    <input-type value-pairs-name="project_status">dropdown</input-type>-->
+            <!--                    <hint>Enter the status of the project</hint>-->
+            <!--                </field>-->
+            <!--            </row>-->
+            <!--            <row>-->
+            <!--                <field>-->
+            <!--                    <dc-schema>project</dc-schema>-->
+            <!--                    <dc-element>identifier</dc-element>-->
+            <!--                    <dc-qualifier>startdate</dc-qualifier>-->
+            <!--                    <label>Start date</label>-->
+            <!--                    <input-type>date</input-type>-->
+            <!--                    <hint>Enter the start date of the project</hint>-->
+            <!--                </field>-->
+            <!--            </row>-->
+            <!--            <row>-->
+            <!--                <field>-->
+            <!--                    <dc-schema>project</dc-schema>-->
+            <!--                    <dc-element>identifier</dc-element>-->
+            <!--                    <dc-qualifier>expectedcompletion</dc-qualifier>-->
+            <!--                    <label>Expected Completion</label>-->
+            <!--                    <input-type>date</input-type>-->
+            <!--                    <hint>Enter the expected completion date of the project</hint>-->
+            <!--                </field>-->
+            <!--            </row>-->
             <row>
                 <relation-field>
                     <relationship-type>isPersonOfProject</relationship-type>
@@ -1504,7 +1485,6 @@
                 </field>
             </row>
         </form>
-
         <!-- Form which defines the metadata page/section for depositing OrgUnit Entities -->
         <form name="orgUnitStep">
             <row>
@@ -1564,7 +1544,6 @@
                 </field>
             </row>
         </form>
-
         <!-- Form which defines the metadata page/section for depositing Journal Entities -->
         <form name="journalStep">
             <row>
@@ -1612,9 +1591,7 @@
                     <hint>Enter the publisher of the journal</hint>
                 </field>
             </row>
-
         </form>
-
         <!-- Form which defines the metadata page/section for depositing JournalVolume Entities -->
         <form name="journalVolumeStep">
             <row>
@@ -1665,7 +1642,6 @@
                 </field>
             </row>
         </form>
-
         <!-- Form which defines the metadata page/section for depositing JournalIssue Entities -->
         <form name="journalIssueStep">
             <row>
@@ -1722,11 +1698,8 @@
                     <hint>Enter the keywords of the journal issue</hint>
                 </field>
             </row>
-
         </form>
-
         <!-- Openaire specific forms -->
-
         <form name="openairePublicationPageoneForm">
             <row>
                 <field>
@@ -1770,9 +1743,7 @@
                     <required>At least one author (plain text or relationship) is required</required>
                 </relation-field>
             </row>
-
             <!-- EDITOR and Other contributors - Add new field here -->
-
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1976,7 +1947,6 @@
                 </field>
             </row>
         </form>
-
         <form name="openairePublicationPagetwoForm">
             <row>
                 <field>
@@ -1992,9 +1962,7 @@
                     <vocabulary>srsc</vocabulary>
                 </field>
             </row>
-
             <!-- Additional Subject with specific taxonomy (like mesh, fos, ...) -->
-
             <!-- example for FOS -->
             <!-- <row>
                 <field>
@@ -2009,7 +1977,6 @@
                     <vocabulary>fos</vocabulary>
                 </field>
             </row> -->
-
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -2087,7 +2054,6 @@
                 </field>
             </row>
         </form>
-
         <form name="openairePersonForm">
             <row>
                 <field>
@@ -2151,7 +2117,6 @@
                 </field>
             </row>
         </form>
-
         <form name="openaireProjectForm">
             <row>
                 <field>
@@ -2207,7 +2172,6 @@
                 </field>
             </row>
         </form>
-
         <form name="openaireOrganizationForm">
             <row>
                 <field>
@@ -2253,10 +2217,7 @@
                 </field>
             </row>
         </form>
-
     </form-definitions>
-
-
     <!-- form-value-pairs populate dropdown and qualdrop-value lists.          -->
     <!-- The form-value-pairs element holds child elements named 'value-pairs' -->
     <!-- A 'value-pairs' element has a value-pairs-name and a dc-term          -->
@@ -2269,7 +2230,6 @@
     <!-- Each pair contains a 'displayed-value' element and a 'stored-value'   -->
     <!-- element. A UI list displays the displayed-values, but the program     -->
     <!-- stores the associated stored-values in the database.                  -->
-
     <form-value-pairs>
         <value-pairs value-pairs-name="common_identifiers" dc-term="identifier">
             <pair>
@@ -2297,7 +2257,6 @@
                 <stored-value>isbn</stored-value>
             </pair>
         </value-pairs>
-
         <value-pairs value-pairs-name="EntityType" dc-term="type">
             <pair>
                 <displayed-value>Concept Set</displayed-value>
@@ -2320,7 +2279,6 @@
                 <stored-value>DQCheck</stored-value>
             </pair>
         </value-pairs>
-
         <value-pairs value-pairs-name="common_types" dc-term="type">
             <pair>
                 <displayed-value>Animation</displayed-value>
@@ -2411,7 +2369,6 @@
                 <stored-value>Other</stored-value>
             </pair>
         </value-pairs>
-
         <!-- default language order: (from dspace 1.2.1)
              "en_US", "en", "es", "de", "fr", "it", "ja", "zh", "other", ""
           -->
@@ -2465,13 +2422,9 @@
                 <stored-value>other</stored-value>
             </pair>
         </value-pairs>
-
         <!-- Openaire specific value pairs -->
-
         <value-pairs value-pairs-name="openaire_license_types" dc-term="license">
-
             <!-- Based on: http://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/latest/field_licensecondition.html#dc-rightslicensecondition -->
-
             <pair>
                 <displayed-value>Without License</displayed-value>
                 <stored-value></stored-value>
@@ -2505,9 +2458,7 @@
                 <displayed-value>Other</displayed-value>
                 <stored-value>other</stored-value>
             </pair>
-
         </value-pairs>
-
         <!-- Openaire document types
              https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_publicationtype.html
              Based on COAR Vocabularies -> Controlled Vocabulary for Resource Type Genres (Version 2.0):
@@ -2799,7 +2750,6 @@
                 <stored-value>clinical study</stored-value>
             </pair>
         </value-pairs>
-
         <value-pairs value-pairs-name="openaire_version_types" dc-term="version">
             <pair>
                 <displayed-value>Author’s Original</displayed-value>
@@ -2834,7 +2784,6 @@
                 <stored-value>http://purl.org/coar/version/c_be7fb7dd8ff6fe43</stored-value>
             </pair>
         </value-pairs>
-
         <value-pairs value-pairs-name="openaire_rights" dc-term="rights">
             <pair>
                 <displayed-value>open access</displayed-value>
@@ -2853,7 +2802,6 @@
                 <stored-value>http://purl.org/coar/access_right/c_14cb</stored-value>
             </pair>
         </value-pairs>
-
         <value-pairs value-pairs-name="openaire_author_identifier_types" dc-term="identifier">
             <pair>
                 <displayed-value>Scopus Author ID</displayed-value>
@@ -2884,18 +2832,20 @@
                 <stored-value></stored-value>
             </pair>
         </value-pairs>
-
         <value-pairs value-pairs-name="conceptset_quality" dc-term="quality">
             <pair>
-                <displayed-value>Verirfied</displayed-value>
-                <stored-value>Verified</stored-value>
+                <displayed-value>Research-Ready</displayed-value>
+                <stored-value>Research-Ready</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Needs Refinement</displayed-value>
+                <stored-value>Needs Refinement</stored-value>
             </pair>
             <pair>
                 <displayed-value>Deprecated</displayed-value>
                 <stored-value>Deprecated</stored-value>
             </pair>
         </value-pairs>
-
         <value-pairs value-pairs-name="openaire_organization_identifier_types" dc-term="identifier">
             <pair>
                 <displayed-value>ISNI - International Standard Name Identifier</displayed-value>
@@ -2914,7 +2864,6 @@
                 <stored-value></stored-value>
             </pair>
         </value-pairs>
-
         <value-pairs value-pairs-name="openaire_organization_types" dc-term="type">
             <pair>
                 <displayed-value>N/A</displayed-value>
@@ -2925,7 +2874,5 @@
                 <stored-value>FundingOrganization</stored-value>
             </pair>
         </value-pairs>
-
     </form-value-pairs>
-
 </input-forms>
