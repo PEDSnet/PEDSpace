@@ -197,7 +197,9 @@
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterFunder"/>
                 <ref bean="searchFilterCreated"/>
-                <ref bean="searchFilterSubject"/>
+                <ref bean="searchFilterSubjectHierarchy"/>
+                <ref bean="searchFilterSubjectFlat"/>
+                <ref bean="searchFilterCheckReq"/>
                 <ref bean="searchFilterClinicalSubject"/>
                 <ref bean="searchFilterVocabulary"/>
                 <ref bean="searchFilterEntityType"/>
@@ -4055,7 +4057,6 @@
             </list>
         </property>
     </bean> -->
-    
     <!-- <bean id="searchFilterTags" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
         <property name="indexFieldName" value="itemTags" />
         <property name="metadataFields">
@@ -4067,7 +4068,7 @@
         <property name="skipFirstNodeLevel" value="false"/>
     </bean> -->
     <!-- Below is just the default dc.subject configuration modified for "Tags" - It's just easier to use this instead. -->
-    <bean id="searchFilterSubject" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
+    <bean id="searchFilterSubjectHierarchy" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
         <property name="indexFieldName" value="subject"/>
         <property name="metadataFields">
             <list>
@@ -4079,7 +4080,23 @@
         <property name="sortOrderFilterPage" value="COUNT"/>
         <property name="splitter" value="::"/>
     </bean>
-    <bean id="searchFilterClinicalSubject" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
+    <bean id="searchFilterSubjectFlat" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="subjectFlat"/>
+        <property name="metadataFields">
+            <list>
+                <value>local.subject.flat</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="searchFilterCheckReq" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="checkReq"/>
+        <property name="metadataFields">
+            <list>
+                <value>local.dqcheck.requirement</value>
+            </list>
+        </property>
+    </bean>
+    <!-- <bean id="searchFilterClinicalSubject" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
         <property name="indexFieldName" value="itemClinicalSubject" />
         <property name="metadataFields">
             <list>
@@ -4090,6 +4107,14 @@
         <property name="sortOrderSidebar" value="COUNT"/>
         <property name="sortOrderFilterPage" value="COUNT"/>
         <property name="splitter" value="::"/>
+    </bean> -->
+    <bean id="searchFilterClinicalSubject" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="itemClinicalSubject" />
+        <property name="metadataFields">
+            <list>
+                <value>dc.subject.mesh</value>
+            </list>
+        </property>
     </bean>
     <bean id="searchFilterFunder" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="itemFunder" />
