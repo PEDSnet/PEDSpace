@@ -218,11 +218,11 @@
              see the 'submission.autosave' settings in the 'environment.common.ts'.
              See also 'config/spring/api/step-processing-listener.xml' for further server side configuration
              -->
-        <step-definition id="extractionstep">
+        <!-- <step-definition id="extractionstep">
             <heading>submit.progressbar.ExtractMetadataStep</heading>
             <processing-class>org.dspace.app.rest.submit.step.ExtractMetadataStep</processing-class>
             <type>extract</type>
-        </step-definition>
+        </step-definition> -->
 
         <!-- Openaire submission steps/forms -->
         <step-definition id="openaireProjectForm" mandatory="true">
