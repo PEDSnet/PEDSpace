@@ -1,23 +1,38 @@
 @import "src/styles/_variables.scss";
 @import "src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss";
 
-// $tomato: #FE654F;
-// $mauve: #E4C1F9;
-// $tropical-indigo: #9381ff;
-// $seafoam-green: #A4D5E1;
+// ======================
+// Universal Opacity Variable
+// ======================
+$badge-opacity: 0.8;
 
-// Cool CSS pattersn
-// https://www.magicpattern.design/tools/css-backgrounds
+// ======================
+// Function to Generate Repeating Linear Gradient
+// ======================
+@function generateBadgePattern($pattern-color) {
+    @return repeating-linear-gradient(
+        45deg,
+        $pattern-color 0px,
+        $pattern-color 0.4px,
+        #e5e5f7 0.4px,
+        #e5e5f7 4px
+    );
+}
 
-// SVG URL variables
+// ======================
+// SVG URL Variables
+// ======================
 $conceptset-icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-terminal'%3E%3Cpolyline points='4 17 10 11 4 5'/%3E%3Cline x1='12' x2='20' y1='19' y2='19'/%3E%3C/svg%3E";
 $dqcheck-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdyaWQtMngyLWNoZWNrIj48cGF0aCBkPSJNMTIgM3YxN2ExIDEgMCAwIDEtMSAxSDVhMiAyIDAgMCAxLTItMlY1YTIgMiAwIDAgMSAyLTJoMTRhMiAyIDAgMCAxIDIgMnY2YTEgMSAwIDAgMS0xIDFIMyIvPjxwYXRoIGQ9Im0xNiAxOSAyIDIgNC00Ii8+PC9zdmc+";
 $documentation-icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-book-open-text'%3E%3Cpath d='M12 7v14'/%3E%3Cpath d='M16 12h2'/%3E%3Cpath d='M16 8h2'/%3E%3Cpath d='M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z'/%3E%3Cpath d='M6 12h2'/%3E%3Cpath d='M6 8h2'/%3E%3C/svg%3E";
 $study-icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-school'%3E%3Cpath d='M14 22v-4a2 2 0 1 0-4 0v4'/%3E%3Cpath d='m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2'/%3E%3Cpath d='M18 5v17'/%3E%3Cpath d='m4 6 8-4 8 4'/%3E%3Cpath d='M6 5v17'/%3E%3Ccircle cx='12' cy='9' r='2'/%3E%3C/svg%3E";
 $collection-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJveGVzIj48cGF0aCBkPSJNMi45NyAxMi45MkEyIDIgMCAwIDAgMiAxNC42M3YzLjI0YTIgMiAwIDAgMCAuOTcgMS43MWwzIDEuOGEyIDIgMCAwIDAgMi4wNiAwTDEyIDE5di01LjVsLTUtMy00LjAzIDIuNDJaIi8+PHBhdGggZD0ibTcgMTYuNS00Ljc0LTIuODUiLz48cGF0aCBkPSJtNyAxNi41IDUtMyIvPjxwYXRoIGQ9Ik03IDE2LjV2NS4xNyIvPjxwYXRoIGQ9Ik0xMiAxMy41VjE5bDMuOTcgMi4zOGEyIDIgMCAwIDAgMi4wNiAwbDMtMS44YTIgMiAwIDAgMCAuOTctMS43MXYtMy4yNGEyIDIgMCAwIDAtLjk3LTEuNzFMMTcgMTAuNWwtNSAzWiIvPjxwYXRoIGQ9Im0xNyAxNi41LTUtMyIvPjxwYXRoIGQ9Im0xNyAxNi41IDQuNzQtMi44NSIvPjxwYXRoIGQ9Ik0xNyAxNi41djUuMTciLz48cGF0aCBkPSJNNy45NyA0LjQyQTIgMiAwIDAgMCA3IDYuMTN2NC4zN2w1IDMgNS0zVjYuMTNhMiAyIDAgMCAwLS45Ny0xLjcxbC0zLTEuOGEyIDIgMCAwIDAtMi4wNiAwbC0zIDEuOFoiLz48cGF0aCBkPSJNMTIgOCA3LjI2IDUuMTUiLz48cGF0aCBkPSJtMTIgOCA0Ljc0LTIuODUiLz48cGF0aCBkPSJNMTIgMTMuNVY4Ii8+PC9zdmc+";
 $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWRuYSI+PHBhdGggZD0ibTEwIDE2IDEuNSAxLjUiLz48cGF0aCBkPSJtMTQgOC0xLjUtMS41Ii8+PHBhdGggZD0iTTE1IDJjLTEuNzk4IDEuOTk4LTIuNTE4IDMuOTk1LTIuODA3IDUuOTkzIi8+PHBhdGggZD0ibTE2LjUgMTAuNSAxIDEiLz48cGF0aCBkPSJtMTcgNi0yLjg5MS0yLjg5MSIvPjxwYXRoIGQ9Ik0yIDE1YzYuNjY3LTYgMTMuMzMzIDAgMjAtNiIvPjxwYXRoIGQ9Im0yMCA5IC44OTEuODkxIi8+PHBhdGggZD0iTTMuMTA5IDE0LjEwOSA0IDE1Ii8+PHBhdGggZD0ibTYuNSAxMi41IDEgMSIvPjxwYXRoIGQ9Im03IDE4IDIuODkxIDIuODkxIi8+PHBhdGggZD0iTTkgMjJjMS43OTgtMS45OTggMi41MTgtMy45OTUgMi44MDctNS45OTMiLz48L3N2Zz4=";
+
+// ======================
+// Badge Type Styles
+// ======================
 .badge-type {
-    color: $black-bean;
     padding: 5px 10px 5px 30px;
     border-radius: 5px;
     display: inline-flex;
@@ -26,7 +41,8 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     font-weight: bold;
     text-decoration: underline;
     transition: all 0.3s ease;
-    //$black-bean
+    color: $black-bean;
+
     &::before {
         content: '';
         position: absolute;
@@ -42,8 +58,9 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     // Interactive states only apply to clickable elements that aren't communities
     &:not(.non-interactive):not(.badge-community) {
         cursor: pointer;
-        
-        &:hover, &:focus {
+
+        &:hover,
+        &:focus {
             color: $black-bean;
             text-decoration: none;
             transform: translateY(-2px);
@@ -58,7 +75,7 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     // Non-interactive badges get a subtle animation on hover
     &.non-interactive {
         cursor: default;
-        
+
         &:hover {
             &::after {
                 content: '';
@@ -73,7 +90,9 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
             }
         }
     }
-    &:not(.badge-community):hover, &:not(.badge-community):focus {
+
+    &:not(.badge-community):hover,
+    &:not(.badge-community):focus {
         color: $black-bean;
         text-decoration: none;
         transform: translateY(-2px);
@@ -84,6 +103,11 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
         }
     }
 
+    // ================================
+    // Specific Badge Type Styles
+    // ================================
+
+    // Conceptset Badge
     &.badge-conceptset {
         background-color: $dusty-rose;
         transition: all 0.3s ease;
@@ -93,28 +117,33 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
             -webkit-mask-image: url($conceptset-icon);
         }
 
-        &:not(.badge-community):hover, &:not(.badge-community):focus {
+        &:not(.badge-community):hover,
+        &:not(.badge-community):focus {
             background-color: lighten($dusty-rose, 10%);
         }
 
         &.badge-collection {
             border: 2px solid $dusty-rose;
-            background-color: $dusty-rose;
-            opacity: 0.9;
-            background-size: 10px 10px;
-            background-image: repeating-linear-gradient(45deg, lighten($dusty-rose, 10%) 0, lighten($dusty-rose, 10%) 1px, $dusty-rose 0, $dusty-rose 50%);
+            background-color: #e5e5f7; // Light background color
+            opacity: $badge-opacity; // Using the universal opacity variable
+            background-size: 4px 4px;
+            background-image: generateBadgePattern($dusty-rose); // Using the gradient function
             transition: all 0.3s ease;
 
-            &:hover, &:focus {
-                opacity: 1;
-                background-color: lighten($dusty-rose, 15%);
-                background-image: repeating-linear-gradient(45deg, lighten($dusty-rose, 25%) 0, lighten($dusty-rose, 25%) 1px, lighten($dusty-rose, 15%) 0, lighten($dusty-rose, 15%) 50%);
-                transform: translateY(-2px);
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            
+
+            &:hover,
+            &:focus {
+                opacity: 1; // Fully opaque on hover/focus
+                background-color: lighten($dusty-rose, 15%); // Lighten the background color
+                background-image: generateBadgePattern(lighten($dusty-rose, 25%)); // Generate a lighter pattern
+                transform: translateY(-2px); // Slight upward movement
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
             }
         }
     }
 
+    // DQCheck Badge
     &.badge-dqcheck {
         background-color: $mauve;
         transition: all 0.3s ease;
@@ -124,28 +153,33 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
             -webkit-mask-image: url($dqcheck-icon);
         }
 
-        &:not(.badge-community):hover, &:not(.badge-community):focus {
+        &:not(.badge-community):hover,
+        &:not(.badge-community):focus {
             background-color: lighten($mauve, 10%);
         }
 
         &.badge-collection {
             border: 2px solid $mauve;
-            background-color: $mauve;
-            opacity: 0.9;
-            background-size: 10px 10px;
-            background-image: repeating-linear-gradient(45deg, lighten($mauve, 10%) 0, lighten($mauve, 10%) 1px, $mauve 0, $mauve 50%);
+            background-color: #e5e5f7; // Light background color
+            opacity: $badge-opacity; // Using the universal opacity variable
+            background-size: 4px 4px;
+            background-image: generateBadgePattern($mauve); // Using the gradient function
             transition: all 0.3s ease;
 
-            &:hover, &:focus {
-                opacity: 1;
-                background-color: lighten($mauve, 15%);
-                background-image: repeating-linear-gradient(45deg, lighten($mauve, 25%) 0, lighten($mauve, 25%) 1px, lighten($mauve, 15%) 0, lighten($mauve, 15%) 50%);
-                transform: translateY(-2px);
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            
+
+            &:hover,
+            &:focus {
+                opacity: 1; // Fully opaque on hover/focus
+                background-color: lighten($mauve, 15%); // Lighten the background color
+                background-image: generateBadgePattern(lighten($mauve, 25%)); // Generate a lighter pattern
+                transform: translateY(-2px); // Slight upward movement
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
             }
         }
     }
 
+    // Documentation Badge
     &.badge-documentation {
         background-color: $tropical-indigo;
         transition: all 0.3s ease;
@@ -155,28 +189,33 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
             -webkit-mask-image: url($documentation-icon);
         }
 
-        &:not(.badge-community):hover, &:not(.badge-community):focus {
+        &:not(.badge-community):hover,
+        &:not(.badge-community):focus {
             background-color: lighten($tropical-indigo, 10%);
         }
 
         &.badge-collection {
             border: 2px solid $tropical-indigo;
-            background-color: $tropical-indigo;
-            opacity: 0.9;
-            background-size: 10px 10px;
-            background-image: repeating-linear-gradient(45deg, lighten($tropical-indigo, 10%) 0, lighten($tropical-indigo, 10%) 1px, $tropical-indigo 0, $tropical-indigo 50%);
+            background-color: #e5e5f7; // Light background color
+            opacity: $badge-opacity; // Using the universal opacity variable
+            background-size: 4px 4px;
+            background-image: generateBadgePattern($tropical-indigo); // Using the gradient function
             transition: all 0.3s ease;
 
-            &:hover, &:focus {
-                opacity: 1;
-                background-color: lighten($tropical-indigo, 15%);
-                background-image: repeating-linear-gradient(45deg, lighten($tropical-indigo, 25%) 0, lighten($tropical-indigo, 25%) 1px, lighten($tropical-indigo, 15%) 0, lighten($tropical-indigo, 15%) 50%);
-                transform: translateY(-2px);
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            
+
+            &:hover,
+            &:focus {
+                opacity: 1; // Fully opaque on hover/focus
+                background-color: lighten($tropical-indigo, 15%); // Lighten the background color
+                background-image: generateBadgePattern(lighten($tropical-indigo, 25%)); // Generate a lighter pattern
+                transform: translateY(-2px); // Slight upward movement
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
             }
         }
     }
 
+    // Study Badge
     &.badge-study {
         background-color: $puce;
         transition: all 0.3s ease;
@@ -186,28 +225,33 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
             -webkit-mask-image: url($study-icon);
         }
 
-        &:not(.badge-community):hover, &:not(.badge-community):focus {
+        &:not(.badge-community):hover,
+        &:not(.badge-community):focus {
             background-color: lighten($puce, 10%);
         }
 
         &.badge-collection {
             border: 2px solid $puce;
-            background-color: $puce;
-            opacity: 0.9;
-            background-size: 10px 10px;
-            background-image: repeating-linear-gradient(45deg, lighten($puce, 10%) 0, lighten($puce, 10%) 1px, $puce 0, $puce 50%);
+            background-color: #e5e5f7; // Light background color
+            opacity: $badge-opacity; // Using the universal opacity variable
+            background-size: 4px 4px;
+            background-image: generateBadgePattern($puce); // Using the gradient function
             transition: all 0.3s ease;
 
-            &:hover, &:focus {
-                opacity: 1;
-                background-color: lighten($puce, 15%);
-                background-image: repeating-linear-gradient(45deg, lighten($puce, 25%) 0, lighten($puce, 25%) 1px, lighten($puce, 15%) 0, lighten($puce, 15%) 50%);
-                transform: translateY(-2px);
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            
+
+            &:hover,
+            &:focus {
+                opacity: 1; // Fully opaque on hover/focus
+                background-color: lighten($puce, 15%); // Lighten the background color
+                background-image: generateBadgePattern(lighten($puce, 25%)); // Generate a lighter pattern
+                transform: translateY(-2px); // Slight upward movement
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
             }
         }
     }
 
+    // Phenotype Badge
     &.badge-phenotype {
         background-color: $seafoam-green;
         transition: all 0.3s ease;
@@ -217,28 +261,33 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
             -webkit-mask-image: url($phenotype-icon);
         }
 
-        &:not(.badge-community):hover, &:not(.badge-community):focus {
+        &:not(.badge-community):hover,
+        &:not(.badge-community):focus {
             background-color: lighten($seafoam-green, 10%);
         }
 
         &.badge-collection {
             border: 2px solid $seafoam-green;
-            background-color: $seafoam-green;
-            opacity: 0.9;
-            background-size: 10px 10px;
-            background-image: repeating-linear-gradient(45deg, lighten($seafoam-green, 10%) 0, lighten($seafoam-green, 10%) 1px, $seafoam-green 0, $seafoam-green 50%);
+            background-color: #e5e5f7; // Light background color
+            opacity: $badge-opacity; // Using the universal opacity variable
+            background-size: 4px 4px;
+            background-image: generateBadgePattern($seafoam-green); // Using the gradient function
             transition: all 0.3s ease;
 
-            &:hover, &:focus {
-                opacity: 1;
-                background-color: lighten($seafoam-green, 15%);
-                background-image: repeating-linear-gradient(45deg, lighten($seafoam-green, 25%) 0, lighten($seafoam-green, 25%) 1px, lighten($seafoam-green, 15%) 0, lighten($seafoam-green, 15%) 50%);
-                transform: translateY(-2px);
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            
+
+            &:hover,
+            &:focus {
+                opacity: 1; // Fully opaque on hover/focus
+                background-color: lighten($seafoam-green, 15%); // Lighten the background color
+                background-image: generateBadgePattern(lighten($seafoam-green, 25%)); // Generate a lighter pattern
+                transform: translateY(-2px); // Slight upward movement
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
             }
         }
     }
 
+    // Community Badge
     &.badge-community {
         background-color: theme-color('info');
         cursor: default;
@@ -247,30 +296,35 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
             mask-image: url($collection-icon);
             -webkit-mask-image: url($collection-icon);
         }
-
     }
 
+    // Default Collection Badge Style for Undefined Types
     &.badge-collection:not([class*="badge-conceptset"]):not([class*="badge-dqcheck"]):not([class*="badge-documentation"]):not([class*="badge-study"]):not([class*="badge-phenotype"]) {
-        background-color: lighten(theme-color('info'), 15%);
         border: 2px solid theme-color('info');
-        opacity: 0.9;
-        background-size: 10px 10px;
-        background-image: repeating-linear-gradient(45deg, lighten(theme-color('info'), 20%) 0, lighten(theme-color('info'), 20%) 1px, lighten(theme-color('info'), 15%) 0, lighten(theme-color('info'), 15%) 50%);
+        background-color: #e5e5f7; // Light background color
+        opacity: $badge-opacity; // Using the universal opacity variable
+        background-size: 4px 4px;
+        background-image: generateBadgePattern(theme-color('info')); // Using the gradient function
         transition: all 0.3s ease;
-        
+
         &::before {
             mask-image: url($collection-icon);
             -webkit-mask-image: url($collection-icon);
         }
 
-        &:hover, &:focus {
-            opacity: 1;
-            background-color: lighten(theme-color('info'), 25%);
-            background-image: repeating-linear-gradient(45deg, lighten(theme-color('info'), 30%) 0, lighten(theme-color('info'), 30%) 1px, lighten(theme-color('info'), 25%) 0, lighten(theme-color('info'), 25%) 50%);
-            transform: translateY(-2px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        &:hover,
+        &:focus {
+            opacity: 1; // Fully opaque on hover/focus
+            background-color: lighten(theme-color('info'), 15%); // Lighten the background color
+            background-image: generateBadgePattern(lighten(theme-color('info'), 25%)); // Generate a lighter pattern
+            transform: translateY(-2px); // Slight upward movement
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
         }
     }
+
+    // ======================
+    // Keyframes for Shine Animation
+    // ======================
     @keyframes shine {
         100% {
             transform: translateX(100%);
