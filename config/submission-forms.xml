@@ -586,9 +586,10 @@
                     <dc-element>quality</dc-element>
                     <dc-qualifier>status</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Quality</label>
+                    <label>Research Suitability</label>
                     <input-type value-pairs-name="conceptset_quality">dropdown</input-type>
-                    <hint>Select the quality of the Concept Set.</hint>
+                    <hint>Select the research suitability of the Concept Set.</hint>
+                    <required></required>
                 </field>
             </row>
         </form>
