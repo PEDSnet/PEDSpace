@@ -4528,6 +4528,8 @@
   
   "search.filters.filter.itemFunder.head": "Funder",
   
+  "search.filters.filter.subjectFlat.head": "Tags (List View)",
+  
   "search.filters.filter.itemFunder.label": "Funder",
 
   "search.filters.filter.itemFunder.placeholder": "Funder...",
