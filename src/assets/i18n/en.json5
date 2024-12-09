@@ -1002,9 +1002,9 @@
 
   "browse.comcol.by.quality": "By Research Suitability",
   
-  "browse.comcol.by.requirement": "By Data Quality Check Requirement",
+  "browse.comcol.by.requirement": "By Required Input",
   
-  "browse.comcol.by.requirement.breadcrumbs": "By Data Quality Check Requirement",
+  "browse.comcol.by.requirement.breadcrumbs": "By Required Input",
   
   "browse.comcol.by.author": "By Author",
 
@@ -2888,7 +2888,7 @@
   
   "item.preview.local.description.raw": "Raw Output",
   
-  "item.preview.dc.subject": "Tags",
+  "item.preview.dc.subject": "Tags (Tree View)",
 
   "item.preview.dc.title": "Title",
 
@@ -4525,6 +4525,8 @@
   "search.filters.applied.operator.query": "",
 
   "search.filters.filter.itemQuality.head": "Research Suitability",
+
+  "search.filters.filter.checkReq.head": "Required Input",
   
   "search.filters.filter.itemFunder.head": "Funder",
   
@@ -4562,9 +4564,9 @@
   
   "search.filters.filter.dateModified.max.label": "End",
 
-  "search.filters.filter.itemTags.head": "Tags",
+  "search.filters.filter.itemTags.head": "Tags (Tree View)",
     
-  "search.filters.filter.itemTags.label": "Tags",
+  "search.filters.filter.itemTags.label": "Tags (Tree View)",
   
   "search.filters.filter.itemTags.placeholder": "Tags...",
   
@@ -4722,9 +4724,9 @@
 
   "search.filters.filter.show-more": "Show more",
 
-  "search.filters.filter.subject.head": "Tags",
+  "search.filters.filter.subject.head": "Tags (Tree View)",
 
-  "search.filters.filter.subject.placeholder": "Tags",
+  "search.filters.filter.subject.placeholder": "Tags (Tree View)",
 
   "search.filters.filter.subject.label": "Search Tags",
 
