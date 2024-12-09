@@ -4532,6 +4532,10 @@
   
   "search.filters.filter.subjectFlat.head": "Tags (List View)",
   
+  "search.filters.filter.subjectFlat.label": "Tags (List View)",
+  
+  "search.filters.filter.subjectFlat.placeholder": "Tags (List View)...",
+  
   "search.filters.filter.itemFunder.label": "Funder",
 
   "search.filters.filter.itemFunder.placeholder": "Funder...",
