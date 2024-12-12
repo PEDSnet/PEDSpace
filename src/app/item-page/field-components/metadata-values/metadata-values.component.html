@@ -106,12 +106,11 @@
   </span>
 </ng-template>
 
-<!-- Simplified render for isDQCheckRequirement -->
 <ng-template #isDQCheckRequirementTemplate let-value="value" let-mdValue="mdValue">
   <a class="dqcheck-requirement"
-     [routerLink]="['/browse', browseDefinition.id]"
-     [queryParams]="getQueryParams(value)">
-    {{ value.includes('::') ? getLastItem(value) : value }}
+     [routerLink]="['/browse', 'requirement']"
+     [queryParams]="{ value: value }">
+    {{ value }}
   </a>
 </ng-template>
 

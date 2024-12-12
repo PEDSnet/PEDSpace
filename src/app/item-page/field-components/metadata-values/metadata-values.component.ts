@@ -43,8 +43,7 @@ import { ImageField } from '../../simple/field-components/specific-field/image-f
 })
 export class MetadataValuesComponent implements OnChanges {
   
-    @ViewChild('isDQCheckRequirementTemplate') isDQCheckRequirementTemplate: TemplateRef<any>;
-
+  @ViewChild('isDQCheckRequirementTemplate') isDQCheckRequirementTemplate: TemplateRef<any>;
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
@@ -86,7 +85,7 @@ export class MetadataValuesComponent implements OnChanges {
   /**
    * Input flag to apply special styling
    */
-  @Input() isDQCheckRequirement: boolean = false;
+  @Input() isDQCheckRequirement?: boolean = false;
 
   @Input() browseDefinition?: BrowseDefinition;
 
@@ -162,6 +161,9 @@ export class MetadataValuesComponent implements OnChanges {
    * @param value the specific metadata value being linked
    */
   getQueryParams(value) {
+    if (!this.browseDefinition) {
+      return {};
+    }
     const queryParams = { startsWith: value };
     // todo: should compare with type instead?
     // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
