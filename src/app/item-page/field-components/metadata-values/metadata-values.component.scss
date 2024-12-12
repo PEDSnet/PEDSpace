@@ -50,25 +50,25 @@ $quinacridone-magenta: #8A3D63;
     }
 
     &.btn-dataset-eval-strategy {
-      color: $black-bean;
+      color: $snow;
       border: 1px solid $puce;
       background-color: $puce;
 
       &:hover,
       &:focus {
-        color: $black-bean;
+        color: $puce;
         background-color: $snow;
       }
     }
 
     &.btn-error-detection-approach {
-      color: $black-bean;
+      color: $snow;
       border: 1px solid $tropical-indigo;
       background-color: $tropical-indigo;
 
       &:hover,
       &:focus {
-        color: $black-bean;
+        color: $tropical-indigo;
         background-color: $snow;
       }
     }
