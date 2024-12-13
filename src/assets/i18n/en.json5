@@ -4528,6 +4528,10 @@
 
   "search.filters.filter.checkReq.head": "Required Input",
   
+  "search.filters.filter.checkReq.label": "Required Input",
+  
+  "search.filters.filter.checkReq.placeholder": "Required Input",
+  
   "search.filters.filter.itemFunder.head": "Funder",
   
   "search.filters.filter.subjectFlat.head": "Tags (List View)",
