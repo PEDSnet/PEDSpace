@@ -37,6 +37,7 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
 import { ItemPageExternalPublicationFieldComponent } from '../../field-components/specific-field/external/item-page-external-publication.component';
 import { ItemPageDescriptionFieldComponent } from '../../field-components/specific-field/description/item-page-description.component';
+import copy from 'copy-to-clipboard';
 
 /**
  * Component that represents a Documentation Item page
@@ -77,22 +78,19 @@ import { ItemPageDescriptionFieldComponent } from '../../field-components/specif
     ItemPageCcLicenseFieldComponent],
 })
 export class DocumentationComponent extends BaseComponent {
-  // context: Context = Context.Any;
+  showCopyMessage = false;
+  isCopied = false; // Add this line to track whether the permalink was copied
 
-  // isLoggedIn: boolean = false;
-  
-  // constructor(
-  //   protected authService: AuthService,
-  //   protected routeService: RouteService,
-  //   protected router: Router
-  // ) {
-  //   super(routeService, router);
-  // }
-  // ngOnInit(): void {
-  //   super.ngOnInit();
-  //   this.authService.isAuthenticated().subscribe((loggedIn: boolean) => {
-  //     this.isLoggedIn = loggedIn;
-  //   });
-  // }
+  copyPermalink() {
+    const permalink = this.object.metadata['dc.identifier.uri'][0].value;
+    copy(permalink);
+    this.showCopyMessage = true;
+    this.isCopied = true; // show the checkmark icon
+
+    setTimeout(() => {
+      this.showCopyMessage = false;
+      this.isCopied = false; // revert back to clipboard icon after 3 seconds
+    }, 3000);
+  }
 
 }

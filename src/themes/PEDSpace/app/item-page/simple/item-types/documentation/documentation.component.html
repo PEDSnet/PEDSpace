@@ -13,11 +13,17 @@
     <ds-badges *ngIf="showLabel" [object]="object" [showAccessStatus]="true"></ds-badges>
   </div>
 
-
-  <ds-item-page-title-field [item]="object" class="mr-auto">
-  </ds-item-page-title-field>
-  <ds-dso-edit-menu></ds-dso-edit-menu>
-
+  <ds-item-page-title-field [item]="object" class="mr-auto"></ds-item-page-title-field>
+  
+  <div class="d-flex align-items-center">
+    <ds-dso-edit-menu></ds-dso-edit-menu>
+  
+    <a *ngIf="object" class="btn btn-primary btn-sm private-link ml-2" (click)="copyPermalink()"
+       [title]="isCopied ? 'Permalink copied!' : 'Copy Permalink'">
+      <i class="fa" [ngClass]="isCopied ? 'fa-check' : 'fa-clipboard'"></i>
+    </a>
+  </div>
+  
   <div class="row">
     <div class="col-12 col-md-4">
       <!-- Date Created -->
