@@ -1036,7 +1036,7 @@
                     <label>Description of Phenotype</label>
                     <input-type>textarea</input-type>
                     <hint>Enter a few sentences describing the intention and characteristics of your phenotype.
-                            E.g., Concept set intended to identify patients with a diagnosis of asthma to define a study cohort.</hint>
+                            E.g., Phenotype intended to identify patients with a diagnosis of asthma to define a study cohort.</hint>
                     <required>You must input at least one sentence.</required>
                 </field>
             </row>
@@ -1080,7 +1080,7 @@
                     <vocabulary closed="true">dc_subject</vocabulary>
                 </field>
             </row>
-            <row>
+            <!--<row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
@@ -1091,7 +1091,7 @@
                     <hint>Tag the clinical subject most associated with the phenotype, then input terms for up to two term hierarchy-levels higher and others as applicable.</hint>
                     <required>At least two clinical subject headings should be applied to the phenotype.</required>
                 </field>
-            </row>
+            </row> -->
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
