@@ -17,7 +17,7 @@
   <div class="d-flex align-items-center">
     <ds-dso-edit-menu></ds-dso-edit-menu>
   
-    <a *ngIf="object" class="btn btn-primary btn-sm private-link ml-2" (click)="copyPermalink()"
+    <a *ngIf="object" class="btn btn-primary btn-sm private-link mb-2" (click)="copyPermalink()"
        [title]="isCopied ? 'Permalink copied!' : 'Copy Permalink'">
       <i class="fa" [ngClass]="isCopied ? 'fa-check' : 'fa-clipboard'"></i>
     </a>
