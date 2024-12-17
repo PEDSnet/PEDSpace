@@ -9,7 +9,6 @@
 # 1. **PostgreSQL Database Backup:**
 #    - Dumps the PostgreSQL `dspace` database using `pg_dump`.
 #    - Stores the SQL backup locally in a timestamped file.
-#    - Requires PostgreSQL credentials in ~/.pgpass file.
 #
 # 2. **Assetstore Compression:**
 #    - Compresses the `/data/dspace/assetstore/` directory into a timestamped `.tar.gz` file.
@@ -85,18 +84,17 @@ copy_to_offsite() {
     local backup_type="$3"
 
     log "Starting copy of ${backup_type} to off-site backup."
-    # Check if the actual mount point is mounted
-    log "Checking if /mnt/isilon/pedsnet is mounted."
-    if mountpoint -q "/mnt/isilon/pedsnet"; then
-        log "/mnt/isilon/pedsnet is mounted."
-        cp -rpv "${source_dir}/" "${dest_dir}/" >> "${LOG_FILE}" 2>&1
+
+    # Check if off-site directory is mounted and writable
+    if mountpoint -q "$(dirname "${dest_dir}")"; then
+        rsync -rvptgD --no-group --progress "${source_dir}/" "${dest_dir}/" >> "${LOG_FILE}" 2>&1
         if [ $? -eq 0 ]; then
             log "Successfully copied ${backup_type} to off-site backup: ${dest_dir}"
         else
             log "Error copying ${backup_type} to off-site backup."
         fi
     else
-        log "Off-site backup mount point is not mounted: /mnt/isilon/pedsnet"
+        log "Off-site backup directory is not mounted: $(dirname "${dest_dir}")"
     fi
 }
 
