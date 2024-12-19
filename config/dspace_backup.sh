@@ -36,6 +36,9 @@
 
 # ---------------------------- Configuration -----------------------------------
 
+# Add near the top of the script, after other variable declarations
+LOCAL_ONLY=false
+
 # Base backup directory
 BACKUP_BASE_DIR="/data/backups"
 
@@ -77,25 +80,44 @@ log() {
     echo "$(date +"%Y-%m-%d %H:%M:%S") : $1" | tee -a "${LOG_FILE}"
 }
 
-# Function to copy backups to Isilon location
+usage() {
+    echo "Usage: $0 [-l]"
+    echo "  -l    Local backup only (skip offsite copy)"
+    exit 1
+}
+
+while getopts "l" opt; do
+    case ${opt} in
+        l )
+            LOCAL_ONLY=true
+            ;;
+        \? )
+            usage
+            ;;
+    esac
+done
+
+# Modify copy_to_offsite function
 copy_to_offsite() {
     local source_dir="$1"
     local dest_dir="$2"
     local backup_type="$3"
 
+    if [ "$LOCAL_ONLY" = true ]; then
+        log "Skipping offsite copy for ${backup_type} (local-only mode)"
+        return 0
+    fi
+
     log "Starting copy of ${backup_type} to Isilon backup."
 
-    # if mountpoint -q "$(dirname "${dest_dir}")"; then
     rsync -rvptgD --no-group --progress "${source_dir}/" "${dest_dir}/" >> "${LOG_FILE}" 2>&1
     if [ $? -eq 0 ]; then
         log "Successfully copied ${backup_type} to Isilon backup: ${dest_dir}"
     else
         log "Error copying ${backup_type} to Isilon backup."
     fi
-    # else
-    #     log "Isilon backup directory is not mounted: $(dirname "${dest_dir}")"
-    # fi
 }
+
 
 # ---------------------------- Main Script -------------------------------------
 
@@ -138,8 +160,11 @@ copy_to_offsite "${ASSETSTORE_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "Assetstore back
 
 # ---------------------------- Cleanup Old Backups ----------------------------
 
-# Check if the previous copy_to_offsite operations were successful
-if [ $? -eq 0 ]; then
+# Check if we should proceed with cleanup
+if [ "$LOCAL_ONLY" = true ]; then
+    log "Local-only mode: Skipping cleanup of backups"
+    return 0
+elif [ $? -eq 0 ]; then
     log "Cleaning up backups older than ${LOCAL_RETENTION_DAYS} days for on-site backups and ${OFFSITE_RETENTION_DAYS} days for Isilon backups."
 
     # Remove old SQL backups locally
