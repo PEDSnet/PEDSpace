@@ -67,7 +67,7 @@
               }
             ],
             "scripts": [],
-            "baseHref": "/metadata/"
+            "baseHref": "/"
           },
           "configurations": {
             "development": {
@@ -76,7 +76,8 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "baseHref": "/"
             },
             "production": {
               "fileReplacements": [
@@ -107,7 +108,8 @@
                   "maximumWarning": "200kb",
                   "maximumError": "300kb"
                 }
-              ]
+              ],
+              "baseHref": "/metadata/"
             }
           }
         },
