@@ -22,6 +22,9 @@
 # - Requires `psql` for PostgreSQL restoration.
 # - Assumes the Isilon backup directory is a mounted network location.
 # - Runs with `seyediana1` user privileges.
+# - Set this script as a non-interactive `sudo` script at `/etc/sudoers`.
+#   - `ALL ALL = (root) NOPASSWD: /path/to/dspace_restore.sh`
+# - Ensure the script is executable (`chmod +x dspace_restore.sh`).
 # =============================================================================
 
 # ---------------------------- Configuration -----------------------------------
@@ -45,7 +48,8 @@ LOG_FILE="${LOG_DIR}/restore_${TIMESTAMP}.log"
 PG_USER="dspace"
 PG_HOST="localhost"
 PG_DB="dspace"
-PG_RESTORE_PATH="/usr/bin/psql"  # Adjust if psql is located elsewhere
+PG_RESTORE_PATH="/usr/bin/psql"  
+PG_DUMP_PATH="/usr/pgsql-16/bin/pg_dump" 
 
 # ---------------------------- Functions ---------------------------------------
 
@@ -58,7 +62,7 @@ log() {
 find_latest_file() {
     local directory="$1"
     local pattern="$2"
-    latest_file=$(ls -t "${directory}/${pattern}" 2>/dev/null | head -n 1)
+    latest_file=$(ls -lt "${directory}/${pattern}" 2>/dev/null | tail -n +2 | awk '{print $NF}' | head -n 1)
     echo "${latest_file}"
 }
 
@@ -74,7 +78,7 @@ log "========== Starting Restoration Process =========="
 log "Starting Assetstore Restoration."
 
 # Find the latest assetstore backup
-LATEST_ASSETSTORE_BACKUP=$(find_latest_file "${OFFSITE_ASSETSTORE_DIR}" "assetstore_*.tar.gz")
+LATEST_ASSETSTORE_BACKUP=$(find_latest_file "${OFFSITE_ASSETSTORE_DIR}")
 
 if [[ -z "${LATEST_ASSETSTORE_BACKUP}" ]]; then
     log "Error: No assetstore backup files found in ${OFFSITE_ASSETSTORE_DIR}."
@@ -84,19 +88,23 @@ else
 fi
 
 # Backup current assetstore before restoring (optional)
-BACKUP_CURRENT_ASSETSTORE="/data/backups/assetstore_current_backup_${TIMESTAMP}.tar.gz"
-log "Creating backup of current assetstore at ${BACKUP_CURRENT_ASSETSTORE}."
-tar -czf "${BACKUP_CURRENT_ASSETSTORE}" -C "$(dirname "${ASSETSTORE_TARGET}")" "$(basename "${ASSETSTORE_TARGET}")" >> "${LOG_FILE}" 2>&1
-if [ $? -eq 0 ]; then
-    log "Current assetstore backed up successfully."
+if [ -d "${ASSETSTORE_TARGET}" ]; then
+    BACKUP_CURRENT_ASSETSTORE="/data/backups/assetstore_current_backup_${TIMESTAMP}.tar.gz"
+    log "Creating backup of current assetstore at ${BACKUP_CURRENT_ASSETSTORE}."
+    tar -czf "${BACKUP_CURRENT_ASSETSTORE}" -C "$(dirname "${ASSETSTORE_TARGET}")" "$(basename "${ASSETSTORE_TARGET}")" >> "${LOG_FILE}" 2>&1
+    if [ $? -eq 0 ]; then
+        log "Current assetstore backed up successfully."
+    else
+        log "Error backing up current assetstore."
+        exit 1
+    fi
 else
-    log "Error backing up current assetstore."
-    exit 1
+    log "No existing assetstore found at ${ASSETSTORE_TARGET}. Skipping backup."
 fi
 
 # Remove existing assetstore directory
 log "Removing existing assetstore directory: ${ASSETSTORE_TARGET}"
-rm -rf "${ASSETSTORE_TARGET}"
+sudo rm -rf "${ASSETSTORE_TARGET}"
 if [ $? -eq 0 ]; then
     log "Existing assetstore directory removed."
 else
@@ -106,7 +114,7 @@ fi
 
 # Extract the latest assetstore backup
 log "Extracting assetstore backup: ${LATEST_ASSETSTORE_BACKUP}"
-tar -xzf "${LATEST_ASSETSTORE_BACKUP}" -C "$(dirname "${ASSETSTORE_TARGET}")" >> "${LOG_FILE}" 2>&1
+tar -xzf "${OFFSITE_ASSETSTORE_DIR}/${LATEST_ASSETSTORE_BACKUP}" -C "$(dirname "${ASSETSTORE_TARGET}")" >> "${LOG_FILE}" 2>&1
 if [ $? -eq 0 ]; then
     log "Assetstore restored successfully to ${ASSETSTORE_TARGET}."
 else
@@ -116,7 +124,7 @@ fi
 
 # Set appropriate permissions (optional, adjust as needed)
 log "Setting permissions for assetstore directory."
-chown -R dspace:dspace "${ASSETSTORE_TARGET}"
+sudo chown -R dspace:dspace "${ASSETSTORE_TARGET}"
 if [ $? -eq 0 ]; then
     log "Permissions set successfully."
 else
@@ -129,7 +137,7 @@ fi
 log "Starting PostgreSQL Database Restoration."
 
 # Find the latest SQL dump
-LATEST_SQL_BACKUP=$(find_latest_file "${OFFSITE_SQL_DIR}" "dspace_*.sql")
+LATEST_SQL_BACKUP=$(find_latest_file "${OFFSITE_SQL_DIR}")
 
 if [[ -z "${LATEST_SQL_BACKUP}" ]]; then
     log "Error: No SQL backup files found in ${OFFSITE_SQL_DIR}."
@@ -139,19 +147,19 @@ else
 fi
 
 # Optional: Backup current database before restoring
-# log "Creating backup of current database."
-# CURRENT_DB_BACKUP="/data/backups/current_db_backup_${TIMESTAMP}.sql"
-# "${PG_DUMP_PATH}" -U "${PG_USER}" -h "${PG_HOST}" -f "${CURRENT_DB_BACKUP}" "${PG_DB}" >> "${LOG_FILE}" 2>&1
-# if [ $? -eq 0 ]; then
-#     log "Current database backed up successfully at ${CURRENT_DB_BACKUP}."
-# else
-#     log "Error backing up current database."
-#     exit 1
-# fi
+CURRENT_DB_BACKUP="/data/backups/current_db_backup_${TIMESTAMP}.sql"
+log "Creating backup of current database at ${CURRENT_DB_BACKUP}."
+"${PG_DUMP_PATH}" -U "${PG_USER}" -h "${PG_HOST}" -f "${CURRENT_DB_BACKUP}" "${PG_DB}" >> "${LOG_FILE}" 2>&1
+if [ $? -eq 0 ]; then
+    log "Current database backed up successfully at ${CURRENT_DB_BACKUP}."
+else
+    log "Error backing up current database."
+    exit 1
+fi
 
-# Drop and recreate the database (optional, adjust as needed)
+# Drop the existing database
 log "Dropping existing database: ${PG_DB}"
-psql -U "${PG_USER}" -h "${PG_HOST}" -c "DROP DATABASE IF EXISTS ${PG_DB};" >> "${LOG_FILE}" 2>&1
+sudo -u postgres "${PG_RESTORE_PATH}" -c "DROP DATABASE IF EXISTS ${PG_DB};" >> "${LOG_FILE}" 2>&1
 if [ $? -eq 0 ]; then
     log "Database dropped successfully."
 else
@@ -159,23 +167,44 @@ else
     exit 1
 fi
 
+# Create the database
 log "Creating database: ${PG_DB}"
-psql -U "${PG_USER}" -h "${PG_HOST}" -c "CREATE DATABASE ${PG_DB};" >> "${LOG_FILE}" 2>&1
+sudo -u postgres "${PG_RESTORE_PATH}" -c "CREATE DATABASE ${PG_DB};" >> "${LOG_FILE}" 2>&1
 if [ $? -eq 0 ]; then
     log "Database created successfully."
 else
     log "Error creating database."
     exit 1
 fi
+# Copy SQL backup to local temp directory
+LOCAL_SQL_BACKUP="/tmp/${LATEST_SQL_BACKUP##*/}"
+log "Copying SQL backup to local directory: ${LOCAL_SQL_BACKUP}"
+cp "${OFFSITE_SQL_DIR}/${LATEST_SQL_BACKUP}" "${LOCAL_SQL_BACKUP}"
+if [ $? -eq 0 ]; then
+    log "SQL backup copied successfully."
+else
+    log "Error copying SQL backup."
+    exit 1
+fi
 
-# Restore the database
-log "Restoring database from backup: ${LATEST_SQL_BACKUP}"
-psql -U "${PG_USER}" -h "${PG_HOST}" -d "${PG_DB}" -f "${LATEST_SQL_BACKUP}" >> "${LOG_FILE}" 2>&1
+# Restore the database from local copy
+log "Restoring database from backup: ${LOCAL_SQL_BACKUP}"
+sudo -u postgres "${PG_RESTORE_PATH}" -d "${PG_DB}" -f "${LOCAL_SQL_BACKUP}" >> "${LOG_FILE}" 2>&1
 if [ $? -eq 0 ]; then
     log "Database restored successfully from ${LATEST_SQL_BACKUP}."
 else
     log "Error restoring database."
+    rm -f "${LOCAL_SQL_BACKUP}"
     exit 1
+fi
+
+# Remove local SQL backup
+log "Removing local SQL backup"
+rm -f "${LOCAL_SQL_BACKUP}"
+if [ $? -eq 0 ]; then
+    log "Local SQL backup removed successfully."
+else
+    log "Warning: Could not remove local SQL backup at ${LOCAL_SQL_BACKUP}"
 fi
 
 # ---------------------------- Final Steps --------------------------------------
