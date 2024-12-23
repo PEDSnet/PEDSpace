@@ -74,6 +74,16 @@
      </flowstep>
    </taskset>
 
+    <taskset name="default-tasks">
+      <flowstep name="editstep">
+        <task name="copysubjects">
+          <workflow>approve</workflow>
+          <notify on="success">$flowgroup</notify>
+          <notify on="error">$siteadmin</notify>
+        </task>
+      </flowstep>
+    </taskset>
+
     <!-- We require an empty taskset to match "none" mappings.  DO NOT REMOVE! -->
     <taskset name='none'/>
    
