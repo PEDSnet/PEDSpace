@@ -15,24 +15,33 @@ import org.dspace.core.Context;
 import org.dspace.curate.AbstractCurationTask;
 import org.dspace.curate.Curator;
 import org.dspace.curate.Distributive;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A curation task that copies hierarchical subject terms from "dc.subject"
  * to "local.subject.flat" by extracting only the last node of the hierarchy.
  *
- * Example hierarchy value:
- *   "Top::Mid::Leaf"
+ * Example Hierarchy Value:
+ * 
+ * "Top::Mid::Leaf"
+ * 
  * This task will extract "Leaf" and store it in "local.subject.flat".
  *
- * If an item already contains a local.subject.flat value identical to the
+ * If an item already contains a {@code local.subject.flat} value identical to the
  * extracted one, it won’t be duplicated.
+ *
+ * Note: After adding this class, ensure that the DSpace backend
+ * is rebuilt to compile and deploy the changes.
  * 
- * Found in /data/DSpace-dspace-8.0/dspace-api/src/main/java/org/dspace/ctask/general/CopyHierarchicalSubjectsToFlat.java
- * Requires a rebuild of the DSpace backend software to compile and run.
+ * mvn package
+ * ant update
  */
+
 @Distributive
 public class CopyHierarchicalSubjectsToFlat extends AbstractCurationTask {
 
+    private static final Logger log = LoggerFactory.getLogger(CopyHierarchicalSubjectsToFlat.class);
     protected int status = Curator.CURATE_UNSET;
     private final ItemService itemService = ContentServiceFactory.getInstance().getItemService();
 
@@ -40,7 +49,7 @@ public class CopyHierarchicalSubjectsToFlat extends AbstractCurationTask {
     public int perform(DSpaceObject dso) throws IOException {
         // We only operate on Items
         if (!(dso instanceof Item)) {
-            curator.setResult("Item " + dso.getID() + " was painted " + color);
+            log.debug("Skipping non-Item object: {}", dso.getHandle());
             return Curator.CURATE_SKIP;
         }
         Item item = (Item) dso;
@@ -48,8 +57,11 @@ public class CopyHierarchicalSubjectsToFlat extends AbstractCurationTask {
         try {
             context = Curator.curationContext();
         } catch (SQLException e) {
+            log.error("Unable to get curation context for item: {}", item.getHandle(), e);
             throw new IOException("Unable to get curation context", e);
         }
+
+        log.debug("Processing item: {}", item.getHandle());
 
         // Retrieve all dc.subject values
         List<MetadataValue> subjects = itemService.getMetadata(item, "dc", "subject", null, Item.ANY);
@@ -58,8 +70,13 @@ public class CopyHierarchicalSubjectsToFlat extends AbstractCurationTask {
             // Nothing to process
             status = Curator.CURATE_SUCCESS;
             setResult("No dc.subject values present.");
+            log.info("Item {} has no dc.subject values.", item.getHandle());
             return status;
         }
+
+        // Retrieve existing local.subject.flat values once
+        List<MetadataValue> existingFlats = itemService.getMetadata(item, "local", "subject", "flat", Item.ANY);
+        log.debug("Existing local.subject.flat values: {}", existingFlats);
 
         // We'll process each subject and add flat versions
         boolean modified = false;
@@ -71,9 +88,9 @@ public class CopyHierarchicalSubjectsToFlat extends AbstractCurationTask {
 
             // Extract final node after the last "::"
             String flatValue = extractLastNode(originalValue);
+            log.debug("Extracted flatValue: '{}' from originalValue: '{}'", flatValue, originalValue);
 
             // Check if this flatValue already exists
-            List<MetadataValue> existingFlats = itemService.getMetadata(item, "local", "subject", "flat", Item.ANY);
             boolean alreadyExists = existingFlats.stream()
                 .anyMatch(val -> val.getValue().equals(flatValue));
 
@@ -81,10 +98,14 @@ public class CopyHierarchicalSubjectsToFlat extends AbstractCurationTask {
                 // Add the extracted flat subject to the item
                 try {
                     itemService.addMetadata(context, item, "local", "subject", "flat", null, flatValue);
+                    log.info("Added local.subject.flat value '{}' to item {}", flatValue, item.getHandle());
                     modified = true;
                 } catch (SQLException e) {
+                    log.error("Error adding local.subject.flat to item: {}", item.getHandle(), e);
                     throw new IOException("Error adding local.subject.flat", e);
                 }
+            } else {
+                log.debug("local.subject.flat value '{}' already exists for item {}", flatValue, item.getHandle());
             }
         }
 
@@ -92,7 +113,9 @@ public class CopyHierarchicalSubjectsToFlat extends AbstractCurationTask {
         if (modified) {
             try {
                 itemService.update(context, item);
+                log.info("Updated item {} with new local.subject.flat values.", item.getHandle());
             } catch (SQLException | AuthorizeException e) {
+                log.error("Error updating item: {}", item.getHandle(), e);
                 throw new IOException("Error updating item", e);
             }
             status = Curator.CURATE_SUCCESS;
@@ -100,6 +123,7 @@ public class CopyHierarchicalSubjectsToFlat extends AbstractCurationTask {
         } else {
             status = Curator.CURATE_SUCCESS;
             setResult("No new local.subject.flat values added for item: " + item.getHandle());
+            log.info("No new local.subject.flat values added for item {}", item.getHandle());
         }
 
         return status;
@@ -118,4 +142,3 @@ public class CopyHierarchicalSubjectsToFlat extends AbstractCurationTask {
         return value.trim();
     }
 }
-
