@@ -9,7 +9,7 @@
  <!-- taskset name 'none' indicates that there is no taskset to perform.     -->
 
  <taskset-map>
-   <mapping collection-handle="default" taskset="none" />
+   <mapping collection-handle="default" taskset="default-tasks" />
  </taskset-map>
 
  <!-- Tasksets specify curation tasks to be automatically performed at       -->
