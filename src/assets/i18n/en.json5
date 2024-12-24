@@ -5919,6 +5919,8 @@
   "workflow-item.send-back.button.confirm": "Send back",
 
   "workflow-item.view.breadcrumbs": "Workflow View",
+  
+  "workflow-item.view.title": "Workflow View",
 
   "workspace-item.view.breadcrumbs": "Workspace View",
 
