@@ -572,7 +572,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>relation</dc-element>
-                    <dc-qualifier>url</dc-qualifier>
+                    <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Development Code</label>
                     <input-type>onebox</input-type>
@@ -1109,7 +1109,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>relation</dc-element>
-                    <dc-qualifier>url</dc-qualifier>
+                    <dc-qualifier>uri</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Development Code/Related Resources</label>
                     <input-type>onebox</input-type>
