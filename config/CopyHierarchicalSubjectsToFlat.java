@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.DSpaceObject;
 import org.dspace.content.Item;
 import org.dspace.content.MetadataValue;
@@ -129,7 +130,7 @@ public class CopyHierarchicalSubjectsToFlat extends AbstractCurationTask {
                         sb.append("   -> Changes saved.\n");
                         log.info("Updated item {} with new local.subject.flat values.",
                                  getItemHandle(item));
-                    } catch (SQLException e) {
+                    } catch (SQLException | AuthorizeException e) {
                         log.error("Error updating item: {}", getItemHandle(item), e);
                         throw new IOException("Error updating item", e);
                     }
