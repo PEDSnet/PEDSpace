@@ -19,7 +19,7 @@ import { mergeConfig } from './config.util';
 import { DefaultAppConfig } from './default-app-config';
 import { ServerConfig } from './server-config.interface';
 
-const CONFIG_PATH = join(process.cwd(), 'config');
+const CONFIG_PATH = join(process.cwd(), 'config/configs');
 
 type Environment = 'production' | 'development' | 'test';
 
