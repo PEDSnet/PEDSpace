@@ -161,46 +161,46 @@ copy_to_offsite "${ASSETSTORE_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "Assetstore back
 # ---------------------------- Cleanup Old Backups ----------------------------
 
 # Check if we should proceed with cleanup
-if [ "$LOCAL_ONLY" = true ]; then
-    log "Local-only mode: Skipping cleanup of backups"
-    return 0
-elif [ $? -eq 0 ]; then
-    log "Cleaning up backups older than ${LOCAL_RETENTION_DAYS} days for on-site backups and ${OFFSITE_RETENTION_DAYS} days for Isilon backups."
+# if [ "$LOCAL_ONLY" = true ]; then
+#     log "Local-only mode: Skipping cleanup of backups"
+#     return 0
+# elif [ $? -eq 0 ]; then
+#     log "Cleaning up backups older than ${LOCAL_RETENTION_DAYS} days for on-site backups and ${OFFSITE_RETENTION_DAYS} days for Isilon backups."
 
-    # Remove old SQL backups locally
-    find "${SQL_DIR}" -type f -name "*.sql" -mtime +${LOCAL_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
-    if [ $? -eq 0 ]; then
-        log "Old SQL backups removed successfully from on-site: Retention period ${LOCAL_RETENTION_DAYS} days."
-    else
-        log "Error removing old SQL backups from on-site."
-    fi
+#     # Remove old SQL backups locally
+#     find "${SQL_DIR}" -type f -name "*.sql" -mtime +${LOCAL_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
+#     if [ $? -eq 0 ]; then
+#         log "Old SQL backups removed successfully from on-site: Retention period ${LOCAL_RETENTION_DAYS} days."
+#     else
+#         log "Error removing old SQL backups from on-site."
+#     fi
 
-    # Remove old assetstore backups locally
-    find "${ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
-    if [ $? -eq 0 ]; then
-        log "Old assetstore backups removed successfully from on-site: Retention period ${LOCAL_RETENTION_DAYS} days."
-    else
-        log "Error removing old assetstore backups from on-site."
-    fi
+#     # Remove old assetstore backups locally
+#     find "${ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
+#     if [ $? -eq 0 ]; then
+#         log "Old assetstore backups removed successfully from on-site: Retention period ${LOCAL_RETENTION_DAYS} days."
+#     else
+#         log "Error removing old assetstore backups from on-site."
+#     fi
 
-    # Remove old SQL backups Isilon
-    find "${OFFSITE_SQL_DIR}" -type f -name "*.sql" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
-    if [ $? -eq 0 ]; then
-        log "Old SQL backups removed successfully from Isilon: Retention period ${OFFSITE_RETENTION_DAYS} days."
-    else
-        log "Error removing old SQL backups from Isilon."
-    fi
+#     # Remove old SQL backups Isilon
+#     find "${OFFSITE_SQL_DIR}" -type f -name "*.sql" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
+#     if [ $? -eq 0 ]; then
+#         log "Old SQL backups removed successfully from Isilon: Retention period ${OFFSITE_RETENTION_DAYS} days."
+#     else
+#         log "Error removing old SQL backups from Isilon."
+#     fi
 
-    # Remove old assetstore backups Isilon
-    find "${OFFSITE_ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
-    if [ $? -eq 0 ]; then
-        log "Old assetstore backups removed successfully from Isilon: Retention period ${OFFSITE_RETENTION_DAYS} days."
-    else
-        log "Error removing old assetstore backups from Isilon."
-    fi
-else
-    log "Skipping cleanup because copy_to_offsite failed."
-fi
+#     # Remove old assetstore backups Isilon
+#     find "${OFFSITE_ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
+#     if [ $? -eq 0 ]; then
+#         log "Old assetstore backups removed successfully from Isilon: Retention period ${OFFSITE_RETENTION_DAYS} days."
+#     else
+#         log "Error removing old assetstore backups from Isilon."
+#     fi
+# else
+#     log "Skipping cleanup because copy_to_offsite failed."
+# fi
 
 log "========== Backup Process Completed =========="
 

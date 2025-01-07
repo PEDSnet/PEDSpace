@@ -88,7 +88,7 @@ def update_psql_table(term, full_path, cursor, dry_run=False):
 
 def main(dry_run=False, test_conn=False):
     config = configparser.ConfigParser()
-    config.read('/data/dspace-angular-dspace-8.0/config/config.ini')
+    config.read('/data/dspace-angular-dspace-8.0/config/configs/config.ini')
 
     if test_conn:
         if test_connection(config):

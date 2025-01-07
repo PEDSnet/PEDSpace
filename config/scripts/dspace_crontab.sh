@@ -76,4 +76,4 @@ JAVA_OPTS="-Xmx512M -Xms512M -Dfile.encoding=UTF-8"
 #----------------
 
 # Daily custom backup script at 02:00 every day
-0 2 * * * echo "$(date): Running daily custom backup script." && bash $DSPACE_ANGULAR/config/dspace_backup.sh >> /data/backups/logs/cron_backup.log 2>&1
+0 2 * * * echo "$(date): Running daily custom backup script." && bash $DSPACE_ANGULAR/config/scripts/dspace_backup.sh >> /data/backups/logs/cron_backup.log 2>&1
