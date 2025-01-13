@@ -353,7 +353,6 @@
         <submission-process name="Study">
             <step id="collection"/>
             <step id="StudyForm"/>
-            <step id="upload"/>
             <step id="cclicense"/>
         </submission-process>
 
