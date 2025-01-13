@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE relationships SYSTEM "relationship-types.dtd">
+<!DOCTYPE relationships SYSTEM "/data/dspace/config/entities/relationship-types.dtd">
 
 <!-- From
 https://wiki.lyrasis.org/display/DSDOC8x/Configurable+Entities#ConfigurableEntities-DefaultEntityModels -->

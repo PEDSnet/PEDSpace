@@ -62,12 +62,25 @@ def fetch_uuid_mapping(config, log_file):
         cursor.execute("""
             SELECT dspace_object_id, text_value
             FROM metadatavalue
-            WHERE metadata_field_id = 73
+            WHERE metadata_field_id = (7, 34, 73)
         """)
         # ************************************************************************
 
         rows = cursor.fetchall()
-        mapping = {row[0]: row[1] for row in rows}
+        # For each object_id, we’ll store a dict of the form:
+        #   mapping[object_id] = {
+        #       7: [possibly multiple text_values],
+        #       34: [...],
+        #       73: [...]
+        #   }
+
+        mapping = {}
+        for (obj_id, field_id, text_value) in rows:
+            if obj_id not in mapping:
+                mapping[obj_id] = {}
+            if field_id not in mapping[obj_id]:
+                mapping[obj_id][field_id] = []
+            mapping[obj_id][field_id].append(text_value)
         cursor.close()
         conn.close()
         log(f"Fetched {len(mapping)} UUID mappings (titles) from the database (metadata_field_id=73).", log_file)
