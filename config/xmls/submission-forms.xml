@@ -721,7 +721,7 @@
                     <dc-element>description</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Cohort Description</label>
+                    <label>Study Description</label>
                     <input-type>textarea</input-type>
                     <hint>Enter a description of the intended cohort characteristics and the cohort formation strategy.</hint>
                     <required></required>
