@@ -70,10 +70,3 @@ JAVA_OPTS="-Xmx512M -Xms512M -Dfile.encoding=UTF-8"
 
 # Permanently delete any bitstreams flagged as "deleted" at 01:00 on the 1st of every month
 0 1 1 * * echo "$(date): Running DSpace cleanup to remove deleted bitstreams." && $DSPACE/bin/dspace cleanup > /dev/null
-
-#----------------
-# CUSTOM TASKS
-#----------------
-
-# Daily custom backup script at 02:00 every day
-0 2 * * * echo "$(date): Running daily custom backup script." && bash $DSPACE_ANGULAR/config/scripts/dspace_backup.sh >> /data/backups/logs/cron_backup.log 2>&1
