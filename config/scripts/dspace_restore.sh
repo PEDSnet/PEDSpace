@@ -163,7 +163,13 @@ sudo -u postgres "${PG_RESTORE_PATH}" -c "DROP DATABASE IF EXISTS ${PG_DB};" >> 
 if [ $? -eq 0 ]; then
     log "Database dropped successfully."
 else
-    log "Error dropping database."
+    log "Error dropping database. Checking for active sessions..."
+    # List active sessions for the database
+    sudo -u postgres "${PG_RESTORE_PATH}" -c "
+        SELECT pid, usename, application_name, client_addr, backend_start, state
+        FROM pg_stat_activity 
+        WHERE datname = '${PG_DB}';" >> "${LOG_FILE}" 2>&1
+    log "Check ${LOG_FILE} for active session details."
     exit 1
 fi
 
