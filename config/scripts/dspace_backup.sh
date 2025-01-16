@@ -36,6 +36,11 @@
 
 # ---------------------------- Configuration -----------------------------------
 
+# Function to log messages with timestamp
+log() {
+    echo "$(date +"%Y-%m-%d %H:%M:%S") : $1" | tee -a "${LOG_FILE}"
+}
+
 # Add near the top of the script, after other variable declarations
 LOCAL_ONLY=false
 
@@ -89,11 +94,6 @@ fi
 log "Verified backup is running on correct hostname: ${EXPECTED_HOSTNAME}"
 
 # ---------------------------- Functions ---------------------------------------
-
-# Function to log messages with timestamp
-log() {
-    echo "$(date +"%Y-%m-%d %H:%M:%S") : $1" | tee -a "${LOG_FILE}"
-}
 
 usage() {
     echo "Usage: $0 [-l]"
