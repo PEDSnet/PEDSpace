@@ -73,6 +73,21 @@ PG_DUMP_PATH="/usr/pgsql-16/bin/pg_dump"
 # Assetstore directory
 ASSETSTORE_SOURCE="/data/dspace/assetstore"
 
+# Get the current hostname
+CURRENT_HOSTNAME=$(hostname -f)
+EXPECTED_HOSTNAME="pedsdspaceprod.research.chop.edu"
+
+# Exit if not running on expected hostname
+if [[ "${CURRENT_HOSTNAME}" != "${EXPECTED_HOSTNAME}" ]]; then
+    echo "ERROR: This backup script must only run on ${EXPECTED_HOSTNAME}"
+    echo "Current hostname is: ${CURRENT_HOSTNAME}"
+    echo "For safety reasons, backup operations are not permitted on other servers."
+    exit 1
+fi
+
+# Log the hostname check
+log "Verified backup is running on correct hostname: ${EXPECTED_HOSTNAME}"
+
 # ---------------------------- Functions ---------------------------------------
 
 # Function to log messages with timestamp
