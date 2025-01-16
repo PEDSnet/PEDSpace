@@ -10,10 +10,11 @@ cat /data/dspace-angular-dspace-8.0/config/relationship-types.xml > /data/dspace
 <!-- Also don't forget to init the entities:
 # The -f command requires a full path to an Entities model configuration file.
 sudo -u dspace bash;
-/data/dspace/bin/dspace initialize-entities -f /data/dspace/config/entities/relationship-types.xml 
+ /data/dspace/bin/dspace initialize-entities -f /data/dspace/config/entities/relationship-types.xml 
  -->
-
+ 
 <relationships>
+    <!-- OrgUnit Relationships -->
     <type>
         <leftType>OrgUnit</leftType>
         <rightType>Person</rightType>
@@ -39,6 +40,73 @@ sudo -u dspace bash;
             <min>0</min>
         </rightCardinality>
     </type>
+
+    <type>
+        <leftType>OrgUnit</leftType>
+        <rightType>ConceptSet</rightType>
+        <leftwardType>isConceptSetOfOrgUnit</leftwardType>
+        <rightwardType>isOrgUnitOfConceptSet</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <type>
+        <leftType>OrgUnit</leftType>
+        <rightType>Study</rightType>
+        <leftwardType>isStudyOfOrgUnit</leftwardType>
+        <rightwardType>isOrgUnitOfStudy</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <type>
+        <leftType>OrgUnit</leftType>
+        <rightType>DQCheck</rightType>
+        <leftwardType>isDQCheckOfOrgUnit</leftwardType>
+        <rightwardType>isOrgUnitOfDQCheck</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <type>
+        <leftType>OrgUnit</leftType>
+        <rightType>Documentation</rightType>
+        <leftwardType>isDocumentationOfOrgUnit</leftwardType>
+        <rightwardType>isOrgUnitOfDocumentation</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <type>
+        <leftType>OrgUnit</leftType>
+        <rightType>Phenotype</rightType>
+        <leftwardType>isPhenotypeOfOrgUnit</leftwardType>
+        <rightwardType>isOrgUnitOfPhenotype</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Person Relationships -->
     <type>
         <leftType>Person</leftType>
         <rightType>ConceptSet</rightType>
@@ -51,6 +119,7 @@ sudo -u dspace bash;
             <min>0</min>
         </rightCardinality>
     </type>
+
     <type>
         <leftType>Person</leftType>
         <rightType>Study</rightType>
@@ -63,6 +132,7 @@ sudo -u dspace bash;
             <min>0</min>
         </rightCardinality>
     </type>
+
     <type>
         <leftType>Person</leftType>
         <rightType>DQCheck</rightType>
@@ -75,18 +145,7 @@ sudo -u dspace bash;
             <min>0</min>
         </rightCardinality>
     </type>
-    <type>
-        <leftType>DQCheck</leftType>
-        <rightType>DQCheck</rightType>
-        <leftwardType>isDQCheckOfDQCheck</leftwardType>
-        <rightwardType>isDQCheckOfDQCheck</rightwardType>
-        <leftCardinality>
-            <min>0</min>
-        </leftCardinality>
-        <rightCardinality>
-            <min>0</min>
-        </rightCardinality>
-    </type>
+
     <type>
         <leftType>Person</leftType>
         <rightType>Documentation</rightType>
@@ -99,18 +158,7 @@ sudo -u dspace bash;
             <min>0</min>
         </rightCardinality>
     </type>
-    <type>
-        <leftType>Documentation</leftType>
-        <rightType>Documentation</rightType>
-        <leftwardType>isDocumentationOfDocumentation</leftwardType>
-        <rightwardType>isDocumentationOfDocumentation</rightwardType>
-        <leftCardinality>
-            <min>0</min>
-        </leftCardinality>
-        <rightCardinality>
-            <min>0</min>
-        </rightCardinality>
-    </type>
+
     <type>
         <leftType>Person</leftType>
         <rightType>Phenotype</rightType>
@@ -123,18 +171,7 @@ sudo -u dspace bash;
             <min>0</min>
         </rightCardinality>
     </type>
-    <type>
-        <leftType>Phenotype</leftType>
-        <rightType>Phenotype</rightType>
-        <leftwardType>isPhenotypeOfPhenotype</leftwardType>
-        <rightwardType>isPhenotypeOfPhenotype</rightwardType>
-        <leftCardinality>
-            <min>0</min>
-        </leftCardinality>
-        <rightCardinality>
-            <min>0</min>
-        </rightCardinality>
-    </type>
+
     <type>
         <leftType>Person</leftType>
         <rightType>Person</rightType>
@@ -147,6 +184,8 @@ sudo -u dspace bash;
             <min>0</min>
         </rightCardinality>
     </type>
+
+    <!-- ConceptSet Relationships -->
     <type>
         <leftType>ConceptSet</leftType>
         <rightType>Study</rightType>
@@ -159,6 +198,7 @@ sudo -u dspace bash;
             <min>0</min>
         </rightCardinality>
     </type>
+
     <type>
         <leftType>ConceptSet</leftType>
         <rightType>Phenotype</rightType>
@@ -171,6 +211,7 @@ sudo -u dspace bash;
             <min>0</min>
         </rightCardinality>
     </type>
+
     <type>
         <leftType>ConceptSet</leftType>
         <rightType>ConceptSet</rightType>
@@ -184,8 +225,140 @@ sudo -u dspace bash;
         </rightCardinality>
     </type>
 
-    <!-- Study Relationships -->
+    <!-- DQCheck Relationships -->
+    <type>
+        <leftType>DQCheck</leftType>
+        <rightType>DQCheck</rightType>
+        <leftwardType>isDQCheckOfDQCheck</leftwardType>
+        <rightwardType>isDQCheckOfDQCheck</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
 
+    <type>
+        <leftType>DQCheck</leftType>
+        <rightType>Documentation</rightType>
+        <leftwardType>isDocumentationOfDQCheck</leftwardType>
+        <rightwardType>isDQCheckOfDocumentation</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <type>
+        <leftType>DQCheck</leftType>
+        <rightType>Phenotype</rightType>
+        <leftwardType>isPhenotypeOfDQCheck</leftwardType>
+        <rightwardType>isDQCheckOfPhenotype</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <type>
+        <leftType>DQCheck</leftType>
+        <rightType>Study</rightType>
+        <leftwardType>isDQCheckOfStudy</leftwardType>
+        <rightwardType>isStudyOfDQCheck</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <type>
+        <leftType>DQCheck</leftType>
+        <rightType>ConceptSet</rightType>
+        <leftwardType>isConceptSetOfDQCheck</leftwardType>
+        <rightwardType>isDQCheckOfConceptSet</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Documentation Relationships -->
+    <type>
+        <leftType>Documentation</leftType>
+        <rightType>Documentation</rightType>
+        <leftwardType>isDocumentationOfDocumentation</leftwardType>
+        <rightwardType>isDocumentationOfDocumentation</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <type>
+        <leftType>Documentation</leftType>
+        <rightType>Phenotype</rightType>
+        <leftwardType>isPhenotypeOfDocumentation</leftwardType>
+        <rightwardType>isDocumentationOfPhenotype</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <type>
+        <leftType>Documentation</leftType>
+        <rightType>Study</rightType>
+        <leftwardType>isStudyOfDocumentation</leftwardType>
+        <rightwardType>isDocumentationOfStudy</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <type>
+        <leftType>Documentation</leftType>
+        <rightType>ConceptSet</rightType>
+        <leftwardType>isConceptSetOfDocumentation</leftwardType>
+        <rightwardType>isDocumentationOfConceptSet</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Phenotype Relationships -->
+    <type>
+        <leftType>Phenotype</leftType>
+        <rightType>Phenotype</rightType>
+        <leftwardType>isPhenotypeOfPhenotype</leftwardType>
+        <rightwardType>isPhenotypeOfPhenotype</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Study Relationships -->
     <type>
         <leftType>Study</leftType>
         <rightType>Phenotype</rightType>
@@ -211,5 +384,4 @@ sudo -u dspace bash;
             <min>0</min>
         </rightCardinality>
     </type>
-
 </relationships>
