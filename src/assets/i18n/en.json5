@@ -1368,7 +1368,7 @@
 
   "collection.listelement.badge": "Domain",
 
-  "documentation.collection.listelement.badge": "Documentation Domain",
+  "documentation.collection.listelement.badge": "Resource Domain",
   
   "conceptset.collection.listelement.badge": "Concept Set Domain",
   
@@ -4322,7 +4322,7 @@
   
   "relationships.isDQCheckOf": "Related Data Quality Check",
   
-  "relationships.isDocumentationOf": "Related Documentation",
+  "relationships.isDocumentationOf": "Related Resource",
   
   "relationships.isPersonOf": "Related Person",
 
@@ -5192,7 +5192,7 @@
   
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.ConceptSet": "Local Concept Sets ({{ count }})",
   
-  "submission.sections.describe.relationship-lookup.search-tab.tab-title.Documentation": "Local Documentation ({{ count }})",
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.Documentation": "Local Resource ({{ count }})",
   
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.dqCheck": "Local Data Quality Check ({{ count }})",
 
@@ -5278,7 +5278,7 @@
   
   "submission.sections.describe.relationship-lookup.title.dqCheck": "Data Quality Checks",
 
-  "submission.sections.describe.relationship-lookup.title.Documentation": "Documentation",
+  "submission.sections.describe.relationship-lookup.title.Documentation": "Resource",
 
   "submission.sections.describe.relationship-lookup.selection-tab.search-form.placeholder": "Search...",
 
@@ -6994,7 +6994,7 @@
 
   "conceptset.listelement.badge": "Concept Set",
 
-  "documentation.listelement.badge": "Documentation",
+  "documentation.listelement.badge": "Resource",
 
   "dqcheck.listelement.badge": "Data Quality Check",
 
@@ -7020,7 +7020,7 @@
 
   "conceptset.listelement.badge": "Concept Set",
 
-  "documentation.listelement.badge": "Documentation",
+  "documentation.listelement.badge": "Resource",
 
   "journal.listelement.badge": "Journal",
 
@@ -7044,7 +7044,7 @@
 
   "conceptset.page.titleprefix": "Concept Set:",
 
-  "documentation.page.titleprefix": "Documentation:",
+  "documentation.page.titleprefix": "Resource:",
 
   "dqcheck.page.titleprefix": "DQ Check:",
 
@@ -7070,7 +7070,7 @@
 
   "conceptset.page.edit": "Edit Concept Set",
 
-  "documentation.page.edit": "Edit Documentation",
+  "documentation.page.edit": "Edit Resource",
 
   "dqcheck.page.edit": "Edit DQ Check",
 
