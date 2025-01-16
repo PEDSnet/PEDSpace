@@ -86,7 +86,9 @@ echo
 if [[ "${CURRENT_HOSTNAME}" != "${EXPECTED_HOSTNAME}" ]]; then
     echo "CRITICAL WARNING: This script is running on '${CURRENT_HOSTNAME}'"
     echo "but is intended to run on '${EXPECTED_HOSTNAME}'"
-    echo "Running this script on the wrong server could cause serious problems!"
+    echo "Running this script on the production server means that something"
+    echo "on the production server has gone wrong and you're restoring from"
+    echo "the most recent and available backup. Is this what you're intending to do?"
     echo
 fi
 

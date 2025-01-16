@@ -79,7 +79,7 @@ EXPECTED_HOSTNAME="pedsdspaceprod.research.chop.edu"
 
 # Exit if not running on expected hostname
 if [[ "${CURRENT_HOSTNAME}" != "${EXPECTED_HOSTNAME}" ]]; then
-    echo "ERROR: This backup script must only run on ${EXPECTED_HOSTNAME}"
+    echo "ERROR: This backup script must only run on ${EXPECTED_HOSTNAME} - the production server."
     echo "Current hostname is: ${CURRENT_HOSTNAME}"
     echo "For safety reasons, backup operations are not permitted on other servers."
     exit 1
