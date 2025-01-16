@@ -71,6 +71,35 @@ find_latest_file() {
 # Ensure log directory exists
 mkdir -p "${LOG_DIR}"
 
+# Get the current hostname
+CURRENT_HOSTNAME=$(hostname -f)
+EXPECTED_HOSTNAME="pedsdspace01.research.chop.edu"
+
+# Display warning message and get user confirmation
+echo "WARNING: This script will perform the following operations:"
+echo "1. Back up and replace the existing assetstore directory at ${ASSETSTORE_TARGET}"
+echo "2. Back up and completely rebuild the PostgreSQL database '${PG_DB}'"
+echo "3. Restore data from the most recent backups in ${OFFSITE_BACKUP_BASE_DIR}"
+echo
+
+# Add extra warning if not running on expected hostname
+if [[ "${CURRENT_HOSTNAME}" != "${EXPECTED_HOSTNAME}" ]]; then
+    echo "CRITICAL WARNING: This script is running on '${CURRENT_HOSTNAME}'"
+    echo "but is intended to run on '${EXPECTED_HOSTNAME}'"
+    echo "Running this script on the wrong server could cause serious problems!"
+    echo
+fi
+
+echo "This process cannot be undone once started. Current data will be backed up,"
+echo "but it's recommended to verify you have additional backups if needed."
+echo
+read -p "Do you want to proceed? (yes/no): " confirmation
+
+if [[ "${confirmation,,}" != "yes" ]]; then
+    echo "Restoration cancelled by user."
+    exit 0
+fi
+
 log "========== Starting Restoration Process =========="
 
 # ---------------------------- Assetstore Restoration -------------------------
