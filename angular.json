@@ -67,7 +67,7 @@
               }
             ],
             "scripts": [],
-            "baseHref": "/"
+            "baseHref": "/metadata/"
           },
           "configurations": {
             "development": {
