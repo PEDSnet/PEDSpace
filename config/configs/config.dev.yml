@@ -9,7 +9,7 @@ ui:
   host: localhost
   port: 4000
   # NOTE: Space is capitalized because 'namespace' is a reserved string in TypeScript
-  nameSpace: /
+  nameSpace: /metadata
   # The rateLimiter settings limit each IP to a 'max' of 500 requests per 'windowMs' (1 minute).
   rateLimiter:
     windowMs: 60000 # 1 minute
@@ -22,7 +22,7 @@ ui:
 # 'synced' with the 'dspace.server.url' setting in your backend's local.cfg.
 rest:
   ssl: true
-  host: pedsdspace01.research.chop.edu
+  host: pedsnetapps.chop.edu
   port: 443
   # NOTE: Space is capitalized because 'namespace' is a reserved string in TypeScript
   nameSpace: /server
@@ -137,7 +137,7 @@ submission:
     metadata: []
     # NOTE: after how many time (milliseconds) submission is saved automatically
     # eg. timer: 5 * (1000 * 60); // 5 minutes
-    timer: 5 * (1000 * 60);
+    timer: 0
   # Always show the duplicate detection section if enabled, even if there are no potential duplicates detected
   # (a message will be displayed to indicate no matches were found)
   duplicateDetection:
@@ -406,7 +406,7 @@ bundle:
 # For videos, this enables embedded video streaming
 mediaViewer:
   image: true
-  video: false
+  video: true
 
 # Whether the end user agreement is required before users use the repository.
 # If enabled, the user will be required to accept the agreement before they can use the repository.
