@@ -41,6 +41,10 @@ log() {
     echo "$(date +"%Y-%m-%d %H:%M:%S") : $1" | tee -a "${LOG_FILE}"
 }
 
+BACKUP_SLEEP_DURATION=1800 # 30 minutes in seconds
+
+COPY_SLEEP_DURATION=600 # 10 minutes in seconds
+
 # Add near the top of the script, after other variable declarations
 LOCAL_ONLY=false
 
@@ -91,6 +95,7 @@ if [[ "${CURRENT_HOSTNAME}" != "${EXPECTED_HOSTNAME}" ]]; then
 fi
 
 # Log the hostname check
+mkdir -p "${LOG_DIR}"
 log "Verified backup is running on correct hostname: ${EXPECTED_HOSTNAME}"
 
 # ---------------------------- Functions ---------------------------------------
@@ -133,59 +138,47 @@ copy_to_offsite() {
     fi
 }
 
+# Function to perform PostgreSQL dump
+perform_backup() {
+    # Ensure backup directories exist
+    mkdir -p "${SQL_DIR}" "${ASSETSTORE_DIR}" "${LOG_DIR}"
+    
+    # Uncomment this and run it as an official user (e.g. seyediana1) because root cannot access Isilon.
+    # mkdir -p "${OFFSITE_SQL_DIR}" "${OFFSITE_ASSETSTORE_DIR}"
 
-# ---------------------------- Main Script -------------------------------------
+    log "========== Starting Backup Process =========="
 
-# Ensure backup directories exist
-mkdir -p "${SQL_DIR}" "${ASSETSTORE_DIR}" "${LOG_DIR}"
-mkdir -p "${OFFSITE_SQL_DIR}" "${OFFSITE_ASSETSTORE_DIR}"
+    # ---------------------------- PostgreSQL Dump -------------------------------
 
-log "========== Starting Backup Process =========="
+    SQL_BACKUP_FILE="${SQL_DIR}/dspace_${TIMESTAMP}.sql"
 
-# ---------------------------- PostgreSQL Dump -------------------------------
+    log "Starting PostgreSQL dump."
+    "${PG_DUMP_PATH}" -U "${PG_USER}" -h "${PG_HOST}" -f "${SQL_BACKUP_FILE}" "${PG_DB}" >> "${LOG_FILE}" 2>&1
 
-SQL_BACKUP_FILE="${SQL_DIR}/dspace_${TIMESTAMP}.sql"
+    if [ $? -eq 0 ]; then
+        log "PostgreSQL dump completed successfully: ${SQL_BACKUP_FILE}"
+    else
+        log "Error during PostgreSQL dump."
+    fi
 
-log "Starting PostgreSQL dump."
-"${PG_DUMP_PATH}" -U "${PG_USER}" -h "${PG_HOST}" -f "${SQL_BACKUP_FILE}" "${PG_DB}" >> "${LOG_FILE}" 2>&1
+    # ---------------------------- Assetstore Compression ------------------------
 
-if [ $? -eq 0 ]; then
-    log "PostgreSQL dump completed successfully: ${SQL_BACKUP_FILE}"
-else
-    log "Error during PostgreSQL dump."
-fi
+    ASSETSTORE_BACKUP_FILE="${ASSETSTORE_DIR}/assetstore_${TIMESTAMP}.tar.gz"
 
-# ---------------------------- Assetstore Compression ------------------------
+    log "Starting assetstore compression."
+    tar -czf "${ASSETSTORE_BACKUP_FILE}" -C "$(dirname "${ASSETSTORE_SOURCE}")" "$(basename "${ASSETSTORE_SOURCE}")" >> "${LOG_FILE}" 2>&1
 
-ASSETSTORE_BACKUP_FILE="${ASSETSTORE_DIR}/assetstore_${TIMESTAMP}.tar.gz"
+    if [ $? -eq 0 ]; then
+        log "Assetstore compressed successfully: ${ASSETSTORE_BACKUP_FILE}"
+    else
+        log "Error during assetstore compression."
+    fi
+}
 
-log "Starting assetstore compression."
-tar -czf "${ASSETSTORE_BACKUP_FILE}" -C "$(dirname "${ASSETSTORE_SOURCE}")" "$(basename "${ASSETSTORE_SOURCE}")" >> "${LOG_FILE}" 2>&1
+# Function to perform cleanup
+perform_cleanup() {
+    log "Starting cleanup of old backups."
 
-if [ $? -eq 0 ]; then
-    log "Assetstore compressed successfully: ${ASSETSTORE_BACKUP_FILE}"
-else
-    log "Error during assetstore compression."
-fi
-
-# ---------------------------- Copy to Isilon Backup ------------------------
-
-# Track copy operations success
-copy_sql_success=false
-copy_asset_success=false
-
-copy_to_offsite "${SQL_DIR}" "${OFFSITE_SQL_DIR}" "SQL backups" && copy_sql_success=true
-copy_to_offsite "${ASSETSTORE_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "Assetstore backups" && copy_asset_success=true
-
-# ---------------------------- Cleanup Old Backups ----------------------------
-
-# Check if we should proceed with cleanup
-if [ "$LOCAL_ONLY" = true ]; then
-    log "Local-only mode: Skipping cleanup of backups"
-    return 0
-fi
-
-if [ "$copy_sql_success" = true ] && [ "$copy_asset_success" = true ]; then
     log "Cleaning up backups older than ${LOCAL_RETENTION_DAYS} days for on-site backups and ${OFFSITE_RETENTION_DAYS} days for Isilon backups."
 
     # Remove old SQL backups locally
@@ -219,11 +212,51 @@ if [ "$copy_sql_success" = true ] && [ "$copy_asset_success" = true ]; then
     else
         log "Error removing old assetstore backups from Isilon."
     fi
+
+    log "Cleanup of old backups completed."
+}
+
+# Function to perform copy to Isilon
+perform_copy() {
+    # Track copy operations success
+    copy_sql_success=false
+    copy_asset_success=false
+
+    copy_to_offsite "${SQL_DIR}" "${OFFSITE_SQL_DIR}" "SQL backups" && copy_sql_success=true
+    copy_to_offsite "${ASSETSTORE_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "Assetstore backups" && copy_asset_success=true
+}
+
+# ---------------------------- Main Script -------------------------------------
+
+# Determine if the script is run as root
+if [ "$(id -u)" -eq 0 ]; then
+    log "Script is running as root. Executing backup steps."
+
+    perform_backup
+
+    log "Backup steps completed. Sleeping for ${BACKUP_SLEEP_DURATION} seconds."
+    sleep $BACKUP_SLEEP_DURATION  # 30 minutes in seconds
+
+    perform_cleanup
+
+    log "========== Backup Process Completed =========="
+
+    # Optional: Compress the log file to save space
+    gzip "${LOG_FILE}" 2>/dev/null
 else
-    log "Skipping cleanup because copy_to_offsite failed."
+    log "Script is running as a non-root user. Executing copy steps after 10 minutes sleep."
+
+    log "Sleeping for ${COPY_SLEEP_DURATION} seconds."
+    sleep $COPY_SLEEP_DURATION  
+
+    perform_copy
+
+    log "Copy steps completed. Exiting script."
+
+    log "========== Backup Process Completed =========="
+
+    # Optional: Compress the log file to save space
+    gzip "${LOG_FILE}" 2>/dev/null
+
+    exit 0
 fi
-
-log "========== Backup Process Completed =========="
-
-# Optional: Compress the log file to save space
-gzip "${LOG_FILE}" 2>/dev/null

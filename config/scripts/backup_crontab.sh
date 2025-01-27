@@ -1,6 +1,5 @@
-## NOTE: You may also need to add additional sysadmin related tasks to your crontab
-## (e.g. zipping up old log files, or even removing old logs, etc).
-## Install by either calling `sudo crontab [path to this file]` or by copying the contents to `sudo crontab -e`.
+# Install this on both root and a user (e.g. seyediana1)
+
 
 #-----------------
 # GLOBAL VARIABLES
