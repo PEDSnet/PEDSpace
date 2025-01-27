@@ -41,11 +41,10 @@ log() {
     echo "$(date +"%Y-%m-%d %H:%M:%S") : $1" | tee -a "${LOG_FILE}"
 }
 
-BACKUP_SLEEP_DURATION=1800 # 30 minutes in seconds
+# Flag file to indicate a successful backup. The non-root user looks for this file.
+SUCCESS_FLAG_FILE="/data/backups/backup_success.flag"
 
-COPY_SLEEP_DURATION=600 # 10 minutes in seconds
-
-# Add near the top of the script, after other variable declarations
+# Flag to indicate local-only mode (no offsite copy).
 LOCAL_ONLY=false
 
 # Base backup directory
@@ -86,7 +85,7 @@ ASSETSTORE_SOURCE="/data/dspace/assetstore"
 CURRENT_HOSTNAME=$(hostname -f)
 EXPECTED_HOSTNAME="pedsdspaceprod.research.chop.edu"
 
-# Exit if not running on expected hostname
+# Exit if not running on the expected hostname
 if [[ "${CURRENT_HOSTNAME}" != "${EXPECTED_HOSTNAME}" ]]; then
     echo "ERROR: This backup script must only run on ${EXPECTED_HOSTNAME} - the production server."
     echo "Current hostname is: ${CURRENT_HOSTNAME}"
@@ -94,7 +93,7 @@ if [[ "${CURRENT_HOSTNAME}" != "${EXPECTED_HOSTNAME}" ]]; then
     exit 1
 fi
 
-# Log the hostname check
+# Make sure log directory exists, then log the hostname check
 mkdir -p "${LOG_DIR}"
 log "Verified backup is running on correct hostname: ${EXPECTED_HOSTNAME}"
 
@@ -117,146 +116,160 @@ while getopts "l" opt; do
     esac
 done
 
-# Modify copy_to_offsite function
+# Copy to offsite (Isilon) function
 copy_to_offsite() {
     local source_dir="$1"
     local dest_dir="$2"
     local backup_type="$3"
 
+    # If local-only mode, skip copying
     if [ "$LOCAL_ONLY" = true ]; then
-        log "Skipping offsite copy for ${backup_type} (local-only mode)"
+        log "Skipping offsite copy for ${backup_type} (local-only mode)."
         return 0
     fi
 
-    log "Starting copy of ${backup_type} to Isilon backup."
+    log "Starting copy of ${backup_type} to Isilon backup: ${dest_dir}"
 
     rsync -rvptgD --no-group --progress "${source_dir}/" "${dest_dir}/" >> "${LOG_FILE}" 2>&1
     if [ $? -eq 0 ]; then
-        log "Successfully copied ${backup_type} to Isilon backup: ${dest_dir}"
+        log "Successfully copied ${backup_type} to Isilon backup."
     else
         log "Error copying ${backup_type} to Isilon backup."
+        return 1
     fi
 }
 
-# Function to perform PostgreSQL dump
+# Function to perform PostgreSQL dump and assetstore compression
 perform_backup() {
-    # Ensure backup directories exist
+    # Ensure local backup directories exist
     mkdir -p "${SQL_DIR}" "${ASSETSTORE_DIR}" "${LOG_DIR}"
-    
-    # Uncomment this and run it as an official user (e.g. seyediana1) because root cannot access Isilon.
+
+    # Uncomment the following if (and only if) you can mount or write to Isilon 
+    # as root on your system:
     # mkdir -p "${OFFSITE_SQL_DIR}" "${OFFSITE_ASSETSTORE_DIR}"
 
     log "========== Starting Backup Process =========="
 
+    local backup_failed=false
+
     # ---------------------------- PostgreSQL Dump -------------------------------
-
     SQL_BACKUP_FILE="${SQL_DIR}/dspace_${TIMESTAMP}.sql"
+    log "Starting PostgreSQL dump to file: ${SQL_BACKUP_FILE}"
 
-    log "Starting PostgreSQL dump."
     "${PG_DUMP_PATH}" -U "${PG_USER}" -h "${PG_HOST}" -f "${SQL_BACKUP_FILE}" "${PG_DB}" >> "${LOG_FILE}" 2>&1
-
     if [ $? -eq 0 ]; then
-        log "PostgreSQL dump completed successfully: ${SQL_BACKUP_FILE}"
+        log "PostgreSQL dump completed successfully."
     else
         log "Error during PostgreSQL dump."
+        backup_failed=true
     fi
 
     # ---------------------------- Assetstore Compression ------------------------
-
     ASSETSTORE_BACKUP_FILE="${ASSETSTORE_DIR}/assetstore_${TIMESTAMP}.tar.gz"
+    log "Starting assetstore compression to file: ${ASSETSTORE_BACKUP_FILE}"
 
-    log "Starting assetstore compression."
     tar -czf "${ASSETSTORE_BACKUP_FILE}" -C "$(dirname "${ASSETSTORE_SOURCE}")" "$(basename "${ASSETSTORE_SOURCE}")" >> "${LOG_FILE}" 2>&1
-
     if [ $? -eq 0 ]; then
-        log "Assetstore compressed successfully: ${ASSETSTORE_BACKUP_FILE}"
+        log "Assetstore compressed successfully."
     else
         log "Error during assetstore compression."
+        backup_failed=true
+    fi
+
+    # Return 0 if backup succeeded, 1 otherwise
+    if [ "$backup_failed" = false ]; then
+        return 0
+    else
+        return 1
     fi
 }
 
-# Function to perform cleanup
+# Function to perform cleanup of old backups
 perform_cleanup() {
     log "Starting cleanup of old backups."
 
-    log "Cleaning up backups older than ${LOCAL_RETENTION_DAYS} days for on-site backups and ${OFFSITE_RETENTION_DAYS} days for Isilon backups."
-
-    # Remove old SQL backups locally
+    log "Cleaning up on-site backups older than ${LOCAL_RETENTION_DAYS} days..."
     find "${SQL_DIR}" -type f -name "*.sql" -mtime +${LOCAL_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
-    if [ $? -eq 0 ]; then
-        log "Old SQL backups removed successfully from on-site: Retention period ${LOCAL_RETENTION_DAYS} days."
-    else
-        log "Error removing old SQL backups from on-site."
-    fi
-
-    # Remove old assetstore backups locally
     find "${ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
-    if [ $? -eq 0 ]; then
-        log "Old assetstore backups removed successfully from on-site: Retention period ${LOCAL_RETENTION_DAYS} days."
-    else
-        log "Error removing old assetstore backups from on-site."
-    fi
-
-    # Remove old SQL backups Isilon
-    find "${OFFSITE_SQL_DIR}" -type f -name "*.sql" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
-    if [ $? -eq 0 ]; then
-        log "Old SQL backups removed successfully from Isilon: Retention period ${OFFSITE_RETENTION_DAYS} days."
-    else
-        log "Error removing old SQL backups from Isilon."
-    fi
-
-    # Remove old assetstore backups Isilon
-    find "${OFFSITE_ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
-    if [ $? -eq 0 ]; then
-        log "Old assetstore backups removed successfully from Isilon: Retention period ${OFFSITE_RETENTION_DAYS} days."
-    else
-        log "Error removing old assetstore backups from Isilon."
-    fi
 
     log "Cleanup of old backups completed."
 }
 
 # Function to perform copy to Isilon
 perform_copy() {
+    # Make sure the Isilon directories exist as non-root (if your system setup allows it)
+    mkdir -p "${OFFSITE_SQL_DIR}" "${OFFSITE_ASSETSTORE_DIR}"
+
     # Track copy operations success
     copy_sql_success=false
     copy_asset_success=false
 
     copy_to_offsite "${SQL_DIR}" "${OFFSITE_SQL_DIR}" "SQL backups" && copy_sql_success=true
     copy_to_offsite "${ASSETSTORE_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "Assetstore backups" && copy_asset_success=true
+
+    log "Cleaning up Isilon backups older than ${OFFSITE_RETENTION_DAYS} days..."
+    find "${OFFSITE_SQL_DIR}" -type f -name "*.sql" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
+    find "${OFFSITE_ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
+
+    if [ "$copy_sql_success" = true ] && [ "$copy_asset_success" = true ]; then
+        log "All offsite copy steps completed successfully."
+    else
+        log "One or more offsite copy steps failed."
+    fi
 }
 
 # ---------------------------- Main Script -------------------------------------
 
-# Determine if the script is run as root
 if [ "$(id -u)" -eq 0 ]; then
-    log "Script is running as root. Executing backup steps."
+    # -------------------------------------------------------------------------
+    # Script is running as root: perform backup & cleanup, then set success flag
+    # -------------------------------------------------------------------------
+    log "Script detected root user. Proceeding with backup and cleanup."
 
-    perform_backup
+    if perform_backup; then
+        log "Backup steps completed successfully."
+        perform_cleanup
 
-    log "Backup steps completed. Sleeping for ${BACKUP_SLEEP_DURATION} seconds."
-    sleep $BACKUP_SLEEP_DURATION  # 30 minutes in seconds
-
-    perform_cleanup
+        # Only create success flag if backup was successful AND not in local-only mode
+        if [ "$LOCAL_ONLY" = false ]; then
+            # Create the success flag file with appropriate permissions
+            echo "Backup completed successfully at $(date)." > "$SUCCESS_FLAG_FILE"
+            chmod 664 "$SUCCESS_FLAG_FILE"
+            chown root:backupgroup "$SUCCESS_FLAG_FILE"  # Replace 'backupgroup' with your actual group
+            log "Created success flag file: $SUCCESS_FLAG_FILE with permissions 664 and group ownership 'backupgroup'"
+        else
+            log "Local-only mode is enabled; skipping success flag creation."
+        fi
+    else
+        log "Backup steps encountered errors. Skipping success flag creation."
+        perform_cleanup
+    fi
 
     log "========== Backup Process Completed =========="
-
     # Optional: Compress the log file to save space
     gzip "${LOG_FILE}" 2>/dev/null
+
 else
-    log "Script is running as a non-root user. Executing copy steps after 10 minutes sleep."
+    # -------------------------------------------------------------------------
+    # Script is running as non-root: check for success flag file, then copy if found
+    # -------------------------------------------------------------------------
+    log "Script detected non-root user. Checking for success flag file..."
 
-    log "Sleeping for ${COPY_SLEEP_DURATION} seconds."
-    sleep $COPY_SLEEP_DURATION  
+    if [ ! -f "$SUCCESS_FLAG_FILE" ]; then
+        log "No success flag file found at $SUCCESS_FLAG_FILE. Exiting without copy."
+        gzip "${LOG_FILE}" 2>/dev/null
+        exit 0
+    fi
 
+    log "Success flag file found. Performing offsite copy steps."
     perform_copy
 
-    log "Copy steps completed. Exiting script."
+    # Remove the success flag file after copying
+    rm -f "$SUCCESS_FLAG_FILE"
+    log "Removed success flag file: $SUCCESS_FLAG_FILE"
 
-    log "========== Backup Process Completed =========="
-
+    log "========== Copy Process Completed =========="
     # Optional: Compress the log file to save space
     gzip "${LOG_FILE}" 2>/dev/null
-
     exit 0
 fi
