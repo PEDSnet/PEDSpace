@@ -63,7 +63,7 @@ def fetch_uuid_mapping(config, log_file):
         cursor.execute("""
             SELECT dspace_object_id, metadata_field_id, text_value
             FROM metadatavalue
-            WHERE metadata_field_id IN (7, 34, 73)
+            WHERE metadata_field_id IN (7, 34, 73, 211)
         """)
         # ************************************************************************
 
@@ -114,7 +114,7 @@ def process_csv(file_path, columns, mapping, log_file, output_suffix):
         base, ext = os.path.splitext(file_path)
         
         output_file = f"{base}{output_suffix}{ext}"
-        
+        # pdb.set_trace()
         print(output_file)
         
         with open(output_file, 'w', encoding='utf-8', newline='') as f:
@@ -142,16 +142,17 @@ def map_uuids(cell, mapping, log_file, column_name):
                 if 73 in mapping[uuid]:
                     # Take the first title if multiple exist
                     values.append(mapping[uuid][73][0])
-                elif 221 in mapping[uuid]: # OrgUnit
+                elif 211 in mapping[uuid]: # OrgUnit
                     # Take the first title if multiple exist
-                    values.append(mapping[uuid][221][0])
+                    values.append(mapping[uuid][211][0])
                 else:
+                    # pdb.set_trace()
                     # No title found, keep original UUID
                     log(f"UUID '{uuid}' in column '{column_name}' has no title (field 73).", log_file)
                     values.append(uuid)
             else:
                 # UUID not found in mapping
-                log(f"UUID '{uuid}' in column '{column_name}' not found in mapping.", log_file)
+                # log(f"UUID '{uuid}' in column '{column_name}' not found in mapping.", log_file)
                 values.append(uuid)
         except (KeyError, IndexError, TypeError) as e:
             # Handle any dictionary access errors
