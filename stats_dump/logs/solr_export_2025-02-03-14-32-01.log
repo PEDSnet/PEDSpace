@@ -1,0 +1,5 @@
+2025-02-03 14:32:03 : Current user is 'seyediana1'. Commands will be executed as 'dspace' using sudo.
+2025-02-03 14:32:03 : ========== Starting Solr Statistics Export Process ==========
+2025-02-03 14:32:06 : Executing Solr statistics export command.
+sudo: a password is required
+2025-02-03 14:32:06 : Error during Solr statistics export.

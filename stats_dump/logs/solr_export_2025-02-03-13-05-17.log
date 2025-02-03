@@ -1,0 +1,225 @@
+2025-02-03 13:05:17 : Current user is 'seyediana1'. Commands will be executed as 'dspace' using sudo.
+2025-02-03 13:05:17 : ========== Starting Solr Statistics Export Process ==========
+2025-02-03 13:05:17 : Executing Solr statistics export command.
+No index name provided, defaulting to "statistics".
+2025-02-03 13:05:27 : Solr statistics export completed successfully.
+2025-02-03 13:05:27 : Starting organization of exported CSV files.
+2025-02-03 13:05:27 : Moved 'statistics_export_2024-06.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/'.
+2025-02-03 13:05:28 : Moved 'statistics_export_2024-07.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/'.
+2025-02-03 13:05:28 : Moved 'statistics_export_2024-08.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/'.
+2025-02-03 13:05:28 : Moved 'statistics_export_2024-09_0.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/'.
+2025-02-03 13:05:28 : Moved 'statistics_export_2024-09_1.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/'.
+2025-02-03 13:05:28 : Moved 'statistics_export_2024-10.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/'.
+2025-02-03 13:05:28 : Moved 'statistics_export_2024-11.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/'.
+2025-02-03 13:05:28 : Moved 'statistics_export_2024-12_0.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/'.
+2025-02-03 13:05:28 : Moved 'statistics_export_2024-12_1.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/'.
+2025-02-03 13:05:28 : Moved 'statistics_export_2025-01_0.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/'.
+2025-02-03 13:05:28 : Moved 'statistics_export_2025-01_1.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/'.
+2025-02-03 13:05:28 : Moved 'statistics_export_2025-02.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/'.
+2025-02-03 13:05:28 : Organization of exported CSV files completed.
+2025-02-03 13:05:28 : Starting UUID mapping using Python script.
+2025-02-03 13:05:29 : Read configuration from /data/dspace-angular-dspace-8.0/config/configs/config.ini.
+2025-02-03 13:05:29 : Fetching UUID mapping (titles) from the database.
+2025-02-03 13:05:29 : Fetched 3510 UUID mappings (titles) from the database.
+2025-02-03 13:05:29 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06.csv
+2025-02-03 13:05:29 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06.csv.
+2025-02-03 13:05:29 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06.csv.
+2025-02-03 13:05:29 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06.csv.
+2025-02-03 13:05:29 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06.csv.
+2025-02-03 13:05:29 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06.csv.
+2025-02-03 13:05:29 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06_mapped.csv.
+2025-02-03 13:05:29 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07.csv
+2025-02-03 13:05:29 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07.csv.
+2025-02-03 13:05:29 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07.csv.
+2025-02-03 13:05:29 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07.csv.
+2025-02-03 13:05:29 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07.csv.
+2025-02-03 13:05:29 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07.csv.
+2025-02-03 13:05:29 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07_mapped.csv.
+2025-02-03 13:05:29 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08.csv
+2025-02-03 13:05:29 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08.csv.
+2025-02-03 13:05:29 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08.csv.
+2025-02-03 13:05:29 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08.csv.
+2025-02-03 13:05:29 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08.csv.
+2025-02-03 13:05:29 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08.csv.
+2025-02-03 13:05:29 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08_mapped.csv.
+2025-02-03 13:05:29 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0.csv
+2025-02-03 13:05:29 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0.csv.
+2025-02-03 13:05:29 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0.csv.
+2025-02-03 13:05:29 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0.csv.
+2025-02-03 13:05:29 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0.csv.
+2025-02-03 13:05:29 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0.csv.
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0_mapped.csv.
+2025-02-03 13:05:30 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1.csv
+2025-02-03 13:05:30 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1.csv.
+2025-02-03 13:05:30 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1.csv.
+2025-02-03 13:05:30 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1.csv.
+2025-02-03 13:05:30 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1.csv.
+2025-02-03 13:05:30 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1.csv.
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1_mapped.csv.
+2025-02-03 13:05:30 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10.csv
+2025-02-03 13:05:30 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10.csv.
+2025-02-03 13:05:30 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10.csv.
+2025-02-03 13:05:30 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10.csv.
+2025-02-03 13:05:30 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10.csv.
+2025-02-03 13:05:30 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10.csv.
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10_mapped.csv.
+2025-02-03 13:05:30 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11.csv
+2025-02-03 13:05:30 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11.csv.
+2025-02-03 13:05:30 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11.csv.
+2025-02-03 13:05:30 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11.csv.
+2025-02-03 13:05:30 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11.csv.
+2025-02-03 13:05:30 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11.csv.
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11_mapped.csv.
+2025-02-03 13:05:29 : Read configuration from /data/dspace-angular-dspace-8.0/config/configs/config.ini.
+2025-02-03 13:05:29 : Fetching UUID mapping (titles) from the database.
+2025-02-03 13:05:29 : Fetched 3510 UUID mappings (titles) from the database.
+2025-02-03 13:05:29 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06.csv
+2025-02-03 13:05:29 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06.csv.
+2025-02-03 13:05:29 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06.csv.
+2025-02-03 13:05:29 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06.csv.
+2025-02-03 13:05:29 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06.csv.
+2025-02-03 13:05:29 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06.csv.
+/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06_mapped.csv
+2025-02-03 13:05:29 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/statistics_export_2024-06_mapped.csv.
+2025-02-03 13:05:29 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07.csv
+2025-02-03 13:05:29 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07.csv.
+2025-02-03 13:05:29 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07.csv.
+2025-02-03 13:05:29 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07.csv.
+2025-02-03 13:05:29 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07.csv.
+2025-02-03 13:05:29 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07.csv.
+/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07_mapped.csv
+2025-02-03 13:05:29 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/statistics_export_2024-07_mapped.csv.
+2025-02-03 13:05:29 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08.csv
+2025-02-03 13:05:29 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08.csv.
+2025-02-03 13:05:29 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08.csv.
+2025-02-03 13:05:29 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08.csv.
+2025-02-03 13:05:29 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08.csv.
+2025-02-03 13:05:29 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08.csv.
+/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08_mapped.csv
+2025-02-03 13:05:29 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/statistics_export_2024-08_mapped.csv.
+2025-02-03 13:05:29 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0.csv
+2025-02-03 13:05:29 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0.csv.
+2025-02-03 13:05:29 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0.csv.
+2025-02-03 13:05:29 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0.csv.
+2025-02-03 13:05:29 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0.csv.
+2025-02-03 13:05:29 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0.csv.
+/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0_mapped.csv
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_0_mapped.csv.
+2025-02-03 13:05:30 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1.csv
+2025-02-03 13:05:30 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1.csv.
+2025-02-03 13:05:30 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1.csv.
+2025-02-03 13:05:30 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1.csv.
+2025-02-03 13:05:30 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1.csv.
+2025-02-03 13:05:30 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1.csv.
+/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1_mapped.csv
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/statistics_export_2024-09_1_mapped.csv.
+2025-02-03 13:05:30 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10.csv
+2025-02-03 13:05:30 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10.csv.
+2025-02-03 13:05:30 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10.csv.
+2025-02-03 13:05:30 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10.csv.
+2025-02-03 13:05:30 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10.csv.
+2025-02-03 13:05:30 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10.csv.
+/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10_mapped.csv
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/statistics_export_2024-10_mapped.csv.
+2025-02-03 13:05:30 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11.csv
+2025-02-03 13:05:30 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11.csv.
+2025-02-03 13:05:30 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11.csv.
+2025-02-03 13:05:30 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11.csv.
+2025-02-03 13:05:30 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11.csv.
+2025-02-03 13:05:30 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11.csv.
+/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11_mapped.csv
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/statistics_export_2024-11_mapped.csv.
+2025-02-03 13:05:30 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0.csv
+2025-02-03 13:05:30 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0.csv.
+2025-02-03 13:05:30 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0.csv.
+2025-02-03 13:05:30 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0.csv.
+2025-02-03 13:05:30 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0.csv.
+2025-02-03 13:05:30 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0.csv.
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0_mapped.csv.
+2025-02-03 13:05:30 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1.csv
+2025-02-03 13:05:30 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1.csv.
+2025-02-03 13:05:30 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1.csv.
+2025-02-03 13:05:30 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1.csv.
+2025-02-03 13:05:30 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1.csv.
+2025-02-03 13:05:30 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1.csv.
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1_mapped.csv.
+2025-02-03 13:05:30 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01.csv
+2025-02-03 13:05:30 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01.csv.
+2025-02-03 13:05:30 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01.csv.
+2025-02-03 13:05:30 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01.csv.
+2025-02-03 13:05:30 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01.csv.
+2025-02-03 13:05:30 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01.csv.
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_mapped.csv.
+2025-02-03 13:05:31 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0.csv
+2025-02-03 13:05:31 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0.csv.
+2025-02-03 13:05:31 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0.csv.
+2025-02-03 13:05:31 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0.csv.
+2025-02-03 13:05:31 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0.csv.
+2025-02-03 13:05:31 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0.csv.
+2025-02-03 13:05:31 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0_mapped.csv.
+2025-02-03 13:05:31 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1.csv
+2025-02-03 13:05:31 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1.csv.
+2025-02-03 13:05:31 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1.csv.
+2025-02-03 13:05:31 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1.csv.
+2025-02-03 13:05:31 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1.csv.
+2025-02-03 13:05:31 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1.csv.
+2025-02-03 13:05:31 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1_mapped.csv.
+2025-02-03 13:05:31 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02.csv
+2025-02-03 13:05:31 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02.csv.
+2025-02-03 13:05:31 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02.csv.
+2025-02-03 13:05:31 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02.csv.
+2025-02-03 13:05:31 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02.csv.
+2025-02-03 13:05:31 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02.csv.
+2025-02-03 13:05:31 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02_mapped.csv.
+2025-02-03 13:05:31 : UUID mapping process completed.
+2025-02-03 13:05:30 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0.csv
+2025-02-03 13:05:30 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0.csv.
+2025-02-03 13:05:30 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0.csv.
+2025-02-03 13:05:30 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0.csv.
+2025-02-03 13:05:30 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0.csv.
+2025-02-03 13:05:30 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0.csv.
+/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0_mapped.csv
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_0_mapped.csv.
+2025-02-03 13:05:30 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1.csv
+2025-02-03 13:05:30 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1.csv.
+2025-02-03 13:05:30 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1.csv.
+2025-02-03 13:05:30 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1.csv.
+2025-02-03 13:05:30 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1.csv.
+2025-02-03 13:05:30 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1.csv.
+/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1_mapped.csv
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/statistics_export_2024-12_1_mapped.csv.
+2025-02-03 13:05:30 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01.csv
+2025-02-03 13:05:30 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01.csv.
+2025-02-03 13:05:30 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01.csv.
+2025-02-03 13:05:30 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01.csv.
+2025-02-03 13:05:30 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01.csv.
+2025-02-03 13:05:30 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01.csv.
+/data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_mapped.csv
+2025-02-03 13:05:30 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_mapped.csv.
+2025-02-03 13:05:31 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0.csv
+2025-02-03 13:05:31 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0.csv.
+2025-02-03 13:05:31 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0.csv.
+2025-02-03 13:05:31 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0.csv.
+2025-02-03 13:05:31 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0.csv.
+2025-02-03 13:05:31 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0.csv.
+/data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0_mapped.csv
+2025-02-03 13:05:31 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_0_mapped.csv.
+2025-02-03 13:05:31 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1.csv
+2025-02-03 13:05:31 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1.csv.
+2025-02-03 13:05:31 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1.csv.
+2025-02-03 13:05:31 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1.csv.
+2025-02-03 13:05:31 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1.csv.
+2025-02-03 13:05:31 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1.csv.
+/data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1_mapped.csv
+2025-02-03 13:05:31 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/statistics_export_2025-01_1_mapped.csv.
+2025-02-03 13:05:31 : Processing file: /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02.csv
+2025-02-03 13:05:31 : Added column 'uid_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02.csv.
+2025-02-03 13:05:31 : Added column 'owningItem_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02.csv.
+2025-02-03 13:05:31 : Added column 'owningComm_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02.csv.
+2025-02-03 13:05:31 : Added column 'owningColl_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02.csv.
+2025-02-03 13:05:31 : Added column 'workflowItemId_value' to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02.csv.
+/data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02_mapped.csv
+2025-02-03 13:05:31 : Saved mapped CSV to /data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/statistics_export_2025-02_mapped.csv.
+2025-02-03 13:05:31 : UUID mapping process completed.
+2025-02-03 13:05:31 : UUID mapping completed successfully.
+2025-02-03 13:05:31 : ========== Solr Statistics Export Process Completed ==========

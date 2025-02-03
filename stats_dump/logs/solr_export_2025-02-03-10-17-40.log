@@ -1,0 +1,35 @@
+2025-02-03 10:17:48 : Current user is 'seyediana1'. Commands will be executed as 'dspace' using sudo.
+2025-02-03 10:17:48 : ========== Starting Solr Statistics Export Process ==========
+2025-02-03 10:17:48 : Executing Solr statistics export command.
+No index name provided, defaulting to "statistics".
+2025-02-03 10:17:58 : Solr statistics export completed successfully.
+2025-02-03 10:17:58 : Starting organization of exported CSV files.
+2025-02-03 10:17:59 : Moved 'statistics_export_2024-06.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/06/'.
+2025-02-03 10:17:59 : Moved 'statistics_export_2024-07.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/07/'.
+2025-02-03 10:17:59 : Moved 'statistics_export_2024-08.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/08/'.
+2025-02-03 10:17:59 : Moved 'statistics_export_2024-09_0.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/'.
+2025-02-03 10:17:59 : Moved 'statistics_export_2024-09_1.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/09/'.
+2025-02-03 10:17:59 : Moved 'statistics_export_2024-10.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/10/'.
+2025-02-03 10:17:59 : Moved 'statistics_export_2024-11.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/11/'.
+2025-02-03 10:17:59 : Moved 'statistics_export_2024-12_0.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/'.
+2025-02-03 10:17:59 : Moved 'statistics_export_2024-12_1.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2024/12/'.
+2025-02-03 10:17:59 : Moved 'statistics_export_2025-01_0.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/'.
+2025-02-03 10:17:59 : Moved 'statistics_export_2025-01_1.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2025/01/'.
+2025-02-03 10:18:00 : Moved 'statistics_export_2025-02.csv' to '/data/dspace-angular-dspace-8.0/stats_dump/organized/2025/02/'.
+2025-02-03 10:18:00 : Organization of exported CSV files completed.
+2025-02-03 10:18:00 : Starting UUID mapping using Python script.
+2025-02-03 10:18:00 : Read configuration from /data/dspace-angular-dspace-8.0/config/configs/config.ini.
+2025-02-03 10:18:00 : Fetching UUID mapping (titles) from the database.
+2025-02-03 10:18:00 : Error connecting to Postgres or fetching data: operator does not exist: integer = record
+LINE 4:             WHERE metadata_field_id = (7, 34, 73)
+                                            ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+2025-02-03 10:18:00 : Read configuration from /data/dspace-angular-dspace-8.0/config/configs/config.ini.
+2025-02-03 10:18:00 : Fetching UUID mapping (titles) from the database.
+2025-02-03 10:18:00 : Error connecting to Postgres or fetching data: operator does not exist: integer = record
+LINE 4:             WHERE metadata_field_id = (7, 34, 73)
+                                            ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+2025-02-03 10:18:00 : Error during UUID mapping.
