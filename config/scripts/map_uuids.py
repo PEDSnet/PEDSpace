@@ -5,6 +5,7 @@ import os
 import pdb
 import sys
 import gzip
+import hashlib
 import pandas as pd
 import psycopg2
 from psycopg2 import sql
@@ -12,7 +13,7 @@ import configparser
 import csv
 
 def parse_arguments():
-    parser = argparse.ArgumentParser(description='Map UUIDs in CSV files to their corresponding text values (titles).')
+    parser = argparse.ArgumentParser(description='Map UUIDs in CSV files to their corresponding text values (titles) and pseudonymize IP addresses.')
     parser.add_argument('--input_dir', '-i', required=True, help='Directory containing the CSV files to process.')
     parser.add_argument('--columns', '-c', required=True, help='Comma-separated list of columns that contain UUIDs.')
     parser.add_argument('--log_file', '-l', required=True, help='Path to the log file.')
@@ -28,10 +29,20 @@ def log(message, log_file):
     with open(log_file, 'a') as f:
         f.write(log_entry + '\n')
 
+def pseudonymize_ip(ip):
+    """
+    Pseudonymize an IP address using SHA-1 and return a short hex digest.
+    The same IP will always produce the same pseudonym.
+    """
+    if pd.isna(ip) or not ip:
+        return ''
+    # Compute the SHA-1 hash and return the first 8 hexadecimal characters.
+    return hashlib.sha1(ip.encode('utf-8')).hexdigest()[:8]
+
 def fetch_uuid_mapping(config, log_file):
     """
     Fetches a dictionary mapping from dspace_object_id -> text_value
-    BUT only for metadata_field_id = 73 (title).
+    BUT only for metadata_field_id = 73 (title) and 211 (OrgUnit).
     """
     try:
         # Extract database connection parameters from config.ini
@@ -68,14 +79,6 @@ def fetch_uuid_mapping(config, log_file):
         # ************************************************************************
 
         rows = cursor.fetchall()
-        # pdb.set_trace()
-        # For each object_id, we’ll store a dict of the form:
-        #   mapping[object_id] = {
-        #       7: [possibly multiple text_values],
-        #       34: [...],
-        #       73: [...]
-        #   }
-
         mapping = {}
         for (obj_id, field_id, text_value) in rows:
             if obj_id not in mapping:
@@ -95,26 +98,35 @@ def process_csv(file_path, columns, mapping, log_file, output_suffix):
     try:
         # Determine if the file is gzipped
         if file_path.endswith('.gz'):
-            df = pd.read_csv(gzip.open(file_path, 'rt', encoding='utf-8'), dtype=str, quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            df = pd.read_csv(gzip.open(file_path, 'rt', encoding='utf-8'), 
+                             dtype=str, quotechar='"', quoting=csv.QUOTE_MINIMAL)
         else:
             df = pd.read_csv(file_path, dtype=str, quotechar='"', quoting=csv.QUOTE_MINIMAL)
         
         log(f"Processing file: {file_path}", log_file)
         
+        # Map UUID columns to their corresponding textual values
         for col in columns:
             if col not in df.columns:
                 log(f"Column '{col}' not found in {file_path}. Skipping.", log_file)
                 continue
             new_col = f"{col}_value"
-            # pdb.set_trace()
             df[new_col] = df[col].apply(lambda x: map_uuids(x, mapping, log_file, col))
             log(f"Added column '{new_col}' to {file_path}.", log_file)
         
+        # Pseudonymize IP addresses if the column exists
+        if 'ip' in df.columns:
+            df['ip'] = df['ip'].apply(pseudonymize_ip)
+            log(f"Pseudonymized IP addresses in {file_path}.", log_file)
+
+        # Pseudonymize DNS addresses if the column exists
+        if 'dns' in df.columns:
+            df['dns'] = df['dns'].apply(pseudonymize_ip)
+            log(f"Pseudonymized DNS addresses in {file_path}.", log_file)
+        
         # Save the updated DataFrame back to CSV
         base, ext = os.path.splitext(file_path)
-        
         output_file = f"{base}{output_suffix}{ext}"
-        # pdb.set_trace()
         print(output_file)
         
         with open(output_file, 'w', encoding='utf-8', newline='') as f:
@@ -138,27 +150,19 @@ def map_uuids(cell, mapping, log_file, column_name):
     for uuid in uuids:
         try:
             if uuid in mapping:
-                # Check if there are titles (field 73) for this object
                 if 73 in mapping[uuid]:
-                    # Take the first title if multiple exist
                     values.append(mapping[uuid][73][0])
-                elif 211 in mapping[uuid]: # OrgUnit
-                    # Take the first title if multiple exist
+                elif 211 in mapping[uuid]:
                     values.append(mapping[uuid][211][0])
                 else:
-                    # pdb.set_trace()
-                    # No title found, keep original UUID
                     log(f"UUID '{uuid}' in column '{column_name}' has no title (field 73).", log_file)
                     values.append(uuid)
             else:
-                # UUID not found in mapping
-                # log(f"UUID '{uuid}' in column '{column_name}' not found in mapping.", log_file)
                 values.append(uuid)
         except (KeyError, IndexError, TypeError) as e:
-            # Handle any dictionary access errors
             log(f"Error processing UUID '{uuid}' in column '{column_name}': {str(e)}", log_file)
             values.append(uuid)
-    return ';'.join(values)  # Use semicolon to separate multiple mapped values
+    return ';'.join(values)
 
 def main():
     args = parse_arguments()
@@ -177,7 +181,7 @@ def main():
     config.read(config_path)
     log(f"Read configuration from {config_path}.", log_file)
 
-    # Fetch the UUID -> Title mapping (only from metadata_field_id = 73)
+    # Fetch the UUID -> Title mapping
     log("Fetching UUID mapping (titles) from the database.", log_file)
     mapping = fetch_uuid_mapping(config, log_file)
 
