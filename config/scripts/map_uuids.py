@@ -2,6 +2,7 @@
 
 import argparse
 import os
+import pdb
 import sys
 import gzip
 import pandas as pd
@@ -60,13 +61,14 @@ def fetch_uuid_mapping(config, log_file):
         
         # ************* KEY CHANGE: Filter by metadata_field_id = 73 *************
         cursor.execute("""
-            SELECT dspace_object_id, text_value
+            SELECT dspace_object_id, metadata_field_id, text_value
             FROM metadatavalue
-            WHERE metadata_field_id = (7, 34, 73)
+            WHERE metadata_field_id IN (7, 34, 73)
         """)
         # ************************************************************************
 
         rows = cursor.fetchall()
+        # pdb.set_trace()
         # For each object_id, we’ll store a dict of the form:
         #   mapping[object_id] = {
         #       7: [possibly multiple text_values],
@@ -104,6 +106,7 @@ def process_csv(file_path, columns, mapping, log_file, output_suffix):
                 log(f"Column '{col}' not found in {file_path}. Skipping.", log_file)
                 continue
             new_col = f"{col}_value"
+            # pdb.set_trace()
             df[new_col] = df[col].apply(lambda x: map_uuids(x, mapping, log_file, col))
             log(f"Added column '{new_col}' to {file_path}.", log_file)
         
@@ -135,12 +138,23 @@ def map_uuids(cell, mapping, log_file, column_name):
     uuids = [uuid.strip() for uuid in cell.split(',')]
     values = []
     for uuid in uuids:
-        if uuid in mapping:
-            # Found a title for this dspace_object_id
-            values.append(mapping[uuid])
-        else:
-            # Keep the original UUID if no title is found
-            log(f"UUID '{uuid}' in column '{column_name}' not found in mapping (field 73).", log_file)
+        try:
+            if uuid in mapping:
+                # Check if there are titles (field 73) for this object
+                if 73 in mapping[uuid]:
+                    # Take the first title if multiple exist
+                    values.append(mapping[uuid][73][0])
+                else:
+                    # No title found, keep original UUID
+                    log(f"UUID '{uuid}' in column '{column_name}' has no title (field 73).", log_file)
+                    values.append(uuid)
+            else:
+                # UUID not found in mapping
+                log(f"UUID '{uuid}' in column '{column_name}' not found in mapping.", log_file)
+                values.append(uuid)
+        except (KeyError, IndexError, TypeError) as e:
+            # Handle any dictionary access errors
+            log(f"Error processing UUID '{uuid}' in column '{column_name}': {str(e)}", log_file)
             values.append(uuid)
     return ';'.join(values)  # Use semicolon to separate multiple mapped values
 
@@ -168,7 +182,7 @@ def main():
     # Process each CSV file in the input directory
     for root, dirs, files in os.walk(input_dir):
         for file in files:
-            if file.endswith('.csv') or file.endswith('.csv.gz'):
+            if (file.endswith('.csv') or file.endswith('.csv.gz')) and 'mapped' not in file:
                 file_path = os.path.join(root, file)
                 process_csv(file_path, columns, mapping, log_file, output_suffix)
 
