@@ -85,7 +85,7 @@ def fetch_uuid_mapping(config, log_file):
             mapping[obj_id][field_id].append(text_value)
         cursor.close()
         conn.close()
-        log(f"Fetched {len(mapping)} UUID mappings (titles) from the database (metadata_field_id=73).", log_file)
+        log(f"Fetched {len(mapping)} UUID mappings (titles) from the database.", log_file)
         return mapping
     except Exception as e:
         log(f"Error connecting to Postgres or fetching data: {e}", log_file)
@@ -112,15 +112,13 @@ def process_csv(file_path, columns, mapping, log_file, output_suffix):
         
         # Save the updated DataFrame back to CSV
         base, ext = os.path.splitext(file_path)
-        if ext == '.gz':
-            base, ext = os.path.splitext(base)  # Remove .gz extension
-            output_file = f"{base}{output_suffix}{ext}.gz"
-            with gzip.open(output_file, 'wt', encoding='utf-8', newline='') as f:
-                df.to_csv(f, index=False, quoting=csv.QUOTE_MINIMAL)
-        else:
-            output_file = f"{base}{output_suffix}{ext}"
-            with open(output_file, 'w', encoding='utf-8', newline='') as f:
-                df.to_csv(f, index=False, quoting=csv.QUOTE_MINIMAL)
+        
+        output_file = f"{base}{output_suffix}{ext}"
+        
+        print(output_file)
+        
+        with open(output_file, 'w', encoding='utf-8', newline='') as f:
+            df.to_csv(f, index=False, quoting=csv.QUOTE_MINIMAL)
         
         log(f"Saved mapped CSV to {output_file}.", log_file)
         
@@ -144,6 +142,9 @@ def map_uuids(cell, mapping, log_file, column_name):
                 if 73 in mapping[uuid]:
                     # Take the first title if multiple exist
                     values.append(mapping[uuid][73][0])
+                elif 221 in mapping[uuid]: # OrgUnit
+                    # Take the first title if multiple exist
+                    values.append(mapping[uuid][221][0])
                 else:
                     # No title found, keep original UUID
                     log(f"UUID '{uuid}' in column '{column_name}' has no title (field 73).", log_file)
