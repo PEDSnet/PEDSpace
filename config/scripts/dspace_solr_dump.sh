@@ -232,6 +232,37 @@ find "${EXPORT_DIR}" -maxdepth 1 -type f \( -name "*.csv" -o -name "*.csv.gz" \)
 done
 log "Organization of exported CSV files completed."
 
+log "Checking for unchunked export files that should be removed..."
+
+# Recursively search within the organized directory
+find "${EXPORT_DIR}/organized" -type f -name "statistics_export_*.csv" | while read -r file; do
+    # Use a regex to test if the file name is chunked or not.
+    # We expect file names like:
+    #   statistics_export_YYYY-MM.csv      (unchunked)
+    #   statistics_export_YYYY-MM_N.csv     (chunked, where N is one or more digits)
+    file_name=$(basename "${file}")
+    if [[ "${file_name}" =~ ^(statistics_export_[0-9]{4}-[0-9]{2})(_[0-9]+)?\.csv(\.gz)?$ ]]; then
+        base_name="${BASH_REMATCH[1]}"  # e.g. statistics_export_2025-01
+        chunk="${BASH_REMATCH[2]}"      # will be empty if unchunked
+
+        # If the file is unchunked (i.e. no _[0-9]+ part)
+        if [ -z "${chunk}" ]; then
+            # Look in the same directory for any chunked file versions
+            dir_name=$(dirname "${file}")
+            if ls "${dir_name}/${base_name}"_[0-9]*.csv 1> /dev/null 2>&1; then
+            # Remove both the original unchunked file and its mapped version
+            rm -f "${file}"
+            rm -f "${dir_name}/${base_name}_mapped.csv"
+            log "Removed unchunked file '${file}' and its mapped version because chunked versions exist."
+            fi
+        fi
+    else
+        log "Warning: File '${file_name}' did not match expected pattern. Skipping removal check."
+    fi
+done
+
+log "Unchunked file cleanup completed."
+
 # Call the Python mapping script to add _value columns, executed as 'dspace'
 if [ -f "${MAPPING_SCRIPT}" ]; then
     log "Starting UUID mapping using Python script."
