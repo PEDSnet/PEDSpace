@@ -34,7 +34,7 @@
 umask 002
 
 # Base directory where the Solr statistics export will dump the CSV files
-EXPORT_DIR="/data/dspace-angular-dspace-8.0/stats_dump"
+EXPORT_DIR="/data/PEDSpace_Solr_Analytics/SOLR_Backend_Analysis/data"
 
 # Command to execute the Solr statistics export
 EXPORT_COMMAND="/data/dspace/bin/dspace solr-export-statistics -d ${EXPORT_DIR}"
