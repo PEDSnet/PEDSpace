@@ -6,7 +6,7 @@ import {
   ChangeDetectionStrategy,
   Component,
 } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ViewMode } from '../../../../core/shared/view-mode.model';
@@ -27,7 +27,6 @@ import { ItemPageUriFieldComponent } from '../../field-components/specific-field
 import { ThemedMetadataRepresentationListComponent } from '../../metadata-representation-list/themed-metadata-representation-list.component';
 import { RelatedItemsComponent } from '../../related-items/related-items-component';
 import { ItemComponent } from '../shared/item.component';
-// import { RouteService } from 'src/app/core/services/route.service';
 
 /**
  * Component that represents a publication Item page
@@ -43,9 +42,5 @@ import { ItemComponent } from '../shared/item.component';
   imports: [NgIf, ThemedResultsBackButtonComponent, MiradorViewerComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, ThemedMediaViewerComponent, ThemedFileSectionComponent, ItemPageDateFieldComponent, ThemedMetadataRepresentationListComponent, GenericItemPageFieldComponent, RelatedItemsComponent, ItemPageAbstractFieldComponent, ItemPageUriFieldComponent, CollectionsComponent, RouterLink, AsyncPipe, TranslateModule],
 })
 export class PublicationComponent extends ItemComponent {
-//   constructor(
-//     protected routeService: RouteService,
-//     protected router: Router
-//   ) {
-//     super(routeService, router);
+
 }
