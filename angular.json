@@ -66,8 +66,7 @@
                 "bundleName": "PEDSpace-theme"
               }
             ],
-            "scripts": [],
-            "baseHref": "/metadata/"
+            "scripts": []
           },
           "configurations": {
             "development": {
