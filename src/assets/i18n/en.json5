@@ -7130,7 +7130,7 @@
 
   "publication.page.edit": "Edit Publication",
 
-  "study.page.edit": "Edit Study"
+  "study.page.edit": "Edit Study",
 
   "file-download-link.download": "Download ",
 
@@ -7148,5 +7148,5 @@
 
   "live-region.ordering.dropped": "{{ itemName }}, dropped at position {{ index }} of {{ length }}.",
 
-  "dynamic-form-array.sortable-list.label": "Sortable list",
+  "dynamic-form-array.sortable-list.label": "Sortable list"
 }

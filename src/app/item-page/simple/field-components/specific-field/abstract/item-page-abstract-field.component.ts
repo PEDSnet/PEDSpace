@@ -44,7 +44,7 @@ export class ItemPageAbstractFieldComponent extends ItemPageFieldComponent {
     /**
      * Label i18n key for the rendered metadata
      */
-    label = 'item.page.abstract';
+    @Input() label = 'item.page.abstract';
 
     /**
      * Use the {@link MarkdownDirective} to render dc.description.abstract values
