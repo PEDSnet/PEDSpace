@@ -9,7 +9,7 @@ ui:
   host: localhost
   port: 4000
   # NOTE: Space is capitalized because 'namespace' is a reserved string in TypeScript
-  nameSpace: /metadata
+  nameSpace: /
   # The rateLimiter settings limit each IP to a 'max' of 500 requests per 'windowMs' (1 minute).
   rateLimiter:
     windowMs: 60000 # 1 minute
@@ -22,7 +22,7 @@ ui:
 # 'synced' with the 'dspace.server.url' setting in your backend's local.cfg.
 rest:
   ssl: true
-  host: pedsnetapps.chop.edu
+  host: pedsdspace01.research.chop.edu
   port: 443
   # NOTE: Space is capitalized because 'namespace' is a reserved string in TypeScript
   nameSpace: /server

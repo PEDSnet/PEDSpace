@@ -37,13 +37,13 @@ export class ItemPageDateFieldComponent extends ItemPageFieldComponent {
      * Fields (schema.element.qualifier) used to render their values.
      * In this component, we want to display values for metadata 'dc.date.issued'
      */
-    fields: string[] = [
+    @Input() fields: string[] = [
       'dc.date.issued',
     ];
 
     /**
      * Label i18n key for the rendered metadata
      */
-    label = 'item.page.date';
+    @Input() label = 'item.page.date';
 
 }

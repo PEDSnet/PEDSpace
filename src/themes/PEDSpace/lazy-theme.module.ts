@@ -12,6 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 import { RootModule } from '../../app/root.module';
+import { SearchResultsSkeletonComponent } from '../../app/shared/search/search-results/search-results-skeleton/search-results-skeleton.component';
 import { MetadataImportPageComponent } from './app/admin/admin-import-metadata-page/metadata-import-page.component';
 import { AdminSidebarComponent } from './app/admin/admin-sidebar/admin-sidebar.component';
 import { EditBitstreamPageComponent } from './app/bitstream-page/edit-bitstream-page/edit-bitstream-page.component';
@@ -199,6 +200,7 @@ const DECLARATIONS = [
   ProfilePageMetadataFormComponent,
   SubmissionUploadFilesComponent,
   ComcolPageContentComponent,
+  SearchResultsSkeletonComponent,
   ItemPageDescriptionFieldComponent,
   ItemPageExternalPublicationFieldComponent,
   ItemPageLocalFieldComponent

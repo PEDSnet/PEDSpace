@@ -1,4 +1,4 @@
-# Install this on both root and a user (e.g. seyediana1)
+# Install this on a user (e.g. seyediana1)
 
 
 #-----------------
