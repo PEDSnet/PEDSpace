@@ -223,6 +223,7 @@
 						<node id="CP01.03" label="Machine Learning, Unsupervised"/>
 						<node id="CP01.04" label="Machine Learning, Semi-Supervised"/>
 						<node id="CP01.05" label="Machine Learning, Supervised"/>
+						<node id="CP01.06" label="Other"/>
 					</isComposedBy>
 				</node>		
 				<node id="CP02" label="Content Data Model">
