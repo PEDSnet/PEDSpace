@@ -31,13 +31,13 @@ export class ItemPageAbstractFieldComponent extends ItemPageFieldComponent {
      * Separator string between multiple values of the metadata fields defined
      * @type {string}
      */
-    separator: string;
+    @Input() separator: string;
 
     /**
      * Fields (schema.element.qualifier) used to render their values.
      * In this component, we want to display values for metadata 'dc.description.abstract'
      */
-    fields: string[] = [
+    @Input() fields: string[] = [
       'dc.description.abstract',
     ];
 
@@ -49,5 +49,5 @@ export class ItemPageAbstractFieldComponent extends ItemPageFieldComponent {
     /**
      * Use the {@link MarkdownDirective} to render dc.description.abstract values
      */
-    enableMarkdown = true;
+    @Input() enableMarkdown = true;
 }
