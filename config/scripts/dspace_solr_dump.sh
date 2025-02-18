@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# IMPORTANT: This script works with `deploy_shiny.sh` found here: https://github.research.chop.edu/SEYEDIANA1/PEDSpace_Solr_Analytics/blob/main/deploy_shiny.bash 
+# Please don't get mad at me. You have no idea how hard it has been to manage `crontab` with CHOP VMs. I am 10% less sane than I was before I started this project.
+
 # =============================================================================
 # Solr Statistics Export, Organization, UUID Mapping, Compression, and Git Integration Script for DSpace
 # =============================================================================
@@ -69,38 +72,7 @@ touch $LOG_FILE
 sudo chown :dspace $LOG_FILE
 sudo chmod 664 $LOG_FILE
 
-# Default behavior: compression and git operations are disabled
-COMPRESS=false
-GIT_OPS=false
-
-# Git branch to push to (modify if different)
-GIT_BRANCH="main"
-
 # ---------------------------- Functions ---------------------------------------
-
-# Display usage information
-usage() {
-    cat <<EOF
-Usage: $0 [OPTIONS]
-
-Options:
-  -c, --compress          Enable compression of mapped CSV files after processing.
-  -g, --git               Enable Git operations (commit and push).
-  -h, --help              Display this help message and exit.
-
-Description:
-  This script exports Solr statistics, organizes the exported CSV files into
-  year/month directories based on filenames, maps UUIDs to their textual values,
-  optionally compresses the output, and optionally commits changes to a Git repository.
-
-Examples:
-  # Run the script with compression and Git operations enabled
-  $0 --compress --git
-
-  # Run the script without compression and Git operations
-  $0
-EOF
-}
 
 # Log messages with timestamps
 log() {
@@ -116,47 +88,6 @@ set_run_as_dspace() {
     else
         RUN_AS_DSPACE=""
         log "Script is running as 'dspace' user."
-    fi
-}
-
-# Parse command-line arguments
-parse_args() {
-    while [[ $# -gt 0 ]]; do
-        key="$1"
-        case $key in
-            -c|--compress)
-                COMPRESS=true
-                shift # past argument
-                ;;
-            -g|--git)
-                GIT_OPS=true
-                shift # past argument
-                ;;
-            -h|--help)
-                usage
-                exit 0
-                ;;
-            *)
-                echo "Unknown option: $1" >&2
-                usage
-                exit 1
-                ;;
-        esac
-    done
-}
-
-# Commit and push changes to Git repository
-git_commit_and_push() {
-    # Execute as 'dspace' user
-    ${RUN_AS_DSPACE} bash -c "umask 002 && cd '${EXPORT_DIR}' || exit 1;
-    git add .;
-    git commit -m 'Automated Solr statistics export and UUID mapping on ${TIMESTAMP}';
-    git push origin '${GIT_BRANCH}'" >> "${LOG_FILE}" 2>&1
-
-    if [ $? -eq 0 ]; then
-        log "Git operations completed successfully."
-    else
-        log "Error during Git operations."
     fi
 }
 
@@ -179,14 +110,14 @@ organize_files() {
     local target_dir="${EXPORT_DIR}/organized/${file_year}/${file_month}"
 
     # Create the target directory if it doesn't exist, executed as 'dspace'
-    ${RUN_AS_DSPACE} bash -c "umask 002 && mkdir -p '${target_dir}'"
+    bash -c "umask 002 && mkdir -p '${target_dir}'"
     if [ $? -ne 0 ]; then
         log "Error: Failed to create directory '${target_dir}'."
         return 1
     fi
 
     # Move the file to the target directory, executed as 'dspace'
-    ${RUN_AS_DSPACE} mv "${file_path}" "${target_dir}/"
+    mv "${file_path}" "${target_dir}/"
     if [ $? -eq 0 ]; then
         log "Moved '${file_name}' to '${target_dir}/'."
     else
@@ -197,11 +128,14 @@ organize_files() {
 
 # ---------------------------- Main Script -------------------------------------
 
-# Parse command-line arguments
-parse_args "$@"
-
 # Determine execution context
-set_run_as_dspace
+# What I'm trying to accomlish here is have the SOLR dump and the python mapping
+# execute in the most permission-safe way possible. Since I know `dspace` (the user)
+# will always have ownership permissions of the `dspace` directory, I was running
+# it as the `dspace` user. However, a later part of this whole workflow is pushing to
+# GitHub, and I want to keep GH credentials all under my own (seyediana1) user, I'm
+# just going to make sure tha the permissions are legit (`sudo chown -R dspace:dspace /data/dspace; sudo chmod -R 775 /data/dspace`)
+# and then run the whole script as `seyediana1`, to avoid having to give the `dspace` user my GH credentials.
 
 # Start logging
 log "========== Starting Solr Statistics Export Process =========="
@@ -211,13 +145,13 @@ sudo chown -R :dspace $EXPORT_DIR
 
 # Execute the Solr statistics export command, executed as 'dspace'
 log "Executing Solr statistics export command."
-${RUN_AS_DSPACE} bash -c "umask 002 && ${EXPORT_COMMAND}" >> "${LOG_FILE}" 2>&1
+bash -c "umask 002 && ${EXPORT_COMMAND}" >>"${LOG_FILE}" 2>&1
 
 if [ $? -eq 0 ]; then
     log "Solr statistics export completed successfully."
 else
     log "Error during Solr statistics export."
-    ${RUN_AS_DSPACE} bash -c "gzip '${LOG_FILE}'" 2>/dev/null
+    bash -c "gzip '${LOG_FILE}'" 2>/dev/null
     exit 1
 fi
 
@@ -242,18 +176,18 @@ find "${EXPORT_DIR}/organized" -type f -name "statistics_export_*.csv" | while r
     #   statistics_export_YYYY-MM_N.csv     (chunked, where N is one or more digits)
     file_name=$(basename "${file}")
     if [[ "${file_name}" =~ ^(statistics_export_[0-9]{4}-[0-9]{2})(_[0-9]+)?\.csv(\.gz)?$ ]]; then
-        base_name="${BASH_REMATCH[1]}"  # e.g. statistics_export_2025-01
-        chunk="${BASH_REMATCH[2]}"      # will be empty if unchunked
+        base_name="${BASH_REMATCH[1]}" # e.g. statistics_export_2025-01
+        chunk="${BASH_REMATCH[2]}"     # will be empty if unchunked
 
         # If the file is unchunked (i.e. no _[0-9]+ part)
         if [ -z "${chunk}" ]; then
             # Look in the same directory for any chunked file versions
             dir_name=$(dirname "${file}")
-            if ls "${dir_name}/${base_name}"_[0-9]*.csv 1> /dev/null 2>&1; then
-            # Remove both the original unchunked file and its mapped version
-            rm -f "${file}"
-            rm -f "${dir_name}/${base_name}_mapped.csv"
-            log "Removed unchunked file '${file}' and its mapped version because chunked versions exist."
+            if ls "${dir_name}/${base_name}"_[0-9]*.csv 1>/dev/null 2>&1; then
+                # Remove both the original unchunked file and its mapped version
+                rm -f "${file}"
+                rm -f "${dir_name}/${base_name}_mapped.csv"
+                log "Removed unchunked file '${file}' and its mapped version because chunked versions exist."
             fi
         fi
     else
@@ -266,41 +200,21 @@ log "Unchunked file cleanup completed."
 # Call the Python mapping script to add _value columns, executed as 'dspace'
 if [ -f "${MAPPING_SCRIPT}" ]; then
     log "Starting UUID mapping using Python script."
-    ${RUN_AS_DSPACE} bash -c "umask 002 && python3 '${MAPPING_SCRIPT}' \
+    bash -c "umask 002 && python3 '${MAPPING_SCRIPT}' \
         --input_dir '${EXPORT_DIR}/organized' \
         --columns '${UUID_COLUMNS}' \
         --log_file '${LOG_FILE}' \
-        --config '${CONFIG_INI}'" >> "${LOG_FILE}" 2>&1
+        --config '${CONFIG_INI}'" >>"${LOG_FILE}" 2>&1
 
     if [ $? -eq 0 ]; then
         log "UUID mapping completed successfully."
     else
         log "Error during UUID mapping."
-        ${RUN_AS_DSPACE} bash -c "gzip '${LOG_FILE}'" 2>/dev/null
+        bash -c "gzip '${LOG_FILE}'" 2>/dev/null
         exit 1
     fi
 else
     log "Python mapping script not found at '${MAPPING_SCRIPT}'. Skipping UUID mapping."
-fi
-
-# Compress the mapped CSV files if compression is enabled, executed as 'dspace'
-if [ "${COMPRESS}" = true ]; then
-    log "Starting compression of mapped CSV files."
-    find "${EXPORT_DIR}/organized" -type f -name "*_mapped.csv" | while read -r mapped_file; do
-        ${RUN_AS_DSPACE} bash -c "umask 002 && gzip '${mapped_file}'"
-        if [ $? -eq 0 ]; then
-            log "Compressed '${mapped_file}' to '${mapped_file}.gz'."
-        else
-            log "Error: Failed to compress '${mapped_file}'."
-        fi
-    done
-    log "Compression of mapped CSV files completed."
-fi
-
-# Perform Git operations if enabled
-if [ "${GIT_OPS}" = true ]; then
-    log "Starting Git operations."
-    git_commit_and_push
 fi
 
 # Finish logging
