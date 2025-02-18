@@ -4,27 +4,16 @@
 # Please don't get mad at me. You have no idea how hard it has been to manage `crontab` with CHOP VMs. I am 10% less sane than I was before I started this project.
 
 # =============================================================================
-# Solr Statistics Export, Organization, UUID Mapping, Compression, and Git Integration Script for DSpace
+# Solr Statistics Export, Organization, and UUID Mapping
 # =============================================================================
 #
 # This script performs the following operations:
 # 1. Exports Solr statistics to CSV files.
 # 2. Organizes the exported CSV files into a structured directory hierarchy (year/month) based on filename.
 # 3. Maps UUIDs in specified columns to their corresponding textual values using a Python script.
-# 4. Optionally compresses the mapped CSV files.
-# 5. Optionally commits and pushes changes to a Git repository.
 #
 # Usage:
 #   ./dspace_solr_dump.sh [OPTIONS]
-#
-# Options:
-#   -c, --compress          Enable compression of mapped CSV files after processing.
-#   -g, --git               Enable Git operations (commit and push).
-#   -h, --help              Display this help message and exit.
-#
-# Examples:
-#   # Run the script with compression and Git operations enabled
-#   ./dspace_solr_dump.sh --compress --git
 #
 #   # Run the script without compression and Git operations
 #   ./dspace_solr_dump.sh
