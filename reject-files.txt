@@ -1,0 +1,14 @@
+./src/assets/i18n/en.json5.rej
+./src/app/home-page/top-level-community-list/top-level-community-list.component.html.rej
+./src/app/item-page/field-components/metadata-values/metadata-values.component.html.rej
+./src/app/item-page/field-components/metadata-values/metadata-values.component.ts.rej
+./src/app/item-page/versions/item-versions.component.html.rej
+./src/app/item-page/versions/item-versions.component.ts.rej
+./src/app/navbar/navbar-section/navbar-section.component.scss.rej
+./src/app/shared/search/search-filters/search-filter/search-range-filter/search-range-filter.component.html.rej
+./src/app/shared/search/search-filters/search-filter/search-range-filter/search-range-filter.component.ts.rej
+./src/app/shared/utils/markdown.directive.ts.rej
+./README.md.rej
+./angular.json.rej
+./config/.gitignore.rej
+./package.json.rej

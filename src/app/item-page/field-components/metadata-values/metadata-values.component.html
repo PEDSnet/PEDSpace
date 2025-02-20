@@ -38,13 +38,61 @@
 </ng-template>
 
 <!-- Render simple value in a span  -->
-<ng-template #simple let-value="value">
-  <span class="dont-break-out preserve-line-breaks">{{value}}</span>
+<ng-template #simple let-value="value" let-sentenceTemplateParts="sentenceTemplateParts">
+  <span class="dont-break-out preserve-line-breaks">
+    <ng-container *ngIf="sentenceTemplateParts; else defaultContent">
+      {{ sentenceTemplateParts[0] }}{{ value }}{{ sentenceTemplateParts[1] }}
+    </ng-container>
+    <ng-template #defaultContent>
+      {{ value }}
+    </ng-template>
+  </span>
 </ng-template>
 
 <!-- Render value as a link to browse index -->
-<ng-template #browselink let-value="value">
-  <a class="dont-break-out preserve-line-breaks ds-browse-link"
-     [routerLink]="['/browse', browseDefinition.id]"
-     [queryParams]="getQueryParams(value)">{{value}}</a>
+<ng-template #browselink let-value="value" let-mdValue="mdValue" let-sentenceTemplateParts="sentenceTemplateParts">
+  <span class="dont-break-out preserve-line-breaks">
+    <ng-container *ngIf="sentenceTemplateParts; else defaultContent">
+      {{ sentenceTemplateParts[0] }}
+      <a class="ds-browse-link"
+         [routerLink]="['/browse', browseDefinition.id]"
+         [queryParams]="getQueryParams(value)">
+        {{ value.includes('::') ? getLastItem(value) : value }}
+      </a>
+      {{ sentenceTemplateParts[1] }}
+    </ng-container>
+    <ng-template #defaultContent>
+      <a class="ds-browse-link"
+         [routerLink]="['/browse', browseDefinition.id]"
+         [queryParams]="getQueryParams(value)">
+        {{ value.includes('::') ? getLastItem(value) : value }}
+      </a>
+    </ng-template>
+  </span>
+</ng-template>
+
+
+
+<!-- Render value as a button to browse index -->
+<ng-template #buttonlink let-value="value" let-mdValue="mdValue">
+  <button [ngClass]="['btn', 'btn-sm', 'ds-metadata-value', getButtonClass(value)]"
+          [routerLink]="['/browse', browseDefinition.id]"
+          [queryParams]="getQueryParams(value)">
+    {{ value.includes('::') ? getLastItem(value) : value }}
+  </button>
+</ng-template>
+
+
+<ng-template #badge let-value="value" let-mdValue="mdValue">
+  <span [ngClass]="['badge', 'ds-metadata-value', getButtonClass(value)]">
+    {{ value.includes('::') ? getLastItem(value) : value }}
+  </span>
+</ng-template>
+
+<ng-template #isDQCheckRequirementTemplate let-value="value" let-mdValue="mdValue">
+  <a class="dqcheck-requirement"
+     [routerLink]="['/browse', 'requirement']"
+     [queryParams]="{ value: value }">
+    {{ value }}
+  </a>
 </ng-template>

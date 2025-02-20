@@ -3,8 +3,11 @@ import {
   NgFor,
   NgIf,
   NgTemplateOutlet,
+  NgClass
 } from '@angular/common';
 import {
+  TemplateRef,
+  ViewChild,
   Component,
   Inject,
   Input,
@@ -36,9 +39,11 @@ import { ImageField } from '../../simple/field-components/specific-field/image-f
   styleUrls: ['./metadata-values.component.scss'],
   templateUrl: './metadata-values.component.html',
   standalone: true,
-  imports: [MetadataFieldWrapperComponent, NgFor, NgTemplateOutlet, NgIf, RouterLink, AsyncPipe, TranslateModule, MarkdownDirective],
+  imports: [MetadataFieldWrapperComponent, NgFor, NgTemplateOutlet, NgIf, RouterLink, AsyncPipe, TranslateModule, MarkdownDirective, NgClass],
 })
 export class MetadataValuesComponent implements OnChanges {
+  
+  @ViewChild('isDQCheckRequirementTemplate') isDQCheckRequirementTemplate: TemplateRef<any>;
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
@@ -77,6 +82,10 @@ export class MetadataValuesComponent implements OnChanges {
    */
   renderMarkdown;
 
+  /**
+   * Input flag to apply special styling
+   */
+  @Input() isDQCheckRequirement?: boolean = false;
 
   @Input() browseDefinition?: BrowseDefinition;
 
@@ -85,12 +94,48 @@ export class MetadataValuesComponent implements OnChanges {
    */
   @Input() img?: ImageField;
 
+  /**
+   * Whether the metadata value should be rendered as a button
+   */
+  @Input() renderAsButton = false;
+
+  /**
+   * The entity type of the metadata values
+   */
+  @Input() entityType: string;
+
+  /**
+   * Template string for inserting the metadata value into a sentence
+   */
+    @Input() sentenceTemplate?: string;
+
+  /**
+   * Parts of the sentenceTemplate split at [value]
+   */
+  sentenceTemplateParts: string[] | null = null;
+
+  /**
+   * Whether the metadata value should be rendered as a non-clickable badge
+   */
+  @Input() renderAsBadge = false;
+
   hasValue = hasValue;
 
   ngOnChanges(changes: SimpleChanges): void {
     this.renderMarkdown = !!this.appConfig.markdown.enabled && this.enableMarkdown;
+  
+    // Process the sentenceTemplate
+    if (this.sentenceTemplate && this.sentenceTemplate !== '[value]') {
+      // Split the sentence template and trim any extra spaces before/after parts
+      const parts = this.sentenceTemplate.split('[value]');
+      
+      // Ensure there are no leading/trailing spaces in parts
+      this.sentenceTemplateParts = parts.map(part => part.trim());
+    } else {
+      this.sentenceTemplateParts = null;
+    }
   }
-
+  
   /**
    * Does this metadata value have a configured link to a browse definition?
    */
@@ -116,6 +161,9 @@ export class MetadataValuesComponent implements OnChanges {
    * @param value the specific metadata value being linked
    */
   getQueryParams(value) {
+    if (!this.browseDefinition) {
+      return {};
+    }
     const queryParams = { startsWith: value };
     // todo: should compare with type instead?
     // eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
@@ -125,6 +173,22 @@ export class MetadataValuesComponent implements OnChanges {
     return queryParams;
   }
 
+  /**
+   * Get the last item in a string separated by '::'
+   * @param value The string to split
+   */
+  getLastItem(value: string): string {
+    const parts = value.split('::');
+    return parts[parts.length - 1];
+  }
+
+  /**
+   * Should the metadata value be rendered as a button?
+   * @param mdValue The metadata value to check
+   */
+  shouldRenderAsButton(mdValue: MetadataValue): boolean {
+    return this.renderAsButton && !this.renderAsBadge;
+  }
 
   /**
    * Checks if the given link value is an internal link.
@@ -135,15 +199,39 @@ export class MetadataValuesComponent implements OnChanges {
     return linkValue.startsWith(environment.ui.baseUrl);
   }
 
+  getButtonClass(value: string): string {
+    if (!this.entityType || this.entityType !== 'DQCheck') {
+      return 'btn-outline-primary';
+    }
+  
+    if (value.includes('Data Quality Category')) {
+      return 'btn-dq-category';
+    } else if (value.includes('Dataset Evaluation Strategy')) {
+      return 'btn-dataset-eval-strategy';
+    } else if (value.includes('Error Detection Approach')) {
+      return 'btn-error-detection-approach';
+    } else {
+      return 'btn-outline-primary';
+    }
+  }
+
+  /**
+   * Should the metadata value be rendered as a badge?
+   * @param mdValue The metadata value to check
+   */
+  shouldRenderAsBadge(mdValue: MetadataValue): boolean {
+    return this.renderAsBadge;
+  }  
+
   /**
    * This method performs a validation and determines the target of the url.
    * @returns - Returns the target url.
    */
-  getLinkAttributes(urlValue: string): { target: string, rel: string } {
-    if (this.hasInternalLink(urlValue)) {
-      return { target: '_self', rel: '' };
-    } else {
-      return { target: '_blank', rel: 'noopener noreferrer' };
+    getLinkAttributes(urlValue: string): { target: string, rel: string } {
+      if (this.hasInternalLink(urlValue)) {
+        return { target: '_self', rel: '' };
+      } else {
+        return { target: '_blank', rel: 'noopener noreferrer' };
+      }
     }
-  }
 }
