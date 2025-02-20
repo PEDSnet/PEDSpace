@@ -58,6 +58,11 @@
                 "input": "src/themes/dspace/styles/theme.scss",
                 "inject": false,
                 "bundleName": "dspace-theme"
+              },
+              {
+                "input": "src/themes/PEDSpace/styles/theme.scss",
+                "inject": false,
+                "bundleName": "PEDSpace-theme"
               }
             ],
             "scripts": [],
@@ -70,7 +75,8 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "baseHref": "/"
             },
             "production": {
               "fileReplacements": [
@@ -101,13 +107,20 @@
                   "maximumWarning": "200kb",
                   "maximumError": "300kb"
                 }
-              ]
+              ],
+              "baseHref": "/metadata/"
             }
           }
         },
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
+            "allowedHosts": [
+              "pedsdspace01.research.chop.edu",
+              "pedsdspaceprod.research.chop.edu",
+              "pedsnetapps.chop.edu",
+              "login.windows.net"
+            ],
             "buildTarget": "dspace-angular:build",
             "port": 4000
           },
