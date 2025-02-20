@@ -1,24 +1,149 @@
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
+
 :host {
+  // Style for the main menu item wrapper
   .ds-menu-item-wrapper {
-    position: relative; // align dropdown menu with respect to this element
+    position: relative; // Align dropdown menu with respect to this element
+
+    // Style for the toggler link inside the main menu
+    a.ds-menu-toggler-wrapper {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 0.25rem; // Equivalent to gapx-1
+      padding: 0.5rem 1rem; // Adjust padding as needed
+      text-decoration: underline;
+      // color: #381918;
+      transition: text-decoration 0.3s ease, color 0.3s ease;
+
+      // Remove underline and optionally change color on hover and focus
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        color: darken($redwood, 10%); // Optional: Darken color on hover
+        cursor: pointer; // Indicate interactivity
+      }
+
+      // Remove underline when the link is active
+      &.active {
+        text-decoration: none;
+        color: darken($redwood, 10%);
+      }
+
+      // Handle disabled state
+      &.disabled {
+        pointer-events: none;
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+
+    // Style for the text inside the toggler link
+    span.flex-fill {
+      text-decoration: inherit; // Inherit underline from parent <a>
+      color: inherit; // Inherit text color from parent <a>
+      transition: inherit; // Inherit transitions from parent <a>
+    }
+
+    // Style for the toggle icon
+    .toggle-menu-icon {
+      text-decoration: none; // Ensure no underline on the icon
+      color: inherit; // Inherit color from parent <a>
+      transition: transform 0.3s ease;
+
+      // Optional: Rotate the icon when hovered for a visual cue
+      a.ds-menu-toggler-wrapper:hover &,
+      a.ds-menu-toggler-wrapper:focus & {
+        transform: rotate(180deg);
+      }
+    }
+
+    // Underline effect for text inside the wrapper
+    // This targets any text directly inside the <a> tag
+    a.ds-menu-toggler-wrapper > span {
+      text-decoration: underline;
+      transition: text-decoration 0.3s ease;
+    }
+
+    // Remove underline on hover for all text inside the wrapper
+    a.ds-menu-toggler-wrapper:hover > span,
+    a.ds-menu-toggler-wrapper:focus > span {
+      text-decoration: none;
+    }
   }
 
+  // Style for the dropdown menu
   .dropdown-menu {
     overflow: hidden;
+
+    // Responsive styles using media breakpoints
     @include media-breakpoint-down(sm) {
       border: 0;
       background-color: var(--ds-expandable-navbar-bg);
     }
+
     @include media-breakpoint-up(md) {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
       background-color: var(--ds-navbar-dropdown-bg);
     }
+
+    // Style for each dropdown link
+    a.dropdown-link, // Assuming you have a class 'dropdown-link' for links
+    .dropdown-menu a { // Generic <a> tags inside dropdown-menu
+      display: block; // Ensure the entire area is clickable
+      padding: 0.5rem 1rem; // Adjust padding as needed
+      text-decoration: underline;
+      // color: #381918;
+      transition: text-decoration 0.3s ease, color 0.3s ease;
+
+      // Remove underline and optionally change color on hover and focus
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        color: darken($redwood, 10%); // Optional: Darken color on hover
+        background-color: rgba(56, 25, 24, 0.1); // Optional: Add background on hover
+        cursor: pointer; // Indicate interactivity
+      }
+
+      // Handle active state if necessary
+      &.active {
+        text-decoration: none;
+        color: darken($redwood, 10%);
+        background-color: rgba(56, 25, 24, 0.2);
+      }
+    }
+
+    // Style for nested elements inside dropdown links if any
+    .dropdown-menu a span {
+      text-decoration: inherit; // Inherit underline from parent <a>
+      color: inherit; // Inherit text color from parent <a>
+      transition: inherit; // Inherit transitions from parent <a>
+    }
+
+    // Remove underline on hover for all text inside dropdown links
+    .dropdown-menu a:hover span,
+    .dropdown-menu a:focus span {
+      text-decoration: none;
+    }
   }
 
-  .toggle-menu-icon {
-    &, &:hover {
-      text-decoration: none;
+  // Optional: Additional styles for the dropdown animation if needed
+  .dropdown-menu.show {
+    display: block; // Ensure dropdown is visible when active
+    animation: slide-down 0.3s ease forwards; // Example animation
+  }
+
+  // Example keyframes for slide-down animation
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
