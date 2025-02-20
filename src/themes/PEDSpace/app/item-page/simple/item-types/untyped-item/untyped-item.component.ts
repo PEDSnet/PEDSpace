@@ -10,8 +10,6 @@ import {
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import copy from 'copy-to-clipboard';
-// import { AuthService } from 'src/app/core/auth/auth.service';
-// import { RouteService } from 'src/app/core/services/route.service';
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
 
 import { Context } from '../../../../../../../app/core/shared/context.model';
