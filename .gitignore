@@ -44,3 +44,4 @@ junit.xml
 /src/mirador-viewer/config.local.js
 config/configs/config.ini
 config/configs/authentication-oidc.linked.cfg
+config/configs/authentication-oidc_backup.cfg
