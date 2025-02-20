@@ -1,0 +1,13 @@
+ds-comcol-page-header {
+  background-color: rgb(8, 176, 255); // Blue color for the banner
+  padding: 20px; // Adjust padding as needed
+  margin-bottom: 20px; // Space below the banner
+  display: block; // Ensure the element behaves like a block element
+  width: auto; // Adjust the width to counteract the negative margin
+  color: white; // Ensure text is white for better contrast
+
+  h1 {
+    color: white; // Ensure text is white for better contrast
+    margin: 0; // Remove default margin
+  }
+}

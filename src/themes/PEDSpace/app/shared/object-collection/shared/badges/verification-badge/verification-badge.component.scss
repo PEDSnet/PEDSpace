@@ -1,0 +1,108 @@
+@import "src/styles/_variables.scss";
+@import "src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss";
+
+$negative: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1pbnVzIj48cGF0aCBkPSJNNSAxMmgxNCIvPjwvc3ZnPg==";
+$check: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJhZGdlLWNoZWNrIj48cGF0aCBkPSJNMy44NSA4LjYyYTQgNCAwIDAgMSA0Ljc4LTQuNzcgNCA0IDAgMCAxIDYuNzQgMCA0IDQgMCAwIDEgNC43OCA0Ljc4IDQgNCAwIDAgMSAwIDYuNzQgNCA0IDAgMCAxLTQuNzcgNC43OCA0IDQgMCAwIDEtNi43NSAwIDQgNCAwIDAgMS00Ljc4LTQuNzcgNCA0IDAgMCAxIDAtNi43NloiLz48cGF0aCBkPSJtOSAxMiAyIDIgNC00Ii8+PC9zdmc+";
+$study-specific: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJhZGdlLWluZm8iPjxwYXRoIGQ9Ik0zLjg1IDguNjJhNCA0IDAgMCAxIDQuNzgtNC43NyA0IDQgMCAwIDEgNi43NCAwIDQgNCAwIDAgMSA0Ljc4IDQuNzggNCA0IDAgMCAxIDAgNi43NCA0IDQgMCAwIDEtNC43NyA0Ljc4IDQgNCAwIDAgMS02Ljc1IDAgNCA0IDAgMCAxLTQuNzgtNC43NyA0IDQgMCAwIDEgMC02Ljc2WiIvPjxsaW5lIHgxPSIxMiIgeDI9IjEyIiB5MT0iMTYiIHkyPSIxMiIvPjxsaW5lIHgxPSIxMiIgeDI9IjEyLjAxIiB5MT0iOCIgeTI9IjgiLz48L3N2Zz4=";
+
+.badge-check,
+.badge-negative,
+.badge-study-specific {
+    color: $black-bean;
+    padding: 5px 10px 5px 30px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    font-weight: bold;
+    transition: all 0.3s ease;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        width: 15px;
+        height: 15px;
+        transition: all 0.3s ease;
+    }
+
+    // Different hover effects for interactive vs non-interactive
+    &:not(.non-interactive) {
+        cursor: pointer;
+
+        &:hover, &:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+            &::before {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &.non-interactive {
+        cursor: default;
+
+        &:hover {
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+                transform: translateX(-100%);
+                animation: shine 1.5s infinite;
+            }
+        }
+    }
+}
+
+@keyframes shine {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.badge-check {
+    background-color: theme-color('success');
+
+    &::before {
+        background-color: $black-bean;
+        mask-image: url($check);
+        mask-size: cover;
+    }
+
+    &:hover, &:focus {
+        background-color: lighten(theme-color('success'), 10%);
+    }
+}
+
+.badge-negative {
+    background-color: theme-color('danger');
+
+    &::before {
+        background-color: $black-bean;
+        mask-image: url($negative);
+        mask-size: cover;
+    }
+
+    &:hover, &:focus {
+        background-color: lighten(theme-color('danger'), 10%);
+    }
+}
+
+.badge-study-specific {
+    background-color: theme-color('warning');
+
+    &::before {
+        background-color: $black-bean;
+        mask-image: url($study-specific);
+        mask-size: cover;
+    }
+
+    &:hover, &:focus {
+        background-color: lighten(theme-color('warning'), 10%);
+    }
+}

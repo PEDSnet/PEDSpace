@@ -1,0 +1,22 @@
+:host {
+    div.simple-view-link {
+        text-align: center;
+        a {
+            min-width: 25%;
+        }
+    }
+}
+
+// table {
+//     border-collapse: collapse;
+
+//     td {
+//         border: 1px solid black;
+//     }
+// }
+
+.table-responsive {
+    display: table;
+    width: auto;
+    overflow: visible;
+}
