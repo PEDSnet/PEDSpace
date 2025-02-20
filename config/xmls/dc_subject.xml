@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node id="Tags" label="Tags">
+	<isComposedBy>
+		<node id="STUDY" label="Study">
+			<isComposedBy>
+				<node id="STUDY.1" label="Case-Control Study">
+				</node>
+				<node id="STUDY.2" label="Clinical Study">
+						<isComposedBy>
+							<node id="STUDY.201" label="Clinical Trial"/>
+							<node id="STUDY.202" label="Observational Study"/>
+						</isComposedBy>
+				</node>
+				<node id="STUDY.3" label="Cohort Study">
+						<isComposedBy>
+							<node id="STUDY.301" label="Follow-Up Study">
+							</node>
+							<node id="STUDY.302" label="Longitudinal Study">
+							</node>
+							<node id="STUDY.304" label="Prospective Study">
+							</node>
+							<node id="STUDY.305" label="Retrospective Study">
+							</node>
+						</isComposedBy>
+				</node>
+				<node id="STUDY.4" label="Comparative Study">
+				</node>
+				<node id="STUDY.5" label="Controlled Before-After Study">
+				</node>
+				<node id="STUDY.6" label="Cross-Sectional Study">
+				</node>
+				<node id="STUDY.7" label="Evaluation Study">
+				</node>
+				<node id="STUDY.8" label="Feasibility Study">
+				</node>
+				<node id="STUDY.9" label="Funded Study">
+					<isComposedBy>
+						<node id="STUDY.901" label="PEDSnet Study"/>
+						<node id="STUDY.902" label="PCORnet Study"/>
+						<node id="STUDY.903" label="GLEAN Study"/>
+						<node id="STUDY.904" label="PKIDS Study"/>
+						<node id="STUDY.905" label="P50"/>
+						<node id="STUDY.906" label="Infrastructure Study"/>
+						<node id="STUDY.907" label="P30 PEDSnet Scholars Study"/>
+					</isComposedBy>
+				</node>
+				<node id="STUDY.10" label="Meta-Analysis"/>
+				<node id="STUDY.11" label="Systematic Review"/>
+				<node id="STUDY.12" label="Investigator-Led Study"/>
+				<node id="STUDY.13" label="Pilot Study"/>
+				<node id="STUDY.14" label="Demonstration Project"/>
+				<node id="STUDY.15" label="Prep-to-Research"/>
+				<node id="STUDY.16" label="Query Development"/>
+			</isComposedBy>
+		</node>
+		<node id="CS" label="Concept Set Development">
+			<isComposedBy>
+				<node id="CS.2" label="Concept Set Development Strategy">
+					<isComposedBy>
+						<node id="CS.201" label="Broad"/>
+						<node id="CS.202" label="Specific"/>
+						<node id="CS.207" label="Cohort Characterization">
+							<isComposedBy>
+								<node id="CS.207.1" label="Cohort Definition"/>
+								<node id="CS.207.2" label="Exclusion Criteria"/>
+								<node id="CS.207.3" label="Inclusion Criteria"/>
+							</isComposedBy>
+						</node>
+						<node id="CS.208" label="Variable Characterization">
+							<isComposedBy>
+								<node id="CS.208.1" label="Covariate"/>
+								<node id="CS.208.2" label="Independent Variable"/>
+								<node id="CS.208.3" label="Dependent Variable"/>
+								<node id="CS.208.4" label="Confounder"/>
+							</isComposedBy>
+						</node>
+						<node id="CS.209" label="Medication Characterization">
+							<isComposedBy>
+								<node id="CS.209.1" label="Dose Form Group"/>
+								<node id="CS.209.2" label="Dose Form"/>
+								<node id="CS.209.3" label="Brand Pack Name"/>
+								<node id="CS.209.4" label="Semantic Branded Drug"/>
+								<node id="CS.209.5" label="Semantic Branded Drug Group"/>
+								<node id="CS.209.6" label="Semantic Branded Drug Form Precise"/>
+								<node id="CS.209.7" label="Semantic Branded Drug Form"/>
+								<node id="CS.209.8" label="Semantic Branded Drug Component"/>
+								<node id="CS.209.9" label="Brand Name"/>
+								<node id="CS.209.10" label="Generic Pack"/>
+								<node id="CS.209.11" label="Semantic Clinical Drug"/>
+								<node id="CS.209.12" label="Semantic Clinical Drug Form Group Precise"/>
+								<node id="CS.209.13" label="Semantic Clinical Drug Group"/>
+								<node id="CS.209.14" label="Semantic Clinical Drug Form Precise"/>
+								<node id="CS.209.15" label="Semantic Clinical Drug Form"/>
+								<node id="CS.209.16" label="Semantic Clinical Drug Component"/>
+								<node id="CS.209.17" label="Multiple Ingredients"/>
+								<node id="CS.209.18" label="Precise Ingredient"/>
+								<node id="CS.209.19" label="Ingredient"/>
+							</isComposedBy>
+						</node>
+					</isComposedBy>
+				</node>
+				<node id="CS.3" label="Concept Set Evaluation">
+					<isComposedBy>
+						<node id="CS.301" label="Chart Reviewed"/>
+						<node id="CS.302" label="Clinician Reviewed"/>
+						<node id="CS.303" label="Reviewed, Non-Clinician"/>
+						<node id="CS.304" label="Validated"/>
+					</isComposedBy>
+				</node>
+				<node id="CS.4" label="Content Data Model">
+					<isComposedBy>
+						<node id="CS.401" label="PCORnet Data Model"/>
+						<node id="CS.402" label="PEDSnet Data Model"/>
+						<node id="CS.403" label="OMOP Data Model"/>
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+		<node id="DQ" label="Data Quality Check Categorizations">
+            <isComposedBy>
+                <node id="DQ.1" label="Data Quality Category">
+                   <isComposedBy>
+                        <node id="DQ.101" label="Concordance"/>
+                        <node id="DQ.102" label="Conformance"/>
+                        <node id="DQ.103" label="Completeness"/>
+                        <node id="DQ.104" label="Consistency"/>
+                        <node id="DQ.105" label="Information Representation"/>
+                        <node id="DQ.106" label="Plausibility"/>
+                   </isComposedBy>
+                </node>
+                <node id="DQ.2" label="Dataset Evaluation Strategy">
+                    <isComposedBy>
+                        <node id="DQ.201" label="Analysis Level">
+                            <isComposedBy>
+                                <node id="DQ.201.1" label="Person-Level Analysis"/>
+                                <node id="DQ.201.2" label="Visit-Level Analysis"/>
+								<node id="DQ.201.3" label="Event-Level Analysis"/>
+                            </isComposedBy>
+                        </node>
+                        <node id="DQ.202" label="Temporal Evaluation">
+                            <isComposedBy>
+                                <node id="DQ.202.1" label="Longitudinal Analysis"/>
+                                <node id="DQ.202.2" label="Cross-Sectional Analysis"/>
+                            </isComposedBy>
+                        </node>
+                        <node id="DQ.203" label="Data Source Comparison">
+                            <isComposedBy>
+                                <node id="DQ.203.1" label="Multi-Site Analysis"/>
+                                <node id="DQ.203.2" label="Single Site Analysis"/>
+                            </isComposedBy>
+                        </node>
+                        <node id="DQ.204" label="Data Anomaly Method">
+                            <isComposedBy>
+                                <node id="DQ.204.1" label="Time Series Anomalies"/>
+                                <node id="DQ.204.2" label="Distance From Mean"/>
+                                <node id="DQ.204.3" label="Jaccard Similarity Index"/>
+                                <node id="DQ.204.4" label="Hotspots Outlier Detection"/>
+                                <node id="DQ.204.5" label="Seasonal-Trend Decomposition Using LOESS"/>
+                                <node id="DQ.204.6" label="Euclidean Distance"/>
+                            </isComposedBy>
+                        </node>
+                        <node id="DQ.205" label="Exploratory Analysis">
+                            <isComposedBy>
+                                <node id="DQ.205.1" label="Time Series Exploration"/>
+                                <node id="DQ.205.2" label="Attrition Counts"/>
+								<node id="DQ.205.3" label="Frequency Distribution"/>
+                                <node id="DQ.205.4" label="Time Between Events"/>
+                            </isComposedBy>
+                        </node>
+                        <node id="DQ.206" label="Data Visualization">
+                            <isComposedBy>
+                                <node id="DQ.206.1" label="Bar Graph"/>
+                                <node id="DQ.206.2" label="Control Chart"/>
+                                <node id="DQ.206.3" label="Dot and Star Plot"/>
+                                <node id="DQ.206.4" label="Histogram"/>
+                                <node id="DQ.206.5" label="Heatmap"/>
+                                <node id="DQ.206.6" label="Line Graph"/>
+                                <node id="DQ.206.7" label="Radial Bar Graph"/>
+                            </isComposedBy>
+                        </node>
+                    </isComposedBy>
+                </node>
+                <node id="DQ.3" label="Error Detection Approach">
+					<isComposedBy>
+						<node id="DQ.301" label="Data Quality Probe">
+							<isComposedBy>
+								<node id="DQ.301.01" label="Misclassification Detection"/>
+								<node id="DQ.301.02" label="Eligibility Criteria Assessment"/>
+								<node id="DQ.301.03" label="Missing Expected Data"/>
+								<node id="DQ.301.04" label="Information Density"/>
+								<node id="DQ.301.05" label="Selection Error or Bias"/>
+								<node id="DQ.301.07" label="Anomalous Values from Internal Distributions"/>
+								<node id="DQ.301.08" label="Temporality Consistency Check"/>
+								<node id="DQ.301.09" label="Data Representation Errors"/>
+								<node id="DQ.301.10" label="Missing Required Data"/>
+								<node id="DQ.301.11" label="External Benchmarking"/>
+							</isComposedBy>
+						</node>
+                        <node id="DQ.302" label="Clinical Probe">
+                            <isComposedBy>
+                                <node id="DQ.302.01" label="Clinical Consistency"/>
+                                <node id="DQ.302.02" label="Clinical Follow-Up"/>
+                                <node id="DQ.302.03" label="Clinical Complexity"/>
+                                <node id="DQ.302.04" label="Confirmatory Clinical Data"/>
+                                <node id="DQ.302.05" label="Expected Clinical Event Representation"/>
+                                <node id="DQ.302.06" label="Selection Error or Bias Detection"/>
+                                <node id="DQ.302.07" label="Targeted Patient Population"/>
+                                <node id="DQ.302.08" label="Utilization Patterns"/>
+                                <node id="DQ.302.09" label="Valid Diagnostic Criteria"/>
+								<node id="DQ.302.10" label="Clinical Data Distributions"/>
+                            </isComposedBy>
+                        </node>
+                    </isComposedBy>
+                </node>
+            </isComposedBy>
+        </node>
+		<node id="CP" label="Computable Phenotyping">
+			<isComposedBy>
+				<node id="CP01" label="Phenotype Development Strategy">
+					<isComposedBy>
+						<node id="CP01.01" label="Rules-Based (Structured Data-Only)"/>
+						<node id="CP01.02" label="Natural Language Processing"/>
+						<node id="CP01.03" label="Machine Learning, Unsupervised"/>
+						<node id="CP01.04" label="Machine Learning, Semi-Supervised"/>
+						<node id="CP01.05" label="Machine Learning, Supervised"/>
+					</isComposedBy>
+				</node>
+				<node id="CP02" label="Content Data Model">
+					<isComposedBy>
+						<node id="CP02.01" label="OMOP Data Model"/>
+						<node id="CP02.02" label="PEDSnet Data Model"/>
+						<node id="CP02.03" label="PCORnet Data Model"/>
+					</isComposedBy>
+				</node>
+				<node id="CP03" label="Phenotype Evaluation">
+					<isComposedBy>
+						<node id="CP03.01" label="Specificity Measure"/>
+						<node id="CP03.02" label="Sensitivity Measure"/>
+						<node id="CP03.03" label="Negative Predictive Value (NPV)"/>
+						<node id="CP03.04" label="Positive Predictive Value (PPV)"/>
+						<node id="CP03.05" label="Area Under Curve (AUC)"/>
+						<node id="CP03.06" label="Validated"/>
+						<node id="CP03.07" label="Clinician Reviewed"/>
+					</isComposedBy>
+				</node>
+				<node id="CP04" label="Variable Characterization">
+					<isComposedBy>
+						<node id="CP04.01" label="Primary Outcome/Exposure"/>
+						<node id="CP04.02" label="Secondary Outcome/Exposure"/>
+						<node id="CP04.03" label="Cohort Definition (Inclusion or Exclusion Criteria)"/>
+						<node id="CP04.04" label="Comorbidity or Covariate"/>
+					</isComposedBy>
+				</node>
+				<node id="CP05" label="Development Population">
+					<isComposedBy>
+						<node id="CP05.01" label="Age Groups">
+							<isComposedBy>
+								<node id="CP05.0101" label="Adolescent Patient Population"/>
+								<node id="CP05.0102" label="Adult Patient Population"/>
+								<node id="CP05.0103" label="Infant Patient Population"/>
+								<node id="CP05.0104" label="Child Patient Population"/>
+								<node id="CP05.0105" label="Elderly Patient Population"/>
+								<node id="CP05.0105" label="All Ages Patient Population"/>
+							</isComposedBy>
+						</node>
+						<node id="CP05.02" label="Sex and Gender Groups">
+							<isComposedBy>
+								<node id="CP05.0201" label="Male Patient Population (Sex Assigned at Birth)"/>
+								<node id="CP05.0202" label="Female Patient Population (Sex Assigned at Birth)"/>
+								<node id="CP05.0203" label="Intersex Patient Population (Sex Assigned at Birth"/>
+								<node id="CP05.0204" label="Transgender Patient Population"/>
+								<node id="CP05.0205" label="Non-Binary Patient Population"/>
+								<node id="CP05.0206" label="All Gender Identities Patient Population"/>
+								<node id="CP05.0207" label="Sex Assigned at Birth Patient Population"/>
+							</isComposedBy>
+						</node>
+						<node id="CP05.03" label="Ethnicity Groups">
+							<isComposedBy>
+								<node id="CP05.0301" label="Hispanic or Latinx Patient Population">
+									<hasNote>Latinx in this case refers male-identifying, female-identifying, and gender-expansive people of Latin American origin or descent (del Río-González, 2021)</hasNote>
+								</node>
+								<node id="CP05.0302" label="Non-Hispanic or Latinx Patient Population">
+									<hasNote>Latinx in this case refers male-identifying, female-identifying, and gender-expansive people of Latin American origin or descent (del Río-González, 2021)</hasNote>
+								</node>
+								<node id="CP05.0303" label="All Ethnic Groups Patient Population (No Restrictions)"/>
+							</isComposedBy>
+						</node>
+						<node id="CP05.04" label="Racial Groups">
+							<isComposedBy>
+								<node id="CP05.0401" label="American Indian or Alaska Native Patient Population"/>
+								<node id="CP05.0402" label="Asian Patient Population"/>
+								<node id="CP05.0403" label="Black or African American Patient Population"/>
+								<node id="CP05.0404" label="Native Hawaiian or Other Pacific Islander Patient Population"/>
+								<node id="CP05.0405" label="White Patient Population"/>
+								<node id="CP05.0406" label="All Racial Groups Patient Population (No Restrictions)"/>
+							</isComposedBy>
+						</node>
+					</isComposedBy>
+				</node>
+			</isComposedBy>
+		</node>
+	</isComposedBy>
+	<hasNote>Taxonomy developed by Annabel Pinkney and Hanieh Razzaghi</hasNote>
+</node>

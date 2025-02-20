@@ -42,3 +42,5 @@ package-lock.json
 junit.xml
 
 /src/mirador-viewer/config.local.js
+config/configs/config.ini
+config/configs/authentication-oidc.linked.cfg

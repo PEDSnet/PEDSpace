@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is the controlled vocabulary used for dc.subject.other-->
+<node id="VOCAB" label="Medical Ontologies">
+	<isComposedBy>
+        <node id="VOCAB.1" label="RxNorm"></node>
+        <node id="VOCAB.2" label="RxNorm Extension"></node>
+        <node id="VOCAB.3" label="NDC"></node>
+        <node id="VOCAB.4" label="ICD-03"></node>
+        <node id="VOCAB.35" label="ICD-9"></node>
+        <node id="VOCAB.5" label="ICD-9-CM"></node>
+        <node id="VOCAB.6" label="ICD-9-Proc"></node>
+        <node id="VOCAB.7" label="ICD-10"></node>
+        <node id="VOCAB.8" label="ICD-10-CM"></node>
+        <node id="VOCAB.9" label="ICD-10-PCS"></node>
+        <node id="VOCAB.10" label="ICD-10-GM"></node>
+        <node id="VOCAB.11" label="ICD-10-CN"></node>
+        <node id="VOCAB.36" label="ICD-11"></node>
+        <node id="VOCAB.12" label="ICD-11-CM"></node>
+        <node id="VOCAB.13" label="ICD-11-PCS"></node>
+        <node id="VOCAB.14" label="LOINC"></node>
+        <node id="VOCAB.15" label="CPT"></node>
+        <node id="VOCAB.16" label="OMOP Value Set"></node>
+        <node id="VOCAB.17" label="PCORnet Value Set"></node>
+        <node id="VOCAB.18" label="PEDSnet Value Set"></node>
+        <node id="VOCAB.19" label="ABMS"></node>
+        <node id="VOCAB.20" label="CMS Place of Service"></node>
+        <node id="VOCAB.21" label="HCPCS"></node>
+        <node id="VOCAB.22" label="Medicare Specialty"></node>
+        <node id="VOCAB.23" label="MedDRA"></node>
+        <node id="VOCAB.24" label="NUCC"></node>
+        <node id="VOCAB.25" label="SNOMED"></node>
+        <node id="VOCAB.26" label="CIM10"></node>
+        <node id="VOCAB.27" label="EDI"></node>
+        <node id="VOCAB.28" label="HES Specialty"></node>
+        <node id="VOCAB.29" label="Nebraska Lexicon"></node>
+        <node id="VOCAB.30" label="NAACCR"></node>
+        <node id="VOCAB.31" label="OPCS4"></node>
+        <node id="VOCAB.32" label="SPC"></node>
+        <node id="VOCAB.33" label="SPL"></node>
+        <node id="VOCAB.34" label="UK Biobank"></node>
+	</isComposedBy>
+	<hasNote>Taxonomy developed by Annabel Pinkney</hasNote>
+</node>

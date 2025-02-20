@@ -1,0 +1,40 @@
+2025-01-07 12:52:04 : ========== Directory Organization Started ==========
+2025-01-07 12:52:04 : Starting organization of directory: .
+2025-01-07 12:52:04 : Moved: .gitignore --> git/
+2025-01-07 12:52:04 : Moved: authentication.cfg --> configs/
+2025-01-07 12:52:04 : Moved: authority.cfg --> configs/
+2025-01-07 12:52:04 : Moved: curate.cfg --> configs/
+2025-01-07 12:52:04 : Moved: dspace.cfg --> configs/
+2025-01-07 12:52:04 : Moved: local.cfg --> configs/
+2025-01-07 12:52:04 : Moved: config.dev.yml --> configs/
+2025-01-07 12:52:04 : Moved: config.example.yml --> configs/
+2025-01-07 12:52:04 : Moved: config.prod.yml --> configs/
+2025-01-07 12:52:04 : Moved: config.yml --> configs/
+2025-01-07 12:52:04 : Moved: config.ini --> configs/
+2025-01-07 12:52:04 : Moved: relationship-types.dtd --> dtds/
+2025-01-07 12:52:04 : Moved: submission-forms.dtd --> dtds/
+2025-01-07 12:52:04 : Moved: dc_subject_mesh.xml --> xmls/
+2025-01-07 12:52:04 : Moved: dc_subject_other.xml --> xmls/
+2025-01-07 12:52:04 : Moved: dc_subject.xml --> xmls/
+2025-01-07 12:52:04 : Moved: discovery.xml --> xmls/
+2025-01-07 12:52:04 : Moved: item-submission.xml --> xmls/
+2025-01-07 12:52:04 : Moved: log4j2-container.xml --> xmls/
+2025-01-07 12:52:04 : Moved: log4j2.xml --> xmls/
+2025-01-07 12:52:04 : Moved: relationship-formats.xml --> xmls/
+2025-01-07 12:52:04 : Moved: relationship-types.xml --> xmls/
+2025-01-07 12:52:04 : Moved: submission-forms.xml --> xmls/
+2025-01-07 12:52:04 : Moved: virtual-metadata.xml --> xmls/
+2025-01-07 12:52:04 : Moved: workflow-curation.xml --> xmls/
+2025-01-07 12:52:04 : Moved: workflow.xml --> xmls/
+2025-01-07 12:52:04 : Moved: dspace_backup.sh --> scripts/
+2025-01-07 12:52:04 : Moved: dspace_crontab.sh --> scripts/
+2025-01-07 12:52:04 : Moved: dspace_restore.sh --> scripts/
+2025-01-07 12:52:04 : Moved: dspace_solr_dump.sh --> scripts/
+2025-01-07 12:52:04 : Moved: organize_files.sh --> scripts/
+2025-01-07 12:52:04 : Moved: map_uuids.py --> scripts/
+2025-01-07 12:52:04 : Moved: populate_subject_flat.py --> scripts/
+2025-01-07 12:52:04 : Moved: update_vocab.py --> scripts/
+2025-01-07 12:52:04 : Processing 'others' category for unmatched files.
+2025-01-07 12:52:04 : Moved: CopyHierarchicalSubjectsToFlat.java --> others/
+2025-01-07 12:52:04 : Completed organization of directory: .
+2025-01-07 12:52:04 : ========== Directory Organization Completed ==========

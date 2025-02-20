@@ -1,0 +1,12 @@
+# Create a new file at ~/.pgpass with the following *filled-in* details:
+# hostname:port:database:username:password
+# execute these commands
+# sudo chmod 0600 ~/.pgpass
+# Must be owned as the same postgres user being logged in:
+# sudo chown dspace:dspace ~/.pgpass
+# More details:
+# https://www.postgresql.org/docs/current/libpq-pgpass.html#LIBPQ-PGPASS
+# https://stackoverflow.com/a/50563298
+# This must be in root's home directoy i.e. /root
+# Set up the cron job via sudo crontab -e
+# make sure the respective users are allowed in cron.allow
