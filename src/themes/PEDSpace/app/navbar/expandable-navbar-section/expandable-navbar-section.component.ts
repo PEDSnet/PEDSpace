@@ -9,6 +9,7 @@ import { RouterLinkActive } from '@angular/router';
 
 import { ExpandableNavbarSectionComponent as BaseComponent } from '../../../../../app/navbar/expandable-navbar-section/expandable-navbar-section.component';
 import { slide } from '../../../../../app/shared/animations/slide';
+import { HoverOutsideDirective } from '../../../../../app/shared/utils/hover-outside.directive';
 import { VarDirective } from '../../../../../app/shared/utils/var.directive';
 
 /**
@@ -22,7 +23,7 @@ import { VarDirective } from '../../../../../app/shared/utils/var.directive';
   styleUrls: ['../../../../../app/navbar/expandable-navbar-section/expandable-navbar-section.component.scss'],
   animations: [slide],
   standalone: true,
-  imports: [VarDirective, RouterLinkActive, NgComponentOutlet, NgIf, NgFor, AsyncPipe],
+  imports: [VarDirective, HoverOutsideDirective, RouterLinkActive, NgComponentOutlet, NgIf, NgFor, AsyncPipe],
 })
 export class ExpandableNavbarSectionComponent extends BaseComponent {
 }

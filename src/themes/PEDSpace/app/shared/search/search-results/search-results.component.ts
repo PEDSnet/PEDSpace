@@ -2,6 +2,7 @@ import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 import {
   fadeIn,
@@ -12,6 +13,7 @@ import { ThemedLoadingComponent } from '../../../../../../app/shared/loading/the
 import { ObjectCollectionComponent } from '../../../../../../app/shared/object-collection/object-collection.component';
 import { SearchExportCsvComponent } from '../../../../../../app/shared/search/search-export-csv/search-export-csv.component';
 import { SearchResultsComponent as BaseComponent } from '../../../../../../app/shared/search/search-results/search-results.component';
+import { SearchResultsSkeletonComponent } from '../../../../../../app/shared/search/search-results/search-results-skeleton/search-results-skeleton.component';
 
 @Component({
   selector: 'ds-themed-search-results',
@@ -23,7 +25,7 @@ import { SearchResultsComponent as BaseComponent } from '../../../../../../app/s
     fadeInOut,
   ],
   standalone: true,
-  imports: [NgIf, SearchExportCsvComponent, ObjectCollectionComponent, ThemedLoadingComponent, ErrorComponent, RouterLink, TranslateModule],
+  imports: [NgIf, SearchExportCsvComponent, ObjectCollectionComponent, ThemedLoadingComponent, NgxSkeletonLoaderModule, SearchResultsSkeletonComponent, ErrorComponent, RouterLink, TranslateModule],
 })
 export class SearchResultsComponent extends BaseComponent {
 

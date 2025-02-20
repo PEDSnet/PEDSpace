@@ -13,6 +13,7 @@ import {
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 import { SearchConfigurationService } from '../../../../../../app/core/shared/search/search-configuration.service';
 import { SEARCH_CONFIG_SERVICE } from '../../../../../../app/my-dspace-page/my-dspace-configuration.service';
@@ -34,7 +35,7 @@ import { SearchFiltersComponent as BaseComponent } from '../../../../../../app/s
     },
   ],
   standalone: true,
-  imports: [NgIf, NgFor, SearchFilterComponent, RouterLink, AsyncPipe, TranslateModule, AdvancedSearchComponent],
+  imports: [NgIf, NgFor, SearchFilterComponent, RouterLink, AsyncPipe, TranslateModule, NgxSkeletonLoaderModule, AdvancedSearchComponent],
 })
 
 export class SearchFiltersComponent extends BaseComponent {
