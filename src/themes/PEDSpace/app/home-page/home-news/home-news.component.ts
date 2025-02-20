@@ -6,10 +6,13 @@ import { HomeNewsComponent as BaseComponent } from '../../../../../app/home-page
 @Component({
   selector: 'ds-themed-home-news',
   styleUrls: ['./home-news.component.scss'],
+  // styleUrls: ['../../../../../app/home-page/home-news/home-news.component.scss'],
   templateUrl: './home-news.component.html',
+  // templateUrl: '../../../../../app/home-page/home-news/home-news.component.html',
   standalone: true,
   imports: [BaseComponent, CommonModule],
 })
+
 export class HomeNewsComponent extends BaseComponent implements OnInit {
   isProduction: boolean = environment.production; 
   ipAddressMatch: boolean = false; // For storing if IP matches

@@ -53,8 +53,8 @@ export class ItemPageCcLicenseFieldComponent implements OnInit {
    */
   @Input() showDisclaimer = true;
 
-  uri: string = '';
-  name: string = '';
+  uri = '';
+  name = '';
   showImage = true;
   imgSrc: string | null = null;
   badgeUrl: string | null = null;

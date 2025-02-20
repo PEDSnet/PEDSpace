@@ -1,6 +1,9 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
-
+import {
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { Item } from 'src/app/core/shared/item.model';
 import { MetadataValuesComponent } from 'src/app/item-page/field-components/metadata-values/metadata-values.component';
 import { ItemPageFieldComponent } from 'src/app/item-page/simple/field-components/specific-field/item-page-field.component';

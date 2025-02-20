@@ -1001,21 +1001,21 @@
   "browse.back.all-results": "All browse results",
 
   "browse.comcol.by.quality": "By Research Suitability",
-  
+
   "browse.comcol.by.requirement": "By Required Input",
-  
+
   "browse.comcol.by.requirement.breadcrumbs": "By Required Input",
-  
+
   "browse.comcol.by.author": "By Author",
 
   "browse.comcol.by.dateissued": "By Issue Date",
-  
+
   "browse.comcol.by.datecreated": "By Date",
 
   "browse.comcol.by.subject": "By Subject",
 
   "browse.comcol.by.srsc": "By Subject Category",
-  
+
   "browse.comcol.by.dc_subject": "By Subject Category",
 
   "browse.comcol.by.nsi": "By Norwegian Science Index",
@@ -1035,23 +1035,23 @@
   "browse.empty": "No items to show.",
 
   "browse.metadata.quality": "Research Suitability",
-  
+
   "browse.metadata.quality.breadcrumbs": "Research Suitability",
-  
+
   "browse.metadata.requirement": "Data Requirement",
-  
+
   "browse.metadata.requirement.breadcrumbs": "Data Requirement",
-  
+
   "browse.metadata.author": "Author",
-  
+
   "browse.metadata.relation": "Relation",
-  
+
   "browse.metadata.type": "Type",
-  
+
   "browse.metadata.tag": "Tag",
 
   "browse.metadata.dateissued": "Issue Date",
-  
+
   "browse.metadata.datecreated": "Date",
 
   "browse.metadata.subject": "Subject",
@@ -1059,37 +1059,37 @@
   "browse.metadata.title": "Title",
 
   "browse.metadata.srsc": "Subject Category",
-  
+
   "browse.metadata.dc_subject": "Subject Category",
-  
+
   "browse.metadata.dc_subject.description": "Browse by Subject Category",
 
   "browse.metadata.vocab": "Vocabulary",
-  
+
   "browse.metadata.specs": "Specification",
 
   "browse.metadata.author.breadcrumbs": "Browse by Author",
 
   "browse.metadata.type.breadcrumbs": "Browse by Type",
-  
+
   "browse.metadata.tag.breadcrumbs": "Browse by Tag",
 
   "browse.metadata.dateissued.breadcrumbs": "Browse by Date",
-  
+
   "browse.metadata.datecreated.breadcrumbs": "Browse by Date",
 
   "browse.metadata.subject.breadcrumbs": "Browse by Subject",
- 
+
   "browse.metadata.vocab.breadcrumbs": "Vocabulary",
-  
+
   "browse.metadata.specs.breadcrumbs": "Browse by Specification",
 
   "browse.metadata.srsc.breadcrumbs": "Browse by Subject Category",
-  
+
   "browse.metadata.dc_subject.breadcrumbs": "Browse by Subject Category",
 
   "browse.metadata.dc_subject.tree.descrption": "Select a subject to add as search filter",
-  
+
   "browse.metadata.srsc.tree.descrption": "Select a subject to add as search filter",
 
   "browse.metadata.nsi.breadcrumbs": "Browse by Norwegian Science Index",
@@ -1371,13 +1371,13 @@
   "collection.listelement.badge": "Domain",
 
   "documentation.collection.listelement.badge": "Resource Domain",
-  
+
   "conceptset.collection.listelement.badge": "Concept Set Domain",
-  
+
   "dqcheck.collection.listelement.badge": "DQ Check Domain",
-  
+
   "study.collection.listelement.badge": "Study Domain",
-  
+
   "phenotype.collection.listelement.badge": "Phenotype Domain",
 
   "collection.logo": "Domain logo",
@@ -2741,7 +2741,7 @@
   "item.listelement.badge": "Item",
 
   "item.page.description": "Description",
-  
+
   "item.page.description.cohort": "Cohort Description",
 
   "item.page.journal-issn": "Journal ISSN",
@@ -2857,7 +2857,7 @@
   "item.page.relationships.isOrgUnitOfProject": "Research Projects",
 
   "item.page.subject": "Specifications",
-  
+
   "item.page.subject.mesh": "Clinical Subjects",
 
   "item.page.uri": "URI",
@@ -2889,17 +2889,17 @@
   "item.page.image.alt.ROR": "ROR logo",
 
   "item.preview.dc.identifier.uri": "Identifier",
-  
+
   "item.preview.local.dqcheck.requirement": "Data Requirements",
 
   "item.preview.dc.contributor.author": "Funder(s)",
-  
+
   "item.preview.dc.contributor": "Funder(s)",
-  
+
   "item.preview.dc.contributor.author": "Creators",
-  
+
   "item.preview.dc.contributor.advisor": "Reviewers",
-  
+
   "item.preview.dc.contributor.other": "Affiliation(s)",
 
   "item.preview.dc.date": "Last Modified",
@@ -2911,11 +2911,11 @@
   "item.preview.dc.identifier.other": "Other identifier",
 
   "item.preview.dc.language.iso": "Language",
-  
+
   "item.preview.local.description.viz": "Visualization Output",
-  
+
   "item.preview.local.description.raw": "Raw Output",
-  
+
   "item.preview.dc.subject": "Tags",
 
   "item.preview.dc.title": "Title",
@@ -2927,11 +2927,11 @@
   "item.preview.oaire.citation.volume": "Volume",
 
   "item.preview.dc.relation": "Related Items",
-  
+
   "item.preview.dc.relation.isreferencedby": "Related Publications",
-  
+
   "item.preview.dc.relation.issn": "ISSN",
-  
+
   "item.preview.dc.relation.uri": "Development Code",
 
   "item.preview.dc.identifier.isbn": "ISBN",
@@ -3179,11 +3179,11 @@
   "itemtemplate.edit.metadata.save-button": "Save",
 
   "needsrefinement.listelement.badge": "Needs Refinement",
-  
+
   "research-ready.listelement.badge": "Research-Ready",
-  
+
   "deprecated.listelement.badge": "Deprecated",
-  
+
   "journal.listelement.badge": "Journal",
 
   "journal.page.description": "Description",
@@ -3351,13 +3351,13 @@
   "menu.section.admin_search": "Admin Search",
 
   "menu.section.browse_global_by_quality": "By Research-Readiness",
-  
+
   "menu.section.browse_by_quality": "By Research-Readiness",
-  
+
   "menu.section.browse_global_by_requirement": "By Data Quality Module Requirement",
-  
+
   "menu.section.browse_by_requirement": "By Data Quality Module Requirement",
-  
+
   "menu.section.browse_community": "This Collection",
 
   "menu.section.browse_community_by_author": "By Author",
@@ -3371,19 +3371,19 @@
   "menu.section.browse_global_by_author": "By Author",
 
   "menu.section.browse_global_by_dateissued": "By Issue Date",
-  
+
   "menu.section.browse_global_by_datecreated": "By Date",
-  
+
   "menu.section.browse_global_by_type": "By Type",
-  
+
   "menu.section.browse_global_by_tag": "By Tag",
-  
+
   "menu.section.browse_global_by_relation": "By Relation",
 
   "menu.section.browse_global_by_subject": "By Clinical Subject",
-  
+
   "menu.section.browse_global_by_vocab": "By Vocabulary",
-  
+
   "menu.section.browse_global_by_specs": "By Specification",
 
   "menu.section.browse_global_by_dc_subject": "By Subject Category",
@@ -4115,13 +4115,13 @@
   "publication-relationships.search.results.head": "Publication Search Results",
 
   "publication.search.title": "Publication Search",
-  
+
   "study.search.results.head": "Study Search Results",
 
   "study-relationships.search.results.head": "Study Search Results",
 
   "study.search.title": "Study Search",
-  
+
   "conceptset.search.results.head": "Concept Set Search Results",
 
   "conceptset-relationships.search.results.head": "Concept Set Search Results",
@@ -4343,15 +4343,15 @@
   "relationships.isFundingAgencyOf.OrgUnit": "Funder",
 
   "relationships.isConceptSetOf": "Related Concept Set",
-  
+
   "relationships.isStudyOf": "Related Study",
 
   "relationships.isPhenotypeOf": "Related Phenotype",
-  
+
   "relationships.isDQCheckOf": "Related Data Quality Check",
-  
+
   "relationships.isDocumentationOf": "Related Resource",
-  
+
   "relationships.isPersonOf": "Related Person",
 
   "repository.image.logo": "Repository logo",
@@ -4499,11 +4499,11 @@
   "search.filters.remove": "Remove filter of type {{ type }} with value {{ value }}",
 
   "search.filters.applied.f.itemQuality": "Research Suitability",
-  
+
   "search.filters.applied.f.itemFunder": "Funder",
 
   "search.filters.applied.f.itemAffiliation": "Affiliation",
-  
+
   "search.filters.applied.f.title": "Title",
 
   "search.filters.applied.f.author": "Author",
@@ -4559,65 +4559,65 @@
   "search.filters.filter.itemQuality.head": "Research Suitability",
 
   "search.filters.filter.checkReq.head": "Required Input",
-  
+
   "search.filters.filter.checkReq.label": "Required Input",
-  
+
   "search.filters.filter.checkReq.placeholder": "Required Input",
-  
+
   "search.filters.filter.itemFunder.head": "Funder",
-  
+
   "search.filters.filter.subjectFlat.head": "Tags (List View)",
-  
+
   "search.filters.filter.subjectFlat.label": "Tags (List View)",
-  
+
   "search.filters.filter.subjectFlat.placeholder": "Tags (List View)...",
-  
+
   "search.filters.filter.itemFunder.label": "Funder",
 
   "search.filters.filter.itemFunder.placeholder": "Funder...",
-  
+
   "search.filters.filter.itemVocab.head": "Vocabulary",
-  
+
   "search.filters.filter.itemAffiliation.head": "Affiliation",
-  
+
   "search.filters.filter.itemAffiliation.label": "Search Affiliation",
-  
+
   "search.filters.filter.itemAffiliation.placeholder": "Affiliation...",
 
   "search.filters.filter.itemVocabulary.label": "Search Vocabulary",
-  
+
   "search.filters.filter.itemVocabulary.placeholder": "Vocabulary...",
-  
+
   "search.filters.filter.itemVocabulary.head": "Vocabulary",
-  
+
   "search.filters.filter.itemVocabulary.head": "Vocabulary",
-  
+
   "search.filters.filter.itemVocab.label": "Search Vocabulary",
-  
+
   "search.filters.filter.itemVocab.placeholder": "Vocabulary...",
-  
+
   "search.filters.filter.dateCreated.head": "Date Created",
-  
+
   "search.filters.filter.dateModified.head": "Date Modified",
-  
+
   "search.filters.filter.dateModified.min.label": "Start",
-  
+
   "search.filters.filter.dateModified.max.label": "End",
 
   "search.filters.filter.itemTags.head": "Tags (Tree View)",
-    
+
   "search.filters.filter.itemTags.label": "Tags (Tree View)",
-  
+
   "search.filters.filter.itemTags.placeholder": "Tags...",
-  
+
   "search.filters.filter.itemClinicalSubject.head": "Clinical Subject",
 
   "search.filters.filter.itemClinicalSubject.label": "Clinical Subject",
-  
+
   "search.filters.filter.itemClinicalSubject.placeholder": "Terms...",
-  
+
   "search.filters.filter.dateCreated.max.label": "End",
-  
+
   "search.filters.filter.dateCreated.min.label": "Start",
 
   "search.filters.filter.title.head": "Title",
@@ -5215,13 +5215,13 @@
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isAuthorOfPublication": "Local Authors ({{ count }})",
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isJournalOfPublication": "Local Journals ({{ count }})",
-  
+
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.Study": "Local Studies ({{ count }})",
-  
+
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.ConceptSet": "Local Concept Sets ({{ count }})",
-  
+
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.Documentation": "Local Resource ({{ count }})",
-  
+
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.dqCheck": "Local Data Quality Check ({{ count }})",
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.Project": "Local Projects ({{ count }})",
@@ -5293,17 +5293,17 @@
   "submission.sections.describe.relationship-lookup.title.isProjectOfPublication": "Projects",
 
   "submission.sections.describe.relationship-lookup.title.isPersonOfConceptSet": "Authors",
-  
+
   "submission.sections.describe.relationship-lookup.title.isPersonOfStudy": "Authors",
-  
+
   "submission.sections.describe.relationship-lookup.title.isPersonOfDocument": "Authors",
 
   "submission.sections.describe.relationship-lookup.title.isFundingAgencyOfProject": "Funder of the Project",
 
   "submission.sections.describe.relationship-lookup.title.Study": "Studies",
-  
+
   "submission.sections.describe.relationship-lookup.title.ConceptSet": "Concept Sets",
-  
+
   "submission.sections.describe.relationship-lookup.title.dqCheck": "Data Quality Checks",
 
   "submission.sections.describe.relationship-lookup.title.Documentation": "Resource",
@@ -5875,9 +5875,9 @@
   "vocabulary-treeview.tree.description.nsi": "The Norwegian Science Index",
 
   "vocabulary-treeview.tree.description.srsc": "Research Subject Categories",
-  
+
   "vocabulary-treeview.tree.description.dc_subject": "Resource Classifications",
-  
+
   "vocabulary-treeview.tree.description.dc_subject_mesh": "Medical Subject Heading (MeSH) Classifications",
 
   "vocabulary-treeview.tree.description.dc_subject_other": "Vocabularies",
@@ -5951,7 +5951,7 @@
   "workflow-item.send-back.button.confirm": "Send back",
 
   "workflow-item.view.breadcrumbs": "Workflow View",
-  
+
   "workflow-item.view.title": "Workflow View",
 
   "workspace-item.view.breadcrumbs": "Workspace View",
@@ -7148,5 +7148,5 @@
 
   "live-region.ordering.dropped": "{{ itemName }}, dropped at position {{ index }} of {{ length }}.",
 
-  "dynamic-form-array.sortable-list.label": "Sortable list"
+  "dynamic-form-array.sortable-list.label": "Sortable list",
 }

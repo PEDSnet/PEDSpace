@@ -1,22 +1,28 @@
 // ... test imports
-import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
-
-import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
-
 import { CommonModule } from '@angular/common';
-
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  DebugElement,
+} from '@angular/core';
+import {
+  ComponentFixture,
+  inject,
+  TestBed,
+  waitForAsync,
+} from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
+import {
+  TranslateLoader,
+  TranslateModule,
+} from '@ngx-translate/core';
 
-// Load the implementations that should be tested
-import { FooterComponent } from './footer.component';
-
-import { TranslateLoaderMock } from '../../../../app/shared/mocks/translate-loader.mock';
 import { storeModuleConfig } from '../../../../app/app.reducer';
 import { AuthorizationDataService } from '../../../../app/core/data/feature-authorization/authorization-data.service';
+import { TranslateLoaderMock } from '../../../../app/shared/mocks/translate-loader.mock';
 import { AuthorizationDataServiceStub } from '../../../../app/shared/testing/authorization-service.stub';
+// Load the implementations that should be tested
+import { FooterComponent } from './footer.component';
 
 let comp: FooterComponent;
 let fixture: ComponentFixture<FooterComponent>;
@@ -31,15 +37,15 @@ describe('Footer component', () => {
       imports: [CommonModule, StoreModule.forRoot({}, storeModuleConfig), TranslateModule.forRoot({
         loader: {
           provide: TranslateLoader,
-          useClass: TranslateLoaderMock
-        }
+          useClass: TranslateLoaderMock,
+        },
       })],
       declarations: [FooterComponent], // declare the test component
       providers: [
         FooterComponent,
         { provide: AuthorizationDataService, useClass: AuthorizationDataServiceStub },
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     });
   }));
 

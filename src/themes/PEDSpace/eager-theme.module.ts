@@ -11,8 +11,11 @@ import { HeaderComponent } from './app/header/header.component';
 import { HeaderNavbarWrapperComponent } from './app/header-nav-wrapper/header-navbar-wrapper.component';
 import { HomeNewsComponent } from './app/home-page/home-news/home-news.component';
 import { TopLevelCommunityListComponent } from './app/home-page/top-level-community-list/top-level-community-list.component';
-import { StudyComponent } from './app/item-page/simple/item-types/study/study.component';
 import { ConceptSetComponent } from './app/item-page/simple/item-types/conceptset/conceptset.component';
+import { DocumentationComponent } from './app/item-page/simple/item-types/documentation/documentation.component';
+import { DQCheckComponent } from './app/item-page/simple/item-types/dqcheck/dqcheck.component';
+import { PhenotypeComponent } from './app/item-page/simple/item-types/phenotype/phenotype.component';
+import { StudyComponent } from './app/item-page/simple/item-types/study/study.component';
 import { UntypedItemComponent } from './app/item-page/simple/item-types/untyped-item/untyped-item.component';
 import { NavbarComponent } from './app/navbar/navbar.component';
 import { SearchNavbarComponent } from './app/search-navbar/search-navbar.component';
@@ -33,9 +36,6 @@ import { ItemSearchResultListElementComponent } from './app/shared/object-list/s
 import { PublicationSidebarSearchListElementComponent } from './app/shared/object-list/sidebar-search-list-element/item-types/publication/publication-sidebar-search-list-element.component';
 import { StartsWithDateComponent } from './app/shared/starts-with/date/starts-with-date.component';
 import { StartsWithTextComponent } from './app/shared/starts-with/text/starts-with-text.component';
-import { DQCheckComponent } from './app/item-page/simple/item-types/dqcheck/dqcheck.component';
-import { DocumentationComponent } from './app/item-page/simple/item-types/documentation/documentation.component';
-import { PhenotypeComponent } from './app/item-page/simple/item-types/phenotype/phenotype.component';
 
 /**
  * Add components that use a custom decorator to ENTRY_COMPONENTS as well as DECLARATIONS.

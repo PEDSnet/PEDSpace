@@ -1,18 +1,18 @@
 import {
   AsyncPipe,
+  NgClass,
   NgFor,
   NgIf,
   NgTemplateOutlet,
-  NgClass
 } from '@angular/common';
 import {
-  TemplateRef,
-  ViewChild,
   Component,
   Inject,
   Input,
   OnChanges,
   SimpleChanges,
+  TemplateRef,
+  ViewChild,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -42,7 +42,7 @@ import { ImageField } from '../../simple/field-components/specific-field/image-f
   imports: [MetadataFieldWrapperComponent, NgFor, NgTemplateOutlet, NgIf, RouterLink, AsyncPipe, TranslateModule, MarkdownDirective, NgClass],
 })
 export class MetadataValuesComponent implements OnChanges {
-  
+
   @ViewChild('isDQCheckRequirementTemplate') isDQCheckRequirementTemplate: TemplateRef<any>;
 
   constructor(
@@ -109,10 +109,10 @@ export class MetadataValuesComponent implements OnChanges {
    */
     @Input() sentenceTemplate?: string;
 
-  /**
+    /**
    * Parts of the sentenceTemplate split at [value]
    */
-  sentenceTemplateParts: string[] | null = null;
+    sentenceTemplateParts: string[] | null = null;
 
   /**
    * Whether the metadata value should be rendered as a non-clickable badge
@@ -123,19 +123,19 @@ export class MetadataValuesComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.renderMarkdown = !!this.appConfig.markdown.enabled && this.enableMarkdown;
-  
+
     // Process the sentenceTemplate
     if (this.sentenceTemplate && this.sentenceTemplate !== '[value]') {
       // Split the sentence template and trim any extra spaces before/after parts
       const parts = this.sentenceTemplate.split('[value]');
-      
+
       // Ensure there are no leading/trailing spaces in parts
       this.sentenceTemplateParts = parts.map(part => part.trim());
     } else {
       this.sentenceTemplateParts = null;
     }
   }
-  
+
   /**
    * Does this metadata value have a configured link to a browse definition?
    */
@@ -203,7 +203,7 @@ export class MetadataValuesComponent implements OnChanges {
     if (!this.entityType || this.entityType !== 'DQCheck') {
       return 'btn-outline-primary';
     }
-  
+
     if (value.includes('Data Quality Category')) {
       return 'btn-dq-category';
     } else if (value.includes('Dataset Evaluation Strategy')) {
@@ -221,17 +221,17 @@ export class MetadataValuesComponent implements OnChanges {
    */
   shouldRenderAsBadge(mdValue: MetadataValue): boolean {
     return this.renderAsBadge;
-  }  
+  }
 
   /**
    * This method performs a validation and determines the target of the url.
    * @returns - Returns the target url.
    */
-    getLinkAttributes(urlValue: string): { target: string, rel: string } {
-      if (this.hasInternalLink(urlValue)) {
-        return { target: '_self', rel: '' };
-      } else {
-        return { target: '_blank', rel: 'noopener noreferrer' };
-      }
+  getLinkAttributes(urlValue: string): { target: string, rel: string } {
+    if (this.hasInternalLink(urlValue)) {
+      return { target: '_self', rel: '' };
+    } else {
+      return { target: '_blank', rel: 'noopener noreferrer' };
     }
+  }
 }

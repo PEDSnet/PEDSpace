@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ComcolPageHandleComponent as BaseComponent} from '../../../../../app/shared/comcol/comcol-page-handle/comcol-page-handle.component';
+
+import { ComcolPageHandleComponent as BaseComponent } from '../../../../../app/shared/comcol/comcol-page-handle/comcol-page-handle.component';
 
 
 /**
@@ -7,11 +8,12 @@ import { ComcolPageHandleComponent as BaseComponent} from '../../../../../app/sh
  */
 
 @Component({
-  selector: 'ds-comcol-page-handle',
+  selector: 'ds-base-comcol-page-handle',
   // templateUrl: './comcol-page-handle.component.html',
   templateUrl: '../../../../../app/shared/comcol/comcol-page-handle/comcol-page-handle.component.html',
   // styleUrls: ['./comcol-page-handle.component.scss'],
   styleUrls: ['../../../../../app/shared/comcol/comcol-page-handle/comcol-page-handle.component.scss'],
+  standalone: true,
 })
 
 

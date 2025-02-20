@@ -1,13 +1,22 @@
-import { NgIf, NgClass, AsyncPipe, NgTemplateOutlet } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  AsyncPipe,
+  NgClass,
+  NgIf,
+  NgTemplateOutlet,
+} from '@angular/common';
+import {
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { TypeBadgeComponent as BaseComponent } from 'src/app/shared/object-collection/shared/badges/type-badge/type-badge.component';
+import { map } from 'rxjs/operators';
 import { BrowseDefinitionDataService } from 'src/app/core/browse/browse-definition-data.service';
 import { BrowseDefinition } from 'src/app/core/shared/browse-definition.model';
 import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
+import { TypeBadgeComponent as BaseComponent } from 'src/app/shared/object-collection/shared/badges/type-badge/type-badge.component';
 
 @Component({
   selector: 'ds-verification-badge',
@@ -36,7 +45,7 @@ export class VerificationBadgeComponent extends BaseComponent implements OnInit 
 
   private setVerificationStatus() {
     const status = this.object.firstMetadataValue('local.quality.status');
-    this._verificationStatus = status ? `${status.toLowerCase().split(" ").join("")}.listelement.badge` : '';
+    this._verificationStatus = status ? `${status.toLowerCase().split(' ').join('')}.listelement.badge` : '';
     // console.log('setVerificationStatus:', this._verificationStatus);
   }
 
@@ -44,7 +53,7 @@ export class VerificationBadgeComponent extends BaseComponent implements OnInit 
     const fields = ['local.quality.status'];
     this.browseDefinition$ = this.browseDefinitionDataService.findByFields(fields).pipe(
       getFirstCompletedRemoteData(),
-      map((def) => def.payload)
+      map((def) => def.payload),
     );
   }
 

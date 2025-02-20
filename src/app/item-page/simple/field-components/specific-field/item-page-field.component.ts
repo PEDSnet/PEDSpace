@@ -103,7 +103,7 @@ export class ItemPageFieldComponent {
     /**
      * Flag to indicate special styling for 'local.dqcheck.requirement'
      */
-    isDQCheckRequirement: boolean = false;
+    isDQCheckRequirement = false;
 
     /**
      * Return browse definition that matches any field used in this component if it is configured as a browse

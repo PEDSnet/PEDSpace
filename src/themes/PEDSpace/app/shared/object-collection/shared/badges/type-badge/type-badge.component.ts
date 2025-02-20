@@ -1,20 +1,24 @@
 import {
   AsyncPipe,
-  NgIf,
   NgClass,
+  NgIf,
   NgSwitch,
   NgSwitchCase,
-  NgSwitchDefault
+  NgSwitchDefault,
 } from '@angular/common';
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { TypeBadgeComponent as BaseComponent } from 'src/app/shared/object-collection/shared/badges/type-badge/type-badge.component';
+import { map } from 'rxjs/operators';
 import { BrowseDefinitionDataService } from 'src/app/core/browse/browse-definition-data.service';
 import { BrowseDefinition } from 'src/app/core/shared/browse-definition.model';
 import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
+import { TypeBadgeComponent as BaseComponent } from 'src/app/shared/object-collection/shared/badges/type-badge/type-badge.component';
 
 @Component({
   selector: 'ds-themed-type-badge',
@@ -25,8 +29,8 @@ import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
 })
 export class TypeBadgeComponent extends BaseComponent implements OnInit {
 
-  @Input() interactive = true; 
-  
+  @Input() interactive = true;
+
   browseDefinition$: Observable<BrowseDefinition>;
 
   constructor(private browseDefinitionDataService: BrowseDefinitionDataService) {
@@ -42,7 +46,7 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
     const fields = ['dspace.entity.type'];
     this.browseDefinition$ = this.browseDefinitionDataService.findByFields(fields).pipe(
       getFirstCompletedRemoteData(),
-      map((def) => def.payload)
+      map((def) => def.payload),
     );
   }
 
@@ -63,12 +67,12 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
     const objectType = this.object?.firstMetadataValue('dspace.entity.type');
     let baseClass = '';
     let specificClass = '';
-    let interactiveClass = this.interactive ? '' : 'non-interactive';
-  
+    const interactiveClass = this.interactive ? '' : 'non-interactive';
+
     switch (this.typeMessage) {
       case 'community.listelement.badge':
         this.interactive = false;
-        return `badge-community ${interactiveClass}`; 
+        return `badge-community ${interactiveClass}`;
       case 'collection.listelement.badge':
         if (!objectType) {
           this.interactive = false;
@@ -96,7 +100,7 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
         specificClass = 'badge-phenotype';
         break;
     }
-  
+
     return `${baseClass} ${specificClass} ${interactiveClass}`.trim();
   }
 

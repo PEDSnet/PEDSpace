@@ -13,11 +13,11 @@ import {
   TranslateModule,
 } from '@ngx-translate/core';
 
-import { APP_CONFIG } from '../../../../../../../../config/app-config.interface';
-import { environment } from '../../../../../../../../environments/environment';
 import { BrowseDefinitionDataService } from '../../../../../../../../app/core/browse/browse-definition-data.service';
 import { BrowseDefinitionDataServiceStub } from '../../../../../../../../app/shared/testing/browse-definition-data-service.stub';
 import { TranslateLoaderMock } from '../../../../../../../../app/shared/testing/translate-loader.mock';
+import { APP_CONFIG } from '../../../../../../../../config/app-config.interface';
+import { environment } from '../../../../../../../../environments/environment';
 import { ItemPageExternalPublicationFieldComponent } from './item-page-external-publication.component';
 
 let comp: ItemPageExternalPublicationFieldComponent;

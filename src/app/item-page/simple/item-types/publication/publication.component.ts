@@ -6,7 +6,7 @@ import {
   ChangeDetectionStrategy,
   Component,
 } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ViewMode } from '../../../../core/shared/view-mode.model';

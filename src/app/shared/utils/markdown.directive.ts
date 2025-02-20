@@ -41,7 +41,7 @@ const MARKDOWN_IT = new InjectionToken<LazyMarkdownIt>(
 export class MarkdownDirective implements OnInit, OnDestroy {
 
   @Input() dsMarkdown: string;
-  @Input() pruneEmptyRows: boolean = false; // New Input for pruning
+  @Input() pruneEmptyRows = false; // New Input for pruning
   private alive$ = new Subject<boolean>();
 
   el: HTMLElement;
@@ -67,7 +67,7 @@ export class MarkdownDirective implements OnInit, OnDestroy {
     const md = new MarkdownIt({
       html: true,
       linkify: true,
-      typographer: true, 
+      typographer: true,
     });
 
     md.enable(['table']);
