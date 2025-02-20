@@ -27,12 +27,36 @@ rest:
   # NOTE: Space is capitalized because 'namespace' is a reserved string in TypeScript
   nameSpace: /server
 
-universal:
-  # Whether to inline "critical" styles into the server-side rendered HTML.
-  # Determining which styles are critical is a relatively expensive operation;
-  # this option can be disabled to boost server performance at the expense of
-  # loading smoothness.
-  inlineCriticalCss: true
+ssr:
+  # Whether to tell Angular to inline "critical" styles into the server-side rendered HTML.
+  # Determining which styles are critical is a relatively expensive operation; this option is
+  # disabled (false) by default to boost server performance at the expense of loading smoothness.
+  inlineCriticalCss: false
+  # (8.1 and later) Path prefixes to enable SSR for. By default these are limited to paths of primary DSpace objects listed in the DSpace sitemap.
+  # Paths are matched based on whether they "start with" a string in this configuration.  Wildcards are not supported.
+  # To disable this feature, specify [ '/' ], as that will result in all paths being enabled for SSR.
+  paths: [ '/home', '/items/', '/entities/', '/collections/', '/communities/', '/bitstream/', '/bitstreams/', '/handle/' ]
+  # (8.1 and later) Whether to enable rendering of Search component in SSR.
+  # If set to true the component will be included in the HTML returned from the server side rendering.
+  # If set to false the component will not be included in the HTML returned from the server side rendering.
+  enableSearchComponent: false
+  # (8.1 and later) Whether to enable rendering of Browse component on SSR.
+  # If set to true the component will be included in the HTML returned from the server side rendering.
+  # If set to false the component will not be included in the HTML returned from the server side rendering.
+  enableBrowseComponent: false
+  # (8.1 and later) Enable state transfer from the server-side application to the client-side application. (Defaults to true)
+  # Note: When using an external application cache layer, it's recommended not to transfer the state to avoid caching it.
+  # Disabling it ensures that dynamic state information is not inadvertently cached, which can improve security and
+  # ensure that users always use the most up-to-date state.
+  transferState: true
+  # (8.1 and later) When a different REST base URL is used for the server-side application, the generated state contains references to
+  # REST resources with the internal URL configured. By default, these internal URLs are replaced with public URLs.
+  # Disable this setting to avoid URL replacement during SSR. In this the state is not transferred to avoid security issues.
+  replaceRestUrl: true
+  # Enable request performance profiling data collection and printing the results in the server console.
+  # Defaults to false. Enabling in production is NOT recommended
+  enablePerformanceProfiler: false
+
 
 # Caching settings
 cache:
@@ -50,6 +74,7 @@ cache:
     maxBufferSize: 100
     timePerMethod:
       PATCH: 3 # time in seconds
+      
   # In-memory cache(s) of server-side rendered pages. These caches will store the most recently accessed public pages.
   # Pages are automatically added/dropped from these caches based on how recently they have been used.
   # Restarting the app clears all page caches.
@@ -129,6 +154,13 @@ notifications:
   clickToClose: true
   # NOTE: 'fade' | 'fromTop' | 'fromRight' | 'fromBottom' | 'fromLeft' | 'rotate' | 'scale'
   animate: scale
+
+#
+# Number used to render n UI elements called loading skeletons that act as placeholders.
+# These elements indicate that some content will be loaded in their stead.
+# Since we don't know how many filters will be loaded before we receive a response from the server we use this parameter for the skeletons count.
+# e.g. If we set 5 then 5 loading skeletons will be visualized before the actual filters are retrieved.
+defaultFiltersCount: 5
 
 # Submission settings
 submission:
