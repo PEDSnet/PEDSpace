@@ -16,10 +16,10 @@ import { CreateCommunityParentSelectorComponent as BaseComponent } from '../../.
   templateUrl: '../../../../../../../app/shared/dso-selector/modal-wrappers/create-community-parent-selector/create-community-parent-selector.component.html',
   standalone: true,
   imports: [
-    AsyncPipe,
     DSOSelectorComponent,
-    NgIf,
     TranslateModule,
+    AsyncPipe,
+    NgIf,
   ],
 })
 export class CreateCommunityParentSelectorComponent extends BaseComponent {

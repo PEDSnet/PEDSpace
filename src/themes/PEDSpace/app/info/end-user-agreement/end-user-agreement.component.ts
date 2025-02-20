@@ -13,7 +13,7 @@ import { BtnDisabledDirective } from '../../../../../app/shared/btn-disabled.dir
   // templateUrl: './end-user-agreement.component.html'
   templateUrl: '../../../../../app/info/end-user-agreement/end-user-agreement.component.html',
   standalone: true,
-  imports: [EndUserAgreementContentComponent, FormsModule, TranslateModule, BtnDisabledDirective],
+  imports: [EndUserAgreementContentComponent, BtnDisabledDirective, FormsModule, TranslateModule],
 })
 
 /**

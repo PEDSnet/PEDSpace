@@ -45,6 +45,9 @@ import { MediaViewerComponent } from './app/item-page/media-viewer/media-viewer.
 import { MediaViewerImageComponent } from './app/item-page/media-viewer/media-viewer-image/media-viewer-image.component';
 import { MediaViewerVideoComponent } from './app/item-page/media-viewer/media-viewer-video/media-viewer-video.component';
 import { FileSectionComponent } from './app/item-page/simple/field-components/file-section/file-section.component';
+import { ItemPageDescriptionFieldComponent } from './app/item-page/simple/field-components/specific-field/description/item-page-description.component';
+import { ItemPageExternalPublicationFieldComponent } from './app/item-page/simple/field-components/specific-field/external/item-page-external-publication.component';
+import { ItemPageLocalFieldComponent } from './app/item-page/simple/field-components/specific-field/local/item-page-local.component';
 import { ItemPageTitleFieldComponent } from './app/item-page/simple/field-components/specific-field/title/item-page-title-field.component';
 import { ItemPageComponent } from './app/item-page/simple/item-page.component';
 import { MetadataRepresentationListComponent } from './app/item-page/simple/metadata-representation-list/metadata-representation-list.component';
@@ -80,6 +83,7 @@ import { BadgesComponent } from './app/shared/object-collection/shared/badges/ba
 import { MyDSpaceStatusBadgeComponent } from './app/shared/object-collection/shared/badges/my-dspace-status-badge/my-dspace-status-badge.component';
 import { StatusBadgeComponent } from './app/shared/object-collection/shared/badges/status-badge/status-badge.component';
 import { TypeBadgeComponent } from './app/shared/object-collection/shared/badges/type-badge/type-badge.component';
+import { VerificationBadgeComponent } from './app/shared/object-collection/shared/badges/verification-badge/verification-badge.component';
 import { ItemDetailPreviewFieldComponent } from './app/shared/object-detail/my-dspace-result-detail-element/item-detail-preview/item-detail-preview-field/item-detail-preview-field.component';
 import { ItemListPreviewComponent } from './app/shared/object-list/my-dspace-result-list-element/item-list-preview/item-list-preview.component';
 import { ObjectListComponent } from './app/shared/object-list/object-list.component';
@@ -103,10 +107,6 @@ import { ThumbnailComponent } from './app/thumbnail/thumbnail.component';
 import { WorkflowItemDeleteComponent } from './app/workflowitems-edit-page/workflow-item-delete/workflow-item-delete.component';
 import { WorkflowItemSendBackComponent } from './app/workflowitems-edit-page/workflow-item-send-back/workflow-item-send-back.component';
 import { WorkspaceItemsDeletePageComponent } from './app/workspaceitems-edit-page/workspaceitems-delete-page/workspaceitems-delete-page.component';
-import { VerificationBadgeComponent } from './app/shared/object-collection/shared/badges/verification-badge/verification-badge.component';
-import { ItemPageDescriptionFieldComponent } from './app/item-page/simple/field-components/specific-field/description/item-page-description.component';
-import { ItemPageExternalPublicationFieldComponent } from './app/item-page/simple/field-components/specific-field/external/item-page-external-publication.component';
-import { ItemPageLocalFieldComponent } from './app/item-page/simple/field-components/specific-field/local/item-page-local.component';
 
 const DECLARATIONS = [
   FileSectionComponent,
@@ -203,7 +203,7 @@ const DECLARATIONS = [
   SearchResultsSkeletonComponent,
   ItemPageDescriptionFieldComponent,
   ItemPageExternalPublicationFieldComponent,
-  ItemPageLocalFieldComponent
+  ItemPageLocalFieldComponent,
 ];
 
 @NgModule({

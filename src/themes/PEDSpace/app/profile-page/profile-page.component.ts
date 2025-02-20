@@ -34,10 +34,10 @@ import { VarDirective } from '../../../../app/shared/utils/var.directive';
     NgIf,
     NgForOf,
     SuggestionsNotificationComponent,
-    NgTemplateOutlet,
+    ErrorComponent,
     PaginationComponent,
     ThemedLoadingComponent,
-    ErrorComponent,
+    NgTemplateOutlet
   ],
 })
 /**

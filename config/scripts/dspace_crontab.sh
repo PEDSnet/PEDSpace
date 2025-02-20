@@ -8,7 +8,7 @@
 # Full path of your local DSpace Installation (e.g. /home/dspace or /dspace or similar)
 # MAKE SURE TO CHANGE THESE VALUES!!!
 DSPACE=/data/dspace
-DSPACE_ANGULAR=/data/dspace-angular-dspace-8.0
+DSPACE_ANGULAR=/data/dspace-angular-dspace-8.1
 
 # Shell to use
 SHELL=/bin/bash

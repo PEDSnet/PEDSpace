@@ -35,13 +35,13 @@ EXPORT_COMMAND="/data/dspace/bin/dspace solr-export-statistics -d ${EXPORT_DIR}"
 LOG_DIR="${EXPORT_DIR}/logs"
 
 # Path to the Python mapping script
-MAPPING_SCRIPT="/data/dspace-angular-dspace-8.0/config/scripts/map_uuids.py"
+MAPPING_SCRIPT="/data/dspace-angular-dspace-8.1/config/scripts/map_uuids.py"
 
 # Columns containing UUIDs that need to be mapped (comma-separated)
 UUID_COLUMNS="uid,owningItem,owningComm,owningColl,workflowItemId"
 
 # Path to config.ini
-CONFIG_INI="/data/dspace-angular-dspace-8.0/config/configs/config.ini"
+CONFIG_INI="/data/dspace-angular-dspace-8.1/config/configs/config.ini"
 
 # Ensure export and log directories exist and set appropriate permissions
 mkdir -p "${EXPORT_DIR}"

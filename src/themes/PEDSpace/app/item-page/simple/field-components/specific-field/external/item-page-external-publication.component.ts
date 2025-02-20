@@ -3,9 +3,9 @@ import {
   Component,
   Input,
 } from '@angular/core';
-
 import { Item } from 'src/app/core/shared/item.model';
 import { MetadataValuesComponent } from 'src/app/item-page/field-components/metadata-values/metadata-values.component';
+
 import { ItemPageFieldComponent } from '../../../../../../../../app/item-page/simple/field-components/specific-field/item-page-field.component';
 
 @Component({

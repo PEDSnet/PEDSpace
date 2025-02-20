@@ -42,9 +42,5 @@ package-lock.json
 junit.xml
 
 /src/mirador-viewer/config.local.js
-src/assets/i18n/spaceJSON.sh
-original-changes.patch
-angular.json
-config/config.dev.yml
 config/configs/config.ini
-config/configs/authentication-oidc_backup.cfg
+config/configs/authentication-oidc.linked.cfg

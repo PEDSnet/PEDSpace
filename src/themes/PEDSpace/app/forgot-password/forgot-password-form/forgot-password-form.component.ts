@@ -19,11 +19,11 @@ import { BrowserOnlyPipe } from '../../../../../app/shared/utils/browser-only.pi
   standalone: true,
   imports: [
     TranslateModule,
+    BtnDisabledDirective,
     BrowserOnlyPipe,
     ProfilePageSecurityFormComponent,
     AsyncPipe,
     NgIf,
-    BtnDisabledDirective,
   ],
 })
 /**

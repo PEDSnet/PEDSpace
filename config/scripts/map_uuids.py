@@ -18,7 +18,7 @@ def parse_arguments():
     parser.add_argument('--columns', '-c', required=True, help='Comma-separated list of columns that contain UUIDs.')
     parser.add_argument('--log_file', '-l', required=True, help='Path to the log file.')
     parser.add_argument('--output_suffix', '-s', default='_mapped', help='Suffix to add to output CSV files.')
-    parser.add_argument('--config', '-f', default='/data/dspace-angular-dspace-8.0/config/configs/config.ini',
+    parser.add_argument('--config', '-f', default='/data/dspace-angular-dspace-8.1/config/configs/config.ini',
                         help='Path to the config.ini file containing database connection details.')
     return parser.parse_args()
 

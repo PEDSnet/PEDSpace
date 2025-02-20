@@ -31,7 +31,7 @@ export class ItemPageDateFieldComponent extends ItemPageFieldComponent {
      * Separator string between multiple values of the metadata fields defined
      * @type {string}
      */
-    separator = ', ';
+    @Input() separator = ', ';
 
     /**
      * Fields (schema.element.qualifier) used to render their values.

@@ -206,7 +206,7 @@ def main():
 
     # Load configuration
     config = configparser.ConfigParser()
-    config.read('/data/dspace-angular-dspace-8.0/config/configs/config.ini')
+    config.read('/data/dspace-angular-dspace-8.1/config/configs/config.ini')
 
     if args.test_connection:
         if test_connection(config):
