@@ -2,7 +2,7 @@
 
 # Define paths, expected permissions and ownership
 FOLDER1="/data/dspace"
-FOLDER2="/data/dspace-angular-dspace-8.0"
+FOLDER2="/data/dspace-angular-dspace-8.1"
 EXPECTED_PERM_FOLDER1="755"
 EXPECTED_PERM_FOLDER2="775"
 EXPECTED_USER_FOLDER1="dspace"

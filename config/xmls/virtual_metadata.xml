@@ -165,4 +165,4 @@
         </property>
     </bean>
 </beans>
-<!-- cat /data/dspace-angular-dspace-8.0/config/virtual-metadata.xml > /data/dspace/config/spring/api/virtual-metadata.xml -->
+<!-- cat /data/dspace-angular-dspace-8.1/config/virtual-metadata.xml > /data/dspace/config/spring/api/virtual-metadata.xml -->
