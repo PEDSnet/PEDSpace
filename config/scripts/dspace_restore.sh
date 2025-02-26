@@ -49,7 +49,7 @@ PG_USER="dspace"
 PG_HOST="localhost"
 PG_DB="dspace"
 PG_RESTORE_PATH="/usr/bin/psql"  
-PG_DUMP_PATH="/usr/pgsql-16/bin/pg_dump" 
+PG_DUMP_PATH="/usr/pgsql-15/bin/pg_dump" 
 
 # ---------------------------- Functions ---------------------------------------
 
