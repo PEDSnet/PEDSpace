@@ -58,8 +58,8 @@ TIMESTAMP=$(date +"%Y-%m-%d-%H-%M-%S")
 LOG_FILE="${LOG_DIR}/solr_export_${TIMESTAMP}.log"
 
 touch $LOG_FILE
-sudo chown :dspace $LOG_FILE
-sudo chmod 664 $LOG_FILE
+# sudo chown :dspace $LOG_FILE
+# sudo chmod 664 $LOG_FILE
 
 # ---------------------------- Functions ---------------------------------------
 
@@ -129,8 +129,8 @@ organize_files() {
 # Start logging
 log "========== Starting Solr Statistics Export Process =========="
 
-sudo chmod -R 775 $EXPORT_DIR
-sudo chown -R :dspace $EXPORT_DIR
+# sudo chmod -R 775 $EXPORT_DIR
+# sudo chown -R :dspace $EXPORT_DIR
 
 # Execute the Solr statistics export command, executed as 'dspace'
 log "Executing Solr statistics export command."

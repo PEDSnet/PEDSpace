@@ -5,60 +5,49 @@
 # =============================================================================
 #
 # This script automates the backup process for the DSpace system, including:
-# 
-# 1. **PostgreSQL Database Backup:**
-#    - Dumps the PostgreSQL `dspace` database using `pg_dump`.
-#    - Stores the SQL backup locally in a timestamped file.
 #
-# 2. **Assetstore Compression:**
-#    - Compresses the `/data/dspace/assetstore/` directory into a timestamped `.tar.gz` file.
-#    - Stores the compressed archive locally.
+# 1. **PostgreSQL Database Backup & Assetstore Compression:**
+#    - Handled by the BACKUP_USER (dspace).
 #
-# 3. **Isilon Backup:**
-#    - Copies both SQL and assetstore backups to a shared Isilon location:
-#      `/mnt/isilon/pedsnet/DSpace/PEDSpace`.
+# 2. **Isilon Backup (Offsite Copy):**
+#    - Handled by the OFFSITE_USER (default: seyediana1).
 #
-# 4. **Retention Policy:**
-#    - Cleans up old backups:
-#        - **Local Retention:** 30 days
-#        - **Isilon Retention:** 90 days
-#    - Applies the retention policy separately for local and Isilon backups.
-#
-# 5. **Logging:**
-#    - Logs all backup operations, errors, and cleanup activities.
-#    - Compresses the log file to save space.
+# 3. **Retention, Logging, and Dry-Run Option:**
+#    - Local retention: 30 days
+#    - Isilon retention: 90 days
+#    - Dry-run mode (enabled with -d) logs actions without executing them.
 #
 # ---------------------------- Configuration Notes ----------------------------
-# - Requires `pg_dump` for PostgreSQL backups.
-# - Assumes the Isilon backup directory is a mounted network location.
-# - Runs with `seyediana1` user privileges.
+# - The backup creation is now executed as the user 'dspace'.
+# - The offsite copying is executed as the user defined by OFFSITE_USER.
 # =============================================================================
 
 # ---------------------------- Configuration -----------------------------------
+
+# Define user roles for different parts of the backup
+BACKUP_USER="dspace"
+OFFSITE_USER="seyediana1"
+
+# Flags for local-only mode and dry run
+LOCAL_ONLY=false
+DRY_RUN=false
 
 # Function to log messages with timestamp
 log() {
     echo "$(date +"%Y-%m-%d %H:%M:%S") : $1" | tee -a "${LOG_FILE}"
 }
 
-# Flag file to indicate a successful backup. The non-root user looks for this file.
+# Flag file to indicate a successful backup.
 SUCCESS_FLAG_FILE="/data/backups/backup_success.flag"
 
-# Flag to indicate local-only mode (no offsite copy).
-LOCAL_ONLY=false
-
-# Base backup directory
+# Base backup directory and subdirectories
 BACKUP_BASE_DIR="/data/backups"
-
-# Subdirectories for different backup types
 SQL_DIR="${BACKUP_BASE_DIR}/sql_files"
 ASSETSTORE_DIR="${BACKUP_BASE_DIR}/assetstore_backups"
 LOG_DIR="${BACKUP_BASE_DIR}/logs"
 
-# Isilon backup directory
+# Isilon backup directory and subdirectories
 OFFSITE_BACKUP_BASE_DIR="/mnt/isilon/pedsnet/DSpace/PEDSpace"
-
-# Subdirectories for different backup types on Isilon
 OFFSITE_SQL_DIR="${OFFSITE_BACKUP_BASE_DIR}/sql_files"
 OFFSITE_ASSETSTORE_DIR="${OFFSITE_BACKUP_BASE_DIR}/assetstore_backups"
 
@@ -66,8 +55,8 @@ OFFSITE_ASSETSTORE_DIR="${OFFSITE_BACKUP_BASE_DIR}/assetstore_backups"
 TIMESTAMP=$(date +"%Y-%m-%d-%H-%M-%S")
 
 # Retention periods in days
-LOCAL_RETENTION_DAYS=30      # Retention for on-site backups
-OFFSITE_RETENTION_DAYS=90    # Retention for Isilon backups
+LOCAL_RETENTION_DAYS=30      # On-site backups retention
+OFFSITE_RETENTION_DAYS=90    # Isilon backups retention
 
 # Log file
 LOG_FILE="${LOG_DIR}/backup_${TIMESTAMP}.log"
@@ -76,16 +65,15 @@ LOG_FILE="${LOG_DIR}/backup_${TIMESTAMP}.log"
 PG_USER="dspace"
 PG_HOST="localhost"
 PG_DB="dspace"
-PG_DUMP_PATH="/usr/pgsql-16/bin/pg_dump"
+PG_DUMP_PATH="/usr/pgsql-15/bin/pg_dump"
 
-# Assetstore directory
+# Assetstore directory source
 ASSETSTORE_SOURCE="/data/dspace/assetstore"
 
-# Get the current hostname
+# Get the current hostname and verify
 CURRENT_HOSTNAME=$(hostname -f)
-EXPECTED_HOSTNAME="pedsdspaceprod.research.chop.edu"
+EXPECTED_HOSTNAME="pedsdspaceprod2.research.chop.edu"
 
-# Exit if not running on the expected hostname
 if [[ "${CURRENT_HOSTNAME}" != "${EXPECTED_HOSTNAME}" ]]; then
     echo "ERROR: This backup script must only run on ${EXPECTED_HOSTNAME} - the production server."
     echo "Current hostname is: ${CURRENT_HOSTNAME}"
@@ -93,22 +81,26 @@ if [[ "${CURRENT_HOSTNAME}" != "${EXPECTED_HOSTNAME}" ]]; then
     exit 1
 fi
 
-# Make sure log directory exists, then log the hostname check
+# Ensure the log directory exists
 mkdir -p "${LOG_DIR}"
 log "Verified backup is running on correct hostname: ${EXPECTED_HOSTNAME}"
 
-# ---------------------------- Functions ---------------------------------------
+# ---------------------------- Option Parsing ----------------------------------
 
 usage() {
-    echo "Usage: $0 [-l]"
+    echo "Usage: $0 [-l] [-d]"
     echo "  -l    Local backup only (skip offsite copy)"
+    echo "  -d    Dry run mode (log actions without executing them)"
     exit 1
 }
 
-while getopts "l" opt; do
+while getopts "ld" opt; do
     case ${opt} in
         l )
             LOCAL_ONLY=true
+            ;;
+        d )
+            DRY_RUN=true
             ;;
         \? )
             usage
@@ -116,38 +108,37 @@ while getopts "l" opt; do
     esac
 done
 
-# Copy to offsite (Isilon) function
+# ---------------------------- Functions ---------------------------------------
+
+# Function to copy backups to Isilon
 copy_to_offsite() {
     local source_dir="$1"
     local dest_dir="$2"
     local backup_type="$3"
 
-    # If local-only mode, skip copying
     if [ "$LOCAL_ONLY" = true ]; then
         log "Skipping offsite copy for ${backup_type} (local-only mode)."
         return 0
     fi
 
     log "Starting copy of ${backup_type} to Isilon backup: ${dest_dir}"
-
-    rsync -rvptgD --no-group --progress "${source_dir}/" "${dest_dir}/" >> "${LOG_FILE}" 2>&1
-    if [ $? -eq 0 ]; then
-        log "Successfully copied ${backup_type} to Isilon backup."
+    if [ "$DRY_RUN" = true ]; then
+        log "Dry run: would execute: rsync -rvptgD --no-group --dry-run --progress \"${source_dir}/\" \"${dest_dir}/\""
+        # Simulate success in dry-run
     else
-        log "Error copying ${backup_type} to Isilon backup."
-        return 1
+        rsync -rvptgD --no-group --progress "${source_dir}/" "${dest_dir}/" >> "${LOG_FILE}" 2>&1
+        if [ $? -eq 0 ]; then
+            log "Successfully copied ${backup_type} to Isilon backup."
+        else
+            log "Error copying ${backup_type} to Isilon backup."
+            return 1
+        fi
     fi
 }
 
 # Function to perform PostgreSQL dump and assetstore compression
 perform_backup() {
-    # Ensure local backup directories exist
     mkdir -p "${SQL_DIR}" "${ASSETSTORE_DIR}" "${LOG_DIR}"
-
-    # Uncomment the following if (and only if) you can mount or write to Isilon 
-    # as root on your system:
-    # mkdir -p "${OFFSITE_SQL_DIR}" "${OFFSITE_ASSETSTORE_DIR}"
-
     log "========== Starting Backup Process =========="
 
     local backup_failed=false
@@ -155,28 +146,33 @@ perform_backup() {
     # ---------------------------- PostgreSQL Dump -------------------------------
     SQL_BACKUP_FILE="${SQL_DIR}/dspace_${TIMESTAMP}.sql"
     log "Starting PostgreSQL dump to file: ${SQL_BACKUP_FILE}"
-
-    "${PG_DUMP_PATH}" -U "${PG_USER}" -h "${PG_HOST}" -f "${SQL_BACKUP_FILE}" "${PG_DB}" >> "${LOG_FILE}" 2>&1
-    if [ $? -eq 0 ]; then
-        log "PostgreSQL dump completed successfully."
+    if [ "$DRY_RUN" = true ]; then
+        log "Dry run: would execute: ${PG_DUMP_PATH} -U ${PG_USER} -h ${PG_HOST} -f ${SQL_BACKUP_FILE} ${PG_DB}"
     else
-        log "Error during PostgreSQL dump."
-        backup_failed=true
+        "${PG_DUMP_PATH}" -U "${PG_USER}" -h "${PG_HOST}" -f "${SQL_BACKUP_FILE}" "${PG_DB}" >> "${LOG_FILE}" 2>&1
+        if [ $? -eq 0 ]; then
+            log "PostgreSQL dump completed successfully."
+        else
+            log "Error during PostgreSQL dump."
+            backup_failed=true
+        fi
     fi
 
     # ---------------------------- Assetstore Compression ------------------------
     ASSETSTORE_BACKUP_FILE="${ASSETSTORE_DIR}/assetstore_${TIMESTAMP}.tar.gz"
     log "Starting assetstore compression to file: ${ASSETSTORE_BACKUP_FILE}"
-
-    tar -czf "${ASSETSTORE_BACKUP_FILE}" -C "$(dirname "${ASSETSTORE_SOURCE}")" "$(basename "${ASSETSTORE_SOURCE}")" >> "${LOG_FILE}" 2>&1
-    if [ $? -eq 0 ]; then
-        log "Assetstore compressed successfully."
+    if [ "$DRY_RUN" = true ]; then
+        log "Dry run: would execute: tar -czf ${ASSETSTORE_BACKUP_FILE} -C \"$(dirname "${ASSETSTORE_SOURCE}")\" \"$(basename "${ASSETSTORE_SOURCE}")\""
     else
-        log "Error during assetstore compression."
-        backup_failed=true
+        tar -czf "${ASSETSTORE_BACKUP_FILE}" -C "$(dirname "${ASSETSTORE_SOURCE}")" "$(basename "${ASSETSTORE_SOURCE}")" >> "${LOG_FILE}" 2>&1
+        if [ $? -eq 0 ]; then
+            log "Assetstore compressed successfully."
+        else
+            log "Error during assetstore compression."
+            backup_failed=true
+        fi
     fi
 
-    # Return 0 if backup succeeded, 1 otherwise
     if [ "$backup_failed" = false ]; then
         return 0
     else
@@ -184,23 +180,23 @@ perform_backup() {
     fi
 }
 
-# Function to perform cleanup of old backups
+# Function to cleanup old local backups
 perform_cleanup() {
     log "Starting cleanup of old backups."
-
     log "Cleaning up on-site backups older than ${LOCAL_RETENTION_DAYS} days..."
-    find "${SQL_DIR}" -type f -name "*.sql" -mtime +${LOCAL_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
-    find "${ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
-
+    if [ "$DRY_RUN" = true ]; then
+        log "Dry run: would execute: find ${SQL_DIR} -type f -name \"*.sql\" -mtime +${LOCAL_RETENTION_DAYS} -exec rm -f {} \\;"
+        log "Dry run: would execute: find ${ASSETSTORE_DIR} -type f -name \"*.tar.gz\" -mtime +${LOCAL_RETENTION_DAYS} -exec rm -f {} \\;"
+    else
+        find "${SQL_DIR}" -type f -name "*.sql" -mtime +${LOCAL_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
+        find "${ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
+    fi
     log "Cleanup of old backups completed."
 }
 
-# Function to perform copy to Isilon
+# Function to perform offsite copy to Isilon
 perform_copy() {
-    # Make sure the Isilon directories exist as non-root (if your system setup allows it)
     mkdir -p "${OFFSITE_SQL_DIR}" "${OFFSITE_ASSETSTORE_DIR}"
-
-    # Track copy operations success
     copy_sql_success=false
     copy_asset_success=false
 
@@ -208,8 +204,13 @@ perform_copy() {
     copy_to_offsite "${ASSETSTORE_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "Assetstore backups" && copy_asset_success=true
 
     log "Cleaning up Isilon backups older than ${OFFSITE_RETENTION_DAYS} days..."
-    find "${OFFSITE_SQL_DIR}" -type f -name "*.sql" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
-    find "${OFFSITE_ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
+    if [ "$DRY_RUN" = true ]; then
+        log "Dry run: would execute: find ${OFFSITE_SQL_DIR} -type f -name \"*.sql\" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \\;"
+        log "Dry run: would execute: find ${OFFSITE_ASSETSTORE_DIR} -type f -name \"*.tar.gz\" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \\;"
+    else
+        find "${OFFSITE_SQL_DIR}" -type f -name "*.sql" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
+        find "${OFFSITE_ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -exec rm -f {} \; >> "${LOG_FILE}" 2>&1
+    fi
 
     if [ "$copy_sql_success" = true ] && [ "$copy_asset_success" = true ]; then
         log "All offsite copy steps completed successfully."
@@ -220,25 +221,24 @@ perform_copy() {
 
 # ---------------------------- Main Script -------------------------------------
 
-if [ "$(id -u)" -eq 0 ]; then
-    # -------------------------------------------------------------------------
-    # Script is running as root: perform backup & cleanup, then set success flag
-    # -------------------------------------------------------------------------
-    log "Script detected root user. Proceeding with backup and cleanup."
+CURRENT_USER=$(id -un)
+
+if [ "$CURRENT_USER" = "$BACKUP_USER" ]; then
+    log "Script running as backup user ($BACKUP_USER). Proceeding with backup and cleanup."
 
     if perform_backup; then
         log "Backup steps completed successfully."
         perform_cleanup
 
-        # Only create success flag if backup was successful AND not in local-only mode
         if [ "$LOCAL_ONLY" = false ]; then
-            # Create the success flag file with appropriate permissions
-            echo "Backup completed successfully at $(date)." > "$SUCCESS_FLAG_FILE"
-            chmod 664 "$SUCCESS_FLAG_FILE"
-            chown root:backupgroup "$SUCCESS_FLAG_FILE"  # Replace 'backupgroup' with your actual group
-            log "Created success flag file: $SUCCESS_FLAG_FILE with permissions 664 and group ownership 'backupgroup'"
+            if [ "$DRY_RUN" = true ]; then
+                log "Dry run: would create success flag file: ${SUCCESS_FLAG_FILE}"
+            else
+                echo "Backup completed successfully at $(date)." > "$SUCCESS_FLAG_FILE"
+                log "Created success flag file: $SUCCESS_FLAG_FILE"
+            fi
         else
-            log "Local-only mode is enabled; skipping success flag creation."
+            log "Local-only mode enabled; skipping success flag creation."
         fi
     else
         log "Backup steps encountered errors. Skipping success flag creation."
@@ -246,30 +246,44 @@ if [ "$(id -u)" -eq 0 ]; then
     fi
 
     log "========== Backup Process Completed =========="
-    # Optional: Compress the log file to save space
-    gzip "${LOG_FILE}" 2>/dev/null
+    if [ "$DRY_RUN" = true ]; then
+        log "Dry run: would compress log file: ${LOG_FILE}"
+    else
+        gzip "${LOG_FILE}" 2>/dev/null
+    fi
 
-else
-    # -------------------------------------------------------------------------
-    # Script is running as non-root: check for success flag file, then copy if found
-    # -------------------------------------------------------------------------
-    log "Script detected non-root user. Checking for success flag file..."
+elif [ "$CURRENT_USER" = "$OFFSITE_USER" ]; then
+    log "Script running as offsite user ($OFFSITE_USER). Checking for success flag file..."
 
     if [ ! -f "$SUCCESS_FLAG_FILE" ]; then
-        log "No success flag file found at $SUCCESS_FLAG_FILE. Exiting without copy."
-        gzip "${LOG_FILE}" 2>/dev/null
+        log "No success flag file found at $SUCCESS_FLAG_FILE. Exiting without offsite copy."
+        if [ "$DRY_RUN" = true ]; then
+            log "Dry run: would compress log file: ${LOG_FILE}"
+        else
+            gzip "${LOG_FILE}" 2>/dev/null
+        fi
         exit 0
     fi
 
     log "Success flag file found. Performing offsite copy steps."
     perform_copy
 
-    # Remove the success flag file after copying
-    rm -f "$SUCCESS_FLAG_FILE"
-    log "Removed success flag file: $SUCCESS_FLAG_FILE"
+    if [ "$DRY_RUN" = true ]; then
+        log "Dry run: would remove success flag file: $SUCCESS_FLAG_FILE"
+    else
+        rm -f "$SUCCESS_FLAG_FILE"
+        log "Removed success flag file: $SUCCESS_FLAG_FILE"
+    fi
 
-    log "========== Copy Process Completed =========="
-    # Optional: Compress the log file to save space
-    gzip "${LOG_FILE}" 2>/dev/null
+    log "========== Offsite Copy Process Completed =========="
+    if [ "$DRY_RUN" = true ]; then
+        log "Dry run: would compress log file: ${LOG_FILE}"
+    else
+        gzip "${LOG_FILE}" 2>/dev/null
+    fi
     exit 0
+
+else
+    echo "ERROR: This script must be run as either '$BACKUP_USER' (for backup operations) or '$OFFSITE_USER' (for offsite copying)."
+    exit 1
 fi

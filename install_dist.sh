@@ -68,7 +68,7 @@ if [ -d "$DEST_DIR/dist" ]; then
 fi
 
 # Copy dist directory from source to destination
-cp -R "$SRC_DIR" "$DEST_DIR"
+cp -r "$SRC_DIR" "$DEST_DIR/dist"
 
 if [ $? -eq 0 ]; then
     echo "Successfully copied $SRC_DIR to $DEST_DIR"

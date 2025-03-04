@@ -19,7 +19,7 @@
 #
 # 1. **Repository Mode (default)**
 #    Inside your version-controlled config repository (which lives under
-#    /data/dspace-angular-dspace-8.0/config) you have two sets of files:
+#    /data/dspace-angular-dspace-8.1/config) you have two sets of files:
 #      - The version-controlled configuration files (e.g. authentication.cfg)
 #      - Their corresponding “linked” files (e.g. authentication.linked.cfg) which
 #        are symlinks pointing to the live installation’s config files.
@@ -34,7 +34,7 @@
 # 2. **Installer Mode**
 #    When you are synchronizing a new installation’s configuration tree (e.g.,
 #    /data/DSpace-dspace-8.1/dspace/target/dspace-installer/config) with your
-#    version-controlled configuration files (located at /data/dspace-angular-dspace-8.0/config),
+#    version-controlled configuration files (located at /data/dspace-angular-dspace-8.1/config),
 #    the directory structures are different.
 #
 #    In installer mode this script finds a matching configuration file based on file name.
@@ -76,7 +76,7 @@ done
 ###########################################
 if [ $INSTALLER_MODE -eq 1 ]; then
   # Define the location of the version-controlled configuration files.
-  VC_CONFIG_DIR="/data/dspace-angular-dspace-8.0/config"
+  VC_CONFIG_DIR="/data/dspace-angular-dspace-8.1/config"
   if [ ! -d "$VC_CONFIG_DIR" ]; then
     echo "Error: Version-controlled config directory $VC_CONFIG_DIR does not exist."
     exit 1
@@ -148,9 +148,9 @@ if [ $INSTALLER_MODE -eq 1 ]; then
 ###########################################
 else
   # Ensure the script is being run from the expected version-controlled config directory.
-  EXPECTED_DIR="/data/dspace-angular-dspace-8.0"
+  EXPECTED_DIR="/data/dspace-angular-dspace-8.1"
   if [[ ! "$PWD" =~ $EXPECTED_DIR ]]; then
-    echo "Error: This script must be run inside the /data/dspace-angular-dspace-8.0 directory."
+    echo "Error: This script must be run inside the /data/dspace-angular-dspace-8.1 directory."
     exit 1
   fi
   if [[ "$(basename "$PWD")" != "config" ]]; then

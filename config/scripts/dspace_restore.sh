@@ -49,7 +49,7 @@ PG_USER="dspace"
 PG_HOST="localhost"
 PG_DB="dspace"
 PG_RESTORE_PATH="/usr/bin/psql"  
-PG_DUMP_PATH="/usr/pgsql-16/bin/pg_dump" 
+PG_DUMP_PATH="/usr/pgsql-15/bin/pg_dump" 
 
 # ---------------------------- Functions ---------------------------------------
 
@@ -115,7 +115,7 @@ if [[ -z "${LATEST_ASSETSTORE_BACKUP}" ]]; then
     log "Error: No assetstore backup files found in ${OFFSITE_ASSETSTORE_DIR}."
     exit 1
 else
-    log "Latest assetstore backup found: ${LATEST_ASSETSTORE_BACKUP}"
+    log "Latest assetstore backup found: ${OFFSITE_ASSETSTORE_DIR}/${LATEST_ASSETSTORE_BACKUP}"
 fi
 
 # Backup current assetstore before restoring (optional)
