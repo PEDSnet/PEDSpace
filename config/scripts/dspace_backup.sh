@@ -72,7 +72,7 @@ ASSETSTORE_SOURCE="/data/dspace/assetstore"
 
 # Get the current hostname and verify
 CURRENT_HOSTNAME=$(hostname -f)
-EXPECTED_HOSTNAME="pedsdspaceprod.research.chop.edu"
+EXPECTED_HOSTNAME="pedsdspaceprod2.research.chop.edu"
 
 if [[ "${CURRENT_HOSTNAME}" != "${EXPECTED_HOSTNAME}" ]]; then
     echo "ERROR: This backup script must only run on ${EXPECTED_HOSTNAME} - the production server."
