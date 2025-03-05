@@ -9,6 +9,7 @@
 # MAKE SURE TO CHANGE THESE VALUES!!!
 DSPACE=/data/dspace
 DSPACE_ANGULAR=/data/dspace-angular-dspace-8.1
+SOLR_STATS=/data/PEDSpace_Solr_Analytics
 
 # Shell to use
 SHELL=/bin/bash
@@ -42,8 +43,8 @@ JAVA_OPTS="-Xmx512M -Xms512M -Dfile.encoding=UTF-8"
 # Cleanup Web Spiders from DSpace Statistics Solr Index at 01:00 every day
 0 1 * * * echo "$(date): Running DSpace Statistics cleanup." && $DSPACE/bin/dspace stats-util -f
 
-# CUSTOM: 1 AM daily: Run deploy_shiny script and log output. See here: https://github.research.chop.edu/SEYEDIANA1/PEDSpace_Solr_Analytics/blob/main/deploy_shiny.bash 
-0 1 * * * ( echo "$(date): Running SOLR Analytics script..." && /bin/bash "$SOLR_STATS/deploy_shiny.sh"  >> /data/PEDSpace_Solr_Analytics/logs/deploy_shiny.log 2>&1
+# CUSTOM: 1:30 AM daily: Run deploy_shiny script and log output. See here: https://github.research.chop.edu/SEYEDIANA1/PEDSpace_Solr_Analytics/blob/main/deploy_shiny.bash 
+30 1 * * * ( echo "$(date): Running SOLR Analytics script..." && /bin/bash "$SOLR_STATS/deploy_shiny.bash"  >> /data/PEDSpace_Solr_Analytics/logs/deploy_shiny.log 2>&1
 
 # Send out "daily" update subscription e-mails at 02:00 every day
 0 2 * * * echo "$(date): Sending daily DSpace subscription emails." && $DSPACE/bin/dspace subscription-send -f D

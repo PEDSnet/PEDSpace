@@ -51,6 +51,8 @@ OFFSITE_BACKUP_BASE_DIR="/mnt/isilon/pedsnet/DSpace/PEDSpace"
 OFFSITE_SQL_DIR="${OFFSITE_BACKUP_BASE_DIR}/sql_files"
 OFFSITE_ASSETSTORE_DIR="${OFFSITE_BACKUP_BASE_DIR}/assetstore_backups"
 
+mkdir -p $BACKUP_BASE_DIR $SQL_DIR $ASSETSTORE_DIR $LOG_DIR
+
 # Timestamp format
 TIMESTAMP=$(date +"%Y-%m-%d-%H-%M-%S")
 
