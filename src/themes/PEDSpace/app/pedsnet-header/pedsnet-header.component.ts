@@ -35,5 +35,5 @@ import { HeaderComponent as BaseComponent } from 'src/app/header/header.componen
   ],
 })
 export class PEDSnetHeaderComponent extends BaseComponent {
-  // Add custom logic if needed.
+  // Add any custom logic if needed.
 }

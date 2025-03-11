@@ -1,6 +1,6 @@
 .pedsnet-header {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-family: "proxima-nova", sans-serif;
+  font-size: 15px;
   line-height: 1.7;
 
   .navbar-brand img {
@@ -18,13 +18,19 @@
     }
   }
 
+  /* Dropdown hover behavior with fade-in animation */
   .dropdown-menu {
-    border: 1px solid #ddd;
-  }
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    // transform: translateY(10px); /* Start slightly lower */
+    transition: all 0.2s;
 
-  .navbar-toggler {
-    .navbar-toggler-icon {
-      background-image: none !important;
+    /* When dropdown is active (ngbDropdown.open() applies "show" class) */
+    &.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0); /* Move to normal position */
     }
   }
 }
