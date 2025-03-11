@@ -1,0 +1,30 @@
+.pedsnet-header {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+
+  .navbar-brand img {
+    max-height: 50px;
+  }
+
+  .navbar-nav .nav-link {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover,
+    &:focus {
+      color: #124254;
+    }
+  }
+
+  .dropdown-menu {
+    border: 1px solid #ddd;
+  }
+
+  .navbar-toggler {
+    .navbar-toggler-icon {
+      background-image: none !important;
+    }
+  }
+}
