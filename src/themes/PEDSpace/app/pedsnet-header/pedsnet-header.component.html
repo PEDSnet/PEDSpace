@@ -1,14 +1,18 @@
 <header class="pedsnet-header">
   <div class="container">
-    <nav class="navbar navbar-expand-md navbar-light px-0" role="navigation" aria-label="Main Navigation">
-      <!-- Mobile Toggler -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pedsnetMainNav" aria-controls="pedsnetMainNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <nav class="navbar navbar-light p-0" role="navigation" aria-label="PEDSnet Navigation">
+      <!-- Mobile Toggler: visible only on small screens -->
+      <button 
+        class="navbar-toggler pedsnet-toggler d-md-none" 
+        type="button" 
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="!menuCollapsed" 
+        aria-label="Toggle PEDSnet Navigation">
+        <span class="fas fa-ellipsis-v"></span>
       </button>
 
-      <!-- Collapsible Nav Wrapper -->
-      <div class="collapse navbar-collapse" id="pedsnetMainNav">
-        <ul class="navbar-nav me-auto">
+      <!-- Desktop Menu: visible on md and up -->
+      <ul class="navbar-nav d-none d-md-flex me-auto">
           <!-- Our Network Dropdown -->
           <li class="nav-item dropdown" ngbDropdown autoClose="outside" (mouseenter)="ourNetworkDd.open()" (mouseleave)="ourNetworkDd.close()" #ourNetworkDd="ngbDropdown">
             <a class="nav-link dropdown-toggle" ngbDropdownToggle href="https://pedsnet.org/our-network/" aria-expanded="false">
@@ -88,7 +92,6 @@
             </ul>
           </li>
         </ul>
-      </div>
     </nav>
   </div>
 </header>

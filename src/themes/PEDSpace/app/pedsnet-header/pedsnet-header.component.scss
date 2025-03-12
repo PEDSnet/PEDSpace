@@ -5,51 +5,45 @@
 
   a {
     text-decoration: none !important;
-    // text-underline-offset: 0.2em;
-    // transition: all 0.3s ease;
-
     &:focus-visible {
-      text-decoration: none;
       outline: none !important;
     }
-
-    &:hover {
-      text-decoration: none;
-      // text-decoration-thickness: 2px;
-      // outline: 1px solid currentColor;
-      // outline-offset: 2px;
-      // border-radius: 2px;
-    }
-  }
-
-  .navbar-brand img {
-    max-height: 50px;
   }
 
   .navbar-nav .nav-link {
-    color: none !important;
-    text-decoration: none;
     transition: color 0.3s ease;
-
-    &:hover,
-    &:focus {
-      color: none !important;
-    }
   }
 
-  /* Dropdown hover behavior with fade-in animation */
+  /* Fade-in dropdown menu effect */
   .dropdown-menu {
-    display: block;
     opacity: 0;
-    // visibility: hidden;
-    // transform: translateY(10px); /* Start slightly lower */
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  .dropdown-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    /* When dropdown is active (ngbDropdown.open() applies "show" class) */
-    &.show {
-      opacity: 1;
-      // visibility: visible;
-      transform: translateY(0); /* Move to normal position */
-    }
+  /* Mobile toggler: a custom icon for ds-pedsnet-header */
+  .pedsnet-toggler {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--ds-header-icon-color);
+    padding: 0.5rem;
+  }
+  .pedsnet-toggler:hover,
+  .pedsnet-toggler:focus {
+    color: var(--ds-header-icon-color-hover);
+  }
+
+  /* Mobile menu container: hidden by default */
+  #pedsnetMobileMenu {
+    display: none;
+  }
+  /* Show mobile menu when .show class is applied */
+  .d-md-none.show {
+    display: block;
   }
 }
