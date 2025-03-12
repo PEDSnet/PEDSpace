@@ -15,11 +15,11 @@
     transition: color 0.3s ease;
   }
 
+  /* Dropdown styling for desktop view */
   .dropdown-menu {
     display: block !important; /* Important to override Bootstrap's display handling */
     opacity: 0;
     visibility: hidden; /* Use visibility instead of relying only on opacity */
-    // transform: translateY(10px);
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
     margin-top: 0;
     pointer-events: none; /* Prevent interaction while hidden */
@@ -50,13 +50,54 @@
   #pedsnetMobileMenu {
     display: none;
     margin-top: 1rem;
+
+    /* Fix for spacing in mobile menu */
+    .navbar-nav {
+      padding: 0;
+
+      /* Reduce spacing between mobile menu items */
+      .nav-item {
+        margin: 0;
+        padding: 0;
+      }
+    }
   }
 
   #pedsnetMobileMenu.show {
     display: block;
   }
 
-  /* Mobile dropdown styling */
+  /* Mobile dropdown/nav item styling */
+  .mobile-nav-item {
+    position: relative;
+    
+    .nav-link {
+      padding: 0.5rem 0;
+    }
+    
+    .mobile-dropdown-container {
+      /* Animation properties will be applied here by Angular animations */
+      
+      .dropdown-menu {
+        position: static !important;
+        float: none;
+        width: 100%;
+        border: 0;
+        box-shadow: none;
+        background-color: transparent;
+        margin: 0;
+        padding-left: 1rem;
+        display: block; /* Always display since visibility/height is controlled by the container */
+        transform: none !important;
+        
+        .dropdown-item {
+          padding: 0.25rem 0;
+        }
+      }
+    }
+  }
+
+  /* General mobile dropdown menu styling */
   #pedsnetMobileMenu .dropdown-menu {
     position: static;
     float: none;
@@ -65,20 +106,5 @@
     background-color: transparent;
     border: 0;
     box-shadow: none;
-    padding-left: 1rem;
-  }
-
-  /* Additional styles for mobile menu */
-  .mobile-nav-item {
-    padding: 0.5rem 0;
-  }
-
-  .mobile-nav-item .dropdown-menu {
-    position: static !important;
-    transform: none !important;
-    padding-left: 1rem;
-    box-shadow: none;
-    border: none;
-    background: transparent;
   }
 }

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { NgIf, NgClass, NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 /* Example base class; remove if not needed */
 import { HeaderComponent as BaseComponent } from 'src/app/header/header.component';
@@ -17,7 +18,6 @@ interface NavSubItem {
   label: string;
   url: string;
 }
-
 @Component({
   selector: 'ds-pedsnet-header',
   standalone: true,
@@ -31,13 +31,65 @@ interface NavSubItem {
     NgbDropdownModule,
     TranslateModule,
   ],
+  animations: [
+    // Add animation for expanding/collapsing dropdown
+    trigger('expandCollapse', [
+      state('collapsed', style({
+        height: '0',
+        overflow: 'hidden',
+        opacity: 0,
+        padding: '0'
+      })),
+      state('expanded', style({
+        height: '*',
+        opacity: 1
+      })),
+      transition('collapsed <=> expanded', [
+        animate('300ms ease-in-out')
+      ])
+    ])
+  ]
 })
 export class PEDSnetHeaderComponent extends BaseComponent {
+
+  // Track which desktop dropdowns are open
+  @ViewChildren('dropdownMenu') dropdownMenus!: QueryList<ElementRef>;
+  activeDropdownIndex: number | null = null;
+
+  // Method to open dropdown on hover for desktop
+  openDesktopDropdown(index: number): void {
+    this.activeDropdownIndex = index;
+  }
+
+  // Method to close dropdown on mouse leave for desktop
+  closeDesktopDropdown(): void {
+    this.activeDropdownIndex = null;
+  }
+
+  // Method to check if a dropdown is open
+  isDesktopDropdownOpen(index: number): boolean {
+    return this.activeDropdownIndex === index;
+  }
+
+  openMobileDropdowns: Record<string, boolean> = {};
+
+  // Toggle mobile dropdown
+  toggleMobileDropdown(id: string): void {
+    this.openMobileDropdowns[id] = !this.openMobileDropdowns[id];
+  }
+
+  // Check if mobile dropdown is open
+  isMobileDropdownOpen(id: string): boolean {
+    return !!this.openMobileDropdowns[id];
+  }
+
+  // Get animation state for mobile dropdown
+  getMobileDropdownState(id: string): string {
+    return this.isMobileDropdownOpen(id) ? 'expanded' : 'collapsed';
+  }
+
   // Controls whether the mobile menu is collapsed.
   menuCollapsed: boolean = true;
-
-  // Track which mobile dropdowns are open
-  openMobileDropdowns: Record<string, boolean> = {};
 
   // Navigation structure
   navItems: NavItem[] = [
