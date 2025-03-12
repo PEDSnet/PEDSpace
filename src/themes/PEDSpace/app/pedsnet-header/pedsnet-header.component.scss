@@ -1,0 +1,110 @@
+.pedsnet-header {
+  font-family: "proxima-nova", sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+
+  a {
+    text-decoration: none !important;
+
+    &:focus-visible {
+      outline: none !important;
+    }
+  }
+
+  .navbar-nav .nav-link {
+    transition: color 0.3s ease;
+  }
+
+  /* Dropdown styling for desktop view */
+  .dropdown-menu {
+    display: block !important; /* Important to override Bootstrap's display handling */
+    opacity: 0;
+    visibility: hidden; /* Use visibility instead of relying only on opacity */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    margin-top: 0;
+    pointer-events: none; /* Prevent interaction while hidden */
+  }
+
+  .dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto; /* Allow interaction when visible */
+  }
+
+  /* Mobile toggler: a custom icon for ds-pedsnet-header */
+  .pedsnet-toggler {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--ds-header-icon-color);
+    padding: 0.5rem;
+  }
+
+  .pedsnet-toggler:hover,
+  .pedsnet-toggler:focus {
+    color: var(--ds-header-icon-color-hover);
+  }
+
+  /* Mobile menu container */
+  #pedsnetMobileMenu {
+    display: none;
+    margin-top: 1rem;
+
+    /* Fix for spacing in mobile menu */
+    .navbar-nav {
+      padding: 0;
+
+      /* Reduce spacing between mobile menu items */
+      .nav-item {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+
+  #pedsnetMobileMenu.show {
+    display: block;
+  }
+
+  /* Mobile dropdown/nav item styling */
+  .mobile-nav-item {
+    position: relative;
+    
+    .nav-link {
+      padding: 0.5rem 0;
+    }
+    
+    .mobile-dropdown-container {
+      /* Animation properties will be applied here by Angular animations */
+      
+      .dropdown-menu {
+        position: static !important;
+        float: none;
+        width: 100%;
+        border: 0;
+        box-shadow: none;
+        background-color: transparent;
+        margin: 0;
+        padding-left: 1rem;
+        display: block; /* Always display since visibility/height is controlled by the container */
+        transform: none !important;
+        
+        .dropdown-item {
+          padding: 0.25rem 0;
+        }
+      }
+    }
+  }
+
+  /* General mobile dropdown menu styling */
+  #pedsnetMobileMenu .dropdown-menu {
+    position: static;
+    float: none;
+    width: 100%;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+}

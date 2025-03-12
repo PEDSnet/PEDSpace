@@ -1,0 +1,69 @@
+<header class="pedsnet-header">
+  <div class="container">
+    <nav class="navbar navbar-light p-0" role="navigation" aria-label="PEDSnet Navigation">
+      <!-- Mobile Toggler: visible only on small screens -->
+      <button class="navbar-toggler pedsnet-toggler d-md-none" type="button" (click)="toggleMenu()"
+        [attr.aria-expanded]="!menuCollapsed" aria-label="Toggle PEDSnet Navigation">
+        <span class="fas fa-ellipsis-v"></span>
+      </button>
+
+      <!-- Desktop Menu: visible on md and up - Modified to use custom dropdown handling -->
+      <ul class="navbar-nav d-none d-md-flex me-auto">
+        <li *ngFor="let item of navItems; let i = index" class="nav-item"
+          [ngClass]="{'dropdown': item.children && item.children.length > 0}"
+          (mouseenter)="item.children && item.children.length > 0 ? openDesktopDropdown(i) : null"
+          (mouseleave)="closeDesktopDropdown()">
+
+          <!-- Regular link if no children -->
+          <a *ngIf="!item.children || item.children.length === 0" class="nav-link" [href]="item.url">
+            {{ item.label }}
+          </a>
+
+          <!-- Dropdown if has children -->
+          <ng-container *ngIf="item.children && item.children.length > 0">
+            <a class="nav-link dropdown-toggle" [href]="item.url" aria-expanded="false">
+              {{ item.label }}
+            </a>
+            <ul #dropdownMenu class="dropdown-menu" [ngClass]="{'show': isDesktopDropdownOpen(i)}">
+              <li *ngFor="let child of item.children">
+                <a class="dropdown-item" [href]="child.url">{{ child.label }}</a>
+              </li>
+            </ul>
+          </ng-container>
+        </li>
+      </ul>
+
+      <!-- Mobile Menu -->
+      <div id="pedsnetMobileMenu" class="d-md-none w-100" [ngClass]="{'show': !menuCollapsed}">
+        <ul class="navbar-nav mobile-nav-list">
+          <li *ngFor="let item of navItems; let i = index" class="nav-item mobile-nav-item"
+            [ngClass]="{'dropdown': item.children && item.children.length > 0}">
+
+            <!-- Regular link if no children -->
+            <a *ngIf="!item.children || item.children.length === 0" class="nav-link" [href]="item.url">
+              {{ item.label }}
+            </a>
+
+            <!-- Dropdown if has children -->
+            <ng-container *ngIf="item.children && item.children.length > 0">
+              <a class="nav-link dropdown-toggle" href="#"
+                (click)="$event.preventDefault(); toggleMobileDropdown(getNavItemId(i))"
+                [attr.aria-expanded]="isMobileDropdownOpen(getNavItemId(i))">
+                {{ item.label }}
+              </a>
+
+              <!-- Animated dropdown container -->
+              <div [@expandCollapse]="getMobileDropdownState(getNavItemId(i))" class="mobile-dropdown-container">
+                <ul class="dropdown-menu show"> <!-- Always 'show' since animation handles visibility -->
+                  <li *ngFor="let child of item.children">
+                    <a class="dropdown-item" [href]="child.url">{{ child.label }}</a>
+                  </li>
+                </ul>
+              </div>
+            </ng-container>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
