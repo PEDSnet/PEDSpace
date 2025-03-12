@@ -5,6 +5,7 @@
 
   a {
     text-decoration: none !important;
+
     &:focus-visible {
       outline: none !important;
     }
@@ -14,15 +15,21 @@
     transition: color 0.3s ease;
   }
 
-  /* Fade-in dropdown menu effect */
   .dropdown-menu {
+    display: block !important; /* Important to override Bootstrap's display handling */
     opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    visibility: hidden; /* Use visibility instead of relying only on opacity */
+    // transform: translateY(10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    margin-top: 0;
+    pointer-events: none; /* Prevent interaction while hidden */
   }
+
   .dropdown-menu.show {
     opacity: 1;
+    visibility: visible;
     transform: translateY(0);
+    pointer-events: auto; /* Allow interaction when visible */
   }
 
   /* Mobile toggler: a custom icon for ds-pedsnet-header */
@@ -33,17 +40,45 @@
     color: var(--ds-header-icon-color);
     padding: 0.5rem;
   }
+
   .pedsnet-toggler:hover,
   .pedsnet-toggler:focus {
     color: var(--ds-header-icon-color-hover);
   }
 
-  /* Mobile menu container: hidden by default */
+  /* Mobile menu container */
   #pedsnetMobileMenu {
     display: none;
+    margin-top: 1rem;
   }
-  /* Show mobile menu when .show class is applied */
-  .d-md-none.show {
+
+  #pedsnetMobileMenu.show {
     display: block;
+  }
+
+  /* Mobile dropdown styling */
+  #pedsnetMobileMenu .dropdown-menu {
+    position: static;
+    float: none;
+    width: 100%;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    padding-left: 1rem;
+  }
+
+  /* Additional styles for mobile menu */
+  .mobile-nav-item {
+    padding: 0.5rem 0;
+  }
+
+  .mobile-nav-item .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    padding-left: 1rem;
+    box-shadow: none;
+    border: none;
+    background: transparent;
   }
 }

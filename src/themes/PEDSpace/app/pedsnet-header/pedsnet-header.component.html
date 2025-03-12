@@ -13,85 +13,66 @@
 
       <!-- Desktop Menu: visible on md and up -->
       <ul class="navbar-nav d-none d-md-flex me-auto">
-          <!-- Our Network Dropdown -->
-          <li class="nav-item dropdown" ngbDropdown autoClose="outside" (mouseenter)="ourNetworkDd.open()" (mouseleave)="ourNetworkDd.close()" #ourNetworkDd="ngbDropdown">
-            <a class="nav-link dropdown-toggle" ngbDropdownToggle href="https://pedsnet.org/our-network/" aria-expanded="false">
-              Our Network
+        <li *ngFor="let item of navItems; let i = index" 
+            class="nav-item" 
+            [ngClass]="{'dropdown': item.children && item.children.length > 0}" 
+            ngbDropdown 
+            autoClose="outside" 
+            #desktopDropdown="ngbDropdown"
+            (mouseenter)="item.children && item.children.length > 0 ? desktopDropdown.open() : null"
+            (mouseleave)="item.children && item.children.length > 0 ? desktopDropdown.close() : null">
+          
+          <!-- Regular link if no children -->
+          <a *ngIf="!item.children || item.children.length === 0" class="nav-link" [href]="item.url">
+            {{ item.label }}
+          </a>
+          
+          <!-- Dropdown if has children -->
+          <ng-container *ngIf="item.children && item.children.length > 0">
+            <a class="nav-link dropdown-toggle" 
+               ngbDropdownToggle 
+               [href]="item.url" 
+               aria-expanded="false">
+              {{ item.label }}
             </a>
             <ul class="dropdown-menu" ngbDropdownMenu>
-              <li><a class="dropdown-item" href="https://pedsnet.org/our-network/#mission-vision">Mission and Vision</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/our-network/pcornet/">PCORnet®</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/our-network/policies/">Policies</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/our-network/administrative-matters/">Administrative Matters</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/our-network/institutions/">Institutions</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/our-network/institutions/people/">People</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/our-network/institutions/join-pedsnet/">Join PEDSnet</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/our-network/annual-reports/">Annual Reports</a></li>
+              <li *ngFor="let child of item.children">
+                <a class="dropdown-item" [href]="child.url">{{ child.label }}</a>
+              </li>
             </ul>
-          </li>
+          </ng-container>
+        </li>
+      </ul>
 
-          <!-- Research Dropdown -->
-          <li class="nav-item dropdown" ngbDropdown autoClose="outside" (mouseenter)="researchDd.open()" (mouseleave)="researchDd.close()" #researchDd="ngbDropdown">
-            <a class="nav-link dropdown-toggle" ngbDropdownToggle href="https://pedsnet.org/research/" aria-expanded="false">
-              Research
+      <!-- Mobile Menu: shown when toggle button is clicked -->
+      <div id="pedsnetMobileMenu" class="d-md-none w-100" [ngClass]="{'show': !menuCollapsed}">
+        <ul class="navbar-nav">
+          <li *ngFor="let item of navItems; let i = index" 
+              class="nav-item mobile-nav-item" 
+              [ngClass]="{'dropdown': item.children && item.children.length > 0}">
+            
+            <!-- Regular link if no children -->
+            <a *ngIf="!item.children || item.children.length === 0" class="nav-link" [href]="item.url">
+              {{ item.label }}
             </a>
-            <ul class="dropdown-menu" ngbDropdownMenu>
-              <li><a class="dropdown-item" href="https://pedsnet.org/research/active-studies/">Active Studies</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/research/past-studies/">Past Studies</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/research/publications/">Publications</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/research/news-and-impact/">News &amp; Impact</a></li>
-            </ul>
-          </li>
-
-          <!-- Youth & Families Dropdown -->
-          <li class="nav-item dropdown" ngbDropdown autoClose="outside" (mouseenter)="youthFamiliesDd.open()" (mouseleave)="youthFamiliesDd.close()" #youthFamiliesDd="ngbDropdown">
-            <a class="nav-link dropdown-toggle" ngbDropdownToggle href="https://pedsnet.org/youth-families/" aria-expanded="false">
-              Youth &amp; Families
-            </a>
-            <ul class="dropdown-menu" ngbDropdownMenu>
-              <li><a class="dropdown-item" href="https://pedsnet.org/youth-families/get-involved/">Get Involved</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/youth-families/family-youth-councils/">Family &amp; Youth Councils</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/youth-families/fyreworks/">FYREworks</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/youth-families/faqs/">FAQs</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/youth-families/utilize-advisory-councils/">Apply for Engagement Core Services</a></li>
-            </ul>
-          </li>
-
-          <!-- Learning (Plain Link) -->
-          <li class="nav-item">
-            <a class="nav-link" href="https://pedsnet.org/learning/pedsnet-scholars-program/">
-              Learning
-            </a>
-          </li>
-
-          <!-- Database Dropdown -->
-          <li class="nav-item dropdown" ngbDropdown autoClose="outside" (mouseenter)="databaseDd.open()" (mouseleave)="databaseDd.close()" #databaseDd="ngbDropdown">
-            <a class="nav-link dropdown-toggle" ngbDropdownToggle href="https://pedsnet.org/database/" aria-expanded="false">
-              Database
-            </a>
-            <ul class="dropdown-menu" ngbDropdownMenu>
-              <li><a class="dropdown-item" href="https://pedsnet.org/database/patient-population/">Patient Population</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/database/data-domains/">Data Domains</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/database/data-quality/">Data Quality</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/database/pedsnet-common-data-model/">PEDSnet Common Data Model</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/database/security-and-privacy/">Security and Privacy</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/database/knowledge-bank/">Knowledge Bank</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/database/access-to-data/">Access to Data</a></li>
-            </ul>
-          </li>
-
-          <!-- Work with Us Dropdown -->
-          <li class="nav-item dropdown" ngbDropdown autoClose="outside" (mouseenter)="workWithUsDd.open()" (mouseleave)="workWithUsDd.close()" #workWithUsDd="ngbDropdown">
-            <a class="nav-link dropdown-toggle" ngbDropdownToggle href="https://pedsnet.org/work-with-us/" aria-expanded="false">
-              Work with Us
-            </a>
-            <ul class="dropdown-menu" ngbDropdownMenu>
-              <li><a class="dropdown-item" href="https://pedsnet.org/contact/">Contact</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/work-with-us/research-process/">Research Process</a></li>
-              <li><a class="dropdown-item" href="https://pedsnet.org/work-with-us/collaboration-request/">Collaboration Request</a></li>
-            </ul>
+            
+            <!-- Dropdown if has children -->
+            <ng-container *ngIf="item.children && item.children.length > 0">
+              <a class="nav-link dropdown-toggle" 
+                 href="#" 
+                 (click)="$event.preventDefault(); toggleDropdown(getNavItemId(i))" 
+                 [attr.aria-expanded]="isDropdownOpen(getNavItemId(i))">
+                {{ item.label }}
+              </a>
+              <ul class="dropdown-menu" [ngClass]="{'show': isDropdownOpen(getNavItemId(i))}">
+                <li *ngFor="let child of item.children">
+                  <a class="dropdown-item" [href]="child.url">{{ child.label }}</a>
+                </li>
+              </ul>
+            </ng-container>
           </li>
         </ul>
+      </div>
     </nav>
   </div>
 </header>
