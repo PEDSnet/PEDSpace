@@ -1,4 +1,12 @@
 <footer class="text-lg-start">
+  <!-- Disclaimer Section (if needed) -->
+  <div *ngIf="showDisclaimer" class="disclaimer text-center p-3">
+    <p>
+      PEDSnet is a Clinical Research Network in PCORnet®, the National Patient-Centered Clinical Research Network.
+      PCORnet® has been developed with funding from the Patient-Centered Outcomes Research Institute® (PCORI®).
+      PEDSnet's participation in PCORnet® is funded through PCORI® Award RI-CHOP-01-PS1.
+    </p>
+  </div>
   <div class="pedsnet-footer">
     <div class="container">
       <!-- Logo and Navigation Section -->
@@ -46,7 +54,7 @@
         </div>
 
         <!-- Youth & Families Column -->
-        <div class="col-lg-1 mb-4 mb-lg-0">
+        <div class="col-lg-1 mb-4 mb-lg-0 col-youth-families">
           <h5><a href="https://pedsnet.org/youth-families" class="top-level">Youth & Families</a></h5>
           <ul class="list-unstyled">
             <li><a href="https://pedsnet.org/youth-families/get-involved/">Get Involved</a></li>
@@ -87,15 +95,6 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- Disclaimer Section (if needed) -->
-  <div *ngIf="showDisclaimer" class="disclaimer text-center p-3">
-    <p class="disclaimer">
-      PEDSnet is a Clinical Research Network in PCORnet®, the National Patient-Centered Clinical Research Network.
-      PCORnet® has been developed with funding from the Patient-Centered Outcomes Research Institute® (PCORI®).
-      PEDSnet's participation in PCORnet® is funded through PCORI® Award RI-CHOP-01-PS1.
-    </p>
   </div>
 
   <!-- DSpace Footer (maintaining original functionality) -->

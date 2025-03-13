@@ -3,20 +3,41 @@
 :host {
   footer {
     width: 100%;
-    text-align: center;
     font-family: "proxima-nova", sans-serif;
+
+    // Disclaimer section
+    .disclaimer {
+      background-color: $gray-200;
+      color: $black-bean !important;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      padding: 1rem 1rem 2rem;
+      text-align: center; 
+
+      p {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    }
 
     // Main PEDSnet Footer
     .pedsnet-footer {
-      background-color: theme-color('primary'); // Dark blue from the original PEDSnet footer
+      background-color: theme-color('primary'); 
       color: $snow;
       padding: 0;
+      text-align: left; 
+
+      .container {
+        padding-left: 4rem; // More padding on the left to match original
+        padding-right: 4rem; // Balance with right padding
+      }
 
       h5 {
         font-size: 1rem;
         font-weight: 600;
         margin-bottom: 0.75rem;
-        
+        text-align: left; // Ensure headings are left-aligned
+
         .top-level {
           color: $snow !important;
           text-decoration: none;
@@ -32,8 +53,13 @@
       }
 
       ul {
+        padding-left: 0; // Remove default padding
+        margin-bottom: 0;
+        text-align: left; // Ensure lists are left-aligned
+
         li {
           margin-bottom: 0.5rem;
+          text-align: left; // Ensure list items are left-aligned
 
           a {
             color: white;
@@ -56,11 +82,24 @@
         margin-top: 0.5rem;
       }
 
+      // Youth & Families column adjustment
+      .col-youth-families {
+        h5 {
+          text-align: left;
+        }
+
+        ul {
+          text-align: left;
+        }
+      }
+
       .social-icons {
+        text-align: right; // Right-align the social icons container
+
         a {
           display: inline-block;
           color: theme-color('primary');
-          background-color: $honeydew;
+          background-color: $snow;
           border-radius: 50%;
           width: 32px;
           height: 32px;
@@ -91,57 +130,46 @@
         p {
           margin: 0;
           font-size: 0.9rem;
+          text-align: left; // Left-align copyright text
         }
       }
     }
+  }
 
-    // Disclaimer section
-    .disclaimer {
-      background-color: theme-color('primary');
-      font-size: 0.8rem;
-      line-height: 1.4;
-      padding: 1rem 1rem 2rem;
-      
-      p {
-        max-width: 800px;
-        margin: 0 auto;
-        color: $light;
-      }
-    }
+  // DSpace footer section
+  .dspace-footer {
+    background-color: theme-color('primary');
+    padding: var(--ds-footer-padding, 0.5rem);
+    color: white;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center; // Center this section
 
-    // DSpace footer section
-    .dspace-footer {
-      background-color: theme-color('primary');
-      padding: var(--ds-footer-padding, 0.5rem);
-      color: white;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    ul {
+      li {
+        display: inline-flex;
 
-      ul {
-        li {
-          display: inline-flex;
+        a {
+          padding: 0 calc(var(--bs-spacer, 0.5rem) / 2);
+          color: white;
+          text-decoration: none;
+          font-size: 0.85rem;
 
-          a {
-            padding: 0 calc(var(--bs-spacer, 0.5rem) / 2);
-            color: white;
-            text-decoration: none;
-            font-size: 0.85rem;
-
-            &:hover {
-              text-decoration: underline;
-            }
+          &:hover {
+            text-decoration: underline;
           }
+        }
 
-          &:not(:last-child) {
-            &:after {
-              content: '';
-              border-right: 1px var(--bs-secondary, #6c757d) solid;
-            }
+        &:not(:last-child) {
+          &:after {
+            content: '';
+            border-right: 1px var(--bs-secondary, #6c757d) solid;
           }
         }
       }
     }
   }
 }
+
 
 // Responsive adjustments
 @media (max-width: 991px) {
@@ -150,18 +178,33 @@
       .pedsnet-footer {
         text-align: center;
 
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
         h5 {
           margin-top: 1.5rem;
           margin-bottom: 0.75rem;
+          text-align: center;
+        }
+
+        ul li {
+          text-align: center;
         }
 
         .footer-logo {
           max-width: 180px;
           margin: 0 auto 1.5rem;
         }
-        
+
         .social-icons {
           margin-top: 1rem;
+          text-align: center;
+        }
+
+        .footer-bottom p {
+          text-align: center;
         }
       }
     }
