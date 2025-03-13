@@ -1,59 +1,156 @@
+@import "src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss";
+
 :host {
   footer {
-    background-color: var(--ds-footer-bg);
+    width: 100%;
     text-align: center;
-    z-index: var(--ds-footer-z-index);
-    border-top: var(--ds-footer-border);
-    padding: var(--ds-footer-padding);
-    color: white; // Ensure all text is white
+    font-family: "proxima-nova", sans-serif;
 
-    p {
-      margin: 0;
-      color: white; // Ensure paragraph text is white
-    }
 
-    div > img {
-      height: var(--ds-footer-logo-height);
-    }
+    // Main PEDSnet Footer
+    .pedsnet-footer {
+      background-color: theme-color('primary'); // Dark blue from the original PEDSnet footer
+      color: $snow;
+      padding: 0;
 
-    .top-footer {
-      background-color: var(--ds-top-footer-bg);
-      padding: var(--ds-footer-padding);
-      margin: calc(var(--ds-footer-padding) * -1);
-      color: white; // Ensure top footer text is white
+      h5 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        // text-transform: uppercase;
 
-      p, a {
-        color: white; // Ensure all text and links in top footer are white
+        .top-level {
+          color: $snow !important;
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: opacity 0.2s ease;
+
+          &:hover {
+            opacity: 0.8 !important;
+            text-decoration: underline !important;
+          }
+        }
+      }
+
+      ul {
+        li {
+          margin-bottom: 0.5rem;
+
+          a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.2s ease;
+
+            &:hover {
+              opacity: 0.8;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      .footer-logo {
+        max-width: 200px;
+        height: auto;
+        margin-bottom: 1rem;
+      }
+
+      .social-icons {
+        a {
+          background-color: $honeydew;
+          display: inline-block;
+          color: white;
+          font-size: 1.25rem;
+          margin-left: 1rem;
+          transition: opacity 0.2s ease;
+
+          &:hover {
+            opacity: 0.8;
+          }
+
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 1rem;
+        padding-top: 1rem;
+
+        p {
+          margin: 0;
+          font-size: 0.9rem;
+        }
       }
     }
 
-    .bottom-footer {
+    // Disclaimer section
+    .disclaimer {
+      // color: $light;
+      background-color: theme-color('primary');
+      font-size: 0.8rem;
+      line-height: 1.4;
+
+      p {
+        max-width: 800px;
+        margin: 0 auto;
+        color: $light;
+      }
+    }
+
+    // DSpace footer section
+    .dspace-footer {
+      background-color: theme-color('primary');
+      padding: var(--ds-footer-padding, 0.5rem);
+      color: white;
+
       ul {
         li {
           display: inline-flex;
 
           a {
-            padding: 0 calc(var(--bs-spacer) / 2);
-            color: white; // Ensure links are white
+            padding: 0 calc(var(--bs-spacer, 0.5rem) / 2);
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+
+            &:hover {
+              text-decoration: underline;
+            }
           }
 
           &:not(:last-child) {
             &:after {
               content: '';
-              border-right: 1px var(--bs-secondary) solid;
+              border-right: 1px var(--bs-secondary, #6c757d) solid;
             }
           }
         }
       }
-      color: white; // Ensure bottom footer text is white
     }
+  }
+}
 
-    .disclaimer {
-      font-size: 0.8rem; // Smaller font size
-      line-height: 1.2;  // Tighter line spacing
-      max-width: 800px;  // Limit width for better centering
-      margin: 0 auto;    // Center the disclaimer text
-      color: white;      // Ensure disclaimer text is white
+// Responsive adjustments
+@media (max-width: 991px) {
+  :host {
+    footer {
+      .pedsnet-footer {
+        text-align: center;
+
+        h5 {
+          margin-top: 1.5rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .footer-logo {
+          max-width: 180px;
+          margin: 0 auto 1.5rem;
+        }
+      }
     }
   }
 }
