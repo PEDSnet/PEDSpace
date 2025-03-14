@@ -1,16 +1,19 @@
 <footer class="text-lg-start">
   <!-- Disclaimer Section (if needed) -->
-  <div *ngIf="showDisclaimer" class="disclaimer text-center p-3">
-    <p>
-      PEDSnet is a Clinical Research Network in PCORnet®, the National Patient-Centered Clinical Research Network.
-      PCORnet® has been developed with funding from the Patient-Centered Outcomes Research Institute® (PCORI®).
-      PEDSnet's participation in PCORnet® is funded through PCORI® Award RI-CHOP-01-PS1.
-    </p>
+  <div *ngIf="showDisclaimer" class="disclaimer">
+    <div class="container">
+      <p>
+        PEDSnet is a Clinical Research Network in PCORnet®, the National Patient-Centered Clinical Research Network.
+        PCORnet® has been developed with funding from the Patient-Centered Outcomes Research Institute® (PCORI®).
+        PEDSnet's participation in PCORnet® is funded through PCORI® Award RI-CHOP-01-PS1.
+      </p>
+    </div>
   </div>
+
   <div class="pedsnet-footer">
     <div class="container">
       <!-- Logo and Navigation Section -->
-      <div class="row pt-4 pb-3">
+      <div class="row pt-5 pb-3">
         <!-- Logo Column -->
         <div class="col-lg-3 mb-4 mb-lg-0">
           <a href="https://pedsnet.org/" target="_self">
@@ -55,7 +58,11 @@
 
         <!-- Youth & Families Column -->
         <div class="col-lg-1 mb-4 mb-lg-0 col-youth-families">
-          <h5><a href="https://pedsnet.org/youth-families" class="top-level">Youth & Families</a></h5>
+          <h5>
+            <a href="https://pedsnet.org/youth-families" class="top-level">
+              <span class="youth-text">Youth &amp;</span><span class="families-text">Families</span>
+            </a>
+          </h5>
           <ul class="list-unstyled">
             <li><a href="https://pedsnet.org/youth-families/get-involved/">Get Involved</a></li>
             <li><a href="https://pedsnet.org/youth-families/family-youth-councils/">Councils</a></li>
@@ -74,8 +81,11 @@
         </div>
       </div>
 
+      <!-- Horizontal separator line -->
+      <div class="footer-separator"></div>
+
       <!-- Copyright and Social Icons Row -->
-      <div class="row footer-bottom pb-3">
+      <div class="row footer-bottom">
         <div class="col-lg-6 text-lg-start text-center mb-3 mb-lg-0">
           <p>© {{ dateObj | date:'y' }} PEDSnet. All Rights Reserved.</p>
         </div>
