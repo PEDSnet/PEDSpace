@@ -90,6 +90,12 @@
             .youth-text {
               white-space: nowrap; // Keep "Youth &" together
               display: inline-block;
+              
+              // Add space after the ampersand
+              &::after {
+                content: " "; // Add a space after Youth &
+                white-space: normal; // Allow the space to break
+              }
             }
 
             .families-text {
@@ -100,6 +106,13 @@
 
         ul {
           text-align: left;
+          
+          li a {
+            // Target specifically the "Get Involved" link
+            &[href*="get-involved"] {
+              white-space: nowrap; // Keep "Get Involved" on one line
+            }
+          }
         }
       }
 
@@ -108,8 +121,8 @@
 
         a {
           display: inline-block;
-          color: theme-color('primary');
-          background-color: $snow;
+          color: $snow;
+          background-color: theme-color('success');
           border-radius: 50%;
           width: 32px;
           height: 32px;
@@ -219,20 +232,45 @@
           margin-top: 1.5rem;
           margin-bottom: 0.75rem;
           text-align: center;
+          width: 100%; // Full width to ensure centering works
         }
 
         .col-youth-families {
           h5 .top-level {
+            text-align: center; // Center the text
+            display: inline-block; // Keep it as a block for centering
+            width: 100%; // Full width to ensure centering works
+            
             .youth-text,
             .families-text {
               display: inline; // Allow them to break at the end of the screen
               white-space: normal;
+              text-align: center; // Ensure the text is centered
             }
+            
+            .youth-text::after {
+              content: " "; // Keep the space after Youth &
+            }
+          }
+          
+          ul {
+            text-align: center; // Center the list items
           }
         }
 
         ul li {
           text-align: center;
+          margin-bottom: 0.35rem; // Reduce vertical spacing between menu items
+          
+          a {
+            font-size: 13px; // Reduce font size slightly on mobile
+            white-space: nowrap; // Keep links on one line when possible
+          }
+        }
+        
+        // Specific fix for "Get Involved" on mobile
+        .col-youth-families ul li a[href*="get-involved"] {
+          letter-spacing: -0.3px; // Tighten letter spacing slightly
         }
 
         .footer-logo {
@@ -253,74 +291,41 @@
   }
 }
 
-// Add this to your SCSS file to fix the Youth & Families styling on mobile
-
-// For the regular desktop view
-.col-youth-families {
-  h5 {
-    .top-level {
-      .youth-text {
-        white-space: nowrap; // Keep "Youth &" together
-        display: inline-block;
-        
-        // Add space after the ampersand
-        &::after {
-          content: " "; // Add a space after Youth &
-          white-space: normal; // Allow the space to break
-        }
-      }
-    }
-  }
-}
-
-// For mobile view
-@media (max-width: 991px) {
-  .col-youth-families {
-    h5 {
-      text-align: center; // Center the heading
-      width: 100%; // Full width to ensure centering works
-      
-      .top-level {
-        text-align: center; // Center the text
-        display: inline-block; // Keep it as a block for centering
-        width: 100%; // Full width to ensure centering works
-        
-        .youth-text {
-          text-align: center; // Ensure the text is centered
-          
-          &::after {
-            content: " "; // Keep the space after Youth &
-          }
-        }
-        
-        .families-text {
-          text-align: center; // Ensure the text is centered
-        }
-      }
-    }
-    
-    ul {
-      text-align: center; // Center the list items
-      
-      li {
-        text-align: center; // Center the list items
-      }
-    }
-  }
-}
-
 // Extra small screens specific fix
 @media (max-width: 576px) {
-  .col-youth-families {
-    h5 .top-level {
-      // Force "Youth & Families" to appear correctly on very small screens
-      .youth-text {
-        display: inline; // Use inline to allow normal text flow
-        margin-right: 3px; // Add explicit right margin after "Youth &"
+  :host {
+    footer {
+      .pedsnet-footer {
+        .footer-logo {
+          max-width: 140px; // Smallest logo size on very small screens
+        }
+        
+        .col-youth-families h5 .top-level {
+          // Force "Youth & Families" to appear correctly on very small screens
+          .youth-text {
+            display: inline; // Use inline to allow normal text flow
+            margin-right: 3px; // Add explicit right margin after "Youth &"
+          }
+          
+          .families-text {
+            display: inline; // Use inline to allow normal text flow
+          }
+        }
       }
-      
-      .families-text {
-        display: inline; // Use inline to allow normal text flow
+    }
+  }
+}
+
+// For very small screens where nowrap might cause overflow issues
+@media (max-width: 320px) {
+  :host {
+    footer {
+      .pedsnet-footer li a {
+        // Allow wrapping on extremely small screens if necessary
+        white-space: normal;
+        
+        // But keep text compact
+        letter-spacing: -0.2px;
       }
     }
   }
