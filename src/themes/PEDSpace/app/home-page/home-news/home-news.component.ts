@@ -22,6 +22,7 @@ export class HomeNewsComponent extends BaseComponent implements OnInit {
   isProduction: boolean = environment.production;
   ipAddressMatch = false; // For storing if IP matches
   showDevOnProdMessage = false;
+  showMessageAtAll: boolean = true;
 
   private targetIpAddress = 'pedsnetapps.chop.edu'; 
 
@@ -31,6 +32,10 @@ export class HomeNewsComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     // Check if the environment's host matches the target IP
-    this.ipAddressMatch = (environment.rest.host === this.targetIpAddress);
+    // this.ipAddressMatch = (environment.rest.host === this.targetIpAddress);
+    
+    // Just turning off the dev message for now.
+    this.showMessageAtAll = false;
+
   }
 }
