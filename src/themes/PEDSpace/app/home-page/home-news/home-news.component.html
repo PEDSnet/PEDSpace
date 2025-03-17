@@ -1,45 +1,42 @@
-<div class="background-image-container mt-ncs">
-  <div class="container">
-    <div class="jumbotron jumbotron-fluid text-center">
-      <div class="d-flex flex-wrap justify-content-center">
-        <div>
-            <h1 class="display-3">PEDSpace</h1>
-            <ng-container *ngIf="isProduction">
-              <br>            
-            </ng-container>
-            
-            <div *ngIf="!isProduction && !ipAddressMatch" class="alert-container">
-              <h2>DEVELOPMENT INSTANCE</h2>
-              <p>This is a development instance of PEDSpace.</p>
-              <p>Data and resources may not be current or accurate.</p>
-              <p>You may experience poor app performance.</p>
-              <p>Please visit the <a href="https://pedsnetapps.chop.edu/metadata/home" target="_blank">official PEDSpace instance</a> for up-to-date entries.</p>
-              <p style="font-size: 1.5em; font-weight: bold;">Do NOT deposit items to this site!</p>
-            </div>
-            
-            <div *ngIf="!isProduction && ipAddressMatch" class="alert-container">
-              <h2>DEVELOPMENT INSTANCE ON PRODUCTION SERVER</h2>
-              <p>This is the development instance on the production server.</p>
-              <p>The data here on this site is the most accurate and up-to-date iteration of PEDSpace.</p>
-              <p>However, for whatever reason, the development instance of the UI is running, so you may encounter interruptions or poor performance.</p>
-              <p>Avoid depositing items if you can.</p>
-            </div>
-          
-          <p class="lead mb-2">Welcome to PEDSpace, a public data bank repository powered by PEDSnet. PEDSpace serves as a centralized hub where digital assets generated during PEDSnet studies are made readily accessible to researchers, clinicians, and stakeholders worldwide.</p>
+<div class="pedsnet-hero-banner">
+  <div class="content-overlay">
+    <div class="container">
+      <div class="hero-content">
+        <h1>PEDSpace</h1>
+        
+        <ng-container *ngIf="isProduction">
+          <br>            
+        </ng-container>
+        
+        <div *ngIf="!isProduction && !ipAddressMatch" class="alert-container">
+          <h2>DEVELOPMENT INSTANCE</h2>
+          <p>This is a development instance of PEDSpace.</p>
+          <p>Data and resources may not be current or accurate.</p>
+          <p>You may experience poor app performance.</p>
+          <p>Please visit the <a href="https://pedsnetapps.chop.edu/metadata/home" target="_blank">official PEDSpace instance</a> for up-to-date entries.</p>
+          <p style="font-size: 1.5em; font-weight: bold;">Do NOT deposit items to this site!</p>
         </div>
-      </div>
-      <p class="mt-2">In PEDSpace, users can explore a wealth of resources to facilitate impactful research endeavors. Among these assets are meticulously defined variables, curated code sets, and modules for assessing data quality. Each component is designed to empower researchers with the tools necessary to navigate complex pediatric healthcare data effectively.</p>
-      <div class="mt-4">
-        <a href="submit" class="btn btn-primary btn-lg mr-2">Deposit Data</a>
-        <a href="https://pedsnet.org/" class="btn btn-secondary btn-lg mr-2" target="_blank">PEDSnet Home</a>
-        <a href="https://pedsnet.org/data/knowledge-bank/" class="btn btn-custom btn-lg" target="_blank">About</a>
+        
+        <div *ngIf="!isProduction && ipAddressMatch" class="alert-container">
+          <h2>DEVELOPMENT INSTANCE ON PRODUCTION SERVER</h2>
+          <p>This is the development instance on the production server.</p>
+          <p>The data here on this site is the most accurate and up-to-date iteration of PEDSpace.</p>
+          <p>However, for whatever reason, the development instance of the UI is running, so you may encounter interruptions or poor performance.</p>
+          <p>Avoid depositing items if you can.</p>
+        </div>
+        
+        <h2 class="tagline">Welcome to PEDSpace, a public data bank repository powered by PEDSnet. PEDSpace serves as a centralized hub where digital assets generated during PEDSnet studies are made readily accessible to researchers, clinicians, and stakeholders worldwide.</h2>
+        
+        <p class="description">In PEDSpace, users can explore a wealth of resources to facilitate impactful research endeavors. Among these assets are meticulously defined variables, curated code sets, and modules for assessing data quality. Each component is designed to empower researchers with the tools necessary to navigate complex pediatric healthcare data effectively.</p>
+        
+        <div class="button-group">
+          <a href="submit" class="btn btn-primary">Deposit Data</a>
+          <a href="https://pedsnet.org/" class="btn btn-secondary" target="_blank">PEDSnet Home</a>
+          <a href="https://pedsnet.org/data/knowledge-bank/" class="btn btn-custom" target="_blank">About</a>
+        </div>
       </div>
     </div>
   </div>
-  <picture class="background-image">
-    <source type="image/webp" srcset="assets/PEDSpace/images/dandy-full.webp 2000w, assets/PEDSpace/images/dandy-half.webp 1200w, assets/PEDSpace/images/dandy-tall.webp 768w">
-    <source type="image/jpg" srcset="assets/PEDSpace/images/dandy-full.jpg 2000w, assets/PEDSpace/images/dandy-half.jpg 1200w, assets/PEDSpace/images/dandy-tall.jpg 768w">
-    <img alt [src]="'assets/PEDSpace/images/dandy-full.jpg'">
-  </picture>
+  
   <small class="credits">Photo by <a href="https://www.pexels.com/@inspiredimages">&#64;inspiredimages</a></small>
 </div>

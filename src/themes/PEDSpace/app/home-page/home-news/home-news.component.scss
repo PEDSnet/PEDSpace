@@ -1,130 +1,161 @@
 :host {
   display: block;
 
-  div.background-image-container {
-    color: white;
+  .pedsnet-hero-banner {
     position: relative;
+    min-height: 600px;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    margin-top: 0px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    color: white;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                      url('/assets/PEDSpace/images/dandy-full.jpg');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 
-    .background-image > img {
-      background-color: var(--bs-info);
-      position: absolute;
-      z-index: -1;
-      top: 0;
-      left: 0;
+    @media (max-width: 768px) {
+      margin: 1rem 0.5rem;
+      border-radius: 1rem;
+    }
+    
+    .content-overlay {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: bottom;
-      // transform: rotate(180deg);
+      padding: 3rem 0;
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      
+      .hero-content {
+        max-width: 800px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+        
+        h1 {
+          font-size: 3rem;
+          font-weight: 700;
+          margin-bottom: 1.5rem;
+        }
+        
+        .tagline {
+          font-size: 1.5rem;
+          font-weight: 400;
+          line-height: 1.4;
+          margin-bottom: 1.5rem;
+        }
+        
+        .description {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          margin-bottom: 2rem;
+        }
+      }
     }
-
-    .container {
-      position: relative;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-
-      &:before, &:after {
-        content: '';
-        display: block;
-        width: var(--ds-banner-background-gradient-width);
-        height: 100%;
-        top: 0;
-        position: absolute;
+    
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+      
+      .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
       }
-
-      &:before {
-        background: linear-gradient(to left, var(--ds-banner-text-background), transparent);
-        left: calc(-1 * var(--ds-banner-background-gradient-width));
+      
+      .btn-primary {
+        background-color: #0D4254;
+        border-color: #0D4254;
+        color: #D8EDDF;
+        
+        &:hover, &:focus {
+          background-color: darken(#0D4254, 10%);
+          border-color: darken(#0D4254, 10%);
+        }
       }
-
-      &:after {
-        background: linear-gradient(to right, var(--ds-banner-text-background), transparent);
-        right: calc(-1 * var(--ds-banner-background-gradient-width));
+      
+      .btn-secondary {
+        background-color: #3B1516;
+        border-color: #3B1516;
+        color: #D8EDDF;
+        
+        &:hover, &:focus {
+          background-color: darken(#3B1516, 10%);
+          border-color: darken(#3B1516, 10%);
+        }
       }
-
-      background-color: var(--ds-banner-text-background);
+      
+      .btn-custom {
+        background-color: #004B87;
+        border-color: #004B87;
+        color: #D8EDDF;
+        
+        &:hover, &:focus {
+          background-color: darken(#004B87, 10%);
+          border-color: darken(#004B87, 10%);
+        }
+      }
     }
-
-    small.credits {
+    
+    .alert-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: orange;
+      padding: 1.25rem;
+      border-radius: 1rem;
+      margin-bottom: 1.5rem;
+      max-width: 100%;
+      display: inline-block;
+      
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 0.75rem;
+      }
+      
+      p {
+        margin: 0.5rem 0;
+      }
+      
       a {
-        color: inherit;
+        color: lightblue;
+        text-decoration: underline;
+        
+        &:hover {
+          color: white;
+        }
       }
-
-      opacity: 0.3;
+    }
+    
+    .credits {
       position: absolute;
-      right: var(--bs-spacer);
-      bottom: 0;
-    }
-  }
-
-  .jumbotron {
-    background-color: transparent;
-  }
-
-  a {
-    color: var(--ds-home-news-link-color);
-
-    @include hover {
-      color: var(--ds-home-news-link-hover-color);
-    }
-  }
-
-  .alert-container {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: orange;
-    display: inline-block;
-    padding: 10px 15px;
-    border-radius: 20px;
-    max-width: 100%;
-  }
-  
-  .alert-container h2 {
-    margin-top: 0;
-    margin-bottom: 10px;
-  }
-  
-  .alert-container p {
-    margin: 5px 0;
-  }
-  
-  .alert-container p:last-child {
-    margin-bottom: 0;
-  }
-
-  // #{darken($link-color, 15%)}
-  .btn-primary {
-    background-color: #0D4254; /* Midnight green */
-    border-color: #0D4254; /* Midnight green */
-    color: #D8EDDF; /* Honeydew */
-
-    &:hover, &:focus {
-      background-color: #0A3240; /* Darker shade of Midnight green */
-      border-color: #0A3240; /* Darker shade of Midnight green */
-      color: #{darken(#D8EDDF, 15%)}; /* Honeydew */
-    }
-  }
-
-  .btn-secondary {
-    background-color: #3B1516; /* Black Bean */
-    border-color: #3B1516; /* Black Bean */
-    color: #D8EDDF; /* Honeydew */
-
-    &:hover, &:focus {
-      background-color: #2A1011; /* Darker shade of Black Bean */
-      border-color: #2A1011; /* Darker shade of Black Bean */
-      color: #D8EDDF; /* Honeydew */
-    }
-  }
-  
-  .btn-custom {
-    background-color: #004B87; /* Deep Sea Blue */
-    border-color: #004B87; /* Deep Sea Blue */
-    color: #D8EDDF; /* Honeydew */
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
-  
-    &:hover, &:focus {
-      background-color: darken(#004B87, 10%);
-      border-color: darken(#004B87, 10%);
-      color: #D8EDDF;
+      bottom: 0.5rem;
+      right: 1rem;
+      opacity: 0.6;
+      font-size: 0.75rem;
+      
+      a {
+        color: white;
+        text-decoration: underline;
+        
+        &:hover {
+          opacity: 1;
+        }
+      }
     }
   }
 }
