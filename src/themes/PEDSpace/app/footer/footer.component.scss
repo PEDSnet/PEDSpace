@@ -1,59 +1,332 @@
+@import "src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss";
+
 :host {
   footer {
-    background-color: var(--ds-footer-bg);
-    text-align: center;
-    z-index: var(--ds-footer-z-index);
-    border-top: var(--ds-footer-border);
-    padding: var(--ds-footer-padding);
-    color: white; // Ensure all text is white
+    width: 100%;
+    font-family: "proxima-nova", sans-serif;
 
-    p {
-      margin: 0;
-      color: white; // Ensure paragraph text is white
-    }
+    // Disclaimer section
+    .disclaimer {
+      background-color: $gray-200;
+      color: $black-bean !important;
+      font-size: 18px;
+      line-height: 1.4;
+      padding: 1.5rem 0; // More vertical padding
+      text-align: left;
 
-    div > img {
-      height: var(--ds-footer-logo-height);
-    }
-
-    .top-footer {
-      background-color: var(--ds-top-footer-bg);
-      padding: var(--ds-footer-padding);
-      margin: calc(var(--ds-footer-padding) * -1);
-      color: white; // Ensure top footer text is white
-
-      p, a {
-        color: white; // Ensure all text and links in top footer are white
+      p {
+        max-width: 960px; // Wider content area to match original
+        margin: 0 auto;
       }
     }
 
-    .bottom-footer {
+    // Main PEDSnet Footer
+    .pedsnet-footer {
+      background-color: theme-color('primary');
+      color: $snow;
+      padding: 0;
+      text-align: left;
+
+      .container {
+        padding-left: 8rem; // Increased left padding to match original
+        padding-right: 8rem; // Increased right padding to match original
+        max-width: 1400px; // Wider container to match original spacing
+      }
+
+      h5 {
+        margin-bottom: 0.75rem;
+        text-align: left;
+
+        .top-level {
+          color: $snow !important;
+          text-decoration: none;
+          font-weight: 700;
+          font-size: 18px;
+          transition: opacity 0.2s ease;
+
+          &:hover {
+            opacity: 0.8 !important;
+            text-decoration: underline !important;
+          }
+        }
+      }
+
+      ul {
+        text-align: left;
+
+        li {
+          margin-bottom: 0.5rem;
+          text-align: left;
+
+          a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 14px;
+            transition: opacity 0.2s ease;
+
+            &:hover {
+              opacity: 0.8;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      .footer-logo {
+        max-width: 240px;
+        height: auto;
+        margin-bottom: 0;
+        margin-top: 0.5rem;
+      }
+
+      // Youth & Families column adjustment
+      .col-youth-families {
+        h5 {
+          text-align: left;
+
+          // Fix for "Youth & Families" text wrapping
+          .top-level {
+            .youth-text {
+              white-space: nowrap; // Keep "Youth &" together
+              display: inline-block;
+              
+              // Add space after the ampersand
+              &::after {
+                content: " "; // Add a space after Youth &
+                white-space: normal; // Allow the space to break
+              }
+            }
+
+            .families-text {
+              display: inline-block;
+            }
+          }
+        }
+
+        ul {
+          text-align: left;
+          
+          li a {
+            // Target specifically the "Get Involved" link
+            &[href*="get-involved"] {
+              white-space: nowrap; // Keep "Get Involved" on one line
+            }
+          }
+        }
+      }
+
+      .social-icons {
+        text-align: right;
+
+        a {
+          display: inline-block;
+          color: $snow;
+          background-color: theme-color('success');
+          border-radius: 50%;
+          width: 32px;
+          height: 32px;
+          line-height: 32px;
+          text-align: center;
+          margin-left: 0.75rem;
+          transition: opacity 0.2s ease;
+
+          i {
+            line-height: 32px;
+          }
+
+          &:hover {
+            opacity: 0.8;
+          }
+
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+
+      .footer-separator {
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.1);
+        margin: 2rem 0; // Add more spacing around the separator
+      }
+
+      .footer-bottom {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 4rem; // Add significant bottom padding to match original
+
+        p {
+          margin: 0;
+          font-size: 0.9rem;
+          text-align: left;
+        }
+      }
+    }
+
+    // DSpace footer section
+    .dspace-footer {
+      background-color: theme-color('primary');
+      padding: var(--ds-footer-padding, 0.5rem);
+      color: white;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+
       ul {
         li {
           display: inline-flex;
 
           a {
-            padding: 0 calc(var(--bs-spacer) / 2);
-            color: white; // Ensure links are white
+            padding: 0 calc(var(--bs-spacer, 0.5rem) / 2);
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+
+            &:hover {
+              text-decoration: underline;
+            }
           }
 
           &:not(:last-child) {
             &:after {
               content: '';
-              border-right: 1px var(--bs-secondary) solid;
+              border-right: 1px var(--bs-secondary, #6c757d) solid;
             }
           }
         }
       }
-      color: white; // Ensure bottom footer text is white
     }
+  }
+}
 
-    .disclaimer {
-      font-size: 0.8rem; // Smaller font size
-      line-height: 1.2;  // Tighter line spacing
-      max-width: 800px;  // Limit width for better centering
-      margin: 0 auto;    // Center the disclaimer text
-      color: white;      // Ensure disclaimer text is white
+// Responsive adjustments
+@media (max-width: 1200px) {
+  :host {
+    footer {
+      .pedsnet-footer {
+        .container {
+          padding-left: 4rem;
+          padding-right: 4rem;
+        }
+
+        .footer-logo {
+          max-width: 200px; // Smaller logo on medium screens
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  :host {
+    footer {
+      .pedsnet-footer {
+        text-align: center;
+
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        h5 {
+          margin-top: 1.5rem;
+          margin-bottom: 0.75rem;
+          text-align: center;
+          width: 100%; // Full width to ensure centering works
+        }
+
+        .col-youth-families {
+          h5 .top-level {
+            text-align: center; // Center the text
+            display: inline-block; // Keep it as a block for centering
+            width: 100%; // Full width to ensure centering works
+            
+            .youth-text,
+            .families-text {
+              display: inline; // Allow them to break at the end of the screen
+              white-space: normal;
+              text-align: center; // Ensure the text is centered
+            }
+            
+            .youth-text::after {
+              content: " "; // Keep the space after Youth &
+            }
+          }
+          
+          ul {
+            text-align: center; // Center the list items
+          }
+        }
+
+        ul li {
+          text-align: center;
+          margin-bottom: 0.35rem; // Reduce vertical spacing between menu items
+          
+          a {
+            font-size: 13px; // Reduce font size slightly on mobile
+            white-space: nowrap; // Keep links on one line when possible
+          }
+        }
+        
+        // Specific fix for "Get Involved" on mobile
+        .col-youth-families ul li a[href*="get-involved"] {
+          letter-spacing: -0.3px; // Tighten letter spacing slightly
+        }
+
+        .footer-logo {
+          max-width: 160px; // Even smaller logo on mobile
+          margin: 0 auto 1.5rem;
+        }
+
+        .social-icons {
+          margin-top: 1rem;
+          text-align: center;
+        }
+
+        .footer-bottom p {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+// Extra small screens specific fix
+@media (max-width: 576px) {
+  :host {
+    footer {
+      .pedsnet-footer {
+        .footer-logo {
+          max-width: 140px; // Smallest logo size on very small screens
+        }
+        
+        .col-youth-families h5 .top-level {
+          // Force "Youth & Families" to appear correctly on very small screens
+          .youth-text {
+            display: inline; // Use inline to allow normal text flow
+            margin-right: 3px; // Add explicit right margin after "Youth &"
+          }
+          
+          .families-text {
+            display: inline; // Use inline to allow normal text flow
+          }
+        }
+      }
+    }
+  }
+}
+
+// For very small screens where nowrap might cause overflow issues
+@media (max-width: 320px) {
+  :host {
+    footer {
+      .pedsnet-footer li a {
+        // Allow wrapping on extremely small screens if necessary
+        white-space: normal;
+        
+        // But keep text compact
+        letter-spacing: -0.2px;
+      }
     }
   }
 }
