@@ -1,6 +1,12 @@
 @import "src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss";
 
 :host {
+  
+  // Specifically targeting the copyright text
+  footer>div.pedsnet-footer>div>div.row.footer-bottom>div.col-lg-6.text-lg-start.text-center.mb-3.mb-lg-0>p {
+    color: $snow !important;
+  }
+
   footer {
     width: 100%;
     font-family: "proxima-nova", sans-serif;
@@ -90,7 +96,7 @@
             .youth-text {
               white-space: nowrap; // Keep "Youth &" together
               display: inline-block;
-              
+
               // Add space after the ampersand
               &::after {
                 content: " "; // Add a space after Youth &
@@ -106,8 +112,9 @@
 
         ul {
           text-align: left;
-          
+
           li a {
+
             // Target specifically the "Get Involved" link
             &[href*="get-involved"] {
               white-space: nowrap; // Keep "Get Involved" on one line
@@ -240,19 +247,19 @@
             text-align: center; // Center the text
             display: inline-block; // Keep it as a block for centering
             width: 100%; // Full width to ensure centering works
-            
+
             .youth-text,
             .families-text {
               display: inline; // Allow them to break at the end of the screen
               white-space: normal;
               text-align: center; // Ensure the text is centered
             }
-            
+
             .youth-text::after {
               content: " "; // Keep the space after Youth &
             }
           }
-          
+
           ul {
             text-align: center; // Center the list items
           }
@@ -261,13 +268,13 @@
         ul li {
           text-align: center;
           margin-bottom: 0.35rem; // Reduce vertical spacing between menu items
-          
+
           a {
             font-size: 13px; // Reduce font size slightly on mobile
             white-space: nowrap; // Keep links on one line when possible
           }
         }
-        
+
         // Specific fix for "Get Involved" on mobile
         .col-youth-families ul li a[href*="get-involved"] {
           letter-spacing: -0.3px; // Tighten letter spacing slightly
@@ -283,9 +290,9 @@
           text-align: center;
         }
 
-        .footer-bottom p {
+        .footer-bottom.p {
           text-align: center;
-          color: $snow
+          color: $snow !important;
         }
       }
     }
@@ -300,14 +307,15 @@
         .footer-logo {
           max-width: 140px; // Smallest logo size on very small screens
         }
-        
+
         .col-youth-families h5 .top-level {
+
           // Force "Youth & Families" to appear correctly on very small screens
           .youth-text {
             display: inline; // Use inline to allow normal text flow
             margin-right: 3px; // Add explicit right margin after "Youth &"
           }
-          
+
           .families-text {
             display: inline; // Use inline to allow normal text flow
           }
@@ -324,7 +332,7 @@
       .pedsnet-footer li a {
         // Allow wrapping on extremely small screens if necessary
         white-space: normal;
-        
+
         // But keep text compact
         letter-spacing: -0.2px;
       }
