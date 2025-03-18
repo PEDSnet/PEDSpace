@@ -3,14 +3,11 @@ import {
   Component,
   OnInit,
   OnDestroy,
-  NgZone,
-  ApplicationRef,
+  NgZone, 
   ChangeDetectorRef
 } from '@angular/core';
 import { ThemedHomeNewsComponent } from 'src/app/home-page/home-news/themed-home-news.component';
 import { environment } from 'src/environments/environment';
-
-// eslint-disable-next-line dspace-angular-ts/themed-component-usages
 import { HomeNewsComponent as BaseComponent } from '../../../../../app/home-page/home-news/home-news.component';
 
 @Component({
@@ -18,67 +15,72 @@ import { HomeNewsComponent as BaseComponent } from '../../../../../app/home-page
   styleUrls: ['./home-news.component.scss'],
   templateUrl: './home-news.component.html',
   standalone: true,
-  imports: [BaseComponent, CommonModule, ThemedHomeNewsComponent],
+  imports: [
+    BaseComponent, 
+    CommonModule, 
+    ThemedHomeNewsComponent
+  ],
 })
 export class HomeNewsComponent extends BaseComponent implements OnInit, OnDestroy {
   isProduction: boolean = environment.production;
   ipAddressMatch = false;
-  showDevOnProdMessage = false;
   showMessageAtAll: boolean = false;
 
   private targetIpAddress = 'pedsnetapps.chop.edu';
-
-  // Original images array with position properties
-  private originalImages = [
+  
+  // Image array 
+  images = [
     {
       path: 'assets/PEDSpace/images/dandy-full.jpg',
       alt: 'Dandelion',
       credit: 'inspiredimages',
       showCredit: true,
-      position: 'center bottom' // Dandelion showing more of the bottom
+      position: 'center bottom'
     },
     {
-      path: 'assets/PEDSpace/images/stock_images/kid_with_toy_car.jpg',
-      alt: 'Child holding toy car',
-      credit: 'RDNE Stock project',
-      showCredit: true,
-      position: 'center 5%' // Focus more on the child's face
-    },
-    {
-      path: 'assets/PEDSpace/images/stock_images/kid_with_bandaid.jpg',
-      alt: 'Child with bandaid',
+      path: 'assets/PEDSpace/images/stock_images/kid_with_stripedShirt_CROPPED.jpeg',
+      alt: 'Child speaking with a pediatrician on bed.',
       showCredit: false,
-      position: 'center 30%' // Focus on the upper part of image
+      position: 'right'
     },
     {
-      path: 'assets/PEDSpace/images/stock_images/kid_with_necklace.jpg',
-      alt: 'Child with necklace',
+      path: 'assets/PEDSpace/images/stock_images/kid_with_bandaid_CROPPED.jpg',
+      alt: 'A child receiving a band-aid.',
       showCredit: false,
-      position: 'center 45%' // Focus slightly higher than center
+      position: 'right 30%'
     },
+    // {
+    //   path: 'assets/PEDSpace/images/stock_images/kid_with_necklace_CROPPED.jpeg',
+    //   alt: 'A teenager speaking with a pediatrician.',
+    //   showCredit: false,
+    //   position: 'right'
+    // },
     {
-      path: 'assets/PEDSpace/images/stock_images/kid_with_stethoscope.jpg',
-      alt: 'Child with stethoscope',
+      path: 'assets/PEDSpace/images/stock_images/kid_with_stethoscope_CROPPED.jpg',
+      alt: 'A child receiving a stethoscope reading with their mother',
       showCredit: false,
-      position: 'center 20%' // Focus on the child with stethoscope
+      position: 'right'
     },
+    // {
+    //   path: 'assets/PEDSpace/images/stock_images/kid_with_yellowShirt.jpg',
+    //   alt: 'A child receiving a stethoscope reading with his mother.',
+    //   showCredit: false,
+    //   position: 'right center'
+    // },
     {
-      path: 'assets/PEDSpace/images/stock_images/kid_with_yellowShirt.jpg',
-      alt: 'Child with yellow shirt',
+      path: 'assets/PEDSpace/images/stock_images/three_kids_chillin_CROPPED.jpg',
+      alt: 'Three children sitting closely together.',
       showCredit: false,
-      position: 'center 35%' // Center position
+      position: 'center'
     }
   ];
-
-  // Randomized array for the current session
-  images: any[] = [];
+  
   currentImageIndex = 0;
-  private carouselInterval: any;
-  preloadedImages: HTMLImageElement[] = [];
+  private carouselTimer: any;
+  private visibilityChangeListener: any;
 
   constructor(
-    private ngZone: NgZone,
-    private appRef: ApplicationRef,
+    private ngZone: NgZone, 
     private cdr: ChangeDetectorRef
   ) {
     super();
@@ -87,64 +89,80 @@ export class HomeNewsComponent extends BaseComponent implements OnInit, OnDestro
   ngOnInit(): void {
     this.ipAddressMatch = (environment.rest.host === this.targetIpAddress);
     
-    // Randomize the images array
-    this.randomizeImages();
-    
-    // Preload all images to avoid flicker
+    // Preload images
     this.preloadImages();
     
-    // Start with a shorter interval for testing
-    setTimeout(() => {
-      this.nextImage();
-    }, 5000); // First change after 5 seconds for quick testing
+    // Start carousel
+    this.startCarousel();
+    
+    // Set up visibility change listener
+    this.setupVisibilityListener();
   }
   
   ngOnDestroy(): void {
-    this.stopCarousel();
-  }
-  
-  // Fisher-Yates shuffle algorithm to randomize images array
-  randomizeImages(): void {
-    // Create a copy of the original array
-    this.images = [...this.originalImages];
+    if (this.carouselTimer) {
+      clearTimeout(this.carouselTimer);
+    }
     
-    // Shuffle the array
-    for (let i = this.images.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [this.images[i], this.images[j]] = [this.images[j], this.images[i]];
+    // Remove visibility listener
+    if (this.visibilityChangeListener) {
+      document.removeEventListener('visibilitychange', this.visibilityChangeListener);
     }
   }
   
+  // Setup visibility change listener to pause/resume carousel when tab is inactive/active
+  setupVisibilityListener(): void {
+    this.visibilityChangeListener = () => {
+      if (document.hidden) {
+        // Tab is hidden, clear the timer
+        if (this.carouselTimer) {
+          clearTimeout(this.carouselTimer);
+          this.carouselTimer = null;
+        }
+      } else {
+        // Tab is visible again, restart the carousel
+        if (!this.carouselTimer) {
+          this.startCarousel();
+        }
+      }
+    };
+    
+    document.addEventListener('visibilitychange', this.visibilityChangeListener);
+  }
+  
+  // Preload all images for smoother transitions
   preloadImages(): void {
-    // Preload all images
     this.images.forEach(image => {
       const img = new Image();
       img.src = image.path;
-      this.preloadedImages.push(img);
     });
   }
   
+  // Start the carousel timer
+  startCarousel(): void {
+    // Run outside Angular zone for better performance
+    this.ngZone.runOutsideAngular(() => {
+      this.carouselTimer = setTimeout(() => {
+        // Run change detection inside Angular zone
+        this.ngZone.run(() => {
+          this.nextImage();
+        });
+      }, 15000);
+    });
+  }
+  
+  // Move to next image
   nextImage(): void {
-    // Update the image index
     this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
     
-    // Force view update
+    // Force change detection
     this.cdr.detectChanges();
-    this.appRef.tick();
     
-    // Schedule the next update
-    this.carouselInterval = setTimeout(() => {
-      this.nextImage();
-    }, 15000); // Regular 15 second interval after first change
+    // Schedule next transition
+    this.startCarousel();
   }
   
-  stopCarousel(): void {
-    if (this.carouselInterval) {
-      clearTimeout(this.carouselInterval);
-    }
-  }
-  
-  get currentImage() {
+  get activeImage() {
     return this.images[this.currentImageIndex];
   }
 }
