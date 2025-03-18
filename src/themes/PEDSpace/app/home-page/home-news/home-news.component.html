@@ -39,12 +39,32 @@
       </div>
     </div>
   </div>
-
-  <div class="background-image">
-    <img [src]="currentImage.path" [alt]="currentImage.alt" [style.object-position]="currentImage.position">
-  </div>
   
-  <small *ngIf="currentImage.showCredit" class="credits">
-    Photo by <a [href]="'https://www.pexels.com/@' + currentImage.credit">&#64;{{currentImage.credit}}</a>
+  <!-- CoreUI Carousel Component -->
+  <div class="carousel-wrapper">
+    <c-carousel 
+      interval="15000"
+      animate="true"
+      wrap="true"
+      transition="crossfade"
+      (itemChange)="onItemChange($event)">
+      <c-carousel-inner>
+        <c-carousel-item *ngFor="let image of images">
+          <div class="carousel-image-container">
+            <img 
+              [src]="image.path" 
+              [alt]="image.alt"
+              [style.object-position]="image.position">
+            <div class="overlay"></div>
+          </div>
+        </c-carousel-item>
+      </c-carousel-inner>
+    </c-carousel>
+  </div>
+
+  <small *ngIf="activeImage.showCredit" class="credits">
+    Photo by <a [href]="'https://www.pexels.com/@' + activeImage.credit">
+      &#64;{{activeImage.credit}}
+    </a>
   </small>
 </div>
