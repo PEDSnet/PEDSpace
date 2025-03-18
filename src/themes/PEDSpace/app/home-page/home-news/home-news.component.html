@@ -40,31 +40,17 @@
     </div>
   </div>
   
-  <!-- CoreUI Carousel Component -->
-  <div class="carousel-wrapper">
-    <c-carousel 
-      interval="15000"
-      animate="true"
-      wrap="true"
-      transition="crossfade"
-      (itemChange)="onItemChange($event)">
-      <c-carousel-inner>
-        <c-carousel-item *ngFor="let image of images">
-          <div class="carousel-image-container">
-            <img 
-              [src]="image.path" 
-              [alt]="image.alt"
-              [style.object-position]="image.position">
-            <div class="overlay"></div>
-          </div>
-        </c-carousel-item>
-      </c-carousel-inner>
-    </c-carousel>
+  <!-- Simple background image implementation -->
+  <div class="background-image" *ngFor="let image of images; let i = index"
+       [class.active]="currentImageIndex === i"
+       [style.backgroundImage]="'url(' + image.path + ')'"
+       [style.backgroundPosition]="image.position">
+    <div class="overlay"></div>
   </div>
 
-  <small *ngIf="activeImage.showCredit" class="credits">
-    Photo by <a [href]="'https://www.pexels.com/@' + activeImage.credit">
-      &#64;{{activeImage.credit}}
+  <small *ngIf="activeImage?.showCredit" class="credits">
+    Photo by <a [href]="'https://www.pexels.com/@' + activeImage?.credit">
+      &#64;{{activeImage?.credit}}
     </a>
   </small>
 </div>

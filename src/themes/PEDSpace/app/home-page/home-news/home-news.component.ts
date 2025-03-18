@@ -1,15 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy
+} from '@angular/core';
 import { ThemedHomeNewsComponent } from 'src/app/home-page/home-news/themed-home-news.component';
 import { environment } from 'src/environments/environment';
 import { HomeNewsComponent as BaseComponent } from '../../../../../app/home-page/home-news/home-news.component';
-
-// Import CoreUI components
-import {
-  CarouselComponent,
-  CarouselInnerComponent,
-  CarouselItemComponent
-} from '@coreui/angular';
 
 @Component({
   selector: 'ds-themed-home-news',
@@ -19,13 +16,10 @@ import {
   imports: [
     BaseComponent, 
     CommonModule, 
-    ThemedHomeNewsComponent,
-    CarouselComponent,
-    CarouselInnerComponent,
-    CarouselItemComponent
+    ThemedHomeNewsComponent
   ],
 })
-export class HomeNewsComponent extends BaseComponent implements OnInit {
+export class HomeNewsComponent extends BaseComponent implements OnInit, OnDestroy {
   isProduction: boolean = environment.production;
   ipAddressMatch = false;
   showMessageAtAll: boolean = false;
@@ -39,14 +33,14 @@ export class HomeNewsComponent extends BaseComponent implements OnInit {
       alt: 'Dandelion',
       credit: 'inspiredimages',
       showCredit: true,
-      position: 'center 90%'
+      position: 'center bottom'
     },
     {
       path: 'assets/PEDSpace/images/stock_images/kid_with_toy_car.jpg',
       alt: 'Child holding toy car',
       credit: 'RDNE Stock project',
       showCredit: true,
-      position: 'center 10%'
+      position: 'center 20%'
     },
     {
       path: 'assets/PEDSpace/images/stock_images/kid_with_bandaid.jpg',
@@ -74,8 +68,8 @@ export class HomeNewsComponent extends BaseComponent implements OnInit {
     }
   ];
   
-  // Track the current active image for credits
   currentImageIndex = 0;
+  private carouselTimer: any;
 
   constructor() {
     super();
@@ -83,14 +77,45 @@ export class HomeNewsComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.ipAddressMatch = (environment.rest.host === this.targetIpAddress);
+    
+    // Preload images
+    this.preloadImages();
+    
+    // Start carousel
+    this.startCarousel();
   }
   
-  // Event handler for when carousel changes items
-  onItemChange(index: number): void {
-    this.currentImageIndex = index;
+  ngOnDestroy(): void {
+    if (this.carouselTimer) {
+      clearTimeout(this.carouselTimer);
+    }
   }
   
-  // Get the currently active image
+  // Preload all images for smoother transitions
+  preloadImages(): void {
+    this.images.forEach(image => {
+      const img = new Image();
+      img.src = image.path;
+    });
+  }
+  
+  // Start the carousel timer
+  startCarousel(): void {
+    this.carouselTimer = setTimeout(() => {
+      this.nextImage();
+    }, 15000);
+  }
+  
+  // Move to next image
+  nextImage(): void {
+    this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
+    
+    // Schedule next transition
+    this.carouselTimer = setTimeout(() => {
+      this.nextImage();
+    }, 15000);
+  }
+  
   get activeImage() {
     return this.images[this.currentImageIndex];
   }
