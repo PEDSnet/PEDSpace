@@ -1,6 +1,12 @@
+<!-- <div class="d-flex"> -->
 <div class="dso-edit-menu d-flex">
     <div *ngFor="let section of (sections | async)" class="ml-1">
         <ng-container
-                *ngComponentOutlet="(sectionMap$ | async).get(section.id)?.component; injector: (sectionMap$ | async).get(section.id)?.injector;"></ng-container>
+            *ngComponentOutlet="(sectionMap$ | async).get(section.id)?.component; injector: (sectionMap$ | async).get(section.id)?.injector;"></ng-container>
     </div>
+    <a *ngIf="object" class="btn btn-primary btn-sm private-link mb-2" (click)="copyPermalink()"
+        [title]="isCopied ? 'Permalink copied!' : 'Copy Permalink'">
+        <i class="fa" [ngClass]="isCopied ? 'fa-check' : 'fa-clipboard'"></i>
+    </a>
 </div>
+<!-- </div> -->
