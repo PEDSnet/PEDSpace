@@ -4729,6 +4729,10 @@
 
   "project.page.titleprefix": "Research Project: ",
 
+  "project.startDate": "Project Start Date",
+  
+  "project.endDate": "Project End Date",
+
   "project-relationships.search.results.head": "Project Search Results",
 
   "project.search.results.head": "Project Search Results",
