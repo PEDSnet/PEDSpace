@@ -28,6 +28,8 @@ $documentation-icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 $study-icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-school'%3E%3Cpath d='M14 22v-4a2 2 0 1 0-4 0v4'/%3E%3Cpath d='m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2'/%3E%3Cpath d='M18 5v17'/%3E%3Cpath d='m4 6 8-4 8 4'/%3E%3Cpath d='M6 5v17'/%3E%3Ccircle cx='12' cy='9' r='2'/%3E%3C/svg%3E";
 $collection-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJveGVzIj48cGF0aCBkPSJNMi45NyAxMi45MkEyIDIgMCAwIDAgMiAxNC42M3YzLjI0YTIgMiAwIDAgMCAuOTcgMS43MWwzIDEuOGEyIDIgMCAwIDAgMi4wNiAwTDEyIDE5di01LjVsLTUtMy00LjAzIDIuNDJaIi8+PHBhdGggZD0ibTcgMTYuNS00Ljc0LTIuODUiLz48cGF0aCBkPSJtNyAxNi41IDUtMyIvPjxwYXRoIGQ9Ik03IDE2LjV2NS4xNyIvPjxwYXRoIGQ9Ik0xMiAxMy41VjE5bDMuOTcgMi4zOGEyIDIgMCAwIDAgMi4wNiAwbDMtMS44YTIgMiAwIDAgMCAuOTctMS43MXYtMy4yNGEyIDIgMCAwIDAtLjk3LTEuNzFMMTcgMTAuNWwtNSAzWiIvPjxwYXRoIGQ9Im0xNyAxNi41LTUtMyIvPjxwYXRoIGQ9Im0xNyAxNi41IDQuNzQtMi44NSIvPjxwYXRoIGQ9Ik0xNyAxNi41djUuMTciLz48cGF0aCBkPSJNNy45NyA0LjQyQTIgMiAwIDAgMCA3IDYuMTN2NC4zN2w1IDMgNS0zVjYuMTNhMiAyIDAgMCAwLS45Ny0xLjcxbC0zLTEuOGEyIDIgMCAwIDAtMi4wNiAwbC0zIDEuOFoiLz48cGF0aCBkPSJNMTIgOCA3LjI2IDUuMTUiLz48cGF0aCBkPSJtMTIgOCA0Ljc0LTIuODUiLz48cGF0aCBkPSJNMTIgMTMuNVY4Ii8+PC9zdmc+";
 $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWRuYSI+PHBhdGggZD0ibTEwIDE2IDEuNSAxLjUiLz48cGF0aCBkPSJtMTQgOC0xLjUtMS41Ii8+PHBhdGggZD0iTTE1IDJjLTEuNzk4IDEuOTk4LTIuNTE4IDMuOTk1LTIuODA3IDUuOTkzIi8+PHBhdGggZD0ibTE2LjUgMTAuNSAxIDEiLz48cGF0aCBkPSJtMTcgNi0yLjg5MS0yLjg5MSIvPjxwYXRoIGQ9Ik0yIDE1YzYuNjY3LTYgMTMuMzMzIDAgMjAtNiIvPjxwYXRoIGQ9Im0yMCA5IC44OTEuODkxIi8+PHBhdGggZD0iTTMuMTA5IDE0LjEwOSA0IDE1Ii8+PHBhdGggZD0ibTYuNSAxMi41IDEgMSIvPjxwYXRoIGQ9Im03IDE4IDIuODkxIDIuODkxIi8+PHBhdGggZD0iTTkgMjJjMS43OTgtMS45OTggMi41MTgtMy45OTUgMi44MDctNS45OTMiLz48L3N2Zz4=";
+$orgunit-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXVuaXZlcnNpdHkiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTAiIHI9IjEiLz48cGF0aCBkPSJNMjIgMjBWOGgtNGwtNi00LTYgNEgydjEyYTIgMiAwIDAgMCAyIDJoMTZhMiAyIDAgMCAwIDItMiIvPjxwYXRoIGQ9Ik02IDE3di4wMSIvPjxwYXRoIGQ9Ik02IDEzdi4wMSIvPjxwYXRoIGQ9Ik0xOCAxN3YuMDEiLz48cGF0aCBkPSJNMTggMTN2LjAxIi8+PHBhdGggZD0iTTE0IDIydi01YTIgMiAwIDAgMC0yLTJhMiAyIDAgMCAwLTIgMnY1Ii8+PC9zdmc+";
+$person-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXVzZXIiPjxwYXRoIGQ9Ik0xOSAyMXYtMmE0IDQgMCAwIDAtNC00SDlhNCA0IDAgMCAwLTQgNHYyIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSI3IiByPSI0Ii8+PC9zdmc+";
 
 // ======================
 // Badge Type Styles
@@ -281,6 +283,78 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
                 opacity: 1; // Fully opaque on hover/focus
                 background-color: lighten($seafoam-green, 15%); // Lighten the background color
                 background-image: generateBadgePattern(lighten($seafoam-green, 25%)); // Generate a lighter pattern
+                transform: translateY(-2px); // Slight upward movement
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
+            }
+        }
+    }
+
+    // OrgUnit Badge
+    &.badge-orgunit {
+        background-color: $celadon;
+        transition: all 0.3s ease;
+
+        &::before {
+            mask-image: url($orgunit-icon);
+            -webkit-mask-image: url($orgunit-icon);
+        }
+
+        &:not(.badge-community):hover,
+        &:not(.badge-community):focus {
+            background-color: lighten($celadon, 10%);
+        }
+
+        &.badge-collection {
+            border: 2px solid $celadon;
+            background-color: #e5e5f7; // Light background color
+            opacity: $badge-opacity; // Using the universal opacity variable
+            background-size: 4px 4px;
+            background-image: generateBadgePattern($celadon); // Using the gradient function
+            transition: all 0.3s ease;
+
+            
+
+            &:hover,
+            &:focus {
+                opacity: 1; // Fully opaque on hover/focus
+                background-color: lighten($celadon, 15%); // Lighten the background color
+                background-image: generateBadgePattern(lighten($celadon, 25%)); // Generate a lighter pattern
+                transform: translateY(-2px); // Slight upward movement
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
+            }
+        }
+    }
+
+    // Phenotype Badge
+    &.badge-person {
+        background-color: $tomato;
+        transition: all 0.3s ease;
+
+        &::before {
+            mask-image: url($person-icon);
+            -webkit-mask-image: url($person-icon);
+        }
+
+        &:not(.badge-community):hover,
+        &:not(.badge-community):focus {
+            background-color: lighten($tomato, 10%);
+        }
+
+        &.badge-collection {
+            border: 2px solid $tomato;
+            background-color: #e5e5f7; // Light background color
+            opacity: $badge-opacity; // Using the universal opacity variable
+            background-size: 4px 4px;
+            background-image: generateBadgePattern($tomato); // Using the gradient function
+            transition: all 0.3s ease;
+
+            
+
+            &:hover,
+            &:focus {
+                opacity: 1; // Fully opaque on hover/focus
+                background-color: lighten($tomato, 15%); // Lighten the background color
+                background-image: generateBadgePattern(lighten($tomato, 25%)); // Generate a lighter pattern
                 transform: translateY(-2px); // Slight upward movement
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
             }
