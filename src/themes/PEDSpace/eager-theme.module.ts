@@ -15,6 +15,7 @@ import { ConceptSetComponent } from './app/item-page/simple/item-types/conceptse
 import { DocumentationComponent } from './app/item-page/simple/item-types/documentation/documentation.component';
 import { DQCheckComponent } from './app/item-page/simple/item-types/dqcheck/dqcheck.component';
 import { PhenotypeComponent } from './app/item-page/simple/item-types/phenotype/phenotype.component';
+import { OrgUnitComponent } from './app/entity-groups/research-entities/item-pages/org-unit/org-unit.component';
 import { StudyComponent } from './app/item-page/simple/item-types/study/study.component';
 import { UntypedItemComponent } from './app/item-page/simple/item-types/untyped-item/untyped-item.component';
 import { NavbarComponent } from './app/navbar/navbar.component';
@@ -49,6 +50,7 @@ const ENTRY_COMPONENTS = [
   JournalIssueComponent,
   JournalVolumeComponent,
   PersonComponent,
+  OrgUnitComponent,
   StudyComponent,
   ConceptSetComponent,
   PhenotypeComponent,
