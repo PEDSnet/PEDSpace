@@ -1,13 +1,30 @@
-ds-comcol-page-header {
-  background-color: rgb(8, 176, 255); // Blue color for the banner
-  padding: 20px; // Adjust padding as needed
-  margin-bottom: 20px; // Space below the banner
-  display: block; // Ensure the element behaves like a block element
-  width: auto; // Adjust the width to counteract the negative margin
-  color: white; // Ensure text is white for better contrast
+@import "src/styles/_variables.scss";
+@import "src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss";
 
-  h1 {
-    color: white; // Ensure text is white for better contrast
-    margin: 0; // Remove default margin
-  }
+.full-width-header {
+  background-color: $midnight-green; /* $midnight-green */
+  padding: 2rem 0;
+  width: 100%;
+  display: flex;
+  align-items: center; /* Centers items vertically */
+  min-height: 200px; /* Set a minimum height for the container */
+}
+
+.midnight-header {
+  width: 100%; /* Ensure the header takes full width */
+}
+
+.midnight-header ::ng-deep h1,
+.midnight-header ::ng-deep h2 {
+  color: white !important;
+  font-size: 64px;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline #925870;
+  text-decoration-thickness: 3px; /* Control the thickness */
+  text-underline-offset: 10px; /* Control the space between text and underline */
+}
+
+.community-page {
+  margin-top: 1rem;
 }
