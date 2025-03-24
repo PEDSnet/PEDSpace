@@ -1,6 +1,8 @@
 import {
   AsyncPipe,
   NgIf,
+  KeyValuePipe,
+  NgForOf
 } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -20,6 +22,10 @@ import { ThemedResultsBackButtonComponent } from 'src/app/shared/results-back-bu
 import { ThemedThumbnailComponent } from 'src/app/thumbnail/themed-thumbnail.component';
 import { Context } from '../../../../../../../app/core/shared/context.model';
 import { OrgUnitComponent as BaseComponent } from 'src/app/entity-groups/research-entities/item-pages/org-unit/org-unit.component';
+import { ItemPageLocalFieldComponent } from 'src/themes/PEDSpace/app/item-page/simple/field-components/specific-field/local/item-page-local.component';
+import { ItemPageAbstractFieldComponent } from 'src/app/item-page/simple/field-components/specific-field/abstract/item-page-abstract-field.component';
+// import { BadgesComponent } from 'src/themes/PEDSpace/app/shared/object-collection/shared/badges/badges.component';
+import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
 
 @listableObjectComponent('OrgUnit', ViewMode.StandalonePage, Context.Any, 'PEDSpace')
 @Component({
@@ -29,7 +35,7 @@ import { OrgUnitComponent as BaseComponent } from 'src/app/entity-groups/researc
   templateUrl: './org-unit.component.html',
   // templateUrl: '../../../../../../../app/entity-groups/research-entities/item-pages/person/person.component.html',
   standalone: true,
-  imports: [NgIf, ThemedResultsBackButtonComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, GenericItemPageFieldComponent, RelatedItemsComponent, RouterLink, TabbedRelatedEntitiesSearchComponent, AsyncPipe, TranslateModule, ItemPageImgFieldComponent],
+  imports: [NgIf, ThemedResultsBackButtonComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, GenericItemPageFieldComponent, RelatedItemsComponent, RouterLink, TabbedRelatedEntitiesSearchComponent, AsyncPipe, TranslateModule, ItemPageImgFieldComponent, ItemPageLocalFieldComponent, KeyValuePipe, NgForOf, ItemPageAbstractFieldComponent, ThemedBadgesComponent],
 })
 export class OrgUnitComponent extends BaseComponent {
 }

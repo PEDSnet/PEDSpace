@@ -3096,6 +3096,10 @@
   "item.page.relationships.isOrgUnitOfPerson": "Authors",
 
   "item.page.relationships.isOrgUnitOfProject": "Research Projects",
+  
+  "item.page.relationships.isOrgUnitOfDocumentation": "Resources",
+  
+  "item.page.relationships.isOrgUnitOfStudy": "Studies",
 
   "item.page.return": "Back",
 
@@ -4197,11 +4201,11 @@
 
   "object.notify-detail-modal": "Repository Item",
 
-  "orgunit.listelement.badge": "Organizational Unit",
+  "orgunit.listelement.badge": "Institution",
 
   "orgunit.listelement.no-title": "Untitled",
 
-  "orgunit.page.city": "City",
+  "orgunit.page.city": "Address",
 
   "orgunit.page.country": "Country",
 
@@ -4215,9 +4219,9 @@
 
   "orgunit.page.ror": "ROR Identifier",
 
-  "orgunit.page.titleprefix": "Organizational Unit: ",
+  "orgunit.page.titleprefix": "Institution: ",
 
-  "orgunit.search.results.head": "Organizational Unit Search Results",
+  "orgunit.search.results.head": "Institution Search Results",
 
   "origin.notify-detail-modal": "LDN Service",
 
@@ -5027,7 +5031,7 @@
 
   "relationships.isAuthorOf": "Authors",
 
-  "relationships.isAuthorOf.OrgUnit": "Authors (organizational units)",
+  "relationships.isAuthorOf.OrgUnit": "Authors (Institutions)",
 
   "relationships.isAuthorOf.Person": "Authors (persons)",
 
@@ -5035,7 +5039,7 @@
 
   "relationships.isContributorOf": "Contributors",
 
-  "relationships.isContributorOf.OrgUnit": "Contributor (Organizational Unit)",
+  "relationships.isContributorOf.OrgUnit": "Contributor (Institution)",
 
   "relationships.isContributorOf.Person": "Contributor",
 
@@ -5055,7 +5059,7 @@
 
   "relationships.isJournalVolumeOf": "Journal Volume",
 
-  "relationships.isOrgUnitOf": "Organizational Units",
+  "relationships.isOrgUnitOf": "Institutions",
 
   "relationships.isPersonOf": "Related Person",
 
@@ -5367,7 +5371,7 @@
 
   "search.filters.entityType.JournalVolume": "Journal Volume",
 
-  "search.filters.entityType.OrgUnit": "Organizational Unit",
+  "search.filters.entityType.OrgUnit": "Institution",
 
   "search.filters.entityType.Person": "Person",
 
@@ -6001,7 +6005,7 @@
 
   "submission.import-external.preview.title.none": "Item Preview",
 
-  "submission.import-external.preview.title.OrgUnit": "Organizational Unit Preview",
+  "submission.import-external.preview.title.OrgUnit": "Institution Preview",
 
   "submission.import-external.preview.title.Person": "Person Preview",
 
@@ -6149,7 +6153,7 @@
 
   "submission.sections.describe.relationship-lookup.external-source.import-button-title.none": "Import remote item",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-button-title.OrgUnit": "Import remote organizational unit",
+  "submission.sections.describe.relationship-lookup.external-source.import-button-title.OrgUnit": "Import remote Institution",
 
   "submission.sections.describe.relationship-lookup.external-source.import-button-title.Patent": "Import remote patent",
 
@@ -6269,7 +6273,7 @@
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isAuthorOfPublication": "Local Authors ({{ count }})",
 
-  "submission.sections.describe.relationship-lookup.search-tab.tab-title.isChildOrgUnitOf": "Search for Organizational Units",
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.isChildOrgUnitOf": "Search for Institutions",
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isFundingAgencyOfProject": "Funder of the Project",
 
@@ -6307,7 +6311,7 @@
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.orcidWorks": "ORCID ({{ count }})",
 
-  "submission.sections.describe.relationship-lookup.search-tab.tab-title.OrgUnit": "Local Organizational Units ({{ count }})",
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.OrgUnit": "Local Institutions ({{ count }})",
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.Person": "Local Authors ({{ count }})",
 
@@ -6355,7 +6359,7 @@
 
   "submission.sections.describe.relationship-lookup.selection-tab.title.isAuthorOfPublication": "Selected Authors",
 
-  "submission.sections.describe.relationship-lookup.selection-tab.title.isChildOrgUnitOf": "Selected Organizational Unit",
+  "submission.sections.describe.relationship-lookup.selection-tab.title.isChildOrgUnitOf": "Selected Institution",
 
   "submission.sections.describe.relationship-lookup.selection-tab.title.isFundingAgencyOfPublication": "Selected Funding Agency",
 
@@ -6387,7 +6391,7 @@
 
   "submission.sections.describe.relationship-lookup.selection-tab.title.orcidv2": "Search Results",
 
-  "submission.sections.describe.relationship-lookup.selection-tab.title.OrgUnit": "Selected Organizational Units",
+  "submission.sections.describe.relationship-lookup.selection-tab.title.OrgUnit": "Selected Institutions",
 
   "submission.sections.describe.relationship-lookup.selection-tab.title.Person": "Selected Authors",
 
@@ -6427,7 +6431,7 @@
 
   "submission.sections.describe.relationship-lookup.title.isAuthorOfPublication": "Authors",
 
-  "submission.sections.describe.relationship-lookup.title.isChildOrgUnitOf": "Parent Organizational Unit",
+  "submission.sections.describe.relationship-lookup.title.isChildOrgUnitOf": "Parent Institution",
 
   "submission.sections.describe.relationship-lookup.title.isFundingAgencyOfProject": "Funder of the Project",
 
@@ -6459,7 +6463,7 @@
 
   "submission.sections.describe.relationship-lookup.title.JournalVolume": "Journal Volumes",
 
-  "submission.sections.describe.relationship-lookup.title.OrgUnit": "Organizational Units",
+  "submission.sections.describe.relationship-lookup.title.OrgUnit": "Institutions",
 
   "submission.sections.describe.relationship-lookup.title.Person": "Authors",
 

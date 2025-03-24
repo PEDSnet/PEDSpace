@@ -1,4 +1,7 @@
 <ds-results-back-button *ngIf="showBackButton$ | async" [back]="back"></ds-results-back-button>
+<div class="d-flex">
+  <ds-badges *ngIf="showLabel" [object]="object" [showAccessStatus]="true"></ds-badges>
+</div>
 <div class="d-flex flex-row">
   <ds-item-page-title-field [item]="object" class="mr-auto">
   </ds-item-page-title-field>
@@ -7,52 +10,107 @@
 <div class="row">
   <div class="col-xs-12 col-md-4">
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-      <ds-thumbnail [thumbnail]="object?.thumbnail | async"
-                    [defaultImage]="'assets/images/orgunit-placeholder.svg'"
-                    [alt]="'thumbnail.orgunit.alt'"
-                    [placeholder]="'thumbnail.orgunit.placeholder'"
-      >
+      <ds-thumbnail [thumbnail]="object?.thumbnail | async" [defaultImage]="'assets/images/orgunit-placeholder.svg'"
+        [alt]="'thumbnail.orgunit.alt'" [placeholder]="'thumbnail.orgunit.placeholder'">
       </ds-thumbnail>
     </ds-metadata-field-wrapper>
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.date.created']"
-      [label]="'PEDSnet Member Since'">
+    <ds-generic-item-page-field [item]="object" [fields]="['dc.date.created']" [label]="'PEDSnet Member Since'">
     </ds-generic-item-page-field>
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['organization.address.addressLocality']"
+    <ds-generic-item-page-field [item]="object" [fields]="['dc.date']" [label]="'item.preview.dc.date'">
+    </ds-generic-item-page-field>
+    <ds-generic-item-page-field [item]="object" [fields]="['organization.address.addressLocality']"
       [label]="'orgunit.page.city'">
     </ds-generic-item-page-field>
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['organization.adress.addressCountry']"
-      [label]="'orgunit.page.country'">
-    </ds-generic-item-page-field>
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.identifier']"
-      [label]="'orgunit.page.id'">
-    </ds-generic-item-page-field>
+
+    <!-- TODO: Integrate the functionality of the metadata field below into ds-generic-item-page-field -->
+    <!-- <ds-generic-item-page-field [item]="object" [fields]="['organization.identifier']" [label]="'orgunit.page.id'">
+    </ds-generic-item-page-field> -->
+    <a *ngIf="object && object.metadata && object.metadata['organization.identifier'] && object.metadata['organization.identifier'][0]"
+      [href]="object.metadata['organization.identifier'][0].value" class="btn btn-primary mb-3" target="_blank">
+      VIEW WEBSITE
+    </a>
+
+    <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject']" [separator]="'<br>'"
+      [label]="'item.preview.dc.subject'"></ds-generic-item-page-field>
+
+    <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfOrgUnit'"
+      [label]="'relationships.isDocumentationOf' | translate">
+    </ds-related-items>
+    <ds-related-items [parentItem]="object" [relationType]="'isPersonOfOrgUnit'"
+      [label]="'relationships.isPersonOf' | translate">
+    </ds-related-items>
   </div>
   <div class="col-xs-12 col-md-7">
-    <ds-item-page-img-field
-      [fields]="['organization.identifier.ror']"
-      [img]="{
-        URI: './assets/images/ror-icon.svg',
-        alt: 'item.page.image.alt.ROR',
-        heightVar: '--ds-item-page-img-field-ror-inline-height'
-      }"
-      [item]="object"
-      [label]="'orgunit.page.ror'"
-      [urlRegex]="'(.*)ror.org'"
-    >
-    </ds-item-page-img-field>
-    <ds-related-items
-      [parentItem]="object"
-      [relationType]="'isPublicationOfOrgUnit'"
-      [label]="'relationships.isPublicationOf' | translate">
-    </ds-related-items>
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.description']"
-      [label]="'orgunit.page.description'">
+
+    <ds-item-page-abstract-field [item]="object" [label]="'item.page.abstract'"></ds-item-page-abstract-field>
+
+    <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
+      [label]="'item.preview.dc.contributor.other'">
     </ds-generic-item-page-field>
+
+    <!-- Healthcare Statistics Section -->
+    <div class="healthcare-stats mb-5">
+      <h3 class="mb-3">At a Glance</h3>
+
+      <div class="row mt-4">
+        <div class="col-12 mb-4">
+          <div class="text-center">
+            <div class="stat-label">Total Patients</div>
+            <div class="stat-value primary-value">
+              <ds-generic-item-page-field [item]="object" [fields]="['local.count.patients']" [enableMarkdown]="false">
+              </ds-generic-item-page-field>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="text-center">
+            <div class="stat-label">Inpatient Hospitals</div>
+            <div class="stat-value">
+              <ds-generic-item-page-field [item]="object" [fields]="['local.count.inpatient']" [enableMarkdown]="false">
+              </ds-generic-item-page-field>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="text-center">
+            <div class="stat-label">Emergency Department Sites</div>
+            <div class="stat-value">
+              <ds-generic-item-page-field [item]="object" [fields]="['local.count.ed']" [enableMarkdown]="false">
+              </ds-generic-item-page-field>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="text-center">
+            <div class="stat-label">Urgent Care Sites</div>
+            <div class="stat-value">
+              <ds-generic-item-page-field [item]="object" [fields]="['local.count.urgentcare']"
+                [enableMarkdown]="false">
+              </ds-generic-item-page-field>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="text-center">
+            <div class="stat-label">Primary Care Sites</div>
+            <div class="stat-value">
+              <ds-generic-item-page-field [item]="object" [fields]="['local.count.primarycare']"
+                [enableMarkdown]="false">
+              </ds-generic-item-page-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ds-item-page-local-field [item]="object" [fields]="['dc.description']"
+      [label]="'orgunit.page.description'"></ds-item-page-local-field>
     <div>
       <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']">
         {{"item.page.link.full" | translate}}
@@ -60,17 +118,22 @@
     </div>
   </div>
   <div class="mt-5 w-100">
-    <ds-tabbed-related-entities-search  [item]="object"
-                                        [relationTypes]="[{
+    <ds-tabbed-related-entities-search [item]="object" [relationTypes]="[
+                                        {
+                                          label: 'isOrgUnitOfStudy',
+                                          filter: 'isOrgUnitOfStudy',
+                                          configuration: 'study-relationships'
+                                        },
+                                        {
+                                          label: 'isOrgUnitOfDocumentation',
+                                          filter: 'isOrgUnitOfDocumentation',
+                                          configuration: 'documentation-relationships'
+                                        },
+                                        {
                                           label: 'isOrgUnitOfPerson',
                                           filter: 'isOrgUnitOfPerson',
                                           configuration: 'person-relationships'
-                                        },
-                                        {
-                                          label: 'isOrgUnitOfProject',
-                                          filter: 'isOrgUnitOfProject',
-                                          configuration: 'project-relationships'
-                                        }]">
+                                        },]">
     </ds-tabbed-related-entities-search>
   </div>
 </div>

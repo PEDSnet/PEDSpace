@@ -2479,6 +2479,18 @@
         <property name="isOpenByDefault" value="false"/>
         <property name="pageSize" value="10"/>
     </bean>
+
+    <bean id="searchFilterIsOrgUnitOfStudyRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isOrgUnitOfStudy"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isOrgUnitOfStudy</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
     <bean id="searchFilterIsPublicationOfJournalIssueRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
         <property name="indexFieldName" value="isPublicationOfJournalIssue"/>
         <property name="metadataFields">
@@ -2504,6 +2516,16 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfDocumentation.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+    <bean id="searchFilterIsOrgUnitOfDocumentation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isDocumentationOfDocumentation"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isOrgUnitOfDocumentation.latestForDiscovery</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false"/>
@@ -3481,6 +3503,7 @@
                 <ref bean="searchFilterIsProjectOfOrgUnitRelation"/>
                 <ref bean="searchFilterIsPublicationOfOrgUnitRelation"/>
                 <ref bean="searchFilterIsDocumentationOfDocumentation"/>
+                <ref bean="searchFilterIsOrgUnitOfDocumentation"/>
                 <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterLastModified"/>
                 <ref bean="searchFilterAffiliation"/>
@@ -3913,6 +3936,7 @@
                 <ref bean="searchFilterIsAuthorOfPublicationRelation"/>
                 <ref bean="searchFilterIsProjectOfPublicationRelation"/>
                 <ref bean="searchFilterIsOrgUnitOfPublicationRelation"/>
+                <ref bean="searchFilterIsOrgUnitOfStudyRelation"/>
                 <ref bean="searchFilterIsPublicationOfJournalIssueRelation"/>
                 <ref bean="searchFilterIsJournalOfPublicationRelation"/>
             </list>

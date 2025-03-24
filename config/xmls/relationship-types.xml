@@ -10,7 +10,7 @@ cat /data/dspace-angular-dspace-8.1/config/relationship-types.xml > /data/dspace
 <!-- Also don't forget to init the entities:
 # The -f command requires a full path to an Entities model configuration file.
 sudo -u dspace bash;
- /data/dspace/bin/dspace initialize-entities -f /data/dspace/config/entities/relationship-types.xml 
+ /data/dspace/bin/dspace initialize-entities -f /data/dspace/config/entities/relationship-types.xml
  -->
  
 <relationships>
@@ -18,7 +18,7 @@ sudo -u dspace bash;
     <type>
         <leftType>OrgUnit</leftType>
         <rightType>Person</rightType>
-        <leftwardType>isMemberOfOrgUnit</leftwardType>
+        <leftwardType>isPersonOfOrgUnit</leftwardType>
         <rightwardType>isOrgUnitOfPerson</rightwardType>
         <leftCardinality>
             <min>0</min>

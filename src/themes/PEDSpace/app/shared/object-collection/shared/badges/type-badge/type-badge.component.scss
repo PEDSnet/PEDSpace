@@ -291,7 +291,7 @@ $person-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmc
 
     // OrgUnit Badge
     &.badge-orgunit {
-        background-color: $celadon;
+        background-color: $carolina-blue;
         transition: all 0.3s ease;
 
         &::before {
@@ -301,15 +301,15 @@ $person-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmc
 
         &:not(.badge-community):hover,
         &:not(.badge-community):focus {
-            background-color: lighten($celadon, 10%);
+            background-color: lighten($carolina-blue, 10%);
         }
 
         &.badge-collection {
-            border: 2px solid $celadon;
+            border: 2px solid $carolina-blue;
             background-color: #e5e5f7; // Light background color
             opacity: $badge-opacity; // Using the universal opacity variable
             background-size: 4px 4px;
-            background-image: generateBadgePattern($celadon); // Using the gradient function
+            background-image: generateBadgePattern($carolina-blue); // Using the gradient function
             transition: all 0.3s ease;
 
             
@@ -317,8 +317,8 @@ $person-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmc
             &:hover,
             &:focus {
                 opacity: 1; // Fully opaque on hover/focus
-                background-color: lighten($celadon, 15%); // Lighten the background color
-                background-image: generateBadgePattern(lighten($celadon, 25%)); // Generate a lighter pattern
+                background-color: lighten($carolina-blue, 15%); // Lighten the background color
+                background-image: generateBadgePattern(lighten($carolina-blue, 25%)); // Generate a lighter pattern
                 transform: translateY(-2px); // Slight upward movement
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
             }
