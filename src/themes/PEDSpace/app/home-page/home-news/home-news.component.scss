@@ -132,7 +132,7 @@
       .btn-primary {
         background-color: $midnight-green;
         border-color: $midnight-green;
-        color: $honeydew;
+        color: $snow;
 
         &:hover,
         &:focus {
@@ -144,7 +144,7 @@
       .btn-secondary {
         background-color: $deep-sea-blue;
         border-color: $deep-sea-blue;
-        color: $honeydew;
+        color: $snow;
 
         &:hover,
         &:focus {
@@ -156,7 +156,7 @@
       .btn-custom {
         background-color: map-get($theme-colors, 'dark');
         border-color: map-get($theme-colors, 'dark');
-        color: $honeydew;
+        color: $snow;
 
         &:hover,
         &:focus {
