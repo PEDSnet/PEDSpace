@@ -7,7 +7,7 @@
   width: 100%;
   display: flex;
   align-items: center; /* Centers items vertically */
-  min-height: 200px;
+  min-height: 350px;
 }
 
 .midnight-header {
@@ -16,24 +16,36 @@
 
 .midnight-header ::ng-deep h1,
 .midnight-header ::ng-deep h2 {
-  color: white !important;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  display: inline;
+  font-family: proxima-nova, sans-serif;
   font-size: 64px;
-  margin: 0;
-  padding: 0;
-  text-decoration: none; /* Remove default underline */
-  position: relative; /* For custom underline positioning */
+  font-weight: 700;
+  height: auto;
+  line-height: normal;
+  overflow-wrap: break-word;
+  text-align: left;
+  width: auto;
 }
 
 /* Create custom underline with space */
 .midnight-header ::ng-deep h1::after,
 .midnight-header ::ng-deep h2::after {
   content: "";
-  position: absolute;
-  left: 0;
-  bottom: -10px; /* Space between text and underline */
-  width: 5%;
-  height: 5px; /* Thickness of underline */
-  background-color: #925870; /* Color for underline */
+  border-top-color: rgb(147, 88, 112);
+  border-top-style: solid;
+  border-top-width: 5px;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  display: block;
+  font-family: proxima-nova, sans-serif;
+  font-size: 18px;
+  height: 5px;
+  line-height: 30.6px;
+  max-width: 80px;
+  overflow-wrap: break-word;
+  width: 80px;
 }
 
 .community-page {
