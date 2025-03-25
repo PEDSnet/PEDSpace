@@ -18,13 +18,13 @@ sorted_file=$(mktemp)
 # Extract the content, keeping only lines with key-value pairs
 grep -E '^\s*"[^"]+":' "$input_file" > "$temp_file"
 
-# Sort by everything after the first period, using awk to create a sortable key
-# Format: <everything after first period>|<original key>|<full line>
+# Sort by everything before the first period, using awk to create a sortable key
+# Format: <everything before first period>|<original key>|<full line>
 awk -F'"' '{
     key=$2;  # Extract the key between first set of quotes
     pos=index(key, ".");
     if (pos > 0) {
-        sort_key=substr(key, pos+1) "|" key;
+        sort_key=substr(key, 1, pos-1) "|" key;
     } else {
         sort_key=key "|" key;  # If no period, use full key
     }
