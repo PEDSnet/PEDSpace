@@ -5,7 +5,7 @@
 https://wiki.lyrasis.org/display/DSDOC8x/Configurable+Entities#ConfigurableEntities-DefaultEntityModels -->
 
 <!-- Don't forget to call the following command after committing changes:
-cat /data/dspace-angular-dspace-8.1/config/relationship-types.xml > /data/dspace/config/entities/relationship-types.xml -->
+cat /data/dspace-angular-dspace-8.1/config/xmls/relationship-types.xml > /data/dspace/config/entities/relationship-types.xml -->
 
 <!-- Also don't forget to init the entities:
 # The -f command requires a full path to an Entities model configuration file.
@@ -106,6 +106,20 @@ sudo -u dspace bash;
         </rightCardinality>
     </type>
 
+    <!-- OrgUnit to DQResult Relationship -->
+    <type>
+        <leftType>OrgUnit</leftType>
+        <rightType>DQResult</rightType>
+        <leftwardType>isDQResultOfOrgUnit</leftwardType>
+        <rightwardType>isOrgUnitOfDQResult</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
     <!-- Person Relationships -->
     <type>
         <leftType>Person</leftType>
@@ -185,6 +199,20 @@ sudo -u dspace bash;
         </rightCardinality>
     </type>
 
+    <!-- Person to DQResult Relationship -->
+    <type>
+        <leftType>Person</leftType>
+        <rightType>DQResult</rightType>
+        <leftwardType>isDQResultOfPerson</leftwardType>
+        <rightwardType>isPersonOfDQResult</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
     <!-- ConceptSet Relationships -->
     <type>
         <leftType>ConceptSet</leftType>
@@ -217,6 +245,20 @@ sudo -u dspace bash;
         <rightType>ConceptSet</rightType>
         <leftwardType>isConceptSetOfConceptSet</leftwardType>
         <rightwardType>isConceptSetOfConceptSet</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- ConceptSet to DQResult Relationship -->
+    <type>
+        <leftType>ConceptSet</leftType>
+        <rightType>DQResult</rightType>
+        <leftwardType>isDQResultOfConceptSet</leftwardType>
+        <rightwardType>isConceptSetOfDQResult</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
@@ -291,6 +333,20 @@ sudo -u dspace bash;
         </rightCardinality>
     </type>
 
+    <!-- DQCheck to DQResult Relationship -->
+    <type>
+        <leftType>DQCheck</leftType>
+        <rightType>DQResult</rightType>
+        <leftwardType>isDQResultOfDQCheck</leftwardType>
+        <rightwardType>isDQCheckOfDQResult</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
     <!-- Documentation Relationships -->
     <type>
         <leftType>Documentation</leftType>
@@ -344,12 +400,40 @@ sudo -u dspace bash;
         </rightCardinality>
     </type>
 
+    <!-- Documentation to DQResult Relationship -->
+    <type>
+        <leftType>Documentation</leftType>
+        <rightType>DQResult</rightType>
+        <leftwardType>isDQResultOfDocumentation</leftwardType>
+        <rightwardType>isDocumentationOfDQResult</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
     <!-- Phenotype Relationships -->
     <type>
         <leftType>Phenotype</leftType>
         <rightType>Phenotype</rightType>
         <leftwardType>isPhenotypeOfPhenotype</leftwardType>
         <rightwardType>isPhenotypeOfPhenotype</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Phenotype to DQResult Relationship -->
+    <type>
+        <leftType>Phenotype</leftType>
+        <rightType>DQResult</rightType>
+        <leftwardType>isDQResultOfPhenotype</leftwardType>
+        <rightwardType>isPhenotypeOfDQResult</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
@@ -377,6 +461,34 @@ sudo -u dspace bash;
         <rightType>Study</rightType>
         <leftwardType>isStudyOfStudy</leftwardType>
         <rightwardType>isStudyOfStudy</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Study to DQResult Relationship -->
+    <type>
+        <leftType>Study</leftType>
+        <rightType>DQResult</rightType>
+        <leftwardType>isDQResultOfStudy</leftwardType>
+        <rightwardType>isStudyOfDQResult</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- DQResult Self Relationship -->
+    <type>
+        <leftType>DQResult</leftType>
+        <rightType>DQResult</rightType>
+        <leftwardType>isDQResultOfDQResult</leftwardType>
+        <rightwardType>isDQResultOfDQResult</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>
