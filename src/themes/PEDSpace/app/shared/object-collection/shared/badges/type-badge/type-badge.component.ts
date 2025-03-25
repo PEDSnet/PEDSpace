@@ -105,6 +105,9 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
       case 'OrgUnit':
         specificClass = 'badge-orgunit';
         break;
+      case 'DQResult':
+        specificClass = 'badge-dqresult';
+        break;
     }
   
     return `${baseClass} ${specificClass} ${interactiveClass}`.trim();
