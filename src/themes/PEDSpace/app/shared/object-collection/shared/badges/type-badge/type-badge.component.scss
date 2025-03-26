@@ -324,7 +324,7 @@ $person-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmc
         }
     }
 
-    // Phenotype Badge
+    // Person Badge
     &.badge-person {
         background-color: $tomato;
         transition: all 0.3s ease;
@@ -408,7 +408,7 @@ $person-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmc
     }
 
     // Default Collection Badge Style for Undefined Types
-    &.badge-collection:not([class*="badge-conceptset"]):not([class*="badge-dqcheck"]):not([class*="badge-documentation"]):not([class*="badge-study"]):not([class*="badge-phenotype"]) {
+    &.badge-collection:not([class*="badge-conceptset"]):not([class*="badge-dqcheck"]):not([class*="badge-dqresult"]):not([class*="badge-documentation"]):not([class*="badge-study"]):not([class*="badge-phenotype"]) {
         border: 2px solid theme-color('info');
         background-color: #e5e5f7; // Light background color
         opacity: $badge-opacity; // Using the universal opacity variable
