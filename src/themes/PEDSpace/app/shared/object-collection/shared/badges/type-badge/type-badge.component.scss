@@ -364,7 +364,7 @@ $person-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmc
 
     // DQResult Badge
     &.badge-dqresult {
-        background-color: $mint-green; // You can replace with your preferred color variable
+        background-color: $pistachio; // You can replace with your preferred color variable
         transition: all 0.3s ease;
 
         &::before {
@@ -374,22 +374,22 @@ $person-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmc
 
         &:not(.badge-community):hover,
         &:not(.badge-community):focus {
-            background-color: lighten($mint-green, 10%);
+            background-color: lighten($pistachio, 10%);
         }
 
         &.badge-collection {
-            border: 2px solid $mint-green;
+            border: 2px solid $pistachio;
             background-color: #e5e5f7; // Light background color
             opacity: $badge-opacity; // Using the universal opacity variable
             background-size: 4px 4px;
-            background-image: generateBadgePattern($mint-green); // Using the gradient function
+            background-image: generateBadgePattern($pistachio); // Using the gradient function
             transition: all 0.3s ease;
 
             &:hover,
             &:focus {
                 opacity: 1; // Fully opaque on hover/focus
-                background-color: lighten($mint-green, 15%); // Lighten the background color
-                background-image: generateBadgePattern(lighten($mint-green, 25%)); // Generate a lighter pattern
+                background-color: lighten($pistachio, 15%); // Lighten the background color
+                background-image: generateBadgePattern(lighten($pistachio, 25%)); // Generate a lighter pattern
                 transform: translateY(-2px); // Slight upward movement
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
             }
