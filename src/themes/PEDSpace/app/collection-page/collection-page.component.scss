@@ -1,13 +1,77 @@
-ds-comcol-page-header {
-  background-color: rgb(122, 191, 53);
-  padding: 20px;
-  margin-bottom: 20px;
-  display: block;
-  width: auto; /* Sets the width to 100% of the viewport width */
-  color: white;
+@import "src/styles/_variables.scss";
+@import "src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss";
 
-  h1 {
-    color: white; // Ensure text is white for better contrast
-    margin: 0; // Remove default margin
-  }
+.full-width-header-wrapper {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+}
+
+.full-width-header {
+  background-color: $cambridge-blue; 
+  width: 100%;
+  display: flex;
+  align-items: center; 
+  min-height: 350px;
+}
+
+.title-container {
+  width: 100%;
+}
+
+/* Style for the entity type above the title */
+.entity-type {
+  color: $china-rose;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.cambridge-blue-header {
+  width: 100%; /* Ensure the header takes full width */
+}
+
+.cambridge-blue-header ::ng-deep h1,
+.cambridge-blue-header ::ng-deep h2 {
+  box-sizing: border-box;
+  color: $midnight-green;
+  display: inline;
+  font-family: proxima-nova, sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  height: auto;
+  line-height: normal;
+  overflow-wrap: break-word;
+  text-align: left;
+  width: auto;
+}
+
+/* Create custom underline with space */
+.cambridge-blue-header ::ng-deep h1::after,
+.cambridge-blue-header ::ng-deep h2::after {
+  content: "";
+  border-top-color: rgb(147, 88, 112);
+  border-top-style: solid;
+  border-top-width: 5px;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  display: block;
+  font-family: proxima-nova, sans-serif;
+  font-size: 18px;
+  height: 5px;
+  line-height: 30.6px;
+  max-width: 80px;
+  overflow-wrap: break-word;
+  width: 80px;
+  margin-top: 10px; /* Add space between text and underline */
+}
+
+.collection-page {
+  margin-top: 1rem;
 }

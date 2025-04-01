@@ -28,10 +28,10 @@ import { ViewTrackerComponent } from '../../../../app/statistics/angulartics/dsp
 
 @Component({
   selector: 'ds-themed-collection-page',
-  // templateUrl: './collection-page.component.html',
-  templateUrl: '../../../../app/collection-page/collection-page.component.html',
-  // styleUrls: ['./collection-page.component.scss']
-  styleUrls: ['../../../../app/collection-page/collection-page.component.scss'],
+  templateUrl: './collection-page.component.html',
+  // templateUrl: '../../../../app/collection-page/collection-page.component.html',
+  styleUrls: ['./collection-page.component.scss'],
+  // styleUrls: ['../../../../app/collection-page/collection-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     fadeIn,
@@ -60,4 +60,5 @@ import { ViewTrackerComponent } from '../../../../app/statistics/angulartics/dsp
  * This component represents a detail page for a single collection
  */
 export class CollectionPageComponent extends BaseComponent {
+
 }
