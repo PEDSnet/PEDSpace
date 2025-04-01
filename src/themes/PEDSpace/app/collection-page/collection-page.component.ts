@@ -5,10 +5,15 @@ import {
 import {
   ChangeDetectionStrategy,
   Component,
+  OnInit,
 } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { 
+  ActivatedRoute, 
+  Router, 
+  RouterOutlet 
+} from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { Observable, map } from 'rxjs';
 import { CollectionPageComponent as BaseComponent } from '../../../../app/collection-page/collection-page.component';
 import {
   fadeIn,
@@ -25,13 +30,14 @@ import { ThemedLoadingComponent } from '../../../../app/shared/loading/themed-lo
 import { ObjectCollectionComponent } from '../../../../app/shared/object-collection/object-collection.component';
 import { VarDirective } from '../../../../app/shared/utils/var.directive';
 import { ViewTrackerComponent } from '../../../../app/statistics/angulartics/dspace/view-tracker.component';
+import { AuthService } from '../../../../app/core/auth/auth.service';
+import { DSONameService } from '../../../../app/core/breadcrumbs/dso-name.service';
+import { AuthorizationDataService } from '../../../../app/core/data/feature-authorization/authorization-data.service';
 
 @Component({
   selector: 'ds-themed-collection-page',
   templateUrl: './collection-page.component.html',
-  // templateUrl: '../../../../app/collection-page/collection-page.component.html',
   styleUrls: ['./collection-page.component.scss'],
-  // styleUrls: ['../../../../app/collection-page/collection-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     fadeIn,
@@ -60,5 +66,31 @@ import { ViewTrackerComponent } from '../../../../app/statistics/angulartics/dsp
  * This component represents a detail page for a single collection
  */
 export class CollectionPageComponent extends BaseComponent {
-
+  
+  /**
+   * Get the entity type translation key
+   */
+  getEntityTypeBadge(collection: any): string {
+    if (collection?.metadata?.['dspace.entity.type']?.[0]?.value) {
+      const entityType = collection.metadata['dspace.entity.type'][0].value.toLowerCase();
+      
+      // Special case for dqcheck
+      if (entityType === 'dqcheck') {
+        return `${entityType}.collection.listelement.badge.alt`;
+      }
+      
+      return `${entityType}.collection.listelement.badge`;
+    }
+    return null;
+  }
+  
+  constructor(
+    protected route: ActivatedRoute,
+    protected router: Router,
+    protected authService: AuthService,
+    protected authorizationDataService: AuthorizationDataService,
+    public dsoNameService: DSONameService
+  ) {
+    super(route, router, authService, authorizationDataService, dsoNameService);
+  }
 }

@@ -2010,6 +2010,8 @@
     "doi-filter.label": "DOI filter",
 
     "dqcheck.collection.listelement.badge": "DQ Check Domain",
+    
+    "dqcheck.collection.listelement.badge.alt": "Data Quality Check Domain",
 
     "dqcheck.listelement.badge": "Data Quality Check",
 
