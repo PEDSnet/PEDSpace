@@ -43,12 +43,12 @@ export class HomeNewsComponent extends BaseComponent implements OnInit, OnDestro
       showCredit: false,
       position: 'right'
     },
-    {
-      path: 'assets/PEDSpace/images/stock_images/kid_with_bandaid_CROPPED.jpg',
-      alt: 'A child receiving a band-aid.',
-      showCredit: false,
-      position: 'right 30%'
-    },
+    // {
+    //   path: 'assets/PEDSpace/images/stock_images/kid_with_bandaid_CROPPED.jpg',
+    //   alt: 'A child receiving a band-aid.',
+    //   showCredit: false,
+    //   position: 'right 30%'
+    // },
     // {
     //   path: 'assets/PEDSpace/images/stock_images/kid_with_necklace_CROPPED.jpeg',
     //   alt: 'A teenager speaking with a pediatrician.',
