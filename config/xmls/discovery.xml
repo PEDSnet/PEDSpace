@@ -427,10 +427,19 @@
                         <ref bean="sortTitle" />
                         <ref bean="sortDateIssued" />
                         <ref bean="sortDateAccessioned"/>
+                        <ref bean="sortLastModified"/>
+                        <ref bean="sortFamilyName"/>
+                        <ref bean="sortGivenName"/>
+                        <ref bean="sortBirthDate"/>
+                        <ref bean="sortOrganizationLegalName"/>
+                        <ref bean="sortOrganizationAddressCountry"/>
+                        <ref bean="sortOrganizationAddressLocality"/>
+                        <ref bean="sortOrganizationFoundingDate"/>
                     </list>
                 </property>
             </bean>
         </property>
+        
         <!--Any default filter queries, these filter queries will be used for all
             queries done by discovery for this configuration -->
         <property name="defaultFilterQueries">
@@ -441,6 +450,7 @@
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>
+        
         <!--The configuration for the recent submissions-->
         <property name="recentSubmissionConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryRecentSubmissionsConfiguration">
@@ -451,8 +461,10 @@
                 <property name="useAsHomePage" value="false"/>
             </bean>
         </property>
+        
         <!--Default result per page  -->
         <property name="defaultRpp" value="10" />
+        
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
                 <property name="metadataFields">
@@ -470,6 +482,14 @@
                             <property name="snippets" value="5"/>
                         </bean>
                         <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            <property name="field" value="person.givenName"/>
+                            <property name="snippets" value="5"/>
+                        </bean>
+                        <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            <property name="field" value="person.familyName"/>
+                            <property name="snippets" value="5"/>
+                        </bean>
+                        <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
                             <property name="field" value="project.identifier.name"/>
                             <property name="snippets" value="5"/>
                         </bean>
@@ -480,6 +500,10 @@
                         </bean>
                         <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
                             <property name="field" value="dc.title"/>
+                            <property name="snippets" value="5"/>
+                        </bean>
+                        <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            <property name="field" value="organization.legalName"/>
                             <property name="snippets" value="5"/>
                         </bean>
                         <!-- By default, full text snippets are disabled, as snippets of embargoed/restricted bitstreams
@@ -502,6 +526,7 @@
                 </property>
             </bean>
         </property>
+        
         <property name="moreLikeThisConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryMoreLikeThisConfiguration">
                 <property name="similarityMetadataFields">
@@ -520,6 +545,7 @@
                 <property name="minWordLength" value="5"/>
             </bean>
         </property>
+        
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true"/>
     </bean>
@@ -1318,68 +1344,129 @@
     <bean id="person" class="org.dspace.discovery.configuration.DiscoveryConfiguration" scope="prototype">
         <property name="id" value="person"/>
         <property name="indexAlways" value="true"/>
-        <!--Which sidebar facets are to be displayed-->
+        
+        <!-- Enhanced sidebar facets with more relevant filters -->
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterJobtitle"/>
                 <ref bean="searchFilterKnowsLanguage"/>
                 <ref bean="searchFilterBirthdate"/>
+                <ref bean="searchFilterOrganizationAddressCountry"/> <!-- Added for geographic filtering -->
             </list>
         </property>
-        <!--The search filters which can be used on the discovery search page-->
+        
+        <!-- Expanded search filters with correct relationship directionality -->
         <property name="searchFilters">
             <list>
+                <!-- Basic person metadata filters -->
+                <ref bean="searchFilterTitle"/> <!-- For name-based searches -->
                 <ref bean="searchFilterFamilyName"/>
                 <ref bean="searchFilterGivenName"/>
                 <ref bean="searchFilterJobtitle"/>
                 <ref bean="searchFilterKnowsLanguage"/>
                 <ref bean="searchFilterBirthdate"/>
-                <ref bean="searchFilterIsOrgUnitOfPersonRelation"/>
-                <ref bean="searchFilterIsProjectOfPersonRelation"/>
-                <ref bean="searchFilterIsPublicationOfAuthorRelation"/>
-                <ref bean="searchFilterIsConceptSetOfPersonRelation"/>
+                <ref bean="searchFilterOrganizationAddressCountry"/> <!-- Added for geographic filtering -->
+                
+                <!-- Organizational relationships -->
+                <ref bean="searchFilterIsPersonOfOrgUnitRelation"/> <!-- Person belongs to these orgs -->
+                <ref bean="searchFilterOrganizationLegalName"/> <!-- For direct org name search -->
+                
+                <!-- Project relationships - projects this person is involved with -->
+                <ref bean="searchFilterIsPersonOfProjectRelation"/>
+                
+                <!-- Publication relationships - publications authored by this person -->
+                <ref bean="searchFilterIsAuthorOfPublicationRelation"/>
+                
+                <!-- Concept relationships - concepts related to this person -->
+                <ref bean="searchFilterIsPersonOfConceptSetRelation"/>
+                
+                <!-- Study relationships -->
+                <ref bean="searchFilterIsPersonOfStudyRelation"/>
+                
+                <!-- Documentation relationships -->
+                <ref bean="searchFilterIsPersonOfDocumentationRelation"/>
+                
+                <!-- Phenotype relationships -->
+                <ref bean="searchFilterIsPersonOfPhenotypeRelation"/>
+                
+                <!-- DQ relationships -->
+                <ref bean="searchFilterIsPersonOfDQResultRelation"/>
+                <ref bean="searchFilterIsPersonOfDQCheckRelation"/>
+                
+                <!-- File-based relationships -->
+                <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterFileNameInOriginalBundle"/>
             </list>
         </property>
-        <!--The sort filters for the discovery search-->
+        
+        <!-- Optimized sort configuration with more options -->
         <property name="searchSortConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
                 <property name="sortFields">
                     <list>
-                        <ref bean="sortScore" />
+                        <ref bean="sortScore"/>
                         <ref bean="sortFamilyName"/>
                         <ref bean="sortGivenName"/>
                         <ref bean="sortBirthDate"/>
                         <ref bean="sortDateAccessioned"/>
+                        <ref bean="sortLastModified"/> <!-- Added for recency-based sorting -->
                     </list>
                 </property>
             </bean>
         </property>
-        <!--Any default filter queries, these filter queries will be used for all
-            queries done by discovery for this configuration -->
+        
+        <!-- Optimized filter queries -->
         <property name="defaultFilterQueries">
             <list>
-                <!--Only find items, communities and collections-->
                 <value>search.resourcetype:Item AND latestVersion:true AND entityType_keyword:Person</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>
-        <!--Default result per page  -->
-        <property name="defaultRpp" value="10"/>
+        
+        <!-- Increased results per page for better browsing -->
+        <property name="defaultRpp" value="20"/>
+        
+        <!-- Enhanced recent submissions configuration -->
         <property name="recentSubmissionConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryRecentSubmissionsConfiguration">
                 <property name="metadataSortField" value="dc.date.accessioned"/>
                 <property name="type" value="date"/>
-                <property name="max" value="5"/>
+                <property name="max" value="10"/>
                 <property name="useAsHomePage" value="false"/>
             </bean>
         </property>
-        <!-- When true a "did you mean" example will be displayed, value can be true or false -->
+        
+        <!-- Enable spell checking -->
         <property name="spellCheckEnabled" value="true"/>
+        
+        <!-- Enhanced hit highlighting configuration -->
+        <property name="hitHighlightingConfiguration">
+            <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
+                <property name="metadataFields">
+                    <list>
+                        <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            <property name="field" value="person.familyName"/>
+                            <property name="snippets" value="5"/>
     </bean>
+                        <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            <property name="field" value="person.givenName"/>
+                            <property name="snippets" value="5"/>
+                        </bean>
+                        <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+                            <property name="field" value="person.identifier.jobtitle"/>
+                            <property name="snippets" value="5"/>
+                        </bean>
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!-- Person relationships configuration -->
     <bean id="personRelationships" class="org.dspace.discovery.configuration.DiscoveryConfiguration" scope="prototype">
         <property name="id" value="personRelationships"/>
         <property name="indexAlways" value="true"/>
-        <!--Which sidebar facets are to be displayed-->
+        
+        <!-- Enhanced sidebar facets with more relevant filters -->
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterJobtitle"/>
@@ -1387,9 +1474,12 @@
                 <ref bean="searchFilterBirthdate"/>
             </list>
         </property>
-        <!--The search filters which can be used on the discovery search page-->
+        
+        <!-- Expanded search filters with inverted relationships for searching related items -->
         <property name="searchFilters">
             <list>
+                <!-- Basic person metadata filters -->
+                <ref bean="searchFilterTitle"/>
                 <ref bean="searchFilterFamilyName"/>
                 <ref bean="searchFilterGivenName"/>
                 <ref bean="searchFilterJobtitle"/>
@@ -1626,8 +1716,12 @@
                 <ref bean="searchFilterOrganizationAddressLocality"/>
                 <ref bean="searchFilterOrganizationFoundingDate"/>
                 <ref bean="searchFilterIsPersonOfOrgUnitRelation"/>
-                <ref bean="searchFilterIsProjectOfOrgUnitRelation"/>
-                <ref bean="searchFilterIsPublicationOfOrgUnitRelation"/>
+                <ref bean="searchFilterIsStudyOfOrgUnitRelation"/>
+                <ref bean="searchFilterIsConceptSetOfOrgUnitRelation"/>
+                <ref bean="searchFilterIsDocumentationOfOrgUnitRelation"/>
+                <ref bean="searchFilterIsDQCheckOfOrgUnitRelation"/>
+                <ref bean="searchFilterIsDQResultOfOrgUnitRelation"/>
+                <ref bean="searchFilterIsOrgUnitOfOrgUnitRelation"/>
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -2495,6 +2589,39 @@
         <property name="pageSize" value="10"/>
     </bean>
 
+    <bean id="searchFilterIsPersonOfStudyRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPersonOfStudy"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPersonOfStudy.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <bean id="searchFilterIsPersonOfPhenotypeRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPersonOfPhenotype"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPersonOfPhenotype.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <bean id="searchFilterIsPersonOfDQCheckRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPersonOfDQCheck"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPersonOfDQCheck.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
     <bean id="searchFilterIsPublicationOfJournalIssueRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
         <property name="indexFieldName" value="isPublicationOfJournalIssue"/>
         <property name="metadataFields">
@@ -2515,7 +2642,9 @@
         <property name="isOpenByDefault" value="false"/>
         <property name="pageSize" value="10"/>
     </bean>
-    <bean id="searchFilterIsDocumentationOfDocumentation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+    <!-- Documentation Relationship Search Filters -->
+    <!-- Self-referential relationship -->
+    <bean id="searchFilterIsDocumentationOfDocumentationRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
         <property name="indexFieldName" value="isDocumentationOfDocumentation"/>
         <property name="metadataFields">
             <list>
@@ -2525,11 +2654,194 @@
         <property name="isOpenByDefault" value="false"/>
         <property name="pageSize" value="10"/>
     </bean>
-    <bean id="searchFilterIsOrgUnitOfDocumentation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
-        <property name="indexFieldName" value="isDocumentationOfDocumentation"/>
+
+    <!-- Organization relationships -->
+    <bean id="searchFilterIsOrgUnitOfDocumentationRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isOrgUnitOfDocumentation"/>
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfDocumentation.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <bean id="searchFilterIsDocumentationOfOrgUnitRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isDocumentationOfOrgUnit"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isDocumentationOfOrgUnit.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <!-- Person relationships -->
+    <bean id="searchFilterIsDocumentationOfPersonRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isDocumentationOfPerson"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isDocumentationOfPerson.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <bean id="searchFilterIsPersonOfDocumentationRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPersonOfDocumentation"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPersonOfDocumentation.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <!-- Study relationships -->
+    <bean id="searchFilterIsDocumentationOfStudyRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isDocumentationOfStudy"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isDocumentationOfStudy.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <bean id="searchFilterIsStudyOfDocumentationRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isStudyOfDocumentation"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isStudyOfDocumentation.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <bean id="searchFilterIsStudyOfOrgUnitRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isStudyOfOrgUnit"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isStudyOfOrgUnit.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <!-- ConceptSet relationships -->
+    <bean id="searchFilterIsDocumentationOfConceptSetRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isDocumentationOfConceptSet"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isDocumentationOfConceptSet.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <bean id="searchFilterIsConceptSetOfDocumentationRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isConceptSetOfDocumentation"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isConceptSetOfDocumentation.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <bean id="searchFilterIsConceptSetOfOrgUnitRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isConceptSetOfOrgUnit"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isConceptSetOfOrgUnit.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <!-- Phenotype relationships -->
+    <bean id="searchFilterIsDocumentationOfPhenotypeRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isDocumentationOfPhenotype"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isDocumentationOfPhenotype.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <bean id="searchFilterIsPhenotypeOfDocumentationRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPhenotypeOfDocumentation"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPhenotypeOfDocumentation.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <!-- DQCheck relationships -->
+    <bean id="searchFilterIsDocumentationOfDQCheckRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isDocumentationOfDQCheck"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isDocumentationOfDQCheck.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <bean id="searchFilterIsDQCheckOfDocumentationRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isDQCheckOfDocumentation"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isDQCheckOfDocumentation.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <bean id="searchFilterIsDQCheckOfOrgUnitRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isDQCheckOfOrgUnit"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isDQCheckOfOrgUnit.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <bean id="searchFilterIsDQCheckOfPersonRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isDQCheckOfPerson"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isDQCheckOfPerson.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+
+    <bean id="searchFilterIsDocumentationOfDQResultRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="isDocumentationOfDQResult"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isDocumentationOfDQResult.latestForDiscovery</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false"/>
@@ -3567,10 +3879,17 @@
                 <ref bean="searchFilterOrganizationAddressCountry"/>
                 <ref bean="searchFilterOrganizationAddressLocality"/>
                 <ref bean="searchFilterOrganizationFoundingDate"/>
-                <ref bean="searchFilterIsPersonOfOrgUnitRelation"/>
-                <ref bean="searchFilterIsProjectOfOrgUnitRelation"/>
-                <ref bean="searchFilterIsPublicationOfOrgUnitRelation"/>
-                <ref bean="searchFilterIsDocumentationOfDocumentation"/>
+                <!-- Documentation self-relationships -->
+                <ref bean="searchFilterIsDocumentationOfDocumentationRelation"/>
+                
+                <!-- Documentation <-> Organization relationships -->
+                <ref bean="searchFilterIsOrgUnitOfDocumentationRelation"/>
+                
+                <!-- Documentation <-> ConceptSet relationships -->
+                <ref bean="searchFilterIsConceptSetOfDocumentationRelation"/>
+                
+                <!-- Documentation <-> Phenotype relationships -->
+                <ref bean="searchFilterIsPhenotypeOfDocumentationRelation"/>
                 <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterLastModified"/>
                 <ref bean="searchFilterAffiliation"/>
@@ -3616,35 +3935,52 @@
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true"/>
     </bean>
-    <bean id="documentationRelationships" class="org.dspace.discovery.configuration.DiscoveryConfiguration"
-        scope="prototype">
+    <!-- Map all these relationships to the documentationRelationships discovery configuration -->
+    <bean id="documentationRelationships" class="org.dspace.discovery.configuration.DiscoveryConfiguration" scope="prototype">
         <property name="id" value="documentationRelationships"/>
         <property name="indexAlways" value="true"/>
-        <!--Which sidebar facets are to be displayed-->
+        
+        <!-- Sidebar facets for documentation relationships -->
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterLastModified"/>
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterSubjectFlat"/>
+                <ref bean="searchFilterEntityType"/>
             </list>
         </property>
-        <!--The search filters which can be used on the discovery search page-->
+        
+        <!-- All possible search filters for documentation relationships -->
         <property name="searchFilters">
             <list>
-                <ref bean="searchFilterOrganizationLegalName"/>
-                <ref bean="searchFilterOrganizationAddressCountry"/>
-                <ref bean="searchFilterOrganizationAddressLocality"/>
-                <ref bean="searchFilterOrganizationFoundingDate"/>
-                <ref bean="searchFilterIsPersonOfOrgUnitRelation"/>
-                <ref bean="searchFilterIsProjectOfOrgUnitRelation"/>
-                <ref bean="searchFilterIsPublicationOfOrgUnitRelation"/>
-                <ref bean="searchFilterIsDocumentationOfDocumentation"/>
-                <ref bean="searchFilterIsOrgUnitOfDocumentation"/>
+                <!-- Basic metadata filters -->
+                <ref bean="searchFilterTitle"/>
+                <ref bean="searchFilterAuthor"/>
+                <ref bean="searchFilterSubjectFlat"/>
+                <ref bean="searchFilterIssued"/>
                 <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterLastModified"/>
                 <ref bean="searchFilterAffiliation"/>
-                <ref bean="searchFilterSubjectFlat"/>
+                <ref bean="searchFilterVocabulary"/>
+                <ref bean="searchFilterEntityType"/>
+                
+                <!-- Documentation self-relationships -->
+                <ref bean="searchFilterIsDocumentationOfDocumentationRelation"/>
+                
+                <!-- Documentation <-> Organization relationships -->
+                <ref bean="searchFilterIsOrgUnitOfDocumentationRelation"/>
+                
+                <!-- Documentation <-> Person relationships -->
+                <!-- <ref bean="searchFilterIsPersonOfDocumentation"/> -->
+                
+                <!-- Documentation <-> Study relationships -->
+                <!-- <ref bean="searchFilterIsStudyOfDocumentation"/> -->
+                
+                <!-- Documentation <-> ConceptSet relationships -->
+                <ref bean="searchFilterIsConceptSetOfDocumentationRelation"/>
+                
+                <ref bean="searchFilterIsPhenotypeOfDocumentationRelation"/>
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -4145,6 +4481,16 @@
         <property name="isOpenByDefault" value="false"/>
         <property name="pageSize" value="10"/>
     </bean>
+    <bean id="searchFilterIsStudyOfPersonRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="isStudyOfPerson"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isStudyOfPerson.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
     <bean id="searchFilterIsStudyOfPhenotypeRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="isStudyOfPhenotype"/>
         <property name="metadataFields">
@@ -4160,6 +4506,16 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfConceptSet.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+    <bean id="searchFilterIsPhenotypeOfPersonRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="isPhenotypeOfPerson"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPhenotypeOfPerson.latestForDiscovery</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false"/>
@@ -4211,6 +4567,16 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfDQResult.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+    <bean id="searchFilterIsOrgUnitOfOrgUnitRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="isOrgUnitOfOrgUnit"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isOrgUnitOfOrgUnit.latestForDiscovery</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false"/>
@@ -4300,16 +4666,6 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfDocumentation.latestForDiscovery</value>
-            </list>
-        </property>
-        <property name="isOpenByDefault" value="false"/>
-        <property name="pageSize" value="10"/>
-    </bean>
-    <bean id="searchFilterIsDocumentationOfDQResultRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
-        <property name="indexFieldName" value="isDocumentationOfDQResult"/>
-        <property name="metadataFields">
-            <list>
-                <value>relation.isDocumentationOfDQResult.latestForDiscovery</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false"/>
