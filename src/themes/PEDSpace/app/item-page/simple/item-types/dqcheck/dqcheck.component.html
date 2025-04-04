@@ -99,6 +99,10 @@
       <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="'<br>'"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
+      <ds-related-items [parentItem]="object" [relationType]="'isDQResultOfDQCheck'"
+        [label]="'relationships.isDQResultOf' | translate">
+      </ds-related-items>
+
       <ds-related-items [parentItem]="object" [relationType]="'isPersonOfDQCheck'"
         [label]="'relationships.isPersonOf' | translate">
       </ds-related-items>

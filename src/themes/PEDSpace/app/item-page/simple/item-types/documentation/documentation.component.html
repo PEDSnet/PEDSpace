@@ -22,8 +22,7 @@
 
   <div class="row">
     <div class="col-12 col-md-4">
-      <!-- Date Submitted -->
-      <ds-item-page-date-field [item]="object" [fields]="['dc.date.submission']" [label]="'item.preview.dc.date.issued'"
+      <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'item.preview.dc.date.issued'"
         separator=", "></ds-item-page-date-field>
       <!-- Date Modified -->
       <!-- <ds-item-page-date-field [item]="object" [fields]="['dc.date']" [label]="'item.preview.dc.date'"
@@ -32,6 +31,10 @@
       <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
         <ds-media-viewer [item]="object"></ds-media-viewer>
       </div>
+
+      <!-- Date Submitted -->
+      <ds-item-page-date-field [item]="object" [fields]="['dc.date.submission']" [label]="'item.preview.dc.date.issued'"
+        separator=", "></ds-item-page-date-field>
 
       <ds-generic-item-page-field [renderAsButton]="false" [item]="object" [fields]="['project.startDate']"
         [label]="'project.startDate'"></ds-generic-item-page-field>
@@ -76,9 +79,9 @@
       <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.other']" [separator]="', '"
         [label]="'browse.metadata.vocab'"></ds-generic-item-page-field>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="'<br>'"
-        [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
-
+      <!-- It should be "is Y of X" - counterintuitively -->
+      <!-- Essentially, this component is answering the question "what does this component contain?" -->
+      <!-- Every item in this component is a thing of the entity type you're on. -->
       <ds-related-items [parentItem]="object" [relationType]="'isOrgUnitOfDocumentation'"
         [label]="'relationships.isOrgUnitOf' | translate">
       </ds-related-items>
@@ -98,6 +101,40 @@
           <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
         </a>
       </div>
+
+      <ds-tabbed-related-entities-search [item]="object" [relationTypes]="[
+      {
+        label: 'isDocumentationOfDocumentation',
+        filter: 'isDocumentationOfDocumentation',
+        configuration: 'documentation-relationships'
+      },
+      {
+        label: 'isDocumentationOfOrgUnit',
+        filter: 'isDocumentationOfOrgUnit',
+        configuration: 'orgunit-relationships'
+      },
+      {
+        label: 'isDocumentationOfConceptSet',
+        filter: 'isDocumentationOfConceptSet',
+        configuration: 'conceptset-relationships'
+      },
+      {
+        label: 'isDocumentationOfPhenotype',
+        filter: 'isDocumentationOfPhenotype',
+        configuration: 'phenotype-relationships'
+      },
+      {
+        label: 'isDocumentationOfDQCheck',
+        filter: 'isDocumentationOfDQCheck',
+        configuration: 'dqcheck-relationships'
+      },
+      {
+        label: 'isDocumentationOfDQResult',
+        filter: 'isDocumentationOfDQResult',
+        configuration: 'dqresult-relationships'
+      },
+    ]">
+    </ds-tabbed-related-entities-search>
     </div>
   </div>
 

@@ -3106,6 +3106,18 @@
     "item.page.relationships.isOrgUnitOfProject": "Research Projects",
 
     "item.page.relationships.isOrgUnitOfStudy": "Studies",
+    
+    "item.page.relationships.isDocumentationOfDocumentation": "Related Documentation",
+
+    "item.page.relationships.isDocumentationOfOrgUnit": "Related Institutions",
+
+    "item.page.relationships.isDocumentationOfConceptSet": "Related Concept Sets",
+
+    "item.page.relationships.isDocumentationOfPhenotype": "Related Phenotypes",
+
+    "item.page.relationships.isDocumentationOfDQCheck": "Related Quality Checks",
+
+    "item.page.relationships.isDocumentationOfDQResult": "Related Quality Results",
 
     "item.page.return": "Back",
 
@@ -5052,6 +5064,8 @@
     "relationships.isDocumentationOf": "Related Resource",
 
     "relationships.isDQCheckOf": "Related Data Quality Check",
+    
+    "relationships.isDQResultOf": "Related Data Quality Result",
 
     "relationships.isFundingAgencyOf.OrgUnit": "Funder",
 

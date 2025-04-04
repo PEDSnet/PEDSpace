@@ -34,6 +34,7 @@ import { ThemedResultsBackButtonComponent } from '../../../../../../../app/share
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { ItemPageDescriptionFieldComponent } from '../../field-components/specific-field/description/item-page-description.component';
 import { ItemPageExternalPublicationFieldComponent } from '../../field-components/specific-field/external/item-page-external-publication.component';
+import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component';
 
 /**
  * Component that represents a Documentation Item page
@@ -71,7 +72,8 @@ import { ItemPageExternalPublicationFieldComponent } from '../../field-component
     RouterLink,
     AsyncPipe,
     TranslateModule,
-    ItemPageCcLicenseFieldComponent],
+    ItemPageCcLicenseFieldComponent,
+    TabbedRelatedEntitiesSearchComponent],
 })
 export class DocumentationComponent extends BaseComponent {
 
