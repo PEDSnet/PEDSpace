@@ -2687,11 +2687,12 @@
         <property name="pageSize" value="10"/>
     </bean>
 
+    <!-- <value>relation.isOrgUnitOfStudy.latestForDiscovery OR relation.isOrgUnitOfStudy</value> -->
     <bean id="searchFilterIsOrgUnitOfStudyRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
         <property name="indexFieldName" value="isOrgUnitOfStudy"/>
         <property name="metadataFields">
             <list>
-                <value>relation.isOrgUnitOfStudy</value>
+                <value>relation.isOrgUnitOfStudy.latestForDiscovery OR relation.isOrgUnitOfStudy</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false"/>
@@ -2769,7 +2770,7 @@
         <property name="indexFieldName" value="isOrgUnitOfDocumentation"/>
         <property name="metadataFields">
             <list>
-                <value>relation.isOrgUnitOfDocumentation.latestForDiscovery</value>
+                <value>relation.isOrgUnitOfDocumentation</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false"/>
@@ -4238,7 +4239,7 @@
         <property name="defaultFilterQueries">
             <list>
                 <!--Only find items, communities and collections-->
-                <value>(search.resourcetype:Item AND latestVersion:true) OR (search.resourcetype:Item AND latestVersion:false) AND entityType_keyword:Documentation</value>
+                <value>search.resourcetype:Item AND entityType_keyword:Documentation</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>
@@ -4272,19 +4273,22 @@
                 <ref bean="searchFilterEntityType"/>
             </list>
         </property>
-        
+        <property name="tagCloudFacetConfiguration" ref="defaultTagCloudFacetConfiguration"/>
         <!-- All possible search filters for documentation relationships -->
         <property name="searchFilters">
             <list>
                 <!-- Basic metadata filters -->
-                <ref bean="searchFilterTitle"/>
-                <ref bean="searchFilterAuthor"/>
-                <ref bean="searchFilterSubjectFlat"/>
-                <ref bean="searchFilterIssued"/>
                 <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterLastModified"/>
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterVocabulary"/>
+                <ref bean="searchFilterTitle" />
+                <ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterIssued" />
+                <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterFileNameInOriginalBundle" />
+                <ref bean="searchFilterFileDescriptionInOriginalBundle" />
                 <ref bean="searchFilterEntityType"/>
                 
                 <!-- Documentation self-relationships -->
@@ -4293,16 +4297,14 @@
                 <!-- Documentation <-> Organization relationships -->
                 <ref bean="searchFilterIsOrgUnitOfDocumentationRelation"/>
                 
-                <!-- Documentation <-> Person relationships -->
-                <!-- <ref bean="searchFilterIsPersonOfDocumentation"/> -->
-                
-                <!-- Documentation <-> Study relationships -->
-                <!-- <ref bean="searchFilterIsStudyOfDocumentation"/> -->
-                
                 <!-- Documentation <-> ConceptSet relationships -->
                 <ref bean="searchFilterIsConceptSetOfDocumentationRelation"/>
                 
                 <ref bean="searchFilterIsPhenotypeOfDocumentationRelation"/>
+                
+                <ref bean="searchFilterContentInOriginalBundle"/>
+                <ref bean="searchFilterFileNameInOriginalBundle" />
+                <ref bean="searchFilterFileDescriptionInOriginalBundle" />
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -4354,11 +4356,7 @@
             <list>
                 <ref bean="searchFilterSubjectFlat" />
                 <ref bean="searchFilterCreated"/>
-                <ref bean="searchFilterLastModified"/>
                 <ref bean="searchFilterCheckReq"/>
-                <ref bean="searchFilterQuality"/>
-                <ref bean="searchFilterEntityType"/>
-                <ref bean="searchFilterIsDQResultOfDQCheckRelation"/>
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -4384,12 +4382,6 @@
                 
                 <!-- Organization relationships -->
                 <ref bean="searchFilterIsOrgUnitOfDQCheckRelation"/>
-                
-                <!-- Project relationships -->
-                <!-- <ref bean="searchFilterIsProjectOfDQCheckRelation"/> -->
-                
-                <!-- Publication relationships -->
-                <!-- <ref bean="searchFilterIsPublicationOfDQCheckRelation"/> -->
                 
                 <!-- Study relationships -->
                 <ref bean="searchFilterIsStudyOfDQCheckRelation"/>
@@ -4679,31 +4671,12 @@
                 <ref bean="searchFilterLastModified"/>
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterClinicalSubject"/>
-                
-                <!-- Study relationships -->
-                <!-- <ref bean="searchFilterIsPhenotypeOfStudyRelation"/> -->
+
                 <ref bean="searchFilterIsStudyOfPhenotypeRelation"/>
-                
-                <!-- Person relationships -->
-                <!-- <ref bean="searchFilterIsPhenotypeOfPersonRelation"/> -->
                 <ref bean="searchFilterIsPersonOfPhenotypeRelation"/>
-                
-                <!-- ConceptSet relationships -->
-                <!-- <ref bean="searchFilterIsPhenotypeOfConceptSetRelation"/> -->
                 <ref bean="searchFilterIsConceptSetOfPhenotypeRelation"/>
-                
-                <!-- Documentation relationships -->
-                <!-- <ref bean="searchFilterIsPhenotypeOfDocumentationRelation"/> -->
                 <ref bean="searchFilterIsDocumentationOfPhenotypeRelation"/>
-                
-                <!-- Project relationships -->
-                <!-- <ref bean="searchFilterIsPhenotypeOfProjectRelation"/> -->
-                <!-- <ref bean="searchFilterIsProjectOfPhenotypeRelation"/> -->
-                
-                <!-- DQ relationships -->
-                <!-- <ref bean="searchFilterIsPhenotypeOfDQResultRelation"/> -->
                 <ref bean="searchFilterIsDQResultOfPhenotypeRelation"/>
-                <!-- <ref bean="searchFilterIsPhenotypeOfDQCheckRelation"/> -->
                 <ref bean="searchFilterIsDQCheckOfPhenotypeRelation"/>
                 
                 <!-- File-related filters -->
