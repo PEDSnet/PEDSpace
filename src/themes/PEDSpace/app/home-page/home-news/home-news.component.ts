@@ -147,7 +147,7 @@ export class HomeNewsComponent extends BaseComponent implements OnInit, OnDestro
         this.ngZone.run(() => {
           this.nextImage();
         });
-      }, 15000);
+      }, 7500);
     });
   }
   
