@@ -4229,7 +4229,7 @@
 
     "orgunit.page.dateestablished": "Date established",
 
-    "orgunit.page.description": "Description",
+    "orgunit.page.description": "Patient Population",
 
     "orgunit.page.edit": "Edit Organization Unit",
 
@@ -4502,6 +4502,10 @@
     "person.search.title": "Person Search",
 
     "person-relationships.search.results.head": "Person Search Results",
+    
+    "orgunit-relationships.search.results.head": "Institution Search Results",
+    
+    "documentation-relationships.search.results.head": "Documentation Search Results",
 
     "phenotype.collection.listelement.badge": "Phenotype Domain",
 
@@ -5964,8 +5968,12 @@
     "study-relationships.search.results.head": "Study Search Results",
 
     "study.collection.listelement.badge": "Study Domain",
+    
+    "orgunit.collection.listelement.badge": "Institution Domain",
 
     "study.listelement.badge": "Study",
+    
+    "orgunit.listelement.badge": "Institution",
 
     "study.page.edit": "Edit Study",
 
