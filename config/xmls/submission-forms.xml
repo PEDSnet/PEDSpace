@@ -382,6 +382,151 @@
                 </field>
             </row>
         </form>
+        <!-- Data Quality Result Form-->
+        <form name="DQResultForm">
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Check Title</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the main title of the item. Use title case. Format the check name as Check Domain: Single or multiple site, anomaly or exploratory, temporal measurement. 
+                            E.g., "Patient-Facts: Multiple Sites, Anomaly Detection, Measuring Across Time"
+                        </hint>
+                    <required>You must enter a title for this item.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>created</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Date Created</label>
+                    <style>col-sm-4</style>
+                    <input-type>date</input-type>
+                    <hint>Please give the that the check was finalized.
+                            You may leave out the day and/or month if necessary.
+                        </hint>
+                    <required>You must enter at least the year.</required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isDQResultOfPerson</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Creator</label>
+                    <hint>Enter the name of the creator of this result.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>author</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isDQResultOfOrgUnit</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Affliated Organization(s)</label>
+                    <hint>Enter affiliated institution.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>other</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>abstract</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Result Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a brief general description of the result. At minimum, this description should include a purpose statement of the result and some reference as to when it should be used during a study.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <repeatable>false</repeatable>
+                    <label>Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Smoke some damn weed.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isDQResultOfOrgUnit</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Affliated Organization(s)</label>
+                    <hint>Enter affiliated institution.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>other</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isDQResultOfDocumentation</relationship-type>
+                    <search-configuration>documentation</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Related Resources</label>
+                    <hint>Enter related Resources.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>other</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Check Specifications</label>
+                    <input-type>onebox</input-type>
+                    <hint>At minimum, add one tag to the check for each of the following categories. Use the subject tree for Data Quality Check Categorizations for assistance. 
+                            Data quality characterization; analysis level; temporal evaluation; data source;anomaly or exploratory investigation; visualization output(s); quality probe; and clinical data quality assessment type.</hint>
+                    <required>Specification tags are required.</required>
+                    <vocabulary closed="true">dc_subject</vocabulary>
+                </field>
+            </row>
+        </form>
         <!-- Concept Set Form-->
         <form name="ConceptSetForm">
             <row>
@@ -2278,6 +2423,10 @@
             <pair>
                 <displayed-value>Data Quality Check</displayed-value>
                 <stored-value>DQCheck</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Data Quality Result</displayed-value>
+                <stored-value>DQResult</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="common_types" dc-term="type">

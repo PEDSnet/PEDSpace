@@ -62,6 +62,7 @@
         <name-map collection-entity-type="ConceptSet" submission-name="ConceptSet"/>
         <name-map collection-entity-type="Phenotype" submission-name="Phenotype"/>
         <name-map collection-entity-type="DQCheck" submission-name="DQCheck"/>
+        <!-- <name-map collection-entity-type="DQResult" submission-name="DQResult"/> -->
         <name-map collection-entity-type="Documentation" submission-name="Documentation"/>
 
         <!-- Example of configuration using a community handle to map an Item Submission Process.
@@ -359,6 +360,13 @@
         <submission-process name="DQCheck">
             <step id="collection"/>
             <step id="DQCheckForm"/>
+            <step id="upload"/>
+            <step id="cclicense"/>
+        </submission-process>
+
+        <submission-process name="DQResult">
+            <step id="collection"/>
+            <step id="DQResultForm"/>
             <step id="upload"/>
             <step id="cclicense"/>
         </submission-process>
