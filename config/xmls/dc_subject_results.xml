@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is the controlled vocabulary used for dc.subject.other-->
+<node id="RESULT" label="DQ Analysis Result Characteristics">
+	<isComposedBy>
+        <node id="RESULT.1" label="Disparate Site Behavior"></node>
+        <node id="RESULT.2" label="Uniform Site Behavior"></node>
+        <node id="RESULT.3" label="Disparate Cohort Behavior"></node>
+        <node id="RESULT.4" label="Uniform Cohort Behavior"></node>
+        <node id="RESULT.35" label="Anomalies Observed"></node>
+        <node id="RESULT.5" label="No Anomalies Observed"></node>
+        <node id="RESULT.6" label="Expected Output">
+            <isComposedBy>
+                <node id="RESULT.7" label="Expected Term Mapping"></node>
+                <node id="RESULT.8" label="Expected Patient Retention"></node>
+                <node id="RESULT.9" label="Expected Variable Proportion"></node>
+                <node id="RESULT.10" label="Expected Longitunidal Variation"></node>
+                <node id="RESULT.11" label="Expected Event Sequencing"></node>
+                <node id="RESULT.36" label="Expected Events Observed"></node>
+                <node id="RESULT.12" label="Expected Cohort Observations"></node>
+                <node id="RESULT.13" label="Expected Concepts Present"></node>
+            </isComposedBy>
+        </node>
+        <node id="RESULT.14" label="Unexpected Output">
+            <isComposedBy>
+                <node id="RESULT.15" label="Unexpected Term Mapping"></node>
+                <node id="RESULT.16" label="Unexpected Patient Retention"></node>
+                <node id="RESULT.17" label="Unexpected Variable Proportion"></node>
+                <node id="RESULT.18" label="Unexpected Longitunidal Variation"></node>
+                <node id="RESULT.19" label="Unexpected Event Sequencing"></node>
+                <node id="RESULT.20" label="Unexpected Events Observed"></node>
+                <node id="RESULT.21" label="Unexpected Cohort Observations"></node>
+                <node id="RESULT.22" label="Unexpected Concepts Present"></node>
+            </isComposedBy>        
+        </node>
+        <node id="RESULT.23" label="Threshold Violation"></node>
+        <node id="RESULT.24" label="No Threshold Violations"></node>
+        <node id="RESULT.25" label="Detrimental Cohort Loss"></node>
+        <node id="RESULT.26" label="Vernacular Trends Observed"></node>
+	</isComposedBy>
+	<hasNote>Taxonomy developed by Annabel Pinkney</hasNote>
+</node>

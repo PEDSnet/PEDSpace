@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE item-submission SYSTEM "/data/dspace/config/item-submission.dtd">
+<!DOCTYPE item-submission SYSTEM "item-submission.dtd">
 
 <!-- Configurable Submission configuration file -->
 
@@ -62,7 +62,7 @@
         <name-map collection-entity-type="ConceptSet" submission-name="ConceptSet"/>
         <name-map collection-entity-type="Phenotype" submission-name="Phenotype"/>
         <name-map collection-entity-type="DQCheck" submission-name="DQCheck"/>
-        <!-- <name-map collection-entity-type="DQResult" submission-name="DQResult"/> -->
+        <name-map collection-entity-type="DQResult" submission-name="DQResult"/>
         <name-map collection-entity-type="Documentation" submission-name="Documentation"/>
 
         <!-- Example of configuration using a community handle to map an Item Submission Process.
@@ -155,6 +155,12 @@
 
         <!-- NEW ENTITY BASED STEP DEFINITIONS-->
         <step-definition id="DQCheckForm" mandatory="true">
+            <heading>submit.progressbar.describe.stepone</heading>
+            <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+            <type>submission-form</type>
+        </step-definition>
+        
+        <step-definition id="DQResultForm" mandatory="true">
             <heading>submit.progressbar.describe.stepone</heading>
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
             <type>submission-form</type>
@@ -368,7 +374,6 @@
             <step id="collection"/>
             <step id="DQResultForm"/>
             <step id="upload"/>
-            <step id="cclicense"/>
         </submission-process>
 
         <submission-process name="Documentation">

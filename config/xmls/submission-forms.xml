@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE input-forms SYSTEM "/data/dspace/config/submission-forms.dtd">
+<!DOCTYPE input-forms SYSTEM "submission-forms.dtd">
 <input-forms>
     <!-- The form-definitions map lays out the detailed definition of all the -->
     <!-- submission forms. Each separate form set has a unique name as an     -->
@@ -391,8 +391,8 @@
                     <dc-qualifier>type</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Resource Type</label>
-                    <input-type value-pairs-name="EntityType">dropdown</input-type>
-                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type> 
+                    <hint>This item type MUST be set to "Data Quality Result".</hint>
                     <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
                 </field>
             </row>
@@ -402,11 +402,14 @@
                     <dc-element>title</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Check Title</label>
+                    <label>Record Title</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the main title of the item. Use title case. Format the check name as Check Domain: Single or multiple site, anomaly or exploratory, temporal measurement. 
-                            E.g., "Patient-Facts: Multiple Sites, Anomaly Detection, Measuring Across Time"
-                        </hint>
+                    <hint> Enter a title for the results using the following formula "[Check Name] Study Results: [Study Shorthand]"
+                    Examples: 
+                    "Patient Facts Study Results: PRESERVE"
+                    "Source and Concept Vocabularies Study Results: CDC Epilepsy"
+                    "Cohort Attrition Study Results: JDIQ Manuscript"
+                    </hint>
                     <required>You must enter a title for this item.</required>
                 </field>
             </row>
@@ -416,30 +419,26 @@
                     <dc-element>date</dc-element>
                     <dc-qualifier>created</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Date Created</label>
+                    <label>Date</label>
                     <style>col-sm-4</style>
                     <input-type>date</input-type>
-                    <hint>Please give the that the check was finalized.
-                            You may leave out the day and/or month if necessary.
-                        </hint>
-                    <required>You must enter at least the year.</required>
+                    <hint>Enter the date this check was executed.</hint>
+                    <required>You must enter at least a year.</required>
                 </field>
             </row>
             <row>
-                <relation-field>
-                    <relationship-type>isDQResultOfPerson</relationship-type>
-                    <search-configuration>person</search-configuration>
-                    <repeatable>false</repeatable>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>author</dc-qualifier>
+                    <repeatable>true</repeatable>
                     <label>Creator</label>
-                    <hint>Enter the name of the creator of this result.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>author</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
-                    <required></required>
-                </relation-field>
+                    <input-type>name</input-type>
+                    <hint>Enter the name of the analyst or investigator who ran the code to generate this result.
+                    Use the format "Last Name, Given Name."
+                    Do not include middle initials or credentials.</hint>
+                    <required>If the analyst is unknown, enter the name of the study investigator.</required>
+                </field>
             </row>
             <row>
                 <relation-field>
@@ -447,7 +446,7 @@
                     <search-configuration>orgunit</search-configuration>
                     <repeatable>false</repeatable>
                     <label>Affliated Organization(s)</label>
-                    <hint>Enter affiliated institution.</hint>
+                    <hint>Enter the affiliated institution of the analyst or investigator.</hint>
                     <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>contributor</dc-element>
@@ -463,10 +462,75 @@
                     <dc-element>description</dc-element>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Result Description</label>
+                    <label>Check Description</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter a brief general description of the result. At minimum, this description should include a purpose statement of the result and some reference as to when it should be used during a study.</hint>
-                    <required></required>
+                    <hint>In 2-3 brief sentences, list the parameters of the check you used and the purpose of the check. 
+                    Example:
+                    "The results of a Source and Concept Vocabularies check using the Single Site, Exploratory, Cross-Sectional parameters. This check investigates SNOMED mappings to ICD codes for epilepsy diagnoses. This check was run to analyze data being prepared for a grant proposal to the CDC."</hint>
+                    <required>This field is required.</required>
+                </field>
+            </row>            
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Data Provenance</label>
+                    <input-type value-pairs-name="DataProv">list</input-type>
+                    <hint>Select the term which best describes your data source.</hint>
+                    <required>At least one source must be selected.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Evaluation Parameters</label>
+                    <input-type value-pairs-name="EvalParam">list</input-type>
+                    <hint>Select the parameters applied to your check.</hint>
+                    <required>Parameters must be selected.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Result Characteristics</label>
+                    <input-type>tag</input-type>
+                    <hint>Select terms (as many as are applicable) to characterize your study-specific observations of the analysis.</hint>
+                    <required>At least one term must be selected.</required>
+                    <vocabulary>dc_subject_results</vocabulary>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>dqcheck</dc-element>
+                    <dc-qualifier>outcomes</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Outcomes</label>
+                    <input-type>onebox</input-type>
+                    <hint>Select terms that characterize the outcome of the analysis.</hint>
+                    <required>At least one term must be selected</required>
+                    <vocabulary>dc_subject_outcomes</vocabulary>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>mesh</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Clinical Subjects</label>
+                    <input-type value-pairs-name="ClinSub">onebox</input-type> 
+                    <hint>Select terms that characterize the clinical domain being investigated</hint>
+                    <required>Specification tags are required.</required>
+                    <vocabulary>dc_subject_mesh</vocabulary>
                 </field>
             </row>
             <row>
@@ -474,26 +538,43 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
                     <repeatable>false</repeatable>
-                    <label>Description</label>
+                    <label>Results Description</label>
                     <input-type>textarea</input-type>
-                    <hint>Smoke some damn weed.</hint>
+                    <hint>Describe your findings from the data quality analysis in full. Use this space to expand upon trends and observations in detail. Please provide some context for how these findings affected your use of the data in the study (e.g., did you modify a cohort attrition step, remove a site's data from analysis, etc.). 
+                    This field is not required but highly recommended.</hint>
                     <required></required>
                 </field>
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isDQResultOfOrgUnit</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
+                    <relationship-type>isDQResultOfDQCheck</relationship-type>
+                    <search-configuration>dqcheck</search-configuration>
                     <repeatable>false</repeatable>
-                    <label>Affliated Organization(s)</label>
-                    <hint>Enter affiliated institution.</hint>
+                    <label>Data Quality Check Linkage</label>
+                    <hint>Link to the data quality check record which corresponds to the check run to produce these results.</hint>
                     <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>other</dc-qualifier>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier>requires</dc-qualifier>
                         <input-type>onebox</input-type>
                     </linked-metadata-field>
-                    <required></required>
+                    <required></required> <!-- Not required - I can input if they can't figure it out. -->
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isDQResultOfStudy</relationship-type>
+                    <search-configuration>study</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Study Record Linkage</label>
+                    <hint>Link to the study record which corresponds to the investigation. If study does not</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier>ispartof</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required> <!-- Not required - I can input if they can't figure it out. -->
                 </relation-field>
             </row>
             <row>
@@ -502,29 +583,15 @@
                     <search-configuration>documentation</search-configuration>
                     <repeatable>false</repeatable>
                     <label>Related Resources</label>
-                    <hint>Enter related Resources.</hint>
+                    <hint>Select the database that was referenced</hint>
                     <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>other</dc-qualifier>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier>isbasedon</dc-qualifier>
                         <input-type>onebox</input-type>
                     </linked-metadata-field>
-                    <required></required>
+                    <required></required> <!-- Not required - I can input if they can't figure it out. -->
                 </relation-field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Check Specifications</label>
-                    <input-type>onebox</input-type>
-                    <hint>At minimum, add one tag to the check for each of the following categories. Use the subject tree for Data Quality Check Categorizations for assistance. 
-                            Data quality characterization; analysis level; temporal evaluation; data source;anomaly or exploratory investigation; visualization output(s); quality probe; and clinical data quality assessment type.</hint>
-                    <required>Specification tags are required.</required>
-                    <vocabulary closed="true">dc_subject</vocabulary>
-                </field>
             </row>
         </form>
         <!-- Concept Set Form-->
@@ -2427,6 +2494,58 @@
             <pair>
                 <displayed-value>Data Quality Result</displayed-value>
                 <stored-value>DQResult</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="DataProv" dc-term="subject">
+            <pair>
+                <displayed-value>PEDSnet Data Source(s)</displayed-value>
+                <stored-value>PEDSnet Data Source(s)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PCORnet Data Source(s)</displayed-value>
+                <stored-value>PCORnet Data Source(s)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Non-Network Data Source(s)</displayed-value>
+                <stored-value>Non-Network Data Source(s)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Anonymized Data Source(s)</displayed-value>
+                <stored-value>Anonymized Data Source(s)</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="EvalParam" dc-term="subject">
+            <pair>
+                <displayed-value>Study-Specific Data Quality</displayed-value>
+                <stored-value>Study-Specific Data Quality</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Network Data Quality</displayed-value>
+                <stored-value>Network Data Quality</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Longitudinal Analysis</displayed-value>
+                <stored-value>Data Quality Check Categorizations::Dataset Evaluation Strategy::Temporal Evaluation::Longitudinal Analysis</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Cross-Sectional Analysis</displayed-value>
+                <stored-value>Data Quality Check Categorizations::Dataset Evaluation Strategy::Temporal Evaluation::Cross-Sectional Analysis</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Single-Site Analysis</displayed-value>
+                <stored-value>Data Quality Check Categorizations::Dataset Evaluation Strategy::Data Source Comparison::Single Site Analysis</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Multi-Site Analysis</displayed-value>
+                <stored-value>Data Quality Check Categorizations::Dataset Evaluation Strategy::Data Source Comparison::Multi-Site Analysis</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Exploratory Analysis</displayed-value>
+                <stored-value>	Data Quality Check Categorizations::Dataset Evaluation Strategy::Exploratory Analysis</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Data Anomaly Method</displayed-value>
+                <stored-value>Data Quality Check Categorizations::Dataset Evaluation Strategy::Data Anomaly Method</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="common_types" dc-term="type">
