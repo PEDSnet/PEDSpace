@@ -616,7 +616,7 @@
                     <repeatable>false</repeatable>
                     <label>Title</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the title of the concept set. Use title case. E.g., Anti-Diabetic Agents, Oral</hint>
+                    <hint>Enter the title of the concept set. Use title case, e.g., Anti-Diabetic Agents, Oral</hint>
                     <required>You must enter a title for this item.</required>
                 </field>
             </row>
@@ -641,14 +641,26 @@
                     <repeatable>true</repeatable>
                     <label>Creator(s)</label>
                     <hint>Enter the name(s) of the creator(s). 
-                            (Family name, Given names)</hint>
+                            (Family name, Given name)</hint>
                     <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>contributor</dc-element>
                         <dc-qualifier>author</dc-qualifier>
-                        <input-type>onebox</input-type>
+                        <input-type>name</input-type>
                     </linked-metadata-field>
                 </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Concept Set Evaluation</label>
+                    <input-type value-pairs-name="EvalType">list</input-type>
+                    <hint>Select the term that best describes the concept set's level of review.</hint>
+                    <required>A selection is required.</required>
+                </field>
             </row>
             <row>
                 <relation-field>
@@ -656,26 +668,24 @@
                     <search-configuration>person</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Reviewer(s)</label>
-                    <hint>Enter the concept set reviewer(s) name(s) (Family name, Given names).</hint>
+                    <hint>Enter the concept set reviewer(s) name(s) if "Clinician Review" or
+						"Review, Non-Clinician" are selected above. (Family name, Given names).</hint>
                     <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>contributor</dc-element>
                         <dc-qualifier>advisor</dc-qualifier>
-                        <input-type>onebox</input-type>
+                        <input-type>name</input-type>
                     </linked-metadata-field>
-                    <!-- You may choose to validate author names via a Regular Expression if it's appropriate for
-                            your institution. The below regex requires a comma to be present in the author field.
-                            However, this is disabled by default to support organizations as authors, etc. -->
-                    <!--<regex>\w+(,)+\w+</regex>-->
+                    <required></required>
                 </relation-field>
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isOrgUnitOfPerson</relationship-type>
+                    <relationship-type>isOrgUnitOfConceptSet</relationship-type>
                     <search-configuration>orgunit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
-                    <hint>Enter the name(s) of the institutions employing any of the individuals named in Creator or Reviewer.</hint>
+                    <hint>Enter the name(s) of the institution(s) employing the individuals named in the Creator and Reviewer fields.</hint>
                     <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>contributor</dc-element>
@@ -694,37 +704,37 @@
                     <label>Intention</label>
                     <input-type>textarea</input-type>
                     <hint>Enter one sentence describing the intention of your concept set.
-                            E.g., Concept set intended to identify patients with a diagnosis of asthma to define a study cohort.</hint>
+                            For example, "Concept set intended to identify patients with a diagnosis of asthma to define a study cohort."</hint>
                     <required>You must input at least one sentence.</required>
                 </field>
             </row>
-            <row>
+                        <row>
                 <field>
                     <dc-schema>dc</dc-schema>
-                    <dc-element>description</dc-element>
+                    <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Description</label>
-                    <input-type>textarea</input-type>
-                    <hint>Enter a description of the clinical concept measured by this code set and the purpose or intention of the code set within the context of a study. Why did you develop this concept set? Were you trying to define a cohort or investigate a study variable? Was it intended to be broad (prioritizing sensitivity) or narrow (prioritizing specificity)? What kind of topics are included in this concept set? Were there any limitations placed on this concept set?
-                            E.g., This broad concept set was intended to identify patients with cleft lip, cleft palate, or cleft lip and palate to define a study cohort. 
-                            E.g., This medication concept set includes the following ingredients: Azilsartan, Candesartan, Eprosartan, Irbesartan, Losartan, Olmesartan, Telmisartan, and Valsartan. Combinations are included. 
-                            PLEASE PROVIDE AS MUCH DETAIL AS POSSIBLE.</hint>
-                    <required></required>
+                    <label>Data Model</label>
+                    <input-type value-pairs-name="DataModel">list</input-type> <!-- CREATE VALUE LIST -->
+                    <hint>Select the term that best describes the data model used in this concept set's creation</hint>
+                    <required>A selection is required.</required>
                 </field>
             </row>
             <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>provenance</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Provenance</label>
-                    <input-type>onebox</input-type>
-                    <hint>Input the name of the study this concept set was created for, and what role this concept set played in the study (e.g., exclusion criteria, confounder, etc.) 
-                            If this concept set was not developed for a study enter, "This code set was developed in the course of query formation for a prospective study."</hint>
-                    <required>At least the name of the study must be entered. Do not use shorthand to abbreviate the study, rather, write the full title.</required>
-                </field>
+                <relation-field>
+                    <relationship-type>isResourceOfConceptSet</relationship-type>
+                    <search-configuration>documentation</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Database Version Linkage</label>
+                    <hint>If PEDSnet Data Model dependent, select the record that represents the database version this concept set was created with.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier>isbasedon</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                </relation-field>
             </row>
             <row>
                 <field>
@@ -733,13 +743,82 @@
                     <dc-qualifier>other</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Vocabularies</label>
-                    <input-type>onebox</input-type>
+                    <input-type value-pairs-name="Vocabs">qualdrop_value</input-type> <!-- CREATE VALUE LIST -->
                     <hint>Enter the medical ontologies used in the concept set.</hint>
-                    <required>At least one ontology must be referenced.</required>
-                    <vocabulary closed="true">dc_subject_other</vocabulary>
+                    <required>At least one ontology must be selected.</required>
                 </field>
             </row>
             <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Medication Characterization</label>
+                    <input-type value-pairs-name="MedTermChar">qualdrop_value</input-type> <!-- CREATE VALUE LIST -->
+                    <hint>Select the normalized name classifications present in your concept set (medication sets only).</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>mesh</dc-qualifier>
+                    <repeatable>true</repeatable>
+                     <label>Clinical Subject</label>
+                    <input-type>tag</input-type>
+                    <hint>Select the clinical subject terms most associated with the concept set purpose.</hint>
+                    <required>At least two clinical subject headings must be applied to the concept set.</required>
+                    <vocabulary closed="true">dc_subject_mesh</vocabulary>
+                </field>                
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Concept Set Characterization</label>
+                    <input-type value-pairs-name="CSChar">list</input-type> <!-- CREATE VALUE LIST -->
+                    <hint>Select the terms that best describe the concept set.</hint>
+                    <required>A selection is required.</required>
+                </field>
+            </row>   
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a detailed description of the code set's contents and development process, then describe the purpose of the code set within a study context. 
+                    Were you trying to define a cohort or investigate a study variable? 
+                    Was it intended to be broad (prioritizing sensitivity) or narrow (prioritizing specificity)? 
+                    What kind of topics are included in this concept set? 
+                    Were there any limitations placed on this concept set during development?
+                    Is there anything potential users should know before reusing the code set?</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isStudyOfConceptSet</relationship-type>
+                    <search-configuration>study</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Provenance</label>
+                    <hint>Input the name of the study or query this concept set was created for OR use the search tool to select the record that represents the study this concept set was created for.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>provenance</dc-element>
+                        <dc-qualifier></dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required>The study name must be entered. Do not use shorthand to abbreviate the study, rather, write the full title.</required>
+                </relation-field>
+            </row>
+            <!-- <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
@@ -751,20 +830,7 @@
                     <required>At least one tag must be applied to the concept set.</required>
                     <vocabulary closed="true">dc_subject</vocabulary>
                 </field>
-            </row>
-            <!-- <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>subject</dc-element>
-                        <dc-qualifier>mesh</dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Clinical Subject</label>
-                        <input-type>onebox</input-type>
-                        <hint>Tag the clinical subject most associated with the concept set, then input terms for up to two term hierarchy-levels higher and others as applicable.</hint>
-                        <required>At least two clinical subject heading must be applied to the concept set.</required>
-                        <vocabulary closed="true">dc_subject_mesh</vocabulary>
-                    </field>
-                </row> -->
+            </row> -->
             <!-- <row>
                     <relation-field>
                         <relationship-type>isConceptSetOfStudy</relationship-type>
@@ -799,7 +865,7 @@
                     <dc-qualifier>status</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Research Suitability</label>
-                    <input-type value-pairs-name="conceptset_quality">dropdown</input-type>
+                    <input-type value-pairs-name="Quality">dropdown</input-type>
                     <hint>Select the research suitability of the Concept Set.</hint>
                     <required></required>
                 </field>
@@ -1337,7 +1403,7 @@
                     <dc-qualifier>status</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Quality</label>
-                    <input-type value-pairs-name="conceptset_quality">dropdown</input-type>
+                    <input-type value-pairs-name="Quality">dropdown</input-type>
                     <hint>Select the quality of the Concept Set.</hint>
                 </field>
             </row>
@@ -2470,6 +2536,292 @@
                 <stored-value>isbn</stored-value>
             </pair>
         </value-pairs>
+        <value-pairs value-pairs-name="EvalType" dc-term="subject">
+            <pair>
+                <displayed-value>Clinician Review</displayed-value>
+                <stored-value>Clinician Review</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Non-Clinician Review</displayed-value>
+                <stored-value>Non-Clinician Review</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>No Formal Review</displayed-value>
+                <stored-value>No Formal Review</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="DataModel" dc-term="subject">
+            <pair>
+                <displayed-value>PEDSnet Data Model</displayed-value>
+                <stored-value>PEDSnet Data Model</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PCORnet Data Model</displayed-value>
+                <stored-value>PCORnet Data Model</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>OMOP Data Model</displayed-value>
+                <stored-value>OMOP Data Model</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="Vocabs" dc-term="subject">
+            <pair>
+                <displayed-value>RxNorm</displayed-value>
+                <stored-value>RxNorm</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>RxNorm Extension</displayed-value>
+                <stored-value>RxNorm Extension</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>NDC</displayed-value>
+                <stored-value>NDC</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ICD-03</displayed-value>
+                <stored-value>ICD-03</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ICD-9</displayed-value>
+                <stored-value>ICD-9</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ICD-9-CM</displayed-value>
+                <stored-value>ICD-9-CM</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ICD-9-Proc</displayed-value>
+                <stored-value>ICD-9-Proc</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ICD-10</displayed-value>
+                <stored-value>ICD-10</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ICD-10-CM</displayed-value>
+                <stored-value>ICD-10-CM</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ICD-10-PCS</displayed-value>
+                <stored-value>ICD-10-PCS</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ICD-10-GM</displayed-value>
+                <stored-value>ICD-10-GM</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ICD-10-CN</displayed-value>
+                <stored-value>ICD-10-CN</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ICD-11</displayed-value>
+                <stored-value>ICD-11</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ICD-11-CM</displayed-value>
+                <stored-value>ICD-11-CM</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ICD-11-PCS</displayed-value>
+                <stored-value>ICD-11-PCS</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>LOINC</displayed-value>
+                <stored-value>LOINC</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>CPT4</displayed-value>
+                <stored-value>CPT4</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>OMOP Value Set</displayed-value>
+                <stored-value>OMOP Value Set</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PCORnet Value Set</displayed-value>
+                <stored-value>PCORnet Value Set</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ABMS</displayed-value>
+                <stored-value>ABMS</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>CMS Place of Service</displayed-value>
+                <stored-value>CMS Place of Service</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>HCPCS</displayed-value>
+                <stored-value>HCPCS</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Medicare Specialty</displayed-value>
+                <stored-value>Medicare Specialty</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>MedDRA</displayed-value>
+                <stored-value>MedDRA</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>NUCC</displayed-value>
+                <stored-value>NUCC</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>SNOMED</displayed-value>
+                <stored-value>SNOMED</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>CIM10</displayed-value>
+                <stored-value>CIM10</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>EDI</displayed-value>
+                <stored-value>EDI</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>HES Specialty</displayed-value>
+                <stored-value>HES Specialty</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Nebraska Lexicon</displayed-value>
+                <stored-value>Nebraska Lexicon</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>NAACCR</displayed-value>
+                <stored-value>NAACCR</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>OPCS4</displayed-value>
+                <stored-value>OPCS4</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>SPC</displayed-value>
+                <stored-value>SPC</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>SPL</displayed-value>
+                <stored-value>SPL</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>UK Biobank</displayed-value>
+                <stored-value>UK Biobank</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="MedTermChar" dc-term="subject">
+            <pair>
+                <displayed-value>Dose Form Group</displayed-value>
+                <stored-value>Dose Form Group</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Dose Form</displayed-value>
+                <stored-value>Dose Form</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Brand Pack Name</displayed-value>
+                <stored-value>Brand Pack Name</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Branded Drug</displayed-value>
+                <stored-value>Semantic Branded Drug</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Branded Drug Group</displayed-value>
+                <stored-value>Semantic Branded Drug Group</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Branded Drug Form</displayed-value>
+                <stored-value>Semantic Branded Drug Form</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Branded Drug Form Precise</displayed-value>
+                <stored-value>Semantic Branded Drug Form Precise</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Branded Drug Component</displayed-value>
+                <stored-value>Semantic Branded Drug Component</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Brand Name</displayed-value>
+                <stored-value>Brand Name</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Generic Pack</displayed-value>
+                <stored-value>Generic Pack</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Clinical Drug</displayed-value>
+                <stored-value>Semantic Clinical Drug</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Clinical Drug Form Group Precise</displayed-value>
+                <stored-value>Semantic Clinical Drug Form Group Precise</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Clinical Drug Group</displayed-value>
+                <stored-value>Semantic Clinical Drug Group</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Clinical Drug Form Precise</displayed-value>
+                <stored-value>Semantic Clinical Drug Form Precise</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Clinical Drug Form</displayed-value>
+                <stored-value>Semantic Clinical Drug Form</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Clinical Drug Component</displayed-value>
+                <stored-value>Semantic Clinical Drug Component</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Multiple Ingredients</displayed-value>
+                <stored-value>Multiple Ingredients</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Precise Ingredient</displayed-value>
+                <stored-value>Precise Ingredient</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Ingredient</displayed-value>
+                <stored-value>Ingredient</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="CSChar" dc-term="subject">
+            <pair>
+                <displayed-value>Broad Concept Set</displayed-value>
+                <stored-value>Broad</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Specific Concept Set</displayed-value>
+                <stored-value>Specific</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Used for a Cohort Definition</displayed-value>
+                <stored-value>Cohort Definition</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Used for Cohort Exclusion Criteria</displayed-value>
+                <stored-value>Exclusion Criteria</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Used for Cohort Inclusion Criteria</displayed-value>
+                <stored-value></stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Investigates a Covariate Variable</displayed-value>
+                <stored-value>Covariate Variable</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Investigates an Independent Variable</displayed-value>
+                <stored-value>Independent Variable</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Investigates a Dependent Variable</displayed-value>
+                <stored-value>Dependent Variable</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Investigates a Confounder</displayed-value>
+                <stored-value>Confounder</stored-value>
+            </pair>
+        </value-pairs>
         <value-pairs value-pairs-name="EntityType" dc-term="type">
             <pair>
                 <displayed-value>Concept Set</displayed-value>
@@ -3101,7 +3453,7 @@
                 <stored-value></stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="conceptset_quality" dc-term="quality">
+        <value-pairs value-pairs-name="Quality" dc-term="quality">
             <pair>
                 <displayed-value>Research-Ready</displayed-value>
                 <stored-value>Research-Ready</stored-value>
