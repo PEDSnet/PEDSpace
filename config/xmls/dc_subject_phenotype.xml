@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node id="CP" label="Computable Phenotype Development Population">
+	<isComposedBy>
+		<node id="CP1" label="Age Groups">
+            <isComposedBy>
+                <node id="CP1a" label="Infant Patient Population"/>
+                <node id="CP1b" label="Child Patient Population"/>
+                <node id="CP1c" label="Adolescent Patient Population"/>
+                <node id="CP1d" label="Adult Patient Population"/>
+                <node id="CP1e" label="Elderly Patient Population"/>
+                <node id="CP1f" label="All Age Patient Population"/>
+            </isComposedBy>
+		</node>
+	    <node id="CP2" label="Sex and Gender Groups">
+            <isComposedBy>
+                <node id="CP2a" label="Male Patient Population (Assigned at Birth)"/>
+                <node id="CP2b" label="Female Patient Population (Assigned at Birth)"/>
+                <node id="CP2c" label="Intersex Patient Population (Assigned at Birth)"/>
+                <node id="CP2d" label="Transgender Patient Population"/>
+                <node id="CP2e" label="Non-Binary Patient Population"/>
+                <node id="CP2f" label="All Gender Identity Patient Population"/>
+            </isComposedBy>
+		</node>
+		<node id="CP4" label="Race and Ethnicity Groups">
+            <isComposedBy>
+                <node id="CP4a" label="American Indian or Alaska Native Patient Population"/>
+                <node id="CP4b" label="Asian Patient Population"/>
+                <node id="CP4c" label="Black or African American Patient Population"/>
+                <node id="CP4d" label="Hispanic or Latino Patient Population"/>
+                <node id="CP4e" label="Middle Eastern or North African Patient Population"/>
+                <node id="CP4f" label="Native Hawaiian or Other Pacific Islander Patient Population"/>
+                <node id="CP4g" label="White Patient Population"/>
+                <node id="CP4h" label="All Race and Ethnicity Patient Population"/>
+            </isComposedBy>
+		</node>
+	</isComposedBy>
+	<hasNote>Taxonomy developed by Annabel Pinkney and Hanieh Razzaghi. Based on previous work by CIPHER.</hasNote>
+</node> 

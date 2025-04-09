@@ -229,7 +229,9 @@
                 </field>
             </row>
         </form>
+
         <!-- NEW ENTITY-BASED FORM DEFINITIONS-->
+
         <!-- Data Quality Check Form-->
         <form name="DQCheckForm">
             <row>
@@ -604,7 +606,7 @@
                     <repeatable>false</repeatable>
                     <label>Resource Type</label>
                     <input-type value-pairs-name="EntityType">dropdown</input-type>
-                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                    <hint>Concept Set must be selected for this item type.</hint>
                     <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
                 </field>
             </row>
@@ -616,7 +618,7 @@
                     <repeatable>false</repeatable>
                     <label>Title</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the title of the concept set. Use title case, e.g., Anti-Diabetic Agents, Oral</hint>
+                    <hint>Enter the title of the concept set. Use title case, e.g., "Anti-Diabetic Agents, Oral."</hint>
                     <required>You must enter a title for this item.</required>
                 </field>
             </row>
@@ -708,7 +710,7 @@
                     <required>You must input at least one sentence.</required>
                 </field>
             </row>
-                        <row>
+            <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
@@ -718,6 +720,18 @@
                     <input-type value-pairs-name="DataModel">list</input-type> <!-- CREATE VALUE LIST -->
                     <hint>Select the term that best describes the data model used in this concept set's creation</hint>
                     <required>A selection is required.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>admin</dc-element>
+                    <dc-qualifier>note</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Database Version</label>
+                    <input-type>onebox</input-type>
+                    <hint>Input the database version used in this concept set's creation.</hint>
+                    <required></required>
                 </field>
             </row>
             <row>
@@ -734,6 +748,7 @@
                         <input-type>onebox</input-type>
                     </linked-metadata-field>
                     <required></required>
+                    <visibility>workflow</visibility>
                 </relation-field>
             </row>
             <row>
@@ -742,8 +757,8 @@
                     <dc-element>subject</dc-element>
                     <dc-qualifier>other</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Vocabularies</label>
-                    <input-type value-pairs-name="Vocabs">qualdrop_value</input-type> <!-- CREATE VALUE LIST -->
+                    <label>Vocabularies Incorporated in Concept Set</label>
+                    <input-type value-pairs-name="Vocabs">dropdown</input-type>
                     <hint>Enter the medical ontologies used in the concept set.</hint>
                     <required>At least one ontology must be selected.</required>
                 </field>
@@ -755,7 +770,7 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Medication Characterization</label>
-                    <input-type value-pairs-name="MedTermChar">qualdrop_value</input-type> <!-- CREATE VALUE LIST -->
+                    <input-type value-pairs-name="MedTermChar">dropdown</input-type>
                     <hint>Select the normalized name classifications present in your concept set (medication sets only).</hint>
                     <required></required>
                 </field>
@@ -764,23 +779,10 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
-                    <dc-qualifier>mesh</dc-qualifier>
-                    <repeatable>true</repeatable>
-                     <label>Clinical Subject</label>
-                    <input-type>tag</input-type>
-                    <hint>Select the clinical subject terms most associated with the concept set purpose.</hint>
-                    <required>At least two clinical subject headings must be applied to the concept set.</required>
-                    <vocabulary closed="true">dc_subject_mesh</vocabulary>
-                </field>                
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Concept Set Characterization</label>
-                    <input-type value-pairs-name="CSChar">list</input-type> <!-- CREATE VALUE LIST -->
+                    <input-type value-pairs-name="CSChar">list</input-type>
                     <hint>Select the terms that best describe the concept set.</hint>
                     <required>A selection is required.</required>
                 </field>
@@ -803,6 +805,19 @@
                 </field>
             </row>
             <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>provenance</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Provenance</label>
+                    <input-type>textarea</input-type>
+                    <hint>Input the name of the study or query for which this concept set was created. Do not use shorthand to abbreviate the study, rather, write the full title. 
+                    Note if the concept set was created for an initial study, then reused in another. Provide additional information about the specific purpose this item played in the study or studies as applicable.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
                 <relation-field>
                     <relationship-type>isStudyOfConceptSet</relationship-type>
                     <search-configuration>study</search-configuration>
@@ -811,12 +826,27 @@
                     <hint>Input the name of the study or query this concept set was created for OR use the search tool to select the record that represents the study this concept set was created for.</hint>
                     <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
-                        <dc-element>provenance</dc-element>
-                        <dc-qualifier></dc-qualifier>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier>ispartof</dc-qualifier>
                         <input-type>onebox</input-type>
                     </linked-metadata-field>
                     <required>The study name must be entered. Do not use shorthand to abbreviate the study, rather, write the full title.</required>
+                    <visibility>workflow</visibility>
                 </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>mesh</dc-qualifier>
+                    <repeatable>true</repeatable>
+                     <label>Clinical Subject</label>
+                    <input-type>tag</input-type>
+                    <hint>Select the clinical subject terms most associated with the concept set purpose.</hint>
+                    <required>At least two clinical subject headings must be applied to the concept set.</required>
+                    <vocabulary closed="true">dc_subject_mesh</vocabulary>
+                    <visibility>workflow</visibility>
+                </field>                
             </row>
             <!-- <row>
                 <field>
@@ -831,21 +861,6 @@
                     <vocabulary closed="true">dc_subject</vocabulary>
                 </field>
             </row> -->
-            <!-- <row>
-                    <relation-field>
-                        <relationship-type>isConceptSetOfStudy</relationship-type>
-                        <search-configuration>study</search-configuration>
-                        <repeatable>true</repeatable>
-                        <label>Related Study</label>
-                        <hint>Link the concept set to the study or studies this concept set was used in, if applicable.</hint>
-                        <linked-metadata-field>
-                            <dc-schema>dc</dc-schema>
-                            <dc-element>relation</dc-element>
-                            <dc-qualifier></dc-qualifier>
-                            <input-type>onebox</input-type>
-                        </linked-metadata-field>
-                    </relation-field>
-                </row> -->
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -866,7 +881,10 @@
                     <repeatable>false</repeatable>
                     <label>Research Suitability</label>
                     <input-type value-pairs-name="Quality">dropdown</input-type>
-                    <hint>Select the research suitability of the Concept Set.</hint>
+                    <hint>Select the term that best describes the reusability of the Concept Set.
+                    Research Ready - concept set is broadly applicable; it could be reused easily as is. 
+                    Needs Refinement - concept set is designed to fit a specific study purpose; it may need revision prior to reuse.
+                    Deprecated - concept set is outdated and undescribed; its reusability cannot be determined.</hint>
                     <required></required>
                 </field>
             </row>
@@ -1243,7 +1261,7 @@
                     <repeatable>false</repeatable>
                     <label>Resource Type</label>
                     <input-type value-pairs-name="EntityType">dropdown</input-type>
-                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                    <hint>Computable Phenotype must be selected for this item type.</hint>
                     <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
                 </field>
             </row>
@@ -1255,7 +1273,7 @@
                     <repeatable>false</repeatable>
                     <label>Title</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter a unique title of the phenotype. Use title case. E.g., Anti-Diabetic Agents, Oral</hint>
+                    <hint>Input a unique title for the phenotype record. Use title case, e.g., "Anti-Diabetic Agents, Oral."</hint>
                     <required>You must enter a title for this item.</required>
                 </field>
             </row>
@@ -1267,35 +1285,35 @@
                     <repeatable>false</repeatable>
                     <label>Date Created</label>
                     <input-type>date</input-type>
-                    <hint>Input the date that the phenotype was first created (version 1). 
+                    <hint>Input the date that the phenotype was created. 
                             If the exact date is unknown, enter the nearest month.
                         </hint>
-                    <required>You must enter at least the year.</required>
+                    <required>You must enter at least a year.</required>
                 </field>
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isPersonOfConceptSet</relationship-type>
+                    <relationship-type>isPersonOfPhenotype</relationship-type>
                     <search-configuration>person</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Creator(s)</label>
-                    <hint>Enter the name(s) of the creator(s). 
-                            (Family name, Given names)</hint>
+                    <hint>Enter the name(s) of the analyst(s) who developed this phenotype. 
+                            (Family name, Given name)</hint>
                     <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>contributor</dc-element>
                         <dc-qualifier>author</dc-qualifier>
-                        <input-type>onebox</input-type>
+                        <input-type>name</input-type>
                     </linked-metadata-field>
                 </relation-field>
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isOrgUnitOfPerson</relationship-type>
+                    <relationship-type>isOrgUnitOfPhenotype</relationship-type>
                     <search-configuration>orgunit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
-                    <hint>Enter the name(s) of the institutions employing any of the individuals named in Creator.</hint>
+                    <hint>Enter the name(s) of the institution(s) employing any individual named in the Creator field.</hint>
                     <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>contributor</dc-element>
@@ -1311,11 +1329,88 @@
                     <dc-element>description</dc-element>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Description of Phenotype</label>
+                    <label>Phenotype Description</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter a few sentences describing the intention and characteristics of your phenotype.
-                            E.g., Phenotype intended to identify patients with a diagnosis of asthma to define a study cohort.</hint>
+                    <hint>Enter a few sentences describing the intention and characteristics of your phenotype.</hint>
                     <required>You must input at least one sentence.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Data Model</label>
+                    <input-type value-pairs-name="DataModel">list</input-type>
+                    <hint>Select the term that best describes the data model used in this phenotype's creation</hint>
+                    <required>A selection is required.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>admin</dc-element>
+                    <dc-qualifier>note</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Database Version</label>
+                    <input-type>onebox</input-type>
+                    <hint>Input the database version used in this phenotype's creation.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isResourceOfPhenotype</relationship-type>
+                    <search-configuration>documentation</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Database Version Linkage</label>
+                    <hint>If PEDSnet Data Model dependent, select the record that represents the database version this concept set was created with.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier>isbasedon</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Algorithm Components</label>
+                    <input-type value-pairs-name="Vocabs">dropdown</input-type>
+                    <hint>Enter the medical ontologies used in the phenotype.</hint>
+                    <required>At least one ontology must be selected.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Development Strategy and Evaluation</label>
+                    <input-type value-pairs-name="PhenoChar">list</input-type> <!-- CREATE VOCAB -->
+                    <hint>Select all terms that apply to characterize the Phenotype.</hint>
+                    <required>At selection is required.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Development Population</label>
+                    <input-type>vocab</input-type>
+                    <hint>Select all terms that apply to characterize the patient population targeted by the phenotype.</hint>
+                    <required></required>
+                    <vocabulary>dc_subject_phenotype</vocabulary>
                 </field>
             </row>
             <row>
@@ -1327,9 +1422,9 @@
                     <label>Description of Algorithm</label>
                     <input-type>textarea</input-type>
                     <hint>Enter a description of the phenotype algorithm. Possible topics for discussion include development approach and rationale,
-                            directions for code use or implementation, and logic defined by the algorithm to define the phenotype. 
-                            Markdown formatting is accepted.</hint>
-                    <required>You must input at least one sentence.</required>
+                            directions for code use or implementation, and logic defined by the algorithm to define the phenotype.
+                            Markdown and html formatting is accepted in this field.</hint>
+                    <required>A description is required.</required>
                 </field>
             </row>
             <row>
@@ -1339,13 +1434,30 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Provenance</label>
-                    <input-type>onebox</input-type>
-                    <hint>Input the name of the study this phenotype was created for, and briefly describe the role the phenotype played in the study. 
+                    <input-type>textarea</input-type>
+                    <hint>Input the name of the study this phenotype was created for, and briefly describe the role the phenotype played in the study. Do not use shorthand to abbreviate the study, rather, write the full title.
                             If the phenotype was used in more than one study, please list and describe each usage in chronological order. </hint>
-                    <required>At least the name of the study must be entered. Do not use shorthand to abbreviate the study, rather, write the full title.</required>
+                    <required>At least the name of the study must be entered. </required>
                 </field>
             </row>
             <row>
+                <relation-field>
+                    <relationship-type>isStudyOfPhenotype</relationship-type>
+                    <search-configuration>study</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Provenance</label>
+                    <hint>Input the name of the study or query this phenotype was created for OR use the search tool to select the record that represents the study this concept set was created for.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier>ispartof</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </relation-field>
+            </row>
+            <!-- <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
@@ -1357,30 +1469,19 @@
                     <required>At least one tag must be applied to the phenotype.</required>
                     <vocabulary closed="true">dc_subject</vocabulary>
                 </field>
-            </row>
-            <!--<row>
+            </row> -->
+            <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Clinical Subject</label>
-                    <input-type>onebox</input-type>
+                    <input-type>tag</input-type>
                     <hint>Tag the clinical subject most associated with the phenotype, then input terms for up to two term hierarchy-levels higher and others as applicable.</hint>
                     <required>At least two clinical subject headings should be applied to the phenotype.</required>
-                </field>
-            </row> -->
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier>other</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Algorithm Components (Vocabularies)</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the medical ontologies used in the algorithm.</hint>
-                    <required></required>
-                    <vocabulary closed="true">dc_subject_other</vocabulary>
+                    <vocabulary closed="true">dc_subject_mesh</vocabulary>
+                    <visibility>workflow</visibility>
                 </field>
             </row>
             <row>
@@ -1388,11 +1489,10 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>relation</dc-element>
                     <dc-qualifier>uri</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Development Code/Related Resources</label>
+                    <repeatable>false</repeatable>
+                    <label>Development Code</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter links to useful resources for analysts (this is not a public field). For example, the BitBucket or GitHub repository where the 
-                            development code is stored. Links to Jira tickets or Confluence documentation is also appropriate.</hint>
+                    <hint>Enter a link to a related public repository where development code is stored (e.g., a  GitHub repository), if applicable.</hint>
                     <required></required>
                 </field>
             </row>
@@ -1404,10 +1504,15 @@
                     <repeatable>false</repeatable>
                     <label>Quality</label>
                     <input-type value-pairs-name="Quality">dropdown</input-type>
-                    <hint>Select the quality of the Concept Set.</hint>
+                    <hint>Select the term that best describes the reusability of the Phenotype for research purposes.
+                    Research Ready - phenotype is broadly applicable; it could be reused easily as is. 
+                    Needs Refinement - phenotype is designed to fit a specific study purpose; it may need revision prior to reuse.
+                    Deprecated - phenotype is outdated and undescribed; its reusability cannot be determined. </hint>
                 </field>
             </row>
         </form>
+
+        
         <!-- Form which defines the *first* metadata page/section for depositing Publication Entities.
              Since Publication Entities are very similar to normal Items, this is nearly identical to the
              'traditionalpageone' form. The only difference is the Author field can be used to link the
@@ -2803,7 +2908,7 @@
             </pair>
             <pair>
                 <displayed-value>Used for Cohort Inclusion Criteria</displayed-value>
-                <stored-value></stored-value>
+                <stored-value>Inclusion Criteria</stored-value>
             </pair>
             <pair>
                 <displayed-value>Investigates a Covariate Variable</displayed-value>
@@ -2820,6 +2925,64 @@
             <pair>
                 <displayed-value>Investigates a Confounder</displayed-value>
                 <stored-value>Confounder</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="PhenoChar" dc-term="subject">
+            <pair>
+                <displayed-value>Rules-Based (Structured Data-Only)</displayed-value>
+                <stored-value>Rules-Based (Structured Data-Only)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Natural Language Processing</displayed-value>
+                <stored-value>Natural Language Processing</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Machine Learning, Supervised</displayed-value>
+                <stored-value>Machine Learning, Supervised</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Machine Learning, Semi-Supervised</displayed-value>
+                <stored-value>Machine Learning, Semi-Supervised</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Machine Learning, Unsupervised</displayed-value>
+                <stored-value>Machine Learning, Unsupervised</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Measure of Specificity</displayed-value>
+                <stored-value>Specificity Measure</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Measure of Sensitivity</displayed-value>
+                <stored-value>Sensitivity Measure</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Negative Predictive Value (NPV)</displayed-value>
+                <stored-value>Negative Predictive Value (NPV)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Positive Predictive Value (PPV)</displayed-value>
+                <stored-value>Positive Predictive Value (PPV)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Area Under Curve (AUC)</displayed-value>
+                <stored-value>Area Under Curve (AUC)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Investigates a Primary Outcome/Exposure</displayed-value>
+                <stored-value>Primary Outcome/Exposure</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Investigates a Secondary Outcome/Exposure</displayed-value>
+                <stored-value>Secondary Outcome/Exposure</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Investigates a Comorbidity or Covariate</displayed-value>
+                <stored-value>Comorbidity or Covariate</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Used for a Cohort Definition</displayed-value>
+                <stored-value>Cohort Definition</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="EntityType" dc-term="type">
