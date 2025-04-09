@@ -7,7 +7,7 @@ import {
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { ViewMode } from 'src/app/core/shared/view-mode.model';
 import { GenericItemPageFieldComponent } from 'src/app/item-page/simple/field-components/specific-field/generic/generic-item-page-field.component';
 import { ItemPageImgFieldComponent } from 'src/app/item-page/simple/field-components/specific-field/img/item-page-img-field.component';
@@ -35,7 +35,7 @@ import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/b
   templateUrl: './org-unit.component.html',
   // templateUrl: '../../../../../../../app/entity-groups/research-entities/item-pages/person/person.component.html',
   standalone: true,
-  imports: [NgIf, ThemedResultsBackButtonComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, GenericItemPageFieldComponent, RelatedItemsComponent, RouterLink, TabbedRelatedEntitiesSearchComponent, AsyncPipe, TranslateModule, ItemPageImgFieldComponent, ItemPageLocalFieldComponent, KeyValuePipe, NgForOf, ItemPageAbstractFieldComponent, ThemedBadgesComponent],
+  imports: [NgIf, ThemedResultsBackButtonComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, GenericItemPageFieldComponent, RelatedItemsComponent, RouterLink, TabbedRelatedEntitiesSearchComponent, AsyncPipe, TranslateModule, ItemPageImgFieldComponent, ItemPageLocalFieldComponent, KeyValuePipe, NgForOf, ItemPageAbstractFieldComponent, ThemedBadgesComponent, NgbAccordionModule],
 })
 export class OrgUnitComponent extends BaseComponent {
 }
