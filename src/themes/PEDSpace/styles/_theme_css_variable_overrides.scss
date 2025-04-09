@@ -7,7 +7,7 @@
   --ds-home-news-link-hover-color: #{darken($link-color, 15%)};
   --ds-header-navbar-border-bottom-color: #{$tomato};
   --ds-navbar-link-color: $midnight-green;
-  
+
   // Add typography variables
   --dark-font-color: #333;
   --link-color: #{$link-color};
@@ -23,18 +23,28 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "proxima-nova", sans-serif;
   line-height: 1.2;
   color: var(--dark-font-color);
 }
 
-p {
-  line-height: 28px;
-  line-height: 1.6;
-  margin-bottom: 28px;
-  margin-bottom: 1.5rem;
-  color: #333;
+.markdown-container.table-responsive p {
+  margin-bottom: 0.5rem !important;
+}
+
+.markdown-container.table-responsive {
+  margin-bottom: 1rem !important;
+  margin-top: 1rem !important;
+}
+
+h3+.markdown-container.table-responsive {
+  margin-top: 0.5rem !important;
 }
 
 // h1 {
