@@ -2692,7 +2692,8 @@
         <property name="indexFieldName" value="isOrgUnitOfStudy"/>
         <property name="metadataFields">
             <list>
-                <value>relation.isOrgUnitOfStudy.latestForDiscovery OR relation.isOrgUnitOfStudy</value>
+                <value>relation.isOrgUnitOfStudy.latestForDiscovery</value>
+                <value>relation.isOrgUnitOfStudy</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false"/>
@@ -5028,6 +5029,7 @@
                 <ref bean="searchFilterIsProjectOfPublicationRelation"/>
                 <ref bean="searchFilterIsOrgUnitOfPublicationRelation"/>
                 <ref bean="searchFilterIsDocumentationOfStudyRelation"/>
+                <ref bean="searchFilterIsOrgUnitOfStudyRelation"/>
                 <ref bean="searchFilterIsPublicationOfJournalIssueRelation"/>
                 <ref bean="searchFilterIsJournalOfPublicationRelation"/>
             </list>
