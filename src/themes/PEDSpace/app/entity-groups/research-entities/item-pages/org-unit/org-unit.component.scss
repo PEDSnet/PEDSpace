@@ -1,149 +1,230 @@
 @import 'src/styles/_variables.scss';
 
 ::ng-deep {
-    .dqcheck-table {
-      display: block;
-      width: 600px; /* Set a specific width in pixels */
-      margin: 1em auto; /* Center the table */
-      
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        table-layout: fixed !important; /* Critical for fixed widths */
-        font-family: Arial, sans-serif;
-      }
-      
-      th,
-      td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        width: 200px !important; /* Force exact width (800px ÷ 3) */
-        min-width: 200px !important; /* Ensure minimum width */
-      }
-      
-      th {
-        background-color: #f4f4f4;
-        font-weight: bold;
-      }
-      
-      tr:nth-child(even) {
-        background-color: #f9f9f9;
-      }
-      
-      tr:hover {
-        background-color: #f1f1f1;
-      }
-      
-      /* Responsive Tables */
-      .table-responsive {
-        overflow-x: auto;
-        width: 800px;
-      }
-      
-      thead tr {
-        background-color: #f5f5f5;
-        
-        th {
-          font-weight: bold;
-          color: #333333;
-          border-bottom: 2px solid #dddddd;
-          text-transform: uppercase;
-          padding: 12px 8px;
-        }
-      }
-      
-      /* Disable any width calculation based on content */
-      th:nth-child(n),
-      td:nth-child(n) {
-        width: 200px !important;
-        white-space: normal;
-        word-wrap: break-word;
-        word-break: break-word;
-      }
-    }
+  .description-wrapper table {
+    width: 100% !important;
+    table-layout: fixed !important;
+    margin: 1em 0;
+    border-collapse: collapse;
   }
+
+  .description-wrapper th,
+  .description-wrapper td {
+    width: auto !important;
+    /* Let the browser distribute width evenly */
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* For tables with exactly three columns */
+  .description-wrapper table.three-column th,
+  .description-wrapper table.three-column td {
+    width: 33.33% !important;
+  }
+
+  /* Apply to all tables inside description wrapper */
+  .description-wrapper thead tr {
+    background-color: #f5f5f5;
+  }
+
+  .description-wrapper th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    color: #333333;
+    border-bottom: 2px solid #dddddd;
+    text-transform: uppercase;
+  }
+
+  .description-wrapper tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .description-wrapper tr:hover {
+    background-color: #f1f1f1;
+  }
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@700&display=swap');
 
 .healthcare-stats {
-    padding: 1.5rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    width: 100%;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  width: 100%;
 }
 
 .stat-label {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 .stat-value {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #83225b;
-    /* Purple color like in the image */
-    line-height: 1;
-    font-family: 'Kodchasan', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #83225b;
+  /* Purple color like in the image */
+  line-height: 1;
+  font-family: 'Kodchasan', sans-serif;
 }
 
 .primary-value {
-    font-size: 2.5rem;
-    font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
 /* Override DSpace component styles */
 .healthcare-stats ::ng-deep .item-page-field {
-    margin-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .healthcare-stats ::ng-deep .item-page-field .item-page-field-value {
-    color: inherit !important;
-    font-size: inherit !important;
-    font-weight: inherit !important;
-    font-family: 'Kodchasan', sans-serif !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  font-family: 'Kodchasan', sans-serif !important;
 }
 
 /* Apply styles to all tables */
 ::ng-deep th,
 ::ng-deep td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 ::ng-deep th {
-    background-color: #f4f4f4;
-    font-weight: bold;
+  background-color: #f4f4f4;
+  font-weight: bold;
 }
 
 ::ng-deep tr:nth-child(even) {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 ::ng-deep tr:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
 /* Responsive Tables */
 ::ng-deep .table-responsive {
-    overflow-x: auto;
+  overflow-x: auto;
 }
 
 ::ng-deep thead tr {
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
 ::ng-deep thead tr th {
-    font-weight: bold;
-    color: #333333;
-    border-bottom: 2px solid #dddddd;
-    text-transform: uppercase;
-    padding: 12px 8px;
+  font-weight: bold;
+  color: #333333;
+  border-bottom: 2px solid #dddddd;
+  text-transform: uppercase;
+  padding: 12px 8px;
+}
+
+::ng-deep .subtitle.h3 .dont-break-out.preserve-line-breaks {
+  color: $gray-500;
+  font-weight: 400;
+  font-size: 1.25rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+  // font-style: italic;
+  opacity: 0.85;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $gray-600;
+  }
+}
+
+::ng-deep .card-header {
+  // background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #e9ecef;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  button.btn-link {
+    color: #212529;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: calc(1.275rem + 0.3vw);
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    position: relative;
+
+    /* Option 1: Plus/Minus symbols */
+    &:after {
+      content: '+';
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      font-size: 1.2em;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    &[aria-expanded="true"]:after {
+      content: '−';
+    }
+
+    /* Option 2: CSS Triangle (uncomment to use) */
+    /*
+    &:after {
+      content: '';
+      position: absolute;
+      right: 15px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid #212529;
+      transition: transform 0.3s ease;
+    }
+    
+    &[aria-expanded="true"]:after {
+      transform: rotate(180deg);
+    }
+    */
+
+    /* Option 3: Simple text (uncomment to use) */
+    /*
+    &:after {
+      content: 'Show';
+      position: absolute;
+      right: 15px;
+      font-size: 0.8em;
+      background-color: #e2e6ea;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    
+    &[aria-expanded="true"]:after {
+      content: 'Hide';
+    }
+    */
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: #83225b;
+    }
+  }
 }

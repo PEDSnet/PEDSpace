@@ -5,8 +5,13 @@
 <div class="d-flex flex-row">
   <ds-item-page-title-field [item]="object" class="mr-auto">
   </ds-item-page-title-field>
+
   <ds-dso-edit-menu [object]="object"></ds-dso-edit-menu>
 </div>
+
+<ds-generic-item-page-field class="subtitle h3" [item]="object" [fields]="['dc.title.alternative']">
+</ds-generic-item-page-field>
+
 <div class="row">
   <div class="col-xs-12 col-md-4">
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
@@ -23,8 +28,6 @@
     </ds-generic-item-page-field>
 
     <!-- TODO: Integrate the functionality of the metadata field below into ds-generic-item-page-field -->
-    <!-- <ds-generic-item-page-field [item]="object" [fields]="['organization.identifier']" [label]="'orgunit.page.id'">
-    </ds-generic-item-page-field> -->
     <a *ngIf="object && object.metadata && object.metadata['organization.identifier'] && object.metadata['organization.identifier'][0]"
       [href]="object.metadata['organization.identifier'][0].value" class="btn btn-primary mb-3" target="_blank">
       VIEW WEBSITE
@@ -32,13 +35,6 @@
 
     <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject']" [separator]="'<br>'"
       [label]="'item.preview.dc.subject'"></ds-generic-item-page-field>
-
-    <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfOrgUnit'"
-      [label]="'relationships.isDocumentationOf' | translate">
-    </ds-related-items>
-    <ds-related-items [parentItem]="object" [relationType]="'isPersonOfOrgUnit'"
-      [label]="'relationships.isPersonOf' | translate">
-    </ds-related-items>
   </div>
   <div class="col-xs-12 col-md-7">
 
@@ -48,10 +44,9 @@
       [label]="'item.preview.dc.contributor.other'">
     </ds-generic-item-page-field>
 
-    <!-- Healthcare Statistics Section -->
-    <div class="healthcare-stats mb-5 mt-5">
-      <!-- <h3 class="mb-3">At a Glance</h3> -->
+    <h3>Summary of PEDSnet Core Data</h3>
 
+    <div class="healthcare-stats mb-5 mt-4">
       <div class="row mt-4">
         <div class="col-12 mb-4">
           <div class="text-center">
@@ -107,18 +102,30 @@
           </div>
         </div>
       </div>
+      <ngb-accordion #acc="ngbAccordion" [destroyOnHide]="false">
+        <ngb-panel id="healthcareStatsPanel">
+          <ng-template ngbPanelTitle>
+            <div class="d-flex align-items-center">
+              <i class="fa fa-users me-2"></i>
+              <span class="section-title">&nbsp;Patient Population</span>
+            </div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div class="description-wrapper col-lg-12">
+              <ds-item-page-local-field [item]="object" [fields]="['dc.description']"
+                [label]="''"></ds-item-page-local-field>
+            </div>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
     </div>
-
-    <ds-item-page-local-field [item]="object" [fields]="['dc.description']"
-      [label]="'orgunit.page.description'"></ds-item-page-local-field>
-    <div>
-      <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']">
-        {{"item.page.link.full" | translate}}
-      </a>
-    </div>
+    <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']">
+      {{"item.page.link.full" | translate}}
+    </a>
   </div>
-  <div class="mt-5 w-100">
-    <ds-tabbed-related-entities-search [item]="object" [relationTypes]="[
+</div>
+<div class="mt-5 w-100">
+  <ds-tabbed-related-entities-search [item]="object" [relationTypes]="[
                                         {
                                           label: 'isOrgUnitOfStudy',
                                           filter: 'isOrgUnitOfStudy',
@@ -134,6 +141,5 @@
                                           filter: 'isOrgUnitOfPerson',
                                           configuration: 'person-relationships'
                                         },]">
-    </ds-tabbed-related-entities-search>
-  </div>
+  </ds-tabbed-related-entities-search>
 </div>

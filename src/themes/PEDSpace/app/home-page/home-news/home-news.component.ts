@@ -35,7 +35,7 @@ export class HomeNewsComponent extends BaseComponent implements OnInit, OnDestro
       alt: 'Dandelion',
       credit: 'inspiredimages',
       showCredit: true,
-      position: 'center bottom'
+      position: 'left bottom'
     },
     {
       path: 'assets/PEDSpace/images/stock_images/kid_with_stripedShirt_CROPPED.jpeg',
