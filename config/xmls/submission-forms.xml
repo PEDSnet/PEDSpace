@@ -277,7 +277,7 @@
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isPersonOfConceptSet</relationship-type>
+                    <relationship-type>isPersonOfDQCheck</relationship-type>
                     <search-configuration>person</search-configuration>
                     <repeatable>false</repeatable>
                     <label>Check Creator(s)</label>
@@ -293,7 +293,7 @@
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isOrgUnitOfPerson</relationship-type>
+                    <relationship-type>isOrgUnitOfDQCheck</relationship-type>
                     <search-configuration>orgunit</search-configuration>
                     <repeatable>false</repeatable>
                     <label>Affliated Organization(s)</label>
@@ -383,6 +383,30 @@
                     <required></required>
                 </field>
             </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights Statement</label>
+                    <input-type>onebox</input-type>
+                    <hint>a CC-BY Attribution 4.0 license.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights License</label>
+                    <input-type>onebox</input-type>
+                    <hint>https://creativecommons.org/licenses/by/4.0/</hint>
+                    <required></required>
+                </field>
+            </row>
         </form>
         <!-- Data Quality Result Form-->
         <form name="DQResultForm">
@@ -444,9 +468,9 @@
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isDQResultOfOrgUnit</relationship-type>
+                    <relationship-type>isOrgUnitOfDQResult</relationship-type>
                     <search-configuration>orgunit</search-configuration>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
                     <hint>Enter the affiliated institution of the analyst or investigator.</hint>
                     <linked-metadata-field>
@@ -487,6 +511,35 @@
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
+                    <dc-element>admin</dc-element>
+                    <dc-qualifier>note</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Database Version</label>
+                    <input-type>onebox</input-type>
+                    <hint>Input the database version used in this concept set's creation.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isDocumentationOfDQResult</relationship-type>
+                    <search-configuration>documentation</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Database Version Linkage</label>
+                    <hint>If PEDSnet Data Model dependent, select the record that represents the database version this concept set was created with.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier>isbasedon</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
@@ -503,7 +556,7 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Result Characteristics</label>
-                    <input-type>tag</input-type>
+                    <input-type>onebox</input-type>
                     <hint>Select terms (as many as are applicable) to characterize your study-specific observations of the analysis.</hint>
                     <required>At least one term must be selected.</required>
                     <vocabulary>dc_subject_results</vocabulary>
@@ -529,9 +582,9 @@
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Clinical Subjects</label>
-                    <input-type value-pairs-name="ClinSub">onebox</input-type> 
-                    <hint>Select terms that characterize the clinical domain being investigated</hint>
-                    <required>Specification tags are required.</required>
+                    <input-type value-pairs-name="ClinSub">tag</input-type> 
+                    <hint>Input terms that characterize the clinical domain being investigated. Reference https://meshb.nlm.nih.gov/ for terms.</hint>
+                    <required>Tags are required.</required>
                     <vocabulary>dc_subject_mesh</vocabulary>
                 </field>
             </row>
@@ -549,9 +602,9 @@
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isDQResultOfDQCheck</relationship-type>
+                    <relationship-type>isDQCheckOfDQResult</relationship-type>
                     <search-configuration>dqcheck</search-configuration>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Data Quality Check Linkage</label>
                     <hint>Link to the data quality check record which corresponds to the check run to produce these results.</hint>
                     <linked-metadata-field>
@@ -565,9 +618,9 @@
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isDQResultOfStudy</relationship-type>
+                    <relationship-type>isStudyOfDQResult</relationship-type>
                     <search-configuration>study</search-configuration>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Study Record Linkage</label>
                     <hint>Link to the study record which corresponds to the investigation. If study does not</hint>
                     <linked-metadata-field>
@@ -580,20 +633,30 @@
                 </relation-field>
             </row>
             <row>
-                <relation-field>
-                    <relationship-type>isDQResultOfDocumentation</relationship-type>
-                    <search-configuration>documentation</search-configuration>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Related Resources</label>
-                    <hint>Select the database that was referenced</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier>isbasedon</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
-                    <required></required> <!-- Not required - I can input if they can't figure it out. -->
-                </relation-field>
+                    <label>Rights Statement</label>
+                    <input-type>onebox</input-type>
+                    <hint>a CC-BY Attribution 4.0 license.</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights License</label>
+                    <input-type>onebox</input-type>
+                    <hint>https://creativecommons.org/licenses/by/4.0/</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </field>
             </row>
         </form>
         <!-- Concept Set Form-->
@@ -648,7 +711,7 @@
                         <dc-schema>dc</dc-schema>
                         <dc-element>contributor</dc-element>
                         <dc-qualifier>author</dc-qualifier>
-                        <input-type>name</input-type>
+                        <input-type>onebox</input-type>
                     </linked-metadata-field>
                 </relation-field>
             </row>
@@ -657,7 +720,7 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Concept Set Evaluation</label>
                     <input-type value-pairs-name="EvalType">list</input-type>
                     <hint>Select the term that best describes the concept set's level of review.</hint>
@@ -676,7 +739,7 @@
                         <dc-schema>dc</dc-schema>
                         <dc-element>contributor</dc-element>
                         <dc-qualifier>advisor</dc-qualifier>
-                        <input-type>name</input-type>
+                        <input-type>onebox</input-type>
                     </linked-metadata-field>
                     <required></required>
                 </relation-field>
@@ -715,7 +778,7 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Data Model</label>
                     <input-type value-pairs-name="DataModel">list</input-type> <!-- CREATE VALUE LIST -->
                     <hint>Select the term that best describes the data model used in this concept set's creation</hint>
@@ -736,9 +799,9 @@
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isResourceOfConceptSet</relationship-type>
+                    <relationship-type>isDocumentationOfConceptSet</relationship-type>
                     <search-configuration>documentation</search-configuration>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Database Version Linkage</label>
                     <hint>If PEDSnet Data Model dependent, select the record that represents the database version this concept set was created with.</hint>
                     <linked-metadata-field>
@@ -784,7 +847,7 @@
                     <label>Concept Set Characterization</label>
                     <input-type value-pairs-name="CSChar">list</input-type>
                     <hint>Select the terms that best describe the concept set.</hint>
-                    <required>A selection is required.</required>
+                    <required></required>
                 </field>
             </row>   
             <row>
@@ -821,16 +884,16 @@
                 <relation-field>
                     <relationship-type>isStudyOfConceptSet</relationship-type>
                     <search-configuration>study</search-configuration>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Provenance</label>
-                    <hint>Input the name of the study or query this concept set was created for OR use the search tool to select the record that represents the study this concept set was created for.</hint>
+                    <hint>Select the name of the study or query for which this concept set was created.</hint>
                     <linked-metadata-field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>relation</dc-element>
                         <dc-qualifier>ispartof</dc-qualifier>
                         <input-type>onebox</input-type>
                     </linked-metadata-field>
-                    <required>The study name must be entered. Do not use shorthand to abbreviate the study, rather, write the full title.</required>
+                    <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
             </row>
@@ -841,10 +904,9 @@
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
                      <label>Clinical Subject</label>
-                    <input-type>tag</input-type>
-                    <hint>Select the clinical subject terms most associated with the concept set purpose.</hint>
-                    <required>At least two clinical subject headings must be applied to the concept set.</required>
-                    <vocabulary closed="true">dc_subject_mesh</vocabulary>
+                    <input-type>onebox</input-type>
+                    <hint>Input the clinical subject terms most associated with the concept set.</hint>
+                    <required></required>
                     <visibility>workflow</visibility>
                 </field>                
             </row>
@@ -869,7 +931,7 @@
                     <repeatable>false</repeatable>
                     <label>Development Code</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter a link to the BitBucket or GitHub repository where the development code is stored.</hint>
+                    <hint>Enter a link to a GitHub repository (or other public repository) where the development code is stored, if applicable.</hint>
                     <required></required>
                 </field>
             </row>
@@ -886,6 +948,32 @@
                     Needs Refinement - concept set is designed to fit a specific study purpose; it may need revision prior to reuse.
                     Deprecated - concept set is outdated and undescribed; its reusability cannot be determined.</hint>
                     <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights Statement</label>
+                    <input-type>onebox</input-type>
+                    <hint>a CC-BY Attribution 4.0 license.</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights License</label>
+                    <input-type>onebox</input-type>
+                    <hint>https://creativecommons.org/licenses/by/4.0/</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
                 </field>
             </row>
         </form>
@@ -971,7 +1059,7 @@
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isOrgUnitOfPerson</relationship-type>
+                    <relationship-type>isOrgUnitOfStudy</relationship-type>
                     <search-configuration>orgunit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
@@ -1065,7 +1153,7 @@
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isStudyOfConceptSet</relationship-type>
+                    <relationship-type>isConceptSetOfStudy</relationship-type>
                     <search-configuration>conceptset</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Related Concept Sets</label>
@@ -1077,6 +1165,30 @@
                         <input-type>onebox</input-type>
                     </linked-metadata-field>
                 </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights Statement</label>
+                    <input-type>onebox</input-type>
+                    <hint>a CC-BY Attribution 4.0 license.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights License</label>
+                    <input-type>onebox</input-type>
+                    <hint>https://creativecommons.org/licenses/by/4.0/</hint>
+                    <required></required>
+                </field>
             </row>
         </form>
         <!-- Documentation Form-->
@@ -1147,7 +1259,7 @@
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isPersonOfDocument</relationship-type>
+                    <relationship-type>isPersonOfDocumentation</relationship-type>
                     <search-configuration>person</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Creator(s)</label>
@@ -1163,7 +1275,7 @@
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isOrgUnitOfPerson</relationship-type>
+                    <relationship-type>isOrgUnitOfDocumentation</relationship-type>
                     <search-configuration>orgunit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
@@ -1250,6 +1362,30 @@
                     <required></required>
                 </field>
             </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights Statement</label>
+                    <input-type>onebox</input-type>
+                    <hint>a CC-BY Attribution 4.0 license.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights License</label>
+                    <input-type>onebox</input-type>
+                    <hint>https://creativecommons.org/licenses/by/4.0/</hint>
+                    <required></required>
+                </field>
+            </row>
         </form>
         <!-- Phenotype Form-->
         <form name="PhenotypeForm">
@@ -1303,7 +1439,7 @@
                         <dc-schema>dc</dc-schema>
                         <dc-element>contributor</dc-element>
                         <dc-qualifier>author</dc-qualifier>
-                        <input-type>name</input-type>
+                        <input-type>onebox</input-type>
                     </linked-metadata-field>
                 </relation-field>
             </row>
@@ -1361,9 +1497,9 @@
             </row>
             <row>
                 <relation-field>
-                    <relationship-type>isResourceOfPhenotype</relationship-type>
+                    <relationship-type>isDocumentationOfPhenotype</relationship-type>
                     <search-configuration>documentation</search-configuration>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Database Version Linkage</label>
                     <hint>If PEDSnet Data Model dependent, select the record that represents the database version this concept set was created with.</hint>
                     <linked-metadata-field>
@@ -1395,7 +1531,7 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Development Strategy and Evaluation</label>
-                    <input-type value-pairs-name="PhenoChar">list</input-type> <!-- CREATE VOCAB -->
+                    <input-type value-pairs-name="PhenoChar">list</input-type>
                     <hint>Select all terms that apply to characterize the Phenotype.</hint>
                     <required>At selection is required.</required>
                 </field>
@@ -1444,7 +1580,7 @@
                 <relation-field>
                     <relationship-type>isStudyOfPhenotype</relationship-type>
                     <search-configuration>study</search-configuration>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Provenance</label>
                     <hint>Input the name of the study or query this phenotype was created for OR use the search tool to select the record that represents the study this concept set was created for.</hint>
                     <linked-metadata-field>
@@ -1479,8 +1615,7 @@
                     <label>Clinical Subject</label>
                     <input-type>tag</input-type>
                     <hint>Tag the clinical subject most associated with the phenotype, then input terms for up to two term hierarchy-levels higher and others as applicable.</hint>
-                    <required>At least two clinical subject headings should be applied to the phenotype.</required>
-                    <vocabulary closed="true">dc_subject_mesh</vocabulary>
+                    <required></required>
                     <visibility>workflow</visibility>
                 </field>
             </row>
@@ -1510,9 +1645,35 @@
                     Deprecated - phenotype is outdated and undescribed; its reusability cannot be determined. </hint>
                 </field>
             </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights Statement</label>
+                    <input-type>onebox</input-type>
+                    <hint>a CC-BY Attribution 4.0 license.</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights License</label>
+                    <input-type>onebox</input-type>
+                    <hint>https://creativecommons.org/licenses/by/4.0/</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </field>
+            </row>
         </form>
 
-        
+
         <!-- Form which defines the *first* metadata page/section for depositing Publication Entities.
              Since Publication Entities are very similar to normal Items, this is nearly identical to the
              'traditionalpageone' form. The only difference is the Author field can be used to link the

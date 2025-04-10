@@ -159,7 +159,7 @@
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
             <type>submission-form</type>
         </step-definition>
-        
+
         <step-definition id="DQResultForm" mandatory="true">
             <heading>submit.progressbar.describe.stepone</heading>
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
@@ -354,20 +354,17 @@
             <step id="ConceptSetForm"/>
             <step id="upload"/>
             <step id="itemAccessConditions"/>
-            <step id="cclicense"/>
         </submission-process>
 
         <submission-process name="Study">
             <step id="collection"/>
             <step id="StudyForm"/>
-            <step id="cclicense"/>
         </submission-process>
 
         <submission-process name="DQCheck">
             <step id="collection"/>
             <step id="DQCheckForm"/>
             <step id="upload"/>
-            <step id="cclicense"/>
         </submission-process>
 
         <submission-process name="DQResult">
@@ -381,7 +378,6 @@
             <step id="DocumentationForm"/>
             <step id="upload"/>
             <step id="itemAccessConditions"/>
-            <step id="cclicense"/>
         </submission-process>
 
         <submission-process name="Phenotype">
@@ -389,7 +385,6 @@
             <step id="PhenotypeForm"/>
             <step id="upload"/>
             <step id="itemAccessConditions"/>
-            <step id="cclicense"/>
         </submission-process>
 
 
