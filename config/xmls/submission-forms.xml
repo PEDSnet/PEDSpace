@@ -399,7 +399,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>rights</dc-element>
-                    <dc-qualifier></dc-qualifier>
+                    <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
                     <input-type>onebox</input-type>
@@ -649,7 +649,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>rights</dc-element>
-                    <dc-qualifier></dc-qualifier>
+                    <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
                     <input-type>onebox</input-type>
@@ -967,7 +967,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>rights</dc-element>
-                    <dc-qualifier></dc-qualifier>
+                    <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
                     <input-type>onebox</input-type>
@@ -1182,7 +1182,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>rights</dc-element>
-                    <dc-qualifier></dc-qualifier>
+                    <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
                     <input-type>onebox</input-type>
@@ -1378,7 +1378,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>rights</dc-element>
-                    <dc-qualifier></dc-qualifier>
+                    <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
                     <input-type>onebox</input-type>
@@ -1662,7 +1662,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>rights</dc-element>
-                    <dc-qualifier></dc-qualifier>
+                    <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
                     <input-type>onebox</input-type>
