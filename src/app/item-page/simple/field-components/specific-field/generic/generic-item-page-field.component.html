@@ -1,0 +1,17 @@
+<!-- generic-item-page-field.component.html -->
+<div class="item-page-field">
+    <ds-metadata-values
+      [mdValues]="fields && fields.length > 1 && isDateRange ? getCombinedMetadataValues() : item?.allMetadata(fields)"
+      [separator]="separator"
+      [label]="label"
+      [enableMarkdown]="enableMarkdown"
+      [urlRegex]="urlRegex"
+      [browseDefinition]="browseDefinition|async"
+      [img]="img"
+      [renderAsButton]="renderAsButton"
+      [renderAsBadge]="renderAsBadge"
+      [entityType]="entityType"
+      [sentenceTemplate]="sentenceTemplate"
+      [isDQCheckRequirement]="isDQCheckRequirement"
+    ></ds-metadata-values>
+  </div>

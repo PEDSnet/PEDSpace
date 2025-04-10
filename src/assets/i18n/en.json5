@@ -3095,7 +3095,7 @@
 
     "item.page.related-items.view-more": "Show {{ amount }} more",
 
-    "item.page.relationships.isAuthorOfPublication": "Publications",
+    "item.page.relationships.isDocumentationOfStudy.isAuthorOfPublication": "Publications",
 
     "item.page.relationships.isJournalOfPublication": "Publications",
 
@@ -3118,6 +3118,8 @@
     "item.page.relationships.isDocumentationOfDQCheck": "Related Quality Checks",
 
     "item.page.relationships.isDocumentationOfDQResult": "Related Quality Results",
+    
+    "item.page.relationships.isDocumentationOfStudy": "Related Studies",
 
     "item.page.return": "Back",
 

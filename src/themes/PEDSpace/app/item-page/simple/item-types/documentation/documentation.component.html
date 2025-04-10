@@ -36,7 +36,7 @@
       <ds-item-page-date-field [item]="object" [fields]="['dc.date.submission']" [label]="'item.preview.dc.date.issued'"
         separator=", "></ds-item-page-date-field>
 
-      <ds-generic-item-page-field [renderAsButton]="false" [item]="object"
+      <ds-generic-item-page-field [renderAsButton]="false" [item]="object" [isDateRange]="true"
         [fields]="['project.startDate', 'project.endDate']" [separator]="' - '" [label]="'Data Collection'">
       </ds-generic-item-page-field>
 
@@ -109,6 +109,16 @@
       label: 'isDocumentationOfPhenotype',
       filter: 'isDocumentationOfPhenotype',
       configuration: 'phenotype-relationships'
+    },
+    {
+      label: 'isDocumentationOfDQResult',
+      filter: 'isDocumentationOfDQResult',
+      configuration: 'dqresult-relationships'
+    },
+    {
+      label: 'isDocumentationOfStudy',
+      filter: 'isDocumentationOfStudy',
+      configuration: 'study-relationships'
     }
   ]">
     </ds-tabbed-related-entities-search>
