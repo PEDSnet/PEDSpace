@@ -127,10 +127,8 @@ export class MetadataValuesComponent implements OnChanges {
     // Process the sentenceTemplate
     if (this.sentenceTemplate && this.sentenceTemplate !== '[value]') {
       // Split the sentence template and trim any extra spaces before/after parts
-      const parts = this.sentenceTemplate.split('[value]');
-      
-      // Ensure there are no leading/trailing spaces in parts
-      this.sentenceTemplateParts = parts.map(part => part.trim());
+      this.sentenceTemplateParts = this.sentenceTemplate.split('[value]');
+
     } else {
       this.sentenceTemplateParts = null;
     }
