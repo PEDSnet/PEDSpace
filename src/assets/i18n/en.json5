@@ -1184,8 +1184,12 @@
     "browse.empty": "No items to show.",
 
     "browse.metadata.author.breadcrumbs": "Browse by Author",
+    
+    "browse.metadata.funder.breadcrumbs": "Browse by Funder",
 
     "browse.metadata.author": "Author",
+    
+    "browse.metadata.author": "Funder",
 
     "browse.metadata.datecreated.breadcrumbs": "Browse by Date",
 
@@ -3860,6 +3864,8 @@
     "menu.section.browse_global_by_type": "By Type",
 
     "menu.section.browse_global_by_vocab": "By Vocabulary",
+    
+    "menu.section.browse_global_by_vocab": "By Funder",
 
     "menu.section.browse_global_communities_and_collections": "Collections & Domains",
 
