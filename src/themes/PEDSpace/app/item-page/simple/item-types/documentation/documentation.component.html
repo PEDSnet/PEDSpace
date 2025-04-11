@@ -32,8 +32,8 @@
         <ds-media-viewer [item]="object"></ds-media-viewer>
       </div>
 
-      <!-- dc.date.submission -->
-      <ds-item-page-date-field [item]="object" [fields]="['dc.date.submission']" [label]="'item.preview.dc.date.issued'"
+      <!-- dc.date.submitted -->
+      <ds-item-page-date-field [item]="object" [fields]="['dc.date.submitted']" [label]="'Submission Date'"
         separator=", "></ds-item-page-date-field>
 
       <ds-generic-item-page-field [renderAsButton]="false" [item]="object" [isDateRange]="true"
@@ -55,7 +55,7 @@
 
       <ds-item-page-abstract-field [item]="object" [label]="'item.page.abstract'"></ds-item-page-abstract-field>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.creator.other']"
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
         [label]="'item.preview.dc.contributor.other'">
       </ds-generic-item-page-field>
 
