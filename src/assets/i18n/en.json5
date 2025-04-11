@@ -3840,6 +3840,8 @@
     "menu.section.browse_community": "This Collection",
 
     "menu.section.browse_global_by_author": "By Author",
+    
+    "menu.section.browse_global_by_funder": "By Funder",
 
     "menu.section.browse_global_by_datecreated": "By Date",
 
