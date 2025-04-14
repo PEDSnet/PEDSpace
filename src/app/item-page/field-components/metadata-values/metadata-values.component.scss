@@ -108,10 +108,13 @@ $quinacridone-magenta: #8A3D63;
   // Ensure interactive elements are operable (WCAG 2.1)
   min-height: 44px;
   min-width: 44px;
-  padding: 0.5rem;
-  border: 1px solid transparent; // Added for smooth transition
 
-  // Remove outline for mouse, keep for keyboard (WCAG 2.4.7)
+  &:not(.punctuation-only) {
+    padding: 0.5rem;
+  }
+
+  border: 1px solid transparent;
+
   &:focus-visible {
     color: darken($redwood, 25%);
     text-decoration: underline;
@@ -119,7 +122,6 @@ $quinacridone-magenta: #8A3D63;
     outline-offset: 3px;
     border-radius: 2px;
 
-    // High contrast mode support
     @media screen and (-ms-high-contrast: active) {
       outline: 2px solid currentColor;
     }
@@ -129,7 +131,7 @@ $quinacridone-magenta: #8A3D63;
     color: darken($redwood, 25%);
     text-decoration: underline;
     text-decoration-thickness: 2px;
-    border: 1px solid darken($redwood, 25%); // Added box outline on hover
+    border: 1px solid darken($redwood, 25%);
     border-radius: 2px;
   }
 
@@ -144,6 +146,46 @@ $quinacridone-magenta: #8A3D63;
   }
 }
 
+.punctuation-only {
+  padding: 0.1rem !important;
+  padding-right: 0px !important;
+  border: none !important;
+  white-space: nowrap; 
+  display: inline; 
+
+  &::before {
+    content: "\00a0";
+    font-size: 0; 
+    display: none; 
+  }
+
+  &:focus-visible {
+    color: darken($redwood, 25%) !important;
+    text-decoration: underline;
+    outline: none !important;
+    outline-offset: 0px !important;
+    border-radius: 0px !important;
+
+    @media screen and (-ms-high-contrast: active) {
+      outline: 2px solid currentColor;
+    }
+  }
+
+  &:hover {
+    color: darken($redwood, 25%);
+    text-decoration: none !important;
+    outline: none !important;
+    outline-offset: 3px;
+    border-radius: 0px !important;
+  }
+
+  &:active {
+    color: darken($redwood, 30%);
+    transform: scale(0.98);
+  }
+
+}
+
 .dqcheck-requirement {
   display: inline-block;
   background-color: #f0f0f0;
@@ -153,13 +195,13 @@ $quinacridone-magenta: #8A3D63;
   font-family: 'Courier New', Courier, monospace;
   cursor: pointer;
   text-decoration: none;
-  margin: 0.2rem;  
+  margin: 0.2rem;
   position: relative;
 
   &:hover,
   &:focus {
     background-color: #e0e0e0;
-    outline: none; 
+    outline: none;
     box-shadow: 0 0 0 2px #8ACE00;
     margin: 0.2rem;
     font-weight: bold;

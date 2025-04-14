@@ -22,7 +22,7 @@
 
   <div class="row">
     <div class="col-12 col-md-4">
-      
+
       <!-- Date Created -->
       <ds-generic-item-page-field [renderAsButton]="false" [item]="object" [isDateRange]="true"
         [fields]="['project.startDate', 'project.endDate']" [separator]="' - '" [label]="'Study Dates'">
@@ -64,7 +64,7 @@
       </ds-generic-item-page-field>
 
       <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor']" [label]="'item.preview.dc.contributor'"
-        [sentenceTemplate]="'This research was made possible through the generous support of [value].'">
+        [sentenceTemplate]="'This research was made possible through the generous support of the [value].'">
       </ds-generic-item-page-field>
 
       <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">

@@ -75,7 +75,7 @@
   <span class="dont-break-out preserve-line-breaks">
     <ng-container *ngIf="sentenceTemplateParts; else defaultContent">
       {{ sentenceTemplateParts[0] }}
-      <a class="ds-browse-link"
+      <a class="ds-browse-link punctuation-only"
          [routerLink]="['/browse', browseDefinition.id]"
          [queryParams]="getQueryParams(value)">
         {{ value.includes('::') ? getLastItem(value) : value }}
