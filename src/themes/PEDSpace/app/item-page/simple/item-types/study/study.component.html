@@ -14,17 +14,20 @@
   </div>
 
   <ds-item-page-title-field [item]="object" class="mr-auto"></ds-item-page-title-field>
-  
+
   <div class="d-flex align-items-center">
     <ds-dso-edit-menu [object]="object"></ds-dso-edit-menu>
 
   </div>
-  
+
   <div class="row">
     <div class="col-12 col-md-4">
+      
       <!-- Date Created -->
-      <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'item.preview.dc.date.issued'"
-        separator=", "></ds-item-page-date-field>
+      <ds-generic-item-page-field [renderAsButton]="false" [item]="object" [isDateRange]="true"
+        [fields]="['project.startDate', 'project.endDate']" [separator]="' - '" [label]="'Study Dates'">
+      </ds-generic-item-page-field>
+
       <!-- Date Modified -->
       <ds-item-page-date-field [item]="object" [fields]="['dc.date']" [label]="'item.preview.dc.date'"
         separator="; "></ds-item-page-date-field>
@@ -67,7 +70,8 @@
       <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
       </ds-generic-item-page-field>
 
-<ds-item-page-description-field [item]="object" [label]="'item.page.description'"></ds-item-page-description-field>
+      <ds-item-page-description-field [item]="object"
+        [label]="'item.page.description'"></ds-item-page-description-field>
 
       <!-- <ng-container *ngIf="isLoggedIn"> -->
       <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
@@ -92,7 +96,7 @@
       <ds-related-items [parentItem]="object" [relationType]="'isDQResultOfStudy'"
         [label]="'relationships.isPersonOf' | translate">
       </ds-related-items>
-      
+
       <ds-related-items [parentItem]="object" [relationType]="'isPersonOfStudy'"
         [label]="'relationships.isPersonOf' | translate">
       </ds-related-items>
@@ -105,9 +109,8 @@
         [label]="'relationships.isStudyOf' | translate">
       </ds-related-items>
 
-      <ds-item-page-external-publication-field [item]="object"
-        [label]="'item.preview.dc.relation.isreferencedby'">
-      </ds-item-page-external-publication-field>      
+      <ds-item-page-external-publication-field [item]="object" [label]="'item.preview.dc.relation.isreferencedby'">
+      </ds-item-page-external-publication-field>
       <!-- </div> -->
 
       <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
