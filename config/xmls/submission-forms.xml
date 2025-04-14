@@ -1006,21 +1006,9 @@
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>title</dc-element>
-                    <dc-qualifier>alternative</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Other Titles</label>
-                    <input-type>onebox</input-type>
-                    <hint>If the study has any alternative titles or sub-titles please enter them here.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>date</dc-element>
-                    <dc-qualifier>created</dc-qualifier>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>StartDate</dc-element>
+                    <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Study Start Date</label>
                     <style>col-sm-4</style>
@@ -1029,8 +1017,8 @@
                     <required>You must enter at least the year.</required>
                 </field>
                 <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>date</dc-element>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>EndDate</dc-element>
                     <dc-qualifier>created</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Study End Date</label>
@@ -1081,9 +1069,7 @@
                     <repeatable>true</repeatable>
                     <label>Funding Organization(s)</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name(s) of the organizations who funded or provided financial assitance to the study.
-                            Please format as: "Study made possible thanks to the generous support of [Enter Org Name]."
-                        </hint>
+                    <hint>Enter the name(s) of the organizations (according to ror.org) who funded or provided financial assitance to the study.</hint>
                     <required></required>
                 </field>
             </row>
@@ -1107,7 +1093,7 @@
                     <repeatable>false</repeatable>
                     <label>Study Description</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter a description of the intended cohort characteristics and the cohort formation strategy.</hint>
+                    <hint>Enter a description of the study aims, study design, and intended cohort characteristics and the cohort formation strategy. Use Markdown headings to delineate each section.</hint>
                     <required></required>
                 </field>
             </row>
@@ -1121,10 +1107,10 @@
                     <input-type>onebox</input-type>
                     <hint>Enter terms that classify the Study.</hint>
                     <required>At least one tag must be applied to the study.</required>
-                    <vocabulary closed="true">dc_subject</vocabulary>
+                    <vocabulary closed="true">dc_subject_study</vocabulary>
                 </field>
             </row>
-            <!-- <row>
+            <row>
                     <field>
                         <dc-schema>dc</dc-schema>
                         <dc-element>subject</dc-element>
@@ -1134,9 +1120,8 @@
                         <input-type>onebox</input-type>
                         <hint>Apply the clinical subject(s) most associated with the study, then input terms for up to two term hierarchy-levels higher, and others as applicable.</hint>
                         <required>At least one clinical subject heading must be applied to the study.</required>
-                        <vocabulary closed="true">dc_subject_mesh</vocabulary>
                     </field>
-                </row> -->
+                </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1144,7 +1129,7 @@
                     <dc-qualifier>isreferencedby</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Publications</label>
-                    <input-type>onebox</input-type>
+                    <input-type>textarea</input-type>
                     <hint>Enter a citation for any subsequent manuscript publication from this study. 
                             Markdown format is accepted. Please provide a linked DOI for each publication using "[]()".
                         </hint>
@@ -1165,6 +1150,33 @@
                         <input-type>onebox</input-type>
                     </linked-metadata-field>
                 </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPhenotypeOfStudy</relationship-type>
+                    <search-configuration>conceptset</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Phenotypes</label>
+                    <hint>Link the study to any phenotypes used in the course of research, if applicable.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier></dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>publisher</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Publisher</label>
+                    <input-type>onebox</input-type>
+                    <hint>PEDSnet</hint>
+                    <required></required>
+                </field>
             </row>
             <row>
                 <field>
