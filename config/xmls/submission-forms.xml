@@ -230,8 +230,7 @@
             </row>
         </form>
 
-        <!-- NEW ENTITY-BASED FORM DEFINITIONS-->
-
+        <!-- ENTITY-BASED FORM DEFINITIONS-->
         <!-- Data Quality Check Form-->
         <form name="DQCheckForm">
             <row>
@@ -294,7 +293,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfDQCheck</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
+                    <search-configuration>orgUnit</search-configuration>
                     <repeatable>false</repeatable>
                     <label>Affliated Organization(s)</label>
                     <hint>Enter "Children's Hosptial of Philadelphia" as the creator affiliation.</hint>
@@ -408,6 +407,7 @@
                 </field>
             </row>
         </form>
+
         <!-- Data Quality Result Form-->
         <form name="DQResultForm">
             <row>
@@ -469,7 +469,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfDQResult</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
+                    <search-configuration>orgUnit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
                     <hint>Enter the affiliated institution of the analyst or investigator.</hint>
@@ -603,7 +603,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isDQCheckOfDQResult</relationship-type>
-                    <search-configuration>dqcheck</search-configuration>
+                    <search-configuration>dqCheck</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Data Quality Check Linkage</label>
                     <hint>Link to the data quality check record which corresponds to the check run to produce these results.</hint>
@@ -652,13 +652,14 @@
                     <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
-                    <input-type>onebox</input-type>
+                    <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
                     <hint>https://creativecommons.org/licenses/by/4.0/</hint>
                     <required></required>
                     <visibility>workflow</visibility>
                 </field>
             </row>
         </form>
+
         <!-- Concept Set Form-->
         <form name="ConceptSetForm">
             <row>
@@ -747,7 +748,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfConceptSet</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
+                    <search-configuration>orgUnit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
                     <hint>Enter the name(s) of the institution(s) employing the individuals named in the Creator and Reviewer fields.</hint>
@@ -970,13 +971,14 @@
                     <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
-                    <input-type>onebox</input-type>
+                    <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
                     <hint>https://creativecommons.org/licenses/by/4.0/</hint>
                     <required></required>
                     <visibility>workflow</visibility>
                 </field>
             </row>
         </form>
+
         <!-- Study Form-->
         <form name="StudyForm">
             <row>
@@ -1048,7 +1050,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfStudy</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
+                    <search-configuration>orgUnit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
                     <hint>Enter the name(s) of the institutions employing any of the individuals listed as PIs above or associated with the study.</hint>
@@ -1139,7 +1141,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isConceptSetOfStudy</relationship-type>
-                    <search-configuration>conceptset</search-configuration>
+                    <search-configuration>conceptSet</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Related Concept Sets</label>
                     <hint>Link the study to any concept sets used in the course of research, if applicable.</hint>
@@ -1154,7 +1156,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isPhenotypeOfStudy</relationship-type>
-                    <search-configuration>conceptset</search-configuration>
+                    <search-configuration>phenotype</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Related Phenotypes</label>
                     <hint>Link the study to any phenotypes used in the course of research, if applicable.</hint>
@@ -1197,12 +1199,13 @@
                     <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
-                    <input-type>onebox</input-type>
+                    <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
                     <hint>https://creativecommons.org/licenses/by/4.0/</hint>
                     <required></required>
                 </field>
             </row>
         </form>
+
         <!-- Documentation Form-->
         <form name="DocumentationForm">
             <row>
@@ -1288,7 +1291,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfDocumentation</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
+                    <search-configuration>orgUnit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
                     <hint>Enter the name(s) of the institutions employing any of the individuals listed as creators.</hint>
@@ -1393,12 +1396,13 @@
                     <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
-                    <input-type>onebox</input-type>
-                    <hint>https://creativecommons.org/licenses/by/4.0/</hint>
+                    <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
+                    <hint></hint>
                     <required></required>
                 </field>
             </row>
         </form>
+
         <!-- Phenotype Form-->
         <form name="PhenotypeForm">
             <row>
@@ -1458,7 +1462,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfPhenotype</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
+                    <search-configuration>orgUnit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
                     <hint>Enter the name(s) of the institution(s) employing any individual named in the Creator field.</hint>
@@ -1677,7 +1681,7 @@
                     <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
-                    <input-type>onebox</input-type>
+                    <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
                     <hint>https://creativecommons.org/licenses/by/4.0/</hint>
                     <required></required>
                     <visibility>workflow</visibility>
@@ -1909,7 +1913,7 @@
             </row>
         </form>
         <!-- Form which defines the metadata page/section for depositing Project Entities -->
-        <form name="projectStep">
+       <form name="projectStep">
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1976,7 +1980,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfProject</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
+                    <search-configuration>orgUnit</search-configuration>
                     <repeatable>false</repeatable>
                     <label>Organization</label>
                     <hint>Enter the organization's name</hint>
@@ -3236,6 +3240,20 @@
                 <stored-value>Data Quality Check Categorizations::Dataset Evaluation Strategy::Data Anomaly Method</stored-value>
             </pair>
         </value-pairs>
+        <value-pairs value-pairs-name="Quality" dc-term="quality">
+            <pair>
+                <displayed-value>Research-Ready</displayed-value>
+                <stored-value>Research-Ready</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Needs Refinement</displayed-value>
+                <stored-value>Needs Refinement</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Deprecated</displayed-value>
+                <stored-value>Deprecated</stored-value>
+            </pair>
+        </value-pairs>
         <value-pairs value-pairs-name="common_types" dc-term="type">
             <pair>
                 <displayed-value>Animation</displayed-value>
@@ -3326,9 +3344,6 @@
                 <stored-value>Other</stored-value>
             </pair>
         </value-pairs>
-        <!-- default language order: (from dspace 1.2.1)
-             "en_US", "en", "es", "de", "fr", "it", "ja", "zh", "other", ""
-          -->
         <value-pairs value-pairs-name="common_iso_languages" dc-term="language_iso">
             <pair>
                 <displayed-value>N/A</displayed-value>
@@ -3789,20 +3804,7 @@
                 <stored-value></stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="Quality" dc-term="quality">
-            <pair>
-                <displayed-value>Research-Ready</displayed-value>
-                <stored-value>Research-Ready</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Needs Refinement</displayed-value>
-                <stored-value>Needs Refinement</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Deprecated</displayed-value>
-                <stored-value>Deprecated</stored-value>
-            </pair>
-        </value-pairs>
+        
         <value-pairs value-pairs-name="openaire_organization_identifier_types" dc-term="identifier">
             <pair>
                 <displayed-value>ISNI - International Standard Name Identifier</displayed-value>
