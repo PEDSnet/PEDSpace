@@ -582,7 +582,7 @@
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Clinical Subjects</label>
-                    <input-type value-pairs-name="ClinSub">tag</input-type> 
+                    <input-type>tag</input-type> 
                     <hint>Input terms that characterize the clinical domain being investigated. Reference https://meshb.nlm.nih.gov/ for terms.</hint>
                     <required>Tags are required.</required>
                     <vocabulary>dc_subject_mesh</vocabulary>
@@ -1555,7 +1555,7 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Development Population</label>
-                    <input-type>vocab</input-type>
+                    <input-type>onebox</input-type>
                     <hint>Select all terms that apply to characterize the patient population targeted by the phenotype.</hint>
                     <required></required>
                     <vocabulary>dc_subject_phenotype</vocabulary>
@@ -1624,11 +1624,11 @@
                     <dc-element>subject</dc-element>
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Clinical Subject</label>
-                    <input-type>tag</input-type>
-                    <hint>Tag the clinical subject most associated with the phenotype, then input terms for up to two term hierarchy-levels higher and others as applicable.</hint>
-                    <required></required>
-                    <visibility>workflow</visibility>
+                    <label>Clinical Subjects</label>
+                    <input-type>tag</input-type> 
+                    <hint>Input terms that characterize the clinical domain being investigated. Reference https://meshb.nlm.nih.gov/ for terms.</hint>
+                    <required>Tags are required.</required>
+                    <vocabulary>dc_subject_mesh</vocabulary>
                 </field>
             </row>
             <row>
