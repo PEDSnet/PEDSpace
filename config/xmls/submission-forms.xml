@@ -328,7 +328,7 @@
                     <input-type>textarea</input-type>
                     <hint>Enter the column names of the tabular output produced by this check and any additional pertinent information about the raw output.
                             Use complete sentences.
-                        </hint>
+                    </hint>
                     <required></required>
                 </field>
             </row>
@@ -1206,8 +1206,8 @@
             </row>
         </form>
 
-        <!-- Documentation Form-->
-        <form name="DocumentationForm">
+        <!-- Documentation Forms-->
+        <form name="DocumentationFormStepOne">
             <row>
                 <field>
                     <dc-schema>dspace</dc-schema>
@@ -1223,13 +1223,25 @@
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
+                    <dc-element>type</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Database or Other Entry?</label>
+                    <input-type value-pairs-name="common_types">dropdown</input-type>
+                    <hint>Select the most appropriate term.</hint>
+                    <required>Make a selection</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Title</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the main title of the item.</hint>
-                    <required>You must enter a main title for this item.</required>
+                    <hint>Enter the title of the item. Use title case.</hint>
+                    <required>You must enter a title for this item.</required>
                 </field>
             </row>
             <row>
@@ -1240,7 +1252,7 @@
                     <repeatable>true</repeatable>
                     <label>Other Titles</label>
                     <input-type>onebox</input-type>
-                    <hint>If the item has any alternative titles, please enter them here.</hint>
+                    <hint>If the item has any alternative, additional, or sub- titles, enter them here.</hint>
                     <required></required>
                 </field>
             </row>
@@ -1257,19 +1269,6 @@
                             If the exact date is unknown, enter the first of the month.
                         </hint>
                     <required>You must enter at least the year.</required>
-                </field>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>date</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Date Last Modified</label>
-                    <style>col-sm-8</style>
-                    <input-type>date</input-type>
-                    <hint>Input the date that the item was last modified. This field should only be used if subsequent versions of this concept set have been created.
-                            If the exact date is unknown, enter the first of the month.
-                        </hint>
-                    <required></required>
                 </field>
             </row>
             <row>
@@ -1307,18 +1306,6 @@
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
-                    <dc-element>publisher</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Publisher</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the name of the publisher if applicable.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
@@ -1348,7 +1335,7 @@
                     <repeatable>false</repeatable>
                     <label>Provenance</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter provenance information associated with the item if applicable.</hint>
+                    <hint>Enter provenance information associated with the item.</hint>
                     <required></required>
                 </field>
             </row>
@@ -1359,10 +1346,9 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Tags</label>
-                    <input-type>onebox</input-type>
+                    <input-type value-pairs-name="ResourceTags">dropdown</input-type>
                     <hint>Apply tags to the item as applicable.</hint>
                     <required></required>
-                    <vocabulary closed="true">dc_subject</vocabulary>
                 </field>
             </row>
             <row>
@@ -1371,9 +1357,53 @@
                     <dc-element>relation</dc-element>
                     <dc-qualifier>uri</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Related Content</label>
+                    <label>Development Code</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter permanent links to related external resources as applicable. E.g., GitHub Repository link.</hint>
+                    <hint>Enter a permanent link to related external resources as applicable, e.g., a GitHub Repository link.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isStudyOfDocumentation</relationship-type>
+                    <search-configuration>study</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Studies</label>
+                    <hint>Select any studies related to the item or which utilized data from this database.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier>ispartof</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                </relation-field>
+            </row> 
+            <row>
+                <relation-field>
+                    <relationship-type>isDocumentationOfDocumentation</relationship-type>
+                    <search-configuration>documentation</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Resources</label>
+                    <hint>Select any related resources in the collection.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier>isbasedon</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                </relation-field>
+            </row> 
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>publisher</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Publisher</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the name of the record publisher: PEDSnet.</hint>
                     <required></required>
                 </field>
             </row>
@@ -1401,6 +1431,116 @@
                     <required></required>
                 </field>
             </row>
+        </form>
+
+        <form name="DocumentationFormStepTwo">
+            <row>
+                <relation-field>
+                    <relationship-type>isOrgUnitOfDocumentation</relationship-type>
+                    <search-configuration>orgUnit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Contributing Institutions</label>
+                    <type-bind>Database</type-bind>
+                    <hint>Select all institutions whose data is present in the database.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>other</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required>At least one institution must be selected.</required>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>submitted</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Submission Date</label>
+                    <type-bind>Database</type-bind>
+                    <input-type>date</input-type>
+                    <hint>Input the date that the database data was submitted.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>startDate</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Data Collection Start Date</label>
+                    <style>col-sm-4</style>
+                    <type-bind>Database</type-bind>
+                    <input-type>date</input-type>
+                    <hint>Input the date that data collection began for this database version.</hint>
+                    <required></required>
+                </field>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>endDate</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Data Collection End Date</label>
+                    <style>col-sm-8</style>
+                    <type-bind>Database</type-bind>
+                    <input-type>date</input-type>
+                    <hint>Input the date that data collection concluded for this database version.</hint>
+                    <required></required>
+                </field>
+            </row>    
+            <row>
+                <relation-field>
+                    <relationship-type>isConceptSetOfDocumentation</relationship-type>
+                    <search-configuration>conceptSet</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Concept Sets</label>
+                    <type-bind>Database</type-bind>
+                    <hint>Select all concept sets developed using this database.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier></dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required>At least one institution must be selected.</required>
+                </relation-field>
+            </row>  
+            <row>
+                <relation-field>
+                    <relationship-type>isPhenotypeOfDocumentation</relationship-type>
+                    <search-configuration>phenotype</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Phenotypes</label>
+                    <type-bind>Database</type-bind>
+                    <hint>Select all phenotypes developed using this database.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier></dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required>At least one institution must be selected.</required>
+                </relation-field>
+            </row> 
+            <row>
+                <relation-field>
+                    <relationship-type>isDQResultOfDocumentation</relationship-type>
+                    <search-configuration>dqResult</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Network DQ Checks</label>
+                    <type-bind>Database</type-bind>
+                    <hint>Select all Results from DQ Analysis run on this database.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier>requires</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required>At least one institution must be selected.</required>
+                </relation-field>
+            </row>      
         </form>
 
         <!-- Phenotype Form-->
@@ -3256,92 +3396,118 @@
         </value-pairs>
         <value-pairs value-pairs-name="common_types" dc-term="type">
             <pair>
-                <displayed-value>Animation</displayed-value>
-                <stored-value>Animation</stored-value>
+                <displayed-value>Database</displayed-value>
+                <stored-value>Database</stored-value>
             </pair>
             <pair>
-                <displayed-value>Article</displayed-value>
-                <stored-value>Article</stored-value>
+                <displayed-value>Other</displayed-value>
+                <stored-value>Other</stored-value>
             </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="ResourceTags" dc-term="subject">
             <pair>
-                <displayed-value>Book</displayed-value>
-                <stored-value>Book</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Book chapter</displayed-value>
-                <stored-value>Book chapter</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Dataset</displayed-value>
-                <stored-value>Dataset</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Learning Object</displayed-value>
-                <stored-value>Learning Object</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Image</displayed-value>
-                <stored-value>Image</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Image, 3-D</displayed-value>
-                <stored-value>Image, 3-D</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Map</displayed-value>
-                <stored-value>Map</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Musical Score</displayed-value>
-                <stored-value>Musical Score</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Plan or blueprint</displayed-value>
-                <stored-value>Plan or blueprint</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Preprint</displayed-value>
-                <stored-value>Preprint</stored-value>
+                <displayed-value>Web Application</displayed-value>
+                <stored-value>Web Application</stored-value>
             </pair>
             <pair>
                 <displayed-value>Presentation</displayed-value>
                 <stored-value>Presentation</stored-value>
             </pair>
             <pair>
-                <displayed-value>Recording, acoustical</displayed-value>
-                <stored-value>Recording, acoustical</stored-value>
+                <displayed-value>Video Tutorial</displayed-value>
+                <stored-value>Video Tutorial</stored-value>
             </pair>
             <pair>
-                <displayed-value>Recording, musical</displayed-value>
-                <stored-value>Recording, musical</stored-value>
+                <displayed-value>Instructional Content</displayed-value>
+                <stored-value>Instructional Content</stored-value>
             </pair>
             <pair>
-                <displayed-value>Recording, oral</displayed-value>
-                <stored-value>Recording, oral</stored-value>
+                <displayed-value>Handbook or Manual</displayed-value>
+                <stored-value>Handbook or Manual</stored-value>
             </pair>
             <pair>
-                <displayed-value>Software</displayed-value>
-                <stored-value>Software</stored-value>
+                <displayed-value>Dataset</displayed-value>
+                <stored-value>Dataset</stored-value>
             </pair>
             <pair>
-                <displayed-value>Technical Report</displayed-value>
-                <stored-value>Technical Report</stored-value>
+                <displayed-value>Demonstration Project</displayed-value>
+                <stored-value>Demonstration Project</stored-value>
             </pair>
             <pair>
-                <displayed-value>Thesis</displayed-value>
-                <stored-value>Thesis</stored-value>
+                <displayed-value>Database Management</displayed-value>
+                <stored-value>Database Management</stored-value>
             </pair>
             <pair>
-                <displayed-value>Video</displayed-value>
-                <stored-value>Video</stored-value>
+                <displayed-value>Data Quality</displayed-value>
+                <stored-value>Data Quality</stored-value>
             </pair>
             <pair>
-                <displayed-value>Working Paper</displayed-value>
-                <stored-value>Working Paper</stored-value>
+                <displayed-value>Extract Transfer Load (ETL)</displayed-value>
+                <stored-value>Extract Transfer Load (ETL)</stored-value>
             </pair>
             <pair>
-                <displayed-value>Other</displayed-value>
-                <stored-value>Other</stored-value>
+                <displayed-value>Data Dictionaries</displayed-value>
+                <stored-value>Data Dictionaries</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Natural Laguange Processing</displayed-value>
+                <stored-value>Natural Laguange Processing</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Data Mining</displayed-value>
+                <stored-value>Data Mining</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Relational Databases</displayed-value>
+                <stored-value>Relational Databases</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PEDSnet Data Source</displayed-value>
+                <stored-value>PEDSnet Data Source</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PCORnet Data Source</displayed-value>
+                <stored-value>PCORnet Data Source</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Research Aid</displayed-value>
+                <stored-value>Research Aid</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Research Aid -- Studies</displayed-value>
+                <stored-value>Research Aid -- Studies</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Research Aid -- Concept Sets</displayed-value>
+                <stored-value>Research Aid -- Concept Sets</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Research Aid -- Computable Phenotypes</displayed-value>
+                <stored-value>Research Aid -- Computable Phenotypes</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Research Aid -- Data Quality</displayed-value>
+                <stored-value>Research Aid -- Data Quality</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PEDSnet Scholars</displayed-value>
+                <stored-value>PEDSnet Scholars</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Database Access</displayed-value>
+                <stored-value>Database Access</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Tier 1 Database Access</displayed-value>
+                <stored-value>Tier 1 Database Access</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Tier 2 Database Access</displayed-value>
+                <stored-value>Tier 2 Database Access</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Tier 3 Database Access</displayed-value>
+                <stored-value>Tier 3 Database Access</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="common_iso_languages" dc-term="language_iso">

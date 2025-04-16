@@ -375,7 +375,8 @@
 
         <submission-process name="Documentation">
             <step id="collection"/>
-            <step id="DocumentationForm"/>
+            <step id="DocumentationFormStepOne"/>
+            <step id="DocumentationFormStepTwo"/>
             <step id="upload"/>
             <step id="itemAccessConditions"/>
         </submission-process>
