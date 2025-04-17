@@ -293,7 +293,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfDQCheck</relationship-type>
-                    <search-configuration>orgUnit</search-configuration>
+                    <search-configuration>orgunit</search-configuration>
                     <repeatable>false</repeatable>
                     <label>Affliated Organization(s)</label>
                     <hint>Enter "Children's Hosptial of Philadelphia" as the creator affiliation.</hint>
@@ -467,20 +467,16 @@
                 </field>
             </row>
             <row>
-                <relation-field>
-                    <relationship-type>isOrgUnitOfDQResult</relationship-type>
-                    <search-configuration>orgUnit</search-configuration>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
+                    <input-type>onebox</input-type>
                     <hint>Enter the affiliated institution of the analyst or investigator.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>other</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                     <required></required>
-                </relation-field>
+                </field>
             </row>
             <row>
                 <field>
@@ -527,12 +523,6 @@
                     <repeatable>true</repeatable>
                     <label>Database Version Linkage</label>
                     <hint>If PEDSnet Data Model dependent, select the record that represents the database version this concept set was created with.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier>isbasedon</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                     <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
@@ -548,6 +538,16 @@
                     <hint>Select the parameters applied to your check.</hint>
                     <required>Parameters must be selected.</required>
                 </field>
+            </row>
+            <row>
+            <relation-field>
+                <relationship-type>isOrgUnitOfDQResult</relationship-type>
+                <search-configuration>orgunit</search-configuration>
+                <repeatable>true</repeatable>
+                <label>Institutional Data Sources</label>
+                <hint>If PEDSnet data sources were used, select the institutions</hint>
+                <required></required>
+            </relation-field>
             </row>
             <row>
                 <field>
@@ -603,16 +603,10 @@
             <row>
                 <relation-field>
                     <relationship-type>isDQCheckOfDQResult</relationship-type>
-                    <search-configuration>dqCheck</search-configuration>
+                    <search-configuration>dqcheck</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Data Quality Check Linkage</label>
                     <hint>Link to the data quality check record which corresponds to the check run to produce these results.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier>requires</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                     <required></required> <!-- Not required - I can input if they can't figure it out. -->
                 </relation-field>
             </row>
@@ -622,13 +616,7 @@
                     <search-configuration>study</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Study Record Linkage</label>
-                    <hint>Link to the study record which corresponds to the investigation. If study does not</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier>ispartof</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
+                    <hint>Link to the study record which corresponds to the investigation.</hint>
                     <required></required> <!-- Not required - I can input if they can't figure it out. -->
                 </relation-field>
             </row>
@@ -748,7 +736,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfConceptSet</relationship-type>
-                    <search-configuration>orgUnit</search-configuration>
+                    <search-configuration>orgunit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
                     <hint>Enter the name(s) of the institution(s) employing the individuals named in the Creator and Reviewer fields.</hint>
@@ -911,19 +899,6 @@
                     <visibility>workflow</visibility>
                 </field>                
             </row>
-            <!-- <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Tags</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter terms that classify the concept set. You should tag the data model the set was created against, the level of review, the medication class level, and variable-relationship.</hint>
-                    <required>At least one tag must be applied to the concept set.</required>
-                    <vocabulary closed="true">dc_subject</vocabulary>
-                </field>
-            </row> -->
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1009,7 +984,7 @@
             <row>
                 <field>
                     <dc-schema>project</dc-schema>
-                    <dc-element>StartDate</dc-element>
+                    <dc-element>startDate</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Study Start Date</label>
@@ -1020,7 +995,7 @@
                 </field>
                 <field>
                     <dc-schema>project</dc-schema>
-                    <dc-element>EndDate</dc-element>
+                    <dc-element>endDate</dc-element>
                     <dc-qualifier>created</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Study End Date</label>
@@ -1050,7 +1025,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfStudy</relationship-type>
-                    <search-configuration>orgUnit</search-configuration>
+                    <search-configuration>orgunit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
                     <hint>Enter the name(s) of the institutions employing any of the individuals listed as PIs above or associated with the study.</hint>
@@ -1141,7 +1116,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isConceptSetOfStudy</relationship-type>
-                    <search-configuration>conceptSet</search-configuration>
+                    <search-configuration>conceptset</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Related Concept Sets</label>
                     <hint>Link the study to any concept sets used in the course of research, if applicable.</hint>
@@ -1290,7 +1265,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfDocumentation</relationship-type>
-                    <search-configuration>orgUnit</search-configuration>
+                    <search-configuration>orgunit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
                     <hint>Enter the name(s) of the institutions employing any of the individuals listed as creators.</hint>
@@ -1437,7 +1412,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfDocumentation</relationship-type>
-                    <search-configuration>orgUnit</search-configuration>
+                    <search-configuration>orgunit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Contributing Institutions</label>
                     <type-bind>Database</type-bind>
@@ -1493,7 +1468,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isConceptSetOfDocumentation</relationship-type>
-                    <search-configuration>conceptSet</search-configuration>
+                    <search-configuration>conceptset</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Related Concept Sets</label>
                     <type-bind>Database</type-bind>
@@ -1527,7 +1502,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isDQResultOfDocumentation</relationship-type>
-                    <search-configuration>dqResult</search-configuration>
+                    <search-configuration>dqresult</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Related Network DQ Checks</label>
                     <type-bind>Database</type-bind>
@@ -1602,7 +1577,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfPhenotype</relationship-type>
-                    <search-configuration>orgUnit</search-configuration>
+                    <search-configuration>orgunit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
                     <hint>Enter the name(s) of the institution(s) employing any individual named in the Creator field.</hint>
@@ -1749,19 +1724,6 @@
                     <visibility>workflow</visibility>
                 </relation-field>
             </row>
-            <!-- <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Tags</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter terms that classify the phenotype.</hint>
-                    <required>At least one tag must be applied to the phenotype.</required>
-                    <vocabulary closed="true">dc_subject</vocabulary>
-                </field>
-            </row> -->
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1827,6 +1789,248 @@
                     <visibility>workflow</visibility>
                 </field>
             </row>
+        </form>
+
+        <!-- Institution Form-->
+        <form name="orgUnitStep">
+            <row>
+                <field>
+                    <dc-schema>organization</dc-schema>
+                    <dc-element>legalName</dc-element>
+                    <label>Name</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the full, legal name of the institution.</hint>
+                    <required>Required field.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <dc-qualifier>alternative</dc-qualifier>
+                    <label>Hospital Shorthand</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter an abbreviation for the institution, if applicable, e.g., (CHOP).</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>organization</dc-schema>
+                    <dc-element>address</dc-element>
+                    <dc-qualifier>addressCountry</dc-qualifier>
+                    <label>Country</label>
+                    <input-type value-pairs-name="Countries">dropdown</input-type>
+                    <hint>Enter the country of the institution.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>organization</dc-schema>
+                    <dc-element>address</dc-element>
+                    <dc-qualifier>addressLocality</dc-qualifier>
+                    <label>Street Address</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter the address of the institution's main hospital building.</hint>
+                    <required>Required field.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>organization</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <label>Website Link</label>
+                    <style>col-sm-4</style>
+                    <input-type>onebox</input-type>
+                    <hint>Enter a link to the institution's website homepage.</hint>
+                    <required>Required field.</required>
+                </field>
+                <field>
+                    <dc-schema>organization</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <dc-qualifier>ror</dc-qualifier>
+                    <label>ROR Identifier</label>
+                    <style>col-sm-8</style>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the numerical identifier that represents the institution from ror.org.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>abstract</dc-qualifier>
+                    <label>Institution Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Provide a paragraph of text describing the institution.</hint>
+                    <required>An abstract is required.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>count</dc-element>
+                    <dc-qualifier>patients</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Patients in PEDSnet Database</label>
+                    <input-type>onebox</input-type>
+                    <hint>Total number of patients present in database.</hint>
+                </field>
+            </row>    
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>count</dc-element>
+                    <dc-qualifier>inpatient</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Inpatient Care Facilities</label>
+                    <style>col-sm-4</style>
+                    <input-type>onebox</input-type>
+                    <hint></hint>
+                    <required>A number must be entered.</required>
+                </field>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>count</dc-element>
+                    <dc-qualifier>ed</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Emergency Departments</label>
+                    <style>col-sm-8</style>
+                    <input-type>onebox</input-type>
+                    <hint></hint>
+                    <required>A number must be entered.</required>
+                </field>
+            </row>    
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>count</dc-element>
+                    <dc-qualifier>primarycare</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Primary Care Facilities</label>
+                    <style>col-sm-4</style>
+                    <input-type>onebox</input-type>
+                    <hint></hint>
+                    <required>A number must be entered.</required>
+                </field>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>count</dc-element>
+                    <dc-qualifier>urgentcare</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Urgent Care Facilities</label>
+                    <style>col-sm-8</style>
+                    <input-type>onebox</input-type>
+                    <hint></hint>
+                    <required>A number must be entered.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Beds</label>
+                    <input-type value-pairs-name="Beds">dropdown</input-type>
+                    <hint>Select the most appropriate option.</hint>
+                    <required>A selection is required.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>EHR System</label>
+                    <input-type value-pairs-name="EHRSys">dropdown</input-type>
+                    <hint>Select the most appropriate option.</hint>
+                    <required>A selection is required.</required>
+                </field>
+            </row>    
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Level of Trauma Care</label>
+                    <input-type value-pairs-name="TraumaCenter">dropdown</input-type>
+                    <hint>Select the most appropriate option.</hint>
+                    <required>A selection is required.</required>
+                </field>
+            </row> 
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Tags</label>
+                    <input-type value-pairs-name="InstChar">list</input-type>
+                    <hint>Select all that apply.</hint>
+                    <required></required>
+                </field>
+            </row>  
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>University Affiliation</label>
+                    <input-type>onebox</input-type>
+                    <hint>If the "University Affiliated Institution" tag is selected above, input the full name of the associated institution.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <label>Patient Population Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter table 1 information in tabular format using markdown.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>created</dc-qualifier>
+                    <label>Date Last Updated</label>
+                    <input-type>date</input-type>
+                    <hint>Enter the date that the table 1 information provided in the description field was last updated.</hint>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isDocumentationOfOrgUnit</relationship-type>
+                    <search-configuration>documentation</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Database</label>
+                    <hint>Select the database used to general the table 1 information provided in the description field.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isStudyOfOrgUnit</relationship-type>
+                    <search-configuration>documentation</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Studies</label>
+                    <hint>Select the studies for which this site had affilitated employees as primary investigator or co-investigator.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPersonOfOrgUnit</relationship-type>
+                    <search-configuration>documentation</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related People</label>
+                    <hint>Select any employees of the institution.</hint>
+                </relation-field>
+            </row>
+
         </form>
 
 
@@ -2120,7 +2324,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfProject</relationship-type>
-                    <search-configuration>orgUnit</search-configuration>
+                    <search-configuration>orgunit</search-configuration>
                     <repeatable>false</repeatable>
                     <label>Organization</label>
                     <hint>Enter the organization's name</hint>
@@ -2187,64 +2391,7 @@
             </row>
         </form>
         <!-- Form which defines the metadata page/section for depositing OrgUnit Entities -->
-        <form name="orgUnitStep">
-            <row>
-                <field>
-                    <dc-schema>organization</dc-schema>
-                    <dc-element>legalName</dc-element>
-                    <label>Name</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the name of the orgunit</hint>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>identifier</dc-element>
-                    <label>ID</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the id of the orgunit</hint>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>organization</dc-schema>
-                    <dc-element>foundingDate</dc-element>
-                    <label>Date established</label>
-                    <input-type>date</input-type>
-                    <hint>Enter the established date of the orgunit</hint>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>organization</dc-schema>
-                    <dc-element>address</dc-element>
-                    <dc-qualifier>addressLocality</dc-qualifier>
-                    <label>City</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the city of the orgunit</hint>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>organization</dc-schema>
-                    <dc-element>address</dc-element>
-                    <dc-qualifier>addressCountry</dc-qualifier>
-                    <label>Country</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the country of the orgunit</hint>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>description</dc-element>
-                    <label>Description</label>
-                    <input-type>textarea</input-type>
-                    <hint>Enter the description of the orgunit</hint>
-                </field>
-            </row>
-        </form>
+        
         <!-- Form which defines the metadata page/section for depositing Journal Entities -->
         <form name="journalStep">
             <row>
@@ -3558,6 +3705,132 @@
             <pair>
                 <displayed-value>(Other)</displayed-value>
                 <stored-value>other</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="Countries" dc-term="org_locality">
+            <pair>
+                <displayed-value>United State of America</displayed-value>
+                <stored-value>United States of America</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="Beds" dc-term="subject">
+            <pair>
+                <displayed-value>100-200 Beds</displayed-value>
+                <stored-value>100-200 Beds</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>200-300 Beds</displayed-value>
+                <stored-value>200-300 Beds</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>300-400 Beds</displayed-value>
+                <stored-value>300-400 Beds</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>400-500 Beds</displayed-value>
+                <stored-value>400-500 Beds</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>500-600 Beds</displayed-value>
+                <stored-value>500-600 Beds</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>600-700 Beds</displayed-value>
+                <stored-value>600-700 Beds</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>700-800 Beds</displayed-value>
+                <stored-value>700-800 Beds</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>800-900 Beds</displayed-value>
+                <stored-value>800-900 Beds</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>900-1000 Beds</displayed-value>
+                <stored-value>900-1000 Beds</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>1000+ Beds</displayed-value>
+                <stored-value>1000+ Beds</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="EHRSys" dc-term="subject">
+            <pair>
+                <displayed-value>Epic EHR System</displayed-value>
+                <stored-value>Epic EHR System</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Cerner EHR System</displayed-value>
+                <stored-value>Cerner EHR System</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>eClinicalWorks EHR System</displayed-value>
+                <stored-value>eClinicalWorks EHR System</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Praxis EMR EHR System</displayed-value>
+                <stored-value>Praxis EMR EHR System</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>TruBridge EHR System</displayed-value>
+                <stored-value>TruBridge EHR System</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Meditech EHR System</displayed-value>
+                <stored-value>Meditech EHR System</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>NextGen Healthcare EHR System</displayed-value>
+                <stored-value>NextGen Healthcare EHR System</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Veradigm EHR System</displayed-value>
+                <stored-value>Veradigm EHR System</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Athenahealth EHR System</displayed-value>
+                <stored-value>Athenahealth EHR System</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Practice Fusion EHR System</displayed-value>
+                <stored-value>Practice Fusion EHR System</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="TraumaCenter" dc-term="subject">
+            <pair>
+                <displayed-value>Level I Trauma Center</displayed-value>
+                <stored-value>Level I Trauma Center</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Level II Trauma Center</displayed-value>
+                <stored-value>Level II Trauma Center</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Level III Trauma Center</displayed-value>
+                <stored-value>Level III Trauma Center</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="InstChar" dc-term="subject">
+            <pair>
+                <displayed-value>Pediatric Research Hospital</displayed-value>
+                <stored-value>Pediatric Research Hospital</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>General Research Hospital</displayed-value>
+                <stored-value>General Research Hospital</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Private, Nonprofit Hospital</displayed-value>
+                <stored-value>Private, Nonprofit Hospital</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Public, Nonprofit Hospital</displayed-value>
+                <stored-value>Public, Nonprofit Hospital</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>University Affiliate Hospital</displayed-value>
+                <stored-value>University Affiliate Hospital</stored-value>
             </pair>
         </value-pairs>
         <!-- Openaire specific value pairs -->
