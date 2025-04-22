@@ -506,7 +506,7 @@
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>local</dc-schema>
                     <dc-element>admin</dc-element>
                     <dc-qualifier>note</dc-qualifier>
                     <repeatable>false</repeatable>
@@ -540,14 +540,14 @@
                 </field>
             </row>
             <row>
-            <relation-field>
-                <relationship-type>isOrgUnitOfDQResult</relationship-type>
-                <search-configuration>orgunit</search-configuration>
-                <repeatable>true</repeatable>
-                <label>Institutional Data Sources</label>
-                <hint>If PEDSnet data sources were used, select the institutions</hint>
-                <required></required>
-            </relation-field>
+                <relation-field>
+                    <relationship-type>isOrgUnitOfDQResult</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Institutional Data Sources</label>
+                    <hint>If PEDSnet data sources were used, select the institutions</hint>
+                    <required></required>
+                </relation-field>
             </row>
             <row>
                 <field>
@@ -571,7 +571,7 @@
                     <label>Outcomes</label>
                     <input-type>onebox</input-type>
                     <hint>Select terms that characterize the outcome of the analysis.</hint>
-                    <required>At least one term must be selected</required>
+                    <required></required>
                     <vocabulary>dc_subject_outcomes</vocabulary>
                 </field>
             </row>
@@ -619,6 +619,19 @@
                     <hint>Link to the study record which corresponds to the investigation.</hint>
                     <required></required> <!-- Not required - I can input if they can't figure it out. -->
                 </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>publisher</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Publisher</label>
+                    <input-type>onebox</input-type>
+                    <hint>PEDSnet</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </field>
             </row>
             <row>
                 <field>
@@ -776,7 +789,7 @@
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>local</dc-schema>
                     <dc-element>admin</dc-element>
                     <dc-qualifier>note</dc-qualifier>
                     <repeatable>false</repeatable>
@@ -1407,7 +1420,6 @@
                 </field>
             </row>
         </form>
-
         <form name="DocumentationFormStepTwo">
             <row>
                 <relation-field>
@@ -1616,7 +1628,7 @@
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>local</dc-schema>
                     <dc-element>admin</dc-element>
                     <dc-qualifier>note</dc-qualifier>
                     <repeatable>false</repeatable>
