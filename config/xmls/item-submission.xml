@@ -369,7 +369,9 @@
 
         <submission-process name="DQResult">
             <step id="collection"/>
-            <step id="DQResultForm"/>
+            <step id="DQResultForm1"/>
+            <step id="DQResultForm2"/>
+            <step id="DQResultForm3"/>
             <step id="upload"/>
         </submission-process>
 

@@ -521,7 +521,7 @@
             </row>
         </form>
 
-        <form name="DQResultsForm2">
+        <form name="DQResultForm2">
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -629,7 +629,7 @@
             </row>
         </form>
 
-        <form name="DQResultsForm3">
+        <form name="DQResultForm3">
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
