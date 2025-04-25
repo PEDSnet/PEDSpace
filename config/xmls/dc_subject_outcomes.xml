@@ -2,27 +2,23 @@
 <!-- This is the controlled vocabulary used for dc.subject.other-->
 <node id="OUTCOME" label="DQ Analysis Outcomes">
 	<isComposedBy>
-        <node id="OUTCOME.A" label="Study Specific Data Analysis">
+        <node id="OUTCOME.1" label="Study Infeasible"/>
+        <node id="OUTCOME.2" label="Study Design Revised">
             <isComposedBy>
-                <node id="OUTCOME.1" label="Study Terminated"/>
-                <node id="OUTCOME.2" label="Study Revised">
-                    <isComposedBy>
-                        <node id="OUTCOME.2a" label="Data Source Adjusted"></node>
-                        <node id="OUTCOME.2b" label="Attrition Criteria Modified"></node>
-                        <node id="OUTCOME.2c" label="Investigation Dates Modified"></node>
-                        <node id="OUTCOME.2d" label="Concept Sets Refined"></node>
-                    </isComposedBy>
-                </node>
-                <node id="OUTCOME.3" label="Study Advanced"/>
-            </isComposedBy>    
-        </node>
-        <node id="OUTCOME.B" label="Network Data Analysis">
-            <isComposedBy>
-                <node id="OUTCOME.1" label="Site Intervention"/>
-                <node id="OUTCOME.2" label="Coordinating Center Intervention"/>
-                <node id="OUTCOME.3" label="Data Cycle Pass"/>
+                <node id="OUTCOME.2a" label="Study Variable Modified"></node>
+                <node id="OUTCOME.2b" label="Attrition Criteria Modified"></node>
+                <node id="OUTCOME.2c" label="Investigation Dates Modified"></node>
+                <node id="OUTCOME.2d" label="Concept Sets Refined"></node>
             </isComposedBy>
         </node>
+        <node id="OUTCOME.3" label="Data Source Adjusted">
+            <isComposedBy>
+                <node id="OUTCOME.3a" label="Site Intervention"></node>
+                <node id="OUTCOME.3b" label="DCC Intervention"></node>
+            </isComposedBy>
+        </node>
+        <node id="OUTCOME.4" label="Data Cycle Pass"/>
+        <node id="OUTCOME.5" label="No Modifications -- Final Data"/>
 	</isComposedBy>
 	<hasNote>Taxonomy developed by Annabel Pinkney</hasNote>
 </node>

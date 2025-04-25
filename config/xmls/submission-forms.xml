@@ -232,7 +232,7 @@
 
         <!-- ENTITY-BASED FORM DEFINITIONS-->
         <!-- Data Quality Check Form-->
-        <form name="DQCheckForm">
+        <form name="DQCheckForm1">
             <row>
                 <field>
                     <dc-schema>dspace</dc-schema>
@@ -417,6 +417,18 @@
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
+                    <dc-element>type</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Result Type</label>
+                    <input-type value-pairs-name="ResultsType">dropdown</input-type>
+                    <hint>Indicate whether you are depositing a network or study specific data quality analysis.</hint>
+                    <required>A selection is required.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
@@ -471,17 +483,153 @@
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
+                    <dc-element>publisher</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Publisher</label>
+                    <input-type>onebox</input-type>
+                    <hint>PEDSnet</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights Statement</label>
+                    <input-type>onebox</input-type>
+                    <hint>a CC-BY Attribution 4.0 license.</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier>uri</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights License</label>
+                    <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
+                    <hint>https://creativecommons.org/licenses/by/4.0/</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </field>
+            </row>
+        </form>
+
+        <form name="DQResultsForm2">
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Evaluation Parameters</label>
+                    <type-bind>study</type-bind>
+                    <input-type value-pairs-name="EvalParam">list</input-type>
+                    <hint>Select the parameters applied to your check.</hint>
+                    <required>Parameters must be selected.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Check Description</label>
+                    <type-bind>study</type-bind>
                     <input-type>textarea</input-type>
                     <hint>In 2-3 brief sentences, list the parameters of the check you used and the purpose of the check. 
                     Example:
                     "The results of a Source and Concept Vocabularies check using the Single Site, Exploratory, Cross-Sectional parameters. This check investigates SNOMED mappings to ICD codes for epilepsy diagnoses. This check was run to analyze data being prepared for a grant proposal to the CDC."</hint>
                     <required>This field is required.</required>
                 </field>
-            </row>            
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>abstract</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Check Description</label>
+                    <type-bind>network</type-bind>
+                    <input-type>textarea</input-type>
+                    <hint>In 2-3 brief sentences, enter a description of the network check and the parameters and thresholds used.</hint>
+                    <required>This field is required.</required>
+                </field>
+            </row> 
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>dqcheck</dc-element>
+                    <dc-qualifier>resultobs</dc-qualifier>
+                    <repeatable>Yes</repeatable>
+                    <label>Result Characteristics</label>
+                    <input-type>onebox</input-type>
+                    <hint>Select terms (as many as are applicable) to characterize your study-specific observations of the analysis.</hint>
+                    <required>At least one term must be selected.</required>
+                    <vocabulary>dc_subject_results</vocabulary>
+                </field>
+            </row>           
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>dqcheck</dc-element>
+                    <dc-qualifier>outcomes</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Outcomes</label>
+                    <input-type>onebox</input-type>
+                    <hint>Select terms that characterize the outcome of the analysis.</hint>
+                    <required></required>
+                    <vocabulary>dc_subject_outcomes</vocabulary>
+                </field>
+            </row> 
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>mesh</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Clinical Subjects</label>
+                    <input-type>tag</input-type> 
+                    <hint>Input terms that characterize the clinical domain being investigated. Reference https://meshb.nlm.nih.gov/ for terms.</hint>
+                    <required>A tag is required.</required>
+                    <vocabulary>dc_subject_mesh</vocabulary>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>dqcheck</dc-element>
+                    <dc-qualifier>domain</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Data Domains</label>
+                    <type-bind>network</type-bind>
+                    <input-type value-pairs-name="Domain">dropdown</input-type>
+                    <hint>Select the domains analyzed in the network.</hint>
+                    <required>A selection is required.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <repeatable>false</repeatable>
+                    <label>Results Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Describe your findings from the data quality analysis in full. Use this space to expand upon trends and observations in detail. Please provide some context for how these findings affected your use of the data in the study (e.g., did you modify a cohort attrition step, remove a site's data from analysis, etc.). 
+                    This field is not required but highly recommended.</hint>
+                    <required></required>
+                </field>
+            </row>
+        </form>
+
+        <form name="DQResultsForm3">
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -518,18 +666,6 @@
                 </relation-field>
             </row>
             <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Evaluation Parameters</label>
-                    <input-type value-pairs-name="EvalParam">list</input-type>
-                    <hint>Select the parameters applied to your check.</hint>
-                    <required>Parameters must be selected.</required>
-                </field>
-            </row>
-            <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfDQResult</relationship-type>
                     <search-configuration>orgunit</search-configuration>
@@ -538,57 +674,6 @@
                     <hint>If PEDSnet data sources were used, select the institutions</hint>
                     <required></required>
                 </relation-field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Result Characteristics</label>
-                    <input-type>onebox</input-type>
-                    <hint>Select terms (as many as are applicable) to characterize your study-specific observations of the analysis.</hint>
-                    <required>At least one term must be selected.</required>
-                    <vocabulary>dc_subject_results</vocabulary>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>local</dc-schema>
-                    <dc-element>dqcheck</dc-element>
-                    <dc-qualifier>outcomes</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Outcomes</label>
-                    <input-type>onebox</input-type>
-                    <hint>Select terms that characterize the outcome of the analysis.</hint>
-                    <required></required>
-                    <vocabulary>dc_subject_outcomes</vocabulary>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier>mesh</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Clinical Subjects</label>
-                    <input-type>tag</input-type> 
-                    <hint>Input terms that characterize the clinical domain being investigated. Reference https://meshb.nlm.nih.gov/ for terms.</hint>
-                    <required>Tags are required.</required>
-                    <vocabulary>dc_subject_mesh</vocabulary>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>description</dc-element>
-                    <repeatable>false</repeatable>
-                    <label>Results Description</label>
-                    <input-type>textarea</input-type>
-                    <hint>Describe your findings from the data quality analysis in full. Use this space to expand upon trends and observations in detail. Please provide some context for how these findings affected your use of the data in the study (e.g., did you modify a cohort attrition step, remove a site's data from analysis, etc.). 
-                    This field is not required but highly recommended.</hint>
-                    <required></required>
-                </field>
             </row>
             <row>
                 <relation-field>
@@ -609,45 +694,6 @@
                     <hint>Link to the study record which corresponds to the investigation.</hint>
                     <required></required> <!-- Not required - I can input if they can't figure it out. -->
                 </relation-field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>publisher</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Publisher</label>
-                    <input-type>onebox</input-type>
-                    <hint>PEDSnet</hint>
-                    <required></required>
-                    <visibility>workflow</visibility>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>rights</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Rights Statement</label>
-                    <input-type>onebox</input-type>
-                    <hint>a CC-BY Attribution 4.0 license.</hint>
-                    <required></required>
-                    <visibility>workflow</visibility>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>rights</dc-element>
-                    <dc-qualifier>uri</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Rights License</label>
-                    <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
-                    <hint>https://creativecommons.org/licenses/by/4.0/</hint>
-                    <required></required>
-                    <visibility>workflow</visibility>
-                </field>
             </row>
         </form>
 
@@ -3107,6 +3153,122 @@
                 <stored-value>isbn</stored-value>
             </pair>
         </value-pairs>
+        <value-pairs value-pairs-name="ResultsType" dc-term="type">
+            <pair>
+                <displayed-value>Network Analysis</displayed-value>
+                <stored-value>network</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Study-Specific Analysis</displayed-value>
+                <stored-value>study</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="Domain" dc-term="subject">
+            <pair>
+                <displayed-value>Condition Data</displayed-value>
+                <stored-value>Condition Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Lab Data</displayed-value>
+                <stored-value>Lab Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Drug Data</displayed-value>
+                <stored-value>Drug Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Immunizations Data</displayed-value>
+                <stored-value>Immunization Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Anthropometric Data</displayed-value>
+                <stored-value>Anthropometric Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Vitals Data</displayed-value>
+                <stored-value>Vitals Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Device Data</displayed-value>
+                <stored-value>Device Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Visit Data</displayed-value>
+                <stored-value>Visit Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Specialty Data</displayed-value>
+                <stored-value>Specialty Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Provider Data</displayed-value>
+                <stored-value>Provider Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Procedures Data</displayed-value>
+                <stored-value>Procedures Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Payer Data</displayed-value>
+                <stored-value>Payer Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Location Data</displayed-value>
+                <stored-value>Location Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ADT Data</displayed-value>
+                <stored-value>ADT Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Demographic Data</displayed-value>
+                <stored-value>Demographic Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Care Site Data</displayed-value>
+                <stored-value>Care Site Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Census Data</displayed-value>
+                <stored-value>Census Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>COVID-19 Data</displayed-value>
+                <stored-value>COVID-19 Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Leukemia Data</displayed-value>
+                <stored-value>Leukemia Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Type 1 Diabetes Data</displayed-value>
+                <stored-value>Type 1 Diabetes Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>RSV Data</displayed-value>
+                <stored-value>RSV Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Flu Data</displayed-value>
+                <stored-value>Flu Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Fracture Data</displayed-value>
+                <stored-value>Fracture Data</stored-value>
+            </pair> 
+            <pair>
+                <displayed-value>Asthma Data</displayed-value>
+                <stored-value>Asthma Data</stored-value>
+            </pair> 
+            <pair>
+                <displayed-value>Chronic Kidney Disease Data</displayed-value>
+                <stored-value>Chronic Kidney Disease Data</stored-value>
+            </pair> 
+            <pair>
+                <displayed-value>Nephrotic Syndrome Data</displayed-value>
+                <stored-value>Nephrotic Syndrome Data</stored-value>
+            </pair> 
+        </value-pairs>
         <value-pairs value-pairs-name="EvalType" dc-term="subject">
             <pair>
                 <displayed-value>Clinician Review</displayed-value>
@@ -3496,14 +3658,6 @@
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="EvalParam" dc-term="subject">
-            <pair>
-                <displayed-value>Study-Specific Data Quality</displayed-value>
-                <stored-value>Study-Specific Data Quality</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Network Data Quality</displayed-value>
-                <stored-value>Network Data Quality</stored-value>
-            </pair>
             <pair>
                 <displayed-value>Longitudinal Analysis</displayed-value>
                 <stored-value>Data Quality Check Categorizations::Dataset Evaluation Strategy::Temporal Evaluation::Longitudinal Analysis</stored-value>
