@@ -275,36 +275,28 @@
                 </field>
             </row>
             <row>
-                <relation-field>
-                    <relationship-type>isPersonOfDQCheck</relationship-type>
-                    <search-configuration>person</search-configuration>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>author</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Check Creator(s)</label>
+                    <label>Check Creator</label>
+                    <input-type>onebox</input-type>
                     <hint>Enter "PEDSnet" as the creator of the check.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>author</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                     <required>You must enter "PEDSnet."</required>
-                </relation-field>
+                </field>
             </row>
             <row>
-                <relation-field>
-                    <relationship-type>isOrgUnitOfDQCheck</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Affliated Organization(s)</label>
-                    <hint>Enter "Children's Hosptial of Philadelphia" as the creator affiliation.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>other</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
-                    <required>You must enter "Children's Hosptial of Philadelphia."</required>
-                </relation-field>
+                    <label>Affliated Organization</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter "PEDSnet Data Coordinating Center.</hint>
+                    <required>This field is requuired."</required>
+                </field>
             </row>
             <row>
                 <field>
@@ -373,12 +365,12 @@
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
-                    <dc-element>source</dc-element>
-                    <dc-qualifier>uri</dc-qualifier>
+                    <dc-element>publisher</dc-element>
+                    <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Shiny Link</label>
+                    <label>Publisher</label>
                     <input-type>onebox</input-type>
-                    <hint>Insert the permanent url to the Shiny application page that pertains to this check.</hint>
+                    <hint>PEDSnet</hint>
                     <required></required>
                 </field>
             </row>
@@ -401,15 +393,15 @@
                     <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
-                    <input-type>onebox</input-type>
+                    <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
                     <hint>https://creativecommons.org/licenses/by/4.0/</hint>
                     <required></required>
                 </field>
             </row>
         </form>
 
-        <!-- Data Quality Result Form-->
-        <form name="DQResultForm">
+        <!-- Data Quality Result Forms-->
+        <form name="DQResultForm1">
             <row>
                 <field>
                     <dc-schema>dspace</dc-schema>
@@ -460,9 +452,7 @@
                     <repeatable>true</repeatable>
                     <label>Creator</label>
                     <input-type>name</input-type>
-                    <hint>Enter the name of the analyst or investigator who ran the code to generate this result.
-                    Use the format "Last Name, Given Name."
-                    Do not include middle initials or credentials.</hint>
+                    <hint>Enter the name of the analyst or investigator who ran the code to generate this result. Do not include middle initials or credentials.</hint>
                     <required>If the analyst is unknown, enter the name of the study investigator.</required>
                 </field>
             </row>
@@ -475,7 +465,7 @@
                     <label>Affliated Organization(s)</label>
                     <input-type>onebox</input-type>
                     <hint>Enter the affiliated institution of the analyst or investigator.</hint>
-                    <required></required>
+                    <required>An affiliation is required.</required>
                 </field>
             </row>
             <row>
