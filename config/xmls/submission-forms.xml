@@ -637,6 +637,7 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Data Provenance</label>
+                    <type-bind>study</type-bind>
                     <input-type value-pairs-name="DataProv">list</input-type>
                     <hint>Select the term which best describes your data source.</hint>
                     <required>At least one source must be selected.</required>
@@ -681,6 +682,7 @@
                     <search-configuration>dqcheck</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Data Quality Check Linkage</label>
+                    <type-bind>study</type-bind>
                     <hint>Link to the data quality check record which corresponds to the check run to produce these results.</hint>
                     <required></required> <!-- Not required - I can input if they can't figure it out. -->
                 </relation-field>
@@ -691,6 +693,7 @@
                     <search-configuration>study</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Study Record Linkage</label>
+                    <type-bind>study</type-bind>
                     <hint>Link to the study record which corresponds to the investigation.</hint>
                     <required></required> <!-- Not required - I can input if they can't figure it out. -->
                 </relation-field>
