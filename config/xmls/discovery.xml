@@ -833,6 +833,7 @@
                 <ref bean="searchFilterNotifyRelation" />
                 <ref bean="searchFilterNotifyEndorsement" />
                 <ref bean="searchFilterNotifyReview" />
+                <ref bean="searchFilterClinicalSubject"/>
             </list>
         </property>
         <!--The sort filters for the discovery search-->
