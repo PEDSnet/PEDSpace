@@ -232,7 +232,7 @@
 
         <!-- ENTITY-BASED FORM DEFINITIONS-->
         <!-- Data Quality Check Form-->
-        <form name="DQCheckForm1">
+        <form name="DQCheckForm">
             <row>
                 <field>
                     <dc-schema>dspace</dc-schema>
@@ -2441,8 +2441,6 @@
                 </field>
             </row>
         </form>
-        <!-- Form which defines the metadata page/section for depositing OrgUnit Entities -->
-        
         <!-- Form which defines the metadata page/section for depositing Journal Entities -->
         <form name="journalStep">
             <row>
