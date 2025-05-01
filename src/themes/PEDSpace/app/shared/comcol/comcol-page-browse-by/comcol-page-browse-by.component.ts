@@ -28,6 +28,10 @@ export class FilterTypePipe implements PipeTransform {
     return options.filter(option => !option.id.includes('type') && 
       !option.id.includes('srsc') && 
       !option.id.includes('quality') && 
+      !option.id.includes('domain') && 
+      !option.id.includes('response') && 
+      !option.id.includes('funder') && 
+      !option.id.includes('vocab') && 
       !option.id.includes('requirement'));
   }
 }

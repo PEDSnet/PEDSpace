@@ -1150,6 +1150,12 @@
     "browse.back.all-results": "All browse results",
 
     "browse.comcol.by.author": "By Author",
+    
+    "browse.comcol.by.funder": "By Funder",
+    
+    "browse.comcol.by.response": "By Data Quality Result Response",
+    
+    "browse.comcol.by.domain": "By Data Quality Result Domain",
 
     "browse.comcol.by.datecreated": "By Date",
 
@@ -1184,6 +1190,14 @@
     "browse.empty": "No items to show.",
 
     "browse.metadata.author.breadcrumbs": "Browse by Author",
+    
+    "browse.metadata.response.breadcrumbs": "Browse by Data Quality Result Outcome",
+    
+    "browse.metadata.response": "Data Quality Result Outcome",
+    
+    "browse.metadata.domain.breadcrumbs": "Browse by Data Quality Result Domain",
+    
+    "browse.metadata.domain": "Data Quality Result Domain",
     
     "browse.metadata.funder": "Funder",
 
@@ -3818,6 +3832,10 @@
     "menu.header.nav.description": "Admin navigation bar",
 
     "menu.section.access_control_authorizations": "Authorizations",
+    
+    "menu.section.browse_global_by_response": "By Data Result Outcome",
+    
+    "menu.section.browse_global_by_domain": "By Data Result Domain",
 
     "menu.section.access_control_bulk": "Bulk Access Management",
 

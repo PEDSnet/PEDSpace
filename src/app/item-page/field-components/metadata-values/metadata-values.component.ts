@@ -29,6 +29,7 @@ import { hasValue } from '../../../shared/empty.util';
 import { MetadataFieldWrapperComponent } from '../../../shared/metadata-field-wrapper/metadata-field-wrapper.component';
 import { MarkdownDirective } from '../../../shared/utils/markdown.directive';
 import { ImageField } from '../../simple/field-components/specific-field/image-field';
+import { DomSanitizer } from '@angular/platform-browser';
 
 /**
  * This component renders the configured 'values' into the ds-metadata-field-wrapper component.
@@ -47,6 +48,7 @@ export class MetadataValuesComponent implements OnChanges {
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
+    private sanitizer: DomSanitizer
   ) {
   }
 
@@ -99,6 +101,10 @@ export class MetadataValuesComponent implements OnChanges {
    */
   @Input() renderAsButton = false;
 
+  @Input() fieldName: string;
+
+  @Input() isPublisher = false;
+
   /**
    * The entity type of the metadata values
    */
@@ -133,6 +139,8 @@ export class MetadataValuesComponent implements OnChanges {
       this.sentenceTemplateParts = null;
     }
   }
+  
+
   
   /**
    * Does this metadata value have a configured link to a browse definition?
@@ -198,8 +206,13 @@ export class MetadataValuesComponent implements OnChanges {
   }
 
   getButtonClass(value: string): string {
-    if (!this.entityType || this.entityType !== 'DQCheck') {
-      return 'btn-outline-primary';
+    // Check if the field is in a specific metadata field
+    if (this.fieldName) {
+      if (this.fieldName === 'local.dqcheck.outcomes') {
+        return 'btn-response';
+      } else if (this.fieldName === 'local.dqcheck.domain') {
+        return 'btn-domain';
+      } 
     }
   
     if (value.includes('Data Quality Category')) {
@@ -212,6 +225,8 @@ export class MetadataValuesComponent implements OnChanges {
       return 'btn-outline-primary';
     }
   }
+
+  
 
   /**
    * Should the metadata value be rendered as a badge?

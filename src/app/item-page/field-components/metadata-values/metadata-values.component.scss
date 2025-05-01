@@ -1,34 +1,159 @@
 @import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
 
+// Colors
 $mauve: #E4C1F9;
 $tropical-indigo: #9381ff;
 $quinacridone-magenta: #8A3D63;
 
-.ds-metadata-value {
+// Base styles for the item-page-field class in the parent component
+:host {
+  .item-page-field {
+    margin-bottom: 1.5rem;
+  }
+}
 
+// Publisher field styling - target the exact DOM structure
+.publisher {
+  margin-top: auto;
+  padding: 1.25rem;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #f9f9f9, #ffffff);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid $redwood;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  // Add a subtle animated gradient background
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      45deg,
+      rgba($redwood, 0.03) 0%,
+      rgba($redwood, 0.01) 25%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba($redwood, 0.01) 75%,
+      rgba($redwood, 0.03) 100%
+    );
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+    z-index: 0;
+  }
+  
+  // Target all content inside for z-index
+  > div {
+    position: relative;
+    z-index: 1;
+  }
+  
+  // Target the specific label structure
+  .simple-view-element-header {
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $redwood;
+    margin-bottom: 0.75rem;
+  }
+  
+  // Target the text content
+  .simple-view-element-body {
+    .dont-break-out {
+      font-size: 1.1rem;
+      font-weight: 500;
+      line-height: 1.4;
+      color: #333;
+    }
+  }
+  
+  // Hover effect
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-left-width: 6px;
+  }
+}
+
+// Add this to style the entire element and not just the interior
+ds-generic-item-page-field.publisher {
+  display: block;
+  margin-top: auto;
+}
+
+// Animation for the gradient background
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+// Base response and domain field styles
+.response-field, .domain-field {
+  .item-page-field-label {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, $redwood, lighten($redwood, 20%));
+      border-radius: 2px;
+    }
+  }
+}
+
+// Special styles for Response field
+.response-field {
+  .item-page-field-label {
+    font-size: 1.1rem;
+    
+    &::after {
+      width: 50px;
+      background: linear-gradient(90deg, $redwood, adjust-hue($redwood, 30deg));
+    }
+  }
+}
+
+// Button styles
+.ds-metadata-value {
   &.btn,
   &.badge {
     margin: 0.2rem;
     padding: 0.375rem 0.75rem;
     font-size: 0.875rem;
     line-height: 1.5;
-    border-radius: 0.25rem;
+    border-radius: 1.5rem; // More rounded for a modern look
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-block;
     font-weight: 500;
     text-align: center;
     vertical-align: middle;
     user-select: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
     &:hover {
       transform: translateY(-1px);
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
+    // Standard primary button style
     &.btn-outline-primary {
       color: $redwood;
       border: 1px solid $redwood;
-      background-color: transparent;
+      background-color: rgba($redwood, 0.05);
 
       &:hover,
       &:focus {
@@ -37,6 +162,33 @@ $quinacridone-magenta: #8A3D63;
       }
     }
 
+    // Response field button style
+    &.btn-response {
+      color: $tropical-indigo;
+      border: 1px solid $tropical-indigo;
+      background-color: rgba($tropical-indigo, 0.05);
+
+      &:hover,
+      &:focus {
+        color: $snow;
+        background-color: $tropical-indigo;
+      }
+    }
+
+    // Domain field button style
+    &.btn-domain {
+      color: $quinacridone-magenta;
+      border: 1px solid $quinacridone-magenta;
+      background-color: rgba($quinacridone-magenta, 0.05);
+
+      &:hover,
+      &:focus {
+        color: $snow;
+        background-color: $quinacridone-magenta;
+      }
+    }
+
+    // DQ category button 
     &.btn-dq-category {
       color: $snow;
       border: 1px solid $china-rose;
@@ -74,7 +226,7 @@ $quinacridone-magenta: #8A3D63;
     }
   }
 
-  // Special styling for badge variant
+  // Badge styling
   &.badge {
     cursor: default;
     position: relative;
@@ -98,14 +250,13 @@ $quinacridone-magenta: #8A3D63;
   }
 }
 
+// Browse link styles
 .ds-browse-link {
-  // Ensure sufficient color contrast (WCAG 1.4.3)
   color: $redwood;
   text-decoration: underline;
-  text-underline-offset: 0.2em; // Improve underline visibility
+  text-underline-offset: 0.2em;
   transition: all 0.3s ease;
   cursor: pointer;
-  // Ensure interactive elements are operable (WCAG 2.1)
   min-height: 44px;
   min-width: 44px;
 
@@ -205,10 +356,19 @@ $quinacridone-magenta: #8A3D63;
     box-shadow: 0 0 0 2px #8ACE00;
     margin: 0.2rem;
     font-weight: bold;
+    transition: .2s;
   }
 
   &:active {
     background-color: #d0d0d0;
     font-weight: bold;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .publisher {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 }

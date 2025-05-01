@@ -1,6 +1,18 @@
 <ds-metadata-field-wrapper [label]="label | translate">
   <ng-container *ngFor="let mdValue of mdValues; let last=last;">
-    <ng-container *ngTemplateOutlet="isDQCheckRequirement ? isDQCheckRequirementTemplate : (renderMarkdown ? markdown : (hasLink(mdValue) ? (hasValue(img) ? linkImg : link) : (hasBrowseDefinition() ? (shouldRenderAsBadge(mdValue) ? badge : (shouldRenderAsButton(mdValue) ? buttonlink : browselink)) : simple)));
+    <ng-container *ngTemplateOutlet="
+      isDQCheckRequirement ? isDQCheckRequirementTemplate : 
+      (renderMarkdown ? markdown : 
+        (hasLink(mdValue) ? 
+          (hasValue(img) ? linkImg : link) : 
+          (hasBrowseDefinition() ? 
+            (shouldRenderAsBadge(mdValue) ? badge : 
+              (shouldRenderAsButton(mdValue) ? buttonlink : browselink)
+            ) : 
+            simple
+          )
+        )
+      );
       context: {value: mdValue.value, img: img, mdValue: mdValue, sentenceTemplateParts: sentenceTemplateParts}">
     </ng-container>
     <span class="separator" *ngIf="!last" [innerHTML]="separator"></span>

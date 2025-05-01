@@ -1,4 +1,4 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import {
   Component,
   Input
@@ -8,11 +8,12 @@ import { Item } from '../../../../../core/shared/item.model';
 import { MetadataValuesComponent } from '../../../../field-components/metadata-values/metadata-values.component';
 import { ItemPageFieldComponent } from '../item-page-field.component';
 
+
 @Component({
   selector: 'ds-generic-item-page-field',
   templateUrl: './generic-item-page-field.component.html',
   standalone: true,
-  imports: [MetadataValuesComponent, AsyncPipe],
+  imports: [MetadataValuesComponent, AsyncPipe, NgClass],
 })
 /**
  * This component can be used to represent metadata on a simple item page.
@@ -76,6 +77,15 @@ export class GenericItemPageFieldComponent extends ItemPageFieldComponent {
 
   @Input() isDateRange = false;
 
+  get isResponseField(): boolean {
+    return this.fields && this.fields.includes('local.dqcheck.outcomes');
+  }
+  
+  get isDomainField(): boolean {
+    return this.fields && this.fields.includes('local.dqcheck.domain');
+  }
+
+  @Input() isPublisher = false;
 
   // In item-page-field.component.ts, add this method
   getCombinedMetadataValues() {
