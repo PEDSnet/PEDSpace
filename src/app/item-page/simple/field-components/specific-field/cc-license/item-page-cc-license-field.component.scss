@@ -1,0 +1,104 @@
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
+
+:host {
+  display: block;
+  
+  .item-page-field {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    
+    // Style the metadata field wrapper
+    ::ng-deep ds-metadata-field-wrapper {
+      display: block;
+      
+      // Style the container
+      > div {
+        padding: 1rem 1.25rem;
+        border-radius: 4px;
+        background: $snow;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        border-left: 3px solid $redwood;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      
+      // Style the header
+      .simple-view-element-header {
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: rgba($redwood, 0.85);
+        margin-bottom: 0.75rem;
+      }
+      
+      // Style the content container
+      .simple-view-element-body {
+        position: relative;
+        
+        // Handle both variants
+        .row, .col {
+          display: flex;
+          align-items: center;
+        }
+        
+        // Style the license image
+        .cc-image {
+          max-height: 32px;
+          transition: opacity 0.2s ease;
+          
+          &:hover {
+            opacity: 0.85;
+          }
+        }
+        
+        // Style the text content
+        span {
+          font-size: 0.95rem;
+          color: #555;
+          line-height: 1.4;
+          
+          // Style the license name link
+          #cc-name {
+            color: $redwood;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            
+            &:hover {
+              text-decoration: underline;
+              color: darken($redwood, 10%);
+            }
+          }
+        }
+      }
+      
+      // Hover effect
+      &:hover > div {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border-left-color: darken($redwood, 10%);
+      }
+    }
+  }
+  
+  // Specific styles for small variant
+  .item-page-field ::ng-deep ds-metadata-field-wrapper .simple-view-element-body {
+    .row {
+      gap: 0.5rem;
+    }
+  }
+  
+  // Specific styles for full variant
+  .item-page-field ::ng-deep ds-metadata-field-wrapper .simple-view-element-body {
+    .col-auto {
+      margin-right: 1rem;
+    }
+    
+    .col {
+      span {
+        font-size: 0.95rem;
+      }
+    }
+  }
+}

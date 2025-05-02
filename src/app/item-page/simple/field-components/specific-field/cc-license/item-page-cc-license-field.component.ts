@@ -15,6 +15,7 @@ import { MetadataFieldWrapperComponent } from 'src/app/shared/metadata-field-wra
 @Component({
   selector: 'ds-item-page-cc-license-field',
   templateUrl: './item-page-cc-license-field.component.html',
+  styleUrls: ['./item-page-cc-license-field.component.scss'],
   standalone: true,
   imports: [NgIf, NgClass, NgStyle, TranslateModule, MetadataFieldWrapperComponent],
 })
