@@ -1,1 +1,44 @@
-
+<ng-container *ngVar="(bitstreams$ | async) as bitstreams">
+    <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0" [label]="label | translate">
+      <div class="file-dropdown">
+        <!-- Dropdown Header -->
+        <div class="file-dropdown-header" (click)="toggleDropdown()">
+          <span class="files-count">{{ bitstreams.length }} {{ bitstreams.length === 1 ? 'Download' : 'Downloads' }}</span>
+          <span class="dropdown-arrow" [class.open]="isDropdownOpen">↓</span>
+        </div>
+        
+        <!-- Dropdown Content -->
+        <div class="file-dropdown-content" [class.open]="isDropdownOpen">
+          <ds-file-download-link *ngFor="let file of bitstreams; let last=last;" [bitstream]="file" [item]="item" class="file-link-wrapper">
+            <div class="file-item">
+              <div class="file-info">
+                <span class="file-name">
+                  <span *ngIf="primaryBitsreamId === file.id" class="badge badge-primary">
+                    {{ 'item.page.bitstreams.primary' | translate }}
+                  </span> 
+                  {{ dsoNameService.getName(file) }}
+                </span>
+                <span class="file-size">({{(file?.sizeBytes) | dsFileSize }})</span>
+              </div>
+              <span class="download-icon">↓</span>
+            </div>
+            <div *ngIf="!last" class="file-separator"></div>
+          </ds-file-download-link>
+          
+          <ds-loading *ngIf="isLoading" message="{{'loading.default' | translate}}" [showMessage]="false"></ds-loading>
+          
+          <div *ngIf="!isLastPage" class="pagination-controls">
+            <button class="bitstream-view-more" (click)="getNextPage()">
+              {{'item.page.bitstreams.view-more' | translate}}
+            </button>
+          </div>
+          
+          <div *ngIf="isLastPage && currentPage !== 1" class="pagination-controls">
+            <button class="bitstream-collapse" (click)="currentPage = undefined; getNextPage();">
+              {{'item.page.bitstreams.collapse' | translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </ds-metadata-field-wrapper>
+  </ng-container>

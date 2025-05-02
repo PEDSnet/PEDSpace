@@ -1,0 +1,188 @@
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
+
+:host {
+  display: block;
+  
+//   ::ng-deep ds-metadata-field-wrapper {
+//     // Header styling
+//     .simple-view-element-header {
+//       font-weight: 500;
+//       font-size: 1.1rem;
+//       text-transform: uppercase;
+//       letter-spacing: 0.05em;
+//       color: rgba($redwood, 0.8);
+//       margin-bottom: 1rem;
+//     }
+//   }
+}
+
+.file-dropdown {
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  // Dropdown header styling
+  .file-dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background-color: rgba($snow, 0.8);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    
+    &:hover {
+      background-color: rgba($snow, 1);
+    }
+    
+    .files-count {
+      font-weight: 500;
+      color: #444;
+    }
+    
+    .dropdown-arrow {
+      font-size: 1rem;
+      color: rgba($redwood, 0.6);
+      transition: transform 0.3s ease;
+      
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  
+  // Dropdown content styling
+  .file-dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+    border-top: 1px solid transparent;
+    
+    &.open {
+      max-height: 1000px; // Arbitrary large value
+      transition: max-height 0.6s ease-in-out;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    // File item styling - making the whole item clickable
+    .file-link-wrapper {
+      display: block;
+      cursor: pointer;
+      
+      .file-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem 1rem;
+        transition: all 0.25s cubic-bezier(0.2, 0, 0.2, 1);
+        
+        &:hover {
+          background-color: rgba($redwood, 0.03);
+          
+          .file-name {
+            color: #333;
+          }
+          
+          .download-icon {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        // Active state when clicked
+        &:active {
+          background-color: rgba($redwood, 0.06);
+          transform: scale(0.995);
+        }
+      }
+      
+      .file-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+      
+      .file-name {
+        color: #555;
+        font-size: 0.95rem;
+      }
+      
+      .file-size {
+        color: #888;
+        font-size: 0.85rem;
+      }
+      
+      .download-icon {
+        font-size: 1.1rem;
+        color: rgba($redwood, 0.5);
+        opacity: 0;
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+      }
+    }
+    
+    .file-separator {
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.05);
+      margin: 0;
+    }
+    
+    // Pagination controls
+    .pagination-controls {
+      display: flex;
+      justify-content: center;
+      padding: 0.75rem;
+      
+      button {
+        background: transparent;
+        color: rgba($redwood, 0.7);
+        border: none;
+        font-size: 0.85rem;
+        padding: 0.4rem 0.75rem;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        
+        &:hover {
+          background-color: rgba($redwood, 0.05);
+          color: $redwood;
+        }
+        
+        &:active {
+          transform: scale(0.98);
+        }
+      }
+    }
+  }
+}
+
+// Primary badge styling
+.badge-primary {
+  background-color: rgba($redwood, 0.7);
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.25em 0.6em;
+  margin-right: 0.5rem;
+  border-radius: 3px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+// Loading animation
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+::ng-deep ds-loading {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease forwards;
+}

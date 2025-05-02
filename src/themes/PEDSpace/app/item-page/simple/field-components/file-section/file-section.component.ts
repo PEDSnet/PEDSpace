@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-
 import { FileSectionComponent as BaseComponent } from '../../../../../../../app/item-page/simple/field-components/file-section/file-section.component';
 import { slideSidebarPadding } from '../../../../../../../app/shared/animations/slide';
 import { ThemedFileDownloadLinkComponent } from '../../../../../../../app/shared/file-download-link/themed-file-download-link.component';
@@ -12,8 +11,8 @@ import { VarDirective } from '../../../../../../../app/shared/utils/var.directiv
 
 @Component({
   selector: 'ds-themed-item-page-file-section',
-  // templateUrl: './file-section.component.html',
-  templateUrl: '../../../../../../../app/item-page/simple/field-components/file-section/file-section.component.html',
+  templateUrl: './file-section.component.html',
+  styleUrls: ['./file-section.component.scss'],
   animations: [slideSidebarPadding],
   standalone: true,
   imports: [
@@ -27,5 +26,9 @@ import { VarDirective } from '../../../../../../../app/shared/utils/var.directiv
   ],
 })
 export class FileSectionComponent extends BaseComponent {
-
+  isDropdownOpen = false;
+  
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
 }
