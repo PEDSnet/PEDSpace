@@ -13,6 +13,7 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
+  HostBinding
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -46,6 +47,12 @@ export class MetadataValuesComponent implements OnChanges {
   
   @ViewChild('isDQCheckRequirementTemplate') isDQCheckRequirementTemplate: TemplateRef<any>;
 
+  // Add host binding to apply publisher class when isPublisher is true
+  @HostBinding('class.publisher-content')
+  get publisherContent() {
+    return this.isPublisher;
+  }
+  
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
     private sanitizer: DomSanitizer
@@ -113,7 +120,7 @@ export class MetadataValuesComponent implements OnChanges {
   /**
    * Template string for inserting the metadata value into a sentence
    */
-    @Input() sentenceTemplate?: string;
+  @Input() sentenceTemplate?: string;
 
   /**
    * Parts of the sentenceTemplate split at [value]
@@ -134,13 +141,10 @@ export class MetadataValuesComponent implements OnChanges {
     if (this.sentenceTemplate && this.sentenceTemplate !== '[value]') {
       // Split the sentence template and trim any extra spaces before/after parts
       this.sentenceTemplateParts = this.sentenceTemplate.split('[value]');
-
     } else {
       this.sentenceTemplateParts = null;
     }
   }
-  
-
   
   /**
    * Does this metadata value have a configured link to a browse definition?
@@ -226,8 +230,6 @@ export class MetadataValuesComponent implements OnChanges {
     }
   }
 
-  
-
   /**
    * Should the metadata value be rendered as a badge?
    * @param mdValue The metadata value to check
@@ -240,11 +242,11 @@ export class MetadataValuesComponent implements OnChanges {
    * This method performs a validation and determines the target of the url.
    * @returns - Returns the target url.
    */
-    getLinkAttributes(urlValue: string): { target: string, rel: string } {
-      if (this.hasInternalLink(urlValue)) {
-        return { target: '_self', rel: '' };
-      } else {
-        return { target: '_blank', rel: 'noopener noreferrer' };
-      }
+  getLinkAttributes(urlValue: string): { target: string, rel: string } {
+    if (this.hasInternalLink(urlValue)) {
+      return { target: '_self', rel: '' };
+    } else {
+      return { target: '_blank', rel: 'noopener noreferrer' };
     }
+  }
 }

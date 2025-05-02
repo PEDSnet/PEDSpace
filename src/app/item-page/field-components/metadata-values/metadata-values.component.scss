@@ -12,88 +12,68 @@ $quinacridone-magenta: #8A3D63;
   }
 }
 
-// Publisher field styling - target the exact DOM structure
-.publisher {
-  margin-top: auto;
-  padding: 1.25rem;
-  border-radius: 8px;
-  background: linear-gradient(145deg, #f9f9f9, #ffffff);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border-left: 4px solid $redwood;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+// Minimal publisher styling
+:host.publisher-content {
+  display: block;
   
-  // Add a subtle animated gradient background
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      45deg,
-      rgba($redwood, 0.03) 0%,
-      rgba($redwood, 0.01) 25%,
-      rgba(255, 255, 255, 0) 50%,
-      rgba($redwood, 0.01) 75%,
-      rgba($redwood, 0.03) 100%
-    );
-    background-size: 200% 200%;
-    animation: gradientShift 8s ease infinite;
-    z-index: 0;
-  }
-  
-  // Target all content inside for z-index
-  > div {
-    position: relative;
-    z-index: 1;
-  }
-  
-  // Target the specific label structure
-  .simple-view-element-header {
-    font-weight: 700;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: $redwood;
-    margin-bottom: 0.75rem;
-  }
-  
-  // Target the text content
-  .simple-view-element-body {
+  ::ng-deep ds-metadata-field-wrapper {
+    // .simple-view-element-header {
+    //   font-size: 0.8rem;
+    //   font-weight: 500;
+    //   color: #777;
+    //   margin-bottom: 0.3rem;
+    // }
+    
+    // Style the actual content (PEDSnet text)
     .dont-break-out {
-      font-size: 1.1rem;
-      font-weight: 500;
-      line-height: 1.4;
-      color: #333;
+      font-size: 0.95rem;
+      color: #555;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 2px;
+      transition: all 0.2s ease;
+      
+      // Subtle underline effect on hover
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        background-color: rgba($redwood, 0.7);
+        transition: all 0.3s ease;
+      }
+      
+      &:hover {
+        color: $redwood;
+        
+        &::after {
+          width: 100%;
+        }
+      }
     }
   }
-  
-  // Hover effect
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    border-left-width: 6px;
-  }
-}
-
-// Add this to style the entire element and not just the interior
-ds-generic-item-page-field.publisher {
-  display: block;
-  margin-top: auto;
 }
 
 // Animation for the gradient background
 @keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 // Base response and domain field styles
-.response-field, .domain-field {
+.response-field,
+.domain-field {
   .item-page-field-label {
     font-weight: 600;
     text-transform: uppercase;
@@ -101,7 +81,7 @@ ds-generic-item-page-field.publisher {
     position: relative;
     display: inline-block;
     padding-bottom: 8px;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -119,7 +99,7 @@ ds-generic-item-page-field.publisher {
 .response-field {
   .item-page-field-label {
     font-size: 1.1rem;
-    
+
     &::after {
       width: 50px;
       background: linear-gradient(90deg, $redwood, adjust-hue($redwood, 30deg));
@@ -129,6 +109,7 @@ ds-generic-item-page-field.publisher {
 
 // Button styles
 .ds-metadata-value {
+
   &.btn,
   &.badge {
     margin: 0.2rem;
@@ -301,13 +282,13 @@ ds-generic-item-page-field.publisher {
   padding: 0.1rem !important;
   padding-right: 0px !important;
   border: none !important;
-  white-space: nowrap; 
-  display: inline; 
+  white-space: nowrap;
+  display: inline;
 
   &::before {
     content: "\00a0";
-    font-size: 0; 
-    display: none; 
+    font-size: 0;
+    display: none;
   }
 
   &:focus-visible {
@@ -334,7 +315,6 @@ ds-generic-item-page-field.publisher {
     color: darken($redwood, 30%);
     transform: scale(0.98);
   }
-
 }
 
 .dqcheck-requirement {
@@ -367,7 +347,7 @@ ds-generic-item-page-field.publisher {
 
 // Responsive adjustments
 @media (max-width: 768px) {
-  .publisher {
+  :host.publisher-content {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
   }
