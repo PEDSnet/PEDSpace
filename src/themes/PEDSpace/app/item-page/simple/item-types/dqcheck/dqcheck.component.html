@@ -15,10 +15,10 @@
   </div>
 
   <ds-item-page-title-field [item]="object" class="mr-auto"></ds-item-page-title-field>
-  
+
   <div class="d-flex align-items-center">
     <ds-dso-edit-menu [object]="object"></ds-dso-edit-menu>
-  
+
     <!-- <a *ngIf="object" class="btn btn-primary btn-sm private-link mb-2" (click)="copyPermalink()"
        [title]="isCopied ? 'Permalink copied!' : 'Copy Permalink'">
       <i class="fa" [ngClass]="isCopied ? 'fa-check' : 'fa-clipboard'"></i>
@@ -48,9 +48,8 @@
         [label]="'item.preview.dc.subject'" [entityType]="object?.metadata['dspace.entity.type']?.[0]?.value">
       </ds-generic-item-page-field>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.publisher']" [label]="'item.page.publisher'">
-      </ds-generic-item-page-field>
-
+      <ds-generic-item-page-field class="publisher mt-auto" [renderAsButton]="false" [item]="object"
+        [fields]="['dc.publisher']" [label]="'Publisher'" [isPublisher]="true"></ds-generic-item-page-field>
     </div>
 
     <div class="col-12 col-md-8">
