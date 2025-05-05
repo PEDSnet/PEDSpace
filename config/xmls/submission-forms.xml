@@ -741,20 +741,16 @@
                 </field>
             </row>
             <row>
-                <relation-field>
-                    <relationship-type>isPersonOfConceptSet</relationship-type>
-                    <search-configuration>person</search-configuration>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>author</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Creator(s)</label>
-                    <hint>Enter the name(s) of the creator(s). 
-                            (Family name, Given name)</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>author</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
-                </relation-field>
+                    <input-type>name</input-type>
+                    <hint>Enter the name(s) of the creator(s).</hint>
+                    <required></required>
+                </field>
             </row>
             <row>
                 <field>
@@ -769,36 +765,49 @@
                 </field>
             </row>
             <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>advisor</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Reviewer(s)</label>
+                    <input-type>name</input-type>
+                    <hint>Enter the concept set reviewer(s) name(s) if "Clinician Review" or "Review, Non-Clinician" are selected above.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
                 <relation-field>
                     <relationship-type>isPersonOfConceptSet</relationship-type>
                     <search-configuration>person</search-configuration>
                     <repeatable>true</repeatable>
-                    <label>Reviewer(s)</label>
-                    <hint>Enter the concept set reviewer(s) name(s) if "Clinician Review" or
-						"Review, Non-Clinician" are selected above. (Family name, Given names).</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>advisor</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
+                    <label>Linked Persons</label>
+                    <hint>Link to any related persons.</hint>
                     <required></required>
+                    <visibility>workflow</visibility>
                 </relation-field>
-            </row>
+            </row> 
             <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Affliated Organization(s)</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the name(s) of the institution(s) employing the individuals named in the Creator and Reviewer fields.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>    
                 <relation-field>
                     <relationship-type>isOrgUnitOfConceptSet</relationship-type>
                     <search-configuration>orgunit</search-configuration>
                     <repeatable>true</repeatable>
-                    <label>Affliated Organization(s)</label>
-                    <hint>Enter the name(s) of the institution(s) employing the individuals named in the Creator and Reviewer fields.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>other</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
+                    <label>Linked Institutions</label>
+                    <hint>Link to related institutions.</hint>
                     <required></required>
+                    <visibility>workflow</visibility>
                 </relation-field>
             </row>
             <row>
@@ -845,12 +854,6 @@
                     <repeatable>true</repeatable>
                     <label>Database Version Linkage</label>
                     <hint>If PEDSnet Data Model dependent, select the record that represents the database version this concept set was created with.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier>isbasedon</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                     <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
@@ -928,12 +931,6 @@
                     <repeatable>true</repeatable>
                     <label>Provenance</label>
                     <hint>Select the name of the study or query for which this concept set was created.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier>ispartof</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                     <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
@@ -1058,20 +1055,26 @@
                 </field>
             </row>
             <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>author</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Principle Investigator(s)</label>
+                    <input-type>name</input-type>
+                    <hint>Enter the name(s) of the PI(s) or Query Requestors (Family name, Given names).</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
                 <relation-field>
                     <relationship-type>isPersonOfStudy</relationship-type>
                     <search-configuration>person</search-configuration>
                     <repeatable>true</repeatable>
-                    <label>Principle Investigator(s)</label>
-                    <hint>Enter the name(s) of the PI(s) or Query Requestors (Family name, Given names).</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>author</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
-                    <externalsources>orcid</externalsources>
+                    <label>Linked Persons</label>
+                    <hint>Link to any related persons.</hint>
                     <required></required>
+                    <visibility>workflow</visibility>
                 </relation-field>
             </row>
             <row>
