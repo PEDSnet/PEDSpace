@@ -394,7 +394,7 @@
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
                     <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
-                    <hint>https://creativecommons.org/licenses/by/4.0/</hint>
+                    <hint></hint>
                     <required></required>
                 </field>
             </row>
@@ -514,7 +514,7 @@
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
                     <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
-                    <hint>https://creativecommons.org/licenses/by/4.0/</hint>
+                    <hint></hint>
                     <required></required>
                     <visibility>workflow</visibility>
                 </field>
@@ -874,7 +874,7 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Medication Characterization</label>
-                    <input-type value-pairs-name="MedTermChar">dropdown</input-type>
+                    <input-type value-pairs-name="MedTermChar">list</input-type>
                     <hint>Select the normalized name classifications present in your concept set (medication sets only).</hint>
                     <required></required>
                 </field>
@@ -944,7 +944,7 @@
                     <dc-element>subject</dc-element>
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
-                     <label>Clinical Subject</label>
+                    <label>Clinical Subject</label>
                     <input-type>onebox</input-type>
                     <hint>Input the clinical subject terms most associated with the concept set.</hint>
                     <required></required>
@@ -999,7 +999,7 @@
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
                     <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
-                    <hint>https://creativecommons.org/licenses/by/4.0/</hint>
+                    <hint></hint>
                     <required></required>
                     <visibility>workflow</visibility>
                 </field>
@@ -1042,8 +1042,8 @@
                     <label>Study Start Date</label>
                     <style>col-sm-4</style>
                     <input-type>date</input-type>
-                    <hint>Enter the date the study began. If an exact day is unknown, approximate to the first of the month.</hint>
-                    <required>You must enter at least the year.</required>
+                    <hint>Enter the date or year the study began.</hint>
+                    <required>You must enter at least a year.</required>
                 </field>
                 <field>
                     <dc-schema>project</dc-schema>
@@ -1053,7 +1053,7 @@
                     <label>Study End Date</label>
                     <style>col-sm-8</style>
                     <input-type>date</input-type>
-                    <hint>Enter the date the study ended, if applicable. If an exact day is unknown, approximate to the first of the month.</hint>
+                    <hint>Enter the date or year the study ended.</hint>
                     <required></required>
                 </field>
             </row>
@@ -1140,17 +1140,17 @@
                 </field>
             </row>
             <row>
-                    <field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>subject</dc-element>
-                        <dc-qualifier>mesh</dc-qualifier>
-                        <repeatable>true</repeatable>
-                        <label>Clinical Subjects</label>
-                        <input-type>onebox</input-type>
-                        <hint>Apply the clinical subject(s) most associated with the study, then input terms for up to two term hierarchy-levels higher, and others as applicable.</hint>
-                        <required>At least one clinical subject heading must be applied to the study.</required>
-                    </field>
-                </row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>mesh</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Clinical Subjects</label>
+                    <input-type>onebox</input-type>
+                    <hint>Apply the clinical subject(s) most associated with the study, then input terms for up to two term hierarchy-levels higher, and others as applicable.</hint>
+                    <required>At least one clinical subject heading must be applied to the study.</required>
+                </field>
+            </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1172,12 +1172,6 @@
                     <repeatable>true</repeatable>
                     <label>Related Concept Sets</label>
                     <hint>Link the study to any concept sets used in the course of research, if applicable.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                 </relation-field>
             </row>
             <row>
@@ -1187,12 +1181,6 @@
                     <repeatable>true</repeatable>
                     <label>Related Phenotypes</label>
                     <hint>Link the study to any phenotypes used in the course of research, if applicable.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier></dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                 </relation-field>
             </row>
             <row>
@@ -1292,43 +1280,33 @@
                     <label>Date Created</label>
                     <style>col-sm-4</style>
                     <input-type>date</input-type>
-                    <hint>Input the date that the item was first created (version 1). 
-                            If the exact date is unknown, enter the first of the month.
-                        </hint>
+                    <hint>Input the date that the item was first created (version 1). </hint>
                     <required>You must enter at least the year.</required>
                 </field>
             </row>
             <row>
-                <relation-field>
-                    <relationship-type>isPersonOfDocumentation</relationship-type>
-                    <search-configuration>person</search-configuration>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>author</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Creator(s)</label>
+                    <label>Creator</label>
+                    <input-type>onebox</input-type>
                     <hint>Enter the creator's name (Family name, Given names).</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>author</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                     <required>You must enter at least one creator for your item.</required>
-                </relation-field>
+                </field>
             </row>
             <row>
-                <relation-field>
-                    <relationship-type>isOrgUnitOfDocumentation</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
+                    <input-type>onebox</input-type>
                     <hint>Enter the name(s) of the institutions employing any of the individuals listed as creators.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>other</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                     <required></required>
-                </relation-field>
+                </field>
             </row>
             <row>
                 <field>
@@ -1351,18 +1329,6 @@
                     <label>Description</label>
                     <input-type>textarea</input-type>
                     <hint>Enter a full description of the item.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>provenance</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Provenance</label>
-                    <input-type>textarea</input-type>
-                    <hint>Enter provenance information associated with the item.</hint>
                     <required></required>
                 </field>
             </row>
@@ -1461,6 +1427,19 @@
         </form>
         <form name="DocumentationFormStepTwo">
             <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>provenance</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Provenance</label>
+                    <type-bind>Other</type-bind>
+                    <input-type>textarea</input-type>
+                    <hint>Enter provenance information associated with the item.</hint>
+                    <required></required>
+                </field>
+            </row>  
+            <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfDocumentation</relationship-type>
                     <search-configuration>orgunit</search-configuration>
@@ -1530,7 +1509,7 @@
                         <dc-qualifier></dc-qualifier>
                         <input-type>onebox</input-type>
                     </linked-metadata-field>
-                    <required>At least one institution must be selected.</required>
+                    <required></required>
                 </relation-field>
             </row>  
             <row>
@@ -1547,7 +1526,7 @@
                         <dc-qualifier></dc-qualifier>
                         <input-type>onebox</input-type>
                     </linked-metadata-field>
-                    <required>At least one institution must be selected.</required>
+                    <required></required>
                 </relation-field>
             </row> 
             <row>
@@ -1564,9 +1543,9 @@
                         <dc-qualifier>requires</dc-qualifier>
                         <input-type>onebox</input-type>
                     </linked-metadata-field>
-                    <required>At least one institution must be selected.</required>
+                    <required></required>
                 </relation-field>
-            </row>      
+            </row>    
         </form>
 
         <!-- Phenotype Form-->
@@ -1782,11 +1761,11 @@
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Clinical Subjects</label>
-                    <input-type>tag</input-type> 
-                    <hint>Input terms that characterize the clinical domain being investigated. Reference https://meshb.nlm.nih.gov/ for terms.</hint>
-                    <required>Tags are required.</required>
-                    <vocabulary>dc_subject_mesh</vocabulary>
-                </field>
+                    <input-type>onebox</input-type>
+                    <hint>Input the clinical subject terms most associated with the concept set.</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </field>                
             </row>
             <row>
                 <field>
@@ -1835,7 +1814,7 @@
                     <repeatable>false</repeatable>
                     <label>Rights License</label>
                     <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
-                    <hint>https://creativecommons.org/licenses/by/4.0/</hint>
+                    <hint></hint>
                     <required></required>
                     <visibility>workflow</visibility>
                 </field>

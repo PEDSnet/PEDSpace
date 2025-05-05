@@ -1,550 +1,550 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <node id="STUDY" label="Research Classification">
 	<isComposedBy>
-		<node id="RC.1" label="Research Methodology"> 
+		<node id="STUDY.1" label="Research Methodology"> 
 			<isComposedBy>
-                <node id="" label="Comparative Study">
+                <node id="STUDY.1A" label="Comparative Study">
                     <hasNote>Comparison of outcomes, results, responses, etc for different techniques, therapeutic approaches or other inputs.</hasNote>
                 </node>
-                <node id="" label="Epidemiological Study">
+                <node id="STUDY.1B" label="Epidemiological Study">
                     <isComposedBy>
-                        <node id="" label="Case-Control Study">
+                        <node id="STUDY.1B.1" label="Case-Control Study">
                             <hasNote>Comparisons that start with the identification of persons with the disease or outcome of interest and a control (comparison, referent) group without the disease or outcome of interest. The relationship of an attribute is examined by comparing both groups with regard to the frequency or levels of outcome over time.</hasNote>
                         </node>
-                        <node id="" label="Cohort Study">
+                        <node id="STUDY.1B.2" label="Cohort Study">
                             <isComposedBy>
-                                <node id="" label="Follow-Up Study">
+                                <node id="STUDY.1B.2A" label="Follow-Up Study">
                                     <hasNote>Studies in which individuals or populations are followed to assess the outcome of exposures, procedures, or effects of a characteristic, e.g., occurrence of disease.</hasNote>
                                 </node>
-                                <node id="" label="Longitudinal Study">
+                                <node id="STUDY.1B.2B" label="Longitudinal Study">
                                     <hasNote>Studies in which variables relating to an individual or group of individuals are assessed over a period of time.</hasNote>
                                 </node>
-                                <node id="" label="Prospective Study">
+                                <node id="STUDY.1B.2C" label="Prospective Study">
                                     <hasNote>Observation of a population for a sufficient number of persons over a sufficient number of years to generate incidence or mortality rates subsequent to the selection of the study group.</hasNote>
                                 </node>
-                                <node id="" label="Retrospective Study">
+                                <node id="STUDY.1B.2D" label="Retrospective Study">
                                     <hasNote>Studies used to test etiologic hypotheses in which inferences about an exposure to putative causal factors are derived from data relating to characteristics of persons under study or to events or experiences in their past. The essential feature is that some of the persons under study have the disease or outcome of interest and their characteristics are compared with those of unaffected persons.</hasNote>
                                 </node>
                             </isComposedBy>
                             <hasNote>Studies in which subsets of a defined population are identified. These groups may or may not be exposed to factors hypothesized to influence the probability of the occurrence of a particular disease or other outcome. Cohorts are defined populations which, as a whole, are followed in an attempt to determine distinguishing subgroup characteristics.</hasNote>
                         </node>
-                        <node id="" label="Controlled Before-After Study">
+                        <node id="STUDY.1B.3" label="Controlled Before-After Study">
                             <hasNote>A study in which observations are made before and after an intervention, both in a group that receives the intervention and in a control group that does not.</hasNote>
                         </node>
-                        <node id="" label="Clinical Study">
+                        <node id="STUDY.1B.4" label="Clinical Study">
                             <isComposedBy>
-                                <node id="" label="Clinical Trial">
+                                <node id="STUDY.1B.4A" label="Clinical Trial">
                                     <hasNote>A work that reports on the results of a clinical study in which participants are assigned to receive one or more interventions so that researchers can evaluate the interventions on biomedical or health-related outcomes. </hasNote>
                                 </node>
-                                <node id="" label="Observational Study">
+                                <node id="STUDY.1B.4B" label="Observational Study">
                                     <hasNote>Works about clinical studies in which participants may receive diagnostic, therapeutic, or other types of interventions, but the investigator does not assign participants to specific interventions (as in an interventional study).</hasNote>
                                 </node>
                             </isComposedBy>
                             <hasNote>A work that reports on the results of a research study to evaluate interventions or exposures on biomedical or health-related outcomes. The two main types of clinical studies are interventional studies (clinical trials) and observational studies. </hasNote>
                         </node>
-                        <node id="" label="Cross-Sectional Study">
+                        <node id="STUDY.1B.5" label="Cross-Sectional Study">
                             <hasNote>Studies in which the presence or absence of disease or other health-related variables are determined in each member of the study population or in a representative sample at one particular time. </hasNote>
                         </node>
                     </isComposedBy>
                     <hasNote>Research techniques that focus on study designs and data gathering methods in human and animal populations.</hasNote>
                 </node>           
-                <node id="" label="Evaluation Study">
+                <node id="STUDY.1C" label="Evaluation Study">
                     <hasNote>Studies determining the effectiveness or utility of processes, personnel, and equipment.</hasNote>
                 </node>
-                <node id="" label="Investigator-Led Study">
+                <node id="STUDY.1D" label="Investigator-Led Study">
                     <hasNote>Studies initiated, designed, and managed by an investigator or researcher, typically from an academic or clinical setting, rather than being sponsored by a pharmaceutical company or other external organization. The investigator is responsible for the study's scientific direction, including the design, conduct, data collection, and analysis, though external funding may be involved.</hasNote>
                 </node>
-                <node id="" label="Meta-Analysis">
+                <node id="STUDY.1E" label="Meta-Analysis">
                     <isComposedBy>
-                        <node id="" label="Network Meta-Analysis">
+                        <node id="STUDY.1E.1" label="Network Meta-Analysis">
                             <hasNote>Study consisting of meta-analysis of randomized trials in which estimates of comparative treatment effects are visualized and interpreted from a network of interventions that may or may not have been evaluated directly against each other. Common considerations in network meta-analysis include conceptual and statistical heterogeneity and incoherence.</hasNote>
                          </node>
                     </isComposedBy>
                     <hasNote>Studies using a quantitative method of combining the results of independent studies (usually drawn from the published literature) and synthesizing summaries and conclusions which may be used to evaluate therapeutic effectiveness, plan new studies, etc. It is often an overview of clinical trials. It is usually called a meta-analysis by the author or sponsoring body and should be differentiated from reviews of literature.</hasNote>
                 </node>
-                <node id="" label="Mixed Method Study">
+                <node id="STUDY.1F" label="Mixed Method Study">
                     <hasNote>Studies using a research approach where both quantitative (numerical) and qualitative (descriptive) data are collected and analyzed within a single study</hasNote>
                 </node>
-                <node id="" label="Multicenter Study">
+                <node id="STUDY.1G" label="Multicenter Study">
                     <hasNote>Studies executed by several cooperating institutions.</hasNote>
                 </node>
-                <node id="" label="Research Preparation">
+                <node id="STUDY.1H" label="Research Preparation">
                     <isComposedBy>
-                        <node id="" label="Case Reports">
+                        <node id="STUDY.1H.1" label="Case Reports">
                             <hasNote>Clinical presentations that may be followed by evaluative studies that eventually lead to a diagnosis.</hasNote>
                         </node>
-                        <node id="" label="Demonstration Project">
+                        <node id="STUDY.1H.2" label="Demonstration Project">
                             <hasNote>Studies aimed at showing the feasibility, effectiveness, or practical application of a new intervention, treatment, or approach in a real-world setting. </hasNote>
                         </node>
-                        <node id="" label="Feasibility Query Investigation">
+                        <node id="STUDY.1H.3" label="Feasibility Query Investigation">
                             <hasNote>Studies to determine the advantages or disadvantages, practicability, or capability of accomplishing a projected plan, study, or project.</hasNote>
                         </node>
-                        <node id="" label="Pilot Study">
+                        <node id="STUDY.1H.4" label="Pilot Study">
                             <hasNote>Small-scale tests of methods and procedures to be used on a larger scale if the pilot study demonstrates that these methods and procedures can work.</hasNote>
                         </node>  
                     </isComposedBy>              
                 </node>
-                <node id="" label="Resource Development">
+                <node id="STUDY.1I" label="Resource Development">
                     <hasNote>Projects that result in a tool or application deliverables, or tangible or intangible output produced as a result of a project often funded by a grant. </hasNote>
                 </node>
-                <node id="" label="Systematic Review">
+                <node id="STUDY.1J" label="Systematic Review">
                     <hasNote>A review of primary literature in health and health policy that attempts to identify, appraise, and synthesize all the empirical evidence that meets specified eligibility criteria to answer a given research question. Its conduct uses explicit methods aimed at minimizing bias in order to produce more reliable findings regarding the effects of interventions for prevention, treatment, and rehabilitation that can be used to inform decision making.</hasNote>
                 </node>
-                <node id="" label="Qualitative Survey Study">
+                <node id="STUDY.1K" label="Qualitative Survey Study">
                     <hasNote>Studies consisting of collections of data obtained from voluntary subjects. The information usually takes the form of answers to questions, or suggestions.</hasNote>
                 </node>
-                <node id="" label="Validation Study">
+                <node id="STUDY.1L" label="Validation Study">
                     <hasNote>Studies consisting of research using processes by which the reliability and relevance of a procedure for a specific purpose are established.</hasNote>
                 </node>
 			</isComposedBy>
 		</node>
-        <node id="RC.2" label="Funding">
+        <node id="STUDY.2" label="Funding">
             <isComposedBy> 
-                <node id="" label="Industry-Funded Research"/>
-                <node id="" label="Grant-Funded Research">
+                <node id="STUDY.2A" label="Industry-Funded Research"/>
+                <node id="STUDY.2B" label="Grant-Funded Research">
                     <isComposedBy>
-                        <node id="" label="PCORI Funded Research">
+                        <node id="STUDY.2B.1" label="PCORI Funded Research">
                             <isComposedBy>
-                                <node id="" label="PCORI Dissemination Award">
+                                <node id="STUDY.2B.1A" label="PCORI Dissemination Award">
                                     <hasNote>Award supporting efforts to share and communicate the results of patient-centered outcomes research with relevant stakeholders. This includes making research findings accessible and usable for healthcare providers, patients, policymakers, and the general public. Dissemination efforts aim to ensure that research results have a tangible impact on healthcare practice, policy, and decision-making.</hasNote>
                                 </node>
-                                <node id="" label="PCORI Engagement Award">
+                                <node id="STUDY.2B.1B" label="PCORI Engagement Award">
                                     <hasNote>Awards focused on fostering patient and stakeholder engagement in healthcare research. These awards support projects that aim to build partnerships between researchers, patients, caregivers, clinicians, and other stakeholders to make sure research is aligned with the needs and preferences of those it impacts.</hasNote>
                                 </node>
-                                <node id="" label="PCORI Infrastructure Award">
+                                <node id="STUDY.2B.1C" label="PCORI Infrastructure Award">
                                     <hasNote>Awards designed to support the establishment or enhancement of infrastructure necessary to carry out patient-centered outcomes research (PCOR). This might include building networks, databases, registries, or collaborative platforms that can be used for conducting research, improving data sharing, and enhancing the capabilities of organizations involved in PCOR. Infrastructure awards are typically aimed at creating long-term, sustainable resources that support ongoing research efforts.</hasNote>
                                 </node>
-                                <node id="" label="PCORI Methods Award">
+                                <node id="STUDY.2B.1D" label="PCORI Methods Award">
                                     <hasNote>Award focused on developing, testing, or improving methodologies used in patient-centered outcomes research. These methodologies could relate to study designs, statistical techniques, tools for measuring patient outcomes, or methods to engage patients in the research process. </hasNote>
                                 </node>
-                                <node id="" label="PCORI Research Award">
+                                <node id="STUDY.2B.1E" label="PCORI Research Award">
                                     <hasNote>Awards funding projects that conduct patient-centered outcomes research to compare the effectiveness of different healthcare interventions, treatments, or delivery methods.These awards cover a wide variety of research topics and methodologies.</hasNote>
                                 </node>
                             </isComposedBy>
                         </node>
-                        <node id="" label="Federally Funded Research">
+                        <node id="STUDY.2B.2" label="Federally Funded Research">
                             <isComposedBy>
-                                <node id="" label="NIH D43">
+                                <node id="STUDY.2B.2A" label="NIH D43">
                                     <hasNote>International Research Training Grants: To support research training programs for US and foreign professionals and students to strengthen global health research and international research collaboration. </hasNote>
                                 </node>
-                                <node id="" label="NIH D71">
+                                <node id="STUDY.2B.2B" label="NIH D71">
                                     <hasNote>International Research Training Planning Grant: To plan for the preparation of an application for a D43 international research training grant or for a U2R international research training cooperative agreement.</hasNote>
                                 </node>
-                                <node id="" label="NIH DP1">
+                                <node id="STUDY.2B.2C" label="NIH DP1">
                                     <hasNote>NIH Director's Pioneer Award (NDPA): To support individuals who have the potential to make extraordinary contributions to medical research. The NIH Director's Pioneer Award is not renewable.</hasNote>
                                 </node>
-                                <node id="" label="NIH DP2">
+                                <node id="STUDY.2B.2D" label="NIH DP2">
                                     <hasNote>NIH Director's New Innovator Awards: To support highly innovative research projects by new investigators in all areas of biomedical and behavioral research.</hasNote>
                                 </node>
-                                <node id="" label="NIH DP3">
+                                <node id="STUDY.2B.2E" label="NIH DP3">
                                     <hasNote>Type 1 Diabetes Targeted Research Award: To support research tackling major challenges in type 1 diabetes and promoting new approaches to these challenges by scientific teams.</hasNote>
                                 </node>
-                                <node id="" label="NIH DP4">
+                                <node id="STUDY.2B.2F" label="NIH DP4">
                                     <hasNote>NIH Director's Pathfinder Award - Multi-Yr Funding : To support multi-year funded research with unique, high impact ideas for addressing biomedical research including assuring a balanced and effective workforce.  This research grant program will encourage exceptionally creative scientists to develop potentially transforming approaches for supported research.  The proposed research must reflect ideas that are substantially different from those already being pursued or they must apply existing research designs in new and innovative ways.  This is a multi-year, funded companion activity code to the existing Pioneer Award (DP1); thus ICs need OER prior approval to use the DP4.</hasNote>
                                 </node>
-                                <node id="" label="NIH DP5">
+                                <node id="STUDY.2B.2G" label="NIH DP5">
                                     <hasNote>Early Independence Award: To support the independent research project of a recent doctoral degree recipient. This research grant program will encourage exceptionally creative scientists to bypass the typical post-doc research training period in order to move rapidly to research independence.  It will encourage institutions to develop independent career tracks for recent graduates in order to demonstrate the benefits of early transition to independence both in terms of career productivity for the candidate and research capability for the institution.</hasNote>
                                 </node>
-                                <node id="" label="NIH DP7">
+                                <node id="STUDY.2B.2H" label="NIH DP7">
                                     <hasNote>NIH Director's Workforce Innovation Award: To stimulate transformative approaches to training and/or workforce management with the intent of promoting culture change in the field of biomedical training.</hasNote>
                                 </node>
-                                <node id="" label="NIH F05">
+                                <node id="STUDY.2B.2I" label="NIH F05">
                                     <hasNote>International Research Fellowships (FIC): To provide collaborative research opportunities for qualified non-immigrant alien scientists who hold a doctoral degree or its equivalent in one of the biomedical or behavioral sciences.</hasNote>
                                 </node>
-                                <node id="" label="NIH F30">
+                                <node id="STUDY.2B.2J" label="NIH F30">
                                     <hasNote>Individual Predoctoral NRSA for M.D./Ph.D. Fellowships: Individual fellowships for predoctoral training which leads to the combined M.D./Ph.D. degrees.</hasNote>
                                 </node>
-                                <node id="" label="NIH F31">
+                                <node id="STUDY.2B.2K" label="NIH F31">
                                     <hasNote>Predoctoral Individual National Research Service Award: To provide predoctoral individuals with supervised research training in specified health and health-related areas leading toward the research degree (e.g., Ph.D.).</hasNote>
                                 </node>
-                                <node id="" label="NIH F32">
+                                <node id="STUDY.2B.2L" label="NIH F32">
                                     <hasNote>Postdoctoral Individual National Research Service Award: To provide postdoctoral research training to individuals to broaden their scientific background and extend their potential for research in specified health-related areas.</hasNote>
                                 </node>
-                                <node id="" label="NIH F33">
+                                <node id="STUDY.2B.2M" label="NIH F33">
                                     <hasNote>National Research Service Awards for Senior Fellows: To provide opportunities for experienced scientists to make major changes in the direction of research careers, to broaden scientific background, to acquire new research capabilities, to enlarge command of an allied research field, or to take time from regular professional responsibilities for the purpose of increasing capabilities to engage in health-related research.</hasNote>
                                 </node>
-                                <node id="" label="NIH F37">
+                                <node id="STUDY.2B.2N" label="NIH F37">
                                     <hasNote>Medical Informatics Fellowships: To provide training to individuals in the synthesis, organization, and management of knowledge. The training should be interdisciplinary - involving medicine, biotechnology, and cognitive sciences, information science, and computer science.</hasNote>
                                 </node>
-                                <node id="" label="NIH F38">
+                                <node id="STUDY.2B.2O" label="NIH F38">
                                     <hasNote>Applied Medical Informatics Fellowships: To provide opportunities for scientists to make major changes in the direction of research careers for the purpose of engaging in the synthesis, organization, and management of knowledge.</hasNote>
                                 </node>
-                                <node id="" label="NIH F99">
+                                <node id="STUDY.2B.2P" label="NIH F99">
                                     <hasNote>Predoctoral to Postdoctoral Fellow Transition Award: To support the Pre-doctoral Phase of a Pre-doctoral to Post-doctoral transition award that provides 1-2 years of predoctoral support for highly motivated graduate students. The F99 activity code is intended to only be used in conjunction with a K00 Award</hasNote>
                                 </node>
-                                <node id="" label="NIH FI2">
+                                <node id="STUDY.2B.2Q" label="NIH FI2">
                                     <hasNote>Intramural Postdoctoral Research Associate: To provide postdoctoral research training to individuals in the NIH or FDA intramural research programs to broaden their scientific background and extend their potential for research in specified health-related areas.</hasNote>
                                 </node>
-                                <node id="" label="NIH FM1">
+                                <node id="STUDY.2B.2R" label="NIH FM1">
                                     <hasNote>Fellowship for Intramural Dual-Degree Scientists (FIDDS): To provide predoctoral individuals with training which leads to the combined degrees (e.g., MD/PhD) for trainees completing PhD dissertation research in NIH intramural labs.</hasNote>
                                 </node>
-                                <node id="" label="NIH G07">
+                                <node id="STUDY.2B.2S" label="NIH G07">
                                     <hasNote>Resources Improvement Grant: A non-renewable grant available to health related organizations to establish, expand or improve Internet connectivity and improve access to digital information resources.</hasNote>
                                 </node>
-                                <node id="" label="NIH G08">
+                                <node id="STUDY.2B.2T" label="NIH G08">
                                     <hasNote>Resources Project Grant (NLM): A grant available to health-related institutions to improve the organization and management of health related information using computers and networks.</hasNote>
                                 </node>
-                                <node id="" label="NIH G11">
+                                <node id="STUDY.2B.2U" label="NIH G11">
                                     <hasNote>Extramural Associate Research Development Award (EARDA): To provide funds to institutions eligible to participate in the NIH Extramural Associates Program for establishing or enhancing an office of sponsored research and for other research infrastructure needs.</hasNote>
                                 </node>
-                                <node id="" label="NIH G13">
+                                <node id="STUDY.2B.2V" label="NIH G13">
                                     <hasNote>Health Sciences Publication Support Awards (NLM): To provide short-term assistance for the preparation of book-length manuscripts about important scientific information needed by U.S. health professionals. Grants are awarded for major critical reviews and analyses of historical studies and current developments in informatics, technology, librarianship, and secondary reference materials in the biomedical field.  Publication in formats other than print-on-paper (e.g., electronic, film, etc.) are encouraged, as are new and innovative ways of organizing and presenting information. Publication grants do not support journals or other serials and are not suitable for operation of established databases. Work judged to have significant commercial viability will not be supported by these grants. </hasNote>
                                 </node>
-                                <node id="" label="NIH I01">
+                                <node id="STUDY.2B.2W" label="NIH I01">
                                     <hasNote>Non-HHS Research Projects: To support research projects of non-DHHS entities.  For the VA, this will be used for intramural research projects.</hasNote>
                                 </node>
-                                <node id="" label="NIH I80">
+                                <node id="STUDY.2B.2X" label="NIH I80">
                                     <hasNote>DoD Research Project Grant Program (I80): The DoD Research Project (I80) grant is an award made to support a discrete, specified, circumscribed project to be performed by the named investigator(s) in an area representing the investigator's specific interest and competencies, based on the mission of the DoD.</hasNote>
                                 </node>
-                                <node id="" label="NIH IK3">
+                                <node id="STUDY.2B.2Y" label="NIH IK3">
                                     <hasNote>Non-DHHS Nursing Research Initiative: To provide research and salary support for a supervised/mentored career development experience for nurses.  Awards are not renewable, nor are they transferable from one principal investigator to another. </hasNote>
                                 </node>
-                                <node id="" label="NIH K00">
+                                <node id="STUDY.2B.2Z" label="NIH K00">
                                     <hasNote>Post-doctoral Transition Award: To support the second phase of a Pre-Doctoral to Post-Doctoral Transition award program that provides 3-4 years of career support. Note: The K00 Post-doctoral Transition Award is anticipated to only be used in conjunction with the F99 Pre-Doctoral Award.</hasNote>
                                 </node>
-                                <node id="" label="NIH K01">
+                                <node id="STUDY.2B.2AA" label="NIH K01">
                                     <hasNote>Research Scientist Development Award - Research and Training: For support of a scientist, committed to research, in need of both advanced research training and additional experience.</hasNote>
                                 </node>
-                                <node id="" label="NIH K02">
+                                <node id="STUDY.2B.2AB" label="NIH K02">
                                     <hasNote>Research Scientist Development Award - Research: For support of a scientist, committed to research, in need of additional experience.</hasNote>
                                 </node>
-                                <node id="" label="NIH K05">
+                                <node id="STUDY.2B.2AC" label="NIH K05">
                                     <hasNote>Research Scientist Award: For the support of a research scientist qualified to pursue independent research which would extend the research program of the sponsoring institution, or to direct an essential part of this research program.</hasNote>
                                 </node>
-                                <node id="" label="NIH K06">
+                                <node id="STUDY.2B.2AD" label="NIH K06">
                                     <hasNote>Research Career Awards: To enable institutions to finance positions favorable to the intellectual growth and research productivity of established investigators of high competence for the duration of their careers.</hasNote>
                                 </node>
-                                <node id="" label="NIH K07">
+                                <node id="STUDY.2B.2AE" label="NIH K07">
                                     <hasNote>Academic/Teacher Award (ATA): To create and encourage a stimulating approach to disease curricula that will attract high quality students, foster academic career development of promising young teacher-investigators, develop and implement excellent multidisciplinary curricula through interchange of ideas and enable the recipient institution to strengthen its existing teaching program.</hasNote>
                                 </node>
-                                <node id="" label="NIH K08">
+                                <node id="STUDY.2B.2AF" label="NIH K08">
                                     <hasNote>Clinical Investigator Award (CIA): To provide the opportunity for promising medical scientists with demonstrated aptitude to develop into independent investigators, or for faculty members to pursue research aspects of categorical areas applicable to the awarding unit, and aid in filling the academic faculty gap in these shortage areas within health profession's institutions of the country.</hasNote>
                                 </node>
-                                <node id="" label="NIH K12">
+                                <node id="STUDY.2B.2AG" label="NIH K12">
                                     <hasNote>Physician Scientist Award (Program) (PSA): For support to a newly trained clinician appointed by an institution for development of independent research skills and experience in a fundamental science within the framework of an  interdisciplinary research and development program.</hasNote>
                                 </node>
-                                <node id="" label="NIH K14">
+                                <node id="STUDY.2B.2AH" label="NIH K14">
                                     <hasNote>Minority School Faculty Development Awards: To encourage the development of faculty investigators at minority schools and to enhance their research capabilities in specified health and health related areas.</hasNote>
                                 </node>
-                                <node id="" label="NIH K18">
+                                <node id="STUDY.2B.2AI" label="NIH K18">
                                     <hasNote>The Career Enhancement Award: Provides either full-time or part-time support for experienced scientists who wish to broaden their scientific capabilities or to make changes in their research careers by acquiring new research skills or knowledge.  Career enhancement experiences supported by this award should usually last no more than one year.</hasNote>
                                 </node>
-                                <node id="" label="NIH K21">
+                                <node id="STUDY.2B.2AJ" label="NIH K21">
                                     <hasNote>Scientist Development Award: To foster the development of outstanding scientists with potential for making important contributions to the fields of alcoholism, drug abuse or mental health (ADM) research. Primarily intended to meet the need for supervised research experience for highly promising biological or behavioral scientists who need further supervised research experience.</hasNote>
                                 </node>
-                                <node id="" label="NIH K22">
+                                <node id="STUDY.2B.2AK" label="NIH K22">
                                     <hasNote>Career Transition Award: To provide support to outstanding newly trained basic or clinical investigators to develop their independent research skills through a two phase program; an initial period involving and intramural appointment at the NIH and a final period of support at an extramural institution.  The award is intended to facilitate the establishment of a record of independent research by the investigator in order to sustain or promote a successful research career.</hasNote>
                                 </node>
-                                <node id="" label="NIH K23">
+                                <node id="STUDY.2B.2AL" label="NIH K23">
                                     <hasNote>Mentored Patient-Oriented Research Career Development Award: To provide support for the career development of investigators who have made a commitment to focus their research endeavors on patient-oriented research.  This mechanism provides support for a 3 year minimum up to 5 year period of supervised study and research for clinically trained professionals who have the potential to develop into productive, clinical investigators.</hasNote>
                                 </node>
-                                <node id="" label="NIH K24">
+                                <node id="STUDY.2B.2AM" label="NIH K24">
                                     <hasNote>Midcareer Investigator Award in Patient-Oriented Research: To provide support for the clinicians to allow them protected time to devote to patient-oriented research and to act as mentors for beginning clinical investigators.  </hasNote>
                                 </node>
-                                <node id="" label="NIH K25">
+                                <node id="STUDY.2B.2AN" label="NIH K25">
                                     <hasNote>Mentored Quantitative Research Career Development Award: To engender and foster such activities by supporting the career development of investigators with quantitative scientific and engineering backgrounds outside of biology or medicine who have made a commitment to focus their research endeavors on behavioral and biomedical research (basic or clinical).  This mechanism is aimed at research-oriented scientists with experience at the level of junior faculty (e.g., early to mid-levels of assistant professor or research assistant professor ranks).  This award provides support for a period of mentored study and research for professionals with such backgrounds who have the potential to integrate their expertise with biomedicine and develop into productive investigators. Examples of quantitative scientific and technical backgrounds outside of biology or medicine considered appropriate for this award include, but are not limited to:  mathematics, statistics, computer science, informatics, physics, chemistry, and engineering. </hasNote>
                                 </node>
-                                <node id="" label="NIH K26">
+                                <node id="STUDY.2B.2AO" label="NIH K26">
                                     <hasNote>Midcareer Investigator Award in Biomedical and Behavioral Research: The purpose of the Midcareer Investigator Award in Biomedical and Behavioral Research is to provide grant support for biomedical and behavioral scientists to allow them protected time to devote to their research and mentoring.</hasNote>
                                 </node>
-                                <node id="" label="NIH K30">
+                                <node id="STUDY.2B.2AP" label="NIH K30">
                                     <hasNote>Clinical Research Curriculum Award (CRCA): The CRCA is an award to institutions and is intended to stimulate the inclusion of high-quality, multi-disciplinary didactic training as part of the career development of clinical investigators.  This award is intended to support the development of new didactic programs in clinical research at institutions that do not currently offer such programs or, in institutions with existing didactic programs in clinical research to support or expand their programs or to improve the quality of instruction.</hasNote>
                                 </node>
-                                <node id="" label="NIH K38">
+                                <node id="STUDY.2B.2AQ" label="NIH K38">
                                     <hasNote>Early Stage Mentored Research and Career Development: To provide the opportunity for postdoctoral health professionals to engage in research and career development in categorical areas applicable to the awarding unit.</hasNote>
                                 </node>
-                                <node id="" label="NIH K43">
+                                <node id="STUDY.2B.2AR" label="NIH K43">
                                     <hasNote>International Research Career Development Award: For support of a Low- or Middle-Income Country scientist, committed to research at a Low- or Middle-Income Country institution, in need of career development and additional mentored research experience.</hasNote>
                                 </node>
-                                <node id="" label="NIH K76">
+                                <node id="STUDY.2B.2AS" label="NIH K76">
                                     <hasNote>Emerging Leaders Career Development Award: To advance the development of physician-scientists prepared to take an active role in addressing both present and future challenges of a global biomedical research enterprise as relevant to their field of expertise.</hasNote>
                                 </node>
-                                <node id="" label="NIH K99">
+                                <node id="STUDY.2B.2AT" label="NIH K99">
                                     <hasNote>Career Transition Award: To support the initial phase of a Career/Research Transition award program that provides 1-2 years of mentored support for highly motivated, advanced postdoctoral research scientists.</hasNote>
                                 </node>
-                                <node id="" label="NIH KD1">
+                                <node id="STUDY.2B.2AU" label="NIH KD1">
                                     <hasNote>Mental Health and/or Substance Abuse KD and A Grants: To provide support to develop new knowledge about ways to improve the prevention and/or treatment of substance abuse and/or mental illness, and to work with State and local governments as well as providers, families, and consumers to apply that knowledge effectively in everyday practice. Outcome measures are the heart and core of the KD and A program. KD and As do not provide operating funds for service programs, except as required by the knowledge development activity.</hasNote>
                                 </node>
-                                <node id="" label="NIH KL1">
+                                <node id="STUDY.2B.2AV" label="NIH KL1">
                                     <hasNote>Linked Research Career Development Award: For support of a scientist, committed to research, in need of both advanced research training and additional experience. The grant is administratively linked to another project or projects. A KL1 award may only be disaggregated from a U54 application and organizations may not apply for a KL1, Linked Research Career Development Award. The KL1 is used in lieu of the K01 for those programs that offer linked awards.</hasNote>
                                 </node>
-                                <node id="" label="NIH KL2">
+                                <node id="STUDY.2B.2AW" label="NIH KL2">
                                     <hasNote>Mentored Career Development Award: To support newly trained clinicians appointed by an institution for activities related to the development of a successful clinical and translational research career. The award is administratively linked to another project or projects. A KL2 award may only be disaggregated from a U54 application and organizations may not apply for a KL2, Mentored Career Development Award. The KL2 is used in lieu of the K12 for those programs that offer linked awards.</hasNote>
                                 </node>
-                                <node id="" label="NIH KM1">
+                                <node id="STUDY.2B.2AX" label="NIH KM1">
                                     <hasNote>Institutional Career Enhancement Awards - Multi-Yr Funding: Provides for part time (minimum 25% effort) up to full-time support for medical, scientific, statistics and health care professionals with post-doctoral or equivalent experience selected by an institution, to broaden their research capabilities by acquiring new research skills or knowledge.  Further it provides for curriculum development of new programs to support these same types of individuals.  This is an institutional mentored career program, not an individual program. It is also a multi-year funded institutional mentored career development activity thus ICs need OER prior approval to use the KM1.</hasNote>
                                 </node>
-                                <node id="" label="NIH P01">
+                                <node id="STUDY.2B.2AY" label="NIH P01">
                                     <hasNote>Research Program Projects: For the support of a broadly based, multidisciplinary, often long-term research program which has a specific major objective or a basic theme. A program project generally involves the organized efforts of relatively large groups, members of which are conducting research projects designed to elucidate the various aspects or components of this objective. Each research project is usually under the leadership of an established investigator. The grant can provide support for certain basic resources used by these groups in the program, including clinical components, the sharing of which facilitates the total research effort. A program project is directed toward a range of problems having a central research focus, in contrast to the usually narrower thrust of the traditional research project. Each project supported through this mechanism should contribute or be directly related to the common theme of the total research effort. These scientifically meritorious projects should demonstrate an essential element of unity and interdependence, i.e., a system of research activities and projects directed toward a well-defined research program goal.</hasNote>
                                 </node>
-                                <node id="" label="NIH P20">
+                                <node id="STUDY.2B.2AZ" label="NIH P20">
                                     <hasNote>Exploratory Grants: To support planning for new programs, expansion or modification of existing resources, and feasibility studies to explore various approaches to the development of interdisciplinary programs that offer potential solutions to problems of special significance to the mission of the NIH.  These exploratory studies may lead to specialized or comprehensive centers.</hasNote>
                                 </node>
-                                <node id="" label="NIH P2C">
+                                <node id="STUDY.2B.2A" label="NIH P2C">
                                     <hasNote>Resource-Related Research Multi-Component Projects and Centers: To support multi-component research resource projects and centers that will enhance the capability of resources to serve biomedical research. </hasNote>
                                 </node>
-                                <node id="" label="NIH P30">
+                                <node id="STUDY.2B.2BA" label="NIH P30">
                                     <hasNote>Center Core Grants: To support shared resources and facilities for categorical research by a number of investigators from different disciplines who provide a multidisciplinary approach to a joint research effort or from the same discipline who focus on a common research problem.  The core grant is integrated with the center's component projects or program projects, though funded independently from them.  This support, by providing more accessible resources, is expected to assure a greater productivity than from the separate projects and program projects.</hasNote>
                                 </node>
-                                <node id="" label="NIH P40">
+                                <node id="STUDY.2B.2BB" label="NIH P40">
                                     <hasNote>Animal (Mammalian and Nonmammalian) Model, and Animal and Biological Material Resource Grants  : To develop and support animal (mammalian and nonmammalian) models, or animal or biological materials resources available to all qualified investigators without regard to the scientific disciplines or disease orientations of their research activities or specifically directed to a categorical program.  Nonmammalian resources include nonmammalian vertebrates, invertebrates, cell systems, and nonbiological systems.</hasNote>
                                 </node>
-                                <node id="" label="NIH P41">
+                                <node id="STUDY.2B.2BC" label="NIH P41">
                                     <hasNote>Biotechnology Resource Grants: To support biotechnology resources available to all qualified investigators without regard to the scientific disciplines or disease orientations of their research activities or specifically directed to a categorical program area.</hasNote>
                                 </node>
-                                <node id="" label="NIH P42">
+                                <node id="STUDY.2B.2BD" label="NIH P42">
                                     <hasNote>Hazardous Substances Basic Research Grants Program (NIEHS): To support basic research directed towards understanding and attenuating the public health effects resulting from exposure to hazardous substances, including 1) advanced techniques for detection, assessment and evaluation of the effects on human health of hazardous substances; 2) methods to assess risks to human health presented by hazardous substances; 3) methods and technologies to detect hazardous substances in the environment and 4) basic biological, chemical, and physical methods to reduce the amount and toxicity of hazardous substances. This special program, authorized under Superfund legislation, is for a broadly based, multi-disciplinary research effort which must include biomedical research components and which may include research components related to engineering, hydrogeology, ecology and epidemiology so long as they are linked to basic biomedical science. Each research project is generally under the leadership of an established investigator. The grant can provide support for certain basic resources used by the groups in the program (cores), including an administrative structure for effective coordination.</hasNote>
                                 </node>
-                                <node id="" label="NIH P50">
+                                <node id="STUDY.2B.2BE" label="NIH P50">
                                     <hasNote>Specialized Center: To support any part of the full range of research and development from very basic to clinical; may involve ancillary supportive activities such as protracted patient care necessary to the primary research or R and D effort.  The spectrum of activities comprises a multidisciplinary attack on a specific disease entity or biomedical problem area.  These grants differ from program project grants in that they are usually developed in response to an announcement of the programmatic needs of an Institute or Division and subsequently receive continuous attention from its staff.  Centers may also serve as regional or national resources for special research purposes.</hasNote>
                                 </node>
-                                <node id="" label="NIH P51">
+                                <node id="STUDY.2B.2BF" label="NIH P51">
                                     <hasNote>Primate Research Center Grants : To support centers which include a multidisciplinary and multi-categorical core research program using primate animals and to maintain a large and varied primate colony which is available to affiliated, collaborative, and visiting investigators for basic and applied biomedical research and training.</hasNote>
                                 </node>
-                                <node id="" label="NIH P60">
+                                <node id="STUDY.2B.2BG" label="NIH P60">
                                     <hasNote>Comprehensive Center: To support a multipurpose unit designed to bring together into a common focus divergent but related facilities within a given  community.  It may be based in a university or may involve other locally available resources, such as hospitals, computer facilities, regional centers, and primate colonies.  It may include specialized centers, program projects and projects as integral components.  Regardless of the facilities available to a program, it usually includes the following objectives:  to foster biomedical research and development at both the fundamental and clinical levels; to initiate and expand community education, screening, and counseling programs; and to educate medical and allied health professionals concerning the problems of diagnosis and treatment of a specific disease.</hasNote>
                                 </node>
-                                <node id="" label="NIH PL1">
+                                <node id="STUDY.2B.2BH" label="NIH PL1">
                                     <hasNote>Linked Center Core Grant: To support shared resources and facilities for categorical research by a number of investigators from different disciplines who provide a multidisciplinary approach to a joint research effort or from the same discipline who focus on a common research problem. The core grant is integrated with the center's component projects or program projects, though funded independently from them. This support, by providing more accessible resources, is expected to assure a greater productivity than from the separate projects and program projects. The Linked Center Core Grant is administratively linked to another project or projects. A PL1 award may only be disaggregated from a U54 application and organizations may not apply for a PL1, Linked Center Core Grant. The PL1 is used in lieu of the P30 for those programs that offer linked awards.</hasNote>
                                 </node>
-                                <node id="" label="NIH PM1">
+                                <node id="STUDY.2B.2BI" label="NIH PM1">
                                     <hasNote>Program Project or Center with Complex Structure: To support a complex research program or center with complicated structures that cannot be appropriately categorized into an available multicomponent activity code. The performance period may extend up to seven years but only through the established deviation request process.  ICs desiring to use this activity code for programs greater than 5 years must receive OPERA prior approval through the deviation request process.</hasNote>
                                 </node>
-                                <node id="" label="NIH PN1">
+                                <node id="STUDY.2B.2BJ" label="NIH PN1">
                                     <hasNote>Concept Development Award: To support the planning and research activities required to assemble multidisciplinary research teams in order to generate an extensive plan that describes the scientific areas, organization, and operation of a research center. Concept Development Awards are not renewable.</hasNote>
                                 </node>
-                                <node id="" label="NIH PN2">
+                                <node id="STUDY.2B.2BK" label="NIH PN2">
                                     <hasNote>Research Development Center : To support any part of the full range of research and development from very basic to clinical as well as any educational, administrative, or other activities required in the center. The spectrum of research activities comprises a multidisciplinary approach to promote research primarily in a new or emerging biomedical scientific area. These centers are expected to operate as a networkof centers to promote interactions and resource sharing. Only recipients of the PN1 are eligible to apply for the PN2.</hasNote>
                                 </node>
-                                <node id="" label="NIH R00">
+                                <node id="STUDY.2B.2BL" label="NIH R00">
                                     <hasNote>Research Transition Award: To support the second phase of a Career/Research Transition award program that provides 1 -3 years of independent research support (R00) contingent on securing an independent research position. Award recipients will be expected to compete successfully for independent R01 support from the NIH during the R00 research transition award period.</hasNote>
                                 </node>
-                                <node id="" label="NIH R01">
+                                <node id="STUDY.2B.2BM" label="NIH R01">
                                     <hasNote>Research Project: To support a discrete, specified, circumscribed project to be performed by the named investigator(s) in an area representing his or her specific interest and competencies.</hasNote>
                                 </node>
-                                <node id="" label="NIH R03">
+                                <node id="STUDY.2B.2BN" label="NIH R03">
                                     <hasNote>Small Research Grants: To provide research support specifically limited in time and amount for studies in categorical program areas.  Small grants provide flexibility for initiating studies which are generally for preliminary short-term projects and are non-renewable.</hasNote>
                                 </node>
-                                <node id="" label="NIH R13">
+                                <node id="STUDY.2B.2BO" label="NIH R13">
                                     <hasNote>Conference: To support recipient sponsored and directed international, national or regional meetings, conferences and workshops.</hasNote>
                                 </node>
-                                <node id="" label="NIH R15">
+                                <node id="STUDY.2B.2BP" label="NIH R15">
                                     <hasNote>Research Enhancement Awards: Supports small-scale research projects at educational institutions that provide baccalaureate or advanced degrees for a significant number of the Nation's research scientists but that have not been major recipients of NIH support. The goals of the program are to (1) support meritorious research, (2) expose students to research, and (3) strengthen the research environment of the institution. Awards provide limited Direct Costs, plus applicable F&amp;A costs, for periods not to exceed 36 months. This activity code uses multi-year funding authority; however, OER approval is NOT needed prior to an IC using this activity code.</hasNote>
                                 </node>
-                                <node id="" label="NIH R16">
+                                <node id="STUDY.2B.2BQ" label="NIH R16">
                                     <hasNote>Research Excellence Award: Supports small-scale research projects at educational institutions that that enroll significantnumbers of students from backgrounds nationally underrepresented in biomedical research,award baccalaureate and graduate degrees in biomedical sciences, and receive limited NIHfunding.</hasNote>
                                 </node>
-                                <node id="" label="NIH R18">
+                                <node id="STUDY.2B.2BR" label="NIH R18">
                                     <hasNote>Research Demonstration and Dissemination Projects: To provide support designed to develop, test, and evaluate health service activities, and to foster the application of existing knowledge for the control of categorical diseases.</hasNote>
                                 </node>
-                                <node id="" label="NIH R21">
+                                <node id="STUDY.2B.2BS" label="NIH R21">
                                     <hasNote>Exploratory/Developmental Grants: To encourage the development of new research activities in categorical program areas.  (Support generally is restricted in level of support and in time.)</hasNote>
                                 </node>
-                                <node id="" label="NIH R24">
+                                <node id="STUDY.2B.2BT" label="NIH R24">
                                     <hasNote>Resource-Related Research Projects: To support research projects that will enhance the capability of resources to serve biomedical research.</hasNote>
                                 </node>
-                                <node id="" label="NIH R25">
+                                <node id="STUDY.2B.2BU" label="NIH R25">
                                     <hasNote>Education Projects: For support to develop and/or implement a program as it relates to a category in one or more of the areas of education, information, training, technical assistance, coordination, or evaluation.</hasNote>
                                 </node>
-                                <node id="" label="NIH R28">
+                                <node id="STUDY.2B.2BV" label="NIH R28">
                                     <hasNote>Resource-Related Research Projects: To support research projects contributing to improvement of the capability of resources to serve clinical research. </hasNote>
                                 </node>
-                                <node id="" label="NIH R2F">
+                                <node id="STUDY.2B.2BW" label="NIH R2F">
                                     <hasNote>Food Safety Capacity and Infrastructure Building: To build food safety capacity and infrastructure by assisting State, locality, territory, Indian tribe, or nonprofit food safety training entity that collaborates with 1 or more institutions of higher education to undertake food safety inspections, investigations, and examinations; train to the standards established by the HHS Secretary; build lab capacity; and respond to notifications received under Section 1008 and recalls.</hasNote>
                                 </node>
-                                <node id="" label="NIH R30">
+                                <node id="STUDY.2B.2BX" label="NIH R30">
                                     <hasNote>Preventive Health Service - Venereal Disease Research, Demonstration, and Public Information and Education Grants: (Definition not available)</hasNote>
                                 </node>
-                                <node id="" label="NIH R33">
+                                <node id="STUDY.2B.2BY" label="NIH R33">
                                     <hasNote>Exploratory/Developmental Grants Phase II: The R33 award is to provide  a second phase for the support for innovative exploratory and development research activities initiated under the R21 mechanism.  Although only R21 awardees are generally eligible to apply for R33 support, specific program initiatives may establish eligibility criteria under which applications could be accepted from applicants demonstrating progress equivalent to that expected under R33.</hasNote>
                                 </node>
-                                <node id="" label="NIH R34">
+                                <node id="STUDY.2B.2BZ" label="NIH R34">
                                     <hasNote>Planning Grant: To provide support for the initial development of a clinical trial or research project, including the establishment of the research team; the development of tools for data management and oversight of the research; the development of a trial design or experimental research designs and other essential elements of the study or project, such as the protocol, recruitment strategies, procedure manuals and collection of feasibility data.</hasNote>
                                 </node>
-                                <node id="" label="NIH R35">
+                                <node id="STUDY.2B.2CA" label="NIH R35">
                                     <hasNote>Outstanding Investigator Award: To provide long term support to an experienced investigator with an outstanding record of research productivity. This support is intended to encourage investigators to embark on long-term projects of unusual potential.</hasNote>
                                 </node>
-                                <node id="" label="NIH R36">
+                                <node id="STUDY.2B.2CB" label="NIH R36">
                                     <hasNote>Dissertation Award: To support dissertation research costs of students in accredited research doctoral programs in the United States (including Puerto Rico and other U.S. territories or possessions). Dissertation awards are not renewable.</hasNote>
                                 </node>
-                                <node id="" label="NIH R37">
+                                <node id="STUDY.2B.2CC" label="NIH R37">
                                     <hasNote>Method to Extend Research in Time (MERIT) Award: To provide long-term grant support to investigators whose research competence and productivity are distinctly superior and who are highly likely to continue to perform in an outstanding manner.  Investigators may not apply for a MERIT award.  Program staff and/or members of the cognizant National Advisory Council/Board will identify candidates for the MERIT award during the course of review of competing research grant applications prepared and submitted in accordance with regular PHS requirements.</hasNote>
                                 </node>
-                                <node id="" label="NIH R38">
+                                <node id="STUDY.2B.2CD" label="NIH R38">
                                     <hasNote>Mentored Research Pathway in Residency: For support to develop and/or implement an institutional program offering mentoredresearch in residency.</hasNote>
                                 </node>
-                                <node id="" label="NIH R50">
+                                <node id="STUDY.2B.2CE" label="NIH R50">
                                     <hasNote>Research Specialist Award: The Research Specialist Award is designed to encourage the development of stable research career opportunities for exceptional scientists who want to pursue research within the context of an existing research program, but not serve as Principal Investigators. The Award is intended to provide desirable salaries and sufficient autonomy so that individuals are not solely dependent on grants held by Principal Investigators for career continuity.</hasNote>
                                 </node>
-                                <node id="" label="NIH R55">
+                                <node id="STUDY.2B.2CF" label="NIH R55">
                                     <hasNote>James A. Shannon Director's Award: To provide a limited award to investigators to further develop, test, and refine research techniques; perform secondary analysis of available data sets;  test the feasibility of innovative and creative approaches;  and conduct other discrete projects that can  demonstrate their research capabilities and lend additional weight to their already meritorious applications.</hasNote>
                                 </node>
-                                <node id="" label="NIH R56">
+                                <node id="STUDY.2B.2CG" label="NIH R56">
                                     <hasNote>High Priority, Short Term Project Award: To provide limited interim research support based on the merit of a pending R01 application while applicant gathers additional data to revise a new or competing renewal application. This grant will underwrite highly meritorious applications that if given the opportunity to revise their application could meet IC recommended standards and would be missed opportunities if not funded. Interim funded ends when the applicant succeeds in obtaining an R01 or other competing award built on the R56 grant. These awards are not renewable.</hasNote>
                                 </node>
-                                <node id="" label="NIH R61">
+                                <node id="STUDY.2B.2CH" label="NIH R61">
                                     <hasNote>Phase 1 Exploratory/Developmental Grant: As part of a bi-phasic approach to funding exploratory and/or developmental research, the R61 provides support for the first phase of the award. This activity code is used in lieu of the R21 activity code when larger budgets and/or project periods are required to establish feasibility for the project.</hasNote>
                                 </node>
-                                <node id="" label="NIH R90">
+                                <node id="STUDY.2B.2CI" label="NIH R90">
                                     <hasNote>Interdisciplinary Regular Research Training Award : To support comprehensive interdisciplinary research training programs at the undergraduate, predoctoral and/or postdoctoral levels, by capitalizing on the infrastructure of existing multidisciplinary and interdisciplinary research programs.  This Activity Code is for trainees who do not meet the qualifications for NRSA authority.</hasNote>
                                 </node>
-                                <node id="" label="NIH RC1">
+                                <node id="STUDY.2B.2CJ" label="NIH RC1">
                                     <hasNote>NIH Challenge Grants and Partnerships Program: NIH Challenge Grants in Health and Science Research </hasNote>
                                 </node>
-                                <node id="" label="NIH RC2">
+                                <node id="STUDY.2B.2CK" label="NIH RC2">
                                     <hasNote>High Impact Research and Research Infrastructure Programs: To support high impact ideas that may lay the foundation for new fields of investigation; accelerate breakthroughs; stimulate early and applied research on cutting-edge technologies; foster new approaches to improve the interactions among multi- and interdisciplinary research teams; or, advance the research enterprise in a way that could stimulate future growth and investments and advance public health and health care delivery.  This activity code could support either a specific research question or propose the creation of a unique infrastructure/resource designed to accelerate scientific progress in the future.</hasNote>
                                 </node>
-                                <node id="" label="NIH RC3">
+                                <node id="STUDY.2B.2CL" label="NIH RC3">
                                     <hasNote>Biomedical Research, Development, and Growth to Spur the Acceleration of New Technologies (BRDG-SPAN) Program: To accelerate the transition of NIH-supported research innovations and technologies toward the development of products or services that will improve human health, through grants that may advance the mission of NIH and its Institutes and Centers (ICs), and create significant value and economic stimulus or, advance the research enterprise in a way that could stimulate future growth and investments and advance public health and health care delivery.  This activity code is intended to support research and development (R and D) specifically targeted at activities that can help address the funding gap between promising R and D and transitioning to the market, often called the ‚ÄúValley of Death‚Äù by contributing the critical funding needed by applicants to pursue the next appropriate milestone(s) toward ultimate commercialization; i.e., to carry out later stage research activities necessary to that end; to foster partnerships among a variety of research and development (R and D) collaborators working toward these aims. Awards are made only to U.S.-owned, for-profit enterprises doing a majority of its business in the United States. RC3 applications may be given funding priority if the applicant organization is associated with an enterprise that is of small size (e.g., 500 or fewer employees), and/or of limited resources, such as an early-stage company, and/or one positioned for receiving funding or in-kind support from a third-party investor and/or strategic partner. The RC3 SPAN program is not intended to support ‚Äúupstream‚Äù R and D for doing feasibility testing of an innovative idea or to conduct early-stage R and D as an extension of such ideas. (Projects such as these should be submitted under the NIH SBIR/STTR programs.)</hasNote>
                                 </node>
-                                <node id="" label="NIH RC4">
+                                <node id="STUDY.2B.2CM" label="NIH RC4">
                                     <hasNote>High Impact Research and Research Infrastructure Programs‚ÄîMulti-Yr Funding: To support multi-year funded research with high impact ideas that may lay the foundation for new fields of investigation; accelerate breakthroughs; stimulate early and applied research on cutting-edge technologies; foster new approaches to improve the interactions among multi- and interdisciplinary research teams; or, advance the research enterprise in a way that could stimulate future growth and investments and advance public health and health care delivery. This activity code could support either a specific research question or propose the creation of a unique infrastructure/resource designed to accelerate scientific progress in the future. It is the multi-year funded companion activity code to the existing RC2; thus ICs need OER prior approval to use the RC4.</hasNote>
                                 </node>
-                                <node id="" label="NIH RF1">
+                                <node id="STUDY.2B.2CN" label="NIH RF1">
                                     <hasNote>Multi-Year Funded Research Project Grant: To support a discrete, specific, circumscribed project to be performed by the named investigator(s) in an area representing specific interest and competencies based on the mission of the agency, using standard peer review criteria.  This is the multi-year funded equivalent of the R01 but can be used also for multi-year funding of other research project grants such as R03, R21 as appropriate.</hasNote>
                                 </node>
-                                <node id="" label="NIH RL1">
+                                <node id="STUDY.2B.2CO" label="NIH RL1">
                                     <hasNote>Linked Research project Grant: To support a discrete, specified, circumscribed project that is administratively linked to another project or projects, and to be performed by the named investigator(s) in an area representing his or her specific interest and competencies. An RL1 award may only be disaggregated from U54 application and organizations may not apply for an RL1, Linked Research Project Grant. The RL1 activity code is used in Lieu of the R01 for those programs that offer linked awards.</hasNote>
                                 </node>
-                                <node id="" label="NIH RL2">
+                                <node id="STUDY.2B.2CP" label="NIH RL2">
                                     <hasNote>Linked Exploratory/Development Grant : To encourage the development of new research activities in categorical program areas. (Support generally is restricted in level of support and in time). The grant is administratively linked to another project or projects. An RL2 award may only be disaggregated from a U54 application and organizations may not apply for an RL2, Linked Exploratory/Development Grant. The RL2 activity code is used in lieu of the R21 for those programs that offer linked awards.</hasNote>
                                 </node>
-                                <node id="" label="NIH RL5">
+                                <node id="STUDY.2B.2CQ" label="NIH RL5">
                                     <hasNote>Linked Education Project : For support to develop and/or implement a program as it relates to a category in one or more of the areas of education, information, training, technical assistance, coordination, or evaluation.  The grant is administratively linked to another project or projects.  A RL5 award may only be disaggregated from a U54 application and organizations may not apply for an RL5, Linked Education Project.  The RL5 is used in lieu of the R25 for those programs that offer linked awards.</hasNote>
                                 </node>
-                                <node id="" label="NIH RL9">
+                                <node id="STUDY.2B.2CR" label="NIH RL9">
                                     <hasNote>Linked Research Training Award: To support comprehensive interdisciplinary research training programs at the undergraduate, pre-doctoral and/or postdoctoral levels, by capitalizing on the infrastructure of existing multidisciplinary and interdisciplinary research programs. The RL9 is for trainees who do not meet the qualifications for NRSA authority.  The training program is administratively linked to another project or projects.  An RL9 award may only be disaggregated from a U54 application and organizations may not apply for an RL9, Linked Research Training Award.  The RL9 is used in lieu of the R90 for those programs that offer linked awards.</hasNote>
                                 </node>
-                                <node id="" label="NIH RM1">
+                                <node id="STUDY.2B.2CS" label="NIH RM1">
                                     <hasNote>Research Project with Complex Structure: To support a large-scale research project with a complex structure that cannot be appropriately categorized into an available single component activity code. The performance period may extend up to seven years but only through the established deviation request process.  ICs desiring to use this activity code for programs greater than 5 years must receive OPERA prior approval through the deviation request process.</hasNote>
                                 </node>
-                                <node id="" label="NIH RS1">
+                                <node id="STUDY.2B.2CT" label="NIH RS1">
                                     <hasNote>Programs to Prevent the Emergence and Spread of Antimicrobial Resistance in the United States : Develop, implement, and evaluate an antimicrobial project to prevent and control the emergence, prevalence, and spread of antimicrobial resistance in rural areas, and microbiologic mechanisms of dissemination of antimicrobial resistance genes and the relationship to antimicrobial drug use.</hasNote>
                                 </node>
-                                <node id="" label="NIH S06">
+                                <node id="STUDY.2B.2CU" label="NIH S06">
                                     <hasNote>Minority Biomedical Research Support - MBRS: To strengthen the biomedical research and research training capability of ethnic minority institutions, and thus establish a more favorable milieu for increasing the involvement of minority faculty and students in biomedical research.</hasNote>
                                 </node>
-                                <node id="" label="NIH S07">
+                                <node id="STUDY.2B.2CV" label="NIH S07">
                                     <hasNote>Biomedical Research Support Grants: To strengthen, balance, and stabilize Public Health Service supported biomedical and behavioral research programs at qualifying institutions through flexible funds, awarded on a formula basis, that permit recipient institutions to respond quickly and effectively to emerging needs and opportunities, to enhance creativity and innovation, to support pilot studies, and to improve research resources, both physical and human.</hasNote>
                                 </node>
-                                <node id="" label="NIH S10">
+                                <node id="STUDY.2B.2CW" label="NIH S10">
                                     <hasNote>Biomedical Research Support Shared Instrumentation Grants : To make available to institutions with a high concentration of NIH extramural research awards, research instruments which will be used on a shared basis.</hasNote>
                                 </node>
-                                <node id="" label="NIH S11">
+                                <node id="STUDY.2B.2CX" label="NIH S11">
                                     <hasNote>Minority Biomedical Research Support Thematic Project Grants: To promote increased faculty and interdepartmental collaboration through programs that focus on specific research themes or scientific disciplines at developing minority institutions.  These  grants are intended to strengthen the biomedical research capability in defined areas and to attract other competent biomedical scientists through an improved research environment.</hasNote>
                                 </node>
-                                <node id="" label="NIH S15">
+                                <node id="STUDY.2B.2CY" label="NIH S15">
                                     <hasNote>Small Instrumentation Grants Program: An institutional award to support the purchase of equipment costing no less than $5,000 and no more than $60,000, to be used by one or more recipients of active NIH research grants.</hasNote>
                                 </node>
-                                <node id="" label="NIH S21">
+                                <node id="STUDY.2B.2CZ" label="NIH S21">
                                     <hasNote>Research and Institutional Resources Health Disparities Endowment Grants -Capacity Building: To strengthen the research and training infrastructure of the institution, while addressing current and emerging needs in minority  health and other health disparities research.</hasNote>
                                 </node>
-                                <node id="" label="NIH S22">
+                                <node id="STUDY.2B.2DA" label="NIH S22">
                                     <hasNote>Research and Student Resources Health Disparities Endowment Grants - Educational Programs: To increase the investment in student-centered programs: to improve the academic success of underrepresented minorities and    socio-economically disadvantaged individuals in biomedical and bio-behavioral fields of study.</hasNote>
                                 </node>
-                                <node id="" label="NIH SC1">
+                                <node id="STUDY.2B.2DB" label="NIH SC1">
                                     <hasNote>Research Enhancement Award: Individual investigator-initiated research projects aimed at developing researchers at minority-serving institutions (MSIs) to a stage where they can transition successfully to other     s extramural support (R01 or equivalent).</hasNote>
                                 </node>
-                                <node id="" label="NIH SC2">
+                                <node id="STUDY.2B.2DC" label="NIH SC2">
                                     <hasNote>Pilot Research Project : Individual investigator-initiated pilot research projects for faculty at MSIs to generate preliminary data for a more ambitious research project.</hasNote>
                                 </node>
-                                <node id="" label="NIH SC3">
+                                <node id="STUDY.2B.2DD" label="NIH SC3">
                                     <hasNote>Research Continuance Award : Individual investigator-initiated research projects for faculty at MSIs to conduct research of limited scope in environments with limited research infrastructure/facilities.</hasNote>
                                 </node>
-                                <node id="" label="NIH SI2">
+                                <node id="STUDY.2B.2DE" label="NIH SI2">
                                     <hasNote>Intramural Clinical Scholar Research Award: This program will encourage exceptionally talented clinical researchers to conduct research in the Intramural Research Program for a specified period of time who will then be able to work with an extramural institution to develop an independent research grant application for follow-on support.  This code can only be used as phase 1 (intramural) of a 2-phase intramural/extramural program. No extramural award can be issued using this activity code.  NIH Intramural and OPERA prior approval is required to use this activity code.</hasNote>
                                 </node>
-                                <node id="" label="NIH T01">
+                                <node id="STUDY.2B.2DF" label="NIH T01">
                                     <hasNote>Graduate Training Program: To assist and extend training of individuals preparing for research and academic careers in fundamental, preclinical, clinical, public health, and other disciplines related to the area of interest of the awarding Institute/Division.</hasNote>
                                 </node>
-                                <node id="" label="NIH T02">
+                                <node id="STUDY.2B.2DG" label="NIH T02">
                                     <hasNote>Undergraduate Training Program: To assist qualified institutions to improve and expand the training of undergraduate students in disciplines related to an area of interest of the awarding Institute/Division.</hasNote>
                                 </node>
-                                <node id="" label="NIH T09">
+                                <node id="STUDY.2B.2DH" label="NIH T09">
                                     <hasNote>Scientific Evaluation: To provide the chairman of the training committee funds for operation of the review group.</hasNote>
                                 </node>
-                                <node id="" label="NIH T14">
+                                <node id="STUDY.2B.2DI" label="NIH T14">
                                     <hasNote>Conferences: For support of international and national meetings, conferences and workshops.</hasNote>
                                 </node>
-                                <node id="" label="NIH T15">
+                                <node id="STUDY.2B.2DJ" label="NIH T15">
                                     <hasNote>Continuing Education Training Grants: To assist professional schools and other public and nonprofit institutions to establish, expand, or improve programs of continuing professional education, especially for programs of extensive continuation, extension, or refresher education dealing with new developments in the science of technology of the profession.</hasNote>
                                 </node>
-                                <node id="" label="NIH T32">
+                                <node id="STUDY.2B.2DK" label="NIH T32">
                                     <hasNote>Institutional National Research Service Award: To enable institutions to make National Research Service Awards to individuals selected by them for predoctoral and postdoctoral research training in specified shortage areas.</hasNote>
                                 </node>
-                                <node id="" label="NIH T34">
+                                <node id="STUDY.2B.2DL" label="NIH T34">
                                     <hasNote>Undergraduate NRSA Institutional Research Training Grants: To enhance the undergraduate research training of individuals from groups underrepresented in biomedical, behavioral, clinical and social sciences through Institutional National Research Service Award Training Grants, in preparation for research doctorate degree programs.</hasNote>
                                 </node>
-                                <node id="" label="NIH T35">
+                                <node id="STUDY.2B.2DM" label="NIH T35">
                                     <hasNote>NRSA Short-Term Research Training: To provide individuals with research training during off-quarters or summer periods to encourage research careers and/or research in areas of national need.</hasNote>
                                 </node>
-                                <node id="" label="NIH T37">
+                                <node id="STUDY.2B.2DN" label="NIH T37">
                                     <hasNote>Minority International Research Training Grants (FIC): Institutional training grants awarded to domestic institutions supporting opportunities for biomedical and behavioral research training for minority students and faculty members at foreign sites.</hasNote>
                                 </node>
-                                <node id="" label="NIH T42">
+                                <node id="STUDY.2B.2DO" label="NIH T42">
                                     <hasNote>Educational Resource Center Training Grants: To provide assistance to regional centers in developing specialized personnel in the occupational safety and health field with academic training, research training, and continuing education and outreach in industrial hygiene, occupational health nursing, occupational medicine, and occupational safety.</hasNote>
                                 </node>
-                                <node id="" label="NIH T90">
+                                <node id="STUDY.2B.2DP" label="NIH T90">
                                     <hasNote>Interdisciplinary Research Training Award: To support comprehensive interdisciplinary research training programs at the undergraduate, predoctoral and/or postdoctoral levels, by capitalizing on the infrastructure of existing multidisciplinary and interdisciplinary research programs.</hasNote>
                                 </node>
-                                <node id="" label="NIH TL1">
+                                <node id="STUDY.2B.2DQ" label="NIH TL1">
                                     <hasNote>Linked Training Award: To support research training experiences for pre- and post-doctoral trainees who are interested in pursuing research careers in multi-disciplinary clinical and translational science. The training award is administratively linked to another project or projects. A TL1 award may only be disaggregated from a U54 application and organizations may not apply for a TL1, Linked Training Award. The TL1 is used in lieu of the T32 for those programs that offer linked awards.</hasNote>
                                 </node>
-                                <node id="" label="NIH TL4">
+                                <node id="STUDY.2B.2DR" label="NIH TL4">
                                     <hasNote>Undergraduate NRSA Institutional Research Training Grants: To enhance the undergraduate research training of individuals from groups underrepresented in biomedical, behavioral, clinical and social sciences through Institutional National Research Service Award Training Grants, in preparation for research doctorate degree programs.  This is the linked equivalent of the T34.</hasNote>
                                 </node>
-                                <node id="" label="NIH TU2">
+                                <node id="STUDY.2B.2DS" label="NIH TU2">
                                     <hasNote>Institutional National Research Service Award with Involvement of NIH Intramural Faculty: The cooperative agreement counterpart to the T32, this award enables institutions to provide research-training experiences for graduate students and postdoctoral scientists in specified shortage areas. In addition, these awards involve identified NIH Intramural Staff who serve as a part of the training faculty and participate in the operation of the training program.</hasNote>
                                 </node>
-                                <node id="" label="NIH U01">
+                                <node id="STUDY.2B.2DT" label="NIH U01">
                                     <hasNote>Research Project--Cooperative Agreements: To support a discrete, specified, circumscribed project to be performed by the named investigator(s) in an area representing his or her specific interest and competencies.</hasNote>
                                 </node>
-                                <node id="" label="NIH U13">
+                                <node id="STUDY.2B.2DU" label="NIH U13">
                                     <hasNote>Conference--Cooperative Agreements: To support international, national or regional meetings, conferences and workshops where substantial programmatic involvement is planned to assist the recipient.</hasNote>
                                 </node>
-                                <node id="" label="NIH U19">
+                                <node id="STUDY.2B.2DV" label="NIH U19">
                                     <hasNote>Research Program--Cooperative Agreements: To support a research program of multiple projects directed toward a specific major objective, basic theme or program goal, requiring a broadly based, multidisciplinary and often long-term approach. A cooperative agreement research program generally involves the organized efforts of large groups, members of which are conducting research projects designed to elucidate the various aspects of a specific objective. Substantial Federal programmatic staff involvement is intended to assist investigators during performance of the research activities, as defined in the terms and conditions of award. The investigators have primary authorities and responsibilities to define research objectives and approaches, and to plan, conduct, analyze, and publish results, interpretations and conclusions of their studies. Each research project is usually under the leadership of an established investigator in an area representing his/her special interest and competencies. Each project supported through this mechanism should contribute to or be directly related to the common theme of the total research effort. The award can provide support for certain basic shared resources, including clinical components, which facilitate the total research effort. These scientifically meritorious projects should demonstrate an essential element of unity and interdependence.</hasNote>
                                 </node>
-                                <node id="" label="NIH U2F">
+                                <node id="STUDY.2B.2DW" label="NIH U2F">
                                     <hasNote>Food Safety Capacity and Infrastructure Building: To build food safety capacity and infrastructure by assisting State, locality, territory, Indian tribe, or nonprofit food safety training entity that collaborates with 1 or more institutions of higher education to undertake food safety inspections, investigations, and examinations; train to the standards established by the HHS Secretary; build lab capacity; and respond to notifications received under Section 1008 and recalls.</hasNote>
                                 </node>
-                                <node id="" label="NIH U2R">
+                                <node id="STUDY.2B.2DX" label="NIH U2R">
                                     <hasNote>International Research Training Cooperative Agreements: Cooperative agreement mechanism for D43 to support research training programs for US and foreign professionals and students to strengthen global health research and international research collaboration.</hasNote>
                                 </node>
-                                <node id="" label="NIH U34">
+                                <node id="STUDY.2B.2DY" label="NIH U34">
                                     <hasNote>Planning Cooperative Agreement: This cooperative agreement would provide support, substantial Federal programmatic involvement, and technical assistance for the initial development of a clinical trial or research project. Also, it would include the establishment of the research team; the development of tools for data management and oversight of the research; the development of a trial design or experimental research designs and other essential elements of the study or project, such as the protocol, recruitment strategies, and procedure manuals; and to collect feasibility data.</hasNote>
                                 </node>
-                                <node id="" label="NIH U3R">
+                                <node id="STUDY.2B.2DZ" label="NIH U3R">
                                     <hasNote>NIH Small Research Grant Program (Cooperative Agreement): This grant mechanism will support small research projects that can be carried out in a short period of time with limited resources and will be used as the companion cooperative agreement activity code to the R03.</hasNote>
                                 </node>
-                                <node id="" label="NIH UA5">
+                                <node id="STUDY.2B.2EA" label="NIH UA5">
                                     <hasNote>Academic Research Enhancement Award (AREA) Cooperative Agreements: Supports small-scale research projects at educational institutions that provide baccalaureate or advanced degrees for a significant number of the Nation's research scientists but that have not been major recipients of NIH support. The goals of the program are to (1) support meritorious research, (2) expose students to research, and (3) strengthen the research environment of the institution.  Awards provide limited Direct Costs, plus applicable F and A costs, for periods not to exceed 36 months. This activity code uses multi-year funding authority; however, OER approval is NOT needed prior to an IC using this activity code. This is the Cooperative Agreement companion to the R15 Activity Code.</hasNote>
                                 </node>
-                                <node id="" label="NIH UC2">
+                                <node id="STUDY.2B.2EB" label="NIH UC2">
                                     <hasNote>High Impact Research and Research Infrastructure Cooperative Agreement Programs: To support high impact ideas through cooperative agreements that that may lay the foundation for new fields of investigation; accelerate breakthroughs; stimulate early and applied research on cutting-edge technologies; foster new approaches to improve the interactions among multi- and interdisciplinary research teams; or, advance the research enterprise in a way that could stimulate future growth and investments and advance public health and health care delivery.  This activity code could support either a specific research question or propose the creation of a unique infrastructure/resource designed to accelerate scientific progress in the future. This is the cooperative agreement companion to the RC2.</hasNote>
                                 </node>
-                                <node id="" label="NIH UE5">
+                                <node id="STUDY.2B.2EC" label="NIH UE5">
                                     <hasNote>Education Projects - Cooperative Agreements: For support to develop and/or implement a program as it relates to a category in one or more of the areas of education, information, training, technical assistance, coordination, or evaluation.</hasNote>
                                 </node>
-                                <node id="" label="NIH UF1">
+                                <node id="STUDY.2B.2ED" label="NIH UF1">
                                     <hasNote>Multi-Year Funded Research Project Cooperative Agreement: To support a discrete, specific, circumscribed project to be performed by the named investigator(s) in an area representing specific interest and competencies based on the mission of the agency, using standard peer review criteria.  This is the multi-year funded equivalent of the U01 but can be used also for multi-year funding of other research project cooperative agreements such as UM1 as appropriate.</hasNote>
                                 </node>
-                                <node id="" label="NIH UG3">
+                                <node id="STUDY.2B.2EE" label="NIH UG3">
                                     <hasNote>Phase 1 Exploratory/Developmental Cooperative Agreement: As part of a bi-phasic approach to funding exploratory and/or developmental research, the UG3 provides support for the first phase of the award. This activity code is used in lieu of the UH2 activity code when larger budgets and/or project periods are required to establish feasibility for the project.</hasNote>
                                 </node>
-                                <node id="" label="NIH UH2">
+                                <node id="STUDY.2B.2EF" label="NIH UH2">
                                     <hasNote>Exploratory/Developmental Cooperative Agreement Phase I: To support the development of new research activities in categorical program areas. (Support generally is restricted in level of support and in time.)</hasNote>
                                 </node>
-                                <node id="" label="NIH UH3">
+                                <node id="STUDY.2B.2EG" label="NIH UH3">
                                     <hasNote>Exploratory/Developmental Cooperative Agreement Phase II: The UH3 award is to provide a second phase for the support for innovative exploratory and development research activities initiated under the UH2 mechanism. Although only UH2 awardees are generally eligible to apply for UH3 support, specific program initiatives may establish eligibility criteria under which applications could be accepted from applicants demonstrating progress equivalent to that expected under UH2.</hasNote>
                                 </node>
-                                <node id="" label="NIH UM1">
+                                <node id="STUDY.2B.2EH" label="NIH UM1">
                                     <hasNote>Research Project with Complex Structure Cooperative Agreement: To support cooperative agreements involving large-scale research activities with complicated structures that cannot be appropriately categorized into an available single component activity code, e.g. clinical networks, research programs or consortium.  The components represent a variety of supporting functions and are not independent of each component.  Substantial federal programmatic staff involvement is intended to assist investigators during performance of the research activities, as defined in the terms and conditions of the award.  The performance period may extend up to seven years but only through the established deviation request process.  ICs desiring to use this activity code for programs greater than 5 years must receive OPERA prior approval through the deviation request process.</hasNote>
                                 </node>
-                                <node id="" label="NIH UM2">
+                                <node id="STUDY.2B.2EI" label="NIH UM2">
                                     <hasNote>Program Project or Center with Complex Structure Cooperative Agreement: To support cooperative agreements involving program projects or centers with complicated structures that cannot be appropriately categorized into an available multicomponent activity code, e.g. clinical networks, research programs or consortiums.  At least one component must be UM1-like, supporting a variety of functions that are dependent on each other and cannot be separated into distinct components.  Substantial federal programmatic staff involvement is intended to assist investigators during performance of the research activities, as defined in the terms and conditions of the award.  The performance period may extend up to seven years but only through the established deviation request process.</hasNote>
                                 </node>
-                                <node id="" label="NIH UP5">
+                                <node id="STUDY.2B.2EJ" label="NIH UP5">
                                     <hasNote>Early Independence Award Cooperative Agreement: To support the independent research project of a recent doctoral degree recipient. This research grant program will encourage exceptionally creative scientists to bypass the typical post-doc research training period in order to move rapidly to research independence.  It will encourage institutions to develop independent career tracks for recent graduates in order to demonstrate the benefits of early transition to independence both in terms of career productivity for the candidate and research capability for the institution.</hasNote>
                                 </node>
                             </isComposedBy>
@@ -553,66 +553,66 @@
                 </node>
             </isComposedBy>
         </node>  
-        <node id="RC.03" label="Data Provenance">
+        <node id="STUDY.3" label="Data Provenance">
             <isComposedBy>
-                <node id="RC.03.01" label="CHOP Data Source">
+                <node id="STUDY.3A" label="CHOP Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the Children's Hospital of Philadelphia electronic health records.</hasNote>
                 </node>
-                <node id="RC.03.02" label="CHCO Data Source">
+                <node id="STUDY.3B" label="CHCO Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the Children's Hospital Colorado electronic health records.</hasNote>
                 </node>
-                <node id="RC.03.03" label="Lurie Data Source">
+                <node id="STUDY.3C" label="Lurie Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the Anne and Robert H. Lurie Children's Hospital of Chicago electronic health records.</hasNote>
                 </node>
-                <node id="RC.03.04" label="CCHMC Data Source">
+                <node id="STUDY.3D" label="CCHMC Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the Cincinnati Children's Hospital Medical Center electronic health records.</hasNote>
                 </node>
-                <node id="RC.03.05" label="Stanford Data Source">
+                <node id="STUDY.3E" label="Stanford Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the Stanford Children's Health electronic health records.</hasNote>
                 </node>
-                <node id="RC.03.06" label="Nemours Data Source">
+                <node id="STUDY.3F" label="Nemours Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the Nemours Children's Health electronic health records.</hasNote>
                 </node>
-                <node id="RC.03.07" label="National Data Source">
+                <node id="STUDY.3G" label="National Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the Children's National Hospital electronic health records.</hasNote>
                 </node>
-                <node id="RC.03.08" label="Riley Data Source">
+                <node id="STUDY.3H" label="Riley Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the Indiana University Riley Children's Health electronic health records.</hasNote>
                 </node>
-                <node id="RC.03.09" label="Seattle Data Source">
+                <node id="STUDY.3I" label="Seattle Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the Seattle Children's Hospital electronic health records.</hasNote>
                 </node>
-                <node id="RC.03.10" label="Texas Data Source">
+                <node id="STUDY.3J" label="Texas Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the Texas Children's Hospital electronic health records.</hasNote>
                 </node>
-                <node id="RC.03.11" label="PEDSnet Data Source">
+                <node id="STUDY.3K" label="PEDSnet Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the PEDSnet learning health system.</hasNote>
                 </node>
-                <node id="RC.03.12" label="STAR Data Source">
+                <node id="STUDY.3L" label="STAR Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the STAR learning health system.</hasNote>
                 </node>
-                <node id="RC.03.13" label="REACHnet Data Source">
+                <node id="STUDY.3M" label="REACHnet Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the REACHnet learning health system.</hasNote>
                 </node>
-                <node id="RC.03.14" label="GPC Data Source">
+                <node id="STUDY.3N" label="GPC Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the GPC learning health system.</hasNote>
                 </node>
-                <node id="RC.03.15" label="INSIGHT Data Source">
+                <node id="STUDY.3O" label="INSIGHT Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the INSIGHT learning health system.</hasNote>
                 </node>
-                <node id="RC.03.16" label="PaTH Data Source">
+                <node id="STUDY.3P" label="PaTH Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the PaTH learning health system.</hasNote>
                 </node>
-                <node id="RC.03.17" label="OneFlorida+ Data Source">
+                <node id="STUDY.3Q" label="OneFlorida+ Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the OneFlorida + learning health system.</hasNote>
                 </node>
-                <node id="RC.03.18" label="ADVANCE Data Source">
+                <node id="STUDY.3R" label="ADVANCE Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the ADVANCE learning health system.</hasNote>
                 </node>
-                <node id="RC.03.19" label="Non-network Data Source">
+                <node id="STUDY.3S" label="Non-network Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from a non-network source.</hasNote>
                 </node>
-                <node id="RC.03.20" label="Anonymized Data Source">
+                <node id="STUDY.3T" label="Anonymized Data Source">
                     <hasNote>The source of data analyzed in the course was anonymized for privacy.</hasNote>
                 </node>
             </isComposedBy>

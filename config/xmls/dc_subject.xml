@@ -29,7 +29,7 @@
                 <node id="DQ.203" label="Data Source Comparison">
                     <isComposedBy>
                         <node id="DQ.203.1" label="Multi-Site Analysis"/>
-                                <node id="DQ.203.2" label="Single Site Analysis"/>
+                        <node id="DQ.203.2" label="Single Site Analysis"/>
                     </isComposedBy>
                 </node>
                 <node id="DQ.204" label="Data Anomaly Method">

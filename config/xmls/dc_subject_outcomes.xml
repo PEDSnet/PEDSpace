@@ -14,11 +14,10 @@
         <node id="OUTCOME.3" label="Data Source Adjusted">
             <isComposedBy>
                 <node id="OUTCOME.3a" label="Site Intervention"></node>
-                <node id="OUTCOME.3b" label="DCC Intervention"></node>
+                <node id="OUTCOME.3b" label="Coordinating Center Intervention"></node>
             </isComposedBy>
         </node>
-        <node id="OUTCOME.4" label="Data Cycle Pass"/>
-        <node id="OUTCOME.5" label="No Modifications -- Final Data"/>
+        <node id="OUTCOME.4" label="No Interventions"/>
 	</isComposedBy>
 	<hasNote>Taxonomy developed by Annabel Pinkney</hasNote>
 </node>
