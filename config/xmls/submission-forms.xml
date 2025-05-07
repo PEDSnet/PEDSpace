@@ -595,7 +595,7 @@
                     <dc-element>subject</dc-element>
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Clinical Subjects</label>
+                    <label>Clinical Subject Headings</label>
                     <input-type>tag</input-type> 
                     <hint>Input terms that characterize the clinical domain being investigated. Reference https://meshb.nlm.nih.gov/ for terms.</hint>
                     <required>A tag is required.</required>
@@ -3255,11 +3255,11 @@
         <value-pairs value-pairs-name="EvalType" dc-term="subject">
             <pair>
                 <displayed-value>Clinician Review</displayed-value>
-                <stored-value>Clinician Review</stored-value>
+                <stored-value>Clinician Reviewed</stored-value>
             </pair>
             <pair>
                 <displayed-value>Non-Clinician Review</displayed-value>
-                <stored-value>Non-Clinician Review</stored-value>
+                <stored-value>Reviewed, Non-Clinician</stored-value>
             </pair>
             <pair>
                 <displayed-value>No Formal Review</displayed-value>

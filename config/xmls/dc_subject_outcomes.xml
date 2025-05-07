@@ -9,6 +9,7 @@
                 <node id="OUTCOME.2b" label="Attrition Criteria Modified"></node>
                 <node id="OUTCOME.2c" label="Investigation Dates Modified"></node>
                 <node id="OUTCOME.2d" label="Concept Sets Refined"></node>
+                <node id="OUTCOME.2e" label="Study Methods Revised"></node>
             </isComposedBy>
         </node>
         <node id="OUTCOME.3" label="Data Source Adjusted">
