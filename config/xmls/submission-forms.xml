@@ -1045,7 +1045,6 @@
                 <field>
                     <dc-schema>project</dc-schema>
                     <dc-element>endDate</dc-element>
-                    <dc-qualifier>created</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Study End Date</label>
                     <style>col-sm-8</style>
