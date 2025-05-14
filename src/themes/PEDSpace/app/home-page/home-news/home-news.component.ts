@@ -26,7 +26,7 @@ export class HomeNewsComponent extends BaseComponent implements OnInit, OnDestro
   ipAddressMatch = false;
   showMessageAtAll: boolean = false;
 
-  private targetIpAddress = 'pedsnetapps.chop.edu';
+  private targetIpAddress = 'pedsnet.org';
   
   // Image array 
   images = [

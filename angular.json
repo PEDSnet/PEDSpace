@@ -119,7 +119,8 @@
               "pedsdspace01.research.chop.edu",
               "pedsdspaceprod.research.chop.edu",
               "pedsnetapps.chop.edu",
-              "login.windows.net"
+              "login.windows.net",
+              "pedsnet.org"
             ],
             "buildTarget": "dspace-angular:build",
             "port": 4000
