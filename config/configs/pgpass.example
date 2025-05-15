@@ -7,6 +7,6 @@
 # More details:
 # https://www.postgresql.org/docs/current/libpq-pgpass.html#LIBPQ-PGPASS
 # https://stackoverflow.com/a/50563298 
-# This must be in root's home directoy i.e. /root
+# This must be in root's home directory if using for root i.e. /root
 # Set up the cron job via sudo crontab -e
 # make sure the respective users are allowed in cron.allow
