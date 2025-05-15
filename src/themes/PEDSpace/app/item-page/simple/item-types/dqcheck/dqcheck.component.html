@@ -44,7 +44,7 @@
       <!-- Download link(s) -->
       <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
 
-      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject']" [separator]="'<br>'"
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.flat']" [separator]="'<br>'"
         [label]="'item.preview.dc.subject'" [entityType]="object?.metadata['dspace.entity.type']?.[0]?.value">
       </ds-generic-item-page-field>
 
