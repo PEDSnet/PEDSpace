@@ -68,6 +68,7 @@ LOG_FILE="${LOG_DIR}/backup_${TIMESTAMP}.log"
 PG_USER="dspace"
 PG_HOST="localhost"
 PG_DB="dspace"
+# DSpace requires PSQL 15 – so 15 is hardcoded here
 PG_DUMP_PATH="/usr/pgsql-15/bin/pg_dump"
 
 # Assetstore directory source
