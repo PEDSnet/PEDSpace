@@ -29,8 +29,8 @@ import { TypeBadgeComponent as BaseComponent } from 'src/app/shared/object-colle
 })
 export class TypeBadgeComponent extends BaseComponent implements OnInit {
 
-  @Input() interactive = true; 
-  
+  @Input() interactive = true;
+
   browseDefinition$: Observable<BrowseDefinition>;
 
   constructor(private browseDefinitionDataService: BrowseDefinitionDataService) {
@@ -68,11 +68,11 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
     let baseClass = '';
     let specificClass = '';
     const interactiveClass = this.interactive ? '' : 'non-interactive';
-  
+
     switch (this.typeMessage) {
       case 'community.listelement.badge':
         this.interactive = false;
-        return `badge-community ${interactiveClass}`; 
+        return `badge-community ${interactiveClass}`;
       case 'collection.listelement.badge':
         if (!objectType) {
           this.interactive = false;
@@ -109,7 +109,7 @@ export class TypeBadgeComponent extends BaseComponent implements OnInit {
         specificClass = 'badge-dqresult';
         break;
     }
-  
+
     return `${baseClass} ${specificClass} ${interactiveClass}`.trim();
   }
 

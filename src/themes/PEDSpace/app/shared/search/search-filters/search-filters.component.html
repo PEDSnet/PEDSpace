@@ -1,0 +1,44 @@
+<ng-container *ngIf="filters | async as rd">
+
+  <!-- Skeleton while loading -->
+  <ng-container *ngIf="!rd.hasSucceeded; else showFilters">
+    <ngx-skeleton-loader [count]="defaultFilterCount"></ngx-skeleton-loader>
+  </ng-container>
+
+  <!-- When data’s here… -->
+  <ng-template #showFilters>
+    <!-- Header -->
+    <h3 *ngIf="inPlaceSearch; else h2">
+      {{ (filterLabel + '.filters.head') | translate }}
+    </h3>
+    <ng-template #h2>
+      <h2>{{ (filterLabel + '.filters.head') | translate }}</h2>
+    </ng-template>
+
+    <!-- Your loop, only rendering allowed facets -->
+    <ng-container *ngFor="let filter of rd.payload; trackBy: trackUpdate">
+      <ds-search-filter
+        *ngIf="shouldShowFilter(filter)"
+        [scope]="currentScope"
+        [filter]="filter"
+        [inPlaceSearch]="inPlaceSearch"
+        [refreshFilters]="refreshFilters"
+        (isVisibilityComputed)="countFiltersWithComputedVisibility($event)"
+      ></ds-search-filter>
+    </ng-container>
+
+    <!-- Reset button -->
+    <button
+      *ngIf="inPlaceSearch"
+      class="btn btn-primary"
+      [routerLink]="[searchLink]"
+      [queryParams]="clearParams | async"
+      queryParamsHandling="merge"
+      (click)="minimizeFilters()"
+    >
+      <i class="fas fa-undo"></i>
+      {{ 'search.filters.reset' | translate }}
+    </button>
+  </ng-template>
+
+</ng-container>
