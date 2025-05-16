@@ -5543,6 +5543,14 @@
 
     "search.filters.filter.itemClinicalSubject.label": "Clinical Subject",
 
+    "search.filters.filter.dqCheckDomain.head": "Data Quality Check Domain",
+
+    "search.filters.filter.dqCheckDomain.label": "Data Quality Check Domain",
+
+    "search.filters.filter.dqCheckOutcomes.head": "Data Quality Check Outcomes",
+    
+    "search.filters.filter.dqCheckOutcomes.Label": "Data Quality Check Outcomes",
+
     "search.filters.filter.itemClinicalSubject.placeholder": "Terms...",
 
     "search.filters.filter.itemFunder.head": "Funder",
