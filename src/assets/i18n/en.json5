@@ -5547,9 +5547,9 @@
 
     "search.filters.filter.dqCheckDomain.label": "Data Quality Check Domain",
 
-    "search.filters.filter.dqCheckOutcomes.head": "Data Quality Check Outcomes",
+    "search.filters.filter.dqCheckOutcomes.head": "Data Quality Check Outcome",
     
-    "search.filters.filter.dqCheckOutcomes.Label": "Data Quality Check Outcomes",
+    "search.filters.filter.dqCheckOutcomes.Label": "Data Quality Check Outcome",
 
     "search.filters.filter.itemClinicalSubject.placeholder": "Terms...",
 
