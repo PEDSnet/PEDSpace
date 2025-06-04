@@ -71,41 +71,6 @@ $quinacridone-magenta: #8A3D63;
   }
 }
 
-// Base response and domain field styles
-.response-field,
-.domain-field {
-  .item-page-field-label {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 8px;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 40px;
-      height: 3px;
-      background: linear-gradient(90deg, $redwood, lighten($redwood, 20%));
-      border-radius: 2px;
-    }
-  }
-}
-
-// Special styles for Response field
-.response-field {
-  .item-page-field-label {
-    font-size: 1.1rem;
-
-    &::after {
-      width: 50px;
-      background: linear-gradient(90deg, $redwood, adjust-hue($redwood, 30deg));
-    }
-  }
-}
 
 // Button styles
 .ds-metadata-value {
@@ -166,6 +131,19 @@ $quinacridone-magenta: #8A3D63;
       &:focus {
         color: $snow;
         background-color: $quinacridone-magenta;
+      }
+    }
+
+    // DQ observation button - minimal subtle design
+    &.btn-dq-observation {
+      color: #607E64;
+      border: 1px solid #607E64;
+      background-color: rgba(#607E64, 0.05);
+      
+      &:hover,
+      &:focus {
+      color: $snow;
+      background-color: #607E64;
       }
     }
 

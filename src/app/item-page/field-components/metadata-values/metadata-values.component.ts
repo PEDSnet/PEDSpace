@@ -1,20 +1,21 @@
 import {
   AsyncPipe,
+  NgClass,
   NgFor,
   NgIf,
   NgTemplateOutlet,
-  NgClass
 } from '@angular/common';
 import {
-  TemplateRef,
-  ViewChild,
   Component,
+  HostBinding,
   Inject,
   Input,
   OnChanges,
   SimpleChanges,
-  HostBinding
+  TemplateRef,
+  ViewChild,
 } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -30,7 +31,6 @@ import { hasValue } from '../../../shared/empty.util';
 import { MetadataFieldWrapperComponent } from '../../../shared/metadata-field-wrapper/metadata-field-wrapper.component';
 import { MarkdownDirective } from '../../../shared/utils/markdown.directive';
 import { ImageField } from '../../simple/field-components/specific-field/image-field';
-import { DomSanitizer } from '@angular/platform-browser';
 
 /**
  * This component renders the configured 'values' into the ds-metadata-field-wrapper component.
@@ -44,7 +44,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   imports: [MetadataFieldWrapperComponent, NgFor, NgTemplateOutlet, NgIf, RouterLink, AsyncPipe, TranslateModule, MarkdownDirective, NgClass],
 })
 export class MetadataValuesComponent implements OnChanges {
-  
+
   @ViewChild('isDQCheckRequirementTemplate') isDQCheckRequirementTemplate: TemplateRef<any>;
 
   // Add host binding to apply publisher class when isPublisher is true
@@ -52,10 +52,10 @@ export class MetadataValuesComponent implements OnChanges {
   get publisherContent() {
     return this.isPublisher;
   }
-  
+
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
   ) {
   }
 
@@ -136,7 +136,7 @@ export class MetadataValuesComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.renderMarkdown = !!this.appConfig.markdown.enabled && this.enableMarkdown;
-  
+
     // Process the sentenceTemplate
     if (this.sentenceTemplate && this.sentenceTemplate !== '[value]') {
       // Split the sentence template and trim any extra spaces before/after parts
@@ -145,7 +145,7 @@ export class MetadataValuesComponent implements OnChanges {
       this.sentenceTemplateParts = null;
     }
   }
-  
+
   /**
    * Does this metadata value have a configured link to a browse definition?
    */
@@ -212,13 +212,16 @@ export class MetadataValuesComponent implements OnChanges {
   getButtonClass(value: string): string {
     // Check if the field is in a specific metadata field
     if (this.fieldName) {
+      // console.log('Field name:', this.fieldName);
       if (this.fieldName === 'local.dqcheck.outcomes') {
         return 'btn-response';
       } else if (this.fieldName === 'local.dqcheck.domain') {
         return 'btn-domain';
-      } 
+      } else if (this.fieldName === 'local.dqcheck.resultobs') {
+        return 'btn-dq-observation';
+      }
     }
-  
+
     if (value.includes('Data Quality Category')) {
       return 'btn-dq-category';
     } else if (value.includes('Dataset Evaluation Strategy')) {
@@ -236,7 +239,7 @@ export class MetadataValuesComponent implements OnChanges {
    */
   shouldRenderAsBadge(mdValue: MetadataValue): boolean {
     return this.renderAsBadge;
-  }  
+  }
 
   /**
    * This method performs a validation and determines the target of the url.
