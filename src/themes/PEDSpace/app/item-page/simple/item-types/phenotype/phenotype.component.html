@@ -76,7 +76,9 @@
       <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="'<br>'"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
-
+      <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfPhenotype'"
+        [label]="'relationships.isDocumentationOf' | translate">
+      </ds-related-items>
 
       <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfPhenotype'"
         [label]="'relationships.isConceptSetOf' | translate">
@@ -86,13 +88,14 @@
         [label]="'relationships.isPersonOf' | translate">
       </ds-related-items>
 
+      <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfPhenotype'"
+        [label]="'relationships.isPhenotypeOf' | translate">
+      </ds-related-items>
+
       <ds-related-items [parentItem]="object" [relationType]="'isStudyOfPhenotype'"
         [label]="'relationships.isStudyOf' | translate">
       </ds-related-items>
 
-      <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfPhenotype'"
-        [label]="'relationships.isPhenotypeOf' | translate">
-      </ds-related-items>
 
       <ds-item-page-external-publication-field [item]="object"
         [label]="'item.preview.dc.relation.isreferencedby'">

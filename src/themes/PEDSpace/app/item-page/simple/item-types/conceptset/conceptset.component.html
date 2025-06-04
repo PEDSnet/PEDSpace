@@ -76,6 +76,9 @@
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
 
+      <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfConceptSet'"
+        [label]="'relationships.isDocumentationOf' | translate">
+      </ds-related-items>
 
       <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfConceptSet'"
         [label]="'relationships.isPhenotypeOf' | translate">
