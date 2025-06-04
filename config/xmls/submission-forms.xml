@@ -434,13 +434,13 @@
                     <repeatable>false</repeatable>
                     <label>Record Title</label>
                     <input-type>onebox</input-type>
-                    <hint> Enter a title for the results using the following formula "[Check Name] Study Results: [Study Shorthand]"
+                    <hint> Enter a title for the results using the following formula "[Check Name] Study/Network Results: [Study Shorthand]"
                     Examples: 
                     "Patient Facts Study Results: PRESERVE"
                     "Source and Concept Vocabularies Study Results: CDC Epilepsy"
                     "Cohort Attrition Study Results: JDIQ Manuscript"
                     </hint>
-                    <required>You must enter a title for this item.</required>
+                    <required>This field is required.</required>
                 </field>
             </row>
             <row>
@@ -684,7 +684,7 @@
                     <search-configuration>orgunit</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Institutional Data Sources</label>
-                    <hint>If PEDSnet data sources were used, select the institutions</hint>
+                    <hint>If data from non-anonymized PEDSnet sites were analyzed, select the institutions</hint>
                     <required></required>
                 </relation-field>
             </row>
