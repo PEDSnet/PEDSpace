@@ -3,21 +3,15 @@
 <node id="OUTCOME" label="DQ Analysis Outcomes">
 	<isComposedBy>
         <node id="OUTCOME.1" label="Study Infeasible"/>
-        <node id="OUTCOME.2" label="Study Design Revised">
-            <isComposedBy>
-                <node id="OUTCOME.2a" label="Study Variable Modified"></node>
-                <node id="OUTCOME.2b" label="Attrition Criteria Modified"></node>
-                <node id="OUTCOME.2c" label="Investigation Dates Modified"></node>
-                <node id="OUTCOME.2d" label="Concept Sets Refined"></node>
-                <node id="OUTCOME.2e" label="Study Methods Revised"></node>
-            </isComposedBy>
-        </node>
-        <node id="OUTCOME.3" label="Data Source Adjusted">
-            <isComposedBy>
-                <node id="OUTCOME.3a" label="Site Intervention"></node>
-                <node id="OUTCOME.3b" label="Coordinating Center Intervention"></node>
-            </isComposedBy>
-        </node>
+        <node id="OUTCOME.2" label="Study Design Revised"/>
+        <node id="OUTCOME.2a" label="Study Variable Modified"/>
+        <node id="OUTCOME.2b" label="Attrition Criteria Modified"/>
+        <node id="OUTCOME.2c" label="Investigation Dates Modified"/>
+        <node id="OUTCOME.2d" label="Concept Sets Refined"/>
+        <node id="OUTCOME.2e" label="Study Methods Revised"/>
+        <node id="OUTCOME.3" label="Data Source Adjusted"/>
+        <node id="OUTCOME.3a" label="Site Intervention"/>
+        <node id="OUTCOME.3b" label="Coordinating Center Intervention"/>
         <node id="OUTCOME.4" label="No Interventions"/>
 	</isComposedBy>
 	<hasNote>Taxonomy developed by Annabel Pinkney</hasNote>
