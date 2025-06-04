@@ -1189,6 +1189,10 @@
 
     "browse.empty": "No items to show.",
 
+    "browse.metadata.observation.breadcrumbs": "Browse by Data Result Observation...",
+    
+    "browse.metadata.observation": "Browse by Data Result Observation",
+    
     "browse.metadata.author.breadcrumbs": "Browse by Author",
     
     "browse.metadata.response.breadcrumbs": "Browse by Data Quality Result Outcome",
@@ -3833,6 +3837,8 @@
 
     "menu.section.access_control_authorizations": "Authorizations",
     
+    "menu.section.browse_global_by_observation": "By Data Result Observation",
+    
     "menu.section.browse_global_by_response": "By Data Result Outcome",
     
     "menu.section.browse_global_by_domain": "By Data Result Domain",
@@ -5582,6 +5588,12 @@
     "search.filters.filter.itemVocabulary.head": "Vocabulary",
 
     "search.filters.filter.itemVocabulary.label": "Search Vocabulary",
+
+    "search.filters.filter.dqCheckResultObs.head": "DQ Result Observation",
+    
+    "search.filters.filter.dqCheckResultObs.label": "DQ Result Observation",
+
+    "search.filters.filter.dqCheckResultObs.placeholder": "DQ Result Observation...",
 
     "search.filters.filter.itemVocabulary.placeholder": "Vocabulary...",
 
