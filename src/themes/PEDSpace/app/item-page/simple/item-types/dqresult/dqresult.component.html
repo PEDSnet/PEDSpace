@@ -35,6 +35,9 @@
       <ds-item-page-date-field [item]="object" [fields]="['dc.date']" [label]="'item.preview.dc.date'"
         separator="; "></ds-item-page-date-field>
 
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.dqcheck.resultobs']" [separator]="'<br>'"
+        [label]="'Findings'" class="tag-field"></ds-generic-item-page-field>
+
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.flat']" [separator]="'<br>'"
         [label]="'item.preview.dc.subject'" class="tag-field"></ds-generic-item-page-field>
 
@@ -49,15 +52,6 @@
     <div class="col-12 col-md-8">
 
       <ds-item-page-abstract-field [item]="object" [label]="'item.page.abstract'"></ds-item-page-abstract-field>
-
-      <!-- <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
-        [itemType]="'Person'" [metadataFields]="['dc.contributor.author', 'dc.creator']"
-        [label]="'item.preview.dc.contributor.author' | translate">
-      </ds-metadata-representation-list> -->
-
-      <!-- <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.advisor']"
-        [label]="'item.preview.dc.contributor.advisor'">
-      </ds-generic-item-page-field> -->
 
       <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
         [label]="'item.preview.dc.contributor.other'">

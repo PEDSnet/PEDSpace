@@ -1,7 +1,10 @@
-import { AsyncPipe, NgClass } from '@angular/common';
+import {
+  AsyncPipe,
+  NgClass,
+} from '@angular/common';
 import {
   Component,
-  Input
+  Input,
 } from '@angular/core';
 
 import { Item } from '../../../../../core/shared/item.model';
@@ -80,7 +83,7 @@ export class GenericItemPageFieldComponent extends ItemPageFieldComponent {
   get isResponseField(): boolean {
     return this.fields && this.fields.includes('local.dqcheck.outcomes');
   }
-  
+
   get isDomainField(): boolean {
     return this.fields && this.fields.includes('local.dqcheck.domain');
   }
@@ -117,7 +120,7 @@ export class GenericItemPageFieldComponent extends ItemPageFieldComponent {
           value: valuesMap[field1][0].value + this.separator + valuesMap[field2][0].value,
           language: valuesMap[field1][0].language,
           authority: null,
-          place: -1
+          place: -1,
         });
       } else if (valuesMap[field1] && valuesMap[field1].length > 0) {
         combinedValues.push(valuesMap[field1][0]);
