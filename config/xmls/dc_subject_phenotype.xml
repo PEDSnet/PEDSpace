@@ -8,7 +8,7 @@
                 <node id="CP1c" label="Adolescent Patient Population"/>
                 <node id="CP1d" label="Adult Patient Population"/>
                 <node id="CP1e" label="Elderly Patient Population"/>
-                <node id="CP1f" label="All Age Patient Population"/>
+                <node id="CP1f" label="Any Age Patient Population"/>
             </isComposedBy>
 		</node>
 	    <node id="CP2" label="Sex and Gender Groups">
@@ -18,7 +18,7 @@
                 <node id="CP2c" label="Intersex Patient Population (Assigned at Birth)"/>
                 <node id="CP2d" label="Transgender Patient Population"/>
                 <node id="CP2e" label="Non-Binary Patient Population"/>
-                <node id="CP2f" label="All Gender Identity Patient Population"/>
+                <node id="CP2f" label="Any Gender Identity Patient Population"/>
             </isComposedBy>
 		</node>
 		<node id="CP4" label="Race and Ethnicity Groups">
@@ -30,7 +30,7 @@
                 <node id="CP4e" label="Middle Eastern or North African Patient Population"/>
                 <node id="CP4f" label="Native Hawaiian or Other Pacific Islander Patient Population"/>
                 <node id="CP4g" label="White Patient Population"/>
-                <node id="CP4h" label="All Race and Ethnicity Patient Population"/>
+                <node id="CP4h" label="Any Race/Ethnicity Patient Population"/>
             </isComposedBy>
 		</node>
 	</isComposedBy>
