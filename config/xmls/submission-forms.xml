@@ -575,7 +575,19 @@
                     <required>At least one term must be selected.</required>
                     <vocabulary>dc_subject_results</vocabulary>
                 </field>
-            </row>           
+            </row>  
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <repeatable>false</repeatable>
+                    <label>Results Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Use bullet points to describe your findings from the data quality analysis in full. Use this space to expand upon trends and observations in detail. Please provide some context for how these findings affected your use of the data in the study (e.g., did you modify a cohort attrition step, remove a site's data from analysis, etc.). 
+                    This field is not required but highly recommended.</hint>
+                    <required></required>
+                </field>
+            </row>         
             <row>
                 <field>
                     <dc-schema>local</dc-schema>
@@ -626,19 +638,7 @@
                     <hint>Select the domains analyzed in the network.</hint>
                     <required>A selection is required.</required>
                 </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>description</dc-element>
-                    <repeatable>false</repeatable>
-                    <label>Results Description</label>
-                    <input-type>textarea</input-type>
-                    <hint>Use bullet points to describe your findings from the data quality analysis in full. Use this space to expand upon trends and observations in detail. Please provide some context for how these findings affected your use of the data in the study (e.g., did you modify a cohort attrition step, remove a site's data from analysis, etc.). 
-                    This field is not required but highly recommended.</hint>
-                    <required></required>
-                </field>
-            </row>
+            </row>    
         </form>
 
         <form name="DQResultForm3">
