@@ -5103,7 +5103,7 @@
 
     "relationships.isContributorOf": "Contributors",
 
-    "relationships.isDocumentationOf": "Related Resource",
+    "relationships.isDocumentationOf": "Data Source",
 
     "relationships.isDQCheckOf": "Related Data Quality Check",
     
