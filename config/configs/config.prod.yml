@@ -35,7 +35,7 @@ ssr:
   # Path prefixes to enable SSR for. By default these are limited to paths of primary DSpace objects.
   # NOTE: The "/handle/" path ensures Handle redirects work via SSR.  The "/reload/" path ensures
   # hard refreshes (e.g. after login) trigger SSR while fully reloading the page.
-  paths: [ '/metadata', '/metadata/','/browse/', '/browse', '/home', '/items/', '/entities/', '/collections/', '/communities/', '/bitstream/', '/bitstreams/', '/handle/', '/reload/', '/submit/', '/login/', '/submit', '/login', '/forgot', '/forgot/']
+  paths: [ '/metadata', '/metadata/','/browse/', '/browse', '/home', '/items/', '/entities/', '/collections/', '/communities/', '/bitstream/', '/bitstreams/', '/handle/', '/reload/', '/submit/', '/login/', '/submit', '/login', '/forgot', '/forgot/', '/workspaceitems/']
   # Whether to enable rendering of Search component on SSR.
   # If set to true the component will be included in the HTML returned from the server side rendering.
   # If set to false the component will not be included in the HTML returned from the server side rendering.
