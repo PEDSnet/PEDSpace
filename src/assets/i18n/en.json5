@@ -6718,6 +6718,8 @@
     "submission.sections.submit.progressbar.describe.stepone": "Describe",
 
     "submission.sections.submit.progressbar.describe.steptwo": "Describe",
+    
+    "submission.sections.submit.progressbar.describe.stepthree": "Describe",
 
     "submission.sections.submit.progressbar.duplicates": "Potential duplicates",
 
@@ -7150,6 +7152,8 @@
     "vocabulary-treeview.search.no-result": "There were no items to show",
 
     "vocabulary-treeview.tree.description.dc_subject_mesh": "Medical Subject Heading (MeSH) Classifications",
+    
+    "vocabulary-treeview.tree.description.dc_subject_results": "Data Quality Results Classifications",
 
     "vocabulary-treeview.tree.description.dc_subject_other": "Vocabularies",
 
