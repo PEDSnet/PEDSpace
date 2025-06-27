@@ -1561,7 +1561,6 @@
                 </relation-field>
             </row>    
         </form>
-
         <!-- Phenotype Form-->
         <form name="PhenotypeForm">
             <row>
@@ -1603,20 +1602,16 @@
                 </field>
             </row>
             <row>
-                <relation-field>
-                    <relationship-type>isPersonOfPhenotype</relationship-type>
-                    <search-configuration>person</search-configuration>
-                    <repeatable>true</repeatable>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>author</dc-qualifier>
+                    <repeatable>false</repeatable>
                     <label>Creator(s)</label>
-                    <hint>Enter the name(s) of the analyst(s) who developed this phenotype. 
-                            (Family name, Given name)</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>author</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
-                </relation-field>
+                    <input-type>name</input-type>
+                    <hint>Enter the name(s) of the analyst(s) who developed this phenotype.</hint>
+                    <required></required>
+                </field>
             </row>
             <row>
                 <relation-field>
@@ -1640,7 +1635,7 @@
                     <dc-element>description</dc-element>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Phenotype Description</label>
+                    <label>Brief Description</label>
                     <input-type>textarea</input-type>
                     <hint>Enter a few sentences describing the intention and characteristics of your phenotype.</hint>
                     <required>You must input at least one sentence.</required>
@@ -1689,13 +1684,37 @@
             </row>
             <row>
                 <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>validation</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Validation Type</label>
+                    <style>col-sm-4</style>
+                    <input-type value-pairs-name="PhenoValidation">list</input-type>
+                    <hint>Select the method of validation used for this phenotype.</hint>
+                    <required></required>
+                </field>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>validation</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Validation Type, Other</label>
+                    <style>col-sm-8</style>
+                    <input-type>onebox</input-type>
+                    <hint>If none of the above apply, input the validation method used.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier>other</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Algorithm Components</label>
-                    <input-type value-pairs-name="Vocabs">dropdown</input-type>
-                    <hint>Enter the medical ontologies used in the phenotype.</hint>
+                    <input-type value-pairs-name="Vocabs">list</input-type>
+                    <hint>Select ALL clinical vocabularies used in the phenotype.</hint>
                     <required>At least one ontology must be selected.</required>
                 </field>
             </row>
@@ -1707,7 +1726,7 @@
                     <repeatable>true</repeatable>
                     <label>Development Strategy and Evaluation</label>
                     <input-type value-pairs-name="PhenoChar">list</input-type>
-                    <hint>Select all terms that apply to characterize the Phenotype.</hint>
+                    <hint>Select ALL terms that apply to characterize the Phenotype.</hint>
                     <required>At selection is required.</required>
                 </field>
             </row>
@@ -1716,14 +1735,38 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Development Population</label>
-                    <input-type>onebox</input-type>
-                    <hint>Select all terms that apply to characterize the patient population targeted by the phenotype.</hint>
+                    <repeatable>false</repeatable>
+                    <label>Development Population: Age</label>
+                    <input-type value-pairs-name="DevPopAge">dropdown</input-type>
+                    <hint>Select the term that best characterizes the patient population targeted by the phenotype.</hint>
                     <required></required>
-                    <vocabulary>dc_subject_phenotype</vocabulary>
                 </field>
             </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Development Population: Sex</label>
+                    <input-type value-pairs-name="DevPopSex">dropdown</input-type>
+                    <hint>Select the term that best characterizes the patient population targeted by the phenotype.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>flase</repeatable>
+                    <label>Development Population: Race and Ethnicity</label>
+                    <input-type value-pairs-name="DevPopRace">dropdown</input-type>
+                    <hint>Select the term that best characterizes the patient population targeted by the phenotype.</hint>
+                    <required></required>
+                </field>
+            </row>
+
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -3603,8 +3646,108 @@
                 <stored-value>Comorbidity or Covariate</stored-value>
             </pair>
             <pair>
-                <displayed-value>Used for a Cohort Definition</displayed-value>
+                <displayed-value>Used for a Primary Cohort Definition</displayed-value>
                 <stored-value>Cohort Definition</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="PhenoValidation" dc-term="subject">
+            <pair>
+                <displayed-value>Validated with an external gold standard.</displayed-value>
+                <stored-value>External Standard</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Validated using chart review.</displayed-value>
+                <stored-value>Clinical Chart Review</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>This phenotype was not validated.</displayed-value>
+                <stored-value>No Validation</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="DevPopAge" dc-term="subject">
+            <pair>
+                <displayed-value>Infant Patient Population</displayed-value>
+                <stored-value>Infant Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Child Patient Population</displayed-value>
+                <stored-value>Child Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Adolescent Patient Population</displayed-value>
+                <stored-value>Adolescent Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Adult Patient Population</displayed-value>
+                <stored-value>Adult Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Elderly Patient Population</displayed-value>
+                <stored-value>Elderly Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Any Age Patient Population</displayed-value>
+                <stored-value>Any Age Patient Population</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="DevPopSex" dc-term="subject">
+            <pair>
+                <displayed-value>Male Patient Population (Assigned at Birth)</displayed-value>
+                <stored-value>Patient Population (Assigned at Birth)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Female Patient Population (Assigned at Birth)</displayed-value>
+                <stored-value>Female Patient Population (Assigned at Birth)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Intersex Patient Population (Assigned at Birth)</displayed-value>
+                <stored-value>Intersex Patient Population (Assigned at Birth)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Transgender Patient Population</displayed-value>
+                <stored-value>Transgender Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Non-Binary Patient Population</displayed-value>
+                <stored-value>Non-Binary Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Any Gender Patient Population</displayed-value>
+                <stored-value>Any Gender Patient Population</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="DevPopRace" dc-term="subject">
+            <pair>
+                <displayed-value>American Indian or Alaska Native Patient Population</displayed-value>
+                <stored-value>American Indian or Alaska Native Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Asian Patient Population</displayed-value>
+                <stored-value>Asian Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Black or African American Patient Population</displayed-value>
+                <stored-value>Black or African American Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Hispanic or Latino Patient Population</displayed-value>
+                <stored-value>Hispanic or Latino Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Middle Eastern or North African Patient Population</displayed-value>
+                <stored-value>Middle Eastern or North African Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Native Hawaiian or Other Pacific Islander Patient Population</displayed-value>
+                <stored-value>Native Hawaiian or Other Pacific Islander Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>White Patient Population</displayed-value>
+                <stored-value>White Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Any Race/Ethnicity Patient Population</displayed-value>
+                <stored-value>Any Race/Ethnicity Patient Population</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="EntityType" dc-term="type">
