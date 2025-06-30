@@ -6532,6 +6532,14 @@
     "submission.sections.describe.relationship-lookup.title.isPersonOfDocument": "Authors",
 
     "submission.sections.describe.relationship-lookup.title.isPersonOfStudy": "Authors",
+    
+    "submission.sections.describe.relationship-lookup.title.isStudyOfDQResult": "Studies",
+    
+    "submission.sections.describe.relationship-lookup.search-tab.tab-title.isStudyOfDQResult": "Studies",
+
+    "submission.sections.describe.relationship-lookup.title.isDQCheckOfDQResult": "Data Quality Checks",
+    
+    "submission.sections.describe.relationship-lookup.search-tab.tab-title.isDQCheckOfDQResult": "Data Quality Checks",
 
     "submission.sections.describe.relationship-lookup.title.isProjectOfPublication": "Projects",
 
