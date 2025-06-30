@@ -1595,8 +1595,7 @@
                     <repeatable>false</repeatable>
                     <label>Date Created</label>
                     <input-type>date</input-type>
-                    <hint>Input the date that the phenotype was created. 
-                            If the exact date is unknown, enter the nearest month.
+                    <hint>Input the date that the phenotype was created. If the exact date is unknown, enter to the nearest month.
                         </hint>
                     <required>You must enter at least a year.</required>
                 </field>
@@ -1637,9 +1636,53 @@
                     <repeatable>false</repeatable>
                     <label>Brief Description</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter a few sentences describing the intention and characteristics of your phenotype.</hint>
+                    <hint>Enter 1-3 sentences describing the intention and characteristics of your phenotype. A full description of the algorithmic logic used should be entered in the field below.</hint>
                     <required>You must input at least one sentence.</required>
                 </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Algorithm Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a description of the phenotype algorithm. Possible topics for discussion include development approach and rationale,
+                            directions for code use or implementation, and logic defined by the algorithm to define the phenotype.
+                            Markdown and html formatting is accepted in this field.</hint>
+                    <required>A description is required.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>provenance</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Provenance</label>
+                    <input-type>textarea</input-type>
+                    <hint>Input the name of the study this phenotype was created for, and briefly describe the role the phenotype played in the study. Do not use shorthand to abbreviate the study, rather, write the full title.
+                            If the phenotype was used in more than one study, please list and describe each usage in chronological order.</hint>
+                    <required>At least the name of the study must be entered. </required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isStudyOfPhenotype</relationship-type>
+                    <search-configuration>study</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Provenance</label>
+                    <hint>Input the name of the study or query this phenotype was created for OR use the search tool to select the record that represents the study this concept set was created for.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>dc</dc-schema>
+                        <dc-element>relation</dc-element>
+                        <dc-qualifier>ispartof</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </relation-field>
             </row>
             <row>
                 <field>
@@ -1648,20 +1691,20 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Data Model</label>
-                    <input-type value-pairs-name="DataModel">list</input-type>
-                    <hint>Select the term that best describes the data model used in this phenotype's creation</hint>
+                    <style>col-sm-4</style>                    
+                    <input-type value-pairs-name="DataModel">dropdown</input-type>
+                    <hint>Select the data model used.</hint>
                     <required>A selection is required.</required>
                 </field>
-            </row>
-            <row>
                 <field>
                     <dc-schema>local</dc-schema>
                     <dc-element>admin</dc-element>
                     <dc-qualifier>note</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Database Version</label>
+                    <style>col-sm-8</style>                    
                     <input-type>onebox</input-type>
-                    <hint>Input the database version used in this phenotype's creation.</hint>
+                    <hint>Input the database version used.</hint>
                     <required></required>
                 </field>
             </row>
@@ -1690,8 +1733,8 @@
                     <repeatable>false</repeatable>
                     <label>Validation Type</label>
                     <style>col-sm-4</style>
-                    <input-type value-pairs-name="PhenoValidation">list</input-type>
-                    <hint>Select the method of validation used for this phenotype.</hint>
+                    <input-type value-pairs-name="PhenoValidation">dropdown</input-type>
+                    <hint>Select the method of validation used. If other, leave blank.</hint>
                     <required></required>
                 </field>
                 <field>
@@ -1699,10 +1742,10 @@
                     <dc-element>subject</dc-element>
                     <dc-qualifier>validation</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Validation Type, Other</label>
+                    <label>Other Validation Type</label>
                     <style>col-sm-8</style>
                     <input-type>onebox</input-type>
-                    <hint>If none of the above apply, input the validation method used.</hint>
+                    <hint>Input the validation method used if not indicated in the dropdown.</hint>
                     <required></required>
                 </field>
             </row>
@@ -1766,51 +1809,6 @@
                     <required></required>
                 </field>
             </row>
-
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>description</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Description of Algorithm</label>
-                    <input-type>textarea</input-type>
-                    <hint>Enter a description of the phenotype algorithm. Possible topics for discussion include development approach and rationale,
-                            directions for code use or implementation, and logic defined by the algorithm to define the phenotype.
-                            Markdown and html formatting is accepted in this field.</hint>
-                    <required>A description is required.</required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>provenance</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Provenance</label>
-                    <input-type>textarea</input-type>
-                    <hint>Input the name of the study this phenotype was created for, and briefly describe the role the phenotype played in the study. Do not use shorthand to abbreviate the study, rather, write the full title.
-                            If the phenotype was used in more than one study, please list and describe each usage in chronological order. </hint>
-                    <required>At least the name of the study must be entered. </required>
-                </field>
-            </row>
-            <row>
-                <relation-field>
-                    <relationship-type>isStudyOfPhenotype</relationship-type>
-                    <search-configuration>study</search-configuration>
-                    <repeatable>true</repeatable>
-                    <label>Provenance</label>
-                    <hint>Input the name of the study or query this phenotype was created for OR use the search tool to select the record that represents the study this concept set was created for.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier>ispartof</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
-                    <required></required>
-                    <visibility>workflow</visibility>
-                </relation-field>
-            </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1844,7 +1842,7 @@
                     <repeatable>false</repeatable>
                     <label>Quality</label>
                     <input-type value-pairs-name="Quality">dropdown</input-type>
-                    <hint>Select the term that best describes the reusability of the Phenotype for research purposes.
+                    <hint>Select the term that best describes the reusability of the phenotype for research purposes.
                     Research Ready - phenotype is broadly applicable; it could be reused easily as is. 
                     Needs Refinement - phenotype is designed to fit a specific study purpose; it may need revision prior to reuse.
                     Deprecated - phenotype is outdated and undescribed; its reusability cannot be determined. </hint>
