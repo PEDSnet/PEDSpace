@@ -1778,7 +1778,7 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Development Population: Age</label>
                     <input-type value-pairs-name="DevPopAge">dropdown</input-type>
                     <hint>Select the term that best characterizes the patient population targeted by the phenotype.</hint>
@@ -1790,7 +1790,7 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Development Population: Sex</label>
                     <input-type value-pairs-name="DevPopSex">dropdown</input-type>
                     <hint>Select the term that best characterizes the patient population targeted by the phenotype.</hint>
@@ -1802,7 +1802,7 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
-                    <repeatable>flase</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Development Population: Race and Ethnicity</label>
                     <input-type value-pairs-name="DevPopRace">dropdown</input-type>
                     <hint>Select the term that best characterizes the patient population targeted by the phenotype.</hint>
@@ -1840,7 +1840,7 @@
                     <dc-element>quality</dc-element>
                     <dc-qualifier>status</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Quality</label>
+                    <label>Research-Readiness</label>
                     <input-type value-pairs-name="Quality">dropdown</input-type>
                     <hint>Select the term that best describes the reusability of the phenotype for research purposes.
                     Research Ready - phenotype is broadly applicable; it could be reused easily as is. 
