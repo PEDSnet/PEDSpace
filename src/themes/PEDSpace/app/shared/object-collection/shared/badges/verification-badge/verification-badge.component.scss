@@ -80,29 +80,43 @@ $study-specific: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
 }
 
 .badge-negative {
-    background-color: theme-color('danger');
-    
+    background-color: #fee7e5;
+    // opacity: 0.8;
+    background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #fee7e5 13px ), repeating-linear-gradient( #fdcdc955, #fdcdc9 );
+    background-size: 13px 13px;
+
     &::before {
         background-color: $black-bean;
         mask-image: url($negative);
         mask-size: cover;
+        opacity: 1;
     }
 
     &:hover, &:focus {
-        background-color: lighten(theme-color('danger'), 10%);
+        opacity: 1;
+        background-color: lighten(#fee7e5, 20%);
     }
 }
 
+$refinment-design: linear-gradient(135deg, #ffeeb8 25%, transparent 25%), linear-gradient(225deg, #ffeeb8 25%, transparent 25%), linear-gradient(45deg, #ffeeb8 25%, transparent 25%), linear-gradient(315deg, #ffeeb8 25%, #fffaec 25%);
+
 .badge-study-specific {
-    background-color: theme-color('warning');
+    background-color: #fffaec;
+    // opacity: 0.8;
+    background-image: $refinment-design;
+    background-position: 4px 0, 4px 0, 0 0, 0 0;
+    background-size: 8px 8px;
+    background-repeat: repeat;
     
     &::before {
         background-color: $black-bean;
         mask-image: url($study-specific);
         mask-size: cover;
+        opacity: 1;
     }
 
     &:hover, &:focus {
-        background-color: lighten(theme-color('warning'), 10%);
+                opacity: 1;
+                background-color: lighten(#ffeeb8, 50%);
     }
 }
