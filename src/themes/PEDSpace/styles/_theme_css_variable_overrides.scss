@@ -23,6 +23,23 @@ body {
   line-height: 1.6;
 }
 
+label {
+  display: inline-block;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--dark-font-color);
+  text-transform: uppercase;
+}
+
+label.custom-control-label {
+  font-weight: normal !important;
+  font-size: 0.875rem !important;
+  color: var(--dark-font-color) !important;
+  margin-top: auto !important;
+  text-transform: none !important;
+}
+
 h1,
 h2,
 h3,
