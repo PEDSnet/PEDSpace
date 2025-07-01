@@ -770,7 +770,7 @@
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>local</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier>EvalType</dc-qualifier>
                     <repeatable>true</repeatable>
@@ -841,7 +841,7 @@
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>local</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier>DataModel</dc-qualifier>
                     <repeatable>false</repeatable>
@@ -888,7 +888,7 @@
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>local</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier>MedTermChar</dc-qualifier>
                     <repeatable>true</repeatable>
@@ -1680,7 +1680,7 @@
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>local</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier>DataModel</dc-qualifier>
                     <repeatable>false</repeatable>
@@ -1763,7 +1763,7 @@
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>local</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier>DevPop</dc-qualifier>
                     <repeatable>true</repeatable>
