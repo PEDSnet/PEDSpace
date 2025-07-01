@@ -1758,7 +1758,7 @@
                     <label>Development Strategy and Evaluation</label>
                     <input-type value-pairs-name="PhenoChar">list</input-type>
                     <hint>Select ALL terms that apply to characterize the Phenotype.</hint>
-                    <required>At selection is required.</required>
+                    <required>A selection is required.</required>
                 </field>
             </row>
             <row>
