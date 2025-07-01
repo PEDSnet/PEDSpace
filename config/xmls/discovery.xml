@@ -5139,6 +5139,7 @@
                 <ref bean="searchFilterIsJournalOfPublicationRelation"/>
                 <ref bean="searchFilterIsStudyOfPhenotypeRelation"/>
                 <ref bean="searchFilterIsStudyOfConceptSetRelation"/>
+                <ref bean="searchFilterIsStudyOfDocumentationRelation"/>
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterFunder"/>
                 <ref bean="searchFilterClinicalSubject"/>
