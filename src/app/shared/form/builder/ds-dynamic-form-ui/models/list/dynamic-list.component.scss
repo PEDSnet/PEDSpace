@@ -1,78 +1,85 @@
-// Dynamic List Component Styles
-// Force 3-column layout with proper responsive behavior
+// Dynamic List Component Styles - Minimal & Clean
+// Ultra-subtle design with clean interactions
 
+// Simplified color palette
+$accent-color: #667eea;
+$check-color: #667eea;
+$text-primary: #2d3748;
+$text-secondary: #4a5568;
+
+// Minimal form row - no background
 .form-row {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -0.5rem;
+  margin: 0 -0.75rem;
+  padding: 0.5rem;
+  position: relative;
   
-  // Override Bootstrap's col-sm to create exactly 3 columns
+  // Column styling with clean spacing
   .col-sm {
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
-    padding: 0 0.5rem;
-    margin-left: 0 !important; // Override the ml-3 class
+    padding: 0 0.75rem;
+    margin-left: 0 !important;
     
     // Responsive breakpoints
     @media (max-width: 768px) {
-      flex: 0 0 50%; // 2 columns on tablet
+      flex: 0 0 50%;
       max-width: 50%;
     }
     
     @media (max-width: 576px) {
-      flex: 0 0 100%; // 1 column on mobile
+      flex: 0 0 100%;
       max-width: 100%;
     }
   }
 }
 
-// Enhanced checkbox styling
+// Minimal checkbox styling
 .custom-control.custom-checkbox {
   position: relative;
   display: block;
-  min-height: 1.5rem;
-  padding-left: 2rem;
+  min-height: 2rem;
+  padding-left: 2.5rem;
   margin-bottom: 0.75rem;
+  cursor: pointer;
   
   .custom-control-input {
     position: absolute;
     left: 0;
     z-index: -1;
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
     opacity: 0;
     
+    // Checked state
     &:checked ~ .custom-control-label::before {
-      color: #fff;
-      border-color: #007bff;
-      background-color: #007bff;
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      background-color: $accent-color;
+      border-color: $accent-color;
     }
     
+    // Checkmark
     &:checked ~ .custom-control-label::after {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='m6.564.75-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='m6.564.75-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
+      opacity: 1;
     }
     
+    // Focus state - minimal
     &:focus ~ .custom-control-label::before {
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      border-color: #667eea;
+      outline: 2px solid rgba(102, 126, 234, 0.1);
+      outline-offset: 1px;
     }
     
-    &:focus:not(:checked) ~ .custom-control-label::before {
-      border-color: #80bdff;
-    }
-    
-    &:not(:disabled):active ~ .custom-control-label::before {
-      color: #fff;
-      background-color: #b3d7ff;
-      border-color: #b3d7ff;
-    }
-    
+    // Disabled state
     &:disabled {
       ~ .custom-control-label {
-        color: #6c757d;
+        color: #a0aec0;
+        opacity: 0.6;
         
         &::before {
-          background-color: #e9ecef;
+          background-color: #e2e8f0;
+          border-color: #e2e8f0;
         }
       }
     }
@@ -81,103 +88,103 @@
   .custom-control-label {
     position: relative;
     margin-bottom: 0;
-    vertical-align: top;
+    vertical-align: middle;
     cursor: pointer;
+    color: $text-primary;
+    font-weight: 400;
+    transition: color 0.2s ease;
     
+    // Minimal checkbox box
     &::before {
       position: absolute;
-      top: 0.125rem;
-      left: -2rem;
+      top: 0.25rem;
+      left: -2.5rem;
       display: block;
-      width: 1.25rem;
-      height: 1.25rem;
+      width: 1.5rem;
+      height: 1.5rem;
       pointer-events: none;
       content: "";
-      background-color: #fff;
-      border: 1px solid #adb5bd;
-      border-radius: 0.25rem;
-    //   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 3px;
+      transition: all 0.2s ease;
     }
     
+    // Checkmark
     &::after {
       position: absolute;
-      top: 0.125rem;
-      left: -2rem;
+      top: 0.25rem;
+      left: -2.5rem;
       display: block;
-      width: 1.25rem;
-      height: 1.25rem;
+      width: 1.5rem;
+      height: 1.5rem;
       content: "";
-      background: 50% / 50% 50% no-repeat;
-    }
-    
-    &.disabled {
-      color: #6c757d;
-      cursor: not-allowed;
+      background: 50% / 65% 65% no-repeat;
+      opacity: 0;
+      transition: opacity 0.2s ease;
     }
     
     span {
-      line-height: 1.4;
+      display: inline-block;
+      line-height: 1.5;
       font-size: 0.95rem;
       
       &:hover {
-        color: #007bff;
+        color: $check-color;
       }
     }
   }
   
+  // Minimal hover state
   &:hover .custom-control-label::before {
-    border-color: #007bff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    border-color: $check-color;
   }
 }
 
-// Enhanced radio button styling
+// Minimal radio button styling
 .custom-control.custom-radio {
   position: relative;
   display: block;
-  min-height: 1.5rem;
-  padding-left: 2rem;
+  min-height: 2rem;
+  padding-left: 2.5rem;
   margin-bottom: 0.75rem;
+  cursor: pointer;
   
   .custom-control-input {
     position: absolute;
     left: 0;
     z-index: -1;
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
     opacity: 0;
     
+    // Checked state
     &:checked ~ .custom-control-label::before {
-      color: #fff;
-      border-color: #007bff;
-      background-color: #007bff;
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      background-color: $accent-color;
+      border-color: $accent-color;
     }
     
     &:checked ~ .custom-control-label::after {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+      opacity: 1;
     }
     
+    // Focus state - minimal
     &:focus ~ .custom-control-label::before {
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      border-color: #667eea;
+      outline: 2px solid rgba(102, 126, 234, 0.1);
+      outline-offset: 1px;
     }
     
-    &:focus:not(:checked) ~ .custom-control-label::before {
-      border-color: #80bdff;
-    }
-    
-    &:not(:disabled):active ~ .custom-control-label::before {
-      color: #fff;
-      background-color: #b3d7ff;
-      border-color: #b3d7ff;
-    }
-    
+    // Disabled state
     &:disabled {
       ~ .custom-control-label {
-        color: #6c757d;
+        color: #a0aec0;
+        opacity: 0.6;
         
         &::before {
-          background-color: #e9ecef;
+          background-color: #e2e8f0;
+          border-color: #e2e8f0;
         }
       }
     }
@@ -186,57 +193,60 @@
   .custom-control-label {
     position: relative;
     margin-bottom: 0;
-    vertical-align: top;
+    vertical-align: middle;
     cursor: pointer;
+    color: $text-primary;
+    font-weight: 400;
+    transition: color 0.2s ease;
     
+    // Minimal radio circle
     &::before {
       position: absolute;
-      top: 0.125rem;
-      left: -2rem;
+      top: 0.25rem;
+      left: -2.5rem;
       display: block;
-      width: 1.25rem;
-      height: 1.25rem;
+      width: 1.5rem;
+      height: 1.5rem;
       pointer-events: none;
       content: "";
-      background-color: #fff;
-      border: 1px solid #adb5bd;
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
       border-radius: 50%;
-    //   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      transition: all 0.2s ease;
     }
     
+    // Inner dot
     &::after {
       position: absolute;
-      top: 0.125rem;
-      left: -2rem;
+      top: 0.25rem;
+      left: -2.5rem;
       display: block;
-      width: 1.25rem;
-      height: 1.25rem;
+      width: 1.5rem;
+      height: 1.5rem;
       content: "";
       background: 50% / 50% 50% no-repeat;
-    }
-    
-    &.disabled {
-      color: #6c757d;
-      cursor: not-allowed;
+      opacity: 0;
+      transition: opacity 0.2s ease;
     }
     
     span {
-      line-height: 1.4;
+      display: inline-block;
+      line-height: 1.5;
       font-size: 0.95rem;
       
       &:hover {
-        color: #007bff;
+        color: $check-color;
       }
     }
   }
   
+  // Minimal hover state
   &:hover .custom-control-label::before {
-    border-color: #007bff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    border-color: $check-color;
   }
 }
 
-// Loading animation styling
+// Clean loading animation
 .d-flex.justify-content-center {
   margin-top: 1rem;
   padding: 1rem;
@@ -246,27 +256,19 @@
   }
 }
 
-// General form group styling
+// Minimal form group container
 div[formGroup] {
   .form-row {
-    border-radius: 0.375rem;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    margin-bottom: 1rem;
-    
-    &:focus-within {
-      border-color: #007bff;
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.1);
-    }
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 }
 
-// Animation for smooth interactions
+// Simple animations
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-5px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -275,6 +277,5 @@ div[formGroup] {
 }
 
 .custom-control {
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease forwards;
 }
-
