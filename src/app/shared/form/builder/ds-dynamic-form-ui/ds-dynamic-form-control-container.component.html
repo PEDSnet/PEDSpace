@@ -14,11 +14,15 @@
       <div>
         <!-- I think this is for relationships? -->
         <small
-          *ngIf="hasHint && (formBuilderService.hasArrayGroupValue(model) || (!model.repeatable && (isRelationship === false || value?.value === null)) || (model.repeatable === true && context?.index === context?.context?.groups?.length - 1)) && (!showErrorMessages || errorMessages.length === 0) && !model.name?.includes('dc.date')"
+          *ngIf="hasHint && (formBuilderService.hasArrayGroupValue(model) || (!model.repeatable && (isRelationship === false || value?.value === null)) || (model.repeatable === true && context?.index === context?.context?.groups?.length - 1)) && (!showErrorMessages || errorMessages.length === 0) && !model.name?.includes('dc.date') && !model.name?.includes('discoverable')"
           class="text-muted ds-hint" [innerHTML]="model.hint | translate"
           [ngClass]="getClass('element', 'hint')"></small>
 
         <ng-container #componentViewContainer></ng-container>
+        <small
+          *ngIf="hasHint && (formBuilderService.hasArrayGroupValue(model) || (!model.repeatable && (isRelationship === false || value?.value === null)) || (model.repeatable === true && context?.index === context?.context?.groups?.length - 1)) && (!showErrorMessages || errorMessages.length === 0) && !model.name?.includes('dc.date') && model.name?.includes('discoverable')"
+          class="text-muted ds-hint" [innerHTML]="model.hint | translate"
+          [ngClass]="getClass('element', 'hint')"></small>
       </div>
 
 
