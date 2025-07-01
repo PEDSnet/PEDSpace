@@ -595,11 +595,10 @@
                     <dc-element>dqcheck</dc-element>
                     <dc-qualifier>outcomes</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Outcomes</label>
-                    <input-type>onebox</input-type>
+                    <label>Response to Findings</label>
+                    <input-type value-pairs-name="Outcomes">list</input-type>
                     <hint>Select terms that characterize the outcome of the analysis.</hint>
                     <required></required>
-                    <vocabulary>dc_subject_outcomes</vocabulary>
                 </field>
             </row> 
             <row>
@@ -773,7 +772,7 @@
                     <dc-schema>local</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier>EvalType</dc-qualifier>
-                    <repeatable>true</repeatable>
+                    <repeatable>false</repeatable>
                     <label>Concept Set Evaluation</label>
                     <input-type value-pairs-name="EvalType">list</input-type>
                     <hint>Select the term that best describes the concept set's level of review.</hint>
@@ -788,7 +787,7 @@
                     <repeatable>true</repeatable>
                     <label>Reviewer(s)</label>
                     <input-type>name</input-type>
-                    <hint>Enter the concept set reviewer(s) name(s) if "Clinician Review" or "Review, Non-Clinician" are selected above.</hint>
+                    <hint>Enter the concept set reviewer(s) name(s) if a review was indicated above.</hint>
                     <required></required>
                 </field>
             </row>
@@ -892,9 +891,9 @@
                     <dc-element>subject</dc-element>
                     <dc-qualifier>MedTermChar</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Medication Characterization</label>
+                    <label>MEDICATION CODESETS ONLY: Med Term Class Level</label>
                     <input-type value-pairs-name="MedTermChar">list</input-type>
-                    <hint>Select the normalized name classifications present in your concept set (medication sets only).</hint>
+                    <hint>Select the normalized name classifications present in your concept set.</hint>
                     <required></required>
                 </field>
             </row>
@@ -3732,6 +3731,52 @@
             <pair>
                 <displayed-value>Data Quality Result</displayed-value>
                 <stored-value>DQResult</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="Outcomes" dc-term="subejct">
+            <pair>
+                <displayed-value>Study Infeasible</displayed-value>
+                <stored-value>Study Infeasible</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Study Design Revised</displayed-value>
+                <stored-value>Study Design Revised</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Study Variable Modified</displayed-value>
+                <stored-value>Study Variable Modified</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Attrition Criteria Modified</displayed-value>
+                <stored-value>Attrition Criteria Modified</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Investigation Dates Modified</displayed-value>
+                <stored-value>Investigation Dates Modified</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Concept Sets Refined</displayed-value>
+                <stored-value>Concept Sets Refined</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Study Methods Revised</displayed-value>
+                <stored-value>Study Methods Revised</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Data Source Adjusted</displayed-value>
+                <stored-value>Data Source Adjusted</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Site-Level Intervention</displayed-value>
+                <stored-value>Site Intervention</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Coordinating Center Intervention</displayed-value>
+                <stored-value>Coordinating Center Intervention</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>No Interventions</displayed-value>
+                <stored-value>No Interventions</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="DataProv" dc-term="subject">
