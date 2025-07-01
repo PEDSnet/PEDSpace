@@ -541,13 +541,14 @@
                     <dc-element>description</dc-element>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Check Description</label>
+                    <label>Check Summary</label>
                     <type-bind>study</type-bind>
                     <input-type>textarea</input-type>
                     <hint>In 2-3 brief sentences, list the parameters of the check you used and the purpose of the check. 
                     Example:
                     "The results of a Source and Concept Vocabularies check using the Single Site, Exploratory, Cross-Sectional parameters. This check investigates SNOMED mappings to ICD codes for epilepsy diagnoses. This check was run to analyze data being prepared for a grant proposal to the CDC."</hint>
                     <required>This field is required.</required>
+                    <visibility>workflow</visibility>
                 </field>
             </row>
             <row>
@@ -556,7 +557,7 @@
                     <dc-element>description</dc-element>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Check Description</label>
+                    <label>Check Summary</label>
                     <type-bind>network</type-bind>
                     <input-type>textarea</input-type>
                     <hint>In 2-3 brief sentences, enter a description of the network check and the parameters and thresholds used.</hint>
@@ -644,9 +645,9 @@
         <form name="DQResultForm3">
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>local</dc-schema>
                     <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
+                    <dc-qualifier>DataProv</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Data Provenance</label>
                     <type-bind>study</type-bind>
@@ -685,7 +686,8 @@
                     <repeatable>true</repeatable>
                     <label>Institutional Data Sources</label>
                     <hint>If data from non-anonymized PEDSnet sites were analyzed, select the institutions</hint>
-                    <required></required>
+                    <required></required> <!-- Will it be hard to tell what sites were analyzed? Probably not, but unsure.-->
+                    <visibility>workflow</visibility>
                 </relation-field>
             </row>
             <row>
@@ -696,7 +698,8 @@
                     <label>Data Quality Check Linkage</label>
                     <type-bind>study</type-bind>
                     <hint>Link to the data quality check record which corresponds to the check run to produce these results.</hint>
-                    <required></required> <!-- Not required - I can input if they can't figure it out. -->
+                    <required></required>
+                    <visibility>workflow</visibility>
                 </relation-field>
             </row>
             <row>
@@ -707,7 +710,8 @@
                     <label>Study Record Linkage</label>
                     <type-bind>study</type-bind>
                     <hint>Link to the study record which corresponds to the investigation.</hint>
-                    <required></required> <!-- Not required - I can input if they can't figure it out. -->
+                    <required></required>
+                    <visibility>worklfow</visibility>
                 </relation-field>
             </row>
         </form>
@@ -768,7 +772,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
+                    <dc-qualifier>EvalType</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Concept Set Evaluation</label>
                     <input-type value-pairs-name="EvalType">list</input-type>
@@ -839,23 +843,23 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
+                    <dc-qualifier>DataModel</dc-qualifier>
+                    <repeatable>false</repeatable>
                     <label>Data Model</label>
-                    <input-type value-pairs-name="DataModel">list</input-type> <!-- CREATE VALUE LIST -->
-                    <hint>Select the term that best describes the data model used in this concept set's creation</hint>
+                    <style>col-sm-4</style>                    
+                    <input-type value-pairs-name="DataModel">dropdown</input-type>
+                    <hint>Select the data model used.</hint>
                     <required>A selection is required.</required>
                 </field>
-            </row>
-            <row>
                 <field>
                     <dc-schema>local</dc-schema>
                     <dc-element>admin</dc-element>
                     <dc-qualifier>note</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Database Version</label>
+                    <style>col-sm-8</style>                    
                     <input-type>onebox</input-type>
-                    <hint>Input the database version used in this concept set's creation.</hint>
+                    <hint>Input the database version used.</hint>
                     <required></required>
                 </field>
             </row>
@@ -886,7 +890,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
+                    <dc-qualifier>MedTermChar</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Medication Characterization</label>
                     <input-type value-pairs-name="MedTermChar">list</input-type>
@@ -1605,7 +1609,7 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>contributor</dc-element>
                     <dc-qualifier>author</dc-qualifier>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Creator(s)</label>
                     <input-type>name</input-type>
                     <hint>Enter the name(s) of the analyst(s) who developed this phenotype.</hint>
@@ -1613,20 +1617,16 @@
                 </field>
             </row>
             <row>
-                <relation-field>
-                    <relationship-type>isOrgUnitOfPhenotype</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Affliated Organization(s)</label>
+                    <input-type>onebox</input-type>
                     <hint>Enter the name(s) of the institution(s) employing any individual named in the Creator field.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>other</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                     <required></required>
-                </relation-field>
+                </field>
             </row>
             <row>
                 <field>
@@ -1674,12 +1674,6 @@
                     <repeatable>true</repeatable>
                     <label>Provenance</label>
                     <hint>Input the name of the study or query this phenotype was created for OR use the search tool to select the record that represents the study this concept set was created for.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier>ispartof</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                     <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
@@ -1688,7 +1682,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
+                    <dc-qualifier>DataModel</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Data Model</label>
                     <style>col-sm-4</style>                    
@@ -1715,12 +1709,6 @@
                     <repeatable>true</repeatable>
                     <label>Database Version Linkage</label>
                     <hint>If PEDSnet Data Model dependent, select the record that represents the database version this concept set was created with.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
-                        <dc-qualifier>isbasedon</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                     <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
@@ -1777,35 +1765,11 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
+                    <dc-qualifier>DevPop</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Development Population: Age</label>
-                    <input-type value-pairs-name="DevPopAge">dropdown</input-type>
-                    <hint>Select the term that best characterizes the patient population targeted by the phenotype.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Development Population: Sex</label>
-                    <input-type value-pairs-name="DevPopSex">dropdown</input-type>
-                    <hint>Select the term that best characterizes the patient population targeted by the phenotype.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Development Population: Race and Ethnicity</label>
-                    <input-type value-pairs-name="DevPopRace">dropdown</input-type>
-                    <hint>Select the term that best characterizes the patient population targeted by the phenotype.</hint>
+                    <label>Development Population</label>
+                    <input-type value-pairs-name="DevPop">dropdown</input-type>
+                    <hint>Select the terms that best characterizes the patient population targeted by the phenotype.</hint>
                     <required></required>
                 </field>
             </row>
@@ -3306,15 +3270,15 @@
         </value-pairs>
         <value-pairs value-pairs-name="EvalType" dc-term="subject">
             <pair>
-                <displayed-value>Clinician Review</displayed-value>
+                <displayed-value>Reviewed by a clinician.</displayed-value>
                 <stored-value>Clinician Reviewed</stored-value>
             </pair>
             <pair>
-                <displayed-value>Non-Clinician Review</displayed-value>
+                <displayed-value>Reviewed, but not by a clinician.</displayed-value>
                 <stored-value>Reviewed, Non-Clinician</stored-value>
             </pair>
             <pair>
-                <displayed-value>No Formal Review</displayed-value>
+                <displayed-value>Was not formally reviewed.</displayed-value>
                 <stored-value>No Formal Review</stored-value>
             </pair>
         </value-pairs>
@@ -3662,7 +3626,7 @@
                 <stored-value>No Validation</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="DevPopAge" dc-term="subject">
+        <value-pairs value-pairs-name="DevPop" dc-term="subject">
             <pair>
                 <displayed-value>Infant Patient Population</displayed-value>
                 <stored-value>Infant Patient Population</stored-value>
@@ -3687,8 +3651,6 @@
                 <displayed-value>Any Age Patient Population</displayed-value>
                 <stored-value>Any Age Patient Population</stored-value>
             </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="DevPopSex" dc-term="subject">
             <pair>
                 <displayed-value>Male Patient Population (Assigned at Birth)</displayed-value>
                 <stored-value>Patient Population (Assigned at Birth)</stored-value>
@@ -3713,8 +3675,6 @@
                 <displayed-value>Any Gender Patient Population</displayed-value>
                 <stored-value>Any Gender Patient Population</stored-value>
             </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="DevPopRace" dc-term="subject">
             <pair>
                 <displayed-value>American Indian or Alaska Native Patient Population</displayed-value>
                 <stored-value>American Indian or Alaska Native Patient Population</stored-value>
