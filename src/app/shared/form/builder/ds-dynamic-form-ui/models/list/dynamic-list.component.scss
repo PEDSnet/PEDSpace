@@ -1,1 +1,280 @@
+// Dynamic List Component Styles
+// Force 3-column layout with proper responsive behavior
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.5rem;
+  
+  // Override Bootstrap's col-sm to create exactly 3 columns
+  .col-sm {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    padding: 0 0.5rem;
+    margin-left: 0 !important; // Override the ml-3 class
+    
+    // Responsive breakpoints
+    @media (max-width: 768px) {
+      flex: 0 0 50%; // 2 columns on tablet
+      max-width: 50%;
+    }
+    
+    @media (max-width: 576px) {
+      flex: 0 0 100%; // 1 column on mobile
+      max-width: 100%;
+    }
+  }
+}
+
+// Enhanced checkbox styling
+.custom-control.custom-checkbox {
+  position: relative;
+  display: block;
+  min-height: 1.5rem;
+  padding-left: 2rem;
+  margin-bottom: 0.75rem;
+  
+  .custom-control-input {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    width: 1.25rem;
+    height: 1.25rem;
+    opacity: 0;
+    
+    &:checked ~ .custom-control-label::before {
+      color: #fff;
+      border-color: #007bff;
+      background-color: #007bff;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    
+    &:checked ~ .custom-control-label::after {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='m6.564.75-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
+    }
+    
+    &:focus ~ .custom-control-label::before {
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    
+    &:focus:not(:checked) ~ .custom-control-label::before {
+      border-color: #80bdff;
+    }
+    
+    &:not(:disabled):active ~ .custom-control-label::before {
+      color: #fff;
+      background-color: #b3d7ff;
+      border-color: #b3d7ff;
+    }
+    
+    &:disabled {
+      ~ .custom-control-label {
+        color: #6c757d;
+        
+        &::before {
+          background-color: #e9ecef;
+        }
+      }
+    }
+  }
+  
+  .custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+    cursor: pointer;
+    
+    &::before {
+      position: absolute;
+      top: 0.125rem;
+      left: -2rem;
+      display: block;
+      width: 1.25rem;
+      height: 1.25rem;
+      pointer-events: none;
+      content: "";
+      background-color: #fff;
+      border: 1px solid #adb5bd;
+      border-radius: 0.25rem;
+    //   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    
+    &::after {
+      position: absolute;
+      top: 0.125rem;
+      left: -2rem;
+      display: block;
+      width: 1.25rem;
+      height: 1.25rem;
+      content: "";
+      background: 50% / 50% 50% no-repeat;
+    }
+    
+    &.disabled {
+      color: #6c757d;
+      cursor: not-allowed;
+    }
+    
+    span {
+      line-height: 1.4;
+      font-size: 0.95rem;
+      
+      &:hover {
+        color: #007bff;
+      }
+    }
+  }
+  
+  &:hover .custom-control-label::before {
+    border-color: #007bff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+}
+
+// Enhanced radio button styling
+.custom-control.custom-radio {
+  position: relative;
+  display: block;
+  min-height: 1.5rem;
+  padding-left: 2rem;
+  margin-bottom: 0.75rem;
+  
+  .custom-control-input {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    width: 1.25rem;
+    height: 1.25rem;
+    opacity: 0;
+    
+    &:checked ~ .custom-control-label::before {
+      color: #fff;
+      border-color: #007bff;
+      background-color: #007bff;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    
+    &:checked ~ .custom-control-label::after {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    }
+    
+    &:focus ~ .custom-control-label::before {
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    
+    &:focus:not(:checked) ~ .custom-control-label::before {
+      border-color: #80bdff;
+    }
+    
+    &:not(:disabled):active ~ .custom-control-label::before {
+      color: #fff;
+      background-color: #b3d7ff;
+      border-color: #b3d7ff;
+    }
+    
+    &:disabled {
+      ~ .custom-control-label {
+        color: #6c757d;
+        
+        &::before {
+          background-color: #e9ecef;
+        }
+      }
+    }
+  }
+  
+  .custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+    cursor: pointer;
+    
+    &::before {
+      position: absolute;
+      top: 0.125rem;
+      left: -2rem;
+      display: block;
+      width: 1.25rem;
+      height: 1.25rem;
+      pointer-events: none;
+      content: "";
+      background-color: #fff;
+      border: 1px solid #adb5bd;
+      border-radius: 50%;
+    //   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    
+    &::after {
+      position: absolute;
+      top: 0.125rem;
+      left: -2rem;
+      display: block;
+      width: 1.25rem;
+      height: 1.25rem;
+      content: "";
+      background: 50% / 50% 50% no-repeat;
+    }
+    
+    &.disabled {
+      color: #6c757d;
+      cursor: not-allowed;
+    }
+    
+    span {
+      line-height: 1.4;
+      font-size: 0.95rem;
+      
+      &:hover {
+        color: #007bff;
+      }
+    }
+  }
+  
+  &:hover .custom-control-label::before {
+    border-color: #007bff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+}
+
+// Loading animation styling
+.d-flex.justify-content-center {
+  margin-top: 1rem;
+  padding: 1rem;
+  
+  ds-loading {
+    display: block;
+  }
+}
+
+// General form group styling
+div[formGroup] {
+  .form-row {
+    border-radius: 0.375rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    margin-bottom: 1rem;
+    
+    &:focus-within {
+      border-color: #007bff;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.1);
+    }
+  }
+}
+
+// Animation for smooth interactions
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.custom-control {
+  animation: fadeIn 0.3s ease-in-out;
+}
 
