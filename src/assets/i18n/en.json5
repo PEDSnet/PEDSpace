@@ -6526,6 +6526,10 @@
     "submission.sections.describe.relationship-lookup.title.isJournalVolumeOfPublication": "Journal Volumes",
 
     "submission.sections.describe.relationship-lookup.title.isOrgUnitOfProject": "OrgUnit",
+    
+    "submission.sections.describe.relationship-lookup.title.isOrgUnitOfDQResult": "Data Quality Result",
+    
+    "submission.sections.describe.relationship-lookup.search-tab.tab-title.isOrgUnitOfDQResult": "Data Quality Result",
 
     "submission.sections.describe.relationship-lookup.title.isPersonOfConceptSet": "Authors",
 
