@@ -2,6 +2,36 @@
   width: auto;
 }
 
-legend {
-  font-size: initial;
+// Use :host and ::ng-deep to pierce view encapsulation
+:host {
+  ::ng-deep fieldset legend,
+  ::ng-deep legend {
+    display: inline-block !important;
+    margin-top: 20px !important; 
+    margin-bottom: 0.5rem !important;
+    font-weight: bold !important;
+    font-size: 1rem !important;
+    color: var(--dark-font-color) !important;
+    text-transform: uppercase !important;
+    width: 100% !important;
+    padding-top: 20px !important; // Alternative: use padding instead
+  }
+}
+
+// Style the hint to appear below the legend
+.ds-hint {
+  display: block !important;
+  width: 100% !important;
+}
+
+// Ensure the fieldset layout works properly
+fieldset {
+  flex-direction: column !important;
+}
+
+// Container for the number pickers
+.date-picker-inputs {
+  display: flex !important;
+  gap: 10px !important;
+  align-items: center !important;
 }

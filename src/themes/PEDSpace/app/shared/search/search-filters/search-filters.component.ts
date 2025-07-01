@@ -76,7 +76,7 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
   // Here we crudely filter the little sidebar search facet widgets
   // if we are either on the DQCheck community page or a DQCheck collection page
   shouldShowFilter(filter: { name: string }): boolean {
-    console.log('shouldShowFilter', filter);
+    // console.log('shouldShowFilter', filter);
     if (filter.name !== 'subject') {
       return true;
     }

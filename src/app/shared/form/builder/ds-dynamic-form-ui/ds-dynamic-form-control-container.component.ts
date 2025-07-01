@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 import {
   AsyncPipe,
   NgClass,
@@ -298,6 +299,7 @@ export class DsDynamicFormControlContainerComponent extends DynamicFormControlCo
           startWith(undefined),
         );
       }
+      // console.log('DsDynamicFormControlContainerComponent initialized with model', this.model);
     }
   }
 
