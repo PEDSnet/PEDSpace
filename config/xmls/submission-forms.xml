@@ -685,7 +685,7 @@
                     <repeatable>true</repeatable>
                     <label>Institutional Data Sources</label>
                     <hint>If data from non-anonymized PEDSnet sites were analyzed, select the institutions</hint>
-                    <required></required> <!-- Will it be hard to tell what sites were analyzed? Probably not, but unsure.-->
+                    <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
             </row>
@@ -710,7 +710,7 @@
                     <type-bind>study</type-bind>
                     <hint>Link to the study record which corresponds to the investigation.</hint>
                     <required></required>
-                    <visibility>worklfow</visibility>
+                    <visibility>workflow</visibility>
                 </relation-field>
             </row>
         </form>

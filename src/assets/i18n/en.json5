@@ -6447,6 +6447,14 @@
 
     "submission.sections.describe.relationship-lookup.selection-tab.title.isJournalIssueOfPublication": "Selected Issue",
 
+    "submission.sections.describe.relationship-lookup.selection-tab.title.isStudyOfDQResult": "Selected Study",
+
+    "submission.sections.describe.relationship-lookup.selection-tab.title.isDQCheckOfDQResult": "Selected Data Quality Check",
+
+    "submission.sections.describe.relationship-lookup.selection-tab.title.isOrgUnitOfDQResult": "Selected Institution",
+
+    "submission.sections.describe.relationship-lookup.selection-tab.title.isJournalIssueOfPublication": "Selected Issue",
+
     "submission.sections.describe.relationship-lookup.selection-tab.title.isJournalOfPublication": "Selected Journals",
 
     "submission.sections.describe.relationship-lookup.selection-tab.title.isJournalVolumeOfPublication": "Selected Journal Volume",
@@ -6496,6 +6504,8 @@
     "submission.sections.describe.relationship-lookup.selection-tab.title.wos": "Search Results",
 
     "submission.sections.describe.relationship-lookup.title.ConceptSet": "Concept Sets",
+    
+    "submission.sections.describe.relationship-lookup.title.isDocumentationOfDocumentation": "Resources",
 
     "submission.sections.describe.relationship-lookup.title.DataFile": "Data Files",
 
@@ -6530,8 +6540,14 @@
     "submission.sections.describe.relationship-lookup.title.isOrgUnitOfDQResult": "Data Quality Result",
     
     "submission.sections.describe.relationship-lookup.search-tab.tab-title.isOrgUnitOfDQResult": "Data Quality Result",
+    
+    "submission.sections.describe.relationship-lookup.search-tab.tab-title.isStudyOfDocumentation": "Studies",
+    
+    "submission.sections.describe.relationship-lookup.search-tab.tab-title.isDocumentationOfDocumentation": "Resources",
 
     "submission.sections.describe.relationship-lookup.title.isPersonOfConceptSet": "Authors",
+
+    "submission.sections.describe.relationship-lookup.title.isStudyOfDocumentation": "Studies",
 
     "submission.sections.describe.relationship-lookup.title.isPersonOfDocument": "Authors",
 
