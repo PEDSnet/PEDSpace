@@ -454,7 +454,7 @@ vocabularies:
   - filter: 'subject'
     vocabulary: 'dc_subject'
     enabled: true
-  - filter: 'itemVocabulary'
+  - filter: 'itemVocab'
     vocabulary: 'dc_subject_other'
     enabled: true
   - filter: 'itemClinicalSubject'
