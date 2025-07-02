@@ -4859,6 +4859,7 @@
                 <ref bean="searchFilterIsDocumentationOfPhenotypeRelation"/>
                 <ref bean="searchFilterIsDQResultOfPhenotypeRelation"/>
                 <ref bean="searchFilterIsDQCheckOfPhenotypeRelation"/>
+                <ref bean="searchFilterIsOrgUnitOfPhenotypeRelation"/>
                 
                 <!-- File-related filters -->
                 <ref bean="searchFilterContentInOriginalBundle"/>
@@ -5012,7 +5013,9 @@
                 <ref bean="searchFilterIsDQResultOfPhenotypeRelation"/>
                 <!-- <ref bean="searchFilterIsPhenotypeOfDQCheckRelation"/> -->
                 <ref bean="searchFilterIsDQCheckOfPhenotypeRelation"/>
-                
+
+                <ref bean="searchFilterIsOrgUnitOfPhenotypeRelation"/>
+
                 <!-- File-related filters -->
                 <ref bean="searchFilterContentInOriginalBundle"/>
                 <ref bean="searchFilterFileNameInOriginalBundle" />
@@ -5388,6 +5391,16 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfOrgUnit.latestForDiscovery</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false"/>
+        <property name="pageSize" value="10"/>
+    </bean>
+    <bean id="searchFilterIsOrgUnitOfPhenotypeRelation" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="isOrgUnitOfPhenotype"/>
+        <property name="metadataFields">
+            <list>
+                <value>relation.isOrgUnitOfPhenotype.latestForDiscovery</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false"/>
