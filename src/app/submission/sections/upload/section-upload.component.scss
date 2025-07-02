@@ -11,7 +11,16 @@
     margin-bottom: 16px;
     position: relative;
     background: #f8f9fa;
-    // Remove display: flex to prevent overlap with absolute positioned icon
+    
+    // Subtle interactive animations
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-left-width: 4px;
+    }
     
     // Large, prominent icon - strictly centered with text
     &::before {
@@ -28,6 +37,14 @@
       mask-position: center;
       z-index: 1;
       opacity: 1; // Full opacity for prominence
+      filter: brightness(1.05);
+      transition: all 0.3s ease; // Smooth icon transitions
+    }
+    
+    // Icon hover animation
+    &:hover::before {
+      transform: translateY(-50%) scale(1.1);
+      filter: brightness(1.2);
     }
     
     // Improved close button - small, clean, and properly styled
@@ -68,8 +85,15 @@
       display: block; // Use block instead of flex
       line-height: 1.5; // Normal line height for readability
       font-size: 14px;
-      margin-left: 30px; // Create space for the icon (22px left + 26px width + 12px spacing)
+      margin-left: 35px; // Create space for the icon (22px left + 26px width + 12px spacing)
       padding-top: 2px; // Slight top padding for better vertical alignment
+      transition: all 0.2s ease; // Smooth text color transitions
+      
+      // Subtle hover effect on text
+      &:hover {
+        color: inherit;
+        opacity: 0.9;
+      }
     }
     
     .text.code {
@@ -77,10 +101,16 @@
       background: rgba(108, 117, 125, 0.1);
       padding: 6px 12px; // More generous padding
       border-radius: 4px;
-      margin-left: 30px; // Same spacing as regular text
+      margin-left: 35px; // Same spacing as regular text
       margin-top: 4px;
       margin-bottom: 4px;
       display: inline-block; // Inline block for better spacing
+      transition: all 0.2s ease; // Smooth transitions for code blocks
+      
+      &:hover {
+        background: rgba(108, 117, 125, 0.15);
+        transform: translateX(2px);
+      }
     }
   }
   
@@ -93,9 +123,18 @@
     border-left-color: $pistachio;
     background: rgba($pistachio, 0.05);
     
+    &:hover {
+      background: rgba($pistachio, 0.08);
+      border-left-color: darken($pistachio, 10%);
+    }
+    
     &::before {
       background-color: $pistachio;
       mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNxdWFyZS1saWJyYXJ5Ij48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIi8+PHBhdGggZD0iTTcgN3YxMCIvPjxwYXRoIGQ9Ik0xMSA3djEwIi8+PHBhdGggZD0ibTE1IDcgMiAxMCIvPjwvc3ZnPg==");
+    }
+    
+    &:hover::before {
+      background-color: darken($pistachio, 5%);
     }
     
     .btn-close, .close { 
@@ -113,9 +152,18 @@
     border-left-color: $mauve;
     background: rgba($mauve, 0.05);
     
+    &:hover {
+      background: rgba($mauve, 0.08);
+      border-left-color: darken($mauve, 10%);
+    }
+    
     &::before {
       background-color: $mauve;
       mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdyaWQtMngyLWNoZWNrIj48cGF0aCBkPSJNMTIgM3YxN2ExIDEgMCAwIDEtMSAxSDVhMiAyIDAgMCAxLTItMlY1YTIgMiAwIDAgMSAyLTJoMTRhMiAyIDAgMCAxIDIgMnY2YTEgMSAwIDAgMS0xIDFIMyIvPjxwYXRoIGQ9Im0xNiAxOSAyIDIgNC00Ii8+PC9zdmc+");
+    }
+    
+    &:hover::before {
+      background-color: darken($mauve, 5%);
     }
     
     .btn-close, .close { 
@@ -133,9 +181,18 @@
     border-left-color: $tropical-indigo;
     background: rgba($tropical-indigo, 0.05);
     
+    &:hover {
+      background: rgba($tropical-indigo, 0.08);
+      border-left-color: darken($tropical-indigo, 10%);
+    }
+    
     &::before {
       background-color: $tropical-indigo;
       mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-book-open-text'%3E%3Cpath d='M12 7v14'/%3E%3Cpath d='M16 12h2'/%3E%3Cpath d='M16 8h2'/%3E%3Cpath d='M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z'/%3E%3Cpath d='M6 12h2'/%3E%3Cpath d='M6 8h2'/%3E%3C/svg%3E");
+    }
+    
+    &:hover::before {
+      background-color: darken($tropical-indigo, 5%);
     }
     
     .btn-close, .close { 
@@ -153,9 +210,18 @@
     border-left-color: $seafoam-green;
     background: rgba($seafoam-green, 0.05);
     
+    &:hover {
+      background: rgba($seafoam-green, 0.08);
+      border-left-color: darken($seafoam-green, 10%);
+    }
+    
     &::before {
       background-color: $seafoam-green;
       mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWRuYSI+PHBhdGggZD0ibTEwIDE2IDEuNSAxLjUiLz48cGF0aCBkPSJtMTQgOC0xLjUtMS41Ii8+PHBhdGggZD0iTTE1IDJjLTEuNzk4IDEuOTk4LTIuNTE4IDMuOTk1LTIuODA3IDUuOTkzIi8+PHBhdGggZD0ibTE2LjUgMTAuNSAxIDEiLz48cGF0aCBkPSJtMTcgNi0yLjg5MS0yLjg5MSIvPjxwYXRoIGQ9Ik0yIDE1YzYuNjY3LTYgMTMuMzMzIDAgMjAtNiIvPjxwYXRoIGQ9Im0yMCA5IC44OTEuODkxIi8+PHBhdGggZD0iTTMuMTA5IDE0LjEwOSA0IDE1Ii8+PHBhdGggZD0ibTYuNSAxMi41IDEgMSIvPjxwYXRoIGQ9Im03IDE4IDIuODkxIDIuODkxIi8+PHBhdGggZD0iTTkgMjJjMS43OTgtMS45OTggMi41MTgtMy45OTUgMi44MDctNS45OTMiLz48L3N2Zz4=");
+    }
+    
+    &:hover::before {
+      background-color: darken($seafoam-green, 5%);
     }
     
     .btn-close, .close { 
@@ -173,9 +239,18 @@
     border-left-color: $dusty-rose;
     background: rgba($dusty-rose, 0.05);
     
+    &:hover {
+      background: rgba($dusty-rose, 0.08);
+      border-left-color: darken($dusty-rose, 10%);
+    }
+    
     &::before {
       background-color: $dusty-rose;
       mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-terminal'%3E%3Cpolyline points='4 17 10 11 4 5'/%3E%3Cline x1='12' x2='20' y1='19' y2='19'/%3E%3C/svg%3E");
+    }
+    
+    &:hover::before {
+      background-color: darken($dusty-rose, 5%);
     }
     
     .btn-close, .close { 
