@@ -1,3 +1,5 @@
+@import "src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss";
+
 .ds-base-drop-zone {
   border: 2px dashed var(--bs-gray-600);
 }
@@ -35,4 +37,48 @@
 
 .ds-document-drop-zone-inner-content p {
   font-size: calc(var(--bs-font-size-lg) * 2.5);
+}
+
+/* Enhanced browse button styling - hyperlink style but prominent */
+.ds-base-drop-zone label.btn {
+  background: none !important;
+  border: none !important;
+  color: $link-color !important;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  margin-left: 8px !important;
+  cursor: pointer;
+  position: relative;
+  
+  &:hover {
+    color: $link-hover-color !important;
+    text-decoration-thickness: 3px;
+    text-shadow: 0 0 8px rgba(var(--bs-primary-rgb), 0.3);
+    transform: scale(1.05);
+    background: rgba(var(--bs-primary-rgb), 0.08) !important;
+  }
+
+  &:active {
+    transform: scale(0.98);
+    color: darken($link-hover-color, 20%) !important;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb), 0.25);
+    background: rgba(var(--bs-primary-rgb), 0.05) !important;
+  }
+
+  span {
+    font-size: inherit;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    font-weight: inherit;
+  }
 }
