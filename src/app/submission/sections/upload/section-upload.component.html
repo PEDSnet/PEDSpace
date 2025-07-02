@@ -1,6 +1,41 @@
-<ds-alert [content]="'submission.sections.upload.info'"
-          [dismissible]="true"
-          [type]="AlertTypeEnum.Info"></ds-alert>
+<!-- Conditional alert messages based on submission definition -->
+<ng-container [ngSwitch]="submissionDefinition">
+  <ds-alert *ngSwitchCase="'DQResult'"
+            [content]="'submission.sections.upload.info.dqresult'"
+            [dismissible]="true"
+            [type]="AlertTypeEnum.Info"
+            [attr.data-type]="'dqresult'"></ds-alert>
+  
+  <ds-alert *ngSwitchCase="'DQCheck'"
+            [content]="'submission.sections.upload.info.dqcheck'"
+            [dismissible]="true"
+            [type]="AlertTypeEnum.Info"
+            [attr.data-type]="'dqcheck'"></ds-alert>
+  
+  <ds-alert *ngSwitchCase="'Documentation'"
+            [content]="'submission.sections.upload.info.documentation'"
+            [dismissible]="true"
+            [type]="AlertTypeEnum.Info"
+            [attr.data-type]="'documentation'"></ds-alert>
+  
+  <ds-alert *ngSwitchCase="'Phenotype'"
+            [content]="'submission.sections.upload.info.phenotype'"
+            [dismissible]="true"
+            [type]="AlertTypeEnum.Info"
+            [attr.data-type]="'phenotype'"></ds-alert>
+  
+  <ds-alert *ngSwitchCase="'ConceptSet'"
+            [content]="'submission.sections.upload.info.conceptset'"
+            [dismissible]="true"
+            [type]="AlertTypeEnum.Info"
+            [attr.data-type]="'conceptset'"></ds-alert>
+  
+  <ds-alert *ngSwitchDefault
+            [content]="'submission.sections.upload.info'"
+            [dismissible]="true"
+            [type]="AlertTypeEnum.Info"
+            [attr.data-type]="'default'"></ds-alert>
+</ng-container>
 
 <ng-container *ngIf="fileList.length > 0; else noFileUploaded">
 

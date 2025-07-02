@@ -6817,6 +6817,16 @@
 
     "submission.sections.upload.info": "Here, you will find all the files currently in the item. You can update the file metadata and access conditions or <strong>upload additional files by dragging & dropping them anywhere on the page.</strong>",
 
+    "submission.sections.upload.info.dqcheck": "Here, you will find all the files currently in the item. You can update the file metadata and access conditions or <strong>upload additional files by dragging & dropping them anywhere on the page.</strong>",
+    
+    "submission.sections.upload.info.documentation": "Here, you will find all the files currently in the item. You can update the file metadata and access conditions or <strong>upload additional files by dragging & dropping them anywhere on the page.</strong>",
+    
+    "submission.sections.upload.info.dqresult": "Please include the raw, tabular output of your data quality analysis in <code>.CSV</code> format. If you would like to include visualizations in your report, please add them in <code>.PNG</code> format. Ensure your files have intuitive, human-readable filenames before upload e.g., \"<code>2025_PRESERVE_SCV.csv.</code>\" <strong>Upload files by dragging & dropping them anywhere on the page</strong>.",
+
+    "submission.sections.upload.info.conceptset": "Please deposit a <code>.CSV</code> file with an intuitive, human-readable filename e.g., \"<code>dx_asthma.csv</code>\". <strong>Upload files by dragging & dropping them anywhere on the page</strong>.",
+
+    "submission.sections.upload.info.phenotype": "Please deposit a <code>.ZIP</code> file with an intuitive, human-readable filename. In the <code>zip</code> file, include a specs folder containing the utilized codesets and at least one code file (typically <code>cohorts.R</code> and <code>driver.R</code>) to run the algorithm. <strong>Upload files by dragging & dropping them anywhere on the page</strong>.",
+
     "submission.sections.upload.no-entry": "No",
 
     "submission.sections.upload.no-file-uploaded": "No file uploaded yet.",

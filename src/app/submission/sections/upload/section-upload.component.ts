@@ -2,6 +2,9 @@ import {
   AsyncPipe,
   NgForOf,
   NgIf,
+  NgSwitch,
+  NgSwitchCase,
+  NgSwitchDefault,
 } from '@angular/common';
 import {
   ChangeDetectorRef,
@@ -79,6 +82,9 @@ export interface AccessConditionGroupsMapEntry {
     TranslateModule,
     NgForOf,
     AsyncPipe,
+    NgSwitch,
+    NgSwitchCase,
+    NgSwitchDefault,
   ],
   standalone: true,
 })
@@ -145,6 +151,12 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
   public required$ = new BehaviorSubject<boolean>(true);
 
   /**
+   * The submission definition name to determine which info message to show
+   * @type {string}
+   */
+  public submissionDefinition: string | null = null;
+
+  /**
    * Array to track all subscriptions and unsubscribe them onDestroy
    * @type {Array}
    */
@@ -194,6 +206,20 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
           map((remoteData: RemoteData<SubmissionFormsModel>) => remoteData.payload),
         ),
       ));
+
+    // Add subscription to check the actual submission object from the service
+    this.subs.push(
+      this.submissionService.getSubmissionObject(this.submissionId).pipe(
+        tap((fullSubmissionObject) => {
+          if (fullSubmissionObject && typeof fullSubmissionObject === 'object') {
+            if ('definition' in fullSubmissionObject) {
+              this.submissionDefinition = fullSubmissionObject.definition;
+              this.changeDetectorRef.detectChanges();
+            }
+          }
+        }),
+      ).subscribe(),
+    );
 
     this.subs.push(
       this.submissionService.getSubmissionObject(this.submissionId).pipe(
