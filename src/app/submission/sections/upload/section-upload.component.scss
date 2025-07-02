@@ -85,7 +85,7 @@
       display: block; // Use block instead of flex
       line-height: 1.5; // Normal line height for readability
       font-size: 14px;
-      margin-left: 35px; // Create space for the icon (22px left + 26px width + 12px spacing)
+      margin-left: 40px; // Create space for the icon (22px left + 26px width + 12px spacing)
       padding-top: 2px; // Slight top padding for better vertical alignment
       transition: all 0.2s ease; // Smooth text color transitions
       
@@ -101,7 +101,7 @@
       background: rgba(108, 117, 125, 0.1);
       padding: 6px 12px; // More generous padding
       border-radius: 4px;
-      margin-left: 35px; // Same spacing as regular text
+      margin-left: 40px; // Same spacing as regular text
       margin-top: 4px;
       margin-bottom: 4px;
       display: inline-block; // Inline block for better spacing
