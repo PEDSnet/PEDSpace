@@ -454,12 +454,12 @@ vocabularies:
   - filter: 'subject'
     vocabulary: 'dc_subject'
     enabled: true
-  - filter: 'itemVocabulary'
+  - filter: 'itemVocab'
     vocabulary: 'dc_subject_other'
-    enabled: true
+    enabled: false
   - filter: 'itemClinicalSubject'
     vocabulary: 'dc_subject_mesh'
-    enabled: true
+    enabled: false
 
 # Default collection/community sorting order at Advanced search, Create/update community and collection when there are not a query.
 comcolSelectionSort:
