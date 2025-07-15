@@ -19,19 +19,25 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ComcolPageBrowseByComponent as BaseComponent } from '../../../../../../app/shared/comcol/comcol-page-browse-by/comcol-page-browse-by.component';
 
 @Pipe({
+  // eslint-disable-next-line @angular-eslint/pipe-prefix
   name: 'filterType',
   standalone: true,
 })
 export class FilterTypePipe implements PipeTransform {
   transform(options: any[]): any[] {
     // this is where we crudely filter out unwanted metadata fields by their browse-by name from the config file (see local.cfg or dspace.cfg)
-    return options.filter(option => !option.id.includes('type') && 
-      !option.id.includes('srsc') && 
-      !option.id.includes('quality') && 
-      !option.id.includes('domain') && 
-      !option.id.includes('response') && 
-      !option.id.includes('funder') && 
-      !option.id.includes('vocab') && 
+    return options.filter(option => !option.id.includes('type') &&
+      !option.id.includes('srsc') &&
+      !option.id.includes('quality') &&
+      !option.id.includes('domain') &&
+      !option.id.includes('response') &&
+      !option.id.includes('funder') &&
+      !option.id.includes('vocab') &&
+      !option.id.includes('EvalType') &&
+      !option.id.includes('MedTermChar') &&
+      !option.id.includes('validation') &&
+      !option.id.includes('DevPop') &&
+      !option.id.includes('DataModel') &&
       !option.id.includes('requirement'));
   }
 }
