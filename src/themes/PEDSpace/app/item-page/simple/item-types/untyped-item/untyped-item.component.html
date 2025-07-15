@@ -83,10 +83,10 @@
       <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
       </ds-item-page-uri-field>
       <!-- </ng-container>      -->
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.other']" [separator]="', '"
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.other']" [separator]="' '"
         [label]="'item.page.subject'"></ds-generic-item-page-field>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.subject.mesh']" [separator]="'<br>'"
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
       <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
