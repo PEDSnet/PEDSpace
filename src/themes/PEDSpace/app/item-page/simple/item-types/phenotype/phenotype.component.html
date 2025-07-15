@@ -38,6 +38,12 @@
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.flat']" [separator]="'<br>'"
         [label]="'item.preview.dc.subject'"></ds-generic-item-page-field>
 
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.validation']" [separator]="'<br>'"
+        [label]="'Validation'"></ds-generic-item-page-field>
+
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.DataModel']" [separator]="'<br>'"
+        [label]="'Data Model'"></ds-generic-item-page-field>
+
     </div>
 
     <div class="col-12 col-md-8">
@@ -65,6 +71,9 @@
       </ds-generic-item-page-field>
 
       <ds-item-page-description-field [item]="object" [label]="'Algothrithm Description'"></ds-item-page-description-field>
+
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.DevPop']" [separator]="'<br>'"
+        [label]="'Development Population'"></ds-generic-item-page-field>
 
       <!-- <ng-container *ngIf="isLoggedIn"> -->
         <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">

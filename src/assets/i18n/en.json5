@@ -3844,6 +3844,16 @@
     "menu.section.browse_global_by_response": "By Data Result Outcome",
     
     "menu.section.browse_global_by_domain": "By Data Result Domain",
+    
+    "menu.section.browse_global_by_EvalType": "By Evaluation Type",
+
+    "menu.section.browse_global_by_DataModel": "By Data Model",
+
+    "menu.section.browse_global_by_MedTermChar": "By Medical Terminology Characteristic",
+
+    "menu.section.browse_global_by_validation": "By Validation",
+
+    "menu.section.browse_global_by_DevPop": "By Development Population",
 
     "menu.section.access_control_bulk": "Bulk Access Management",
 
