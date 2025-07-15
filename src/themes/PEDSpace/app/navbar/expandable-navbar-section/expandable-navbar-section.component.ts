@@ -43,7 +43,15 @@ export class ExpandableNavbarSectionComponent extends BaseComponent implements O
   // If this array is not empty, only these subsections will be shown
   // Example: allowedSubsections = ['browse', 'search']; (will only show browse and search)
   // Leave empty to show all subsections except those in hiddenSubsections
-  allowedSubsections: string[] = ['browse_global_by_author', 'browse_global_by_title', 'browse_global_by_funder', 'browse_global_by_type', 'browse_global_by_subject'];
+  allowedSubsections: string[] = [
+    'browse_global_by_title',
+    'browse_global_by_datecreated',
+    'browse_global_by_author',
+    'browse_global_by_funder',
+    'browse_global_by_subject',
+    'browse_global_by_tag',
+    'browse_global_by_type',
+  ];
 
   override ngOnInit() {
     super.ngOnInit();
