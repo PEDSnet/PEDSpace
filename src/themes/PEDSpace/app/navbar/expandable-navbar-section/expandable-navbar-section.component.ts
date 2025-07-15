@@ -94,7 +94,7 @@ export class ExpandableNavbarSectionComponent extends BaseComponent implements O
 
         return subSections.filter(subSection => {
           const shouldShow = this.shouldShowSubsection(subSection.id);
-          console.log(`Filtering subsection ${subSection.id}:`, shouldShow);
+          // console.log(`Filtering subsection ${subSection.id}:`, shouldShow);
           return shouldShow;
         });
       }),
