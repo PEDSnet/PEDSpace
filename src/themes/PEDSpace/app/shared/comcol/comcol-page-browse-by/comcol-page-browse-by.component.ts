@@ -38,6 +38,7 @@ export class FilterTypePipe implements PipeTransform {
       !option.id.includes('validation') &&
       !option.id.includes('DevPop') &&
       !option.id.includes('DataModel') &&
+      !option.id.includes('observation') &&
       !option.id.includes('requirement'));
   }
 }
