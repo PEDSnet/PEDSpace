@@ -3,6 +3,8 @@ import {
   Component,
   Input,
 } from '@angular/core';
+import { BrowseService } from 'src/app/core/browse/browse.service';
+import { BrowseDefinitionDataService } from 'src/app/core/browse/browse-definition-data.service';
 import { Item } from 'src/app/core/shared/item.model';
 import { MetadataValuesComponent } from 'src/app/item-page/field-components/metadata-values/metadata-values.component';
 
@@ -21,6 +23,13 @@ import { ItemPageFieldComponent } from '../../../../../../../../app/item-page/si
  * This component is used for displaying the abstract (dc.description.abstract) of an item
  */
 export class ItemPageExternalPublicationFieldComponent extends ItemPageFieldComponent {
+
+  constructor(
+    protected browseDefinitionDataService: BrowseDefinitionDataService,
+    protected browseService: BrowseService,
+  ) {
+    super(browseDefinitionDataService, browseService);
+  }
 
     /**
      * The item to display metadata for
@@ -50,4 +59,9 @@ export class ItemPageExternalPublicationFieldComponent extends ItemPageFieldComp
      * Use the {@link MarkdownDirective} to render dc.description.abstract values
      */
     enableMarkdown = true;
+
+    /**
+     * Flag to apply citation styling to markdown content
+     */
+    applyCitationStyling = true;
 }

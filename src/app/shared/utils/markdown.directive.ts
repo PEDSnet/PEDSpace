@@ -42,12 +42,13 @@ export class MarkdownDirective implements OnInit, OnDestroy {
 
   @Input() dsMarkdown: string;
   @Input() pruneEmptyRows = false; // New Input for pruning
+  @Input() applyCitationStyling = false; // Flag for citation styling
   private alive$ = new Subject<boolean>();
 
   el: HTMLElement;
 
   constructor(
-    @Inject(MARKDOWN_IT) private markdownItLoader: LazyMarkdownIt,
+    @Inject(MARKDOWN_IT) private markdownItService: LazyMarkdownIt,
     protected sanitizer: DomSanitizer,
     private mathService: MathService,
     private elementRef: ElementRef) {
@@ -63,11 +64,11 @@ export class MarkdownDirective implements OnInit, OnDestroy {
       this.el.innerHTML = value;
       return;
     }
-    const MarkdownIt = await this.markdownItLoader;
+    const MarkdownIt = await this.markdownItService;
     const md = new MarkdownIt({
       html: true,
       linkify: true,
-      typographer: true, 
+      typographer: true,
     });
 
     md.enable(['table']);
@@ -113,7 +114,12 @@ export class MarkdownDirective implements OnInit, OnDestroy {
       finalHtml = this.removeEmptyTableRows(sanitizedHtml);
     }
 
-    this.el.innerHTML = `<div class="markdown-container table-responsive">${finalHtml}</div>`;
+    // Apply citation styling class if flag is set
+    const containerClass = this.applyCitationStyling
+      ? 'markdown-container table-responsive citation-style'
+      : 'markdown-container table-responsive';
+
+    this.el.innerHTML = `<div class="${containerClass}">${finalHtml}</div>`;
 
     if (environment.markdown.mathjax) {
       this.renderMathjax();
@@ -171,16 +177,16 @@ export class MarkdownDirective implements OnInit, OnDestroy {
 
       rows.forEach(row => {
         const cells = row.querySelectorAll('th, td');
-        let isEmpty = true;
+        let isRowEmpty = true;
 
         cells.forEach(cell => {
           const text = cell.textContent?.trim().replace(/\u00a0/g, '');
           if (text && text !== '') {
-            isEmpty = false;
+            isRowEmpty = false;
           }
         });
 
-        if (isEmpty) {
+        if (isRowEmpty) {
           row.remove();
         }
       });

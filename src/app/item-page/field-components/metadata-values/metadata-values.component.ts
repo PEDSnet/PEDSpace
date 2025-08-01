@@ -132,6 +132,11 @@ export class MetadataValuesComponent implements OnChanges {
    */
   @Input() renderAsBadge = false;
 
+  /**
+   * Flag to apply citation styling to markdown content
+   */
+  @Input() applyCitationStyling = false;
+
   hasValue = hasValue;
 
   ngOnChanges(changes: SimpleChanges): void {

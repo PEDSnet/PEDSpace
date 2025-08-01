@@ -103,7 +103,12 @@ export class ItemPageFieldComponent {
     /**
      * Flag to indicate special styling for 'local.dqcheck.requirement'
      */
-    isDQCheckRequirement: boolean = false;
+    isDQCheckRequirement = false;
+
+    /**
+     * Flag to apply citation styling to markdown content
+     */
+    @Input() applyCitationStyling = false;
 
     /**
      * Return browse definition that matches any field used in this component if it is configured as a browse

@@ -24,12 +24,12 @@
   <span class="dont-break-out">
     <ng-container *ngIf="sentenceTemplateParts; else defaultContent">
       {{ sentenceTemplateParts[0] }}
-      <span [dsMarkdown]="value">
+      <span [dsMarkdown]="value" [applyCitationStyling]="applyCitationStyling">
       </span>
       {{ sentenceTemplateParts[1] }}
     </ng-container>
     <ng-template #defaultContent>
-      <span [dsMarkdown]="value">
+      <span [dsMarkdown]="value" [applyCitationStyling]="applyCitationStyling">
       </span>
     </ng-template>
   </span>
