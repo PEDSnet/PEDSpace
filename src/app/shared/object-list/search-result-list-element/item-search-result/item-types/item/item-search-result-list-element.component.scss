@@ -1,7 +1,216 @@
 @import '../../../../../../../styles/variables';
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
 
-.item-list-supervision {
-    a {
-        cursor: pointer;
+// Main container styling
+.row {
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease-in-out;
+  
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Thumbnail styling
+.col-3, .col-md-2 {
+  display: flex;
+  align-items: flex-start;
+  
+  a, span {
+    display: block;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      transform: scale(1.02);
     }
+  }
+  
+  ds-thumbnail {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+}
+
+// Main content area
+.col-9, .col-md-12 {
+  padding-left: 1rem;
+  
+  @media (max-width: 767px) {
+    padding-left: 0;
+    margin-top: 1rem;
+  }
+}
+
+// Badges styling
+.d-flex {
+  margin-bottom: 0.75rem;
+  
+  ds-badges {
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+  }
+}
+
+// Title styling
+.item-list-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: $midnight-green;
+  text-decoration: underline;
+  text-decoration-color: rgba($midnight-green, 0.4);
+  text-underline-offset: 3px;
+  margin-bottom: 0.5rem;
+  display: block;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: $redwood;
+    text-decoration: none;
+  }
+  
+  &:focus {
+    outline: 2px solid $cambridge-blue;
+    outline-offset: 2px;
+  }
+}
+
+// Metadata styling (publisher, date, authors)
+.text-muted {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #6c757d !important;
+  margin-bottom: 0.75rem;
+  
+  .item-list-publisher {
+    font-weight: 500;
+    color: #495057;
+  }
+  
+  .item-list-date {
+    font-weight: 500;
+    color: #495057;
+  }
+  
+  .item-list-authors {
+    display: block;
+    margin-top: 0.25rem;
+    
+    span {
+      color: #495057;
+      
+      &:hover {
+        color: #2c3e50;
+      }
+    }
+  }
+}
+
+// Abstract styling
+.item-list-abstract {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #6c757d;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #e9ecef;
+  
+  span {
+    display: block;
+  }
+}
+
+// Truncatable component enhancements
+ds-truncatable {
+  display: block;
+  
+  ds-truncatable-part {
+    display: block;
+  }
+}
+
+// Supervision styling (keeping original functionality)
+.item-list-supervision {
+  a {
+    cursor: pointer;
+    color: #3498db;
+    text-decoration: underline;
+    text-decoration-color: rgba(52, 152, 219, 0.4);
+    text-underline-offset: 2px;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      color: #2980b9;
+      text-decoration: none;
+    }
+  }
+}
+
+// Responsive improvements
+@media (max-width: 767px) {
+  .row {
+    padding: 1rem;
+  }
+  
+  .item-list-title {
+    font-size: 1rem;
+  }
+  
+  .item-list-abstract {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+}
+
+// Focus and accessibility improvements
+.dont-break-out {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+// Enhanced link styling for better UX
+a {
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 0, 0, 0.2);
+  text-underline-offset: 2px;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    text-decoration: none;
+  }
+  
+  &:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  
+  // Override only for thumbnail links in thumbnail columns to keep them clean
+  .col-3 &.dont-break-out,
+  .col-md-2 &.dont-break-out {
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }

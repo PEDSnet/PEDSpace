@@ -1,0 +1,51 @@
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
+
+// Truncatable component styles for professional link appearance
+a {
+  text-decoration: underline;
+  text-decoration-color: rgba($midnight-green, 0.3);
+  text-underline-offset: 2px;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    text-decoration: none;
+  }
+  
+  &:focus {
+    outline: 2px solid $cambridge-blue;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+// Enhanced styling for truncated content
+.content {
+  a {
+    color: inherit;
+    
+    &:hover {
+      color: $redwood;
+      text-decoration: none;
+    }
+  }
+}
+
+// Ensure expand button has proper styling
+.expandButton {
+  font-size: 0.875rem;
+  color: $warm-gray;
+  text-decoration: underline;
+  text-decoration-color: rgba($warm-gray, 0.5);
+  text-underline-offset: 2px;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: $charcoal;
+    text-decoration: none;
+  }
+  
+  &:focus {
+    outline: 2px solid $cambridge-blue;
+    outline-offset: 2px;
+  }
+}
