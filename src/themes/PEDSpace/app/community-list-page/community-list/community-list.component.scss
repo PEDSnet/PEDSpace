@@ -8,18 +8,51 @@ cdk-tree {
   // margin: 0.5rem 0;
 }
 
-// Minimal hover effect for tree nodes
-.example-tree-node {
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
+span a {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  // color: $midnight-green;
+  text-decoration: underline;
+  text-decoration-color: rgba($redwood, 0.4);
+  text-underline-offset: 3px;
+  // margin-bottom: 0.5rem;
+  display: block;
+  transition: all 0.2s ease;
   
   &:hover {
-    background-color: rgba($cambridge-blue, 0.05);
+    color: darken($redwood, 25%);
+    text-decoration: none;
+  }
+  
+  &:focus {
+    outline: 2px solid $cambridge-blue;
+    outline-offset: 2px;
+  }
+}
+
+// Minimal hover effect for tree nodes
+.example-tree-node {
+  border-radius: 6px;
+  // padding: 0.25rem 0.5rem;
+  // margin: 0.1rem 0;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: rgba($cambridge-blue, 0.08);
+    border-radius: 8px;
+    // padding: 0.4rem 0.75rem;
+    // margin: 0.05rem -0.25rem;
+    box-shadow: 0 1px 4px rgba($cambridge-blue, 0.15);
   }
   
   // Remove default indentation for top-level nodes
   &[aria-level="1"] {
     padding-left: 0 !important;
+    
+    // &:hover {
+    //   padding-left: 0.75rem !important;
+    // }
   }
 }
 

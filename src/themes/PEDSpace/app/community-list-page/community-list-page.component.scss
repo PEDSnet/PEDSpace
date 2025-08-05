@@ -1,10 +1,14 @@
 @import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
 
-// Very minimal page styling
+// Create a distinct content zone
 .container {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem 1rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: rgba($snow, 0.6);
+  border: 1px solid rgba($cambridge-blue, 0.25);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba($cambridge-blue, 0.1);
 }
 
 // Just a subtle enhancement to the title
@@ -12,4 +16,5 @@ h1 {
   font-size: 1.75rem !important;
   color: $midnight-green;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
