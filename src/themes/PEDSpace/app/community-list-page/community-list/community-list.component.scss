@@ -1,0 +1,45 @@
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
+
+// Very subtle container styling - just a gentle background separation
+cdk-tree {
+  background-color: rgba($snow, 0.3);
+  border-radius: 6px;
+  // padding: 1rem;
+  // margin: 0.5rem 0;
+}
+
+// Minimal hover effect for tree nodes
+.example-tree-node {
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: rgba($cambridge-blue, 0.05);
+  }
+  
+  // Remove default indentation for top-level nodes
+  &[aria-level="1"] {
+    padding-left: 0 !important;
+  }
+}
+
+// Subtle styling for expand buttons
+.expandable-node {
+  .btn-group button {
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: rgba($midnight-green, 0.1);
+      border-color: rgba($midnight-green, 0.3);
+    }
+  }
+}
+
+// Keep original chevron styling
+::ng-deep .fa-chevron-right::before,
+::ng-deep .fa-chevron-down::before {
+  display: block;
+  width: 16px;
+  font-size: 12px;
+}

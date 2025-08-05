@@ -1,0 +1,15 @@
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
+
+// Very minimal page styling
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+// Just a subtle enhancement to the title
+h1 {
+  font-size: 1.75rem !important;
+  color: $midnight-green;
+  margin-bottom: 1.5rem;
+}

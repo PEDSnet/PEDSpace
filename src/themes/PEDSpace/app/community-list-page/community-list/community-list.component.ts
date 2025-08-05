@@ -22,9 +22,9 @@ import { TruncatablePartComponent } from '../../../../../app/shared/truncatable/
  */
 @Component({
   selector: 'ds-themed-community-list',
-  // styleUrls: ['./community-list.component.scss'],
-  // templateUrl: './community-list.component.html'
-  templateUrl: '../../../../../app/community-list-page/community-list/community-list.component.html',
+  styleUrls: ['./community-list.component.scss'],
+  templateUrl: './community-list.component.html',
+  // templateUrl: '../../../../../app/community-list-page/community-list/community-list.component.html',
   standalone: true,
   imports: [NgIf, ThemedLoadingComponent, CdkTreeModule, NgClass, RouterLink, TruncatableComponent, TruncatablePartComponent, AsyncPipe, TranslateModule],
 })
