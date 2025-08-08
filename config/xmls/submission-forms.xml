@@ -342,12 +342,82 @@
                     <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Check Specifications</label>
-                    <input-type>onebox</input-type>
-                    <hint>At minimum, add one tag to the check for each of the following categories. Use the subject tree for Data Quality Check Categorizations for assistance. 
-                            Data quality characterization; analysis level; temporal evaluation; data source;anomaly or exploratory investigation; visualization output(s); quality probe; and clinical data quality assessment type.</hint>
-                    <required>Specification tags are required.</required>
-                    <vocabulary closed="true">dc_subject</vocabulary>
+                    <label>Check Type</label>
+                    <input-type value-pairs-name="DQModules">dropdown</input-type>
+                    <hint></hint>
+                    <required>This field is required</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>dqmodule</dc-element>
+                    <dc-qualifier>category</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>DQ Category</label>
+                    <input-type value-pairs-name="DQCategory">dropdown</input-type>
+                    <hint></hint>
+                    <required>This field is required</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>dqmodule</dc-element>
+                    <dc-qualifier>eval</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Evaluation Parameters</label>
+                    <input-type value-pairs-name="DQEval">dropdown</input-type>
+                    <hint></hint>
+                    <required>This field is required</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>dqmodule</dc-element>
+                    <dc-qualifier>measurement</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Measurement Type</label>
+                    <input-type value-pairs-name="DQMeasurement">dropdown</input-type>
+                    <hint></hint>
+                    <required>This field is required</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>dqmodule</dc-element>
+                    <dc-qualifier>viz</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Vizualization Type</label>
+                    <input-type value-pairs-name="DQViz">dropdown</input-type>
+                    <hint></hint>
+                    <required>This field is required</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>dqmodule</dc-element>
+                    <dc-qualifier>probe</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Probe Type</label>
+                    <input-type value-pairs-name="DQProbe">dropdown</input-type>
+                    <hint></hint>
+                    <required>This field is required</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>dqmodule</dc-element>
+                    <dc-qualifier>clinicalprobe</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Clinical Probe Type</label>
+                    <input-type value-pairs-name="DQClinicalProbe">dropdown</input-type>
+                    <hint></hint>
+                    <required>This field is required</required>
                 </field>
             </row>
             <row>
@@ -3835,6 +3905,268 @@
             <pair>
                 <displayed-value>Deprecated</displayed-value>
                 <stored-value>Deprecated</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="DQModule" dc-term="subejct">
+            <pair>
+                <displayed-value>Cohort Fitness</displayed-value>
+                <stored-value>Cohort Fitness</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Cohort Identification</displayed-value>
+                <stored-value>Cohort Identification</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Concept Set Testing</displayed-value>
+                <stored-value>Concept Set Testing</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Data Conformance</displayed-value>
+                <stored-value>Data Conformance</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Dataset Fitness</displayed-value>
+                <stored-value>Dataset Fitness</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Variable Testing</displayed-value>
+                <stored-value>Variable Testing</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="DQCategory" dc-term="subject">
+            <pair>
+                <displayed-value>Concordance</displayed-value>
+                <stored-value>Concordance</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Conformance</displayed-value>
+                <stored-value>Conformance</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Completeness</displayed-value>
+                <stored-value>Completeness</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Consistency</displayed-value>
+                <stored-value>Consistency</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Information Representation</displayed-value>
+                <stored-value>Information Representation</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Plausibility</displayed-value>
+                <stored-value>Plausibility</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="DQEval" dc-term="subject">
+            <pair>
+                <displayed-value>Person-Level Analysis</displayed-value>
+                <stored-value>Person-Level Analysis</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Visit-Level Analysis</displayed-value>
+                <stored-value>Visit-Level Analysis</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Event-Level Analysis</displayed-value>
+                <stored-value>Event-Level Analysis</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Longitudinal Analysis</displayed-value>
+                <stored-value>Longitudinal Analysis</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Cross-Sectional Analysis</displayed-value>
+                <stored-value>Cross-Sectional Analysis</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Multi-Site Analysis</displayed-value>
+                <stored-value>Multi-Site Analysis</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Single-Site Analysis</displayed-value>
+                <stored-value>Single-Site Analysis</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Data Anomaly Method</displayed-value>
+                <stored-value>Data Anomaly Method</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Exploratory Analysis</displayed-value>
+                <stored-value>Exploratory Analysis</stored-value>
+            </pair> 
+        </value-pairs>
+        <value-pairs value-pairs-name="DQMeasurement" dc-term="subject">
+            <pair>
+                <displayed-value>Time Series Anomalies</displayed-value>
+                <stored-value>Time Series Anomalies</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Distance From Mean</displayed-value>
+                <stored-value>Distance From Mean</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Jaccard Similarity Index</displayed-value>
+                <stored-value>Jaccard Similarity Index</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Hotspots Outlier Detection</displayed-value>
+                <stored-value>Hotspots Outlier Detection</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Seasonal-Treat Decomposition Using LOESS</displayed-value>
+                <stored-value>Seasonal-Treat Decomposition Using LOESS</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Euclidean Distance</displayed-value>
+                <stored-value>Euclidean Distance</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Time Series Exploration</displayed-value>
+                <stored-value>Time Series Exploration</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Attrition Counts</displayed-value>
+                <stored-value>Attrition Counts</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Frequency Distribution</displayed-value>
+                <stored-value>Frequency Distribution</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Time Between Events</displayed-value>
+                <stored-value>Time Between Events</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Cohort Overlap</displayed-value>
+                <stored-value>Cohort Overlap</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>STL Regression</displayed-value>
+                <stored-value>STL Regression</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="DQViz" dc-term="subject">
+            <pair>
+                <displayed-value>Bar Graph</displayed-value>
+                <stored-value>Bar Graph</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Control Chart</displayed-value>
+                <stored-value>Control Chart</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Dot and Star Plot</displayed-value>
+                <stored-value>Dot and Star Plot</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Histogram</displayed-value>
+                <stored-value>Histogram</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Heatmap</displayed-value>
+                <stored-value>Heatmap</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Line Graph</displayed-value>
+                <stored-value>Line Graph</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Radial Bar Graph</displayed-value>
+                <stored-value>Radial Bar Graph</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Dot Plot</displayed-value>
+                <stored-value>Dot Plot</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>UpSet Graph</displayed-value>
+                <stored-value>UpSet Graph</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="DQProbe" dc-term="subject">
+            <pair>
+                <displayed-value>Misclassification Detection</displayed-value>
+                <stored-value>Misclassification Detection</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Eligibility Criteria Assessment</displayed-value>
+                <stored-value>Eligibility Criteria Assessment</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Missing Expected Data</displayed-value>
+                <stored-value>Missing Expected Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Information Density</displayed-value>
+                <stored-value>Information Density</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Selection Error or Bias</displayed-value>
+                <stored-value>Selection Error or Bias</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Anomalous Values from Internal Distributions</displayed-value>
+                <stored-value>Anomalous Values from Internal Distributions</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Temporality Consistency Check</displayed-value>
+                <stored-value>Temporality Consistency Check</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Data Representation Errors</displayed-value>
+                <stored-value>Data Representation Errors</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Missing Required Data</displayed-value>
+                <stored-value>Missing Required Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>External Benchmarking</displayed-value>
+                <stored-value>External Benchmarking</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="DQClinicalProbe" dc-term="subject">
+            <pair>
+                <displayed-value>Clinical Consistency</displayed-value>
+                <stored-value>Clinical Consistency</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Clinical Follow-Up</displayed-value>
+                <stored-value>Clinical Follow-Up</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Clinical Complexity</displayed-value>
+                <stored-value>Clinical Complexity</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Confirmatory Clinical Data</displayed-value>
+                <stored-value>Confirmatory Clinical Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Expected Clinical Event Representation</displayed-value>
+                <stored-value>Expected Clinical Event Representation</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Selection Error or Bias Detection</displayed-value>
+                <stored-value>Selection Error or Bias Detection</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Targeted Patient Population</displayed-value>
+                <stored-value>Targeted Patient Population</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Utilization Patterns</displayed-value>
+                <stored-value>Utilization Patterns</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Valid Diagnostic Criteria</displayed-value>
+                <stored-value>Valid Diagnostic Criteria</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Clinical Data Distributions</displayed-value>
+                <stored-value>Clinical Data Distributions</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="common_types" dc-term="type">
