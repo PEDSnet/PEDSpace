@@ -1634,6 +1634,256 @@
                 </relation-field>
             </row>    
         </form>
+
+        <!--Reusable Code Form-->
+        <form name="CodeForm">
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Full Title</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the full plain English title of the tool. Use title case.</hint>
+                    <required>You must enter a title for this item.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <dc-qualifier>alternative</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Shorthand Title</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the shorthand name of the tool.</hint>
+                    <required>You must enter a title for this item.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>created</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Date</label>
+                    <input-type>date</input-type>
+                    <hint>Input the date that the item was last updated.</hint>
+                    <required>You must enter at least a year.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>author</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Developer</label>
+                    <input-type>name</input-type>
+                    <hint>Enter the developers' names.</hint>
+                    <required>You must enter at least one creator for your item.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Affliated Organization(s)</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the name(s) of the institutions employing any of the individuals listed as creators.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>abstract</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Short Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a brief, 1-2 sentence introductory description of the item.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>provenance</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Provenance</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter provenance information associated with the tool.</hint>
+                    <required></required>
+                </field>
+            </row> 
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a full description of the item.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Tags</label>
+                    <input-type value-pairs-name="CodeType">list</input-type>
+                    <hint>Select all tags that apply to the tool.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>mesh</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Clinical Subject Headings</label>
+                    <input-type>onebox</input-type>
+                    <hint>Input any relevant clinical subject headings from the MeSH vocabulary.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>code</dc-element>
+                    <dc-qualifier>github</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>GitHub Repository</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter a permanent link to the originating GitHub Repository (if applicable).</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>code</dc-element>
+                    <dc-qualifier>bitbucket</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>BitBucket Repository</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter a permanent link to the originating Bitbucket Repository (if applicable).</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>code</dc-element>
+                    <dc-qualifier>package</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>R Package Install Code</label>
+                    <input-type>onebox</input-type>
+                    <hint>If you are submitting an R package, enter the install code here, e.g., # install.packages("devtools")
+devtools::install_github("Query-Fulfillment/countmaskr")</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isStudyOfCode</relationship-type>
+                    <search-configuration>study</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Studies</label>
+                    <hint>Select any studies related to the item or which utilized this code.</hint>
+                    <required></required>
+                </relation-field>
+            </row> 
+            <row>
+                <relation-field>
+                    <relationship-type>isDocumentationOfCode</relationship-type>
+                    <search-configuration>documentation</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Resources</label>
+                    <hint>Select any related resources in the collection.</hint>
+                    <required></required>
+                </relation-field>
+            </row> 
+            <row>
+                <relation-field>
+                    <relationship-type>isConceptSetOfCode</relationship-type>
+                    <search-configuration>conceptset</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Concept Sets</label>
+                    <hint>Select any concept sets needed to run the code.</hint>
+                    <required></required>
+                </relation-field>
+            </row> 
+            <row>
+                <relation-field>
+                    <relationship-type>isCodeOfCode</relationship-type>
+                    <search-configuration>code</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Code</label>
+                    <hint>Select any related code records in the collection.</hint>
+                    <required></required>
+                </relation-field>
+            </row> 
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>publisher</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Publisher</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the name of the record publisher: PEDSnet.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights Statement</label>
+                    <input-type>onebox</input-type>
+                    <hint>a CC-BY Attribution 4.0 license.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier>uri</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights License</label>
+                    <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
+                    <hint></hint>
+                    <required></required>
+                </field>
+            </row>
+        </form>
+
         <!-- Phenotype Form-->
         <form name="PhenotypeForm">
             <row>
@@ -3791,6 +4041,10 @@
                 <stored-value>Study</stored-value>
             </pair>
             <pair>
+                <displayed-value>Reusable Code</displayed-value>
+                <stored-value>Code</stored-value>
+            </pair>
+            <pair>
                 <displayed-value>Other Resource</displayed-value>
                 <stored-value>Documentation</stored-value>
             </pair>
@@ -3801,6 +4055,68 @@
             <pair>
                 <displayed-value>Data Quality Result</displayed-value>
                 <stored-value>DQResult</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="CodeType" dc-term="type">
+            <pair>
+                <displayed-value>PEDSnet Data Model Dependence</displayed-value>
+                <stored-value>PEDSnet Data Model</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PCORnet Data Model Dependence</displayed-value>
+                <stored-value>PCORnet Data Model</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>OMOP Data Model Dependence</displayed-value>
+                <stored-value>OMOP Data Model</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>RECOVER Data Model Dependence</displayed-value>
+                <stored-value>RECOVER Data Model</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Other CDM Dependence</displayed-value>
+                <stored-value>Other CDM</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ARGOS Dependence</displayed-value>
+                <stored-value>ARGOS Dependence</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Standard Framework Dependence</displayed-value>
+                <stored-value>Standard Framework Dependence</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Trino Compatible</displayed-value>
+                <stored-value>Trino Compatible</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Postgres Compatible</displayed-value>
+                <stored-value>Postgres Compatible</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>R</displayed-value>
+                <stored-value>R</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Python</displayed-value>
+                <stored-value>Python</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Java</displayed-value>
+                <stored-value>Java</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>HTML</displayed-value>
+                <stored-value>HTML</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>XML</displayed-value>
+                <stored-value>XML</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PLpgSQL</displayed-value>
+                <stored-value>PLpgSQL</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="Outcomes" dc-term="subejct">

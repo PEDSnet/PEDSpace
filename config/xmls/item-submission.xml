@@ -64,6 +64,7 @@
         <name-map collection-entity-type="DQCheck" submission-name="DQCheck"/>
         <name-map collection-entity-type="DQResult" submission-name="DQResult"/>
         <name-map collection-entity-type="Documentation" submission-name="Documentation"/>
+        <name-map collection-entity-type="Code" submission-name="Code"/>
 
         <!-- Example of configuration using a community handle to map an Item Submission Process.
 
@@ -365,6 +366,11 @@
         <submission-process name="Study">
             <step id="collection"/>
             <step id="StudyForm"/>
+        </submission-process>
+
+        <submission-process name="Code">
+            <step id="collection"/>
+            <step id="CodeForm"/>
         </submission-process>
 
         <submission-process name="DQCheck">
