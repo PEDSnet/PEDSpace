@@ -17,7 +17,7 @@ import { ErrorComponent } from '../../../../../../app/shared/error/error.compone
   // styleUrls: ['./feedback-form.component.scss'],
   styleUrls: ['../../../../../../app/info/feedback/feedback-form/feedback-form.component.scss'],
   standalone: true,
-  imports: [FormsModule, BtnDisabledDirective, ReactiveFormsModule, NgIf, ErrorComponent, TranslateModule],
+  imports: [FormsModule, ReactiveFormsModule, NgIf, ErrorComponent, TranslateModule, BtnDisabledDirective],
 })
 export class FeedbackFormComponent extends BaseComponent {
 }
