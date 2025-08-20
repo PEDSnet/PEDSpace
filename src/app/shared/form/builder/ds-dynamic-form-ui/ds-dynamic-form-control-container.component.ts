@@ -1,4 +1,3 @@
-/* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 import {
   AsyncPipe,
   NgClass,
@@ -226,7 +225,6 @@ export class DsDynamicFormControlContainerComponent extends DynamicFormControlCo
    * Sets up the necessary variables for when this control can be used to add relationships to the submitted item
    */
   ngOnInit(): void {
-    // console.log('DsDynamicFormControlContainerComponent initialized with model', this.model);
     this.isRelationship = hasValue(this.model.relationship);
     const isWrapperAroundRelationshipList = hasValue(this.model.relationshipConfig);
 
@@ -300,7 +298,6 @@ export class DsDynamicFormControlContainerComponent extends DynamicFormControlCo
           startWith(undefined),
         );
       }
-      // console.log('DsDynamicFormControlContainerComponent initialized with model', this.model);
     }
   }
 

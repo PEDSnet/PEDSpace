@@ -68,7 +68,7 @@ const getEnvironment = (): Environment => {
  */
 const getDefaultConfigPath = () => {
 
-  // default to config/configs/config.yml
+  // default to config/config.yml
   let defaultConfigPath = join(CONFIG_PATH, 'config.yml');
 
   if (!existsSync(defaultConfigPath)) {
@@ -108,14 +108,6 @@ const getEnvConfigFilePath = (env: Environment) => {
       break;
     }
     envLocalConfigPath = join(CONFIG_PATH, `config.${envVariation}.yaml`);
-    if (existsSync(envLocalConfigPath)) {
-      break;
-    }
-    envLocalConfigPath = join(CONFIG_PATH, `configs/config.${envVariation}.yml`);
-    if (existsSync(envLocalConfigPath)) {
-      break;
-    }
-    envLocalConfigPath = join(CONFIG_PATH, `configs/config.${envVariation}.yaml`);
     if (existsSync(envLocalConfigPath)) {
       break;
     }
