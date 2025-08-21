@@ -53,8 +53,14 @@ LOG_FILE="${LOG_DIR}/restore_${TIMESTAMP}.log"
 PG_USER="dspace"
 PG_HOST="localhost"
 PG_DB="dspace"
-PG_RESTORE_PATH="/usr/bin/psql"  
-PG_DUMP_PATH="/usr/pgsql-16/bin/pg_dump" 
+
+# Auto-detect PostgreSQL installation paths
+DETECTED_PSQL_PATH=$(which psql 2>/dev/null)
+DETECTED_PG_DUMP_PATH=$(which pg_dump 2>/dev/null)
+
+# Set default paths if detection fails
+PG_RESTORE_PATH="${DETECTED_PSQL_PATH:-/usr/bin/psql}"
+PG_DUMP_PATH="${DETECTED_PG_DUMP_PATH:-/usr/pgsql-15/bin/pg_dump}" 
 
 # Global variables for rollback tracking
 BACKUP_CURRENT_ASSETSTORE=""
@@ -170,7 +176,7 @@ rollback_changes() {
     echo
     echo "========== ROLLBACK SUMMARY =========="
     echo "The restoration process failed and rollback was attempted."
-    echo "Please check the log file for details: ${LOG_FILE}"
+    echo "Please check the log file for details: zcat ${LOG_FILE}.gz"
     
     if [ -n "${BACKUP_CURRENT_ASSETSTORE}" ] && [ -f "${BACKUP_CURRENT_ASSETSTORE}" ]; then
         echo "Original assetstore backup: ${BACKUP_CURRENT_ASSETSTORE}"
@@ -495,6 +501,91 @@ manual_sql_selection() {
     log "Manually selected database backup: ${SELECTED_SQL_BACKUP}"
 }
 
+# Function to validate and confirm PostgreSQL paths
+validate_postgresql_paths() {
+    echo
+    echo "=========================================="
+    echo "  PostgreSQL Installation Detection"
+    echo "=========================================="
+    
+    echo "Auto-detected PostgreSQL paths:"
+    
+    if [ -n "${DETECTED_PSQL_PATH}" ] && [ -x "${DETECTED_PSQL_PATH}" ]; then
+        echo "  ✓ psql found at: ${DETECTED_PSQL_PATH}"
+        # Get version information
+        local psql_version=$("${DETECTED_PSQL_PATH}" --version 2>/dev/null | head -n 1)
+        echo "    Version: ${psql_version}"
+    else
+        echo "  ✗ psql not found or not executable"
+        echo "    Using fallback: ${PG_RESTORE_PATH}"
+    fi
+    
+    if [ -n "${DETECTED_PG_DUMP_PATH}" ] && [ -x "${DETECTED_PG_DUMP_PATH}" ]; then
+        echo "  ✓ pg_dump found at: ${DETECTED_PG_DUMP_PATH}"
+        # Get version information
+        local pg_dump_version=$("${DETECTED_PG_DUMP_PATH}" --version 2>/dev/null | head -n 1)
+        echo "    Version: ${pg_dump_version}"
+    else
+        echo "  ✗ pg_dump not found or not executable"
+        echo "    Using fallback: ${PG_DUMP_PATH}"
+    fi
+    
+    echo
+    echo "Final paths to be used:"
+    echo "  PG_RESTORE_PATH: ${PG_RESTORE_PATH}"
+    echo "  PG_DUMP_PATH: ${PG_DUMP_PATH}"
+    echo
+    
+    # Validate that the final paths are executable
+    local path_errors=false
+    
+    if [ ! -x "${PG_RESTORE_PATH}" ]; then
+        echo "  ✗ ERROR: psql not found or not executable at: ${PG_RESTORE_PATH}"
+        path_errors=true
+    fi
+    
+    if [ ! -x "${PG_DUMP_PATH}" ]; then
+        echo "  ✗ ERROR: pg_dump not found or not executable at: ${PG_DUMP_PATH}"
+        path_errors=true
+    fi
+    
+    if [ "${path_errors}" = true ]; then
+        echo
+        echo "PostgreSQL path validation failed. Please check your PostgreSQL installation."
+        echo "You may need to:"
+        echo "  1. Install PostgreSQL client tools"
+        echo "  2. Add PostgreSQL bin directory to your PATH"
+        echo "  3. Manually edit the paths in this script"
+        echo
+        read -p "Do you want to continue anyway? (yes/no): " continue_anyway
+        
+        if [[ "${continue_anyway,,}" != "yes" ]]; then
+            echo "Restoration cancelled due to PostgreSQL path issues."
+            log "Restoration cancelled - PostgreSQL path validation failed"
+            exit 1
+        else
+            echo "Continuing with potentially invalid paths (this may cause failures)..."
+            log "WARNING: Continuing with potentially invalid PostgreSQL paths"
+        fi
+    else
+        read -p "Are these PostgreSQL paths correct? (yes/no): " paths_confirmed
+        
+        if [[ "${paths_confirmed,,}" != "yes" ]]; then
+            echo
+            echo "Please manually edit the script to set the correct paths:"
+            echo "  PG_RESTORE_PATH (currently: ${PG_RESTORE_PATH})"
+            echo "  PG_DUMP_PATH (currently: ${PG_DUMP_PATH})"
+            echo
+            echo "Restoration cancelled."
+            log "Restoration cancelled - user rejected detected PostgreSQL paths"
+            exit 1
+        fi
+    fi
+    
+    log "PostgreSQL paths validated - PG_RESTORE_PATH: ${PG_RESTORE_PATH}, PG_DUMP_PATH: ${PG_DUMP_PATH}"
+    echo "PostgreSQL paths confirmed."
+}
+
 # ---------------------------- Main Script -------------------------------------
 
 # Ensure log directory exists
@@ -532,6 +623,9 @@ if [[ "${confirmation,,}" != "yes" ]]; then
 fi
 
 log "========== Starting Restoration Process =========="
+
+# Validate PostgreSQL installation paths
+validate_postgresql_paths
 
 # Check for active database sessions before proceeding
 check_active_sessions
