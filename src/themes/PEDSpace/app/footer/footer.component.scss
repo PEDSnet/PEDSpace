@@ -183,11 +183,15 @@
         li {
           display: inline-flex;
 
-          a {
+          a, button {
             padding: 0 calc(var(--bs-spacer, 0.5rem) / 2);
             color: white;
             text-decoration: none;
             font-size: 0.85rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
 
             &:hover {
               text-decoration: underline;
