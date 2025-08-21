@@ -7407,8 +7407,8 @@
 
   "workspace-item.view.title": "Workspace View",
 
-  "workspace.search.results.head": "Your submissions"
+  "workspace.search.results.head": "Your submissions",
 
-  "metadata-export-search.submit.error.limit-exceeded": "Only the first {{limit}} items will be exported",
-
+  "metadata-export-search.submit.error.limit-exceeded": "Only the first {{limit}} items will be exported"
+  
 }
