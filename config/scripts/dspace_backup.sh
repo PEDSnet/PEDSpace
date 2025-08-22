@@ -10,6 +10,8 @@
 # 1. **When run as BACKUP_USER (dspace):**
 #    - Performs PostgreSQL database backup
 #    - Compresses the assetstore
+#    - Backs up SOLR statistics data (default SOLR Statistics or legacy statistics)
+#    - Backs up SOLR authority data
 #    - Creates a success flag file when done
 #    - Handles local backup retention
 #
@@ -28,6 +30,21 @@
 # - As seyediana1: 0 3 * * * /path/to/dspace_backup.sh
 #
 # =============================================================================
+# Statistics and Authority Data Backup Information
+# =============================================================================
+#
+# Statistics data: What to back up depends on what you were using before:
+# - Default SOLR Statistics: Stores data in [dspace]/solr/statistics
+# - Legacy statistics: Utilizes the dspace.log files
+# A simple copy of the logs or the Solr core directory tree should give you
+# a point of recovery, should something go wrong in the update process.
+# We can't stress this enough: your users depend on these statistics more
+# than you realize. You need a backup.
+#
+# Authority data: Stored in [dspace]/solr/authority. As with the statistics
+# data, making a copy of the directory tree should enable recovery from errors.
+#
+# =============================================================================
 
 # ---------------------------- Configuration -----------------------------------
 
@@ -44,12 +61,16 @@ FORCE_MODE=false
 BACKUP_BASE_DIR="/data/backups"
 SQL_DIR="${BACKUP_BASE_DIR}/sql_files"
 ASSETSTORE_DIR="${BACKUP_BASE_DIR}/assetstore_backups"
+STATISTICS_DIR="${BACKUP_BASE_DIR}/statistics_backups"
+AUTHORITY_DIR="${BACKUP_BASE_DIR}/authority_backups"
 LOG_DIR="${BACKUP_BASE_DIR}/logs"
 
 # Isilon backup directory and subdirectories
 OFFSITE_BACKUP_BASE_DIR="/mnt/isilon/pedsnet/DSpace/PEDSpace"
 OFFSITE_SQL_DIR="${OFFSITE_BACKUP_BASE_DIR}/sql_files"
 OFFSITE_ASSETSTORE_DIR="${OFFSITE_BACKUP_BASE_DIR}/assetstore_backups"
+OFFSITE_STATISTICS_DIR="${OFFSITE_BACKUP_BASE_DIR}/statistics_backups"
+OFFSITE_AUTHORITY_DIR="${OFFSITE_BACKUP_BASE_DIR}/authority_backups"
 
 # Flag file to indicate a successful backup
 SUCCESS_FLAG_FILE="${BACKUP_BASE_DIR}/backup_success.flag"
@@ -73,6 +94,13 @@ PG_DUMP_PATH="/usr/pgsql-15/bin/pg_dump"
 
 # Assetstore directory source
 ASSETSTORE_SOURCE="/data/dspace/assetstore"
+
+# SOLR data directories for statistics and authority
+# Statistics data: SOLR Statistics stores data in [dspace]/solr/statistics
+# Legacy stats utilize the dspace.log files - adapt path as needed
+STATISTICS_SOURCE="/data/dspace/solr/statistics"
+# Authority data: stored in [dspace]/solr/authority
+AUTHORITY_SOURCE="/data/dspace/solr/authority"
 
 # Get the current hostname and verify
 CURRENT_HOSTNAME=$(hostname -f)
@@ -106,12 +134,12 @@ setup_directories() {
     
     # Determine which directories to check based on current user
     if [ "$CURRENT_USER" = "$BACKUP_USER" ]; then
-        directories=("$BACKUP_BASE_DIR" "$SQL_DIR" "$ASSETSTORE_DIR" "$LOG_DIR")
+        directories=("$BACKUP_BASE_DIR" "$SQL_DIR" "$ASSETSTORE_DIR" "$STATISTICS_DIR" "$AUTHORITY_DIR" "$LOG_DIR")
     elif [ "$CURRENT_USER" = "$OFFSITE_USER" ]; then
-        directories=("$BACKUP_BASE_DIR" "$LOG_DIR" "$OFFSITE_BACKUP_BASE_DIR" "$OFFSITE_SQL_DIR" "$OFFSITE_ASSETSTORE_DIR")
+        directories=("$BACKUP_BASE_DIR" "$LOG_DIR" "$OFFSITE_BACKUP_BASE_DIR" "$OFFSITE_SQL_DIR" "$OFFSITE_ASSETSTORE_DIR" "$OFFSITE_STATISTICS_DIR" "$OFFSITE_AUTHORITY_DIR")
     else
         log "Current user is neither backup nor offsite user. Setting up all directories."
-        directories=("$BACKUP_BASE_DIR" "$SQL_DIR" "$ASSETSTORE_DIR" "$LOG_DIR" "$OFFSITE_BACKUP_BASE_DIR" "$OFFSITE_SQL_DIR" "$OFFSITE_ASSETSTORE_DIR")
+        directories=("$BACKUP_BASE_DIR" "$SQL_DIR" "$ASSETSTORE_DIR" "$STATISTICS_DIR" "$AUTHORITY_DIR" "$LOG_DIR" "$OFFSITE_BACKUP_BASE_DIR" "$OFFSITE_SQL_DIR" "$OFFSITE_ASSETSTORE_DIR" "$OFFSITE_STATISTICS_DIR" "$OFFSITE_AUTHORITY_DIR")
     fi
     
     # Check each directory
@@ -195,6 +223,60 @@ backup_assetstore() {
     fi
 }
 
+# Function to backup statistics data
+backup_statistics() {
+    STATISTICS_BACKUP_FILE="${STATISTICS_DIR}/statistics_${TIMESTAMP}.tar.gz"
+    log "Starting statistics data compression to file: ${STATISTICS_BACKUP_FILE}"
+    
+    # Check if statistics source exists
+    if [ ! -d "${STATISTICS_SOURCE}" ]; then
+        log "WARNING: Statistics source directory ${STATISTICS_SOURCE} does not exist."
+        log "This may be normal if using legacy statistics or if SOLR statistics are stored elsewhere."
+        return 0
+    fi
+    
+    if [ "$DRY_RUN" = true ]; then
+        log "Dry run: would execute: tar -czf ${STATISTICS_BACKUP_FILE} -C \"$(dirname "${STATISTICS_SOURCE}")\" \"$(basename "${STATISTICS_SOURCE}")\""
+        return 0
+    else
+        tar -czf "${STATISTICS_BACKUP_FILE}" -C "$(dirname "${STATISTICS_SOURCE}")" "$(basename "${STATISTICS_SOURCE}")" >> "${LOG_FILE}" 2>&1
+        if [ $? -eq 0 ]; then
+            log "Statistics data compressed successfully."
+            return 0
+        else
+            log "ERROR during statistics data compression."
+            return 1
+        fi
+    fi
+}
+
+# Function to backup authority data
+backup_authority() {
+    AUTHORITY_BACKUP_FILE="${AUTHORITY_DIR}/authority_${TIMESTAMP}.tar.gz"
+    log "Starting authority data compression to file: ${AUTHORITY_BACKUP_FILE}"
+    
+    # Check if authority source exists
+    if [ ! -d "${AUTHORITY_SOURCE}" ]; then
+        log "WARNING: Authority source directory ${AUTHORITY_SOURCE} does not exist."
+        log "This may be normal if authority data is stored elsewhere or not configured."
+        return 0
+    fi
+    
+    if [ "$DRY_RUN" = true ]; then
+        log "Dry run: would execute: tar -czf ${AUTHORITY_BACKUP_FILE} -C \"$(dirname "${AUTHORITY_SOURCE}")\" \"$(basename "${AUTHORITY_SOURCE}")\""
+        return 0
+    else
+        tar -czf "${AUTHORITY_BACKUP_FILE}" -C "$(dirname "${AUTHORITY_SOURCE}")" "$(basename "${AUTHORITY_SOURCE}")" >> "${LOG_FILE}" 2>&1
+        if [ $? -eq 0 ]; then
+            log "Authority data compressed successfully."
+            return 0
+        else
+            log "ERROR during authority data compression."
+            return 1
+        fi
+    fi
+}
+
 # Function to cleanup old local backups
 cleanup_local_backups() {
     log "Cleaning up on-site backups older than ${LOCAL_RETENTION_DAYS} days..."
@@ -202,9 +284,13 @@ cleanup_local_backups() {
     if [ "$DRY_RUN" = true ]; then
         log "Dry run: would execute: find ${SQL_DIR} -type f -name \"*.sql\" -mtime +${LOCAL_RETENTION_DAYS} -delete"
         log "Dry run: would execute: find ${ASSETSTORE_DIR} -type f -name \"*.tar.gz\" -mtime +${LOCAL_RETENTION_DAYS} -delete"
+        log "Dry run: would execute: find ${STATISTICS_DIR} -type f -name \"*.tar.gz\" -mtime +${LOCAL_RETENTION_DAYS} -delete"
+        log "Dry run: would execute: find ${AUTHORITY_DIR} -type f -name \"*.tar.gz\" -mtime +${LOCAL_RETENTION_DAYS} -delete"
     else
         find "${SQL_DIR}" -type f -name "*.sql" -mtime +${LOCAL_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old SQL files"
         find "${ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old assetstore backups"
+        find "${STATISTICS_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old statistics backups"
+        find "${AUTHORITY_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old authority backups"
     fi
     
     log "Cleanup of old backups completed."
@@ -256,9 +342,13 @@ cleanup_offsite_backups() {
     if [ "$DRY_RUN" = true ]; then
         log "Dry run: would execute: find ${OFFSITE_SQL_DIR} -type f -name \"*.sql\" -mtime +${OFFSITE_RETENTION_DAYS} -delete"
         log "Dry run: would execute: find ${OFFSITE_ASSETSTORE_DIR} -type f -name \"*.tar.gz\" -mtime +${OFFSITE_RETENTION_DAYS} -delete"
+        log "Dry run: would execute: find ${OFFSITE_STATISTICS_DIR} -type f -name \"*.tar.gz\" -mtime +${OFFSITE_RETENTION_DAYS} -delete"
+        log "Dry run: would execute: find ${OFFSITE_AUTHORITY_DIR} -type f -name \"*.tar.gz\" -mtime +${OFFSITE_RETENTION_DAYS} -delete"
     else
         find "${OFFSITE_SQL_DIR}" -type f -name "*.sql" -mtime +${OFFSITE_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old offsite SQL files"
         find "${OFFSITE_ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old offsite assetstore backups"
+        find "${OFFSITE_STATISTICS_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old offsite statistics backups"
+        find "${OFFSITE_AUTHORITY_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old offsite authority backups"
     fi
     
     log "Cleanup of offsite backups completed."
@@ -269,7 +359,7 @@ perform_backup() {
     log "User ${CURRENT_USER} is performing backup operations..."
     
     # Create directories if they don't exist
-    mkdir -p "${SQL_DIR}" "${ASSETSTORE_DIR}" "${LOG_DIR}"
+    mkdir -p "${SQL_DIR}" "${ASSETSTORE_DIR}" "${STATISTICS_DIR}" "${AUTHORITY_DIR}" "${LOG_DIR}"
     
     local backup_failed=false
     
@@ -278,6 +368,12 @@ perform_backup() {
     
     # Perform assetstore backup
     backup_assetstore || backup_failed=true
+    
+    # Perform statistics backup
+    backup_statistics || backup_failed=true
+    
+    # Perform authority backup
+    backup_authority || backup_failed=true
     
     # Clean up old backups regardless of success
     cleanup_local_backups
@@ -326,16 +422,24 @@ perform_offsite_copy() {
     fi
     
     # Create offsite directories
-    mkdir -p "${OFFSITE_SQL_DIR}" "${OFFSITE_ASSETSTORE_DIR}"
+    mkdir -p "${OFFSITE_SQL_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "${OFFSITE_STATISTICS_DIR}" "${OFFSITE_AUTHORITY_DIR}"
     
     local copy_sql_success=false
     local copy_asset_success=false
+    local copy_stats_success=false
+    local copy_auth_success=false
     
     # Copy SQL backups to offsite location
     copy_to_offsite "${SQL_DIR}" "${OFFSITE_SQL_DIR}" "SQL backups" && copy_sql_success=true
     
     # Copy assetstore backups to offsite location
     copy_to_offsite "${ASSETSTORE_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "Assetstore backups" && copy_asset_success=true
+    
+    # Copy statistics backups to offsite location
+    copy_to_offsite "${STATISTICS_DIR}" "${OFFSITE_STATISTICS_DIR}" "Statistics backups" && copy_stats_success=true
+    
+    # Copy authority backups to offsite location
+    copy_to_offsite "${AUTHORITY_DIR}" "${OFFSITE_AUTHORITY_DIR}" "Authority backups" && copy_auth_success=true
     
     # Clean up old offsite backups
     cleanup_offsite_backups
@@ -348,7 +452,7 @@ perform_offsite_copy() {
         log "Dry run: would remove success flag file: $SUCCESS_FLAG_FILE"
     fi
     
-    if [ "$copy_sql_success" = true ] && [ "$copy_asset_success" = true ]; then
+    if [ "$copy_sql_success" = true ] && [ "$copy_asset_success" = true ] && [ "$copy_stats_success" = true ] && [ "$copy_auth_success" = true ]; then
         log "All offsite copy operations completed successfully."
         return 0
     else

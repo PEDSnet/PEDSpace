@@ -107,21 +107,27 @@
   <!-- DSpace Footer (maintaining original functionality) -->
   <div class="dspace-footer p-1 d-flex justify-content-center align-items-center" *ngIf="showDSpaceFooter">
     <div class="content-container">
-      <ul class="footer-info list-unstyled small d-flex justify-content-center mb-0">
+      <ul class="footer-info list-unstyled d-flex justify-content-center mb-0">
+        <li *ngIf="showCookieSettings">
+          <button class="btn btn-link text-white" type="button" (click)="openCookieSettings()" role="link" tabindex="0">
+            {{ 'footer.link.cookies' | translate}}
+          </button>
+        </li>
         <li>
-          <a href="javascript:void(0);" (click)="showCookieSettings()">{{ 'footer.link.cookies' | translate}}</a>
+          <a class="btn text-white"
+             routerLink="info/accessibility" role="link" tabindex="0">{{ 'footer.link.accessibility' | translate }}</a>
         </li>
         <li *ngIf="showPrivacyPolicy">
-          <a routerLink="info/privacy">{{ 'footer.link.privacy-policy' | translate}}</a>
+          <a class="btn text-white"
+             routerLink="info/privacy" role="link" tabindex="0">{{ 'footer.link.privacy-policy' | translate}}</a>
         </li>
         <li *ngIf="showEndUserAgreement">
-          <a routerLink="info/end-user-agreement">{{ 'footer.link.end-user-agreement' | translate}}</a>
+          <a class="btn text-white"
+             routerLink="info/end-user-agreement" role="link" tabindex="0">{{ 'footer.link.end-user-agreement' | translate}}</a>
         </li>
         <li *ngIf="showSendFeedback$ | async">
-          <a routerLink="info/feedback">{{ 'footer.link.feedback' | translate}}</a>
-        </li>
-        <li>
-          <a href="https://pedsnet.org/data/knowledge-bank/" target="_blank" rel="noopener noreferrer">About</a>
+          <a class="btn text-white"
+             routerLink="info/feedback" role="link" tabindex="0">{{ 'footer.link.feedback' | translate}}</a>
         </li>
       </ul>
     </div>

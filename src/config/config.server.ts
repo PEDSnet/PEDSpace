@@ -19,7 +19,10 @@ import { mergeConfig } from './config.util';
 import { DefaultAppConfig } from './default-app-config';
 import { ServerConfig } from './server-config.interface';
 
-const CONFIG_PATH = join(process.cwd(), 'config');
+const CONFIG_PATHS = [
+  join(process.cwd(), 'config'),
+  join(process.cwd(), 'config/configs'),
+];
 
 type Environment = 'production' | 'development' | 'test';
 
@@ -68,14 +71,21 @@ const getEnvironment = (): Environment => {
  */
 const getDefaultConfigPath = () => {
 
-  // default to config/configs/config.yml
-  let defaultConfigPath = join(CONFIG_PATH, 'config.yml');
+  // check each config path in order
+  for (const configPath of CONFIG_PATHS) {
+    let defaultConfigPath = join(configPath, 'config.yml');
+    if (existsSync(defaultConfigPath)) {
+      return defaultConfigPath;
+    }
 
-  if (!existsSync(defaultConfigPath)) {
-    defaultConfigPath = join(CONFIG_PATH, 'config.yaml');
+    defaultConfigPath = join(configPath, 'config.yaml');
+    if (existsSync(defaultConfigPath)) {
+      return defaultConfigPath;
+    }
   }
 
-  return defaultConfigPath;
+  // fallback to first config path if none found
+  return join(CONFIG_PATHS[0], 'config.yml');
 };
 
 /**
@@ -99,29 +109,22 @@ const getEnvConfigFilePath = (env: Environment) => {
       envVariations = ['dev', 'development'];
   }
 
-  let envLocalConfigPath;
-
-  // check if any environment variations of app config exist
-  for (const envVariation of envVariations) {
-    envLocalConfigPath = join(CONFIG_PATH, `config.${envVariation}.yml`);
-    if (existsSync(envLocalConfigPath)) {
-      break;
-    }
-    envLocalConfigPath = join(CONFIG_PATH, `config.${envVariation}.yaml`);
-    if (existsSync(envLocalConfigPath)) {
-      break;
-    }
-    envLocalConfigPath = join(CONFIG_PATH, `configs/config.${envVariation}.yml`);
-    if (existsSync(envLocalConfigPath)) {
-      break;
-    }
-    envLocalConfigPath = join(CONFIG_PATH, `configs/config.${envVariation}.yaml`);
-    if (existsSync(envLocalConfigPath)) {
-      break;
+  // check each config path in order
+  for (const configPath of CONFIG_PATHS) {
+    // check if any environment variations of app config exist
+    for (const envVariation of envVariations) {
+      let envLocalConfigPath = join(configPath, `config.${envVariation}.yml`);
+      if (existsSync(envLocalConfigPath)) {
+        return envLocalConfigPath;
+      }
+      envLocalConfigPath = join(configPath, `config.${envVariation}.yaml`);
+      if (existsSync(envLocalConfigPath)) {
+        return envLocalConfigPath;
+      }
     }
   }
 
-  return envLocalConfigPath;
+  return undefined;
 };
 
 const overrideWithConfig = (config: Config, pathToConfig: string) => {
@@ -214,10 +217,10 @@ export const buildAppConfig = (destConfigPath?: string): AppConfig => {
 
   // override with env config
   const localConfigPath = getEnvConfigFilePath(env);
-  if (existsSync(localConfigPath)) {
+  if (localConfigPath && existsSync(localConfigPath)) {
     overrideWithConfig(appConfig, localConfigPath);
   } else {
-    console.warn(`Unable to find env config file at ${localConfigPath}`);
+    console.warn(`Unable to find env config file for environment: ${env}`);
   }
 
   // override with external config if specified by environment variable `DSPACE_APP_CONFIG_PATH`

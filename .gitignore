@@ -46,3 +46,4 @@ config/configs/config.ini
 config/configs/authentication-oidc.linked.cfg
 config/configs/authentication-oidc_backup.cfg
 .github/instructions/lint.instructions.md
+config/configs/authentication-oidc.cfg
