@@ -198,8 +198,29 @@ rollback_changes() {
 find_latest_file() {
     local directory="$1"
     local pattern="$2"
-    latest_file=$(ls -lt "${directory}/${pattern}" 2>/dev/null | tail -n +2 | awk '{print $NF}' | head -n 1)
-    echo "${latest_file}"
+    
+    # Check if directory exists
+    if [ ! -d "${directory}" ]; then
+        echo ""
+        return 1
+    fi
+    
+    # Use ls with proper globbing to find the most recent file
+    # First, change to the directory to make globbing work properly
+    local latest_file=""
+    if cd "${directory}" 2>/dev/null; then
+        # Use ls -t to sort by modification time (newest first)
+        latest_file=$(ls -t ${pattern} 2>/dev/null | head -n 1)
+        cd - >/dev/null 2>&1
+    fi
+    
+    if [ -n "${latest_file}" ] && [ -f "${directory}/${latest_file}" ]; then
+        echo "${latest_file}"
+        return 0
+    else
+        echo ""
+        return 1
+    fi
 }
 extract_timestamp_from_backup() {
     local filename="$1"
@@ -369,7 +390,24 @@ select_backup_files() {
     read -p "Select assetstore backup number (or 'latest' for most recent): " assetstore_choice
     
     if [[ "${assetstore_choice,,}" == "latest" ]]; then
+        echo "Finding latest assetstore backup..."
+        
+        # Enable debug mode if DEBUG_RESTORE is set
+        if [ "${DEBUG_RESTORE}" = "1" ]; then
+            debug_directory_contents "${SELECTED_ASSETSTORE_DIR}" "*.tar.gz"
+        fi
+        
         SELECTED_ASSETSTORE_BACKUP=$(find_latest_file "${SELECTED_ASSETSTORE_DIR}" "*.tar.gz")
+        
+        if [ -z "${SELECTED_ASSETSTORE_BACKUP}" ]; then
+            echo "ERROR: No assetstore backup files found in ${SELECTED_ASSETSTORE_DIR}"
+            echo "Please check if the directory exists and contains *.tar.gz files."
+            echo ""
+            echo "For debugging, you can run: DEBUG_RESTORE=1 $0"
+            exit 1
+        fi
+        
+        echo "Latest file found: ${SELECTED_ASSETSTORE_BACKUP}"
     else
         local assetstore_files=($(find "${SELECTED_ASSETSTORE_DIR}" -maxdepth 1 -type f -name "*.tar.gz" | sort))
         if [ "${assetstore_choice}" -ge 1 ] && [ "${assetstore_choice}" -le "${#assetstore_files[@]}" ]; then
@@ -486,7 +524,16 @@ manual_sql_selection() {
     read -p "Select database backup number (or 'latest' for most recent): " sql_choice
     
     if [[ "${sql_choice,,}" == "latest" ]]; then
+        echo "Finding latest database backup..."
         SELECTED_SQL_BACKUP=$(find_latest_file "${SELECTED_SQL_DIR}" "*.sql")
+        
+        if [ -z "${SELECTED_SQL_BACKUP}" ]; then
+            echo "ERROR: No SQL backup files found in ${SELECTED_SQL_DIR}"
+            echo "Please check if the directory exists and contains *.sql files."
+            exit 1
+        fi
+        
+        echo "Latest file found: ${SELECTED_SQL_BACKUP}"
     else
         local sql_files=($(find "${SELECTED_SQL_DIR}" -maxdepth 1 -type f -name "*.sql" | sort))
         if [ "${sql_choice}" -ge 1 ] && [ "${sql_choice}" -le "${#sql_files[@]}" ]; then
@@ -584,6 +631,33 @@ validate_postgresql_paths() {
     
     log "PostgreSQL paths validated - PG_RESTORE_PATH: ${PG_RESTORE_PATH}, PG_DUMP_PATH: ${PG_DUMP_PATH}"
     echo "PostgreSQL paths confirmed."
+}
+
+# Function to debug directory contents (for troubleshooting)
+debug_directory_contents() {
+    local directory="$1"
+    local pattern="$2"
+    
+    echo "DEBUG: Checking directory ${directory} for pattern ${pattern}"
+    
+    if [ ! -d "${directory}" ]; then
+        echo "DEBUG: Directory does not exist"
+        return 1
+    fi
+    
+    echo "DEBUG: Directory exists, listing contents:"
+    ls -la "${directory}" | head -10
+    
+    echo "DEBUG: Files matching pattern ${pattern}:"
+    find "${directory}" -maxdepth 1 -type f -name "${pattern}" -ls 2>/dev/null | head -5
+    
+    echo "DEBUG: Testing find_latest_file function:"
+    local result=$(find_latest_file "${directory}" "${pattern}")
+    echo "DEBUG: find_latest_file returned: '${result}'"
+    
+    if [ -n "${result}" ]; then
+        echo "DEBUG: File details: $(ls -la "${directory}/${result}" 2>/dev/null)"
+    fi
 }
 
 # ---------------------------- Main Script -------------------------------------
