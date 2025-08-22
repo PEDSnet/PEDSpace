@@ -343,7 +343,7 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Check Type</label>
-                    <input-type value-pairs-name="DQModules">dropdown</input-type>
+                    <input-type value-pairs-name="DQModule">dropdown</input-type>
                     <hint></hint>
                     <required>This field is required</required>
                 </field>
