@@ -13,12 +13,11 @@
     <ds-badges *ngIf="showLabel" [object]="object" [showAccessStatus]="true"></ds-badges>
   </div>
 
-  <ds-item-page-title-field [item]="object" class="mr-auto"></ds-item-page-title-field>
-
-  <div class="d-flex align-items-center">
-    <ds-dso-edit-menu [object]="object"></ds-dso-edit-menu>
-
-  </div>
+<div class="d-flex flex-row">
+  <ds-item-page-title-field [item]="object" class="mr-auto">
+  </ds-item-page-title-field>
+  <ds-dso-edit-menu [object]="object"></ds-dso-edit-menu>
+</div>
 
   <div class="row">
     <div class="col-12 col-md-4">
