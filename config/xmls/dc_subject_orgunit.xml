@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is the controlled vocabulary used for dc.subject.other-->
+<node id="ORGUNIT" label="Institution Characteristics">
+	<isComposedBy>
+                <node id="INST.1" label="100-200 Beds"></node>
+                <node id="INST.2" label="200-300 Beds"></node>
+                <node id="INST.3" label="300-400 Beds"></node>
+                <node id="INST.4" label="400-500 Beds"></node>
+                <node id="INST.35" label="500-600 Beds"></node>
+                <node id="INST.5" label="600-700 Beds"></node>
+                <node id="INST.6" label="700-800 Beds"></node>
+                <node id="INST.7" label="800-900 Beds"></node>
+                <node id="INST.8" label="900-1000 Beds"></node>
+                <node id="INST.9" label="1000+ Beds"></node>
+                <node id="INST.10" label="Epic EHR System"></node>
+                <node id="INST.11" label="Cerner EHR System"></node>
+                <node id="INST.36" label="eClinicalWorks EHR System"></node>
+                <node id="INST.12" label="Praxis EMR EHR System"></node>
+                <node id="INST.13" label="TruBridge EHR System"></node>
+                <node id="INST.14" label="Meditech EHR System"></node>
+                <node id="INST.15" label="NextGen Healthcare EHR System"></node>
+                <node id="INST.16" label="Veradigm EHR System"></node>
+                <node id="INST.17" label="Athenahealth EHR System"></node>
+                <node id="INST.18" label="Practice Fusion EHR System"></node>
+                <node id="INST.19" label="Level I Trauma Center"></node>
+                <node id="INST.20" label="Level II Trauma Center"></node>
+                <node id="INST.21" label="Level III Trauma Center"></node>
+                <node id="INST.22" label="Pediatric Research Hospital"></node>
+                <node id="INST.23" label="General Research Hospital"></node>
+                <node id="INST.24" label="Private, Nonprofit Hospital"></node>
+                <node id="INST.25" label="Public, Nonprofit Hospital"></node>
+                <node id="INST.26" label=">University Affiliate Hospital"></node>
+	</isComposedBy>
+	<hasNote>Taxonomy developed by Annabel Pinkney</hasNote>
+</node>
