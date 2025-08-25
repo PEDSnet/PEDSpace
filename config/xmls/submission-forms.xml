@@ -338,9 +338,21 @@
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>dqcheck</dc-element>
+                    <dc-qualifier>requirement</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Input Parameter Requirements</label>
+                    <input-type>tag</input-type>
+                    <hint></hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>dqcheck</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Check Type</label>
                     <input-type value-pairs-name="DQModule">dropdown</input-type>
@@ -351,7 +363,7 @@
             <row>
                 <field>
                     <dc-schema>local</dc-schema>
-                    <dc-element>dqmodule</dc-element>
+                    <dc-element>dqcheck</dc-element>
                     <dc-qualifier>category</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>DQ Category</label>
@@ -362,9 +374,9 @@
             </row>
             <row>
                 <field>
-                    <dc-schema>local</dc-schema>
-                    <dc-element>dqmodule</dc-element>
-                    <dc-qualifier>eval</dc-qualifier>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Evaluation Parameters</label>
                     <input-type value-pairs-name="DQEval">dropdown</input-type>
@@ -375,7 +387,7 @@
             <row>
                 <field>
                     <dc-schema>local</dc-schema>
-                    <dc-element>dqmodule</dc-element>
+                    <dc-element>dqcheck</dc-element>
                     <dc-qualifier>measurement</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Measurement Type</label>
@@ -387,7 +399,7 @@
             <row>
                 <field>
                     <dc-schema>local</dc-schema>
-                    <dc-element>dqmodule</dc-element>
+                    <dc-element>dqcheck</dc-element>
                     <dc-qualifier>viz</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Vizualization Type</label>
@@ -399,7 +411,7 @@
             <row>
                 <field>
                     <dc-schema>local</dc-schema>
-                    <dc-element>dqmodule</dc-element>
+                    <dc-element>dqcheck</dc-element>
                     <dc-qualifier>probe</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Probe Type</label>
@@ -411,7 +423,7 @@
             <row>
                 <field>
                     <dc-schema>local</dc-schema>
-                    <dc-element>dqmodule</dc-element>
+                    <dc-element>dqcheck</dc-element>
                     <dc-qualifier>clinicalprobe</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Clinical Probe Type</label>
@@ -600,7 +612,7 @@
                     <repeatable>true</repeatable>
                     <label>Evaluation Parameters</label>
                     <type-bind>study</type-bind>
-                    <input-type value-pairs-name="EvalParam">list</input-type>
+                    <input-type value-pairs-name="DQEval">list</input-type>
                     <hint>Select the parameters applied to your check.</hint>
                     <required>Parameters must be selected.</required>
                 </field>
@@ -666,7 +678,7 @@
                     <dc-qualifier>outcomes</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Response to Findings</label>
-                    <input-type value-pairs-name="Outcomes">list</input-type>
+                    <input-type value-pairs-name="DQOutcomes">list</input-type>
                     <hint>Select terms that characterize the outcome of the analysis.</hint>
                     <required></required>
                 </field>
@@ -704,7 +716,7 @@
                     <repeatable>true</repeatable>
                     <label>Data Domains</label>
                     <type-bind>network</type-bind>
-                    <input-type value-pairs-name="Domain">dropdown</input-type>
+                    <input-type value-pairs-name="DQDomain">dropdown</input-type>
                     <hint>Select the domains analyzed in the network.</hint>
                     <required>A selection is required.</required>
                 </field>
@@ -2298,48 +2310,13 @@ devtools::install_github("Query-Fulfillment/countmaskr")</hint>
                     <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Beds</label>
-                    <input-type value-pairs-name="Beds">dropdown</input-type>
+                    <label>Tags</label>
+                    <input-type>onebox</input-type>
                     <hint>Select the most appropriate option.</hint>
-                    <required>A selection is required.</required>
+                    <required>Input the number of Beds, the EHR system, the Level of Trauma Care, and any other applicable terms.</required>
+                    <vocabulary closed="true">dc_subject_orgunit</vocabulary>
                 </field>
             </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>EHR System</label>
-                    <input-type value-pairs-name="EHRSys">dropdown</input-type>
-                    <hint>Select the most appropriate option.</hint>
-                    <required>A selection is required.</required>
-                </field>
-            </row>    
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Level of Trauma Care</label>
-                    <input-type value-pairs-name="TraumaCenter">dropdown</input-type>
-                    <hint>Select the most appropriate option.</hint>
-                    <required>A selection is required.</required>
-                </field>
-            </row> 
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Tags</label>
-                    <input-type value-pairs-name="InstChar">list</input-type>
-                    <hint>Select all that apply.</hint>
-                    <required></required>
-                </field>
-            </row>  
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -3445,174 +3422,34 @@ devtools::install_github("Query-Fulfillment/countmaskr")</hint>
     <!-- element. A UI list displays the displayed-values, but the program     -->
     <!-- stores the associated stored-values in the database.                  -->
     <form-value-pairs>
-        <value-pairs value-pairs-name="common_identifiers" dc-term="identifier">
+        <value-pairs value-pairs-name="EntityType" dc-term="type">
             <pair>
-                <displayed-value>ISSN</displayed-value>
-                <stored-value>issn</stored-value>
+                <displayed-value>Concept Set</displayed-value>
+                <stored-value>ConceptSet</stored-value>
             </pair>
             <pair>
-                <displayed-value>Other</displayed-value>
-                <stored-value>other</stored-value>
+                <displayed-value>Computable Phenotype</displayed-value>
+                <stored-value>Phenotype</stored-value>
             </pair>
             <pair>
-                <displayed-value>ISMN</displayed-value>
-                <stored-value>ismn</stored-value>
+                <displayed-value>Study or Query</displayed-value>
+                <stored-value>Study</stored-value>
             </pair>
             <pair>
-                <displayed-value>Gov't Doc #</displayed-value>
-                <stored-value>govdoc</stored-value>
+                <displayed-value>Reusable Code</displayed-value>
+                <stored-value>Code</stored-value>
             </pair>
             <pair>
-                <displayed-value>URI</displayed-value>
-                <stored-value>uri</stored-value>
+                <displayed-value>Other Resource</displayed-value>
+                <stored-value>Documentation</stored-value>
             </pair>
             <pair>
-                <displayed-value>ISBN</displayed-value>
-                <stored-value>isbn</stored-value>
-            </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="ResultsType" dc-term="type">
-            <pair>
-                <displayed-value>Network Analysis</displayed-value>
-                <stored-value>network</stored-value>
+                <displayed-value>Data Quality Check</displayed-value>
+                <stored-value>DQCheck</stored-value>
             </pair>
             <pair>
-                <displayed-value>Study-Specific Analysis</displayed-value>
-                <stored-value>study</stored-value>
-            </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="Domain" dc-term="subject">
-            <pair>
-                <displayed-value>Condition Data</displayed-value>
-                <stored-value>Condition Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Lab Data</displayed-value>
-                <stored-value>Lab Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Drug Data</displayed-value>
-                <stored-value>Drug Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Immunizations Data</displayed-value>
-                <stored-value>Immunization Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Anthropometric Data</displayed-value>
-                <stored-value>Anthropometric Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Vitals Data</displayed-value>
-                <stored-value>Vitals Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Device Data</displayed-value>
-                <stored-value>Device Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Visit Data</displayed-value>
-                <stored-value>Visit Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Specialty Data</displayed-value>
-                <stored-value>Specialty Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Provider Data</displayed-value>
-                <stored-value>Provider Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Procedures Data</displayed-value>
-                <stored-value>Procedures Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Payer Data</displayed-value>
-                <stored-value>Payer Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Location Data</displayed-value>
-                <stored-value>Location Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>ADT Data</displayed-value>
-                <stored-value>ADT Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Demographic Data</displayed-value>
-                <stored-value>Demographic Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Care Site Data</displayed-value>
-                <stored-value>Care Site Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Census Data</displayed-value>
-                <stored-value>Census Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>COVID-19 Data</displayed-value>
-                <stored-value>COVID-19 Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Leukemia Data</displayed-value>
-                <stored-value>Leukemia Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Type 1 Diabetes Data</displayed-value>
-                <stored-value>Type 1 Diabetes Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>RSV Data</displayed-value>
-                <stored-value>RSV Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Flu Data</displayed-value>
-                <stored-value>Flu Data</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Fracture Data</displayed-value>
-                <stored-value>Fracture Data</stored-value>
-            </pair> 
-            <pair>
-                <displayed-value>Asthma Data</displayed-value>
-                <stored-value>Asthma Data</stored-value>
-            </pair> 
-            <pair>
-                <displayed-value>Chronic Kidney Disease Data</displayed-value>
-                <stored-value>Chronic Kidney Disease Data</stored-value>
-            </pair> 
-            <pair>
-                <displayed-value>Nephrotic Syndrome Data</displayed-value>
-                <stored-value>Nephrotic Syndrome Data</stored-value>
-            </pair> 
-        </value-pairs>
-        <value-pairs value-pairs-name="EvalType" dc-term="subject">
-            <pair>
-                <displayed-value>Reviewed by a clinician.</displayed-value>
-                <stored-value>Clinician Reviewed</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Reviewed, but not by a clinician.</displayed-value>
-                <stored-value>Reviewed, Non-Clinician</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Was not formally reviewed.</displayed-value>
-                <stored-value>No Formal Review</stored-value>
-            </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="DataModel" dc-term="subject">
-            <pair>
-                <displayed-value>PEDSnet Data Model</displayed-value>
-                <stored-value>PEDSnet Data Model</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>PCORnet Data Model</displayed-value>
-                <stored-value>PCORnet Data Model</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>OMOP Data Model</displayed-value>
-                <stored-value>OMOP Data Model</stored-value>
+                <displayed-value>Data Quality Result</displayed-value>
+                <stored-value>DQResult</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="Vocabs" dc-term="subject">
@@ -3757,6 +3594,72 @@ devtools::install_github("Query-Fulfillment/countmaskr")</hint>
                 <stored-value>UK Biobank</stored-value>
             </pair>
         </value-pairs>
+        <value-pairs value-pairs-name="DataModel" dc-term="subject">
+            <pair>
+                <displayed-value>PEDSnet Data Model</displayed-value>
+                <stored-value>PEDSnet Data Model</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PCORnet Data Model</displayed-value>
+                <stored-value>PCORnet Data Model</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>OMOP Data Model</displayed-value>
+                <stored-value>OMOP Data Model</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="Quality" dc-term="quality">
+            <pair>
+                <displayed-value>Research-Ready</displayed-value>
+                <stored-value>Research-Ready</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Needs Refinement</displayed-value>
+                <stored-value>Needs Refinement</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Deprecated</displayed-value>
+                <stored-value>Deprecated</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="CSChar" dc-term="subject">
+            <pair>
+                <displayed-value>Broad Concept Set</displayed-value>
+                <stored-value>Broad</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Specific Concept Set</displayed-value>
+                <stored-value>Specific</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Used for a Cohort Definition</displayed-value>
+                <stored-value>Cohort Definition</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Used for Cohort Exclusion Criteria</displayed-value>
+                <stored-value>Exclusion Criteria</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Used for Cohort Inclusion Criteria</displayed-value>
+                <stored-value>Inclusion Criteria</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Investigates a Covariate Variable</displayed-value>
+                <stored-value>Covariate Variable</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Investigates an Independent Variable</displayed-value>
+                <stored-value>Independent Variable</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Investigates a Dependent Variable</displayed-value>
+                <stored-value>Dependent Variable</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Investigates a Confounder</displayed-value>
+                <stored-value>Confounder</stored-value>
+            </pair>
+        </value-pairs>
         <value-pairs value-pairs-name="MedTermChar" dc-term="subject">
             <pair>
                 <displayed-value>Dose Form Group</displayed-value>
@@ -3835,42 +3738,18 @@ devtools::install_github("Query-Fulfillment/countmaskr")</hint>
                 <stored-value>Ingredient</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="CSChar" dc-term="subject">
+        <value-pairs value-pairs-name="EvalType" dc-term="subject">
             <pair>
-                <displayed-value>Broad Concept Set</displayed-value>
-                <stored-value>Broad</stored-value>
+                <displayed-value>Reviewed by a clinician.</displayed-value>
+                <stored-value>Clinician Reviewed</stored-value>
             </pair>
             <pair>
-                <displayed-value>Specific Concept Set</displayed-value>
-                <stored-value>Specific</stored-value>
+                <displayed-value>Reviewed, but not by a clinician.</displayed-value>
+                <stored-value>Reviewed, Non-Clinician</stored-value>
             </pair>
             <pair>
-                <displayed-value>Used for a Cohort Definition</displayed-value>
-                <stored-value>Cohort Definition</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Used for Cohort Exclusion Criteria</displayed-value>
-                <stored-value>Exclusion Criteria</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Used for Cohort Inclusion Criteria</displayed-value>
-                <stored-value>Inclusion Criteria</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Investigates a Covariate Variable</displayed-value>
-                <stored-value>Covariate Variable</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Investigates an Independent Variable</displayed-value>
-                <stored-value>Independent Variable</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Investigates a Dependent Variable</displayed-value>
-                <stored-value>Dependent Variable</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Investigates a Confounder</displayed-value>
-                <stored-value>Confounder</stored-value>
+                <displayed-value>Was not formally reviewed.</displayed-value>
+                <stored-value>No Formal Review</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="PhenoChar" dc-term="subject">
@@ -4026,204 +3905,8 @@ devtools::install_github("Query-Fulfillment/countmaskr")</hint>
                 <displayed-value>Any Race/Ethnicity Patient Population</displayed-value>
                 <stored-value>Any Race/Ethnicity Patient Population</stored-value>
             </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="EntityType" dc-term="type">
-            <pair>
-                <displayed-value>Concept Set</displayed-value>
-                <stored-value>ConceptSet</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Computable Phenotype</displayed-value>
-                <stored-value>Phenotype</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Study or Query</displayed-value>
-                <stored-value>Study</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Reusable Code</displayed-value>
-                <stored-value>Code</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Other Resource</displayed-value>
-                <stored-value>Documentation</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Data Quality Check</displayed-value>
-                <stored-value>DQCheck</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Data Quality Result</displayed-value>
-                <stored-value>DQResult</stored-value>
-            </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="CodeType" dc-term="type">
-            <pair>
-                <displayed-value>PEDSnet Data Model Dependence</displayed-value>
-                <stored-value>PEDSnet Data Model</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>PCORnet Data Model Dependence</displayed-value>
-                <stored-value>PCORnet Data Model</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>OMOP Data Model Dependence</displayed-value>
-                <stored-value>OMOP Data Model</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>RECOVER Data Model Dependence</displayed-value>
-                <stored-value>RECOVER Data Model</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Other CDM Dependence</displayed-value>
-                <stored-value>Other CDM</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>ARGOS Dependence</displayed-value>
-                <stored-value>ARGOS Dependence</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Standard Framework Dependence</displayed-value>
-                <stored-value>Standard Framework Dependence</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Trino Compatible</displayed-value>
-                <stored-value>Trino Compatible</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Postgres Compatible</displayed-value>
-                <stored-value>Postgres Compatible</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>R</displayed-value>
-                <stored-value>R</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Python</displayed-value>
-                <stored-value>Python</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Java</displayed-value>
-                <stored-value>Java</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>HTML</displayed-value>
-                <stored-value>HTML</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>XML</displayed-value>
-                <stored-value>XML</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>PLpgSQL</displayed-value>
-                <stored-value>PLpgSQL</stored-value>
-            </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="Outcomes" dc-term="subejct">
-            <pair>
-                <displayed-value>Study Infeasible</displayed-value>
-                <stored-value>Study Infeasible</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Study Design Revised</displayed-value>
-                <stored-value>Study Design Revised</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Study Variable Modified</displayed-value>
-                <stored-value>Study Variable Modified</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Attrition Criteria Modified</displayed-value>
-                <stored-value>Attrition Criteria Modified</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Investigation Dates Modified</displayed-value>
-                <stored-value>Investigation Dates Modified</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Concept Sets Refined</displayed-value>
-                <stored-value>Concept Sets Refined</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Study Methods Revised</displayed-value>
-                <stored-value>Study Methods Revised</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Data Source Adjusted</displayed-value>
-                <stored-value>Data Source Adjusted</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Site-Level Intervention</displayed-value>
-                <stored-value>Site Intervention</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Coordinating Center Intervention</displayed-value>
-                <stored-value>Coordinating Center Intervention</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>No Interventions</displayed-value>
-                <stored-value>No Interventions</stored-value>
-            </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="DataProv" dc-term="subject">
-            <pair>
-                <displayed-value>PEDSnet Data Source(s)</displayed-value>
-                <stored-value>PEDSnet Data Source</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>PCORnet Data Source(s)</displayed-value>
-                <stored-value>PCORnet Data Source</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Non-Network Data Source(s)</displayed-value>
-                <stored-value>Non-Network Data Source</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Anonymized Data Source(s)</displayed-value>
-                <stored-value>Anonymized Data Source</stored-value>
-            </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="EvalParam" dc-term="subject">
-            <pair>
-                <displayed-value>Longitudinal Analysis</displayed-value>
-                <stored-value>Data Quality Check Categorizations::Dataset Evaluation Strategy::Temporal Evaluation::Longitudinal Analysis</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Cross-Sectional Analysis</displayed-value>
-                <stored-value>Data Quality Check Categorizations::Dataset Evaluation Strategy::Temporal Evaluation::Cross-Sectional Analysis</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Single-Site Analysis</displayed-value>
-                <stored-value>Data Quality Check Categorizations::Dataset Evaluation Strategy::Data Source Comparison::Single Site Analysis</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Multi-Site Analysis</displayed-value>
-                <stored-value>Data Quality Check Categorizations::Dataset Evaluation Strategy::Data Source Comparison::Multi-Site Analysis</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Exploratory Analysis</displayed-value>
-                <stored-value>	Data Quality Check Categorizations::Dataset Evaluation Strategy::Exploratory Analysis</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Data Anomaly Method</displayed-value>
-                <stored-value>Data Quality Check Categorizations::Dataset Evaluation Strategy::Data Anomaly Method</stored-value>
-            </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="Quality" dc-term="quality">
-            <pair>
-                <displayed-value>Research-Ready</displayed-value>
-                <stored-value>Research-Ready</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Needs Refinement</displayed-value>
-                <stored-value>Needs Refinement</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Deprecated</displayed-value>
-                <stored-value>Deprecated</stored-value>
-            </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="DQModule" dc-term="subejct">
+        </value-pairs> 
+        <value-pairs value-pairs-name="DQModule" dc-term="subject">
             <pair>
                 <displayed-value>Cohort Fitness</displayed-value>
                 <stored-value>Cohort Fitness</stored-value>
@@ -4484,15 +4167,247 @@ devtools::install_github("Query-Fulfillment/countmaskr")</hint>
                 <displayed-value>Clinical Data Distributions</displayed-value>
                 <stored-value>Clinical Data Distributions</stored-value>
             </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="common_types" dc-term="type">
+        </value-pairs>      
+        <value-pairs value-pairs-name="ResultsType" dc-term="type">
             <pair>
-                <displayed-value>Database</displayed-value>
-                <stored-value>Database</stored-value>
+                <displayed-value>Network Analysis</displayed-value>
+                <stored-value>network</stored-value>
             </pair>
             <pair>
-                <displayed-value>Other</displayed-value>
-                <stored-value>Other</stored-value>
+                <displayed-value>Study-Specific Analysis</displayed-value>
+                <stored-value>study</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="DQDomain" dc-term="subject">
+            <pair>
+                <displayed-value>Condition Data</displayed-value>
+                <stored-value>Condition Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Lab Data</displayed-value>
+                <stored-value>Lab Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Drug Data</displayed-value>
+                <stored-value>Drug Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Immunizations Data</displayed-value>
+                <stored-value>Immunization Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Anthropometric Data</displayed-value>
+                <stored-value>Anthropometric Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Vitals Data</displayed-value>
+                <stored-value>Vitals Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Device Data</displayed-value>
+                <stored-value>Device Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Visit Data</displayed-value>
+                <stored-value>Visit Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Specialty Data</displayed-value>
+                <stored-value>Specialty Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Provider Data</displayed-value>
+                <stored-value>Provider Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Procedures Data</displayed-value>
+                <stored-value>Procedures Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Payer Data</displayed-value>
+                <stored-value>Payer Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Location Data</displayed-value>
+                <stored-value>Location Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ADT Data</displayed-value>
+                <stored-value>ADT Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Demographic Data</displayed-value>
+                <stored-value>Demographic Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Care Site Data</displayed-value>
+                <stored-value>Care Site Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Census Data</displayed-value>
+                <stored-value>Census Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>COVID-19 Data</displayed-value>
+                <stored-value>COVID-19 Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Leukemia Data</displayed-value>
+                <stored-value>Leukemia Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Type 1 Diabetes Data</displayed-value>
+                <stored-value>Type 1 Diabetes Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>RSV Data</displayed-value>
+                <stored-value>RSV Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Flu Data</displayed-value>
+                <stored-value>Flu Data</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Fracture Data</displayed-value>
+                <stored-value>Fracture Data</stored-value>
+            </pair> 
+            <pair>
+                <displayed-value>Asthma Data</displayed-value>
+                <stored-value>Asthma Data</stored-value>
+            </pair> 
+            <pair>
+                <displayed-value>Chronic Kidney Disease Data</displayed-value>
+                <stored-value>Chronic Kidney Disease Data</stored-value>
+            </pair> 
+            <pair>
+                <displayed-value>Nephrotic Syndrome Data</displayed-value>
+                <stored-value>Nephrotic Syndrome Data</stored-value>
+            </pair> 
+        </value-pairs>  
+        <value-pairs value-pairs-name="DQOutcomes" dc-term="subject">
+            <pair>
+                <displayed-value>Study Infeasible</displayed-value>
+                <stored-value>Study Infeasible</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Study Design Revised</displayed-value>
+                <stored-value>Study Design Revised</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Study Variable Modified</displayed-value>
+                <stored-value>Study Variable Modified</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Attrition Criteria Modified</displayed-value>
+                <stored-value>Attrition Criteria Modified</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Investigation Dates Modified</displayed-value>
+                <stored-value>Investigation Dates Modified</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Concept Sets Refined</displayed-value>
+                <stored-value>Concept Sets Refined</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Study Methods Revised</displayed-value>
+                <stored-value>Study Methods Revised</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Data Source Adjusted</displayed-value>
+                <stored-value>Data Source Adjusted</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Site-Level Intervention</displayed-value>
+                <stored-value>Site Intervention</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Coordinating Center Intervention</displayed-value>
+                <stored-value>Coordinating Center Intervention</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>No Interventions</displayed-value>
+                <stored-value>No Interventions</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="DataProv" dc-term="subject">
+            <pair>
+                <displayed-value>PEDSnet Data Source(s)</displayed-value>
+                <stored-value>PEDSnet Data Source</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PCORnet Data Source(s)</displayed-value>
+                <stored-value>PCORnet Data Source</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Non-Network Data Source(s)</displayed-value>
+                <stored-value>Non-Network Data Source</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Anonymized Data Source(s)</displayed-value>
+                <stored-value>Anonymized Data Source</stored-value>
+            </pair>
+        </value-pairs>      
+        <value-pairs value-pairs-name="CodeType" dc-term="type">
+            <pair>
+                <displayed-value>PEDSnet Data Model Dependence</displayed-value>
+                <stored-value>PEDSnet Data Model</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PCORnet Data Model Dependence</displayed-value>
+                <stored-value>PCORnet Data Model</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>OMOP Data Model Dependence</displayed-value>
+                <stored-value>OMOP Data Model</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>RECOVER Data Model Dependence</displayed-value>
+                <stored-value>RECOVER Data Model</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Other CDM Dependence</displayed-value>
+                <stored-value>Other CDM</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ARGOS Dependence</displayed-value>
+                <stored-value>ARGOS Dependence</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Standard Framework Dependence</displayed-value>
+                <stored-value>Standard Framework Dependence</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Trino Compatible</displayed-value>
+                <stored-value>Trino Compatible</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Postgres Compatible</displayed-value>
+                <stored-value>Postgres Compatible</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>R</displayed-value>
+                <stored-value>R</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Python</displayed-value>
+                <stored-value>Python</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Java</displayed-value>
+                <stored-value>Java</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>HTML</displayed-value>
+                <stored-value>HTML</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>XML</displayed-value>
+                <stored-value>XML</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PLpgSQL</displayed-value>
+                <stored-value>PLpgSQL</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="ResourceTags" dc-term="subject">
@@ -4541,7 +4456,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")</hint>
                 <stored-value>Data Dictionaries</stored-value>
             </pair>
             <pair>
-                <displayed-value>Natural Laguange Processing</displayed-value>
+                <displayed-value>Natural Language Processing</displayed-value>
                 <stored-value>Natural Laguange Processing</stored-value>
             </pair>
             <pair>
@@ -4601,6 +4516,43 @@ devtools::install_github("Query-Fulfillment/countmaskr")</hint>
                 <stored-value>Tier 3 Database Access</stored-value>
             </pair>
         </value-pairs>
+        
+        <value-pairs value-pairs-name="common_types" dc-term="type">
+            <pair>
+                <displayed-value>Database</displayed-value>
+                <stored-value>Database</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Other</displayed-value>
+                <stored-value>Other</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="common_identifiers" dc-term="identifier">
+            <pair>
+                <displayed-value>ISSN</displayed-value>
+                <stored-value>issn</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Other</displayed-value>
+                <stored-value>other</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ISMN</displayed-value>
+                <stored-value>ismn</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Gov't Doc #</displayed-value>
+                <stored-value>govdoc</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>URI</displayed-value>
+                <stored-value>uri</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>ISBN</displayed-value>
+                <stored-value>isbn</stored-value>
+            </pair>
+        </value-pairs>
         <value-pairs value-pairs-name="common_iso_languages" dc-term="language_iso">
             <pair>
                 <displayed-value>N/A</displayed-value>
@@ -4655,126 +4607,6 @@ devtools::install_github("Query-Fulfillment/countmaskr")</hint>
             <pair>
                 <displayed-value>United State of America</displayed-value>
                 <stored-value>United States of America</stored-value>
-            </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="Beds" dc-term="subject">
-            <pair>
-                <displayed-value>100-200 Beds</displayed-value>
-                <stored-value>100-200 Beds</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>200-300 Beds</displayed-value>
-                <stored-value>200-300 Beds</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>300-400 Beds</displayed-value>
-                <stored-value>300-400 Beds</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>400-500 Beds</displayed-value>
-                <stored-value>400-500 Beds</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>500-600 Beds</displayed-value>
-                <stored-value>500-600 Beds</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>600-700 Beds</displayed-value>
-                <stored-value>600-700 Beds</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>700-800 Beds</displayed-value>
-                <stored-value>700-800 Beds</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>800-900 Beds</displayed-value>
-                <stored-value>800-900 Beds</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>900-1000 Beds</displayed-value>
-                <stored-value>900-1000 Beds</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>1000+ Beds</displayed-value>
-                <stored-value>1000+ Beds</stored-value>
-            </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="EHRSys" dc-term="subject">
-            <pair>
-                <displayed-value>Epic EHR System</displayed-value>
-                <stored-value>Epic EHR System</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Cerner EHR System</displayed-value>
-                <stored-value>Cerner EHR System</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>eClinicalWorks EHR System</displayed-value>
-                <stored-value>eClinicalWorks EHR System</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Praxis EMR EHR System</displayed-value>
-                <stored-value>Praxis EMR EHR System</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>TruBridge EHR System</displayed-value>
-                <stored-value>TruBridge EHR System</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Meditech EHR System</displayed-value>
-                <stored-value>Meditech EHR System</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>NextGen Healthcare EHR System</displayed-value>
-                <stored-value>NextGen Healthcare EHR System</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Veradigm EHR System</displayed-value>
-                <stored-value>Veradigm EHR System</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Athenahealth EHR System</displayed-value>
-                <stored-value>Athenahealth EHR System</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Practice Fusion EHR System</displayed-value>
-                <stored-value>Practice Fusion EHR System</stored-value>
-            </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="TraumaCenter" dc-term="subject">
-            <pair>
-                <displayed-value>Level I Trauma Center</displayed-value>
-                <stored-value>Level I Trauma Center</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Level II Trauma Center</displayed-value>
-                <stored-value>Level II Trauma Center</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Level III Trauma Center</displayed-value>
-                <stored-value>Level III Trauma Center</stored-value>
-            </pair>
-        </value-pairs>
-        <value-pairs value-pairs-name="InstChar" dc-term="subject">
-            <pair>
-                <displayed-value>Pediatric Research Hospital</displayed-value>
-                <stored-value>Pediatric Research Hospital</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>General Research Hospital</displayed-value>
-                <stored-value>General Research Hospital</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Private, Nonprofit Hospital</displayed-value>
-                <stored-value>Private, Nonprofit Hospital</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Public, Nonprofit Hospital</displayed-value>
-                <stored-value>Public, Nonprofit Hospital</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>University Affiliate Hospital</displayed-value>
-                <stored-value>University Affiliate Hospital</stored-value>
             </pair>
         </value-pairs>
         <!-- Openaire specific value pairs -->
@@ -5187,7 +5019,6 @@ devtools::install_github("Query-Fulfillment/countmaskr")</hint>
                 <stored-value></stored-value>
             </pair>
         </value-pairs>
-        
         <value-pairs value-pairs-name="openaire_organization_identifier_types" dc-term="identifier">
             <pair>
                 <displayed-value>ISNI - International Standard Name Identifier</displayed-value>
