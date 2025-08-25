@@ -7,9 +7,11 @@
           (hasValue(img) ? linkImg : link) : 
           (hasBrowseDefinition() ? 
             (shouldRenderAsBadge(mdValue) ? badge : 
-              (shouldRenderAsButton(mdValue) ? buttonlink : browselink)
+              (shouldRenderAsButton(mdValue) ? buttonlink :
+                (shouldRenderAsCode(mdValue) ? codeSnippet : browselink)
+              )
             ) : 
-            simple
+            (shouldRenderAsCode(mdValue) ? codeSnippet : simple)
           )
         )
       );
@@ -128,4 +130,32 @@
      [queryParams]="{ value: value }">
     {{ value }}
   </a>
+</ng-template>
+
+<!-- Render value as a code snippet -->
+<ng-template #codeSnippet let-value="value" let-sentenceTemplateParts="sentenceTemplateParts">
+  <div class="code-snippet-container">
+    <ng-container *ngIf="sentenceTemplateParts; else defaultCodeContent">
+      <span class="code-context">{{ sentenceTemplateParts[0] }}</span>
+      <div class="code-with-tooltip">
+        <code class="code-snippet">{{ value }}</code>
+        <span class="tooltip-container" 
+              data-tooltip="Analysts, use this name to reference this variable in your study DAP."
+              [attr.aria-label]="'Analysts, use this name to reference this variable in your study DAP.'">
+          <i class="fas fa-info-circle tooltip-icon" aria-hidden="true"></i>
+        </span>
+      </div>
+      <span class="code-context">{{ sentenceTemplateParts[1] }}</span>
+    </ng-container>
+    <ng-template #defaultCodeContent>
+      <div class="code-with-tooltip">
+        <code class="code-snippet">{{ value }}</code>
+        <span class="tooltip-container" 
+              data-tooltip="Analysts, use this name to reference this variable in your study DAP."
+              [attr.aria-label]="'Analysts, use this name to reference this variable in your study DAP.'">
+          <i class="fas fa-info-circle tooltip-icon" aria-hidden="true"></i>
+        </span>
+      </div>
+    </ng-template>
+  </div>
 </ng-template>

@@ -62,6 +62,11 @@ export class GenericItemPageFieldComponent extends ItemPageFieldComponent {
   @Input() renderAsButton = false;
 
   /**
+   * Whether the metadata value should be rendered as a code snippet
+   */
+  @Input() renderAsCode = false;
+
+  /**
    * The type of entity that the metadata is being displayed for
    */
   @Input() entityType: string;

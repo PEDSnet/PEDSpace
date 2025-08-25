@@ -330,3 +330,120 @@ $quinacridone-magenta: #8A3D63;
     margin-bottom: 1.5rem;
   }
 }
+
+// Code snippet styles
+.code-snippet-container {
+  display: inline-block;
+  // margin: 0.25rem 0;
+  
+  .code-context {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .code-with-tooltip {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 0.1rem;
+  }
+  
+  .code-snippet {
+    display: inline-block;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 0.375rem 0.75rem;
+    margin: 0 0.25rem;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: #495057;
+    white-space: pre-wrap;
+    word-break: break-all;
+    max-width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: #e9ecef;
+      border-color: #dee2e6;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+    
+    // Dark mode support
+    @media (prefers-color-scheme: dark) {
+      background-color: #2d3748;
+      border-color: #4a5568;
+      color: #e2e8f0;
+      
+      &:hover {
+        background-color: #4a5568;
+        border-color: #718096;
+      }
+    }
+  }
+  
+  .tooltip-container {
+    position: relative;
+    display: inline-flex;
+    align-items: flex-start;
+    cursor: help;
+    margin-top: 0.1rem; // Slight offset to align with code snippet
+
+    .tooltip-icon {
+      font-size: 0.7rem;
+      color: #9ca3af;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #6b7280;
+      }
+    }
+
+    // Enhanced tooltip styling
+    &:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 125%;
+      left: 100%;
+      transform: translateX(0);
+      background-color: #f9fafb;
+      color: #374151;
+      border: 1px solid #e5e7eb;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      white-space: nowrap;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      pointer-events: none;
+      opacity: 0;
+      animation: tooltipFadeIn 0.3s ease forwards;
+    }
+
+    // Tooltip arrow
+    &:hover::before {
+      content: '';
+      position: absolute;
+      bottom: 115%;
+      left: 95%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: #f9fafb;
+      z-index: 1001;
+      opacity: 0;
+      animation: tooltipFadeIn 0.3s ease forwards;
+    }
+  }
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(5px) translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}

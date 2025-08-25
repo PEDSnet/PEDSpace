@@ -3271,6 +3271,8 @@
 
   "item.preview.dspace.entity.type": "Entity Type:",
 
+  "item.preview.local.variable.name": "Variable Name",
+
   "item.preview.local.description.raw": "Raw Output",
 
   "item.preview.local.description.viz": "Visualization Output",

@@ -108,6 +108,11 @@ export class MetadataValuesComponent implements OnChanges {
    */
   @Input() renderAsButton = false;
 
+  /**
+   * Whether the metadata value should be rendered as a code snippet
+   */
+  @Input() renderAsCode = false;
+
   @Input() fieldName: string;
 
   @Input() isPublisher = false;
@@ -202,7 +207,15 @@ export class MetadataValuesComponent implements OnChanges {
    * @param mdValue The metadata value to check
    */
   shouldRenderAsButton(mdValue: MetadataValue): boolean {
-    return this.renderAsButton && !this.renderAsBadge;
+    return this.renderAsButton && !this.renderAsBadge && !this.renderAsCode;
+  }
+
+  /**
+   * Should the metadata value be rendered as code?
+   * @param mdValue The metadata value to check
+   */
+  shouldRenderAsCode(mdValue: MetadataValue): boolean {
+    return this.renderAsCode && !this.renderAsButton && !this.renderAsBadge;
   }
 
   /**
@@ -243,7 +256,7 @@ export class MetadataValuesComponent implements OnChanges {
    * @param mdValue The metadata value to check
    */
   shouldRenderAsBadge(mdValue: MetadataValue): boolean {
-    return this.renderAsBadge;
+    return this.renderAsBadge && !this.renderAsCode;
   }
 
   /**

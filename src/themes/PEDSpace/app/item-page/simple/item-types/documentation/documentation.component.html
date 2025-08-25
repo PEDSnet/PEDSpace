@@ -21,7 +21,14 @@
 
   <div class="row">
     <div class="col-12 col-md-4">
+      <div class="subtitle-container" *ngIf="object?.metadata?.['local.variable.name']?.length > 0">
+        <ds-generic-item-page-field class="subtitle" [renderAsCode]="true" [item]="object" [fields]="['local.variable.name']" [label]="'item.preview.local.variable.name'">
+        </ds-generic-item-page-field>
+        <!-- <span class="tooltip-container" 
+              title="Analysts, use this name to reference this variable in your study DAP."
+              [attr.aria-label]="'Analysts, use this name to reference this variable in your study DAP.'"> -->
 
+      </div>
       <!-- dc.date.created -->
       <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'item.preview.dc.date.issued'"
         separator=", "></ds-item-page-date-field>
