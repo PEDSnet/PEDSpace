@@ -117,7 +117,7 @@ export class MyDSpaceConfigurationService extends SearchConfigurationService {
    *    Emits the available configuration list
    */
   public getAvailableConfigurationTypes(): Observable<MyDSpaceConfigurationValueType[]> {
-    return combineLatest(this.isSubmitter$, this.isController$, this.isAdmin$).pipe(
+    return combineLatest([this.isSubmitter$, this.isController$, this.isAdmin$]).pipe(
       first(),
       map(([isSubmitter, isController, isAdmin]: [boolean, boolean, boolean]) => {
         const availableConf: MyDSpaceConfigurationValueType[] = [];

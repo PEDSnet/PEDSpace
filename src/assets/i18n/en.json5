@@ -5810,7 +5810,37 @@
   "search.filters.filter.subjectFlat.placeholder": "Tags...",
 
   "search.filters.filter.subject.head": "Tags (Tree View)",
+  
+  "search.filters.filter.subjectPop.head": "Population",
 
+  "search.filters.filter.subjectPop.label": "Population",
+
+  "search.filters.filter.subjectPop.placeholder": "Population...",
+  
+  "search.filters.filter.subjectDataModel.head": "Data Model",
+
+  "search.filters.filter.subjectDataModel.label": "Data Model",
+
+  "search.filters.filter.subjectDataModel.placeholder": "Data Model...",
+
+  "search.filters.filter.subjectValidation.head": "Validation",
+
+  "search.filters.filter.subjectValidation.label": "Validation",
+
+  "search.filters.filter.subjectValidation.placeholder": "Validation...",
+
+  "search.filters.filter.subjectEvalType.head": "Level of Review",
+
+  "search.filters.filter.subjectEvalType.label": "Level of Review",
+
+  "search.filters.filter.subjectEvalType.placeholder": "Level of Review...",
+  
+  "search.filters.filter.subjectMedTermChar.head": "Drug Term Class",
+
+  "search.filters.filter.subjectMedTermChar.label": "Drug Term Class",
+
+  "search.filters.filter.subjectMedTermChar.placeholder": "Drug Term Class...",
+  
   "search.filters.filter.subject.label": "Search Tags",
 
   "search.filters.filter.subject.placeholder": "Tags (Tree View)",
