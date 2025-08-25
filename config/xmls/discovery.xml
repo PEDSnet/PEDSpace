@@ -203,6 +203,11 @@
                 <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterSubjectHierarchy"/>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterDQCheckOutcomes"/>
                 <ref bean="searchFilterDQCheckDomain"/>
                 <ref bean="searchFilterDQCheckResultObs"/>
@@ -220,7 +225,12 @@
             <list>
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterDQCheckOutcomes"/>
                 <ref bean="searchFilterDQCheckDomain"/>
                 <ref bean="searchFilterDQCheckResultObs"/>
@@ -1692,12 +1702,22 @@
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
             </list>
         </property>
         <!--The search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterIdentifier"/>
                 <ref bean="searchFilterIsOrgUnitOfProjectRelation"/>
                 <ref bean="searchFilterIsPersonOfProjectRelation"/>
@@ -1744,12 +1764,22 @@
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
             </list>
         </property>
         <!--The search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterIdentifier"/>
                 <ref bean="searchFilterIsOrgUnitOfProjectRelation"/>
                 <ref bean="searchFilterIsPersonOfProjectRelation"/>
@@ -3061,6 +3091,46 @@
         <property name="sortOrderFilterPage" value="COUNT"/>
         <property name="splitter" value="::"/>
     </bean>
+    <bean id="searchFilterSubjectPop" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="subjectPop"/>
+        <property name="metadataFields">
+            <list>
+                <value>local.subject.DevPop</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="searchFilterSubjectDataModel" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="subjectDataModel"/>
+        <property name="metadataFields">
+            <list>
+                <value>local.subject.DataModel</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="searchFilterSubjectValidation" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="subjectValidation"/>
+        <property name="metadataFields">
+            <list>
+                <value>local.subject.validation</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="searchFilterSubjectEvalType" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="subjectEvalType"/>
+        <property name="metadataFields">
+            <list>
+                <value>local.subject.EvalType</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="searchFilterSubjectMedTermChar" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="subjectMedTermChar"/>
+        <property name="metadataFields">
+            <list>
+                <value>local.subject.MedTermChar</value>
+            </list>
+        </property>
+    </bean>
     <bean id="searchFilterSubjectFlat" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="subjectFlat"/>
         <property name="metadataFields">
@@ -3924,6 +3994,11 @@
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterVocabulary"/>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterClinicalSubject"/>
                 <ref bean="searchFilterAuthor"/>
             </list>
@@ -3933,6 +4008,11 @@
             <list>
                 <ref bean="searchFilterAuthor"/>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterIdentifier"/>
                 <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterLastModified"/>
@@ -3987,6 +4067,11 @@
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterVocabulary"/>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterClinicalSubject"/>
             </list>
         </property>
@@ -3994,6 +4079,11 @@
         <property name="searchFilters">
             <list>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterIdentifier"/>
                 <ref bean="searchFilterIsPersonOfConceptSetRelation"/>
                 <ref bean="searchFilterIsStudyOfConceptSetRelation"/>
@@ -4053,6 +4143,11 @@
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterVocabulary"/>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterClinicalSubject"/>
                 <ref bean="searchFilterAuthor"/>
                 <ref bean="searchFilterQuality"/>
@@ -4068,6 +4163,11 @@
                 <ref bean="searchFilterTitle"/>
                 <ref bean="searchFilterAuthor"/>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterIdentifier"/>
                 <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterLastModified"/>
@@ -4214,6 +4314,11 @@
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterVocabulary"/>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterClinicalSubject"/>
                 <ref bean="searchFilterQuality"/>
                 <!-- <ref bean="searchFilterIsDQResultOfDQCheckRelation"/> -->
@@ -4228,6 +4333,11 @@
                 <ref bean="searchFilterTitle"/>
                 <ref bean="searchFilterAuthor"/>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterIdentifier"/>
                 <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterLastModified"/>
@@ -4374,6 +4484,11 @@
                 <ref bean="searchFilterLastModified"/>
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
             </list>
         </property>
         <!--The search filters which can be used on the discovery search page-->
@@ -4398,6 +4513,11 @@
                 <ref bean="searchFilterLastModified"/>
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -4451,6 +4571,11 @@
                 <ref bean="searchFilterLastModified"/>
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterEntityType"/>
             </list>
         </property>
@@ -4465,7 +4590,12 @@
                 <ref bean="searchFilterVocabulary"/>
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 
                 <ref bean="searchFilterContentInOriginalBundle"/>
                 <ref bean="searchFilterFileNameInOriginalBundle" />
@@ -4833,6 +4963,11 @@
                 <ref bean="searchFilterAffiliation"/>
                 <ref bean="searchFilterClinicalSubject"/>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterEntityType"/>
             </list>
         </property>
@@ -4846,7 +4981,12 @@
                 <!-- Basic metadata filters -->
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 
                 <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterLastModified"/>
@@ -5116,6 +5256,11 @@
                 <ref bean="searchFilterFunder"/>
                 <ref bean="searchFilterClinicalSubject"/>
                 <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterIsStudyOfPhenotypeRelation"/>
                 <ref bean="searchFilterIsStudyOfConceptSetRelation"/>
             </list>
@@ -5127,7 +5272,12 @@
             <list>
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubjectFlat"/>
+<ref bean="searchFilterSubjectPop"/>
+<ref bean="searchFilterSubjectDataModel"/>
+<ref bean="searchFilterSubjectValidation"/>
+<ref bean="searchFilterSubjectEvalType"/>
+<ref bean="searchFilterSubjectMedTermChar"/>
                 <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterCreated"/>
                 <ref bean="searchFilterLastModified"/>
