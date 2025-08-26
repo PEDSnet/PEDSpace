@@ -482,6 +482,21 @@ vocabularies:
   - filter: 'itemClinicalSubject'
     vocabulary: 'dc_subject_mesh'
     enabled: false
+  - filter: 'itemOrgUnit'
+    vocabulary: 'dc_subject_orgunit'
+    enabled: false
+  - filter: 'itemOutcomes'
+    vocabulary: 'dc_subject_outcomes'
+    enabled: false
+  - filter: 'itemPhenotype'
+    vocabulary: 'dc_subject_phenotype'
+    enabled: false
+  - filter: 'itemResults'
+    vocabulary: 'dc_subject_results'
+    enabled: false
+  - filter: 'itemStudy'
+    vocabulary: 'dc_subject_study'
+    enabled: false
 
 # Default collection/community sorting order at Advanced search, Create/update community and collection when there are not a query.
 comcolSelectionSort:

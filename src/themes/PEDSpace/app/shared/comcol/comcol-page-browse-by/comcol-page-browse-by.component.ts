@@ -28,6 +28,7 @@ export class FilterTypePipe implements PipeTransform {
     // this is where we crudely filter out unwanted metadata fields by their browse-by name from the config file (see local.cfg or dspace.cfg)
     return options.filter(option => !option.id.includes('type') &&
       !option.id.includes('srsc') &&
+      !option.id.includes('dc_subject_orgunit') &&
       !option.id.includes('quality') &&
       !option.id.includes('domain') &&
       !option.id.includes('response') &&
