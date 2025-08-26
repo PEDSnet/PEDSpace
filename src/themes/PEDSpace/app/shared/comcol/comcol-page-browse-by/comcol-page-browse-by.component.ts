@@ -39,7 +39,15 @@ export class FilterTypePipe implements PipeTransform {
       !option.id.includes('DevPop') &&
       !option.id.includes('DataModel') &&
       !option.id.includes('observation') &&
-      !option.id.includes('requirement'));
+      !option.id.includes('requirement') &&
+      !option.id.includes('tag') &&
+      !option.id.includes('dqchecktype') &&
+      !option.id.includes('dqcheckcategory') &&
+      !option.id.includes('parameters') &&
+      !option.id.includes('probe') &&
+      !option.id.includes('clinicalprobe') &&
+      !option.id.includes('dqcheckviz') &&
+      !option.id.includes('dqmodulemes'));
   }
 }
 

@@ -35,7 +35,7 @@ export class ItemPageLocalFieldComponent extends ItemPageFieldComponent {
   /**
    * Separator string between multiple values of the metadata fields defined
    */
-  separator: string;
+  @Input() separator: string;
 
   /**
    * Fields (schema.element.qualifier) used to render their values.
