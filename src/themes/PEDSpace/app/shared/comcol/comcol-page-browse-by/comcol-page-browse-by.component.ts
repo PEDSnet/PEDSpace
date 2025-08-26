@@ -47,7 +47,7 @@ export class FilterTypePipe implements PipeTransform {
       !option.id.includes('probe') &&
       !option.id.includes('clinicalprobe') &&
       !option.id.includes('dqcheckviz') &&
-      !option.id.includes('dqmodulemes'));
+      !option.id.includes('dqcheckmes'));
   }
 }
 
