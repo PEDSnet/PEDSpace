@@ -496,4 +496,75 @@ sudo -u dspace bash;
             <min>0</min>
         </rightCardinality>
     </type>
+
+    <!-- Code Relationships -->
+    <!-- Code to ConceptSet -->
+    <type>
+        <leftType>Code</leftType>
+        <rightType>ConceptSet</rightType>
+        <leftwardType>isConceptSetOfCode</leftwardType>
+        <rightwardType>isCodeOfConceptSet</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Code to Documentation -->
+    <type>
+        <leftType>Code</leftType>
+        <rightType>Documentation</rightType>
+        <leftwardType>isDocumentationOfCode</leftwardType>
+        <rightwardType>isCodeOfDocumentation</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Code to Study -->
+    <type>
+        <leftType>Code</leftType>
+        <rightType>Study</rightType>
+        <leftwardType>isStudyOfCode</leftwardType>
+        <rightwardType>isCodeOfStudy</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Code to Phenotype -->
+    <type>
+        <leftType>Code</leftType>
+        <rightType>Phenotype</rightType>
+        <leftwardType>isPhenotypeOfCode</leftwardType>
+        <rightwardType>isCodeOfPhenotype</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Code to Code -->
+    <type>
+        <leftType>Code</leftType>
+        <rightType>Code</rightType>
+        <leftwardType>isCodeOfCode</leftwardType>
+        <rightwardType>isCodeOfCode</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
 </relationships>

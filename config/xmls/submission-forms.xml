@@ -1647,7 +1647,7 @@
             </row>    
         </form>
 
-        <!--Reusable Code Form-->
+        <!-- Reusable Code Form -->
         <form name="CodeForm">
             <row>
                 <field>
@@ -1813,8 +1813,8 @@
                     <repeatable>true</repeatable>
                     <label>R Package Install Code</label>
                     <input-type>onebox</input-type>
-                    <hint>If you are submitting an R package, enter the install code here, e.g., # install.packages("devtools")
-devtools::install_github("Query-Fulfillment/countmaskr")</hint>
+                    <hint>If you are submitting an R package, enter the install code here, e.g., `install.packages("devtools")
+devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <required></required>
                 </field>
             </row>

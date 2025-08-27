@@ -76,8 +76,8 @@
       <ds-item-page-description-field [item]="object" [label]="'item.page.description'"></ds-item-page-description-field>
 
       <!-- <ng-container *ngIf="isLoggedIn"> -->
-      <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
-      </ds-item-page-uri-field>
+        <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
+        </ds-item-page-uri-field>
       <!-- </ng-container> -->
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.other']" [separator]="' '"
         [label]="'browse.metadata.vocab'"></ds-generic-item-page-field>
@@ -107,6 +107,10 @@
 
       <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfConceptSet'"
         [label]="'relationships.isConceptSetOf' | translate">
+      </ds-related-items>
+
+      <ds-related-items [parentItem]="object" [relationType]="'isCodeOfConceptSet'"
+        [label]="'relationships.isCodeOf' | translate">
       </ds-related-items>
 
       <ds-item-page-external-publication-field [item]="object"

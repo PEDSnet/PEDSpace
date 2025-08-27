@@ -1,0 +1,128 @@
+<ds-results-back-button *ngIf="showBackButton$ | async" [back]="back"></ds-results-back-button>
+<div class="container">
+  <div class="row" *ngIf="iiifEnabled">
+    <div class="col-12">
+      <ds-mirador-viewer id="iiif-viewer" [object]="object" [searchable]="iiifSearchEnabled"
+        [query]="iiifQuery$ | async">
+      </ds-mirador-viewer>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <ds-badges *ngIf="showLabel" [object]="object" [showAccessStatus]="true"></ds-badges>
+  </div>
+
+  <div class="d-flex flex-row">
+    <ds-item-page-title-field [item]="object" class="mr-auto">
+    </ds-item-page-title-field>
+    <ds-dso-edit-menu [object]="object"></ds-dso-edit-menu>
+  </div>
+  
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <!-- 1. Date Last Modified -->
+      <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'Date Last Modified'"
+        separator=", "></ds-item-page-date-field>
+
+      <!-- 2. Developers -->
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.author']"
+        [label]="'Developers'">
+      </ds-generic-item-page-field>
+
+      <!-- 3. Tags -->
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject']"
+        [label]="'Tags'">
+      </ds-generic-item-page-field>
+
+      <!-- 4. Related Concept Sets -->
+      <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfCode'"
+        [label]="'Related Concept Sets'">
+      </ds-related-items>
+
+      <!-- 5. Related Code -->
+      <ds-related-items [parentItem]="object" [relationType]="'isCodeOfCode'"
+        [label]="'Related Code'">
+      </ds-related-items>
+
+      <!-- Download link(s) -->
+      <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
+
+      <!-- 6. Publisher -->
+      <ds-generic-item-page-field class="publisher mt-auto" [renderAsButton]="false" [item]="object"
+        [fields]="['dc.publisher']" [label]="'Publisher'" [isPublisher]="true"></ds-generic-item-page-field>
+
+    </div>
+
+    <div class="col-12 col-md-8">
+
+      <!-- 1. About -->
+      <ds-item-page-abstract-field [item]="object" [label]="'About'"></ds-item-page-abstract-field>
+
+      <ds-generic-item-page-field [enableMarkdown]="true" [item]="object" [fields]="['local.code.package']"
+        [label]="'Access Package'">
+      </ds-generic-item-page-field>
+
+      <!-- 3. Provenance -->
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'Provenance'">
+      </ds-generic-item-page-field>
+
+      <!-- 4. Developer Affiliation(s) -->
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
+        [label]="'Developer Affiliation(s)'">
+      </ds-generic-item-page-field>
+
+      <!-- 5. Description -->
+      <ds-item-page-description-field [item]="object" [label]="'Description'"></ds-item-page-description-field>
+
+      <!-- 6. Access Code Repository -->
+      <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.github']"
+        [label]="'Access Code Repository'" [repo]="'github'">
+      </ds-item-page-external-publication-field>
+
+      <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.bitbucket']"
+        [label]="''" [repo]="'bitbucket'">
+      </ds-item-page-external-publication-field>
+
+      <!-- 7. Clinical Subject Headings -->
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
+        [label]="'Clinical Subject Headings'"></ds-generic-item-page-field>
+
+      <!-- x. Related Code -->
+      <ds-related-items [parentItem]="object" [relationType]="'isCodeOfCode'"
+        [label]="'Related Code'">
+      </ds-related-items>
+
+      <!-- 8. Related Studies -->
+      <ds-related-items [parentItem]="object" [relationType]="'isStudyOfCode'"
+        [label]="'Related Studies'">
+      </ds-related-items>
+
+      <!-- 9. Related Phenotypes -->
+      <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfCode'"
+        [label]="'Related Phenotypes'">
+      </ds-related-items>
+
+      <!-- 10. Related Resources -->
+      <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfCode'"
+        [label]="'Related Resources'">
+      </ds-related-items>
+
+      <!-- 10. Rights -->
+      <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
+      </ds-item-page-cc-license-field>
+
+      <ds-item-page-uri-field [item]="object" [fields]="['dc.rights.uri']" [label]="'Rights URI'">
+      </ds-item-page-uri-field>
+
+      <div>
+        <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="link" tabindex="0">
+          <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!(object?.metadata['dc.relation']?.length > 0)">
+    <br>
+  </div>
+</div>

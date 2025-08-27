@@ -142,6 +142,11 @@ export class MetadataValuesComponent implements OnChanges {
    */
   @Input() applyCitationStyling = false;
 
+  /**
+   * Repository type for styling external links (github, bitbucket, etc.)
+   */
+  @Input() repo?: 'github' | 'bitbucket';
+
   hasValue = hasValue;
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -172,7 +177,8 @@ export class MetadataValuesComponent implements OnChanges {
       const pattern = new RegExp(this.urlRegex);
       return pattern.test(value.value);
     }
-    return false;
+    // Check if the value looks like a URL (starts with http:// or https://)
+    return /^https?:\/\/.+/.test(value.value);
   }
 
   /**
@@ -268,6 +274,36 @@ export class MetadataValuesComponent implements OnChanges {
       return { target: '_self', rel: '' };
     } else {
       return { target: '_blank', rel: 'noopener noreferrer' };
+    }
+  }
+
+  /**
+   * Get the appropriate icon class for the repository type
+   * @param repo - The repository type
+   */
+  getRepoIcon(repo: string): string {
+    switch (repo) {
+      case 'github':
+        return 'fab fa-github';
+      case 'bitbucket':
+        return 'fab fa-bitbucket';
+      default:
+        return 'fas fa-code-branch';
+    }
+  }
+
+  /**
+   * Get the appropriate text for the repository type
+   * @param repo - The repository type
+   */
+  getRepoText(repo: string): string {
+    switch (repo) {
+      case 'github':
+        return 'View on GitHub';
+      case 'bitbucket':
+        return 'View on Bitbucket';
+      default:
+        return 'View Repository';
     }
   }
 }

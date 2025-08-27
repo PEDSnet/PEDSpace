@@ -447,3 +447,121 @@ $quinacridone-magenta: #8A3D63;
     transform: translateX(0) translateY(0);
   }
 }
+
+// Repository link styles
+.repo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  margin: 0.25rem 0;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  min-height: 44px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  
+  &:hover::before {
+    transform: translateX(100%);
+  }
+  
+  .repo-text {
+    font-weight: 600;
+    letter-spacing: 0.025em;
+  }
+  
+  .external-icon {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    
+    .external-icon {
+      opacity: 1;
+      transform: translateX(2px);
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  // GitHub styling
+  &.repo-github {
+    background: linear-gradient(135deg, #24292e 0%, #2f363d 100%);
+    color: #ffffff;
+    border: 1px solid #444d56;
+    
+    &:hover {
+      background: linear-gradient(135deg, #2f363d 0%, #24292e 100%);
+      color: #ffffff;
+      border-color: #586069;
+    }
+    
+    &:focus {
+      outline: 2px solid #0366d6;
+      outline-offset: 2px;
+    }
+  }
+  
+  // Bitbucket styling
+  &.repo-bitbucket {
+    background: linear-gradient(135deg, #0052cc 0%, #0065ff 100%);
+    color: #ffffff;
+    border: 1px solid #0747a6;
+    
+    &:hover {
+      background: linear-gradient(135deg, #0065ff 0%, #0052cc 100%);
+      color: #ffffff;
+      border-color: #2684ff;
+    }
+    
+    &:focus {
+      outline: 2px solid #2684ff;
+      outline-offset: 2px;
+    }
+  }
+  
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    gap: 0.4rem;
+  }
+  
+  // Accessibility improvements
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    transform: none;
+    
+    &:hover {
+      transform: none;
+    }
+    
+    &::before {
+      display: none;
+    }
+  }
+}

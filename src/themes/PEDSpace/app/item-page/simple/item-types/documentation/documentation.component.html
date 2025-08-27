@@ -76,8 +76,8 @@
         [label]="'item.page.description'"></ds-item-page-description-field>
 
       <!-- <ng-container *ngIf="isLoggedIn"> -->
-      <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
-      </ds-item-page-uri-field>
+        <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
+        </ds-item-page-uri-field>
       <!-- </ng-container> -->
 
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.other']" [separator]="' '"
@@ -125,6 +125,11 @@
       label: 'isDocumentationOfStudy',
       filter: 'isDocumentationOfStudy',
       configuration: 'study-relationships'
+    },
+    {
+      label: 'isDocumentationOfCode',
+      filter: 'isDocumentationOfCode',
+      configuration: 'code-relationships'
     }
   ]">
     </ds-tabbed-related-entities-search>

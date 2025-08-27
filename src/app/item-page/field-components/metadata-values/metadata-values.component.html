@@ -1,25 +1,50 @@
 <ds-metadata-field-wrapper [label]="label | translate">
-  <ng-container *ngFor="let mdValue of mdValues; let last=last;">
-    <ng-container *ngTemplateOutlet="
-      isDQCheckRequirement ? isDQCheckRequirementTemplate : 
-      (renderMarkdown ? markdown : 
-        (hasLink(mdValue) ? 
-          (hasValue(img) ? linkImg : link) : 
-          (hasBrowseDefinition() ? 
-            (shouldRenderAsBadge(mdValue) ? badge : 
-              (shouldRenderAsButton(mdValue) ? buttonlink :
-                (shouldRenderAsCode(mdValue) ? codeSnippet : browselink)
-              )
-            ) : 
-            (shouldRenderAsCode(mdValue) ? codeSnippet : simple)
+  <ng-container *ngFor="let mdValue of mdValues; let last = last;">
+    <!-- Simplified logic: prioritize repo when both repo and URL detected -->
+    <ng-container *ngIf="repo && hasLink(mdValue)">
+      <ng-container *ngTemplateOutlet="repoLink; context: { value: mdValue.value, repo: repo, sentenceTemplateParts: sentenceTemplateParts }"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="!(repo && hasLink(mdValue))">
+      <ng-container *ngTemplateOutlet="
+        isDQCheckRequirement ? isDQCheckRequirementTemplate :
+        (renderMarkdown ? markdown :
+          (hasLink(mdValue) ? (hasValue(img) ? linkImg : link) :
+            (hasBrowseDefinition() ?
+              (shouldRenderAsBadge(mdValue) ? badge :
+                (shouldRenderAsButton(mdValue) ? buttonlink :
+                  (shouldRenderAsCode(mdValue) ? codeSnippet : browselink)
+                )
+              ) : (shouldRenderAsCode(mdValue) ? codeSnippet : simple)
+            )
           )
-        )
-      );
-      context: {value: mdValue.value, img: img, mdValue: mdValue, sentenceTemplateParts: sentenceTemplateParts}">
+        ); context: { value: mdValue.value, img: img, mdValue: mdValue, sentenceTemplateParts: sentenceTemplateParts, repo: repo }">
+      </ng-container>
     </ng-container>
     <span class="separator" *ngIf="!last" [innerHTML]="separator"></span>
   </ng-container>
 </ds-metadata-field-wrapper>
+
+<!-- Repository link template (GitHub / Bitbucket) -->
+<ng-template #repoLink let-value="value" let-repo="repo" let-sentenceTemplateParts="sentenceTemplateParts">
+  <span class="dont-break-out">
+    <ng-container *ngIf="sentenceTemplateParts; else defaultRepoContent">
+      {{ sentenceTemplateParts[0] }}
+      <a [ngClass]="['repo-link', 'repo-' + repo]" target="_blank" rel="noopener noreferrer" [href]="value">
+        <i [ngClass]="getRepoIcon(repo)" aria-hidden="true"></i>
+        <span class="repo-text">{{ getRepoText(repo) }}</span>
+        <i class="fas fa-external-link-alt external-icon" aria-hidden="true"></i>
+      </a>
+      {{ sentenceTemplateParts[1] }}
+    </ng-container>
+    <ng-template #defaultRepoContent>
+      <a [ngClass]="['repo-link', 'repo-' + repo]" target="_blank" rel="noopener noreferrer" [href]="value">
+        <i [ngClass]="getRepoIcon(repo)" aria-hidden="true"></i>
+        <span class="repo-text">{{ getRepoText(repo) }}</span>
+        <i class="fas fa-external-link-alt external-icon" aria-hidden="true"></i>
+      </a>
+    </ng-template>
+  </span>
+</ng-template>
 
 <!-- Render value as markdown -->
 <ng-template #markdown let-value="value" let-sentenceTemplateParts="sentenceTemplateParts">
@@ -55,6 +80,7 @@
     </ng-template>
   </span>
 </ng-template>
+
 
 
 <!-- Render value as a link with icon -->

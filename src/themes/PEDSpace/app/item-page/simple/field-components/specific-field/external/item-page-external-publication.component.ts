@@ -3,19 +3,23 @@ import {
   Component,
   Input,
 } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { BrowseService } from 'src/app/core/browse/browse.service';
 import { BrowseDefinitionDataService } from 'src/app/core/browse/browse-definition-data.service';
 import { Item } from 'src/app/core/shared/item.model';
 import { MetadataValuesComponent } from 'src/app/item-page/field-components/metadata-values/metadata-values.component';
+import { MetadataFieldWrapperComponent } from 'src/app/shared/metadata-field-wrapper/metadata-field-wrapper.component';
 
 import { ItemPageFieldComponent } from '../../../../../../../../app/item-page/simple/field-components/specific-field/item-page-field.component';
 
 @Component({
   selector: 'ds-item-page-external-publication-field',
-  templateUrl: '../../../../../../../../app/item-page/simple/field-components/specific-field/item-page-field.component.html',
+  templateUrl: './item-page-external-publication.component.html',
   standalone: true,
   imports: [
     MetadataValuesComponent,
+    MetadataFieldWrapperComponent,
+    TranslateModule,
     AsyncPipe,
   ],
 })
@@ -37,6 +41,11 @@ export class ItemPageExternalPublicationFieldComponent extends ItemPageFieldComp
     @Input() item: Item;
 
     /**
+     * Repository type for styling (github or bitbucket)
+     */
+    @Input() repo: 'github' | 'bitbucket' = 'github';
+
+    /**
      * Separator string between multiple values of the metadata fields defined
      * @type {string}
      */
@@ -46,7 +55,7 @@ export class ItemPageExternalPublicationFieldComponent extends ItemPageFieldComp
      * Fields (schema.element.qualifier) used to render their values.
      * In this component, we want to display values for metadata 'dc.description.abstract'
      */
-    fields: string[] = [
+    @Input() fields: string[] = [
       'dc.relation.isreferencedby',
     ];
 
@@ -63,5 +72,5 @@ export class ItemPageExternalPublicationFieldComponent extends ItemPageFieldComp
     /**
      * Flag to apply citation styling to markdown content
      */
-    applyCitationStyling = true;
+    @Input() applyCitationStyling = true;
 }

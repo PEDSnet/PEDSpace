@@ -21,6 +21,7 @@ $badge-opacity: 0.8;
 // SVG URL Variables
 // ======================
 $conceptset-icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-terminal'%3E%3Cpolyline points='4 17 10 11 4 5'/%3E%3Cline x1='12' x2='20' y1='19' y2='19'/%3E%3C/svg%3E";
+$reusablecode-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJpbmFyeS1pY29uIGx1Y2lkZS1iaW5hcnkiPjxyZWN0IHg9IjE0IiB5PSIxNCIgd2lkdGg9IjQiIGhlaWdodD0iNiIgcng9IjIiLz48cmVjdCB4PSI2IiB5PSI0IiB3aWR0aD0iNCIgaGVpZ2h0PSI2IiByeD0iMiIvPjxwYXRoIGQ9Ik02IDIwaDQiLz48cGF0aCBkPSJNMTQgMTBoNCIvPjxwYXRoIGQ9Ik02IDE0aDJ2NiIvPjxwYXRoIGQ9Ik0xNCA0aDJ2NiIvPjwvc3ZnPg==";
 $dqcheck-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdyaWQtMngyLWNoZWNrIj48cGF0aCBkPSJNMTIgM3YxN2ExIDEgMCAwIDEtMSAxSDVhMiAyIDAgMCAxLTItMlY1YTIgMiAwIDAgMSAyLTJoMTRhMiAyIDAgMCAxIDIgMnY2YTEgMSAwIDAgMS0xIDFIMyIvPjxwYXRoIGQ9Im0xNiAxOSAyIDIgNC00Ii8+PC9zdmc+";
 $documentation-icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-book-open-text'%3E%3Cpath d='M12 7v14'/%3E%3Cpath d='M16 12h2'/%3E%3Cpath d='M16 8h2'/%3E%3Cpath d='M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z'/%3E%3Cpath d='M6 12h2'/%3E%3Cpath d='M6 8h2'/%3E%3C/svg%3E";
 $study-icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-school'%3E%3Cpath d='M14 22v-4a2 2 0 1 0-4 0v4'/%3E%3Cpath d='m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2'/%3E%3Cpath d='M18 5v17'/%3E%3Cpath d='m4 6 8-4 8 4'/%3E%3Cpath d='M6 5v17'/%3E%3Ccircle cx='12' cy='9' r='2'/%3E%3C/svg%3E";
@@ -138,6 +139,47 @@ $person-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmc
                 opacity: 1; // Fully opaque on hover/focus
                 background-color: lighten($dusty-rose, 15%); // Lighten the background color
                 background-image: generateBadgePattern(lighten($dusty-rose, 25%)); // Generate a lighter pattern
+                transform: translateY(-2px); // Slight upward movement
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
+            }
+        }
+    }
+
+    // Code Badge
+    &.badge-code {
+        color: $mint-green;
+        background-color: $black-bean;
+        transition: all 0.3s ease;
+
+        &::before {
+            mask-image: url($reusablecode-icon);
+            -webkit-mask-image: url($reusablecode-icon);
+            background-color: $mint-green; 
+        }
+
+        &:not(.badge-community):hover,
+        &:not(.badge-community):focus {
+            background-color: darken($mint-green, 15%);
+            color: $black-bean;
+            
+            &::before {
+                background-color: $black-bean;
+            }
+        }
+
+        &.badge-collection {
+            border: 2px solid $black-bean;
+            background-color: #e5e5f7; // Light background color
+            opacity: $badge-opacity; // Using the universal opacity variable
+            background-size: 4px 4px;
+            background-image: generateBadgePattern($black-bean); // Using the gradient function
+            transition: all 0.3s ease;
+
+            &:hover,
+            &:focus {
+                opacity: 1; // Fully opaque on hover/focus
+                background-color: lighten($mint-green, 15%); // Lighten the background color
+                background-image: generateBadgePattern(lighten($black-bean, 25%)); // Generate a lighter pattern
                 transform: translateY(-2px); // Slight upward movement
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
             }

@@ -1815,6 +1815,20 @@
 
   "communityList.title": "Explore PEDSpace Collections",
 
+  "code.collection.listelement.badge": "Code Domain",
+
+  "code.listelement.badge": "Code",
+
+  "code.page.edit": "Edit Code",
+
+  "code.page.titleprefix": "Code:",
+
+  "code.search.results.head": "Code Search Results",
+
+  "code.search.title": "Code Search",
+
+  "code-relationships.search.results.head": "Code Search Results",
+
   "conceptset.collection.listelement.badge": "Concept Set Domain",
 
   "conceptset.listelement.badge": "Concept Set",
@@ -5182,6 +5196,8 @@
   "relationships.isContributorOf.Person": "Contributor",
 
   "relationships.isContributorOf": "Contributors",
+
+  "relationships.isCodeOf": "Related Code",
 
   "relationships.isDocumentationOf": "Data Source",
 
