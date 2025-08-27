@@ -58,7 +58,7 @@
       <!-- 1. About -->
       <ds-item-page-abstract-field [item]="object" [label]="'About'"></ds-item-page-abstract-field>
 
-      <ds-generic-item-page-field [enableMarkdown]="true" [item]="object" [fields]="['local.code.package']"
+      <ds-generic-item-page-field [renderAsCode]="true" [codeType]="'package'" [item]="object" [fields]="['local.code.package']"
         [label]="'Access Package'">
       </ds-generic-item-page-field>
 

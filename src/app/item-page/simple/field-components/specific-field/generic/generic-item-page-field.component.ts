@@ -95,6 +95,11 @@ export class GenericItemPageFieldComponent extends ItemPageFieldComponent {
 
   @Input() isPublisher = false;
 
+  /**
+   * Type of code snippet to render (affects which actions are shown)
+   */
+  @Input() codeType?: 'variable' | 'package' = 'package';
+
   // In item-page-field.component.ts, add this method
   getCombinedMetadataValues() {
     if (!this.item || !this.fields || this.fields.length === 0) {

@@ -147,6 +147,11 @@ export class MetadataValuesComponent implements OnChanges {
    */
   @Input() repo?: 'github' | 'bitbucket';
 
+  /**
+   * Type of code snippet to render (affects which actions are shown)
+   */
+  @Input() codeType?: 'variable' | 'package' = 'package';
+
   hasValue = hasValue;
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -305,5 +310,94 @@ export class MetadataValuesComponent implements OnChanges {
       default:
         return 'View Repository';
     }
+  }
+
+  /**
+   * Copy text to clipboard using the modern Clipboard API
+   * @param text - The text to copy
+   */
+  async copyToClipboard(text: string, event?: Event): Promise<void> {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        // Use the modern Clipboard API
+        await navigator.clipboard.writeText(text);
+        this.showCopySuccess(event?.target as HTMLElement);
+      } else {
+        // Fallback for older browsers or non-secure contexts
+        this.fallbackCopyToClipboard(text, event?.target as HTMLElement);
+      }
+    } catch (error) {
+      console.error('Failed to copy text to clipboard:', error);
+      this.showCopyError();
+    }
+  }
+
+  /**
+   * Fallback copy method for older browsers
+   * @param text - The text to copy
+   */
+  private fallbackCopyToClipboard(text: string, buttonElement?: HTMLElement): void {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+      const successful = document.execCommand('copy');
+      if (successful) {
+        this.showCopySuccess(buttonElement);
+      } else {
+        this.showCopyError();
+      }
+    } catch (error) {
+      console.error('Fallback copy failed:', error);
+      this.showCopyError();
+    } finally {
+      document.body.removeChild(textArea);
+    }
+  }
+
+  /**
+   * Show success feedback for copy operation
+   */
+  private showCopySuccess(buttonElement?: HTMLElement): void {
+    if (buttonElement) {
+      // Add visual feedback to the button
+      buttonElement.classList.add('copied');
+      
+      // Change icon to checkmark temporarily
+      const icon = buttonElement.querySelector('i');
+      if (icon) {
+        const originalClass = icon.className;
+        icon.className = 'fas fa-check';
+        
+        // Reset after animation
+        setTimeout(() => {
+          icon.className = originalClass;
+          buttonElement.classList.remove('copied');
+        }, 1000);
+      }
+    }
+    
+    console.log('Code copied to clipboard successfully!');
+  }
+
+  /**
+   * Show error feedback for copy operation
+   */
+  private showCopyError(): void {
+    console.error('Failed to copy code to clipboard');
+  }
+
+  /**
+   * Check if this is a package code field that should show copy functionality
+   * @param fieldName - The field name to check
+   */
+  isPackageCodeField(fieldName?: string): boolean {
+    return fieldName === 'local.code.package' || fieldName === 'local.package.code';
   }
 }
