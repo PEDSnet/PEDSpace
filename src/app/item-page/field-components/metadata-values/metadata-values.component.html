@@ -165,69 +165,34 @@
 <!-- Render value as a variable name code snippet (with tooltip, no copy) -->
 <ng-template #codeSnippetVariable let-value="value" let-sentenceTemplateParts="sentenceTemplateParts">
   <div class="code-snippet-container">
-    <ng-container *ngIf="sentenceTemplateParts; else defaultVariableContent">
-      <span class="code-context">{{ sentenceTemplateParts[0] }}</span>
-      <div class="code-with-actions">
-        <code class="code-snippet">{{ value }}</code>
-        <div class="code-actions">
-          <!-- Info tooltip only -->
-          <span class="tooltip-container" 
-                data-tooltip="Analysts, use this name to reference this variable in your study DAP."
-                [attr.aria-label]="'Analysts, use this name to reference this variable in your study DAP.'">
-            <i class="fas fa-info-circle tooltip-icon" aria-hidden="true"></i>
-          </span>
-        </div>
+    <div class="code-with-actions">
+      <code class="code-snippet">{{ value }}</code>
+      <div class="code-actions">
+        <!-- Info tooltip only -->
+        <span class="tooltip-container" 
+              data-tooltip="Analysts, use this name to reference this variable in your study DAP."
+              [attr.aria-label]="'Analysts, use this name to reference this variable in your study DAP.'">
+          <i class="fas fa-info-circle tooltip-icon" aria-hidden="true"></i>
+        </span>
       </div>
-      <span class="code-context">{{ sentenceTemplateParts[1] }}</span>
-    </ng-container>
-    <ng-template #defaultVariableContent>
-      <div class="code-with-actions">
-        <code class="code-snippet">{{ value }}</code>
-        <div class="code-actions">
-          <!-- Info tooltip only -->
-          <span class="tooltip-container" 
-                data-tooltip="Analysts, use this name to reference this variable in your study DAP."
-                [attr.aria-label]="'Analysts, use this name to reference this variable in your study DAP.'">
-            <i class="fas fa-info-circle tooltip-icon" aria-hidden="true"></i>
-          </span>
-        </div>
-      </div>
-    </ng-template>
+    </div>
   </div>
 </ng-template>
 
 <!-- Render value as a package code snippet (with copy button, no tooltip) -->
 <ng-template #codeSnippetPackage let-value="value" let-sentenceTemplateParts="sentenceTemplateParts">
   <div class="code-snippet-container">
-    <ng-container *ngIf="sentenceTemplateParts; else defaultPackageContent">
-      <span class="code-context">{{ sentenceTemplateParts[0] }}</span>
-      <div class="code-with-actions">
-        <code class="code-snippet">{{ value }}</code>
-        <div class="code-actions">
-          <!-- Copy to clipboard button only -->
-          <button class="copy-btn" 
-                  (click)="copyToClipboard(value, $event)"
-                  [attr.aria-label]="'Copy code to clipboard'"
-                  title="Copy to clipboard">
-            <i class="fas fa-copy" aria-hidden="true"></i>
-          </button>
-        </div>
+    <div class="code-with-actions">
+      <code class="code-snippet">{{ value }}</code>
+      <div class="code-actions">
+        <!-- Copy to clipboard button only -->
+        <button class="copy-btn" 
+                (click)="copyToClipboard(value, $event)"
+                [attr.aria-label]="'Copy code to clipboard'"
+                title="Copy to clipboard">
+          <i class="fas fa-copy" aria-hidden="true"></i>
+        </button>
       </div>
-      <span class="code-context">{{ sentenceTemplateParts[1] }}</span>
-    </ng-container>
-    <ng-template #defaultPackageContent>
-      <div class="code-with-actions">
-        <code class="code-snippet">{{ value }}</code>
-        <div class="code-actions">
-          <!-- Copy to clipboard button only -->
-          <button class="copy-btn" 
-                  (click)="copyToClipboard(value, $event)"
-                  [attr.aria-label]="'Copy code to clipboard'"
-                  title="Copy to clipboard">
-            <i class="fas fa-copy" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </ng-template>
+    </div>
   </div>
 </ng-template>
