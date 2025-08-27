@@ -1,9 +1,9 @@
 <div *ngIf="uri && name" class="item-page-field">
   <ds-metadata-field-wrapper [label]="'item.page.cc.license.title' | translate">
-    <div [ngClass]="{'row': variant === 'full', 'col': variant === 'small'}">
+    <div [ngClass]="{'row': variant === 'full' || variant === 'package', 'col': variant === 'small'}">
 
       <!-- 'img' tag is not rendered if any errors occurs when loading it -->
-      <div *ngIf="showImage" [ngClass]="{'col-auto': variant === 'full', 'row': variant === 'small'}"
+      <div *ngIf="showImage" [ngClass]="{'col-auto': variant === 'full' || variant === 'package', 'row': variant === 'small'}"
         style="align-content: center;"
       >
         <a [href]="uri" target="_blank" class="link-anchor dont-break-out ds-simple-metadata-link">
@@ -17,10 +17,27 @@
       </div>
 
       <!-- CC name is always displayed if the image fails to load -->
-      <div [ngClass]="{ 'row': variant === 'small', 'col': variant === 'full' }">
+      <div [ngClass]="{ 'row': variant === 'small', 'col': variant === 'full' || variant === 'package' }">
         <span>
-          {{ variant === 'full' && showDisclaimer ? ('item.page.cc.license.disclaimer' | translate) : '' }}
-          <a *ngIf="showName || !showImage" [href]="uri" target="_blank" id="cc-name">{{ name }}</a>
+          <!-- Full variant disclaimer -->
+          <ng-container *ngIf="variant === 'full' || (variant === 'package' && showDisclaimer)">
+            {{ 'item.page.cc.license.disclaimer' | translate }}
+
+            <a *ngIf="showName || !showImage" [href]="uri" target="_blank" id="cc-name">{{ name }}</a>
+          </ng-container>
+          <br><br>
+          <!-- Package variant disclaimer -->
+          <ng-container *ngIf="variant === 'package'">
+            This license applies to the metadata and documentation of this digital package. 
+            The source code and software components may be governed by different licensing terms. 
+            Please refer to the 
+            <a *ngIf="githubUrl" [href]="githubUrl" target="_blank" rel="noopener noreferrer" class="repo-link-inline">
+              GitHub repository link
+              <i class="fas fa-external-link-alt" aria-hidden="true" style="margin-left: 0.25rem; font-size: 0.8em;"></i>
+            </a>
+            <span *ngIf="!githubUrl">GitHub repository link</span>
+            for specific software licensing information.
+          </ng-container>
         </span>
       </div>
     </div>

@@ -20,6 +20,12 @@
   
   <div class="row">
     <div class="col-12 col-md-4">
+
+      <div class="subtitle-container" *ngIf="object?.metadata?.['local.variable.name']?.length > 0">
+        <ds-generic-item-page-field class="subtitle" [renderAsCode]="true" [item]="object" [fields]="['local.variable.name']" [label]="'item.preview.local.variable.name'">
+        </ds-generic-item-page-field>
+      </div>
+
       <!-- 1. Date Last Modified -->
       <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'Date Last Modified'"
         separator=", "></ds-item-page-date-field>
@@ -33,16 +39,6 @@
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject']"
         [label]="'Tags'">
       </ds-generic-item-page-field>
-
-      <!-- 4. Related Concept Sets -->
-      <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfCode'"
-        [label]="'Related Concept Sets'">
-      </ds-related-items>
-
-      <!-- 5. Related Code -->
-      <ds-related-items [parentItem]="object" [relationType]="'isCodeOfCode'"
-        [label]="'Related Code'">
-      </ds-related-items>
 
       <!-- Download link(s) -->
       <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
@@ -95,6 +91,11 @@
         [label]="'Related Code'">
       </ds-related-items>
 
+      <!-- Related Concept Sets -->
+      <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfCode'"
+        [label]="'Related Concept Sets'">
+      </ds-related-items>
+
       <!-- 8. Related Studies -->
       <ds-related-items [parentItem]="object" [relationType]="'isStudyOfCode'"
         [label]="'Related Studies'">
@@ -111,11 +112,8 @@
       </ds-related-items>
 
       <!-- 10. Rights -->
-      <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
+      <ds-item-page-cc-license-field [item]="object" [variant]="'package'" [githubUrl]="object?.firstMetadataValue('local.code.github')">
       </ds-item-page-cc-license-field>
-
-      <ds-item-page-uri-field [item]="object" [fields]="['dc.rights.uri']" [label]="'Rights URI'">
-      </ds-item-page-uri-field>
 
       <div>
         <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="link" tabindex="0">

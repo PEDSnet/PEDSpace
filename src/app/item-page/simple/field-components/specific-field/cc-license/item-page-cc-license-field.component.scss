@@ -70,6 +70,29 @@
               color: darken($redwood, 10%);
             }
           }
+          
+          // Style the inline repository link
+          .repo-link-inline {
+            color: $redwood;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            
+            &:hover {
+              text-decoration: underline;
+              color: darken($redwood, 10%);
+            }
+            
+            i {
+              transition: transform 0.2s ease;
+            }
+            
+            &:hover i {
+              transform: translateX(2px);
+            }
+          }
         }
       }
       

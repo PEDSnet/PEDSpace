@@ -31,8 +31,9 @@ export class ItemPageCcLicenseFieldComponent implements OnInit {
   /**
    * 'full' variant shows image, a disclaimer (optional) and name (always), better for the item page content.
    * 'small' variant shows image and name (optional), better for the item page sidebar
+   * 'package' variant shows image, name, and a clarification that the license applies to metadata only
    */
-  @Input() variant?: 'small' | 'full' = 'small';
+  @Input() variant?: 'small' | 'full' | 'package' = 'small';
 
   /**
    * Filed name containing the CC license URI, as configured in the back-end, in the 'dspace.cfg' file, propertie
@@ -55,6 +56,11 @@ export class ItemPageCcLicenseFieldComponent implements OnInit {
    * Shows the disclaimer in the 'full' variant of the component
    */
   @Input() showDisclaimer? = true;
+
+  /**
+   * GitHub repository URL for the package variant link
+   */
+  @Input() githubUrl?: string;
 
   uri: string;
   name: string;
