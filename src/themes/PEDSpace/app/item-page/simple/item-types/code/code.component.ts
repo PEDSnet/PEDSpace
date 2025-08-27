@@ -6,14 +6,23 @@ import {
 import {
   ChangeDetectionStrategy,
   Component,
+  OnInit,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import {
+  Router,
+  RouterLink,
+} from '@angular/router';
+import {
+  select,
+  Store,
+} from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
-// import copy from 'copy-to-clipboard';
-// import { AuthService } from 'src/app/core/auth/auth.service';
-// import { RouteService } from 'src/app/core/services/route.service';
+import { Observable } from 'rxjs';
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
 
+import { AppState } from '../../../../../../../app/app.reducer';
+import { isAuthenticated } from '../../../../../../../app/core/auth/selectors';
+import { RouteService } from '../../../../../../../app/core/services/route.service';
 import { Context } from '../../../../../../../app/core/shared/context.model';
 import { ViewMode } from '../../../../../../../app/core/shared/view-mode.model';
 import { CollectionsComponent } from '../../../../../../../app/item-page/field-components/collections/collections.component';
@@ -77,7 +86,25 @@ import { ItemPageExternalPublicationFieldComponent } from '../../field-component
     ItemPageCcLicenseFieldComponent,
     ThemedBadgesComponent],
 })
-export class CodeComponent extends BaseComponent {
+export class CodeComponent extends BaseComponent implements OnInit {
 
+  /**
+   * Whether the current user is authenticated
+   */
+  public isAuthenticated$: Observable<boolean>;
+
+  constructor(
+    protected routeService: RouteService,
+    protected router: Router,
+    private store: Store<AppState>,
+  ) {
+    super(routeService, router);
+  }
+
+  ngOnInit(): void {
+    super.ngOnInit();
+    // set isAuthenticated
+    this.isAuthenticated$ = this.store.pipe(select(isAuthenticated));
+  }
 
 }

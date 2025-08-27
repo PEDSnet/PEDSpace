@@ -74,14 +74,17 @@
       <!-- 5. Description -->
       <ds-item-page-description-field [item]="object" [label]="'Description'"></ds-item-page-description-field>
 
+      <!-- <h4>Access Code Repository</h4> -->
       <!-- 6. Access Code Repository -->
-      <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.github']"
-        [label]="'Access Code Repository'" [repo]="'github'">
-      </ds-item-page-external-publication-field>
+      <div class="d-flex justify-content-center align-items-center gap-3 mb-3">
+        <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.github']"
+          [label]="''" [repo]="'github'">
+        </ds-item-page-external-publication-field>
 
-      <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.bitbucket']"
-        [label]="''" [repo]="'bitbucket'">
-      </ds-item-page-external-publication-field>
+        <ds-item-page-external-publication-field *ngIf="isAuthenticated$ | async" [item]="object" [fields]="['local.code.bitbucket']"
+          [label]="''" [repo]="'bitbucket'">
+        </ds-item-page-external-publication-field>
+      </div>
 
       <!-- 7. Clinical Subject Headings -->
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
