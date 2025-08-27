@@ -2057,21 +2057,37 @@
 
   "doi-filter.label": "DOI filter",
 
-  "dqcheck.collection.listelement.badge": "DQ Check Domain",
+  "dqcheck.collection.listelement.badge": "Data Quality Check Domain",
   
   "dqcheck.collection.listelement.badge.alt": "Data Quality Check Domain",
 
   "dqcheck.listelement.badge": "Data Quality Check",
 
-  "dqcheck.page.edit": "Edit DQ Check",
+  "dqcheck.page.edit": "Edit Data Quailty Check",
 
-  "dqcheck.page.titleprefix": "DQ Check:",
+  "dqcheck.page.titleprefix": "Data Quailty Check:",
 
   "dqcheck.search.results.head": "Data Quality Check Search Results",
 
   "dqcheck.search.title": "Data Quality Check Search",
 
   "dqcheck-relationships.search.results.head": "Data Quality Check Search Results",
+
+  "dqresult.collection.listelement.badge": "Data Quality Result Domain",
+  
+  "dqresult.collection.listelement.badge.alt": "Data Quality Result Domain",
+
+  "dqresult.listelement.badge": "Data Quality Result",
+
+  "dqresult.page.edit": "Edit Data Quailty Check",
+
+  "dqresult.page.titleprefix": "Data Quailty Check:",
+
+  "dqresult.search.results.head": "Data Quality Result Search Results",
+
+  "dqresult.search.title": "Data Quality Result Search",
+
+  "dqresult-relationships.search.results.head": "Data Quality Result Search Results",
 
   "dqresult.collection.listelement.badge": "Data Quality Result Domain",
 
