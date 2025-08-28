@@ -453,67 +453,60 @@ $quinacridone-magenta: #8A3D63;
   .tooltip-container {
     position: relative;
     display: inline-flex;
-    align-items: flex-start;
-    cursor: help;
-    width: 32px;
-    height: 32px;
-    justify-content: center;
     align-items: center;
-    border-radius: 4px;
-    background-color: #f1f5f9;
-    border: 1px solid #e2e8f0;
-    transition: all 0.2s ease;
+    justify-content: center;
+    cursor: help;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin-left: 0.25rem;
+    background: none;
+    border: none;
+    transition: none;
 
     .tooltip-icon {
-      color: #64748b;
-      font-size: 0.75rem;
+      color: #6c757d;
+      font-size: 0.875rem;
       transition: color 0.2s ease;
     }
     
     &:hover {
-      background-color: #e2e8f0;
-      border-color: #cbd5e1;
-      
       .tooltip-icon {
-        color: #475569;
+        color: #495057;
       }
     }
 
-    // Enhanced tooltip styling
+    // Simple, subtle tooltip styling
     &:hover::after {
       content: attr(data-tooltip);
       position: absolute;
-      bottom: 125%;
+      bottom: 120%;
       left: 50%;
       transform: translateX(-50%);
-      background-color: #f9fafb;
-      color: #374151;
-      border: 1px solid #e5e7eb;
-      padding: 0.4rem 0.6rem;
-      border-radius: 6px;
-      font-size: 0.7rem;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
       white-space: nowrap;
       z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       pointer-events: none;
       opacity: 0;
-      animation: tooltipFadeIn 0.3s ease forwards;
-      max-width: 200px;
-      text-align: center;
+      animation: tooltipFadeIn 0.2s ease forwards;
     }
 
-    // Tooltip arrow
+    // Simple tooltip arrow
     &:hover::before {
       content: '';
       position: absolute;
-      bottom: 115%;
+      bottom: 112%;
       left: 50%;
       transform: translateX(-50%);
-      border: 5px solid transparent;
-      border-top-color: #f9fafb;
+      border: 4px solid transparent;
+      border-top-color: rgba(0, 0, 0, 0.8);
       z-index: 1001;
       opacity: 0;
-      animation: tooltipFadeIn 0.3s ease forwards;
+      animation: tooltipFadeIn 0.2s ease forwards;
     }
   }
 }

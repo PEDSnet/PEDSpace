@@ -4,5 +4,72 @@
   }
   .simple-view-element-header {
     font-size: 1.25rem;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .label-tooltip-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: help;
+    margin-left: 0.125rem;
+
+    .label-tooltip-icon {
+      color: #6c757d;
+      font-size: 0.875rem;
+      transition: color 0.2s ease;
+    }
+    
+    &:hover {
+      .label-tooltip-icon {
+        color: #495057;
+      }
+    }
+
+    // Tooltip styling for label
+    &:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      z-index: 1000;
+      pointer-events: none;
+      opacity: 0;
+      animation: tooltipFadeIn 0.2s ease forwards;
+    }
+
+    // Tooltip arrow for label
+    &:hover::before {
+      content: '';
+      position: absolute;
+      top: 112%;
+      left: 8px;
+      border: 4px solid transparent;
+      border-bottom-color: rgba(0, 0, 0, 0.8);
+      z-index: 1001;
+      opacity: 0;
+      animation: tooltipFadeIn 0.2s ease forwards;
+    }
+  }
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

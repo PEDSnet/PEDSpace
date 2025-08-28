@@ -1,4 +1,6 @@
-<ds-metadata-field-wrapper [label]="label | translate">
+<ds-metadata-field-wrapper 
+  [label]="label | translate" 
+  [tooltip]="renderAsCode && codeType === 'variable' ? 'Analysts, use this name to reference this variable in your study DAP.' : null">
   <ng-container *ngFor="let mdValue of mdValues; let last = last;">
     <!-- Simplified logic: prioritize repo when both repo and URL detected -->
     <ng-container *ngIf="repo && hasLink(mdValue)">
@@ -162,19 +164,11 @@
   </a>
 </ng-template>
 
-<!-- Render value as a variable name code snippet (with tooltip, no copy) -->
+<!-- Render value as a variable name code snippet (no tooltip, no copy) -->
 <ng-template #codeSnippetVariable let-value="value" let-sentenceTemplateParts="sentenceTemplateParts">
   <div class="code-snippet-container">
     <div class="code-with-actions">
       <code class="code-snippet">{{ value }}</code>
-      <div class="code-actions">
-        <!-- Info tooltip only -->
-        <span class="tooltip-container" 
-              data-tooltip="Analysts, use this name to reference this variable in your study DAP."
-              [attr.aria-label]="'Analysts, use this name to reference this variable in your study DAP.'">
-          <i class="fas fa-info-circle tooltip-icon" aria-hidden="true"></i>
-        </span>
-      </div>
     </div>
   </div>
 </ng-template>

@@ -22,5 +22,10 @@ export class MetadataFieldWrapperComponent {
    */
   @Input() label: string;
 
+  /**
+   * Optional tooltip text to show next to the label
+   */
+  @Input() tooltip?: string;
+
   @Input() hideIfNoTextContent = true;
 }

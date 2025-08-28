@@ -1,5 +1,12 @@
 <div class="simple-view-element" [class.d-none]="hideIfNoTextContent && content.textContent.trim().length === 0">
-  <h2 class="simple-view-element-header" *ngIf="label">{{ label }}</h2>
+  <h2 class="simple-view-element-header" *ngIf="label">
+    {{ label }}
+    <span *ngIf="tooltip" class="label-tooltip-container" 
+          [attr.data-tooltip]="tooltip"
+          [attr.aria-label]="tooltip">
+      <i class="fas fa-info-circle label-tooltip-icon" aria-hidden="true"></i>
+    </span>
+  </h2>
   <div #content class="simple-view-element-body">
     <ng-content></ng-content>
   </div>
