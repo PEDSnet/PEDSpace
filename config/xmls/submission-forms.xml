@@ -3422,7 +3422,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
     <!-- element. A UI list displays the displayed-values, but the program     -->
     <!-- stores the associated stored-values in the database.                  -->
     <form-value-pairs>
-        <value-pairs value-pairs-name="EntityType" dc-term="type">
+        <value-pairs value-pairs-name="EntityType" dc-term="entity_type">
             <pair>
                 <displayed-value>Concept Set</displayed-value>
                 <stored-value>ConceptSet</stored-value>
@@ -3452,7 +3452,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>DQResult</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="Vocabs" dc-term="subject">
+        <value-pairs value-pairs-name="Vocabs" dc-term="subject_other">
             <pair>
                 <displayed-value>RxNorm</displayed-value>
                 <stored-value>RxNorm</stored-value>
@@ -3594,7 +3594,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>UK Biobank</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="DataModel" dc-term="subject">
+        <value-pairs value-pairs-name="DataModel" dc-term="subject_DataModel">
             <pair>
                 <displayed-value>PEDSnet Data Model</displayed-value>
                 <stored-value>PEDSnet Data Model</stored-value>
@@ -3608,7 +3608,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>OMOP Data Model</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="Quality" dc-term="quality">
+        <value-pairs value-pairs-name="Quality" dc-term="quality_status">
             <pair>
                 <displayed-value>Research-Ready</displayed-value>
                 <stored-value>Research-Ready</stored-value>
@@ -3738,7 +3738,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>Ingredient</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="EvalType" dc-term="subject">
+        <value-pairs value-pairs-name="EvalType" dc-term="subject_EvalType">
             <pair>
                 <displayed-value>Reviewed by a clinician.</displayed-value>
                 <stored-value>Clinician Reviewed</stored-value>
@@ -3810,7 +3810,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>Cohort Definition</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="PhenoValidation" dc-term="subject">
+        <value-pairs value-pairs-name="PhenoValidation" dc-term="subject_validation">
             <pair>
                 <displayed-value>Validated with an external gold standard.</displayed-value>
                 <stored-value>External Standard</stored-value>
@@ -3824,7 +3824,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>No Validation</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="DevPop" dc-term="subject">
+        <value-pairs value-pairs-name="DevPop" dc-term="subject_DevPop">
             <pair>
                 <displayed-value>Infant Patient Population</displayed-value>
                 <stored-value>Infant Patient Population</stored-value>
@@ -3906,7 +3906,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>Any Race/Ethnicity Patient Population</stored-value>
             </pair>
         </value-pairs> 
-        <value-pairs value-pairs-name="DQModule" dc-term="subject">
+        <value-pairs value-pairs-name="DQModule" dc-term="dqcheck_type">
             <pair>
                 <displayed-value>Cohort Fitness</displayed-value>
                 <stored-value>Cohort Fitness</stored-value>
@@ -3932,7 +3932,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>Variable Testing</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="DQCategory" dc-term="subject">
+        <value-pairs value-pairs-name="DQCategory" dc-term="dqcheck_category">
             <pair>
                 <displayed-value>Concordance</displayed-value>
                 <stored-value>Concordance</stored-value>
@@ -3996,7 +3996,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>Exploratory Analysis</stored-value>
             </pair> 
         </value-pairs>
-        <value-pairs value-pairs-name="DQMeasurement" dc-term="subject">
+        <value-pairs value-pairs-name="DQMeasurement" dc-term="dqcheck_measurement">
             <pair>
                 <displayed-value>Time Series Anomalies</displayed-value>
                 <stored-value>Time Series Anomalies</stored-value>
@@ -4046,7 +4046,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>STL Regression</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="DQViz" dc-term="subject">
+        <value-pairs value-pairs-name="DQViz" dc-term="dqcheck_viz">
             <pair>
                 <displayed-value>Bar Graph</displayed-value>
                 <stored-value>Bar Graph</stored-value>
@@ -4084,7 +4084,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>UpSet Graph</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="DQProbe" dc-term="subject">
+        <value-pairs value-pairs-name="DQProbe" dc-term="dqcheck_probe">
             <pair>
                 <displayed-value>Misclassification Detection</displayed-value>
                 <stored-value>Misclassification Detection</stored-value>
@@ -4126,7 +4126,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>External Benchmarking</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="DQClinicalProbe" dc-term="subject">
+        <value-pairs value-pairs-name="DQClinicalProbe" dc-term="dqcheck_clinicalprobe">
             <pair>
                 <displayed-value>Clinical Consistency</displayed-value>
                 <stored-value>Clinical Consistency</stored-value>
@@ -4178,7 +4178,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>study</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="DQDomain" dc-term="subject">
+        <value-pairs value-pairs-name="DQDomain" dc-term="dqcheck_domain">
             <pair>
                 <displayed-value>Condition Data</displayed-value>
                 <stored-value>Condition Data</stored-value>
@@ -4284,7 +4284,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>Nephrotic Syndrome Data</stored-value>
             </pair> 
         </value-pairs>  
-        <value-pairs value-pairs-name="DQOutcomes" dc-term="subject">
+        <value-pairs value-pairs-name="DQOutcomes" dc-term="dqcheck_outcomes">
             <pair>
                 <displayed-value>Study Infeasible</displayed-value>
                 <stored-value>Study Infeasible</stored-value>
@@ -4330,7 +4330,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>No Interventions</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="DataProv" dc-term="subject">
+        <value-pairs value-pairs-name="DataProv" dc-term="subject_DataProv">
             <pair>
                 <displayed-value>PEDSnet Data Source(s)</displayed-value>
                 <stored-value>PEDSnet Data Source</stored-value>
@@ -4348,7 +4348,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>Anonymized Data Source</stored-value>
             </pair>
         </value-pairs>      
-        <value-pairs value-pairs-name="CodeType" dc-term="type">
+        <value-pairs value-pairs-name="CodeType" dc-term="subject">
             <pair>
                 <displayed-value>PEDSnet Data Model Dependence</displayed-value>
                 <stored-value>PEDSnet Data Model</stored-value>
