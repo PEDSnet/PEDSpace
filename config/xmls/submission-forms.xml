@@ -189,7 +189,6 @@
                     <input-type>tag</input-type>
                     <hint>Enter appropriate subject keywords or phrases.</hint>
                     <required></required>
-                    <vocabulary closed="true">dc_subject</vocabulary>
                 </field>
             </row>
             <row>
@@ -973,8 +972,8 @@
                     <dc-element>subject</dc-element>
                     <dc-qualifier>MedTermChar</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>MEDICATION CODESETS ONLY: Med Term Class Level</label>
-                    <input-type value-pairs-name="MedTermChar">list</input-type>
+                    <label>MEDICATION CODESETS ONLY: Drug Term Classes</label>
+                    <input-type value-pairs-name="MedTermChar">dropdown</input-type>
                     <hint>Select the normalized name classifications present in your concept set.</hint>
                     <required></required>
                 </field>
@@ -3662,80 +3661,112 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
         </value-pairs>
         <value-pairs value-pairs-name="MedTermChar" dc-term="subject">
             <pair>
-                <displayed-value>Dose Form Group</displayed-value>
-                <stored-value>Dose Form Group</stored-value>
+                <displayed-value>Ingredient (RxNorm)</displayed-value>
+                <stored-value>Ingredient</stored-value>
             </pair>
             <pair>
-                <displayed-value>Dose Form</displayed-value>
-                <stored-value>Dose Form</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Brand Pack Name</displayed-value>
-                <stored-value>Brand Pack Name</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Semantic Branded Drug</displayed-value>
-                <stored-value>Semantic Branded Drug</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Semantic Branded Drug Group</displayed-value>
-                <stored-value>Semantic Branded Drug Group</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Semantic Branded Drug Form</displayed-value>
-                <stored-value>Semantic Branded Drug Form</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Semantic Branded Drug Form Precise</displayed-value>
-                <stored-value>Semantic Branded Drug Form Precise</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Semantic Branded Drug Component</displayed-value>
-                <stored-value>Semantic Branded Drug Component</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Brand Name</displayed-value>
-                <stored-value>Brand Name</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Generic Pack</displayed-value>
-                <stored-value>Generic Pack</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Semantic Clinical Drug</displayed-value>
-                <stored-value>Semantic Clinical Drug</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Semantic Clinical Drug Form Group Precise</displayed-value>
-                <stored-value>Semantic Clinical Drug Form Group Precise</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Semantic Clinical Drug Group</displayed-value>
-                <stored-value>Semantic Clinical Drug Group</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Semantic Clinical Drug Form Precise</displayed-value>
-                <stored-value>Semantic Clinical Drug Form Precise</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Semantic Clinical Drug Form</displayed-value>
-                <stored-value>Semantic Clinical Drug Form</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Semantic Clinical Drug Component</displayed-value>
-                <stored-value>Semantic Clinical Drug Component</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Multiple Ingredients</displayed-value>
-                <stored-value>Multiple Ingredients</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Precise Ingredient</displayed-value>
+                <displayed-value>Precise Ingredient (RxNorm)</displayed-value>
                 <stored-value>Precise Ingredient</stored-value>
             </pair>
             <pair>
-                <displayed-value>Ingredient</displayed-value>
-                <stored-value>Ingredient</stored-value>
+                <displayed-value>Multiple Ingredients (RxNorm)</displayed-value>
+                <stored-value>Multiple Ingredients</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Brand Name (RxNorm)</displayed-value>
+                <stored-value>Brand Name</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Brand Pack Name (RxNorm)</displayed-value>
+                <stored-value>Brand Pack Name</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Generic Pack (RxNorm)</displayed-value>
+                <stored-value>Generic Pack</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Clinical Drug (RxNorm)</displayed-value>
+                <stored-value>Semantic Clinical Drug</stored-value>
+            </pair>            
+            <pair>
+                <displayed-value>Semantic Clinical Drug Component (RxNorm)</displayed-value>
+                <stored-value>Semantic Clinical Drug Component</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Clinical Drug Form (RxNorm)</displayed-value>
+                <stored-value>Semantic Clinical Drug Form</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Clinical Drug Group (RxNorm)</displayed-value>
+                <stored-value>Semantic Clinical Drug Group</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Clinical Drug Form Group Precise (RxNorm)</displayed-value>
+                <stored-value>Semantic Clinical Drug Form Group Precise</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Branded Drug Component (RxNorm)</displayed-value>
+                <stored-value>Semantic Branded Drug Component</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Branded Drug (RxNorm)</displayed-value>
+                <stored-value>Semantic Branded Drug</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Branded Drug Group (RxNorm)</displayed-value>
+                <stored-value>Semantic Branded Drug Group</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Branded Drug Form (RxNorm)</displayed-value>
+                <stored-value>Semantic Branded Drug Form</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Semantic Branded Drug Form Precise (RxNorm)</displayed-value>
+                <stored-value>Semantic Branded Drug Form Precise</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Dose Form Group (RxNorm)</displayed-value>
+                <stored-value>Dose Form Group</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Dose Form (RxNorm)</displayed-value>
+                <stored-value>Dose Form</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Quantified Clinical Drug (OMOP)</displayed-value>
+                <stored-value>Quantified Clinical Drug</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Quantified Clinical Box (RxNorm Extension)</displayed-value>
+                <stored-value>Quantified Clinical Box</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Quantified Branded Drug (OMOP)</displayed-value>
+                <stored-value>Quantified Branded Drug</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Quantified Branded Box (RxNorm Extension)</displayed-value>
+                <stored-value>Quantified Branded Box</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Clinical Drug Box (RxNorm Extension)</displayed-value>
+                <stored-value>Clinical Drug Box</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Branded Drug Box (RxNorm Extension)</displayed-value>
+                <stored-value>Branded Drug Box</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Clinical Pack Box (RxNorm Extension)</displayed-value>
+                <stored-value>Clinical Pack Box</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Branded Pack Box (RxNorm Extension)</displayed-value>
+                <stored-value>Branded Pack Box</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Marketed Product (RxNorm Extension)</displayed-value>
+                <stored-value>Marketed Product</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="EvalType" dc-term="subject_EvalType">
