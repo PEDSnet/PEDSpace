@@ -1968,6 +1968,17 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <required></required>
                 </field>
             </row>
+            <row>    
+                <relation-field>
+                    <relationship-type>isOrgUnitOfPhenotype</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Linked Institutions</label>
+                    <hint>Link to related institutions.</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </relation-field>
+            </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
