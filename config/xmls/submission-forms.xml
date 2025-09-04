@@ -1282,6 +1282,16 @@
                 </relation-field>
             </row>
             <row>
+                <relation-field>
+                    <relationship-type>isDocumentationOfStudy</relationship-type>
+                    <search-configuration>documentation</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Database Version Linkage</label>
+                    <hint>If PEDSnet Data Model dependent, select the record that represents the database version this concept set was created with.</hint>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>publisher</dc-element>
@@ -3685,6 +3695,14 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>Generic Pack</stored-value>
             </pair>
             <pair>
+                <displayed-value>Clinical Pack (OMOP)</displayed-value>
+                <stored-value>Clinical Pack</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Branded Pack (OMOP)</displayed-value>
+                <stored-value>Branded Pack</stored-value>
+            </pair>
+            <pair>
                 <displayed-value>Semantic Clinical Drug (RxNorm)</displayed-value>
                 <stored-value>Semantic Clinical Drug</stored-value>
             </pair>            
@@ -4547,7 +4565,6 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>Tier 3 Database Access</stored-value>
             </pair>
         </value-pairs>
-        
         <value-pairs value-pairs-name="common_types" dc-term="type">
             <pair>
                 <displayed-value>Database</displayed-value>
