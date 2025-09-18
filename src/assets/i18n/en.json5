@@ -5693,15 +5693,35 @@
 
   "search.filters.filter.itemTags.placeholder": "Tags...",
 
-  "search.filters.filter.dqCheckCategory.head": "DQ Check Category",
+  "search.filters.filter.dqCheckCategory.head": "Category",
 
-  "search.filters.filter.dqCheckProbe.head": "DQ Check Probe",
+  "search.filters.filter.dqCheckCategory.label": "Category",
 
-  "search.filters.filter.dqCheckClinicalAssessment.head": "DQ Check Clinical Assessment",
+  "search.filters.filter.dqCheckCategory.placeholder": "Category...",
 
-  "search.filters.filter.dqCheckVisualization.head": "DQ Check Visualization",
+  "search.filters.filter.dqCheckProbe.head": "Probe",
 
-  "search.filters.filter.dqCheckMeasure.head": "DQ Check Measure",
+  "search.filters.filter.dqCheckProbe.label": "Probe",
+
+  "search.filters.filter.dqCheckProbe.placeholder": "Probe...",
+
+  "search.filters.filter.dqCheckClinicalAssessment.head": "Clinical Assessment",
+
+  "search.filters.filter.dqCheckClinicalAssessment.label": "Clinical Assessment",
+
+  "search.filters.filter.dqCheckClinicalAssessment.placeholder": "Clinical Assessment...",
+
+  "search.filters.filter.dqCheckVisualization.head": "Visualization",
+
+  "search.filters.filter.dqCheckVisualization.label": "Visualization",
+
+  "search.filters.filter.dqCheckVisualization.placeholder": "Visualization...",
+
+  "search.filters.filter.dqCheckMeasure.head": "Measure",
+
+  "search.filters.filter.dqCheckMeasure.label": "Measure",
+
+  "search.filters.filter.dqCheckMeasure.placeholder": "Measure...",
 
   "search.filters.filter.itemtype.head": "Type",
 
