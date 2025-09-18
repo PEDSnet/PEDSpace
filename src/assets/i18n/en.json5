@@ -5687,11 +5687,21 @@
 
   "search.filters.filter.itemQuality.head": "Research Suitability",
 
-  "search.filters.filter.itemTags.head": "Tags (Tree View)",
+  "search.filters.filter.itemTags.head": "Tags",
 
-  "search.filters.filter.itemTags.label": "Tags (Tree View)",
+  "search.filters.filter.itemTags.label": "Tags",
 
   "search.filters.filter.itemTags.placeholder": "Tags...",
+
+  "search.filters.filter.dqCheckCategory.head": "DQ Check Category",
+
+  "search.filters.filter.dqCheckProbe.head": "DQ Check Probe",
+
+  "search.filters.filter.dqCheckClinicalAssessment.head": "DQ Check Clinical Assessment",
+
+  "search.filters.filter.dqCheckVisualization.head": "DQ Check Visualization",
+
+  "search.filters.filter.dqCheckMeasure.head": "DQ Check Measure",
 
   "search.filters.filter.itemtype.head": "Type",
 
@@ -5843,7 +5853,7 @@
 
   "search.filters.filter.subjectFlat.placeholder": "Tags...",
 
-  "search.filters.filter.subject.head": "Tags (Tree View)",
+  "search.filters.filter.subject.head": "Tags",
   
   "search.filters.filter.subjectPop.head": "Population",
 

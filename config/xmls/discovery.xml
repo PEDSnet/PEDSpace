@@ -268,7 +268,6 @@
                 <ref bean="searchFilterFunder" />
                 <ref bean="searchFilterCreated" />
                 <ref bean="searchFilterSubject" />
-                <ref bean="searchFilterSubjectFlat" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -276,6 +275,11 @@
                 <ref bean="searchFilterSubjectMedTermChar" />
                 <ref bean="searchFilterDQCheckOutcomes" />
                 <ref bean="searchFilterDQCheckDomain" />
+                <ref bean="searchFilterDQCheckCategory" />
+                <ref bean="searchFilterDQCheckProbe" />
+                <ref bean="searchFilterDQCheckClinicalAssessment" />
+                <ref bean="searchFilterDQCheckVisualization" />
+                <ref bean="searchFilterDQCheckMeasure" />
                 <ref bean="searchFilterDQCheckResultObs" />
                 <ref bean="searchFilterCheckReq" />
                 <ref bean="searchFilterClinicalSubject" />
@@ -292,7 +296,7 @@
             <list>
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -300,6 +304,11 @@
                 <ref bean="searchFilterSubjectMedTermChar" />
                 <ref bean="searchFilterDQCheckOutcomes" />
                 <ref bean="searchFilterDQCheckDomain" />
+                <ref bean="searchFilterDQCheckCategory" />
+                <ref bean="searchFilterDQCheckProbe" />
+                <ref bean="searchFilterDQCheckClinicalAssessment" />
+                <ref bean="searchFilterDQCheckVisualization" />
+                <ref bean="searchFilterDQCheckMeasure" />
                 <ref bean="searchFilterDQCheckResultObs" />
                 <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterFunder" />
@@ -514,7 +523,7 @@
             <list>
                 <!-- Core facets -->
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterEntityType" />
@@ -540,7 +549,7 @@
                 <!-- Core search filters -->
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />
@@ -817,7 +826,7 @@
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterEntityType" />
@@ -831,7 +840,7 @@
             <list>
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />
@@ -998,7 +1007,7 @@
                 <ref bean="searchFilterWithdrawn" />
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />
@@ -1620,7 +1629,7 @@
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterEntityType" />
@@ -1634,7 +1643,7 @@
             <list>
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />
@@ -1697,7 +1706,7 @@
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterEntityType" />
@@ -1711,7 +1720,7 @@
             <list>
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />
@@ -1981,7 +1990,7 @@
         sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -1993,7 +2002,7 @@
         search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -2051,7 +2060,7 @@
         sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -2063,7 +2072,7 @@
         search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -2915,7 +2924,7 @@
         <!-- List of tagclouds to appear, one for every search filter, one after the other -->
         <property name="tagCloudFacets">
             <list>
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
             </list>
         </property>
     </bean>
@@ -3211,6 +3220,97 @@
                 <value>dc.title</value>
             </list>
         </property>
+        <property name="isOpenByDefault" value="true" />
+        <property name="pageSize" value="10" />
+    </bean>
+    
+    <!-- DQ Check specific search filters -->
+    <bean id="searchFilterDQCheckDomain"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="dqCheckDomain" />
+        <property name="metadataFields">
+            <list>
+                <value>local.dqcheck.domain</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5" />
+        <property name="sortOrderSidebar" value="COUNT" />
+        <property name="sortOrderFilterPage" value="COUNT" />
+        <property name="isOpenByDefault" value="true" />
+        <property name="pageSize" value="10" />
+    </bean>
+    
+    <bean id="searchFilterDQCheckCategory"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="dqCheckCategory" />
+        <property name="metadataFields">
+            <list>
+                <value>local.dqcheck.category</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5" />
+        <property name="sortOrderSidebar" value="COUNT" />
+        <property name="sortOrderFilterPage" value="COUNT" />
+        <property name="isOpenByDefault" value="true" />
+        <property name="pageSize" value="10" />
+    </bean>
+    
+    <bean id="searchFilterDQCheckProbe"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="dqCheckProbe" />
+        <property name="metadataFields">
+            <list>
+                <value>local.dqcheck.probe</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5" />
+        <property name="sortOrderSidebar" value="COUNT" />
+        <property name="sortOrderFilterPage" value="COUNT" />
+        <property name="isOpenByDefault" value="true" />
+        <property name="pageSize" value="10" />
+    </bean>
+    
+    <bean id="searchFilterDQCheckClinicalAssessment"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="dqCheckClinicalAssessment" />
+        <property name="metadataFields">
+            <list>
+                <value>local.dqcheck.clinicalprobe</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5" />
+        <property name="sortOrderSidebar" value="COUNT" />
+        <property name="sortOrderFilterPage" value="COUNT" />
+        <property name="isOpenByDefault" value="true" />
+        <property name="pageSize" value="10" />
+    </bean>
+    
+    <bean id="searchFilterDQCheckVisualization"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="dqCheckVisualization" />
+        <property name="metadataFields">
+            <list>
+                <value>local.dqcheck.viz</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5" />
+        <property name="sortOrderSidebar" value="COUNT" />
+        <property name="sortOrderFilterPage" value="COUNT" />
+        <property name="isOpenByDefault" value="true" />
+        <property name="pageSize" value="10" />
+    </bean>
+    
+    <bean id="searchFilterDQCheckMeasure"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="dqCheckMeasure" />
+        <property name="metadataFields">
+            <list>
+                <value>local.dqcheck.measurement</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="5" />
+        <property name="sortOrderSidebar" value="COUNT" />
+        <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
         <property name="pageSize" value="10" />
     </bean>
@@ -3652,15 +3752,6 @@
         <property name="metadataFields">
             <list>
                 <value>local.dqcheck.outcomes</value>
-            </list>
-        </property>
-    </bean>
-    <bean id="searchFilterDQCheckDomain"
-        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
-        <property name="indexFieldName" value="dqCheckDomain" />
-        <property name="metadataFields">
-            <list>
-                <value>local.dqcheck.domain</value>
             </list>
         </property>
     </bean>
@@ -4577,7 +4668,7 @@
                 <ref bean="searchFilterLastModified" />
                 <ref bean="searchFilterAffiliation" />
 
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -4592,7 +4683,7 @@
         <property name="searchFilters">
             <list>
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -4657,7 +4748,7 @@
                 <ref bean="searchFilterLastModified" />
                 <ref bean="searchFilterAffiliation" />
 
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -4670,7 +4761,7 @@
         search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -4740,7 +4831,7 @@
                 <ref bean="searchFilterLastModified" />
                 <ref bean="searchFilterAffiliation" />
 
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -4761,7 +4852,7 @@
                 <!-- Basic metadata filters -->
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -4925,7 +5016,7 @@
                 <ref bean="searchFilterLastModified" />
                 <ref bean="searchFilterAffiliation" />
 
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -4945,7 +5036,7 @@
                 <!-- Basic metadata filters -->
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -5107,7 +5198,7 @@
                 <ref bean="searchFilterCreated" />
                 <ref bean="searchFilterLastModified" />
                 <ref bean="searchFilterAffiliation" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -5137,7 +5228,7 @@
                 <ref bean="searchFilterCreated" />
                 <ref bean="searchFilterLastModified" />
                 <ref bean="searchFilterAffiliation" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -5202,7 +5293,7 @@
                 <ref bean="searchFilterCreated" />
                 <ref bean="searchFilterLastModified" />
                 <ref bean="searchFilterAffiliation" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -5222,7 +5313,7 @@
 
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -5305,7 +5396,13 @@
         sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterDQCheckDomain" />
+                <ref bean="searchFilterDQCheckCategory" />
+                <ref bean="searchFilterDQCheckProbe" />
+                <ref bean="searchFilterDQCheckClinicalAssessment" />
+                <ref bean="searchFilterDQCheckVisualization" />
+                <ref bean="searchFilterDQCheckMeasure" />
                 <ref bean="searchFilterCreated" />
                 <ref bean="searchFilterCheckReq" />
             </list>
@@ -5319,7 +5416,15 @@
                 <!-- Basic metadata filters -->
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
+                
+                <!-- DQ Check specific filters -->
+                <ref bean="searchFilterDQCheckDomain" />
+                <ref bean="searchFilterDQCheckCategory" />
+                <ref bean="searchFilterDQCheckProbe" />
+                <ref bean="searchFilterDQCheckClinicalAssessment" />
+                <ref bean="searchFilterDQCheckVisualization" />
+                <ref bean="searchFilterDQCheckMeasure" />
 
                 <ref bean="searchFilterCreated" />
                 <ref bean="searchFilterLastModified" />
@@ -5460,7 +5565,7 @@
         sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterCreated" />
                 <ref bean="searchFilterLastModified" />
                 <ref bean="searchFilterCheckReq" />
@@ -5478,7 +5583,7 @@
                 <!-- Basic metadata filters -->
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
 
                 <ref bean="searchFilterCreated" />
                 <ref bean="searchFilterLastModified" />
@@ -5629,7 +5734,7 @@
                 <ref bean="searchFilterLastModified" />
                 <ref bean="searchFilterAffiliation" />
                 <ref bean="searchFilterClinicalSubject" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -5649,7 +5754,7 @@
                 <!-- Basic metadata filters -->
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -5784,7 +5889,7 @@
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterClinicalSubject" />
 
                 <ref bean="searchFilterEntityType" />
@@ -5802,7 +5907,7 @@
                 <!-- Basic metadata filters -->
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterEntityType" />
 
                 <ref bean="searchFilterCreated" />
@@ -5949,7 +6054,7 @@
                 <ref bean="searchFilterAffiliation" />
                 <ref bean="searchFilterFunder" />
                 <ref bean="searchFilterClinicalSubject" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -5967,7 +6072,7 @@
             <list>
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
                 <ref bean="searchFilterSubjectValidation" />
@@ -6042,7 +6147,7 @@
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterEntityType" />
@@ -6056,7 +6161,7 @@
             <list>
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />
@@ -6123,7 +6228,7 @@
             <list>
                 <ref bean="searchFilterCreated" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterEntityType" />
             </list>
@@ -6137,7 +6242,7 @@
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterCreated" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterClinicalSubject" />
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />
@@ -6194,7 +6299,7 @@
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterEntityType" />
             </list>
@@ -6207,7 +6312,7 @@
             <list>
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterSubjectFlat" />
+                <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />
                 <ref bean="searchFilterFileDescriptionInOriginalBundle" />
