@@ -159,23 +159,23 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
     }
 
     // Debug logging for search filters initialization
-    console.log('=== Search Filters Component Init ===');
-    console.log('Current scope:', this.currentScope);
-    console.log('Current configuration:', this.currentConfiguration);
-    console.log('Entity type:', this.entityType);
-    console.log('Filter configuration:');
-    console.log('  - hiddenFilters:', this.hiddenFilters);
-    console.log('  - allowedFilters:', this.allowedFilters);
-    console.log('  - scopeBasedFilters:', this.scopeBasedFilters);
-    console.log('  - entityBasedFilters:', this.entityBasedFilters);
-    console.log('=== End Init Debug Info ===');
+    // console.log('=== Search Filters Component Init ===');
+    // console.log('Current scope:', this.currentScope);
+    // console.log('Current configuration:', this.currentConfiguration);
+    // console.log('Entity type:', this.entityType);
+    // console.log('Filter configuration:');
+    // console.log('  - hiddenFilters:', this.hiddenFilters);
+    // console.log('  - allowedFilters:', this.allowedFilters);
+    // console.log('  - scopeBasedFilters:', this.scopeBasedFilters);
+    // console.log('  - entityBasedFilters:', this.entityBasedFilters);
+    // console.log('=== End Init Debug Info ===');
 
     // Log available filters when they become available
     if (this.filters) {
       this.filters.subscribe(filtersRD => {
-        console.log('=== Available Filters ===');
+        // console.log('=== Available Filters ===');
         const filters = filtersRD?.payload;
-        console.log('Total filters:', filters?.length || 0);
+        // console.log('Total filters:', filters?.length || 0);
 
         // Extract unique filter names
         const uniqueFilterNames: string[] = [];
@@ -187,8 +187,8 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
           });
         }
 
-        console.log('Unique filter names:', uniqueFilterNames);
-        console.log('=== End Available Filters ===');
+        // console.log('Unique filter names:', uniqueFilterNames);
+        // console.log('=== End Available Filters ===');
       });
     }
   }
@@ -198,7 +198,7 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
   shouldShowFilter(filter: { name: string }): boolean {
     // Only log each unique filter once
     if (!this.loggedFilters.has(filter.name)) {
-      console.log('Filter:', filter);
+      // console.log('Filter:', filter);
       this.loggedFilters.add(filter.name);
     }
 
