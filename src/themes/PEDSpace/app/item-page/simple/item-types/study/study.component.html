@@ -96,6 +96,10 @@
         [label]="'relationships.isConceptSetOf' | translate">
       </ds-related-items>
 
+      <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfStudy'"
+        [label]="'relationships.isDocumentationOf' | translate">
+      </ds-related-items>
+
       <ds-related-items [parentItem]="object" [relationType]="'isDQCheckOfStudy'"
         [label]="'relationships.isPersonOf' | translate">
       </ds-related-items>
