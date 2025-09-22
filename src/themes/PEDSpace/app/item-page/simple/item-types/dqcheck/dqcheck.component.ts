@@ -50,7 +50,7 @@ import { ItemPageLocalFieldComponent } from '../../field-components/specific-fie
   // templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ItemPageExternalPublicationFieldComponent, 
+  imports: [ItemPageExternalPublicationFieldComponent,
     ItemPageDescriptionFieldComponent, NgIf,
     ThemedResultsBackButtonComponent,
     ThemedBadgesComponent,
