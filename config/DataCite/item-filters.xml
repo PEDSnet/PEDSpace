@@ -76,6 +76,17 @@
         </property>
     </bean>
 
+    <!-- dspace.entity.type comes out to certain types (to be negated below) -->
+    <bean id="type-equals-docs-code-study-orgunit-person_condition"
+          class="org.dspace.content.logic.condition.MetadataValueMatchCondition">
+        <property name="parameters">
+            <map>
+                <entry key="field" value="dspace.entity.type" />
+                <entry key="pattern" value="^(Documentation|Code|Study|OrgUnit|Person)$" />
+            </map>
+        </property>
+    </bean>
+
     <!-- dc.type is exactly Dataset -->
     <bean id="type-equals-dataset_condition"
           class="org.dspace.content.logic.condition.MetadataValueMatchCondition">
@@ -201,6 +212,8 @@
 
     <!-- Example DOI Filter. An item has to pass the filter (filter returns true) to get a DOI.
          If the filter returns false on an item, minting of a new DOI for that item is prevented. -->
+         <!-- ./bin/dspace dsrun org.dspace.content.logic.TestLogicRunner -f doi-filter -i 20.500.14642/1194 -->
+         <!-- ./bin/dspace dsrun org.dspace.content.logic.TestLogicRunner -f doi-filter -i 20.500.14642/1178 -->
     <bean id="doi-filter" class="org.dspace.content.logic.DefaultFilter">
         <property name="statement">
             <bean class="org.dspace.content.logic.operator.And">
@@ -215,7 +228,16 @@
                             <property name="statements" ref="dc-identifier-uri-contains-doi_condition"/>
                         </bean>
                         <!-- Create DOIs for items only that do have at least one bitstream. -->
-                        <ref bean="has-at-least-one-bitstream_condition"/>
+                        <!-- <ref bean="has-at-least-one-bitstream_condition"/> -->
+                        
+                        <!-- AND the item is archived -->
+                        <ref bean="is-archived_condition"/>
+
+                        <!-- AND the item is NOT of a type we DON'T want DOIs for -->
+                        <bean class="org.dspace.content.logic.operator.Not">
+                            <property name="statements" ref="type-equals-docs-code-study-orgunit-person_condition"/>
+                        </bean>
+
                     </list>
                 </property>
             </bean>

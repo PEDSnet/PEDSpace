@@ -31,13 +31,13 @@
          so the output will be e.g. xml:lang="en-GB", xml:lang="de-CH". -->
     
     <!-- We need the prefix to determine DOIs that were minted by ourself. -->
-    <xsl:param name="prefix">10.5072/dspace-</xsl:param>
+    <xsl:param name="prefix">10.24373/pds-</xsl:param>
     <!-- The content of the following parameter will be used as element publisher. -->
-    <xsl:param name="publisher">My University</xsl:param>
+    <xsl:param name="publisher">PEDSnet</xsl:param>
     <!-- The content of the following variable will be used as element contributor with contributorType datamanager. -->
     <xsl:param name="datamanager"><xsl:value-of select="$publisher" /></xsl:param>
     <!-- The content of the following variable will be used as element contributor with contributorType hostingInstitution. -->
-    <xsl:param name="hostinginstitution"><xsl:value-of select="$publisher" /></xsl:param>
+    <xsl:param name="hostinginstitution">Children's Hospital of Philadelphia</xsl:param>
     <!-- Please take a look into the DataCite schema documentation if you want to know how to use these elements.
          http://schema.datacite.org -->
     <!-- Metadata-field to retrieve DOI from items -->
