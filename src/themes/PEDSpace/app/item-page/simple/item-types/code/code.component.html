@@ -68,7 +68,8 @@
       </ds-generic-item-page-field>
 
       <!-- 5. Description -->
-      <ds-item-page-description-field [item]="object" [label]="'Description'"></ds-item-page-description-field>
+      <ds-item-page-local-field [item]="object" [fields]="['dc.description']"
+        [label]="'Description'"></ds-item-page-local-field>
 
       <!-- <h4>Access Code Repository</h4> -->
       <!-- 6. Access Code Repository -->
