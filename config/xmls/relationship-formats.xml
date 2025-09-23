@@ -636,6 +636,28 @@
   </dc-type>
   <dc-type>
     <schema>relation</schema>
+    <element>isConceptSetOfCode</element>
+    <scope_note>Contains all uuids of the "latest" CONCEPT SETs that the current CODE links to via a relationship. In other words, this stores all relationships pointing from the current CODE to any CONCEPT SET where the CONCEPT SET is marked as "latest". Internally used by DSpace. Do not manually add, remove or edit values.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>relation</schema>
+    <element>isConceptSetOfCode</element>
+    <qualifier>latestForDiscovery</qualifier>
+    <scope_note>Contains all uuids of CONCEPT SETs which link to the current CODE via a "latest" relationship. In other words, this stores all relationships pointing to the current CODE from any CONCEPT SET, implying that the CODE is marked as "latest". Internally used by DSpace to support versioning. Do not manually add, remove or edit values.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>relation</schema>
+    <element>isCodeOfConceptSet</element>
+    <scope_note>Contains all uuids of the "latest" CODEs that the current CONCEPT SET links to via a relationship. In other words, this stores all relationships pointing from the current CONCEPT SET to any CODE where the CODE is marked as "latest". Internally used by DSpace. Do not manually add, remove or edit values.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>relation</schema>
+    <element>isCodeOfConceptSet</element>
+    <qualifier>latestForDiscovery</qualifier>
+    <scope_note>Contains all uuids of CODEs which link to the current CONCEPT SET via a "latest" relationship. In other words, this stores all relationships pointing to the current CONCEPT SET from any CODE, implying that the CONCEPT SET is marked as "latest". Internally used by DSpace to support versioning. Do not manually add, remove or edit values.</scope_note>
+  </dc-type>
+  <dc-type>
+    <schema>relation</schema>
     <element>isPersonOfStudy</element>
     <scope_note>Contains all uuids of the "latest" PERSONs that the current STUDY links to via a relationship. In other words, this stores all relationships pointing from the current STUDY to any PERSON where the PERSON is marked as "latest". Internally used by DSpace. Do not manually add, remove or edit values.</scope_note>
   </dc-type>
