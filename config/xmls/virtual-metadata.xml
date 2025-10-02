@@ -8,18 +8,99 @@
                            http://www.springframework.org/schema/util/spring-util.xsd"
        default-lazy-init="true">
 
-       <bean class="org.dspace.content.virtual.VirtualMetadataPopulator">
+    <bean class="org.dspace.content.virtual.VirtualMetadataPopulator">
         <property name="map">
             <map>
+                <!-- OrgUnit Relationships -->
                 <entry key="isOrgUnitOfPerson" value-ref="isOrgUnitOfPersonMap"/>
+                <entry key="isPersonOfOrgUnit" value-ref="isPersonOfOrgUnitMap"/>
+                <entry key="isOrgUnitOfOrgUnit" value-ref="isOrgUnitOfOrgUnitMap"/>
+                <entry key="isOrgUnitOfConceptSet" value-ref="isOrgUnitOfConceptSetMap"/>
+                <entry key="isConceptSetOfOrgUnit" value-ref="isConceptSetOfOrgUnitMap"/>
+                <entry key="isOrgUnitOfStudy" value-ref="isOrgUnitOfStudyMap"/>
+                <entry key="isStudyOfOrgUnit" value-ref="isStudyOfOrgUnitMap"/>
+                <entry key="isOrgUnitOfDQCheck" value-ref="isOrgUnitOfDQCheckMap"/>
+                <entry key="isDQCheckOfOrgUnit" value-ref="isDQCheckOfOrgUnitMap"/>
+                <entry key="isOrgUnitOfDocumentation" value-ref="isOrgUnitOfDocumentationMap"/>
+                <entry key="isDocumentationOfOrgUnit" value-ref="isDocumentationOfOrgUnitMap"/>
+                <entry key="isOrgUnitOfPhenotype" value-ref="isOrgUnitOfPhenotypeMap"/>
+                <entry key="isPhenotypeOfOrgUnit" value-ref="isPhenotypeOfOrgUnitMap"/>
+                <entry key="isOrgUnitOfDQResult" value-ref="isOrgUnitOfDQResultMap"/>
+                <entry key="isDQResultOfOrgUnit" value-ref="isDQResultOfOrgUnitMap"/>
+                
+                <!-- Person Relationships -->
                 <entry key="isPersonOfConceptSet" value-ref="isPersonOfConceptSetMap"/>
+                <entry key="isConceptSetOfPerson" value-ref="isConceptSetOfPersonMap"/>
                 <entry key="isPersonOfStudy" value-ref="isPersonOfStudyMap"/>
-                <entry key="isConceptSetOfStudy" value-ref="isConceptSetOfStudyMap"/>
+                <entry key="isStudyOfPerson" value-ref="isStudyOfPersonMap"/>
+                <entry key="isPersonOfDQCheck" value-ref="isPersonOfDQCheckMap"/>
                 <entry key="isDQCheckOfPerson" value-ref="isDQCheckOfPersonMap"/>
                 <entry key="isPersonOfDocumentation" value-ref="isPersonOfDocumentationMap"/>
+                <entry key="isDocumentationOfPerson" value-ref="isDocumentationOfPersonMap"/>
                 <entry key="isPersonOfPhenotype" value-ref="isPersonOfPhenotypeMap"/>
-                <entry key="isStudyOfPhenotype" value-ref="isStudyOfPhenotypeMap"/>
+                <entry key="isPhenotypeOfPerson" value-ref="isPhenotypeOfPersonMap"/>
+                <entry key="isPersonOfPerson" value-ref="isPersonOfPersonMap"/>
+                <entry key="isPersonOfDQResult" value-ref="isPersonOfDQResultMap"/>
+                <entry key="isDQResultOfPerson" value-ref="isDQResultOfPersonMap"/>
+                
+                <!-- ConceptSet Relationships -->
+                <entry key="isConceptSetOfStudy" value-ref="isConceptSetOfStudyMap"/>
+                <entry key="isStudyOfConceptSet" value-ref="isStudyOfConceptSetMap"/>
                 <entry key="isConceptSetOfPhenotype" value-ref="isConceptSetOfPhenotypeMap"/>
+                <entry key="isPhenotypeOfConceptSet" value-ref="isPhenotypeOfConceptSetMap"/>
+                <entry key="isConceptSetOfConceptSet" value-ref="isConceptSetOfConceptSetMap"/>
+                <entry key="isConceptSetOfDQResult" value-ref="isConceptSetOfDQResultMap"/>
+                <entry key="isDQResultOfConceptSet" value-ref="isDQResultOfConceptSetMap"/>
+                <entry key="isConceptSetOfDQCheck" value-ref="isConceptSetOfDQCheckMap"/>
+                <entry key="isDQCheckOfConceptSet" value-ref="isDQCheckOfConceptSetMap"/>
+                <entry key="isConceptSetOfDocumentation" value-ref="isConceptSetOfDocumentationMap"/>
+                <entry key="isDocumentationOfConceptSet" value-ref="isDocumentationOfConceptSetMap"/>
+                
+                <!-- DQCheck Relationships -->
+                <entry key="isDQCheckOfDQCheck" value-ref="isDQCheckOfDQCheckMap"/>
+                <entry key="isDQCheckOfDocumentation" value-ref="isDQCheckOfDocumentationMap"/>
+                <entry key="isDocumentationOfDQCheck" value-ref="isDocumentationOfDQCheckMap"/>
+                <entry key="isDQCheckOfPhenotype" value-ref="isDQCheckOfPhenotypeMap"/>
+                <entry key="isPhenotypeOfDQCheck" value-ref="isPhenotypeOfDQCheckMap"/>
+                <entry key="isDQCheckOfStudy" value-ref="isDQCheckOfStudyMap"/>
+                <entry key="isStudyOfDQCheck" value-ref="isStudyOfDQCheckMap"/>
+                <entry key="isDQCheckOfDQResult" value-ref="isDQCheckOfDQResultMap"/>
+                <entry key="isDQResultOfDQCheck" value-ref="isDQResultOfDQCheckMap"/>
+                
+                <!-- Documentation Relationships -->
+                <entry key="isDocumentationOfDocumentation" value-ref="isDocumentationOfDocumentationMap"/>
+                <entry key="isDocumentationOfPhenotype" value-ref="isDocumentationOfPhenotypeMap"/>
+                <entry key="isPhenotypeOfDocumentation" value-ref="isPhenotypeOfDocumentationMap"/>
+                <entry key="isDocumentationOfStudy" value-ref="isDocumentationOfStudyMap"/>
+                <entry key="isStudyOfDocumentation" value-ref="isStudyOfDocumentationMap"/>
+                <entry key="isDocumentationOfDQResult" value-ref="isDocumentationOfDQResultMap"/>
+                <entry key="isDQResultOfDocumentation" value-ref="isDQResultOfDocumentationMap"/>
+                
+                <!-- Phenotype Relationships -->
+                <entry key="isPhenotypeOfPhenotype" value-ref="isPhenotypeOfPhenotypeMap"/>
+                <entry key="isPhenotypeOfDQResult" value-ref="isPhenotypeOfDQResultMap"/>
+                <entry key="isDQResultOfPhenotype" value-ref="isDQResultOfPhenotypeMap"/>
+                
+                <!-- Study Relationships -->
+                <entry key="isStudyOfPhenotype" value-ref="isStudyOfPhenotypeMap"/>
+                <entry key="isPhenotypeOfStudy" value-ref="isPhenotypeOfStudyMap"/>
+                <entry key="isStudyOfStudy" value-ref="isStudyOfStudyMap"/>
+                <entry key="isStudyOfDQResult" value-ref="isStudyOfDQResultMap"/>
+                <entry key="isDQResultOfStudy" value-ref="isDQResultOfStudyMap"/>
+                
+                <!-- DQResult Relationships -->
+                <entry key="isDQResultOfDQResult" value-ref="isDQResultOfDQResultMap"/>
+                
+                <!-- Code Relationships -->
+                <entry key="isCodeOfConceptSet" value-ref="isCodeOfConceptSetMap"/>
+                <entry key="isConceptSetOfCode" value-ref="isConceptSetOfCodeMap"/>
+                <entry key="isCodeOfDocumentation" value-ref="isCodeOfDocumentationMap"/>
+                <entry key="isDocumentationOfCode" value-ref="isDocumentationOfCodeMap"/>
+                <entry key="isCodeOfStudy" value-ref="isCodeOfStudyMap"/>
+                <entry key="isStudyOfCode" value-ref="isStudyOfCodeMap"/>
+                <entry key="isCodeOfPhenotype" value-ref="isCodeOfPhenotypeMap"/>
+                <entry key="isPhenotypeOfCode" value-ref="isPhenotypeOfCodeMap"/>
+                <entry key="isCodeOfCode" value-ref="isCodeOfCodeMap"/>
             </map>
         </property>
     </bean>
@@ -34,10 +115,16 @@
                 <entry key="DQCheck" value="f.entityType=DQCheck,equals"/>
                 <entry key="Documentation" value="f.entityType=Documentation,equals"/>
                 <entry key="Phenotype" value="f.entityType=Phenotype,equals"/>
+                <entry key="DQResult" value="f.entityType=DQResult,equals"/>
+                <entry key="Code" value="f.entityType=Code,equals"/>
             </map>
         </property>
     </bean>
 
+    <!-- ============================================ -->
+    <!-- OrgUnit Virtual Metadata Mappings -->
+    <!-- ============================================ -->
+    
     <util:map id="isOrgUnitOfPersonMap">
         <entry key="dc.contributor.affiliation" value-ref="personOrgUnit_name"/>
     </util:map>
@@ -48,7 +135,171 @@
             </util:list>
         </property>
     </bean>
+    
+    <util:map id="isPersonOfOrgUnitMap">
+        <entry key="dc.contributor" value-ref="orgUnitPerson_member"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Concatenate" id="orgUnitPerson_member">
+        <property name="fields">
+            <util:list>
+                <value>person.familyName</value>
+                <value>person.givenName</value>
+            </util:list>
+        </property>
+        <property name="separator">
+            <value>, </value>
+        </property>
+        <property name="useForPlace" value="true"/>
+        <property name="populateWithNameVariant" value="true"/>
+    </bean>
+    
+    <util:map id="isOrgUnitOfOrgUnitMap">
+        <entry key="dc.relation" value-ref="orgUnitOrgUnit_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="orgUnitOrgUnit_relation">
+        <property name="fields">
+            <util:list>
+                <value>organization.legalName</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isOrgUnitOfConceptSetMap">
+        <entry key="dc.contributor.other" value-ref="conceptSetOrgUnit_contributor"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="conceptSetOrgUnit_contributor">
+        <property name="fields">
+            <util:list>
+                <value>organization.legalName</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isConceptSetOfOrgUnitMap">
+        <entry key="dc.subject" value-ref="orgUnitConceptSet_subject"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="orgUnitConceptSet_subject">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isOrgUnitOfStudyMap">
+        <entry key="dc.contributor.other" value-ref="studyOrgUnit_contributor"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="studyOrgUnit_contributor">
+        <property name="fields">
+            <util:list>
+                <value>organization.legalName</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isStudyOfOrgUnitMap">
+        <entry key="dc.relation" value-ref="orgUnitStudy_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="orgUnitStudy_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isOrgUnitOfDQCheckMap">
+        <entry key="dc.contributor.other" value-ref="dqCheckOrgUnit_contributor"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqCheckOrgUnit_contributor">
+        <property name="fields">
+            <util:list>
+                <value>organization.legalName</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDQCheckOfOrgUnitMap">
+        <entry key="dc.relation" value-ref="orgUnitDQCheck_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="orgUnitDQCheck_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isOrgUnitOfDocumentationMap">
+        <entry key="dc.contributor.other" value-ref="documentationOrgUnit_contributor"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="documentationOrgUnit_contributor">
+        <property name="fields">
+            <util:list>
+                <value>organization.legalName</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDocumentationOfOrgUnitMap">
+        <entry key="dc.relation" value-ref="orgUnitDocumentation_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="orgUnitDocumentation_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isOrgUnitOfPhenotypeMap">
+        <entry key="dc.contributor.other" value-ref="phenotypeOrgUnit_contributor"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="phenotypeOrgUnit_contributor">
+        <property name="fields">
+            <util:list>
+                <value>organization.legalName</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isPhenotypeOfOrgUnitMap">
+        <entry key="dc.subject" value-ref="orgUnitPhenotype_subject"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="orgUnitPhenotype_subject">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isOrgUnitOfDQResultMap">
+        <entry key="dc.contributor.other" value-ref="dqResultOrgUnit_contributor"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqResultOrgUnit_contributor">
+        <property name="fields">
+            <util:list>
+                <value>organization.legalName</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDQResultOfOrgUnitMap">
+        <entry key="dc.relation" value-ref="orgUnitDQResult_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="orgUnitDQResult_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
 
+    <!-- ============================================ -->
+    <!-- Person Virtual Metadata Mappings -->
+    <!-- ============================================ -->
+    
     <util:map id="isPersonOfConceptSetMap">
         <entry key="dc.contributor.author" value-ref="conceptSetPerson_author"/>
     </util:map>
@@ -65,6 +316,17 @@
         </property>
         <property name="useForPlace" value="true"/>
         <property name="populateWithNameVariant" value="true"/>
+    </bean>
+    
+    <util:map id="isConceptSetOfPersonMap">
+        <entry key="dc.subject" value-ref="personConceptSet_subject"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="personConceptSet_subject">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
     </bean>
 
     <util:map id="isPersonOfStudyMap">
@@ -84,18 +346,35 @@
         <property name="useForPlace" value="true"/>
         <property name="populateWithNameVariant" value="true"/>
     </bean>
-
-    <util:map id="isConceptSetOfStudyMap">
-        <entry key="dc.relation" value-ref="studyConceptSet_subject"/>
+    
+    <util:map id="isStudyOfPersonMap">
+        <entry key="dc.relation" value-ref="personStudy_relation"/>
     </util:map>
-    <bean class="org.dspace.content.virtual.Collected" id="studyConceptSet_subject">
+    <bean class="org.dspace.content.virtual.Collected" id="personStudy_relation">
         <property name="fields">
             <util:list>
                 <value>dc.title</value>
             </util:list>
         </property>
     </bean>
-
+    
+    <util:map id="isPersonOfDQCheckMap">
+        <entry key="dc.contributor" value-ref="dqCheckPerson_contributor"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Concatenate" id="dqCheckPerson_contributor">
+        <property name="fields">
+            <util:list>
+                <value>person.familyName</value>
+                <value>person.givenName</value>
+            </util:list>
+        </property>
+        <property name="separator">
+            <value>, </value>
+        </property>
+        <property name="useForPlace" value="true"/>
+        <property name="populateWithNameVariant" value="true"/>
+    </bean>
+    
     <util:map id="isDQCheckOfPersonMap">
         <entry key="dc.relation" value-ref="personDQCheck_name"/>
     </util:map>
@@ -124,6 +403,17 @@
         <property name="useForPlace" value="true"/>
         <property name="populateWithNameVariant" value="true"/>
     </bean>
+    
+    <util:map id="isDocumentationOfPersonMap">
+        <entry key="dc.relation" value-ref="personDocumentation_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="personDocumentation_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
 
     <util:map id="isPersonOfPhenotypeMap">
         <entry key="dc.contributor.author" value-ref="phenotypePerson_author"/>
@@ -142,11 +432,82 @@
         <property name="useForPlace" value="true"/>
         <property name="populateWithNameVariant" value="true"/>
     </bean>
-
-    <util:map id="isStudyOfPhenotypeMap">
-        <entry key="dc.relation" value-ref="phenotypeStudy_name"/>
+    
+    <util:map id="isPhenotypeOfPersonMap">
+        <entry key="dc.subject" value-ref="personPhenotype_subject"/>
     </util:map>
-    <bean class="org.dspace.content.virtual.Collected" id="phenotypeStudy_name">
+    <bean class="org.dspace.content.virtual.Collected" id="personPhenotype_subject">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isPersonOfPersonMap">
+        <entry key="dc.contributor" value-ref="personPerson_contributor"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Concatenate" id="personPerson_contributor">
+        <property name="fields">
+            <util:list>
+                <value>person.familyName</value>
+                <value>person.givenName</value>
+            </util:list>
+        </property>
+        <property name="separator">
+            <value>, </value>
+        </property>
+        <property name="useForPlace" value="true"/>
+        <property name="populateWithNameVariant" value="true"/>
+    </bean>
+    
+    <util:map id="isPersonOfDQResultMap">
+        <entry key="dc.contributor" value-ref="dqResultPerson_contributor"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Concatenate" id="dqResultPerson_contributor">
+        <property name="fields">
+            <util:list>
+                <value>person.familyName</value>
+                <value>person.givenName</value>
+            </util:list>
+        </property>
+        <property name="separator">
+            <value>, </value>
+        </property>
+        <property name="useForPlace" value="true"/>
+        <property name="populateWithNameVariant" value="true"/>
+    </bean>
+    
+    <util:map id="isDQResultOfPersonMap">
+        <entry key="dc.relation" value-ref="personDQResult_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="personDQResult_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+
+    <!-- ============================================ -->
+    <!-- ConceptSet Virtual Metadata Mappings -->
+    <!-- ============================================ -->
+    
+    <util:map id="isConceptSetOfStudyMap">
+        <entry key="dc.relation" value-ref="studyConceptSet_subject"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="studyConceptSet_subject">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isStudyOfConceptSetMap">
+        <entry key="dc.relation" value-ref="conceptSetStudy_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="conceptSetStudy_relation">
         <property name="fields">
             <util:list>
                 <value>dc.title</value>
@@ -164,5 +525,490 @@
             </util:list>
         </property>
     </bean>
+    
+    <util:map id="isPhenotypeOfConceptSetMap">
+        <entry key="dc.relation" value-ref="conceptSetPhenotype_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="conceptSetPhenotype_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isConceptSetOfConceptSetMap">
+        <entry key="dc.relation" value-ref="conceptSetConceptSet_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="conceptSetConceptSet_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isConceptSetOfDQResultMap">
+        <entry key="dc.subject" value-ref="dqResultConceptSet_subject"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqResultConceptSet_subject">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDQResultOfConceptSetMap">
+        <entry key="dc.relation" value-ref="conceptSetDQResult_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="conceptSetDQResult_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isConceptSetOfDQCheckMap">
+        <entry key="dc.subject" value-ref="dqCheckConceptSet_subject"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqCheckConceptSet_subject">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDQCheckOfConceptSetMap">
+        <entry key="dc.relation" value-ref="conceptSetDQCheck_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="conceptSetDQCheck_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isConceptSetOfDocumentationMap">
+        <entry key="dc.subject" value-ref="documentationConceptSet_subject"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="documentationConceptSet_subject">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDocumentationOfConceptSetMap">
+        <entry key="dc.relation" value-ref="conceptSetDocumentation_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="conceptSetDocumentation_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+
+    <!-- ============================================ -->
+    <!-- DQCheck Virtual Metadata Mappings -->
+    <!-- ============================================ -->
+    
+    <util:map id="isDQCheckOfDQCheckMap">
+        <entry key="dc.relation" value-ref="dqCheckDQCheck_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqCheckDQCheck_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDQCheckOfDocumentationMap">
+        <entry key="dc.relation" value-ref="documentationDQCheck_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="documentationDQCheck_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDocumentationOfDQCheckMap">
+        <entry key="dc.relation" value-ref="dqCheckDocumentation_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqCheckDocumentation_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDQCheckOfPhenotypeMap">
+        <entry key="dc.relation" value-ref="phenotypeDQCheck_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="phenotypeDQCheck_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isPhenotypeOfDQCheckMap">
+        <entry key="dc.subject" value-ref="dqCheckPhenotype_subject"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqCheckPhenotype_subject">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDQCheckOfStudyMap">
+        <entry key="dc.relation" value-ref="studyDQCheck_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="studyDQCheck_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isStudyOfDQCheckMap">
+        <entry key="dc.relation" value-ref="dqCheckStudy_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqCheckStudy_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDQCheckOfDQResultMap">
+        <entry key="dc.source" value-ref="dqResultDQCheck_source"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqResultDQCheck_source">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDQResultOfDQCheckMap">
+        <entry key="dc.relation" value-ref="dqCheckDQResult_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqCheckDQResult_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+
+    <!-- ============================================ -->
+    <!-- Documentation Virtual Metadata Mappings -->
+    <!-- ============================================ -->
+    
+    <util:map id="isDocumentationOfDocumentationMap">
+        <entry key="dc.relation" value-ref="documentationDocumentation_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="documentationDocumentation_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDocumentationOfPhenotypeMap">
+        <entry key="dc.relation" value-ref="phenotypeDocumentation_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="phenotypeDocumentation_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isPhenotypeOfDocumentationMap">
+        <entry key="dc.subject" value-ref="documentationPhenotype_subject"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="documentationPhenotype_subject">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDocumentationOfStudyMap">
+        <entry key="dc.relation" value-ref="studyDocumentation_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="studyDocumentation_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isStudyOfDocumentationMap">
+        <entry key="dc.relation" value-ref="documentationStudy_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="documentationStudy_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDocumentationOfDQResultMap">
+        <entry key="dc.relation" value-ref="dqResultDocumentation_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqResultDocumentation_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDQResultOfDocumentationMap">
+        <entry key="dc.relation" value-ref="documentationDQResult_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="documentationDQResult_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+
+    <!-- ============================================ -->
+    <!-- Phenotype Virtual Metadata Mappings -->
+    <!-- ============================================ -->
+    
+    <util:map id="isPhenotypeOfPhenotypeMap">
+        <entry key="dc.relation" value-ref="phenotypePhenotype_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="phenotypePhenotype_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isPhenotypeOfDQResultMap">
+        <entry key="dc.subject" value-ref="dqResultPhenotype_subject"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqResultPhenotype_subject">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDQResultOfPhenotypeMap">
+        <entry key="dc.relation" value-ref="phenotypeDQResult_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="phenotypeDQResult_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+
+    <!-- ============================================ -->
+    <!-- Study Virtual Metadata Mappings -->
+    <!-- ============================================ -->
+    
+    <util:map id="isStudyOfPhenotypeMap">
+        <entry key="dc.relation" value-ref="phenotypeStudy_name"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="phenotypeStudy_name">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isPhenotypeOfStudyMap">
+        <entry key="dc.subject" value-ref="studyPhenotype_subject"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="studyPhenotype_subject">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isStudyOfStudyMap">
+        <entry key="dc.relation" value-ref="studyStudy_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="studyStudy_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isStudyOfDQResultMap">
+        <entry key="dc.source" value-ref="dqResultStudy_source"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqResultStudy_source">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDQResultOfStudyMap">
+        <entry key="dc.relation" value-ref="studyDQResult_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="studyDQResult_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+
+    <!-- ============================================ -->
+    <!-- DQResult Virtual Metadata Mappings -->
+    <!-- ============================================ -->
+    
+    <util:map id="isDQResultOfDQResultMap">
+        <entry key="dc.relation" value-ref="dqResultDQResult_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="dqResultDQResult_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+
+    <!-- ============================================ -->
+    <!-- Code Virtual Metadata Mappings -->
+    <!-- ============================================ -->
+    
+    <util:map id="isCodeOfConceptSetMap">
+        <entry key="dc.identifier.other" value-ref="conceptSetCode_identifier"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="conceptSetCode_identifier">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isConceptSetOfCodeMap">
+        <entry key="dc.relation" value-ref="codeConceptSet_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="codeConceptSet_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isCodeOfDocumentationMap">
+        <entry key="dc.identifier.other" value-ref="documentationCode_identifier"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="documentationCode_identifier">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isDocumentationOfCodeMap">
+        <entry key="dc.relation" value-ref="codeDocumentation_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="codeDocumentation_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isCodeOfStudyMap">
+        <entry key="dc.identifier.other" value-ref="studyCode_identifier"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="studyCode_identifier">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isStudyOfCodeMap">
+        <entry key="dc.relation" value-ref="codeStudy_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="codeStudy_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isCodeOfPhenotypeMap">
+        <entry key="dc.identifier.other" value-ref="phenotypeCode_identifier"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="phenotypeCode_identifier">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isPhenotypeOfCodeMap">
+        <entry key="dc.relation" value-ref="codePhenotype_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="codePhenotype_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
+    
+    <util:map id="isCodeOfCodeMap">
+        <entry key="dc.relation" value-ref="codeCode_relation"/>
+    </util:map>
+    <bean class="org.dspace.content.virtual.Collected" id="codeCode_relation">
+        <property name="fields">
+            <util:list>
+                <value>dc.title</value>
+            </util:list>
+        </property>
+    </bean>
 </beans>
-<!-- cat /data/dspace-angular-dspace-8.1/config/virtual-metadata.xml > /data/dspace/config/spring/api/virtual-metadata.xml -->
