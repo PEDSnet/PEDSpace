@@ -139,13 +139,13 @@
             <publicationYear>
                 <xsl:choose>
                     <xsl:when test="//dspace:field[@mdschema='dc' and @element='date' and @qualifier='issued']">
-                        <xsl:value-of select="substring(//dspace:field[@mdschema='dc' and @element='date' and @qualifier='issued'], 1, 4)" />
+                        <xsl:value-of select="substring(//dspace:field[@mdschema='dc' and @element='date' and @qualifier='issued'][1], 1, 4)" />
                     </xsl:when>
                     <xsl:when test="//dspace:field[@mdschema='dc' and @element='date' and @qualifier='available']">
-                        <xsl:value-of select="substring(//dspace:field[@mdschema='dc' and @element='date' and @qualifier='available'], 1, 4)" />
+                        <xsl:value-of select="substring(//dspace:field[@mdschema='dc' and @element='date' and @qualifier='available'][1], 1, 4)" />
                     </xsl:when>
                     <xsl:when test="//dspace:field[@mdschema='dc' and @element='date']">
-                        <xsl:value-of select="substring(//dspace:field[@mdschema='dc' and @element='date'], 1, 4)" />
+                        <xsl:value-of select="substring(//dspace:field[@mdschema='dc' and @element='date'][1], 1, 4)" />
                     </xsl:when>
                     <xsl:otherwise>0000</xsl:otherwise>
                 </xsl:choose>
