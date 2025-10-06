@@ -112,6 +112,10 @@
         [label]="'Related Resources'">
       </ds-related-items>
 
+      <ds-related-items [parentItem]="object" [relationType]="'isDQCheckOfCode'"
+        [label]="'relationships.isDQCheckOf' | translate">
+      </ds-related-items>
+
       <!-- 10. Rights -->
       <ds-item-page-cc-license-field [item]="object" [variant]="'package'" [githubUrl]="object?.firstMetadataValue('local.code.github')">
       </ds-item-page-cc-license-field>

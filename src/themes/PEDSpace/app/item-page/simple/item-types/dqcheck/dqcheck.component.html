@@ -141,8 +141,12 @@
         [label]="'relationships.isPersonOf' | translate">
       </ds-related-items>
 
+      <ds-related-items [parentItem]="object" [relationType]="'isCodeOfDQCheck'"
+        [label]="'relationships.isCodeOf' | translate">
+      </ds-related-items>
+
       <ds-related-items [parentItem]="object" [relationType]="'isDQCheckOfDQCheck'"
-        [label]="'relationships.isdDQCheckOf' | translate">
+        [label]="'relationships.isDQCheckOf' | translate">
       </ds-related-items>
 
       <ds-item-page-external-publication-field [item]="object" [label]="'item.preview.dc.relation.isreferencedby'">
