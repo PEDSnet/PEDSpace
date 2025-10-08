@@ -3644,8 +3644,8 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
         </value-pairs>
         <value-pairs value-pairs-name="CSChar" dc-term="subject">
             <pair>
-                <displayed-value>Broad Concept Set</displayed-value>
-                <stored-value>Broad</stored-value>
+                <displayed-value>Broad/Sensitive Concept Set</displayed-value>
+                <stored-value>Sensitive</stored-value>
             </pair>
             <pair>
                 <displayed-value>Specific Concept Set</displayed-value>
@@ -3662,6 +3662,10 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             <pair>
                 <displayed-value>Used for Cohort Inclusion Criteria</displayed-value>
                 <stored-value>Inclusion Criteria</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Developed for a Feasibility Query</displayed-value>
+                <stored-value>Feasibility Query</stored-value>
             </pair>
             <pair>
                 <displayed-value>Investigates a Covariate Variable</displayed-value>
