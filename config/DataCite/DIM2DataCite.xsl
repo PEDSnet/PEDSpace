@@ -233,8 +233,8 @@
             -->
             <!--<xsl:apply-templates select="(//dspace:field[@mdschema='dc' and @element='type'])[1]" />-->
             <xsl:choose>
-                <xsl:when test="(//dspace:field[@mdschema='dspace' and @element='entity' and (@qualifier='type'])[1]">
-                    <xsl:apply-templates select="(//dspace:field[@mdschema='dspace' and @element='entity' and (@qualifier='type'])[1]" />
+                <xsl:when test="(//dspace:field[@mdschema='dspace' and @element='entity' and @qualifier='type'])[1]">
+                    <xsl:apply-templates select="(//dspace:field[@mdschema='dspace' and @element='entity' and @qualifier='type'])[1]" />
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:element name="resourceType">
@@ -520,7 +520,7 @@
         DataCite (10), DataCite (10.1)
         Adds resourceType and resourceTypeGeneral information
     -->
-    <xsl:template match="//dspace:field[@mdschema='dspace' and @element='entity' and (@qualifier='type'][1]">
+    <xsl:template match="//dspace:field[@mdschema='dspace' and @element='entity' and @qualifier='type'][1]">
         <xsl:element name="resourceType">
             <xsl:attribute name="resourceTypeGeneral">
                 <xsl:choose>
