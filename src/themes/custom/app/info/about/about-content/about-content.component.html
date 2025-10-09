@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>{{ 'info.about.head' | translate }}</h1>
+      
+      <div class="about-content">
+        <!-- You can use translate keys for i18n or add HTML directly -->
+        <p>{{ 'info.about.description' | translate }}</p>
+        
+        <!-- Example of an accordion section (optional) -->
+        <ngb-accordion #acc="ngbAccordion">
+          
+          <ngb-panel id="mission">
+            <ng-template ngbPanelHeader>
+              <div class="w-100 d-flex justify-content-between collapse-toggle" ngbPanelToggle (click)="acc.toggle('mission')">
+                <button type="button" class="btn btn-link p-0" (click)="$event.preventDefault()" 
+                        [attr.aria-expanded]="!acc.isExpanded('mission')"
+                        aria-controls="collapsePanels">
+                  {{ 'info.about.mission.title' | translate }}
+                </button>
+                <div class="text-right d-flex">
+                  <div class="ml-3 d-inline-block">
+                    <span *ngIf="acc.isExpanded('mission')" class="fas fa-chevron-up fa-fw"></span>
+                    <span *ngIf="!acc.isExpanded('mission')" class="fas fa-chevron-down fa-fw"></span>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              <p>{{ 'info.about.mission.content' | translate }}</p>
+            </ng-template>
+          </ngb-panel>
+
+          <ngb-panel id="team">
+            <ng-template ngbPanelHeader>
+              <div class="w-100 d-flex justify-content-between collapse-toggle" ngbPanelToggle (click)="acc.toggle('team')">
+                <button type="button" class="btn btn-link p-0" (click)="$event.preventDefault()" 
+                        [attr.aria-expanded]="!acc.isExpanded('team')"
+                        aria-controls="collapsePanels">
+                  {{ 'info.about.team.title' | translate }}
+                </button>
+                <div class="text-right d-flex">
+                  <div class="ml-3 d-inline-block">
+                    <span *ngIf="acc.isExpanded('team')" class="fas fa-chevron-up fa-fw"></span>
+                    <span *ngIf="!acc.isExpanded('team')" class="fas fa-chevron-down fa-fw"></span>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              <p>{{ 'info.about.team.content' | translate }}</p>
+            </ng-template>
+          </ngb-panel>
+
+          <ngb-panel id="contact">
+            <ng-template ngbPanelHeader>
+              <div class="w-100 d-flex justify-content-between collapse-toggle" ngbPanelToggle (click)="acc.toggle('contact')">
+                <button type="button" class="btn btn-link p-0" (click)="$event.preventDefault()" 
+                        [attr.aria-expanded]="!acc.isExpanded('contact')"
+                        aria-controls="collapsePanels">
+                  {{ 'info.about.contact.title' | translate }}
+                </button>
+                <div class="text-right d-flex">
+                  <div class="ml-3 d-inline-block">
+                    <span *ngIf="acc.isExpanded('contact')" class="fas fa-chevron-up fa-fw"></span>
+                    <span *ngIf="!acc.isExpanded('contact')" class="fas fa-chevron-down fa-fw"></span>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              <p>{{ 'info.about.contact.content' | translate }}</p>
+            </ng-template>
+          </ngb-panel>
+
+        </ngb-accordion>
+      </div>
+    </div>
+  </div>
+</div>

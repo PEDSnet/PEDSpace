@@ -2255,6 +2255,8 @@
 
   "footer.copyright": "copyright © 2002-{{ year }}",
 
+  "footer.link.about": "About",
+
   "footer.link.accessibility": "Accessibility settings",
 
   "footer.link.coar-notify-support": "COAR Notify",
@@ -2624,6 +2626,26 @@
   "info.privacy.head": "Privacy Statement",
 
   "info.privacy.title": "Privacy Statement",
+
+  "info.about.breadcrumbs": "About",
+
+  "info.about.head": "About This Repository",
+
+  "info.about.title": "About",
+
+  "info.about.description": "Welcome to our DSpace repository. This digital repository is built using DSpace, an open-source platform for preserving and providing access to scholarly materials and digital assets.",
+
+  "info.about.mission.title": "Our Mission",
+
+  "info.about.mission.content": "Our mission is to provide open access to research outputs and scholarly materials, supporting the academic community and advancing knowledge dissemination.",
+
+  "info.about.team.title": "Repository Team",
+
+  "info.about.team.content": "Our repository is maintained by a dedicated team committed to preserving and sharing scholarly content. For more information about our team, please contact us.",
+
+  "info.about.contact.title": "Contact Information",
+
+  "info.about.contact.content": "For questions about this repository, content submissions, or technical support, please use our feedback form or contact your repository administrator.",
 
   "inReplyTo.notify-detail-modal": "In reply to",
 

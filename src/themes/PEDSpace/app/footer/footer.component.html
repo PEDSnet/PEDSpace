@@ -108,6 +108,10 @@
   <div class="dspace-footer p-1 d-flex justify-content-center align-items-center" *ngIf="showDSpaceFooter">
     <div class="content-container">
       <ul class="footer-info list-unstyled d-flex justify-content-center mb-0">
+        <li>
+          <a class="btn text-white"
+             routerLink="info/about" role="link" tabindex="0">{{ 'footer.link.about' | translate }}</a>
+        </li>
         <li *ngIf="showCookieSettings">
           <button class="btn btn-link text-white" type="button" (click)="openCookieSettings()" role="link" tabindex="0">
             {{ 'footer.link.cookies' | translate}}
