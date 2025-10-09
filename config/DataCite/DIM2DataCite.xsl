@@ -311,9 +311,11 @@
                 Occ: 0-n
                 Required Attribute: descriptionType - controlled list
             -->
-            <xsl:if test="//dspace:field[@mdschema='dc' and @element='description' and (@qualifier='abstract' or @qualifier='tableofcontents' or not(@qualifier))]">
+            <xsl:if test="//dspace:field[@mdschema='dc' and @element='description' and (@qualifier='abstract' or @qualifier='tableofcontents' or not(@qualifier))] or //dspace:field[@mdschema='local' and @element='description'] or //dspace:field[@mdschema='dc' and @element='provenance']">
                 <xsl:element name="descriptions">
                     <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='description' and (@qualifier='abstract' or @qualifier='tableofcontents' or not(@qualifier))]" />
+                    <xsl:apply-templates select="//dspace:field[@mdschema='local' and @element='description']" />
+                    <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='provenance']" />
                 </xsl:element>
             </xsl:if>
             
@@ -554,7 +556,7 @@
         Adds all identifiers except the doi.
 
         This element is important as it is used to recognize for which DSpace
-        objet a DOI is reserved for. The DataCiteConnector will test all
+        object a DOI is reserved for. The DataCiteConnector will test all
         AlternativeIdentifiers by using HandleManager.
         resolveUrlToHandle(context, altId) until one is recognized or all have
         been tested.
@@ -609,7 +611,10 @@
     -->
     <xsl:template match="//dspace:field[@mdschema='dc' and @element='rights']">
         <xsl:element name="rights">
-            <xsl:value-of select="." />
+            <xsl:choose>
+                <xsl:when test=". = 'a CC-BY Attribution 4.0 license.'">CC-BY Attribution 4.0</xsl:when>
+                <xsl:otherwise><xsl:value-of select="." /></xsl:otherwise>
+            </xsl:choose>
         </xsl:element>
     </xsl:template>
 
@@ -627,6 +632,30 @@
                	    <xsl:otherwise>Other</xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
+            <xsl:value-of select="." />
+        </xsl:element>
+    </xsl:template>
+
+    <!--
+        DataCite (17)
+        Description for local.description (always descriptionType "Other")
+    -->
+    <xsl:template match="//dspace:field[@mdschema='local' and @element='description']">
+        <xsl:element name="description">
+            <xsl:attribute name="xml:lang"><xsl:value-of select="translate(@lang, '_', '-')" /></xsl:attribute>
+            <xsl:attribute name="descriptionType">Other</xsl:attribute>
+            <xsl:value-of select="." />
+        </xsl:element>
+    </xsl:template>
+
+    <!--
+        DataCite (17)
+        Description for dc.provenance (always descriptionType "Other")
+    -->
+    <xsl:template match="//dspace:field[@mdschema='dc' and @element='provenance']">
+        <xsl:element name="description">
+            <xsl:attribute name="xml:lang"><xsl:value-of select="translate(@lang, '_', '-')" /></xsl:attribute>
+            <xsl:attribute name="descriptionType">Other</xsl:attribute>
             <xsl:value-of select="." />
         </xsl:element>
     </xsl:template>
