@@ -1,20 +1,599 @@
-.about-content {
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
+
+.about-page {
+  background-color: #fff;
+  
+  // Add consistent spacing between major sections
+  .container {
+    .row + .row {
+      margin-top: 0;
+    }
+  }
+  
+  // Improve overall typography
+  h1, h2, h3, h4, h5, h6 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  p {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+}
+
+// Hero Section
+.hero-section {
+  position: relative;
+  background: linear-gradient(135deg, $cambridge-blue 0%, lighten($cambridge-blue, 65%) 100%);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 30px;
+  overflow: hidden;
+  
+  .hero-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba($powder-blue, 0.85) 0%, rgba($baby-blue, 0.75) 100%);
+    z-index: 1;
+    border-radius: inherit;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 3rem 2rem;
+    width: 100%;
+    text-align: center;
+    
+    .row {
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .col-lg-8 {
+      text-align: center;
+      margin: 0 auto;
+      float: none;
+    }
+    
+    h1 {
+      font-weight: 700;
+      color: $midnight-green;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      margin-bottom: 0;
+      font-size: 2.75rem;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      text-align: center;
+    }
+    
+    .lead {
+      display: none; // Hide subtitle for compact design
+    }
+  }
+}
+
+// Section Heading
+.section-heading {
+  font-weight: 700;
+  color: $midnight-green;
+  border-bottom: 4px solid $cambridge-blue;
+  padding-bottom: 0.75rem;
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+}
+
+// Quick Access Card
+.quick-access-card {
+  text-align: center;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, $light-sky-blue 0%, lighten($powder-blue, 5%) 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+  
+  .btn {
+    font-size: 1.15rem;
+    padding: 1.1rem 3rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    background-color: $midnight-green;
+    border-color: $midnight-green;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      background-color: darken($midnight-green, 5%);
+      border-color: darken($midnight-green, 5%);
+    }
+  }
+}
+
+// Intro Section
+.intro-section {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  text-align: left;
+  
+  .lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 1.75rem;
+    line-height: 1.7;
+  }
+  
+  p {
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+  
+  a {
+    color: $redwood;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    border-bottom: 2px solid transparent;
+    
+    &:hover {
+      color: darken($redwood, 10%);
+      border-bottom-color: $redwood;
+    }
+  }
+}
+
+// Collections Container
+.collections-container {
   margin-top: 2rem;
 }
 
-.about-content p {
-  margin-bottom: 1rem;
+// Collection Detail (details/summary)
+.collection-detail {
+  margin-bottom: 1.5rem;
+  border: 2px solid #e8e8e8;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: white;
+  
+  &:hover {
+    border-color: $cambridge-blue;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+  
+  summary {
+    padding: 1.75rem 2rem;
+    background-color: $alice-blue;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: $midnight-green;
+    transition: all 0.3s ease;
+    user-select: none;
+    list-style: none;
+    
+    &::-webkit-details-marker {
+      display: none;
+    }
+    
+    &::before {
+      content: '▶';
+      display: inline-block;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      color: $cambridge-blue;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    
+    &:hover {
+      background-color: darken($alice-blue, 3%);
+    }
+    
+    .collection-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, $cambridge-blue 0%, lighten($cambridge-blue, 10%) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      i {
+        font-size: 1.6rem;
+        color: white;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    }
+    
+    .collection-title {
+      flex: 1;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      transition: all 0.3s ease;
+    }
+    
+    .badge-coming-soon {
+      background-color: $golden-yellow;
+      color: $black-bean;
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  .collection-content {
+    padding: 2.5rem 2rem;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+                padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    p {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+      font-size: 1.02rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    ul {
+      margin: 1.25rem 0;
+      padding-left: 2.5rem;
+      
+      li {
+        margin-bottom: 0.75rem;
+        color: #555;
+        line-height: 1.7;
+        font-size: 1.02rem;
+        
+        strong {
+          color: $midnight-green;
+          font-weight: 600;
+        }
+      }
+    }
+    
+    a {
+      color: $redwood;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-bottom: 2px solid transparent;
+      
+      &:hover {
+        color: darken($redwood, 10%);
+        border-bottom-color: $redwood;
+      }
+    }
+  }
+  
+  &[open] {
+    border-color: $cambridge-blue;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    
+    summary {
+      background: linear-gradient(135deg, $cambridge-blue 0%, lighten($cambridge-blue, 5%) 100%);
+      color: white;
+      
+      &::before {
+        transform: rotate(90deg);
+        color: white;
+      }
+      
+      .collection-icon {
+        background: white;
+        
+        i {
+          color: $midnight-green;
+        }
+      }
+      
+      .collection-title {
+        color: white;
+      }
+    }
+    
+    .collection-content {
+      max-height: 5000px;
+      opacity: 1;
+      transform: translateY(0);
+      padding: 2.5rem 2rem;
+    }
+  }
 }
 
-.collapse-toggle {
-  cursor: pointer;
+// Mission Section
+.mission-section {
+  padding: 2.5rem;
+  background: linear-gradient(135deg, $honeydew 0%, lighten($celadon, 15%) 100%);
+  border-radius: 12px;
+  border-left: 5px solid $cambridge-blue;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  
+  .section-heading {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: $midnight-green;
+  }
+  
+  p {
+    color: #444;
+    line-height: 1.85;
+    font-size: 1.08rem;
+    margin-bottom: 0;
+  }
+  
+  a {
+    color: $redwood;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: darken($redwood, 10%);
+      border-bottom-color: $redwood;
+    }
+  }
 }
 
-.collapse-toggle button {
-  text-decoration: none;
-  font-weight: 500;
+// Info Card
+.info-card {
+  padding: 2.5rem;
+  background-color: white;
+  border-radius: 12px;
+  border: 2px solid #e8e8e8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: $cambridge-blue;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+  
+  .section-heading {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: $midnight-green;
+  }
+  
+  p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    font-size: 1.02rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  ol {
+    margin: 1.25rem 0;
+    padding-left: 2.5rem;
+    
+    li {
+      margin-bottom: 1rem;
+      color: #555;
+      line-height: 1.75;
+      font-size: 1.02rem;
+      padding-left: 0.5rem;
+    }
+  }
+  
+  a {
+    color: $redwood;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: darken($redwood, 10%);
+      border-bottom-color: $redwood;
+    }
+  }
 }
 
-.collapse-toggle button:hover {
-  text-decoration: underline;
+// Citation Examples
+.citation-example {
+  background-color: #f8f9fa;
+  border-left: 5px solid $cambridge-blue;
+  padding: 1.5rem 2rem;
+  margin: 1.25rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  
+  code {
+    color: $midnight-green;
+    font-family: 'Courier New', 'Monaco', monospace;
+    font-size: 0.95rem;
+    display: block;
+    line-height: 1.7;
+    background-color: transparent;
+    padding: 0;
+  }
+  
+  a {
+    color: $redwood;
+    text-decoration: none;
+    word-break: break-all;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: darken($redwood, 10%);
+      border-bottom-color: $redwood;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 220px;
+    
+    .hero-content {
+      padding: 2.5rem 1.5rem;
+      
+      .col-lg-8 {
+        max-width: 100%;
+        flex: 0 0 100%;
+      }
+      
+      h1 {
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+  }
+  
+  .section-heading {
+    font-size: 1.65rem;
+  }
+  
+  .collection-detail {
+    summary {
+      padding: 1.25rem 1.5rem;
+      font-size: 1.05rem;
+      
+      .collection-icon {
+        width: 48px;
+        height: 48px;
+        
+        i {
+          font-size: 1.3rem;
+        }
+      }
+    }
+    
+    &[open] .collection-content {
+      padding: 2rem 1.5rem;
+    }
+  }
+  
+  .quick-access-card {
+    padding: 2rem 1.5rem;
+    
+    .btn {
+      font-size: 1.05rem;
+      padding: 1rem 2.25rem;
+    }
+  }
+  
+  .mission-section,
+  .info-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    min-height: 180px;
+    border-radius: 20px;
+    
+    .hero-content {
+      padding: 2rem 1rem;
+      
+      .col-lg-8 {
+        max-width: 100%;
+        flex: 0 0 100%;
+        padding: 0 1rem;
+      }
+      
+      h1 {
+        font-size: 1.75rem;
+        text-align: center;
+      }
+    }
+  }
+  
+  .section-heading {
+    font-size: 1.5rem;
+  }
+  
+  .collection-detail {
+    summary {
+      flex-wrap: wrap;
+      gap: 0.875rem;
+      padding: 1rem 1.25rem;
+      
+      .badge-coming-soon {
+        order: 3;
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+      
+      .collection-icon {
+        width: 44px;
+        height: 44px;
+        
+        i {
+          font-size: 1.2rem;
+        }
+      }
+    }
+    
+    &[open] .collection-content {
+      padding: 1.5rem 1.25rem;
+    }
+  }
+  
+  .quick-access-card {
+    padding: 1.75rem 1.25rem;
+    
+    .btn {
+      font-size: 1rem;
+      padding: 0.9rem 2rem;
+      display: block;
+      width: 100%;
+    }
+  }
+  
+  .mission-section,
+  .info-card {
+    padding: 1.75rem 1.5rem;
+  }
+  
+  .citation-example {
+    padding: 1.25rem 1.5rem;
+    
+    code {
+      font-size: 0.88rem;
+    }
+  }
 }
