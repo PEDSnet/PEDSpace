@@ -35,9 +35,9 @@
     <!-- The content of the following parameter will be used as element publisher. -->
     <xsl:param name="publisher">PEDSnet</xsl:param>
     <!-- The content of the following variable will be used as element contributor with contributorType datamanager. -->
-    <xsl:param name="datamanager"><xsl:value-of select="$publisher" /></xsl:param>
+    <xsl:param name="datamanager"><xsl:value-of select="$hostinginstitution" /></xsl:param>
     <!-- The content of the following variable will be used as element contributor with contributorType hostingInstitution. -->
-    <xsl:param name="hostinginstitution">Children's Hospital of Philadelphia</xsl:param>
+    <xsl:param name="hostinginstitution">PEDSnet Data Coordinating Center</xsl:param>
     <!-- Please take a look into the DataCite schema documentation if you want to know how to use these elements.
          http://schema.datacite.org -->
     <!-- Metadata-field to retrieve DOI from items -->
@@ -165,6 +165,12 @@
             <xsl:if test="//dspace:field[@mdschema='dc' and @element='subject']">
                 <subjects>
                     <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='subject']" />
+                </subjects>
+            </xsl:if>
+            
+            <xsl:if test="//dspace:field[@mdschema='local' and @element='subject']">
+                <subjects>
+                    <xsl:apply-templates select="//dspace:field[@mdschema='local' and @element='subject']" />
                 </subjects>
             </xsl:if>
 
@@ -406,6 +412,16 @@
         </xsl:element>
     </xsl:template>
 
+    <xsl:template match="//dspace:field[@mdschema='local' and @element='subject']">
+        <xsl:element name="subject">
+            <xsl:attribute name="xml:lang"><xsl:value-of select="translate(@lang, '_', '-')" /></xsl:attribute>
+            <xsl:if test="@qualifier">
+                <xsl:attribute name="subjectScheme"><xsl:value-of select="@qualifier" /></xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="." />
+        </xsl:element>
+    </xsl:template>
+
     <!--
         DataCite (7), DataCite (7.1)
         Adds contributor and contributorType information
@@ -422,7 +438,7 @@
             </xsl:when> -->
             <xsl:when test="@qualifier='advisor'"> 
                 <xsl:element name="contributor">
-                    <xsl:attribute name="contributorType">Reviewer</xsl:attribute>
+                    <xsl:attribute name="contributorType">Supervisor</xsl:attribute>
                     <contributorName>
                         <xsl:value-of select="." />
                     </contributorName>
@@ -435,10 +451,10 @@
                         <xsl:value-of select="." />
                     </contributorName>
                 </xsl:element>
-            </xsl:when> -->
+            </xsl:when> --> 
             <xsl:when test="@qualifier='other'"> 
                 <xsl:element name="contributor">
-                    <xsl:attribute name="contributorType">Affiliation</xsl:attribute>
+                    <xsl:attribute name="contributorType">Other</xsl:attribute>
                     <contributorName>
                         <xsl:value-of select="." />
                     </contributorName>
@@ -446,7 +462,7 @@
             </xsl:when>
             <xsl:when test="not(@qualifier)"> 
                 <xsl:element name="contributor">
-                    <xsl:attribute name="contributorType">Funder</xsl:attribute>
+                    <xsl:attribute name="contributorType">Sponsor</xsl:attribute>
                     <contributorName>
                         <xsl:value-of select="." />
                     </contributorName>
@@ -530,7 +546,6 @@
                     <xsl:when test="string(text())='DQResult'">Data Quality Result</xsl:when>
                     <xsl:when test="string(text())='Code'">Code</xsl:when>
                     <xsl:when test="string(text())='Documentation'">Text</xsl:when>
-                    <xsl:when test="string(text())='Other'">Other</xsl:when>
                     <xsl:otherwise>Other</xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
