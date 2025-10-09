@@ -35,9 +35,9 @@
     <!-- The content of the following parameter will be used as element publisher. -->
     <xsl:param name="publisher">PEDSnet</xsl:param>
     <!-- The content of the following variable will be used as element contributor with contributorType datamanager. -->
-    <xsl:param name="datamanager"><xsl:value-of select="$hostinginstitution" /></xsl:param>
+    <xsl:param name="datamanager">PEDSnet Data Coordinating Center</xsl:param>
     <!-- The content of the following variable will be used as element contributor with contributorType hostingInstitution. -->
-    <xsl:param name="hostinginstitution">PEDSnet Data Coordinating Center</xsl:param>
+    <xsl:param name="hostinginstitution">PEDSnet</xsl:param>
     <!-- Please take a look into the DataCite schema documentation if you want to know how to use these elements.
          http://schema.datacite.org -->
     <!-- Metadata-field to retrieve DOI from items -->
