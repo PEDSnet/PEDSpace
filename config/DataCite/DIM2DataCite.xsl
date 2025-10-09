@@ -162,15 +162,10 @@
                 Format: open
                 Attribute: subjectSchema (optional), schemeURI (optional)
             -->  
-            <xsl:if test="//dspace:field[@mdschema='dc' and @element='subject']">
+            <xsl:if test="//dspace:field[@mdschema='dc' and @element='subject'] or //dspace:field[@mdschema='local' and (@element='subject' or @element='dqcheck')]">
                 <subjects>
                     <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='subject']" />
-                </subjects>
-            </xsl:if>
-            
-            <xsl:if test="//dspace:field[@mdschema='local' and @element='subject']">
-                <subjects>
-                    <xsl:apply-templates select="//dspace:field[@mdschema='local' and @element='subject']" />
+                    <xsl:apply-templates select="//dspace:field[@mdschema='local' and (@element='subject' or @element='dqcheck')]" />
                 </subjects>
             </xsl:if>
 
@@ -412,7 +407,7 @@
         </xsl:element>
     </xsl:template>
 
-    <xsl:template match="//dspace:field[@mdschema='local' and @element='subject']">
+    <xsl:template match="//dspace:field[@mdschema='local' and (@element='subject' or @element='dqcheck')]">
         <xsl:element name="subject">
             <xsl:attribute name="xml:lang"><xsl:value-of select="translate(@lang, '_', '-')" /></xsl:attribute>
             <xsl:if test="@qualifier">
@@ -540,11 +535,11 @@
         <xsl:element name="resourceType">
             <xsl:attribute name="resourceTypeGeneral">
                 <xsl:choose>
-                    <xsl:when test="string(text())='ConceptSet'">Concept Set</xsl:when>
-                    <xsl:when test="string(text())='Phenotype'">Computable Phenotype</xsl:when>
-                    <xsl:when test="string(text())='DQCheck'">Data Quality Check</xsl:when>
-                    <xsl:when test="string(text())='DQResult'">Data Quality Result</xsl:when>
-                    <xsl:when test="string(text())='Code'">Code</xsl:when>
+                    <xsl:when test="string(text())='ConceptSet'">Dataset</xsl:when>
+                    <xsl:when test="string(text())='Phenotype'">Model</xsl:when>
+                    <xsl:when test="string(text())='DQCheck'">Model</xsl:when>
+                    <xsl:when test="string(text())='DQResult'">Dataset</xsl:when>
+                    <xsl:when test="string(text())='Code'">Software</xsl:when>
                     <xsl:when test="string(text())='Documentation'">Text</xsl:when>
                     <xsl:otherwise>Other</xsl:otherwise>
                 </xsl:choose>
