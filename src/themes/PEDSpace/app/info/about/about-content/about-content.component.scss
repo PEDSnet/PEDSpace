@@ -2,79 +2,52 @@
 
 .about-page {
   background-color: #fff;
-  
-  // Add consistent spacing between major sections
-  .container {
-    .row + .row {
-      margin-top: 0;
-    }
-  }
-  
-  // Improve overall typography
-  h1, h2, h3, h4, h5, h6 {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  }
-  
-  p {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  }
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-// Hero Section
+// Hero Section - Bold and Inviting
 .hero-section {
+  background: linear-gradient(135deg, $midnight-green 0%, lighten($midnight-green, 12%) 100%);
+  padding: 4.5rem 0;
+  margin-bottom: 1rem;
   position: relative;
-  background: linear-gradient(135deg, $cambridge-blue 0%, lighten($cambridge-blue, 65%) 100%);
-  min-height: 280px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border-radius: 30px;
   overflow: hidden;
   
-  .hero-image-overlay {
+  // Subtle pattern overlay
+  &::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba($powder-blue, 0.85) 0%, rgba($baby-blue, 0.75) 100%);
-    z-index: 1;
-    border-radius: inherit;
+    background: linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.03) 50%, transparent 52%);
+    background-size: 40px 40px;
+    pointer-events: none;
   }
   
   .hero-content {
     position: relative;
-    z-index: 2;
-    color: white;
-    padding: 3rem 2rem;
-    width: 100%;
-    text-align: center;
-    
-    .row {
-      justify-content: center;
-      text-align: center;
-    }
-    
-    .col-lg-8 {
-      text-align: center;
-      margin: 0 auto;
-      float: none;
-    }
+    z-index: 1;
     
     h1 {
       font-weight: 700;
-      color: $midnight-green;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      margin-bottom: 0;
+      color: white;
       font-size: 2.75rem;
-      line-height: 1.2;
+      margin: 0;
       letter-spacing: -0.5px;
-      text-align: center;
-    }
-    
-    .lead {
-      display: none; // Hide subtitle for compact design
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      
+    //   // Decorative underline
+    //   &::after {
+    //     content: "";
+    //     display: block;
+    //     width: 80px;
+    //     height: 5px;
+    //     background-color: $china-rose;
+    //     margin-top: 1.25rem;
+    //     border-radius: 3px;
+    //   }
     }
   }
 }
@@ -83,75 +56,74 @@
 .section-heading {
   font-weight: 700;
   color: $midnight-green;
-  border-bottom: 4px solid $cambridge-blue;
+  font-size: 1.85rem;
+  margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  margin-bottom: 2.5rem;
-  font-size: 2rem;
-  letter-spacing: -0.5px;
-}
-
-// Quick Access Card
-.quick-access-card {
-  text-align: center;
-  padding: 2.5rem;
-  background: linear-gradient(135deg, $light-sky-blue 0%, lighten($powder-blue, 5%) 100%);
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-bottom: 3px solid $cambridge-blue;
+  letter-spacing: -0.3px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-  }
-  
-  .btn {
-    font-size: 1.15rem;
-    padding: 1.1rem 3rem;
-    border-radius: 50px;
-    font-weight: 600;
+  .header-anchor {
+    color: $cambridge-blue;
+    font-size: 1.2rem;
+    opacity: 0;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    background-color: $midnight-green;
-    border-color: $midnight-green;
+    text-decoration: none;
     
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-      background-color: darken($midnight-green, 5%);
-      border-color: darken($midnight-green, 5%);
+      color: $midnight-green;
+      transform: scale(1.1);
     }
   }
+  
+  &:hover .header-anchor {
+    opacity: 1;
+  }
+  
+//   // Add a small accent
+//   &::after {
+//     content: '';
+//     position: absolute;
+//     bottom: -3px;
+//     left: 0;
+//     width: 60px;
+//     height: 3px;
+//     background-color: $china-rose;
+//     border-radius: 3px;
+//   }
 }
 
 // Intro Section
 .intro-section {
   font-size: 1.05rem;
-  line-height: 1.8;
-  text-align: left;
+  line-height: 1.75;
   
   .lead {
     font-size: 1.25rem;
     font-weight: 500;
     color: #2c3e50;
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
     line-height: 1.7;
+    padding-left: 1rem;
+    border-left: 4px solid $cambridge-blue;
   }
   
   p {
     color: #555;
-    margin-bottom: 1.5rem;
-    line-height: 1.8;
+    margin-bottom: 1.25rem;
   }
   
   a {
     color: $redwood;
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease;
     border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease;
     
     &:hover {
-      color: darken($redwood, 10%);
       border-bottom-color: $redwood;
     }
   }
@@ -159,36 +131,35 @@
 
 // Collections Container
 .collections-container {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
-// Collection Detail (details/summary)
+// Collection Details - Fun but Clean Accordion
 .collection-detail {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   border: 2px solid #e8e8e8;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  transition: all 0.3s ease;
   background-color: white;
+  transition: border-color 0.2s ease;
   
   &:hover {
-    border-color: $cambridge-blue;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    border-color: lighten($cambridge-blue, 15%);
   }
   
   summary {
-    padding: 1.75rem 2rem;
-    background-color: $alice-blue;
+    padding: 1.5rem 1.75rem;
+    background: linear-gradient(to right, #f8f9fa 0%, #f1f3f5 100%);
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 1.25rem;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: $midnight-green;
-    transition: all 0.3s ease;
     user-select: none;
     list-style: none;
+    transition: all 0.2s ease;
     
     &::-webkit-details-marker {
       display: none;
@@ -196,72 +167,61 @@
     
     &::before {
       content: '▶';
-      display: inline-block;
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       color: $cambridge-blue;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
       font-weight: 700;
     }
     
     &:hover {
-      background-color: darken($alice-blue, 3%);
+      background: linear-gradient(to right, #f1f3f5 0%, #e9ecef 100%);
     }
     
     .collection-icon {
-      width: 56px;
-      height: 56px;
-      background: linear-gradient(135deg, $cambridge-blue 0%, lighten($cambridge-blue, 10%) 100%);
-      border-radius: 12px;
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, $cambridge-blue 0%, lighten($cambridge-blue, 8%) 100%);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 8px rgba($cambridge-blue, 0.2);
       
       i {
-        font-size: 1.6rem;
+        font-size: 1.45rem;
         color: white;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
     }
     
     .collection-title {
       flex: 1;
-      font-weight: 600;
-      letter-spacing: -0.3px;
-      transition: all 0.3s ease;
+      letter-spacing: -0.2px;
     }
     
     .badge-coming-soon {
-      background-color: $golden-yellow;
-      color: $black-bean;
-      padding: 0.35rem 1rem;
+      background: linear-gradient(135deg, $golden-yellow 0%, lighten($golden-yellow, 8%) 100%);
+      color: #2c3e50;
+      padding: 0.4rem 1rem;
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.3px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 6px rgba($golden-yellow, 0.3);
     }
   }
   
   .collection-content {
-    padding: 2.5rem 2rem;
+    padding: 2rem 1.75rem;
     background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
-                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
-                padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-top: 2px solid #f1f3f5;
     
     p {
       color: #555;
-      line-height: 1.8;
+      line-height: 1.75;
       margin-bottom: 1.25rem;
-      font-size: 1.02rem;
+      font-size: 1rem;
       
       &:last-child {
         margin-bottom: 0;
@@ -270,13 +230,18 @@
     
     ul {
       margin: 1.25rem 0;
-      padding-left: 2.5rem;
+      padding-left: 2rem;
       
       li {
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.7rem;
         color: #555;
         line-height: 1.7;
-        font-size: 1.02rem;
+        font-size: 1rem;
+        position: relative;
+        
+        &::marker {
+          color: $cambridge-blue;
+        }
         
         strong {
           color: $midnight-green;
@@ -285,23 +250,24 @@
       }
     }
     
-    a {
+    .collection-link {
       color: $redwood;
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.3s ease;
       border-bottom: 2px solid transparent;
+      transition: border-color 0.2s ease;
+      display: inline-block;
       
       &:hover {
-        color: darken($redwood, 10%);
         border-bottom-color: $redwood;
       }
     }
   }
   
+  // Open state styling
   &[open] {
     border-color: $cambridge-blue;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba($cambridge-blue, 0.15);
     
     summary {
       background: linear-gradient(135deg, $cambridge-blue 0%, lighten($cambridge-blue, 5%) 100%);
@@ -314,86 +280,90 @@
       
       .collection-icon {
         background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         
         i {
-          color: $midnight-green;
+          color: $cambridge-blue;
         }
       }
       
       .collection-title {
         color: white;
       }
-    }
-    
-    .collection-content {
-      max-height: 5000px;
-      opacity: 1;
-      transform: translateY(0);
-      padding: 2.5rem 2rem;
+      
+      &:hover {
+        background: linear-gradient(135deg, darken($cambridge-blue, 3%) 0%, $cambridge-blue 100%);
+      }
     }
   }
 }
 
-// Mission Section
-.mission-section {
-  padding: 2.5rem;
-  background: linear-gradient(135deg, $honeydew 0%, lighten($celadon, 15%) 100%);
-  border-radius: 12px;
+// Mission Section - Special Green Treatment
+#mission .content-card {
+  background: linear-gradient(135deg, $honeydew 0%, lighten($celadon, 18%) 100%);
   border-left: 5px solid $cambridge-blue;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba($cambridge-blue, 0.12);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba($cambridge-blue, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
   
   .section-heading {
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
-    color: $midnight-green;
+    color: darken($midnight-green, 5%);
+    border-bottom-color: $cambridge-blue;
+    
+    &::after {
+      background-color: darken($cambridge-blue, 10%);
+    }
   }
   
   p {
     color: #444;
-    line-height: 1.85;
-    font-size: 1.08rem;
-    margin-bottom: 0;
-  }
-  
-  a {
-    color: $redwood;
-    text-decoration: none;
-    font-weight: 600;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
-    
-    &:hover {
-      color: darken($redwood, 10%);
-      border-bottom-color: $redwood;
-    }
+    font-size: 1.05rem;
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
   }
 }
 
-// Info Card
-.info-card {
-  padding: 2.5rem;
-  background-color: white;
-  border-radius: 12px;
-  border: 2px solid #e8e8e8;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+// Content Cards - Clean and Inviting
+.content-card {
+  padding: 2.25rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid $cambridge-blue;
+  transition: box-shadow 0.2s ease;
   
   &:hover {
-    border-color: $cambridge-blue;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
   
   .section-heading {
-    font-size: 1.75rem;
+    font-size: 1.6rem;
     margin-bottom: 1.5rem;
-    color: $midnight-green;
+    border-bottom: none;
+    padding-bottom: 0;
+    
+    &::after {
+      display: none;
+    }
   }
   
   p {
     color: #555;
-    line-height: 1.8;
-    margin-bottom: 1.25rem;
-    font-size: 1.02rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    font-size: 1rem;
     
     &:last-child {
       margin-bottom: 0;
@@ -402,14 +372,18 @@
   
   ol {
     margin: 1.25rem 0;
-    padding-left: 2.5rem;
+    padding-left: 2rem;
     
     li {
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
       color: #555;
       line-height: 1.75;
-      font-size: 1.02rem;
-      padding-left: 0.5rem;
+      font-size: 1rem;
+      
+      &::marker {
+        color: $cambridge-blue;
+        font-weight: 600;
+      }
     }
   }
   
@@ -418,32 +392,46 @@
     text-decoration: none;
     font-weight: 600;
     border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
+    transition: border-color 0.2s ease;
     
     &:hover {
-      color: darken($redwood, 10%);
       border-bottom-color: $redwood;
     }
   }
 }
 
-// Citation Examples
+// Citation Examples - Special Markdown Styling
 .citation-example {
-  background-color: #f8f9fa;
+  background: linear-gradient(to right, #f8f9fa 0%, #f1f3f5 100%);
   border-left: 5px solid $cambridge-blue;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 1.75rem;
   margin: 1.25rem 0;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+  
+  // Code block indicator
+  &::before {
+    content: '{ }';
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    font-family: 'Courier New', Monaco, monospace;
+    font-size: 0.85rem;
+    color: $cambridge-blue;
+    opacity: 0.4;
+    font-weight: 700;
+  }
   
   code {
     color: $midnight-green;
-    font-family: 'Courier New', 'Monaco', monospace;
-    font-size: 0.95rem;
+    font-family: 'Courier New', Monaco, monospace;
+    font-size: 0.92rem;
     display: block;
-    line-height: 1.7;
+    line-height: 1.65;
     background-color: transparent;
     padding: 0;
+    font-weight: 500;
   }
   
   a {
@@ -451,38 +439,43 @@
     text-decoration: none;
     word-break: break-all;
     font-weight: 600;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
+    border-bottom: 1px dotted $redwood;
+    transition: border-bottom-style 0.2s ease;
     
     &:hover {
-      color: darken($redwood, 10%);
-      border-bottom-color: $redwood;
+      border-bottom-style: solid;
     }
   }
+}
+
+// Smooth scroll behavior
+html {
+  scroll-behavior: smooth;
+}
+
+// Section anchors for direct linking
+section {
+  scroll-margin-top: 2rem;
 }
 
 // Responsive Design
 @media (max-width: 768px) {
   .hero-section {
-    min-height: 220px;
+    padding: 3.5rem 0;
     
-    .hero-content {
-      padding: 2.5rem 1.5rem;
+    .hero-content h1 {
+      font-size: 2.2rem;
       
-      .col-lg-8 {
-        max-width: 100%;
-        flex: 0 0 100%;
-      }
-      
-      h1 {
-        font-size: 2rem;
-        text-align: center;
+      &::after {
+        width: 60px;
+        height: 4px;
+        margin-top: 1rem;
       }
     }
   }
   
   .section-heading {
-    font-size: 1.65rem;
+    font-size: 1.6rem;
   }
   
   .collection-detail {
@@ -491,65 +484,62 @@
       font-size: 1.05rem;
       
       .collection-icon {
-        width: 48px;
-        height: 48px;
+        width: 46px;
+        height: 46px;
         
         i {
-          font-size: 1.3rem;
+          font-size: 1.25rem;
         }
       }
     }
     
-    &[open] .collection-content {
-      padding: 2rem 1.5rem;
+    .collection-content {
+      padding: 1.75rem 1.5rem;
     }
   }
   
-  .quick-access-card {
-    padding: 2rem 1.5rem;
-    
-    .btn {
-      font-size: 1.05rem;
-      padding: 1rem 2.25rem;
-    }
+  .content-card {
+    padding: 1.75rem;
   }
   
-  .mission-section,
-  .info-card {
-    padding: 2rem;
+  .citation-example {
+    padding: 1.25rem 1.5rem;
   }
 }
 
 @media (max-width: 576px) {
   .hero-section {
-    min-height: 180px;
-    border-radius: 20px;
+    padding: 2.75rem 0;
     
-    .hero-content {
-      padding: 2rem 1rem;
+    .hero-content h1 {
+      font-size: 1.85rem;
       
-      .col-lg-8 {
-        max-width: 100%;
-        flex: 0 0 100%;
-        padding: 0 1rem;
-      }
-      
-      h1 {
-        font-size: 1.75rem;
-        text-align: center;
+      &::after {
+        width: 50px;
+        height: 3px;
       }
     }
   }
   
   .section-heading {
-    font-size: 1.5rem;
+    font-size: 1.45rem;
+    
+    &::after {
+      width: 45px;
+    }
+  }
+  
+  .intro-section .lead {
+    font-size: 1.15rem;
+    padding-left: 0.75rem;
+    border-left-width: 3px;
   }
   
   .collection-detail {
     summary {
       flex-wrap: wrap;
-      gap: 0.875rem;
-      padding: 1rem 1.25rem;
+      padding: 1.15rem 1.25rem;
+      gap: 0.85rem;
       
       .badge-coming-soon {
         order: 3;
@@ -559,41 +549,42 @@
       }
       
       .collection-icon {
-        width: 44px;
-        height: 44px;
+        width: 42px;
+        height: 42px;
         
         i {
-          font-size: 1.2rem;
+          font-size: 1.15rem;
         }
       }
     }
     
-    &[open] .collection-content {
+    .collection-content {
       padding: 1.5rem 1.25rem;
     }
   }
   
-  .quick-access-card {
-    padding: 1.75rem 1.25rem;
-    
-    .btn {
-      font-size: 1rem;
-      padding: 0.9rem 2rem;
-      display: block;
-      width: 100%;
-    }
-  }
-  
-  .mission-section,
-  .info-card {
-    padding: 1.75rem 1.5rem;
+  .content-card {
+    padding: 1.5rem;
   }
   
   .citation-example {
-    padding: 1.25rem 1.5rem;
+    padding: 1.15rem 1.25rem;
+    
+    &::before {
+      font-size: 0.75rem;
+      top: 0.5rem;
+      right: 0.75rem;
+    }
     
     code {
       font-size: 0.88rem;
     }
+  }
+  
+  #mission .content-card::before {
+    width: 200px;
+    height: 200px;
+    top: -30%;
+    right: -15%;
   }
 }

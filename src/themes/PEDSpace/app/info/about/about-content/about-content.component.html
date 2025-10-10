@@ -1,31 +1,18 @@
 <div class="about-page">
   <!-- Hero Section -->
   <div class="hero-section">
-    <div class="hero-image-overlay"></div>
     <div class="container hero-content">
-      <div class="row align-items-center">
-        <div class="col-lg-8">
-          <h1 class="display-3 mb-4">About the PEDSpace Knowledge Bank</h1>
+      <div class="row">
+        <div class="col-12 text-center">
+          <h1>About the PEDSpace Knowledge Bank</h1>
         </div>
       </div>
     </div>
   </div>
 
   <div class="container py-5">
-    <!-- Quick Access -->
-    <div class="row mb-5">
-      <div class="col-lg-10 offset-lg-1">
-        <div class="quick-access-card">
-          <a href="https://pedsnet.org/metadata/home" target="_blank" class="btn btn-primary btn-lg">
-            <i class="fas fa-external-link-alt me-2"></i>
-            Visit PEDSpace Knowledge Bank
-          </a>
-        </div>
-      </div>
-    </div>
-
     <!-- Introduction -->
-    <div class="row mb-5">
+    <section id="introduction" class="row mb-3">
       <div class="col-lg-10 offset-lg-1">
         <div class="intro-section">
           <p class="lead">
@@ -36,21 +23,25 @@
           <p>
             In PEDSpace, users are able to explore a wealth of resources to facilitate impactful research endeavors. Among these 
             assets are variable definitions, study results, and modules for assessing data quality. Each component is designed to 
-            empower researchers with the tools necessary to navigate complex pediatric healthcare data effectively. Toggle the 
-            arrows below to expand descriptions of individual PEDSpace collections below.
+            empower researchers with the tools necessary to navigate complex pediatric healthcare data effectively.
           </p>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Collections -->
-    <div class="row mb-5">
+    <section id="collections" class="row mb-3">
       <div class="col-lg-10 offset-lg-1">
-        <h2 class="section-heading mb-4">PEDSpace Collections</h2>
+        <h2 class="section-heading">
+          PEDSpace Collections
+          <a href="info/about#collections" class="header-anchor" aria-label="Link to Collections section">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
         
         <div class="collections-container">
           <!-- PEDSnet Studies -->
-          <details class="collection-detail">
+          <details class="collection-detail" id="pedsnet-studies">
             <summary>
               <span class="collection-icon">
                 <i class="fas fa-flask"></i>
@@ -71,9 +62,7 @@
                 easy to explore based on research focus or collaborative network. Studies conducted as part of large grant-funded 
                 projects such as the Glomerular Disease Learning Network (GLEAN) or Pediatric KIDney Stone (PKIDS) Care Improvement 
                 Network, or Preserving Kidney Function in Children with Chronic Kidney Disease (PRESERVE). Data source domains include 
-                PCORnet® Study and PEDSnet Study designation. Thematic categories include work in phenotype development and large scale 
-                network infrastructure support work. PEDSnet studies span domains such as chronic disease management, rare disease 
-                characterization, health equity, care utilization, and outcomes-based quality improvement.
+                PCORnet® Study and PEDSnet Study designation.
               </p>
               <p>
                 By showcasing this breadth of research, the collection not only serves as a valuable resource for current investigators 
@@ -81,7 +70,7 @@
                 improvement in care is informed by systematically gathered and analyzed data.
               </p>
               <p>
-                <a href="https://hdl.handle.net/20.500.14642/10" target="_blank">
+                <a href="https://hdl.handle.net/20.500.14642/10" target="_blank" class="collection-link">
                   Explore the PEDSnet study catalog →
                 </a>
               </p>
@@ -89,7 +78,7 @@
           </details>
 
           <!-- Variable Definitions -->
-          <details class="collection-detail">
+          <details class="collection-detail" id="variable-definitions">
             <summary>
               <span class="collection-icon">
                 <i class="fas fa-list-alt"></i>
@@ -101,13 +90,15 @@
                 This collection contains variable definitions based on phenotypic algorithms that identify cohorts of patients exhibiting 
                 specific clinical characteristics, conditions, or patterns of interest, as derived from electronic health records (EHRs). 
                 These phenotypes are defined using logic statements (algorithms) with combinations of diagnosis codes, procedures, medications, 
-                laboratory results, and other structured EHR data elements (concept sets) to represent real-world clinical presentations. The 
-                collection is designed to support reproducibility and consistency across studies by clearly outlining the logic used to define 
+                laboratory results, and other structured EHR data elements (concept sets) to represent real-world clinical presentations.
+              </p>
+              <p>
+                The collection is designed to support reproducibility and consistency across studies by clearly outlining the logic used to define 
                 each phenotype. It complements the PEDSnet concept set collection by offering a high-level overview of the variables defined in 
                 PEDSnet research, enabling users to explore how clinical features are operationalized across studies.
               </p>
               <p>
-                <a href="https://hdl.handle.net/20.500.14642/677" target="_blank">
+                <a href="https://hdl.handle.net/20.500.14642/677" target="_blank" class="collection-link">
                   Explore Variable Definitions →
                 </a>
               </p>
@@ -115,7 +106,7 @@
           </details>
 
           <!-- Concept Sets -->
-          <details class="collection-detail">
+          <details class="collection-detail" id="concept-sets">
             <summary>
               <span class="collection-icon">
                 <i class="fas fa-tags"></i>
@@ -132,9 +123,7 @@
               </p>
               <p>
                 This particular collection includes concept sets developed as part of PEDSnet research initiatives. These sets are often used 
-                in combination with algorithmic logic to define and identify patient cohorts for observational studies and data analyses. While 
-                the Variable Definitions collection includes the accompanying logic and criteria used to operationalize these concepts, this 
-                collection focuses exclusively on the concept sets themselves.
+                in combination with algorithmic logic to define and identify patient cohorts for observational studies and data analyses.
               </p>
               <p>The concept sets are systematically organized into eight clinical domains:</p>
               <ul>
@@ -148,15 +137,12 @@
                 <li>Medications</li>
               </ul>
               <p>
-                Each set includes individual codes representing approved, standardized concepts drawn from reputable clinical ontologies. These 
-                sets support reproducible research by ensuring that definitions of conditions or interventions are transparent and consistently applied.
-              </p>
-              <p>
-                All concept sets are available for download in CSV format via PEDSpace, making them easy to integrate into data analysis workflows 
+                Each set includes individual codes representing approved, standardized concepts drawn from reputable clinical ontologies. All 
+                concept sets are available for download in CSV format via PEDSpace, making them easy to integrate into data analysis workflows 
                 or cohort-building tools.
               </p>
               <p>
-                <a href="https://hdl.handle.net/20.500.14642/1" target="_blank">
+                <a href="https://hdl.handle.net/20.500.14642/1" target="_blank" class="collection-link">
                   Explore the Concept Set collection →
                 </a>
               </p>
@@ -164,7 +150,7 @@
           </details>
 
           <!-- Data Quality Modules -->
-          <details class="collection-detail">
+          <details class="collection-detail" id="data-quality-modules">
             <summary>
               <span class="collection-icon">
                 <i class="fas fa-check-circle"></i>
@@ -175,16 +161,13 @@
               <p>
                 This collection offers access to an array of study-specific and network-level data quality analysis modules, designed to support 
                 robust and reliable clinical observational research within a learning health system like PEDSnet. High-quality data is foundational 
-                to generating valid, actionable insights in such systems where research and practice are tightly integrated. These modules enable 
-                the systematic exploration, validation, and presentation of data, ensuring that analyses are grounded in trusted, well-characterized 
-                datasets.
+                to generating valid, actionable insights in such systems where research and practice are tightly integrated.
               </p>
               <p>
                 Researchers can browse the collection to identify categories of data quality analyses or filter to select checks that align with 
-                specific stages of the research lifecycle—from initial cohort design to final analysis. The PEDSnet Data Quality Program supports 
-                this framework by establishing standards and tools for continuous data improvement across institutions and studies.
+                specific stages of the research lifecycle—from initial cohort design to final analysis.
               </p>
-              <p>The Data Quality Collection comprises a comprehensive set of modules targeting key areas of concern in data quality assessment, including:</p>
+              <p>The Data Quality Collection comprises a comprehensive set of modules targeting key areas:</p>
               <ul>
                 <li><strong>Cohort Fitness:</strong> Evaluating whether a dataset can adequately represent the intended population.</li>
                 <li><strong>Cohort Identification:</strong> Validating inclusion/exclusion logic using real-world data signals.</li>
@@ -194,16 +177,7 @@
                 <li><strong>Variable Testing:</strong> Verifying the presence, distribution, and utility of analytic variables.</li>
               </ul>
               <p>
-                Each module includes up to eight targeted data quality checks, which assess parameters such as temporality (e.g., whether data meets 
-                time-based expectations), data source scope (single vs. multiple sites or systems), and the detection of anomalies (e.g., outliers 
-                or implausible values).
-              </p>
-              <p>
-                To support reproducibility and transparency, this collection is linked to a complementary GitHub repository, where users can access 
-                and implement the source code for these functions directly in their workflows.
-              </p>
-              <p>
-                <a href="https://hdl.handle.net/20.500.14642/2" target="_blank">
+                <a href="https://hdl.handle.net/20.500.14642/2" target="_blank" class="collection-link">
                   Explore data quality modules →
                 </a>
               </p>
@@ -211,28 +185,26 @@
           </details>
 
           <!-- Data Quality Results -->
-          <details class="collection-detail">
+          <details class="collection-detail" id="data-quality-results">
             <summary>
               <span class="collection-icon">
                 <i class="fas fa-chart-line"></i>
               </span>
               <span class="collection-title">Data Quality Results</span>
-              <span class="badge-coming-soon">Coming Soon!</span>
+              <span class="badge-coming-soon">Coming Soon</span>
             </summary>
             <div class="collection-content">
               <p>
                 This collection contains the results of data quality analyses conducted using PEDSnet's Data Quality Modules. This collection 
                 includes analyses for the entire PEDSnet Network, conducted on a quarterly basis, as well as analyses performed during individual 
                 research studies utilizing PEDSnet data. It provides detailed insights into the accuracy, consistency, completeness, and reliability 
-                of data collected across multiple studies and institutions. By tracking and evaluating data quality at both the network-wide and 
-                study-specific levels, this collection helps stakeholders identify potential issues, ensure compliance with research standards, and 
-                build confidence in the integrity of the research data.
+                of data collected across multiple studies and institutions.
               </p>
             </div>
           </details>
 
           <!-- PEDSnet Resources -->
-          <details class="collection-detail">
+          <details class="collection-detail" id="pedsnet-resources">
             <summary>
               <span class="collection-icon">
                 <i class="fas fa-book"></i>
@@ -243,22 +215,20 @@
               <p>
                 This collection serves as a centralized repository to support the operational, technical, and collaborative needs of PEDSnet's 
                 participating sites and research collaborators. This collection encompasses a diverse array of resources, ranging from technical 
-                documentation and data dictionaries to administrative guidelines and instructional content. It is structured to facilitate efficient 
-                navigation and utilization by various stakeholders involved in pediatric health research.
+                documentation and data dictionaries to administrative guidelines and instructional content.
               </p>
-              <p>The collection is systematically organized into several key domains, each catering to specific aspects of PEDSnet's infrastructure and operations:</p>
+              <p>The collection is systematically organized into several key domains:</p>
               <ul>
                 <li><strong>Data Architecture:</strong> Contains table one metrics for current and historical versions of the PEDSnet database, ETL 
-                (Extract, Transform, Load) specifications, and comprehensive data dictionaries for OMOP, PEDSnet, and PCORnet.</li>
+                specifications, and comprehensive data dictionaries for OMOP, PEDSnet, and PCORnet.</li>
                 <li><strong>Electronic Resources:</strong> Features a catalog of web applications, providing tools and interfaces to interact with the 
                 network's data and resources.</li>
-                <li><strong>Documentation & Tutorials:</strong> Offers detailed documentation, including user guides, and instructional materials to assist 
-                users in effectively utilizing PEDSnet systems and resources.</li>
+                <li><strong>Documentation & Tutorials:</strong> Offers detailed documentation, including user guides, and instructional materials.</li>
                 <li><strong>Institutions:</strong> Provide data provenance records for each participating site.</li>
                 <li><strong>Reusable Code:</strong> Frequently used functions which may be readily customized per study needs.</li>
               </ul>
               <p>
-                <a href="https://hdl.handle.net/20.500.14642/673" target="_blank">
+                <a href="https://hdl.handle.net/20.500.14642/673" target="_blank" class="collection-link">
                   Explore PEDSnet resources →
                 </a>
               </p>
@@ -266,13 +236,18 @@
           </details>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Mission -->
-    <div class="row mb-5">
+    <section id="mission" class="row mb-3">
       <div class="col-lg-10 offset-lg-1">
-        <div class="mission-section">
-          <h2 class="section-heading mb-4">Mission</h2>
+        <div class="content-card">
+          <h2 class="section-heading">
+            Mission
+            <a href="info/about#mission" class="header-anchor" aria-label="Link to Mission section">
+              <i class="fas fa-link"></i>
+            </a>
+          </h2>
           <p>
             As a testament to our commitment to transparency, collaboration, and 
             <a href="https://www.go-fair.org/fair-principles/" target="_blank">FAIR</a> data-sharing principles, PEDSpace represents 
@@ -281,52 +256,66 @@
           </p>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Contributors -->
-    <div class="row mb-5">
+    <section id="contributors" class="row mb-3">
       <div class="col-lg-10 offset-lg-1">
-        <div class="info-card">
-          <h2 class="section-heading mb-4">Contributors</h2>
+        <div class="content-card">
+          <h2 class="section-heading">
+            Contributors
+            <a href="info/about#contributors" class="header-anchor" aria-label="Link to Contributors section">
+              <i class="fas fa-link"></i>
+            </a>
+          </h2>
           <p>
             Content found in PEDSpace is generated by members of the PEDSnet Data Coordination Center and Federated Coordination Center 
             (previously known as the Center Without Walls) and maintained by the site administrators and metadata librarian. If you are 
             a data scientist at a PEDSnet site with concept sets or phenotype algorithms to deposit, you may request an account. To do so, 
             please contact <a href="mailto:pedsnet@chop.edu">pedsnetdcc&#64;chop.edu</a> with the subject line 
-            "<strong>PEDSpace: Account Request</strong>" Please include your first and last name and professional email address in your email.
+            "<strong>PEDSpace: Account Request</strong>". Please include your first and last name and professional email address in your email.
           </p>
           <p>
             If you have an account and would like additional guidance on input standards, or you would like to submit an updated concept 
-            set version to the repository, please follow the instructions in the Contact section below for contacting the site administrator 
-            for assistance.
+            set version to the repository, please contact the site administrator for assistance.
           </p>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Contact Information -->
-    <div class="row mb-5">
+    <section id="contact" class="row mb-3">
       <div class="col-lg-10 offset-lg-1">
-        <div class="info-card">
-          <h2 class="section-heading mb-4">Contact Information</h2>
+        <div class="content-card">
+          <h2 class="section-heading">
+            Contact Information
+            <a href="info/about#contact" class="header-anchor" aria-label="Link to Contact section">
+              <i class="fas fa-link"></i>
+            </a>
+          </h2>
           <p>
             Please direct general inquiries or comments to <a href="mailto:pedsnet@chop.edu">pedsnetdcc&#64;chop.edu</a> with the subject line 
             "<strong>PEDSpace: General Inquiry</strong>".
           </p>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Citations -->
-    <div class="row mb-5">
+    <section id="citations" class="row mb-3">
       <div class="col-lg-10 offset-lg-1">
-        <div class="info-card">
-          <h2 class="section-heading mb-4">Citations</h2>
+        <div class="content-card">
+          <h2 class="section-heading">
+            Citations
+            <a href="info/about#citations" class="header-anchor" aria-label="Link to Citations section">
+              <i class="fas fa-link"></i>
+            </a>
+          </h2>
           <p>
             PEDSpace provides each item with a persistent and stable identifier called a 
             <a href="https://en.wikipedia.org/wiki/Handle_System" target="_blank">handle</a> which can be used to find and cite content. 
             Handle links are appropriate for use in citations, CVs, ORCID profiles, etc. The handle is different from the link that appears 
-            in the browsers address bar. It can be accessed by selecting the clipboard icon on the item record.
+            in the browser's address bar. It can be accessed by selecting the clipboard icon on the item record.
           </p>
           <p>We recommend citing content in PEDSpace using the following format:</p>
           <div class="citation-example">
@@ -339,13 +328,18 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Technical Summary -->
-    <div class="row mb-5">
+    <section id="technical-summary" class="row mb-3">
       <div class="col-lg-10 offset-lg-1">
-        <div class="info-card">
-          <h2 class="section-heading mb-4">Technical Summary</h2>
+        <div class="content-card">
+          <h2 class="section-heading">
+            Technical Summary
+            <a href="info/about#technical-summary" class="header-anchor" aria-label="Link to Technical Summary section">
+              <i class="fas fa-link"></i>
+            </a>
+          </h2>
           <p>
             PEDSpace is built on an open-source technology stack, <a href="https://dspace.org/" target="_blank">DSpace</a>. Our configuration 
             is freely available on <a href="https://github.com/PEDSnet/PEDSpace" target="_blank">GitHub</a>.
@@ -356,13 +350,18 @@
           </p>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Commitment to Open Access -->
-    <div class="row mb-5">
+    <section id="open-access" class="row mb-3">
       <div class="col-lg-10 offset-lg-1">
-        <div class="info-card">
-          <h2 class="section-heading mb-4">Commitment to Open Access</h2>
+        <div class="content-card">
+          <h2 class="section-heading">
+            Commitment to Open Access
+            <a href="info/about#open-access" class="header-anchor" aria-label="Link to Open Access section">
+              <i class="fas fa-link"></i>
+            </a>
+          </h2>
           <p>
             We aim to provide access to collections with exclusive or non-exclusive copyrights held by PEDSnet or works in the public domain. 
             Items for which copyrights have not been transferred or provided to PEDSnet through a non-exclusive license (i.e., items whose 
@@ -387,6 +386,6 @@
           </ol>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </div>
