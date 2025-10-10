@@ -7,7 +7,8 @@
 
 // Hero Section - Bold and Inviting with Animated Gradient
 .hero-section {
-  background: linear-gradient(-45deg, $midnight-green 0%, $cambridge-blue 25%, $mauve 51%, $china-rose 100%);
+  // background: linear-gradient(-45deg, $midnight-green 0%, $cambridge-blue 25%, $mauve 51%, $china-rose 100%);
+  background: $midnight-green; 
   background-size: 300% 300%;
   animation: AnimateBG 20s ease infinite;
   // Start at random position in the animation
@@ -16,43 +17,21 @@
   // margin-bottom: 1rem;
   position: relative;
   overflow: hidden;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   
-  // Subtle pattern overlay
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.03) 50%, transparent 52%);
-    background-size: 40px 40px;
-    pointer-events: none;
-  }
-  
-  .hero-content {
+  .container {
     position: relative;
     z-index: 1;
-    
-    h1 {
-      font-weight: 700;
-      color: white;
-      font-size: 2.75rem;
-      margin: 0;
-      letter-spacing: -0.5px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      
-    //   // Decorative underline
-    //   &::after {
-    //     content: "";
-    //     display: block;
-    //     width: 80px;
-    //     height: 5px;
-    //     background-color: $china-rose;
-    //     margin-top: 1.25rem;
-    //     border-radius: 3px;
-    //   }
-    }
+  }
+  
+  h1 {
+    font-weight: 700;
+    color: white;
+    font-size: 2.75rem;
+    margin: 0;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 }
 
@@ -100,17 +79,17 @@
     opacity: 1;
   }
   
-//   // Add a small accent
-//   &::after {
-//     content: '';
-//     position: absolute;
-//     bottom: -3px;
-//     left: 0;
-//     width: 60px;
-//     height: 3px;
-//     background-color: $china-rose;
-//     border-radius: 3px;
-//   }
+  // Add a small accent
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: $china-rose;
+    border-radius: 3px;
+  }
 }
 
 // Intro Section
