@@ -5,11 +5,15 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-// Hero Section - Bold and Inviting
+// Hero Section - Bold and Inviting with Animated Gradient
 .hero-section {
-  background: linear-gradient(135deg, $midnight-green 0%, lighten($midnight-green, 12%) 100%);
+  background: linear-gradient(-45deg, $midnight-green 0%, $cambridge-blue 25%, $mauve 51%, $china-rose 100%);
+  background-size: 300% 300%;
+  animation: AnimateBG 20s ease infinite;
+  // Start at random position in the animation
+  animation-delay: calc(-1s * (var(--random-start, 0)));
   padding: 4.5rem 0;
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
   position: relative;
   overflow: hidden;
   
@@ -49,6 +53,19 @@
     //     border-radius: 3px;
     //   }
     }
+  }
+}
+
+// Animated gradient keyframes
+@keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
@@ -400,50 +417,85 @@
   }
 }
 
-// Citation Examples - Special Markdown Styling
+// Citation Examples - Distinctive Code Block Styling
 .citation-example {
-  background: linear-gradient(to right, #f8f9fa 0%, #f1f3f5 100%);
-  border-left: 5px solid $cambridge-blue;
+  background: linear-gradient(135deg, 
+    lighten($mauve, 8%) 0%, 
+    lighten($periwinkle, 12%) 100%);
+  border: 2px dashed rgba($tropical-indigo, 0.3);
   padding: 1.5rem 1.75rem;
   margin: 1.25rem 0;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba($tropical-indigo, 0.08);
   position: relative;
+  transition: all 0.3s ease;
   
-  // Code block indicator
+  &:hover {
+    border-color: rgba($tropical-indigo, 0.5);
+    box-shadow: 0 4px 16px rgba($tropical-indigo, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  // Code block indicator - more prominent
   &::before {
-    content: '{ }';
+    content: '<>';
     position: absolute;
-    top: 0.75rem;
+    top: 0.5rem;
     right: 1rem;
     font-family: 'Courier New', Monaco, monospace;
-    font-size: 0.85rem;
-    color: $cambridge-blue;
-    opacity: 0.4;
+    font-size: 1.1rem;
+    color: $tropical-indigo;
+    opacity: 0.5;
     font-weight: 700;
   }
   
+  // Corner accent
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, 
+      rgba($tropical-indigo, 0.15) 0%, 
+      transparent 100%);
+    border-top-left-radius: 12px;
+  }
+  
   code {
-    color: $midnight-green;
+    color: darken($midnight-green, 5%);
     font-family: 'Courier New', Monaco, monospace;
-    font-size: 0.92rem;
+    font-size: 0.94rem;
     display: block;
-    line-height: 1.65;
+    line-height: 1.7;
     background-color: transparent;
     padding: 0;
     font-weight: 500;
+    position: relative;
+    z-index: 1;
   }
   
   a {
-    color: $redwood;
+    color: $china-rose;
     text-decoration: none;
     word-break: break-all;
-    font-weight: 600;
-    border-bottom: 1px dotted $redwood;
-    transition: border-bottom-style 0.2s ease;
+    font-weight: 700;
+    border-bottom: 2px solid transparent;
+    background: linear-gradient(to bottom, 
+      transparent 0%, 
+      transparent 90%, 
+      rgba($china-rose, 0.3) 90%, 
+      rgba($china-rose, 0.3) 100%);
+    transition: all 0.2s ease;
     
     &:hover {
-      border-bottom-style: solid;
+      color: darken($china-rose, 10%);
+      background: linear-gradient(to bottom, 
+        transparent 0%, 
+        transparent 85%, 
+        rgba($china-rose, 0.5) 85%, 
+        rgba($china-rose, 0.5) 100%);
     }
   }
 }
@@ -504,6 +556,10 @@ section {
   
   .citation-example {
     padding: 1.25rem 1.5rem;
+    
+    &::before {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -569,11 +625,17 @@ section {
   
   .citation-example {
     padding: 1.15rem 1.25rem;
+    border-radius: 10px;
     
     &::before {
-      font-size: 0.75rem;
-      top: 0.5rem;
+      font-size: 0.9rem;
+      top: 0.4rem;
       right: 0.75rem;
+    }
+    
+    &::after {
+      width: 30px;
+      height: 30px;
     }
     
     code {
