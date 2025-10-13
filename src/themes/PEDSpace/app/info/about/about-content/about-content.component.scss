@@ -8,30 +8,35 @@
 // Hero Section - Bold and Inviting with Animated Gradient
 .hero-section {
   // background: linear-gradient(-45deg, $midnight-green 0%, $cambridge-blue 25%, $mauve 51%, $china-rose 100%);
-  background: $midnight-green; 
+  background: $midnight-green;
   background-size: 300% 300%;
-  animation: AnimateBG 20s ease infinite;
   // Start at random position in the animation
-  animation-delay: calc(-1s * (var(--random-start, 0)));
-  padding: 4.5rem 0;
-  // margin-bottom: 1rem;
   position: relative;
   overflow: hidden;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  
+  height: auto;
+  min-height: 350px;
+
   .container {
     position: relative;
     z-index: 1;
   }
-  
+
   h1 {
+    font-size: 4.75rem !important;
     font-weight: 700;
     color: white;
     font-size: 2.75rem;
     margin: 0;
     letter-spacing: -0.5px;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    height: 100%;
+    min-height: 350px;
   }
 }
 
@@ -40,9 +45,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -61,42 +68,42 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  
+
   .header-anchor {
     color: $cambridge-blue;
     font-size: 1.2rem;
     opacity: 0;
     transition: all 0.3s ease;
     text-decoration: none;
-    
+
     &:hover {
       color: $midnight-green;
       transform: scale(1.1);
     }
   }
-  
+
   &:hover .header-anchor {
     opacity: 1;
   }
-  
-  // Add a small accent
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background-color: $china-rose;
-    border-radius: 3px;
-  }
+
+  // // Add a small accent
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: -3px;
+  //   left: 0;
+  //   width: 60px;
+  //   height: 3px;
+  //   background-color: $china-rose;
+  //   border-radius: 3px;
+  // }
 }
 
 // Intro Section
 .intro-section {
   font-size: 1.05rem;
   line-height: 1.75;
-  
+
   .lead {
     font-size: 1.25rem;
     font-weight: 500;
@@ -106,19 +113,19 @@
     padding-left: 1rem;
     border-left: 4px solid $cambridge-blue;
   }
-  
+
   p {
     color: #555;
     margin-bottom: 1.25rem;
   }
-  
+
   a {
     color: $redwood;
     text-decoration: none;
     font-weight: 600;
     border-bottom: 2px solid transparent;
     transition: border-color 0.2s ease;
-    
+
     &:hover {
       border-bottom-color: $redwood;
     }
@@ -138,11 +145,11 @@
   overflow: hidden;
   background-color: white;
   transition: border-color 0.2s ease;
-  
+
   &:hover {
     border-color: lighten($cambridge-blue, 15%);
   }
-  
+
   summary {
     padding: 1.5rem 1.75rem;
     background: linear-gradient(to right, #f8f9fa 0%, #f1f3f5 100%);
@@ -156,11 +163,11 @@
     user-select: none;
     list-style: none;
     transition: all 0.2s ease;
-    
+
     &::-webkit-details-marker {
       display: none;
     }
-    
+
     &::before {
       content: '▶';
       color: $cambridge-blue;
@@ -169,11 +176,11 @@
       flex-shrink: 0;
       font-weight: 700;
     }
-    
+
     &:hover {
       background: linear-gradient(to right, #f1f3f5 0%, #e9ecef 100%);
     }
-    
+
     .collection-icon {
       width: 52px;
       height: 52px;
@@ -184,18 +191,18 @@
       justify-content: center;
       flex-shrink: 0;
       box-shadow: 0 2px 8px rgba($cambridge-blue, 0.2);
-      
+
       i {
         font-size: 1.45rem;
         color: white;
       }
     }
-    
+
     .collection-title {
       flex: 1;
       letter-spacing: -0.2px;
     }
-    
+
     .badge-coming-soon {
       background: linear-gradient(135deg, $golden-yellow 0%, lighten($golden-yellow, 8%) 100%);
       color: #2c3e50;
@@ -207,45 +214,45 @@
       box-shadow: 0 2px 6px rgba($golden-yellow, 0.3);
     }
   }
-  
+
   .collection-content {
     padding: 2rem 1.75rem;
     background-color: white;
     border-top: 2px solid #f1f3f5;
-    
+
     p {
       color: #555;
       line-height: 1.75;
       margin-bottom: 1.25rem;
       font-size: 1rem;
-      
+
       &:last-child {
         margin-bottom: 0;
       }
     }
-    
+
     ul {
       margin: 1.25rem 0;
       padding-left: 2rem;
-      
+
       li {
         margin-bottom: 0.7rem;
         color: #555;
         line-height: 1.7;
         font-size: 1rem;
         position: relative;
-        
+
         &::marker {
           color: $cambridge-blue;
         }
-        
+
         strong {
           color: $midnight-green;
           font-weight: 600;
         }
       }
     }
-    
+
     .collection-link {
       color: $redwood;
       text-decoration: none;
@@ -253,40 +260,40 @@
       border-bottom: 2px solid transparent;
       transition: border-color 0.2s ease;
       display: inline-block;
-      
+
       &:hover {
         border-bottom-color: $redwood;
       }
     }
   }
-  
+
   // Open state styling
   &[open] {
     border-color: $cambridge-blue;
     box-shadow: 0 4px 12px rgba($cambridge-blue, 0.15);
-    
+
     summary {
       background: linear-gradient(135deg, $cambridge-blue 0%, lighten($cambridge-blue, 5%) 100%);
       color: white;
-      
+
       &::before {
         transform: rotate(90deg);
         color: white;
       }
-      
+
       .collection-icon {
         background: white;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        
+
         i {
           color: $cambridge-blue;
         }
       }
-      
+
       .collection-title {
         color: white;
       }
-      
+
       &:hover {
         background: linear-gradient(135deg, darken($cambridge-blue, 3%) 0%, $cambridge-blue 100%);
       }
@@ -301,7 +308,7 @@
   box-shadow: 0 4px 12px rgba($cambridge-blue, 0.12);
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -313,16 +320,16 @@
     border-radius: 50%;
     pointer-events: none;
   }
-  
+
   .section-heading {
     color: darken($midnight-green, 5%);
     border-bottom-color: $cambridge-blue;
-    
+
     &::after {
       background-color: darken($cambridge-blue, 10%);
     }
   }
-  
+
   p {
     color: #444;
     font-size: 1.05rem;
@@ -339,57 +346,57 @@
   border-radius: 10px;
   border-left: 4px solid $cambridge-blue;
   transition: box-shadow 0.2s ease;
-  
+
   &:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
-  
+
   .section-heading {
     font-size: 1.6rem;
     margin-bottom: 1.5rem;
     border-bottom: none;
     padding-bottom: 0;
-    
+
     &::after {
       display: none;
     }
   }
-  
+
   p {
     color: #555;
     line-height: 1.75;
     margin-bottom: 1rem;
     font-size: 1rem;
-    
+
     &:last-child {
       margin-bottom: 0;
     }
   }
-  
+
   ol {
     margin: 1.25rem 0;
     padding-left: 2rem;
-    
+
     li {
       margin-bottom: 0.85rem;
       color: #555;
       line-height: 1.75;
       font-size: 1rem;
-      
+
       &::marker {
         color: $cambridge-blue;
         font-weight: 600;
       }
     }
   }
-  
+
   a {
     color: $redwood;
     text-decoration: none;
     font-weight: 600;
     border-bottom: 2px solid transparent;
     transition: border-color 0.2s ease;
-    
+
     &:hover {
       border-bottom-color: $redwood;
     }
@@ -398,9 +405,9 @@
 
 // Citation Examples - Distinctive Code Block Styling
 .citation-example {
-  background: linear-gradient(135deg, 
-    lighten($mauve, 8%) 0%, 
-    lighten($periwinkle, 12%) 100%);
+  background: linear-gradient(135deg,
+      lighten($mauve, 8%) 0%,
+      lighten($periwinkle, 12%) 100%);
   border: 2px dashed rgba($tropical-indigo, 0.3);
   padding: 1.5rem 1.75rem;
   margin: 1.25rem 0;
@@ -408,13 +415,13 @@
   box-shadow: 0 3px 12px rgba($tropical-indigo, 0.08);
   position: relative;
   transition: all 0.3s ease;
-  
+
   &:hover {
     border-color: rgba($tropical-indigo, 0.5);
     box-shadow: 0 4px 16px rgba($tropical-indigo, 0.15);
     transform: translateY(-2px);
   }
-  
+
   // Code block indicator - more prominent
   &::before {
     content: '<>';
@@ -427,7 +434,7 @@
     opacity: 0.5;
     font-weight: 700;
   }
-  
+
   // Corner accent
   &::after {
     content: '';
@@ -436,12 +443,12 @@
     left: 0;
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, 
-      rgba($tropical-indigo, 0.15) 0%, 
-      transparent 100%);
+    background: linear-gradient(135deg,
+        rgba($tropical-indigo, 0.15) 0%,
+        transparent 100%);
     border-top-left-radius: 12px;
   }
-  
+
   code {
     color: darken($midnight-green, 5%);
     font-family: 'Courier New', Monaco, monospace;
@@ -454,27 +461,27 @@
     position: relative;
     z-index: 1;
   }
-  
+
   a {
     color: $china-rose;
     text-decoration: none;
     word-break: break-all;
     font-weight: 700;
     border-bottom: 2px solid transparent;
-    background: linear-gradient(to bottom, 
-      transparent 0%, 
-      transparent 90%, 
-      rgba($china-rose, 0.3) 90%, 
-      rgba($china-rose, 0.3) 100%);
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        transparent 90%,
+        rgba($china-rose, 0.3) 90%,
+        rgba($china-rose, 0.3) 100%);
     transition: all 0.2s ease;
-    
+
     &:hover {
       color: darken($china-rose, 10%);
-      background: linear-gradient(to bottom, 
-        transparent 0%, 
-        transparent 85%, 
-        rgba($china-rose, 0.5) 85%, 
-        rgba($china-rose, 0.5) 100%);
+      background: linear-gradient(to bottom,
+          transparent 0%,
+          transparent 85%,
+          rgba($china-rose, 0.5) 85%,
+          rgba($china-rose, 0.5) 100%);
     }
   }
 }
@@ -493,10 +500,10 @@ section {
 @media (max-width: 768px) {
   .hero-section {
     padding: 3.5rem 0;
-    
+
     .hero-content h1 {
       font-size: 2.2rem;
-      
+
       &::after {
         width: 60px;
         height: 4px;
@@ -504,38 +511,38 @@ section {
       }
     }
   }
-  
+
   .section-heading {
     font-size: 1.6rem;
   }
-  
+
   .collection-detail {
     summary {
       padding: 1.25rem 1.5rem;
       font-size: 1.05rem;
-      
+
       .collection-icon {
         width: 46px;
         height: 46px;
-        
+
         i {
           font-size: 1.25rem;
         }
       }
     }
-    
+
     .collection-content {
       padding: 1.75rem 1.5rem;
     }
   }
-  
+
   .content-card {
     padding: 1.75rem;
   }
-  
+
   .citation-example {
     padding: 1.25rem 1.5rem;
-    
+
     &::before {
       font-size: 1rem;
     }
@@ -545,83 +552,83 @@ section {
 @media (max-width: 576px) {
   .hero-section {
     padding: 2.75rem 0;
-    
+
     .hero-content h1 {
       font-size: 1.85rem;
-      
+
       &::after {
         width: 50px;
         height: 3px;
       }
     }
   }
-  
+
   .section-heading {
     font-size: 1.45rem;
-    
+
     &::after {
       width: 45px;
     }
   }
-  
+
   .intro-section .lead {
     font-size: 1.15rem;
     padding-left: 0.75rem;
     border-left-width: 3px;
   }
-  
+
   .collection-detail {
     summary {
       flex-wrap: wrap;
       padding: 1.15rem 1.25rem;
       gap: 0.85rem;
-      
+
       .badge-coming-soon {
         order: 3;
         width: 100%;
         text-align: center;
         margin-top: 0.5rem;
       }
-      
+
       .collection-icon {
         width: 42px;
         height: 42px;
-        
+
         i {
           font-size: 1.15rem;
         }
       }
     }
-    
+
     .collection-content {
       padding: 1.5rem 1.25rem;
     }
   }
-  
+
   .content-card {
     padding: 1.5rem;
   }
-  
+
   .citation-example {
     padding: 1.15rem 1.25rem;
     border-radius: 10px;
-    
+
     &::before {
       font-size: 0.9rem;
       top: 0.4rem;
       right: 0.75rem;
     }
-    
+
     &::after {
       width: 30px;
       height: 30px;
     }
-    
+
     code {
       font-size: 0.88rem;
     }
   }
-  
+
   #mission .content-card::before {
     width: 200px;
     height: 200px;
