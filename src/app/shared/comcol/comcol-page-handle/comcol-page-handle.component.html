@@ -1,4 +1,6 @@
-<p *ngIf="content" class="d-flex flex-wrap gapx-2 text-break">
-  <span class="mb-0" *ngIf="title">{{ title | translate }}</span>
-  <a [href]="getHandle()" role="link" tabindex="0">{{getHandle()}}</a>
-</p>
+<a *ngIf="content" class="btn btn-primary btn-sm copy-handle-btn mb-2" 
+   (click)="copyToClipboard()"
+   [title]="isCopied ? 'Handle copied!' : 'Copy Handle'"
+   [attr.aria-label]="isCopied ? 'Handle copied!' : 'Copy Handle'">
+  <i class="fa" [ngClass]="isCopied ? 'fa-check' : 'fa-clipboard'"></i>
+</a>

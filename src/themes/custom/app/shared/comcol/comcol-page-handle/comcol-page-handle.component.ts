@@ -1,4 +1,7 @@
-import { NgIf } from '@angular/common';
+import {
+  NgClass,
+  NgIf,
+} from '@angular/common';
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -13,6 +16,7 @@ import { ComcolPageHandleComponent as BaseComponent } from '../../../../../../ap
   standalone: true,
   imports: [
     NgIf,
+    NgClass,
     TranslateModule,
   ],
 })
