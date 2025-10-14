@@ -25,7 +25,7 @@ JAVA_OPTS="-Xmx512M -Xms512M -Dfile.encoding=UTF-8"
 #--------------
 
 # Send information about new and changed DOIs to the DOI registration agency (if needed)
-# 0 4,12,20 * * * echo "$(date): Running DSpace DOI organiser updates." && $DSPACE/bin/dspace doi-organiser -u -q && $DSPACE/bin/dspace doi-organiser -s -q && $DSPACE/bin/dspace doi-organiser -r -q && $DSPACE/bin/dspace doi-organiser -d -q
+0 4,12,20 * * * echo "$(date): Running DSpace DOI organiser updates." && $DSPACE/bin/dspace doi-organiser -u -q && $DSPACE/bin/dspace doi-organiser -s -q && $DSPACE/bin/dspace doi-organiser -r -q && $DSPACE/bin/dspace doi-organiser -d -q
 
 #----------------
 # DAILY TASKS
