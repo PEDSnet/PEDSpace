@@ -4,6 +4,7 @@ import {
   NgIf,
 } from '@angular/common';
 import {
+  ChangeDetectorRef,
   Component,
   Input,
   OnInit,
@@ -48,6 +49,8 @@ export class ItemPageCitationFieldComponent implements OnInit {
    * Whether the citation was copied
    */
   isCopied = false;
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.generateCitation();
@@ -282,9 +285,11 @@ export class ItemPageCitationFieldComponent implements OnInit {
    */
   private showCopySuccess(): void {
     this.isCopied = true;
+    this.cdr.markForCheck();
 
     setTimeout(() => {
       this.isCopied = false;
+      this.cdr.markForCheck();
     }, 3000);
   }
 }
