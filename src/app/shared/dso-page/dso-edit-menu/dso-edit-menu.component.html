@@ -4,9 +4,16 @@
         <ng-container
             *ngComponentOutlet="(sectionMap$ | async).get(section.id)?.component; injector: (sectionMap$ | async).get(section.id)?.injector;"></ng-container>
     </div>
-    <a *ngIf="object" class="btn btn-primary btn-sm private-link mb-2" (click)="copyPermalink()"
-        [title]="isCopied ? 'Permalink copied!' : 'Copy Permalink'">
-        <i class="fa" [ngClass]="isCopied ? 'fa-check' : 'fa-clipboard'"></i>
+    <a *ngIf="object" 
+        class="btn private-link mb-2" 
+        [ngClass]="{
+            'btn-doi': getPermalinkType() === 'doi',
+            'btn-handle': getPermalinkType() === 'handle',
+            'btn-primary': !getPermalinkType()
+        }"
+        (click)="copyPermalink()"
+        [title]="isCopied ? 'Permalink copied!' : (getPermalinkType() === 'doi' ? 'Share DOI' : (getPermalinkType() === 'handle' ? 'Share Handle' : 'Share Permalink'))">
+        <i class="fa" [ngClass]="isCopied ? 'fa-check' : 'fa-share-alt'"></i>
     </a>
 </div>
 <!-- </div> -->
