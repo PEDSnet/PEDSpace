@@ -3250,6 +3250,30 @@
   "item.page.relationships.isDocumentationOfDQResult": "Related Quality Results",
   
   "item.page.relationships.isDocumentationOfStudy": "Related Studies",
+  
+  "item.page.relationships.isAuthorOfCode": "Related Code",
+
+  "item.page.relationships.isConceptSetOfCode": "Related Code",
+
+  "item.page.relationships.isDocumentationOfCode": "Related Code",
+
+  "item.page.relationships.isDQCheckOfCode": "Related Code",
+
+  "item.page.relationships.isDQResultOfCode": "Related Code",
+
+  "item.page.relationships.isOrgUnitOfCode": "Related Code",
+
+  "item.page.relationships.isPersonOfCode": "Related Code",
+
+  "item.page.relationships.isPhenotypeOfCode": "Related Code",
+
+  "item.page.relationships.isProjectOfCode": "Related Code",
+
+  "item.page.relationships.isPublicationOfCode": "Related Code",
+
+  "item.page.relationships.isStudyOfCode": "Related Code",
+
+  "item.page.relationships.isDocumentationOfStudy": "Related Studies",
 
   "item.page.return": "Back",
 
