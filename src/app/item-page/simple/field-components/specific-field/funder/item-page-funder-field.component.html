@@ -1,0 +1,7 @@
+<ds-metadata-field-wrapper [label]="label | translate">
+  <div class="funder-wrapper" *ngIf="funderText">
+    <div class="funder-text" [class.pcori-disclaimer]="hasPCORIDisclaimer">
+      {{ funderText }}
+    </div>
+  </div>
+</ds-metadata-field-wrapper>

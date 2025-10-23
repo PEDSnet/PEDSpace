@@ -1,0 +1,25 @@
+.funder-wrapper {
+  margin-top: 0.75rem;
+}
+
+.funder-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333;
+  padding: 0.5rem 0;
+  
+  &.pcori-disclaimer {
+    // Optional: Add special styling for PCORI-funded projects
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-left: 3px solid #0066cc;
+    border-radius: 4px;
+  }
+}
+
+// Print styles
+@media print {
+  .funder-text {
+    page-break-inside: avoid;
+  }
+}
