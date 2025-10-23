@@ -128,12 +128,12 @@ export class ItemPageCitationFieldComponent implements OnInit {
     });
 
     if (formattedAuthors.length === 1) {
-      return formattedAuthors[0] + '.';
+      return formattedAuthors[0];
     } else if (formattedAuthors.length === 2) {
-      return formattedAuthors.join(' & ') + '.';
+      return formattedAuthors.join(' & ');
     } else {
       const lastAuthor = formattedAuthors.pop();
-      return formattedAuthors.join(', ') + ', & ' + lastAuthor + '.';
+      return formattedAuthors.join(', ') + ', & ' + lastAuthor;
     }
   }
 
@@ -151,11 +151,27 @@ export class ItemPageCitationFieldComponent implements OnInit {
       const initial = firstName.charAt(0).toUpperCase();
       return `${lastName}, ${initial}.`;
     } else {
-      // Assume "FirstName LastName" format
+      // Check if this looks like a personal name or an organization
       const nameParts = fullName.trim().split(' ');
+      
+      // If single word, return as-is with period
       if (nameParts.length === 1) {
-        return nameParts[0];
+        return nameParts[0] + '.';
       }
+      
+      // If it contains common organizational words, treat as organization
+      const orgKeywords = ['center', 'centre', 'committee', 'organization', 'organisation', 
+                          'institute', 'foundation', 'association', 'department', 'group',
+                          'team', 'network', 'consortium', 'society', 'council'];
+      const lowerName = fullName.toLowerCase();
+      const isOrganization = orgKeywords.some(keyword => lowerName.includes(keyword));
+      
+      if (isOrganization) {
+        // Return organization name as-is with period
+        return fullName + '.';
+      }
+      
+      // Assume "FirstName LastName" format for personal names
       const lastName = nameParts[nameParts.length - 1];
       const firstName = nameParts[0];
       const initial = firstName.charAt(0).toUpperCase();
