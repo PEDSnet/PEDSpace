@@ -50,12 +50,13 @@
 
 # Define user roles for different parts of the backup
 BACKUP_USER="dspace"
-OFFSITE_USER="seyediana1"
+OFFSITE_USER="seyediana"
 
 # Flags for operation modes
 LOCAL_ONLY=false
 DRY_RUN=false
 FORCE_MODE=false
+IS_INTERACTIVE=false
 
 # Base backup directory and subdirectories
 BACKUP_BASE_DIR="/data/backups"
@@ -111,8 +112,15 @@ EXPECTED_HOSTNAME="pedsdspaceprod2.research.chop.edu"
 # Function to log messages with timestamp
 log() {
     # Create log directory if it doesn't exist
-    mkdir -p "${LOG_DIR}"
-    echo "$(date +"%Y-%m-%d %H:%M:%S") : $1" | tee -a "${LOG_FILE}"
+    mkdir -p "${LOG_DIR}" 2>/dev/null
+    local message="$(date +"%Y-%m-%d %H:%M:%S") : $1"
+    echo "${message}" | tee -a "${LOG_FILE}"
+}
+
+# Function to log to file only (not to console)
+log_file_only() {
+    mkdir -p "${LOG_DIR}" 2>/dev/null
+    echo "$(date +"%Y-%m-%d %H:%M:%S") : $1" >> "${LOG_FILE}"
 }
 
 # Function to validate that the script is running on the correct server
@@ -149,13 +157,13 @@ setup_directories() {
             if [ "$DRY_RUN" = true ]; then
                 log "Dry run: would execute: mkdir -p $dir"
             else
-                mkdir -p "$dir" || { 
+                if ! mkdir -p "$dir" 2>/dev/null; then
                     log "ERROR: Failed to create directory $dir"
                     if [ "$FORCE_MODE" = false ]; then
                         log "Use -f flag to override permission checks or create directories manually with proper permissions"
                         exit 1
                     fi
-                }
+                fi
             fi
         fi
         
@@ -185,15 +193,28 @@ backup_database() {
     if [ "$DRY_RUN" = true ]; then
         log "Dry run: would execute: ${PG_DUMP_PATH} -U ${PG_USER} -h ${PG_HOST} -f ${SQL_BACKUP_FILE} ${PG_DB}"
         return 0
-    else
-        "${PG_DUMP_PATH}" -U "${PG_USER}" -h "${PG_HOST}" -f "${SQL_BACKUP_FILE}" "${PG_DB}" >> "${LOG_FILE}" 2>&1
-        if [ $? -eq 0 ]; then
-            log "PostgreSQL dump completed successfully."
+    fi
+    
+    # Check if pg_dump exists
+    if [ ! -x "${PG_DUMP_PATH}" ]; then
+        log "ERROR: pg_dump not found at ${PG_DUMP_PATH}"
+        return 1
+    fi
+    
+    # Run pg_dump
+    if "${PG_DUMP_PATH}" -U "${PG_USER}" -h "${PG_HOST}" -f "${SQL_BACKUP_FILE}" "${PG_DB}" >> "${LOG_FILE}" 2>&1; then
+        if [ -f "${SQL_BACKUP_FILE}" ]; then
+            local filesize=$(du -h "${SQL_BACKUP_FILE}" | cut -f1)
+            log "PostgreSQL dump completed successfully. File size: ${filesize}"
             return 0
         else
-            log "ERROR during PostgreSQL dump."
+            log "ERROR: PostgreSQL dump command succeeded but file was not created"
             return 1
         fi
+    else
+        log "ERROR during PostgreSQL dump. Check log file for details."
+        log_file_only "pg_dump exit code: $?"
+        return 1
     fi
 }
 
@@ -211,15 +232,22 @@ backup_assetstore() {
     if [ "$DRY_RUN" = true ]; then
         log "Dry run: would execute: tar -czf ${ASSETSTORE_BACKUP_FILE} -C \"$(dirname "${ASSETSTORE_SOURCE}")\" \"$(basename "${ASSETSTORE_SOURCE}")\""
         return 0
-    else
-        tar -czf "${ASSETSTORE_BACKUP_FILE}" -C "$(dirname "${ASSETSTORE_SOURCE}")" "$(basename "${ASSETSTORE_SOURCE}")" >> "${LOG_FILE}" 2>&1
-        if [ $? -eq 0 ]; then
-            log "Assetstore compressed successfully."
+    fi
+    
+    # Run tar command
+    if tar -czf "${ASSETSTORE_BACKUP_FILE}" -C "$(dirname "${ASSETSTORE_SOURCE}")" "$(basename "${ASSETSTORE_SOURCE}")" 2>> "${LOG_FILE}"; then
+        if [ -f "${ASSETSTORE_BACKUP_FILE}" ]; then
+            local filesize=$(du -h "${ASSETSTORE_BACKUP_FILE}" | cut -f1)
+            log "Assetstore compressed successfully. File size: ${filesize}"
             return 0
         else
-            log "ERROR during assetstore compression."
+            log "ERROR: tar command succeeded but file was not created"
             return 1
         fi
+    else
+        log "ERROR during assetstore compression. Check log file for details."
+        log_file_only "tar exit code: $?"
+        return 1
     fi
 }
 
@@ -238,15 +266,22 @@ backup_statistics() {
     if [ "$DRY_RUN" = true ]; then
         log "Dry run: would execute: tar -czf ${STATISTICS_BACKUP_FILE} -C \"$(dirname "${STATISTICS_SOURCE}")\" \"$(basename "${STATISTICS_SOURCE}")\""
         return 0
-    else
-        tar -czf "${STATISTICS_BACKUP_FILE}" -C "$(dirname "${STATISTICS_SOURCE}")" "$(basename "${STATISTICS_SOURCE}")" >> "${LOG_FILE}" 2>&1
-        if [ $? -eq 0 ]; then
-            log "Statistics data compressed successfully."
+    fi
+    
+    # Run tar command
+    if tar -czf "${STATISTICS_BACKUP_FILE}" -C "$(dirname "${STATISTICS_SOURCE}")" "$(basename "${STATISTICS_SOURCE}")" 2>> "${LOG_FILE}"; then
+        if [ -f "${STATISTICS_BACKUP_FILE}" ]; then
+            local filesize=$(du -h "${STATISTICS_BACKUP_FILE}" | cut -f1)
+            log "Statistics data compressed successfully. File size: ${filesize}"
             return 0
         else
-            log "ERROR during statistics data compression."
+            log "ERROR: tar command succeeded but file was not created"
             return 1
         fi
+    else
+        log "ERROR during statistics data compression. Check log file for details."
+        log_file_only "tar exit code: $?"
+        return 1
     fi
 }
 
@@ -265,15 +300,22 @@ backup_authority() {
     if [ "$DRY_RUN" = true ]; then
         log "Dry run: would execute: tar -czf ${AUTHORITY_BACKUP_FILE} -C \"$(dirname "${AUTHORITY_SOURCE}")\" \"$(basename "${AUTHORITY_SOURCE}")\""
         return 0
-    else
-        tar -czf "${AUTHORITY_BACKUP_FILE}" -C "$(dirname "${AUTHORITY_SOURCE}")" "$(basename "${AUTHORITY_SOURCE}")" >> "${LOG_FILE}" 2>&1
-        if [ $? -eq 0 ]; then
-            log "Authority data compressed successfully."
+    fi
+    
+    # Run tar command
+    if tar -czf "${AUTHORITY_BACKUP_FILE}" -C "$(dirname "${AUTHORITY_SOURCE}")" "$(basename "${AUTHORITY_SOURCE}")" 2>> "${LOG_FILE}"; then
+        if [ -f "${AUTHORITY_BACKUP_FILE}" ]; then
+            local filesize=$(du -h "${AUTHORITY_BACKUP_FILE}" | cut -f1)
+            log "Authority data compressed successfully. File size: ${filesize}"
             return 0
         else
-            log "ERROR during authority data compression."
+            log "ERROR: tar command succeeded but file was not created"
             return 1
         fi
+    else
+        log "ERROR during authority data compression. Check log file for details."
+        log_file_only "tar exit code: $?"
+        return 1
     fi
 }
 
@@ -314,24 +356,24 @@ copy_to_offsite() {
     fi
     
     # Create destination directory if it doesn't exist
-    mkdir -p "${dest_dir}" 2>/dev/null || {
+    if ! mkdir -p "${dest_dir}" 2>/dev/null; then
         log "ERROR: Failed to create destination directory ${dest_dir}"
         return 1
-    }
+    fi
     
     log "Starting copy of ${backup_type} to Isilon backup: ${dest_dir}"
     if [ "$DRY_RUN" = true ]; then
         log "Dry run: would execute: rsync -rvptgD --no-group --progress \"${source_dir}/\" \"${dest_dir}/\""
         return 0
+    fi
+    
+    if rsync -rvptgD --no-group --progress "${source_dir}/" "${dest_dir}/" >> "${LOG_FILE}" 2>&1; then
+        log "Successfully copied ${backup_type} to Isilon backup."
+        return 0
     else
-        rsync -rvptgD --no-group --progress "${source_dir}/" "${dest_dir}/" >> "${LOG_FILE}" 2>&1
-        if [ $? -eq 0 ]; then
-            log "Successfully copied ${backup_type} to Isilon backup."
-            return 0
-        else
-            log "ERROR copying ${backup_type} to Isilon backup."
-            return 1
-        fi
+        log "ERROR copying ${backup_type} to Isilon backup."
+        log_file_only "rsync exit code: $?"
+        return 1
     fi
 }
 
@@ -359,27 +401,40 @@ perform_backup() {
     log "User ${CURRENT_USER} is performing backup operations..."
     
     # Create directories if they don't exist
-    mkdir -p "${SQL_DIR}" "${ASSETSTORE_DIR}" "${STATISTICS_DIR}" "${AUTHORITY_DIR}" "${LOG_DIR}"
+    for dir in "${SQL_DIR}" "${ASSETSTORE_DIR}" "${STATISTICS_DIR}" "${AUTHORITY_DIR}" "${LOG_DIR}"; do
+        if ! mkdir -p "$dir" 2>/dev/null; then
+            log "ERROR: Failed to create directory $dir"
+            return 1
+        fi
+    done
     
     local backup_failed=false
     
     # Perform database backup
-    backup_database || backup_failed=true
+    if ! backup_database; then
+        backup_failed=true
+    fi
     
     # Perform assetstore backup
-    backup_assetstore || backup_failed=true
+    if ! backup_assetstore; then
+        backup_failed=true
+    fi
     
     # Perform statistics backup
-    backup_statistics || backup_failed=true
+    if ! backup_statistics; then
+        backup_failed=true
+    fi
     
     # Perform authority backup
-    backup_authority || backup_failed=true
+    if ! backup_authority; then
+        backup_failed=true
+    fi
     
     # Clean up old backups regardless of success
     cleanup_local_backups
     
     if [ "$backup_failed" = false ]; then
-        log "Backup steps completed successfully."
+        log "All backup steps completed successfully."
         
         if [ "$LOCAL_ONLY" = false ]; then
             if [ "$DRY_RUN" = true ]; then
@@ -394,7 +449,7 @@ perform_backup() {
         
         return 0
     else
-        log "Backup steps encountered errors. Skipping success flag creation."
+        log "ERROR: One or more backup steps failed. Skipping success flag creation."
         return 1
     fi
 }
@@ -409,37 +464,47 @@ perform_offsite_copy() {
         log "This suggests the backup process did not complete successfully."
         
         # For manual runs, continue anyway with a warning
-        if [ -t 0 ]; then  # Check if script is running interactively
+        if [ "$IS_INTERACTIVE" = true ]; then
             log "Running in interactive mode. Continuing with offsite copy despite missing flag file."
         else
             log "Running in non-interactive mode. Exiting without performing offsite copy."
             if [ "$FORCE_MODE" = false ]; then
                 log "Use -f flag to override this check."
-                exit 0
+                return 1
             fi
             log "Force mode enabled. Continuing with offsite copy despite missing flag file."
         fi
     fi
     
     # Create offsite directories
-    mkdir -p "${OFFSITE_SQL_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "${OFFSITE_STATISTICS_DIR}" "${OFFSITE_AUTHORITY_DIR}"
+    for dir in "${OFFSITE_SQL_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "${OFFSITE_STATISTICS_DIR}" "${OFFSITE_AUTHORITY_DIR}"; do
+        if ! mkdir -p "$dir" 2>/dev/null; then
+            log "ERROR: Failed to create directory $dir"
+            return 1
+        fi
+    done
     
-    local copy_sql_success=false
-    local copy_asset_success=false
-    local copy_stats_success=false
-    local copy_auth_success=false
+    local copy_failed=false
     
     # Copy SQL backups to offsite location
-    copy_to_offsite "${SQL_DIR}" "${OFFSITE_SQL_DIR}" "SQL backups" && copy_sql_success=true
+    if ! copy_to_offsite "${SQL_DIR}" "${OFFSITE_SQL_DIR}" "SQL backups"; then
+        copy_failed=true
+    fi
     
     # Copy assetstore backups to offsite location
-    copy_to_offsite "${ASSETSTORE_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "Assetstore backups" && copy_asset_success=true
+    if ! copy_to_offsite "${ASSETSTORE_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "Assetstore backups"; then
+        copy_failed=true
+    fi
     
     # Copy statistics backups to offsite location
-    copy_to_offsite "${STATISTICS_DIR}" "${OFFSITE_STATISTICS_DIR}" "Statistics backups" && copy_stats_success=true
+    if ! copy_to_offsite "${STATISTICS_DIR}" "${OFFSITE_STATISTICS_DIR}" "Statistics backups"; then
+        copy_failed=true
+    fi
     
     # Copy authority backups to offsite location
-    copy_to_offsite "${AUTHORITY_DIR}" "${OFFSITE_AUTHORITY_DIR}" "Authority backups" && copy_auth_success=true
+    if ! copy_to_offsite "${AUTHORITY_DIR}" "${OFFSITE_AUTHORITY_DIR}" "Authority backups"; then
+        copy_failed=true
+    fi
     
     # Clean up old offsite backups
     cleanup_offsite_backups
@@ -452,11 +517,11 @@ perform_offsite_copy() {
         log "Dry run: would remove success flag file: $SUCCESS_FLAG_FILE"
     fi
     
-    if [ "$copy_sql_success" = true ] && [ "$copy_asset_success" = true ] && [ "$copy_stats_success" = true ] && [ "$copy_auth_success" = true ]; then
+    if [ "$copy_failed" = false ]; then
         log "All offsite copy operations completed successfully."
         return 0
     else
-        log "One or more offsite copy operations failed."
+        log "ERROR: One or more offsite copy operations failed."
         return 1
     fi
 }
@@ -498,8 +563,7 @@ done
 # Get current user
 CURRENT_USER=$(id -un)
 
-# Determine if running interactively
-IS_INTERACTIVE=false
+# Determine if running interactively (must be done BEFORE any functions are called)
 if [ -t 0 ]; then
     IS_INTERACTIVE=true
 fi
@@ -529,12 +593,24 @@ log "========== Starting DSpace Backup Process (User: ${CURRENT_USER}) =========
 # Execute operations based on current user
 if [ "$CURRENT_USER" = "$BACKUP_USER" ]; then
     # Running as backup user (dspace) - perform backup operations
-    perform_backup
-    backup_exit_code=$?
-    
-    log "========== Backup Process Completed (User: ${CURRENT_USER}) =========="
-    if [ "$IS_INTERACTIVE" = true ]; then
-        echo "Backup process completed. See log file for details: ${LOG_FILE}"
+    if perform_backup; then
+        backup_exit_code=0
+        log "========== Backup Process COMPLETED SUCCESSFULLY (User: ${CURRENT_USER}) =========="
+        if [ "$IS_INTERACTIVE" = true ]; then
+            echo ""
+            echo "SUCCESS: Backup process completed successfully!"
+            echo "Log file: ${LOG_FILE}"
+            echo ""
+        fi
+    else
+        backup_exit_code=1
+        log "========== Backup Process FAILED (User: ${CURRENT_USER}) =========="
+        if [ "$IS_INTERACTIVE" = true ]; then
+            echo ""
+            echo "ERROR: Backup process failed! Check the log file for details."
+            echo "Log file: ${LOG_FILE}"
+            echo ""
+        fi
     fi
     
     # Compress log file
@@ -551,12 +627,24 @@ if [ "$CURRENT_USER" = "$BACKUP_USER" ]; then
     
 elif [ "$CURRENT_USER" = "$OFFSITE_USER" ]; then
     # Running as offsite user (seyediana1) - perform offsite operations
-    perform_offsite_copy
-    offsite_exit_code=$?
-    
-    log "========== Offsite Copy Process Completed (User: ${CURRENT_USER}) =========="
-    if [ "$IS_INTERACTIVE" = true ]; then
-        echo "Offsite copy process completed. See log file for details: ${LOG_FILE}"
+    if perform_offsite_copy; then
+        offsite_exit_code=0
+        log "========== Offsite Copy Process COMPLETED SUCCESSFULLY (User: ${CURRENT_USER}) =========="
+        if [ "$IS_INTERACTIVE" = true ]; then
+            echo ""
+            echo "SUCCESS: Offsite copy process completed successfully!"
+            echo "Log file: ${LOG_FILE}"
+            echo ""
+        fi
+    else
+        offsite_exit_code=1
+        log "========== Offsite Copy Process FAILED (User: ${CURRENT_USER}) =========="
+        if [ "$IS_INTERACTIVE" = true ]; then
+            echo ""
+            echo "ERROR: Offsite copy process failed! Check the log file for details."
+            echo "Log file: ${LOG_FILE}"
+            echo ""
+        fi
     fi
     
     # Compress log file
