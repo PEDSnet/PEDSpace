@@ -567,4 +567,18 @@ sudo -u dspace bash;
             <min>0</min>
         </rightCardinality>
     </type>
+
+    <!-- Code to DQCheck -->
+    <type>
+        <leftType>Code</leftType>
+        <rightType>DQCheck</rightType>
+        <leftwardType>isDQCheckOfCode</leftwardType>
+        <rightwardType>isCodeOfDQCheck</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
 </relationships>
