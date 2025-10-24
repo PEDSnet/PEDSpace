@@ -1,5 +1,6 @@
 import {
   AsyncPipe,
+  NgFor,
   NgIf,
 } from '@angular/common';
 import {
@@ -7,12 +8,17 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { BehaviorSubject } from 'rxjs';
+import { BrowseDefinitionDataService } from 'src/app/core/browse/browse-definition-data.service';
+import { BrowseService } from 'src/app/core/browse/browse.service';
 import { Item } from 'src/app/core/shared/item.model';
 import { MetadataFieldWrapperComponent } from 'src/app/shared/metadata-field-wrapper/metadata-field-wrapper.component';
 
 /**
  * Component that displays funder information with optional grant details
+ * This component renders dc.contributor with browse links and appends grant information
  */
 @Component({
   selector: 'ds-item-page-funder-field',
@@ -21,9 +27,11 @@ import { MetadataFieldWrapperComponent } from 'src/app/shared/metadata-field-wra
   standalone: true,
   imports: [
     NgIf,
+    NgFor,
     AsyncPipe,
     TranslateModule,
     MetadataFieldWrapperComponent,
+    RouterLink,
   ],
 })
 export class ItemPageFunderFieldComponent implements OnInit {
@@ -38,60 +46,89 @@ export class ItemPageFunderFieldComponent implements OnInit {
   @Input() label = 'item.preview.dc.contributor';
 
   /**
-   * The generated funder text
+   * The funder metadata values from dc.contributor
    */
-  funderText: string;
+  funders: any[] = [];
+
+  /**
+   * The grant information from local.contributor.grant
+   */
+  grantInfo: string | null = null;
 
   /**
    * Whether this includes PCORI-specific disclaimer
    */
   hasPCORIDisclaimer = false;
 
+  /**
+   * Browse definition for funders (if available)
+   */
+  browseDefinition$ = new BehaviorSubject<any>(null);
+
+  constructor(
+    private browseDefinitionDataService: BrowseDefinitionDataService,
+    private browseService: BrowseService,
+  ) {}
+
   ngOnInit(): void {
-    this.generateFunderText();
+    this.loadFunderData();
+    this.loadBrowseDefinition();
   }
 
   /**
-   * Generate funder text from item metadata
+   * Load funder and grant data from item metadata
    */
-  generateFunderText(): void {
+  loadFunderData(): void {
     if (!this.item) {
       return;
     }
 
     const metadata = this.item.metadata;
 
-    // Extract funder from dc.contributor
-    const funderField = metadata['dc.contributor']?.[0];
-    if (!funderField) {
-      return;
-    }
-
-    const funderName = funderField.value;
+    // Extract funders from dc.contributor
+    const funderFields = metadata['dc.contributor'] || [];
+    this.funders = funderFields.map((field: any) => field.value);
 
     // Extract grant information from local.contributor.grant
     const grantField = metadata['local.contributor.grant']?.[0];
-    const grantInfo = grantField ? grantField.value : null;
+    this.grantInfo = grantField ? grantField.value : null;
 
-    // Build the funder statement
-    let statement = `This research was made possible through the generous support of the ${funderName}`;
+    // Check if any funder is PCORI
+    this.hasPCORIDisclaimer = this.funders.some(funder => 
+      funder.toLowerCase().includes('patient-centered outcomes research institute') || 
+      funder.toLowerCase().includes('pcori')
+    );
+  }
 
-    // Check if this is a PCORI-funded project
-    const isPCORI = funderName.toLowerCase().includes('patient-centered outcomes research institute') || 
-                    funderName.toLowerCase().includes('pcori');
+  /**
+   * Load browse definition for dc.contributor
+   */
+  loadBrowseDefinition(): void {
+    // Try to load browse definition for contributor field
+    this.browseDefinitionDataService.findByFields(['dc.contributor']).subscribe(
+      (browseDefRD) => {
+        if (browseDefRD?.payload) {
+          this.browseDefinition$.next(browseDefRD.payload);
+        }
+      }
+    );
+  }
 
-    if (grantInfo) {
-      statement += ` ${grantInfo}`;
+  /**
+   * Get query params for browse link
+   */
+  getQueryParams(value: string) {
+    const browseDefinition = this.browseDefinition$.getValue();
+    if (!browseDefinition) {
+      return {};
     }
+    return { value: value };
+  }
 
-    statement += '.';
-
-    // Add PCORI disclaimer if applicable
-    if (isPCORI) {
-      this.hasPCORIDisclaimer = true;
-      statement += ' The statements presented in this work are solely the responsibility of the author(s) and do not necessarily represent the views of PCORI, its Board of Governors, or its Methodology Committee.';
-    }
-
-    this.funderText = statement;
+  /**
+   * Check if we have a browse definition
+   */
+  hasBrowseDefinition(): boolean {
+    return this.browseDefinition$.getValue() !== null;
   }
 }

@@ -1,7 +1,24 @@
 <ds-metadata-field-wrapper [label]="label | translate">
-  <div class="funder-wrapper" *ngIf="funderText">
-    <div class="funder-text" [class.pcori-disclaimer]="hasPCORIDisclaimer">
-      {{ funderText }}
+  <div class="funder-wrapper" *ngIf="funders && funders.length > 0">
+    <div class="funder-text">
+      This research was made possible through the generous support of 
+      <ng-container *ngFor="let funder of funders; let last = last">
+        <ng-container *ngIf="hasBrowseDefinition(); else plainFunder">
+          <a class="ds-browse-link"
+             [routerLink]="['/browse', browseDefinition$.getValue()?.id]"
+             [queryParams]="getQueryParams(funder)">{{ funder }}</a>
+        </ng-container>
+        <ng-template #plainFunder>
+          <span>{{ funder }}</span>
+        </ng-template>
+        <ng-container *ngIf="!last">, </ng-container>
+      </ng-container>
+      <ng-container *ngIf="grantInfo"> {{ grantInfo }}</ng-container>.
+      <ng-container *ngIf="hasPCORIDisclaimer">
+        <span class="pcori-disclaimer">
+          The statements presented in this work are solely the responsibility of the author(s) and do not necessarily represent the views of PCORI, its Board of Governors, or its Methodology Committee.
+        </span>
+      </ng-container>
     </div>
   </div>
 </ds-metadata-field-wrapper>
