@@ -629,22 +629,8 @@
                     Example:
                     "The results of a Source and Concept Vocabularies check using the Single Site, Exploratory, Cross-Sectional parameters. This check investigates SNOMED mappings to ICD codes for epilepsy diagnoses. This check was run to analyze data being prepared for a grant proposal to the CDC."</hint>
                     <required>This field is required.</required>
-                    <visibility>workflow</visibility>
                 </field>
             </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>description</dc-element>
-                    <dc-qualifier>abstract</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Check Summary</label>
-                    <type-bind>network</type-bind>
-                    <input-type>textarea</input-type>
-                    <hint>In 2-3 brief sentences, enter a description of the network check and the parameters and thresholds used.</hint>
-                    <required>This field is required.</required>
-                </field>
-            </row> 
             <row>
                 <field>
                     <dc-schema>local</dc-schema>
