@@ -2533,40 +2533,78 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
         <!-- Form which defines the metadata page/section for depositing Person Entities -->
         <form name="personStep">
             <row>
-                <relation-field>
-                    <relationship-type>isPublicationOfAuthor</relationship-type>
-                    <search-configuration>publication</search-configuration>
-                    <label>Publication</label>
-                    <hint>import a publicaton</hint>
-                    <externalsources>pubmed</externalsources>
-                </relation-field>
-            </row>
-            <row>
                 <field>
-                    <dc-schema>person</dc-schema>
-                    <dc-element>familyName</dc-element>
-                    <label>Last name</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the last name of the person</hint>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <repeatable>false</repeatable>
+                    <label>Name</label>
+                    <input-type>name</input-type>
+                    <hint>Enter the name of the parent partner.</hint>
+                    <required>This field is required.</required>
                 </field>
             </row>
             <row>
                 <field>
-                    <dc-schema>person</dc-schema>
-                    <dc-element>givenName</dc-element>
-                    <label>First name</label>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>startDate</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Year Partnership Began</label>
+                    <style>col-sm-4</style>
                     <input-type>onebox</input-type>
-                    <hint>Enter the first name of the person</hint>
+                    <hint>Enter the date or year the individual began being a parent partner.</hint>
+                    <required>This field is required.</required>
+                </field>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>endDate</dc-element>
+                    <repeatable>false</repeatable>
+                    <label>Year Partnership Ended</label>
+                    <style>col-sm-8</style>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the year the individual stopped being a parent partner. If currently a parent partner, enter "Current"</hint>
+                    <required>This field is required.</required>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>email</dc-element>
+                    <repeatable>false</repeatable>
                     <label>Email</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the email of the person</hint>
+                    <hint>Please provide the email contact information for the parent partner</hint>
                 </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>committee</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Committee Membership</label>
+                    <input-type value-pairs-name="CommitteeType">dropdown</input-type>
+                    <hint>Please select the committee this person is part of.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <repeatable>false</repeatable>
+                    <label>Bio</label>
+                    <input-type>textbox</input-type>
+                    <hint>Please provide a brief bio. You might include information about you, how you became involved with PEDSnet, and what makes you a passionate parent partner.</hint>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isStudyofPerson</relationship-type>
+                    <search-configuration>study</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Studies</label>
+                    <hint>Select the studies represented by the parent partner.</hint>
+                </relation-field>
             </row>
             <!--     <row>-->
             <!--     <field>-->
@@ -2578,7 +2616,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             <!--       <hint>Enter the orcid of the person</hint>-->
             <!--     </field>-->
             <!--     </row>-->
-            <row>
+            <!-- <row>
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>birthDate</dc-element>
@@ -2586,7 +2624,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <input-type>date</input-type>
                     <hint>Enter the birth date of the person</hint>
                 </field>
-            </row>
+            </row> -->
             <!--            <row>-->
             <!--                <field>-->
             <!--                    <dc-schema>person</dc-schema>-->
@@ -2597,7 +2635,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             <!--                    <hint>Enter the staff id of the person</hint>-->
             <!--                </field>-->
             <!--            </row>-->
-            <row>
+           <!--  <row>
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>jobTitle</dc-element>
@@ -2605,7 +2643,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <input-type>onebox</input-type>
                     <hint>Enter the job title of the person</hint>
                 </field>
-            </row>
+            </row> -->
         </form>
         <!-- Form which defines the metadata page/section for depositing Project Entities -->
        <form name="projectStep">
@@ -3800,6 +3838,20 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             <pair>
                 <displayed-value>Was not formally reviewed.</displayed-value>
                 <stored-value>No Formal Review</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="CommitteeType" dc-term="contributor">
+            <pair>
+                <displayed-value>Data Committee</displayed-value>
+                <stored-value>Data Committee</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Research Committee</displayed-value>
+                <stored-value>Research Committee</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Steering Committee</displayed-value>
+                <stored-value>Steering Committee</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="PhenoChar" dc-term="subject">

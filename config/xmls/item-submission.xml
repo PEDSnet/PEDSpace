@@ -419,8 +419,8 @@
         <submission-process name="Person">
             <step id="collection"/>
             <step id="personStep"/>
-            <step id="upload"/>
-            <step id="license"/>
+            <!-- <step id="upload"/>
+            <step id="license"/>-->
         </submission-process>
 
         <!--
@@ -430,8 +430,8 @@
         <submission-process name="OrgUnit">
             <step id="collection"/>
             <step id="orgUnitStep"/>
-            <step id="upload"/>
-            <step id="license"/>
+            <!-- <step id="upload"/>
+            <step id="license"/>-->
         </submission-process>
 
 
