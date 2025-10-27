@@ -2537,7 +2537,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
                     <repeatable>false</repeatable>
-                    <label>Name</label>
+                    <label>Parent Name</label>
                     <input-type>name</input-type>
                     <hint>Enter the name of the parent partner.</hint>
                     <required>This field is required.</required>
@@ -4426,6 +4426,10 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             <pair>
                 <displayed-value>Coordinating Center Intervention</displayed-value>
                 <stored-value>Coordinating Center Intervention</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Additional DQ Investigation</displayed-value>
+                <stored-value>Additional DQ Investigation</stored-value>
             </pair>
             <pair>
                 <displayed-value>No Interventions</displayed-value>
