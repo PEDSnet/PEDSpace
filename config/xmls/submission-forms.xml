@@ -623,7 +623,6 @@
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Check Summary</label>
-                    <type-bind>study</type-bind>
                     <input-type>textarea</input-type>
                     <hint>In 2-3 brief sentences, list the parameters of the check you used and the purpose of the check. 
                     Example:
