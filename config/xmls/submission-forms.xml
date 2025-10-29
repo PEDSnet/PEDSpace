@@ -613,7 +613,7 @@
                     <type-bind>study</type-bind>
                     <input-type value-pairs-name="DQEval">list</input-type>
                     <hint>Select the parameters applied to your check.</hint>
-                    <required>Parameters must be selected.</required>
+                    <required></required>
                 </field>
             </row>
             <row>
@@ -702,7 +702,7 @@
                     <type-bind>network</type-bind>
                     <input-type value-pairs-name="DQDomain">dropdown</input-type>
                     <hint>Select the domains analyzed in the network.</hint>
-                    <required>A selection is required.</required>
+                    <required></required>
                 </field>
             </row>    
         </form>
@@ -761,7 +761,6 @@
                     <search-configuration>dqcheck</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Data Quality Check Linkage</label>
-                    <type-bind>study</type-bind>
                     <hint>Link to the data quality check record which corresponds to the check run to produce these results.</hint>
                     <required></required>
                     <visibility>workflow</visibility>
@@ -773,7 +772,6 @@
                     <search-configuration>study</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Study Record Linkage</label>
-                    <type-bind>study</type-bind>
                     <hint>Link to the study record which corresponds to the investigation.</hint>
                     <required></required>
                     <visibility>workflow</visibility>
