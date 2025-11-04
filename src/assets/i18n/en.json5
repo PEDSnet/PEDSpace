@@ -6575,6 +6575,8 @@
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.DQCheck": "Local Data Quality Checks ({{ count }})",
 
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.DQResult": "Local Data Quality Results ({{ count }})",
+
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isAuthorOfPublication": "Local Authors ({{ count }})",
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isChildOrgUnitOf": "Search for Institutions",
@@ -6744,6 +6746,8 @@
   "submission.sections.describe.relationship-lookup.title.dqCheck": "Data Quality Checks",
 
   "submission.sections.describe.relationship-lookup.title.DQCheck": "Data Quality Checks",
+
+  "submission.sections.describe.relationship-lookup.title.DQResult": "Data Quality Results",
 
   "submission.sections.describe.relationship-lookup.title.Funding Agency": "Funding Agency",
 
