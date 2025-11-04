@@ -4931,7 +4931,7 @@
         <property name="defaultFilterQueries">
             <list>
                 <value>search.resourcetype:Item AND latestVersion:true AND
-                    entityType_keyword:ConceptSet</value>
+                    entityType_keyword:DQResult</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>

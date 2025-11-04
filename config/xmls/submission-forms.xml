@@ -780,7 +780,7 @@
             <row>
                 <relation-field>
                     <relationship-type>isDQResultOfDQResult</relationship-type>
-                    <search-configuration>dqresult-relationships</search-configuration>
+                    <search-configuration>dqresult</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Related Data Quality Results</label>
                     <hint>Link to other data quality result records that are related to this result.</hint>
