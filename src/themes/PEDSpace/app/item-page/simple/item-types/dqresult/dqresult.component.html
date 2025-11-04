@@ -49,10 +49,6 @@
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.dqcheck.domain']" 
         [separator]="'<br>'" [label]="'Domain'"></ds-generic-item-page-field>
 
-      <ds-related-items class="mr-3" [parentItem]="object" [relationType]="'isDQResultOfDQResult'"
-        [label]="'Related Data Quality Results'">
-      </ds-related-items>
-
       <ds-generic-item-page-field class="publisher mt-auto" [renderAsButton]="false" [item]="object"
         [fields]="['dc.publisher']" [label]="'Publisher'" [isPublisher]="true" ></ds-generic-item-page-field>
     </div>
@@ -91,6 +87,10 @@
 
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.other']" [separator]="' '"
         [label]="'browse.metadata.vocab'"></ds-generic-item-page-field>
+
+      <ds-related-items [parentItem]="object" [relationType]="'isDQResultOfDQResult'"
+        [label]="'Related Data Quality Results'">
+      </ds-related-items>
 
       <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfDQResult'"
         [label]="'relationships.isDocumentationOf' | translate">
