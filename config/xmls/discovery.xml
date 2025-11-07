@@ -3320,6 +3320,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isAuthorOfPublication.latestForDiscovery</value>
+                <value>relation.isAuthorOfPublication</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3331,6 +3332,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isProjectOfPublication.latestForDiscovery</value>
+                <value>relation.isProjectOfPublication</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3342,6 +3344,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfPublication.latestForDiscovery</value>
+                <value>relation.isOrgUnitOfPublication</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3368,6 +3371,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfStudy.latestForDiscovery</value>
+                <value>relation.isPersonOfStudy</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3380,6 +3384,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfPhenotype.latestForDiscovery</value>
+                <value>relation.isPersonOfPhenotype</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3392,6 +3397,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfDQCheck.latestForDiscovery</value>
+                <value>relation.isPersonOfDQCheck</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3404,6 +3410,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfJournalIssue.latestForDiscovery</value>
+                <value>relation.isPublicationOfJournalIssue</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3415,6 +3422,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isJournalOfPublication.latestForDiscovery</value>
+                <value>relation.isJournalOfPublication</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3428,6 +3436,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfDocumentation.latestForDiscovery</value>
+                <value>relation.isDocumentationOfDocumentation</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3453,6 +3462,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfOrgUnit.latestForDiscovery</value>
+                <value>relation.isDocumentationOfOrgUnit</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3466,6 +3476,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfPerson.latestForDiscovery</value>
+                <value>relation.isDocumentationOfPerson</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3478,6 +3489,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfDocumentation.latestForDiscovery</value>
+                <value>relation.isPersonOfDocumentation</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3491,6 +3503,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfStudy.latestForDiscovery</value>
+                <value>relation.isDocumentationOfStudy</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3503,6 +3516,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfDocumentation.latestForDiscovery</value>
+                <value>relation.isStudyOfDocumentation</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3515,6 +3529,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfOrgUnit.latestForDiscovery</value>
+                <value>relation.isStudyOfOrgUnit</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3528,6 +3543,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfConceptSet.latestForDiscovery</value>
+                <value>relation.isDocumentationOfConceptSet</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3540,6 +3556,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfDocumentation.latestForDiscovery</value>
+                <value>relation.isConceptSetOfDocumentation</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3552,6 +3569,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfOrgUnit.latestForDiscovery</value>
+                <value>relation.isConceptSetOfOrgUnit</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3565,6 +3583,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfPhenotype.latestForDiscovery</value>
+                <value>relation.isDocumentationOfPhenotype</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3577,6 +3596,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfDocumentation.latestForDiscovery</value>
+                <value>relation.isPhenotypeOfDocumentation</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3590,6 +3610,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfDQCheck.latestForDiscovery</value>
+                <value>relation.isDocumentationOfDQCheck</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3847,6 +3868,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQCheckOfDocumentation.latestForDiscovery</value>
+                <value>relation.isDQCheckOfDocumentation</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3859,6 +3881,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQCheckOfOrgUnit.latestForDiscovery</value>
+                <value>relation.isDQCheckOfOrgUnit</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3871,6 +3894,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQCheckOfPerson.latestForDiscovery</value>
+                <value>relation.isDQCheckOfPerson</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3883,6 +3907,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQCheckOfPhenotype.latestForDiscovery</value>
+                <value>relation.isDQCheckOfPhenotype</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3895,6 +3920,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQCheckOfDQResult.latestForDiscovery</value>
+                <value>relation.isDQCheckOfDQResult</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -3907,6 +3933,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfDQResult.latestForDiscovery</value>
+                <value>relation.isDocumentationOfDQResult</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4017,6 +4044,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfPerson.latestForDiscovery</value>
+                <value>relation.isOrgUnitOfPerson</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4028,6 +4056,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isProjectOfPerson.latestForDiscovery</value>
+                <value>relation.isProjectOfPerson</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4039,6 +4068,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfAuthor.latestForDiscovery</value>
+                <value>relation.isPublicationOfAuthor</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4107,6 +4137,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfOrgUnit.latestForDiscovery</value>
+                <value>relation.isPersonOfOrgUnit</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4118,6 +4149,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isProjectOfOrgUnit.latestForDiscovery</value>
+                <value>relation.isProjectOfOrgUnit</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4129,6 +4161,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfOrgUnit.latestForDiscovery</value>
+                <value>relation.isPublicationOfOrgUnit</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4182,6 +4215,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfJournalIssue.latestForDiscovery</value>
+                <value>relation.isPublicationOfJournalIssue</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4204,6 +4238,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isIssueOfJournalVolume.latestForDiscovery</value>
+                <value>relation.isIssueOfJournalVolume</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4215,6 +4250,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isJournalOfVolume.latestForDiscovery</value>
+                <value>relation.isJournalOfVolume</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4256,6 +4292,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isVolumeOfJournal.latestForDiscovery</value>
+                <value>relation.isVolumeOfJournal</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4278,6 +4315,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfProject.latestForDiscovery</value>
+                <value>relation.isOrgUnitOfProject</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4289,6 +4327,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfProject.latestForDiscovery</value>
+                <value>relation.isPersonOfProject</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4300,6 +4339,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfProject.latestForDiscovery</value>
+                <value>relation.isPublicationOfProject</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4311,6 +4351,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isContributorOfPublication.latestForDiscovery</value>
+                <value>relation.isContributorOfPublication</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4322,6 +4363,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfContributor.latestForDiscovery</value>
+                <value>relation.isPublicationOfContributor</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4333,6 +4375,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isFundingAgencyOfProject.latestForDiscovery</value>
+                <value>relation.isFundingAgencyOfProject</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4344,6 +4387,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isProjectOfFundingAgency.latestForDiscovery</value>
+                <value>relation.isProjectOfFundingAgency</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -4769,6 +4813,7 @@
                 <ref bean="searchFilterSubjectMedTermChar" />
                 <ref bean="searchFilterIdentifier" />
                 <ref bean="searchFilterIsPersonOfConceptSetRelation" />
+                <ref bean="searchFilterIsOrgUnitOfConceptSetRelation" />
                 <ref bean="searchFilterIsStudyOfConceptSetRelation" />
                 <ref bean="searchFilterIsPhenotypeOfConceptSetRelation" />
                 <ref bean="searchFilterIsDocumentationOfConceptSetRelation" />
@@ -6270,8 +6315,8 @@
             queries done by discovery for this configuration -->
         <property name="defaultFilterQueries">
             <list>
-                <value>search.resourcetype:Item</value>
-                <value>dspace.entity.type:Code</value>
+                <value>search.resourcetype:Item AND latestVersion:true AND entityType_keyword:Code</value>
+                <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>
         <!--The
@@ -6345,7 +6390,8 @@
             queries done by discovery for this configuration -->
         <property name="defaultFilterQueries">
             <list>
-                <value>search.resourcetype:Item</value>
+                <value>search.resourcetype:Item AND entityType_keyword:Code</value>
+                <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>
         <!--The
@@ -6371,6 +6417,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfPhenotype.latestForDiscovery</value>
+                <value>relation.isConceptSetOfPhenotype</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6382,6 +6429,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfStudy.latestForDiscovery</value>
+                <value>relation.isConceptSetOfStudy</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6393,6 +6441,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfConceptSet.latestForDiscovery</value>
+                <value>relation.isStudyOfConceptSet</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6404,6 +6453,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfPerson.latestForDiscovery</value>
+                <value>relation.isStudyOfPerson</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6415,6 +6465,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfPhenotype.latestForDiscovery</value>
+                <value>relation.isStudyOfPhenotype</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6426,6 +6477,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfConceptSet.latestForDiscovery</value>
+                <value>relation.isPhenotypeOfConceptSet</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6437,6 +6489,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfPerson.latestForDiscovery</value>
+                <value>relation.isPhenotypeOfPerson</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6448,6 +6501,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfStudy.latestForDiscovery</value>
+                <value>relation.isPhenotypeOfStudy</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6459,6 +6513,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfConceptSet.latestForDiscovery</value>
+                <value>relation.isPersonOfConceptSet</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6470,6 +6525,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfPerson.latestForDiscovery</value>
+                <value>relation.isConceptSetOfPerson</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6482,6 +6538,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfOrgUnit.latestForDiscovery</value>
+                <value>relation.isDQResultOfOrgUnit</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6493,6 +6550,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfDQResult.latestForDiscovery</value>
+                <value>relation.isOrgUnitOfDQResult</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6504,6 +6562,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfDQCheck.latestForDiscovery</value>
+                <value>relation.isOrgUnitOfDQCheck</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6515,6 +6574,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfOrgUnit.latestForDiscovery</value>
+                <value>relation.isOrgUnitOfOrgUnit</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6526,6 +6586,19 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfPhenotype.latestForDiscovery</value>
+                <value>relation.isOrgUnitOfPhenotype</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+    <bean id="searchFilterIsOrgUnitOfConceptSetRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="isOrgUnitOfConceptSet" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isOrgUnitOfConceptSet.latestForDiscovery</value>
+                <value>relation.isOrgUnitOfConceptSet</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6539,6 +6612,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfPerson.latestForDiscovery</value>
+                <value>relation.isDQResultOfPerson</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6550,6 +6624,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfDQResult.latestForDiscovery</value>
+                <value>relation.isPersonOfDQResult</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6561,6 +6636,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfPerson.latestForDiscovery</value>
+                <value>relation.isPersonOfPerson</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6574,6 +6650,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfConceptSet.latestForDiscovery</value>
+                <value>relation.isDQResultOfConceptSet</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6585,6 +6662,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfDQResult.latestForDiscovery</value>
+                <value>relation.isConceptSetOfDQResult</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6596,6 +6674,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfDQCheck.latestForDiscovery</value>
+                <value>relation.isConceptSetOfDQCheck</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6607,6 +6686,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfConceptSet.latestForDiscovery</value>
+                <value>relation.isConceptSetOfConceptSet</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6620,6 +6700,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfStudy.latestForDiscovery</value>
+                <value>relation.isDQResultOfStudy</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6631,6 +6712,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfDQCheck.latestForDiscovery</value>
+                <value>relation.isStudyOfDQCheck</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6642,6 +6724,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfDQResult.latestForDiscovery</value>
+                <value>relation.isStudyOfDQResult</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6655,6 +6738,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfDQCheck.latestForDiscovery</value>
+                <value>relation.isDQResultOfDQCheck</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6667,6 +6751,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfDocumentation.latestForDiscovery</value>
+                <value>relation.isDQResultOfDocumentation</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6680,6 +6765,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfPhenotype.latestForDiscovery</value>
+                <value>relation.isDQResultOfPhenotype</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6691,6 +6777,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfDQResult.latestForDiscovery</value>
+                <value>relation.isPhenotypeOfDQResult</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6702,6 +6789,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfDQCheck.latestForDiscovery</value>
+                <value>relation.isPhenotypeOfDQCheck</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6715,6 +6803,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfDQResult.latestForDiscovery</value>
+                <value>relation.isDQResultOfDQResult</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6729,6 +6818,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfCode.latestForDiscovery</value>
+                <value>relation.isCodeOfCode</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6742,6 +6832,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfCode.latestForDiscovery</value>
+                <value>relation.isConceptSetOfCode</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6754,6 +6845,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfConceptSet.latestForDiscovery</value>
+                <value>relation.isCodeOfConceptSet</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6767,6 +6859,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfCode.latestForDiscovery</value>
+                <value>relation.isStudyOfCode</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6779,6 +6872,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfStudy.latestForDiscovery</value>
+                <value>relation.isCodeOfStudy</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6792,6 +6886,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfCode.latestForDiscovery</value>
+                <value>relation.isDocumentationOfCode</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6804,6 +6899,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfDocumentation.latestForDiscovery</value>
+                <value>relation.isCodeOfDocumentation</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6817,6 +6913,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfCode.latestForDiscovery</value>
+                <value>relation.isPersonOfCode</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6829,6 +6926,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfPerson.latestForDiscovery</value>
+                <value>relation.isCodeOfPerson</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6842,6 +6940,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfCode.latestForDiscovery</value>
+                <value>relation.isOrgUnitOfCode</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6854,6 +6953,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfOrgUnit.latestForDiscovery</value>
+                <value>relation.isCodeOfOrgUnit</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6867,6 +6967,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfCode.latestForDiscovery</value>
+                <value>relation.isPhenotypeOfCode</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6879,6 +6980,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfPhenotype.latestForDiscovery</value>
+                <value>relation.isCodeOfPhenotype</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6892,6 +6994,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQCheckOfCode.latestForDiscovery</value>
+                <value>relation.isDQCheckOfCode</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6904,6 +7007,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfDQCheck.latestForDiscovery</value>
+                <value>relation.isCodeOfDQCheck</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6917,6 +7021,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfCode.latestForDiscovery</value>
+                <value>relation.isDQResultOfCode</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
@@ -6929,6 +7034,7 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfDQResult.latestForDiscovery</value>
+                <value>relation.isCodeOfDQResult</value>
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
