@@ -126,11 +126,6 @@
 <div class="mt-5 w-100">
   <ds-tabbed-related-entities-search [item]="object" [relationTypes]="[
                                         {
-                                          label: 'isOrgUnitOfConceptSet',
-                                          filter: 'isOrgUnitOfConceptSet',
-                                          configuration: 'conceptset-relationships'
-                                        },
-                                        {
                                           label: 'isOrgUnitOfStudy',
                                           filter: 'isOrgUnitOfStudy',
                                           configuration: 'study-relationships'
@@ -141,9 +136,14 @@
                                           configuration: 'documentation-relationships'
                                         },
                                         {
-                                          label: 'isOrgUnitOfPerson',
-                                          filter: 'isOrgUnitOfPerson',
-                                          configuration: 'person-relationships'
+                                          label: 'isOrgUnitOfPhenotype',
+                                          filter: 'isOrgUnitOfPhenotype',
+                                          configuration: 'phenotype-relationships'
+                                        },
+                                        {
+                                          label: 'isOrgUnitOfConceptSet',
+                                          filter: 'isOrgUnitOfConceptSet',
+                                          configuration: 'conceptset-relationships'
                                         },]">
   </ds-tabbed-related-entities-search>
 </div>

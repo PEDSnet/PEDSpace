@@ -3238,6 +3238,8 @@
   "item.page.relationships.isOrgUnitOfStudy": "Studies",
 
   "item.page.relationships.isOrgUnitOfConceptSet": "Concept Sets",
+
+  "item.page.relationships.isOrgUnitOfPhenotype": "Phenotypes",
   
   "item.page.relationships.isDocumentationOfDocumentation": "Related Documentation",
 
