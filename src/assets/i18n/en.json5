@@ -3236,6 +3236,8 @@
   "item.page.relationships.isOrgUnitOfProject": "Research Projects",
 
   "item.page.relationships.isOrgUnitOfStudy": "Studies",
+
+  "item.page.relationships.isOrgUnitOfConceptSet": "Concept Sets",
   
   "item.page.relationships.isDocumentationOfDocumentation": "Related Documentation",
 

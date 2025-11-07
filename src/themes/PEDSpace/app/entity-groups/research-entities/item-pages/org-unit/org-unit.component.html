@@ -126,6 +126,11 @@
 <div class="mt-5 w-100">
   <ds-tabbed-related-entities-search [item]="object" [relationTypes]="[
                                         {
+                                          label: 'isOrgUnitOfConceptSet',
+                                          filter: 'isOrgUnitOfConceptSet',
+                                          configuration: 'conceptset-relationships'
+                                        },
+                                        {
                                           label: 'isOrgUnitOfStudy',
                                           filter: 'isOrgUnitOfStudy',
                                           configuration: 'study-relationships'
