@@ -13,44 +13,50 @@
                     [placeholder]="'thumbnail.person.placeholder'">
       </ds-thumbnail>
     </ds-metadata-field-wrapper>
+    
+    <!-- Parent Name -->
+    <ds-generic-item-page-field [item]="object"
+      [fields]="['dc.title']"
+      [label]="'Parent Name'">
+    </ds-generic-item-page-field>
+    
+    <!-- Contact -->
     <ds-generic-item-page-field [item]="object"
       [fields]="['person.email']"
-      [label]="'person.page.email'">
+      [label]="'Contact'">
     </ds-generic-item-page-field>
+    
+    <!-- Years Active -->
     <ds-generic-item-page-field [item]="object"
-      [fields]="['person.birthDate']"
-      [label]="'person.page.birthdate'">
+      [isDateRange]="true"
+      [fields]="['project.startDate', 'project.endDate']"
+      [separator]="' - '"
+      [label]="'Years Active'">
     </ds-generic-item-page-field>
   </div>
   <div class="col-xs-12 col-md-7">
-    <ds-related-items
-      [parentItem]="object"
-      [relationType]="'isProjectOfPerson'"
-      [label]="'relationships.isProjectOf' | translate">
-    </ds-related-items>
-    <ds-related-items
-      [parentItem]="object"
-      [relationType]="'isOrgUnitOfPerson'"
-      [label]="'relationships.isOrgUnitOf' | translate">
-    </ds-related-items>
+    <!-- Bio -->
     <ds-generic-item-page-field [item]="object"
-      [fields]="['person.jobTitle']"
-      [label]="'person.page.jobtitle'">
+      [fields]="['dc.description']"
+      [label]="'Bio'">
     </ds-generic-item-page-field>
+    
+    <!-- Clinical Specialty Interest -->
     <ds-generic-item-page-field [item]="object"
-      [fields]="['person.familyName']"
-      [label]="'person.page.lastname'">
+      [renderAsButton]="true"
+      [fields]="['dc.subject.mesh']"
+      [separator]="' '"
+      [label]="'Clinical Specialty Interest'">
     </ds-generic-item-page-field>
+    
+    <!-- Committee -->
     <ds-generic-item-page-field [item]="object"
-      [fields]="['person.givenName']"
-      [label]="'person.page.firstname'">
+      [fields]="['local.contributor.committee']"
+      [label]="'Committee'">
     </ds-generic-item-page-field>
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.title']"
-      [label]="'person.page.name'">
-    </ds-generic-item-page-field>
+    
     <div>
-      <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']">
+      <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="link" tabindex="0">
         {{"item.page.link.full" | translate}}
       </a>
     </div>
@@ -58,8 +64,8 @@
   <div class="mt-5 w-100">
     <ds-tabbed-related-entities-search  [item]="object"
                                         [relationTypes]="[{
-                                          label: 'isAuthorOfPublication',
-                                          filter: 'isAuthorOfPublication',
+                                          label: 'Advised Studies',
+                                          filter: 'isPersonOfStudy',
                                           configuration: 'default-relationships'
                                         }]">
     </ds-tabbed-related-entities-search>
