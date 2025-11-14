@@ -2606,6 +2606,19 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 </field>
             </row>
             <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>mesh</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Clinical Specialty Interests</label>
+                    <input-type>tag</input-type> 
+                    <hint>Input terms that characterize your clinical specialty interests e.g., Nephrology, Population Characteristics, Cardiovascular Diseases. Reference https://meshb.nlm.nih.gov/ for terms.</hint>
+                    <required></required>
+                    <vocabulary>dc_subject_mesh</vocabulary>
+                </field>
+            </row>
+            <row>
                 <relation-field>
                     <relationship-type>isStudyofPerson</relationship-type>
                     <search-configuration>study</search-configuration>
