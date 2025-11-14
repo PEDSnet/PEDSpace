@@ -2209,6 +2209,16 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             </row>
             <row>
                 <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>created</dc-qualifier>
+                    <label>PEDSnet Site Since</label>
+                    <input-type>date</input-type>
+                    <hint>Enter the year that the institution joined the network.</hint>
+                </field>
+            </row>
+            <!-- <row>
+                <field>
                     <dc-schema>organization</dc-schema>
                     <dc-element>address</dc-element>
                     <dc-qualifier>addressCountry</dc-qualifier>
@@ -2216,7 +2226,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <input-type value-pairs-name="Countries">dropdown</input-type>
                     <hint>Enter the country of the institution.</hint>
                 </field>
-            </row>
+            </row> -->
             <row>
                 <field>
                     <dc-schema>organization</dc-schema>
@@ -2356,7 +2366,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>date</dc-element>
-                    <dc-qualifier>created</dc-qualifier>
+                    <dc-qualifier></dc-qualifier>
                     <label>Date Last Updated</label>
                     <input-type>date</input-type>
                     <hint>Enter the date that the table 1 information provided in the description field was last updated.</hint>
