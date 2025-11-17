@@ -62,11 +62,13 @@
     </div>
   </div>
   <div class="mt-5 w-100">
+    <!-- Using configuration: 'study' in a pinch; should be configuration: 'study-relationships' for consistency but practically
+     makes no difference, since all configurations show all versions of every Entity anyway. -->
     <ds-tabbed-related-entities-search  [item]="object"
                                         [relationTypes]="[{
                                           label: 'Advised Studies',
                                           filter: 'isPersonOfStudy',
-                                          configuration: 'default-relationships'
+                                          configuration: 'study'
                                         }]">
     </ds-tabbed-related-entities-search>
   </div>
