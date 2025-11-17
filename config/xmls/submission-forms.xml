@@ -2611,7 +2611,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <dc-element>description</dc-element>
                     <repeatable>false</repeatable>
                     <label>Bio</label>
-                    <input-type>textbox</input-type>
+                    <input-type>textarea</input-type>
                     <hint>Please provide a brief bio. You might include information about you, how you became involved with PEDSnet, and what makes you a passionate parent partner.</hint>
                 </field>
             </row>
