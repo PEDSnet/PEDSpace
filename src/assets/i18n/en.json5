@@ -6739,6 +6739,10 @@
 
   "submission.sections.describe.relationship-lookup.title.ConceptSet": "Concept Sets",
   
+  "submission.sections.describe.relationship-lookup.title.isStudyofPerson": "Studies",
+  
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.isStudyofPerson": "Studies",
+  
   "submission.sections.describe.relationship-lookup.title.isDocumentationOfDocumentation": "Resources",
 
   "submission.sections.describe.relationship-lookup.title.DataFile": "Data Files",
