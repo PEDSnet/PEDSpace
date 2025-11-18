@@ -8,11 +8,15 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import {
+  Router,
+  RouterLink,
+} from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component';
 // import copy from 'copy-to-clipboard';
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
 
@@ -44,7 +48,6 @@ import { ThemedResultsBackButtonComponent } from '../../../../../../../app/share
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { ItemPageDescriptionFieldComponent } from '../../field-components/specific-field/description/item-page-description.component';
 import { ItemPageExternalPublicationFieldComponent } from '../../field-components/specific-field/external/item-page-external-publication.component';
-import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component';
 
 /**
  * Component that represents a Documentation Item page
@@ -93,34 +96,34 @@ export class DocumentationComponent extends BaseComponent implements OnInit {
   constructor(
     protected override routeService: RouteService,
     protected override router: Router,
-    private bitstreamDataService: BitstreamDataService
+    private bitstreamDataService: BitstreamDataService,
   ) {
     super(routeService, router);
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
-    
+
     // Get the first PDF file from the item's bitstreams
     this.pdfSrc$ = this.bitstreamDataService.findAllByItemAndBundleName(
-      this.object, 
-      'ORIGINAL', 
-      { elementsPerPage: 100 }
+      this.object,
+      'ORIGINAL',
+      { elementsPerPage: 100 },
     ).pipe(
       map((bitstreamsRD: RemoteData<PaginatedList<Bitstream>>) => {
         if (bitstreamsRD?.payload?.page) {
           // Find the first PDF file
           const pdfBitstream = bitstreamsRD.payload.page.find(
-            (bitstream: Bitstream) => 
-              bitstream._links?.content?.href && 
-              (bitstream.name?.toLowerCase().endsWith('.pdf') || 
-               bitstream.bundleName === 'ORIGINAL')
+            (bitstream: Bitstream) =>
+              bitstream._links?.content?.href &&
+              (bitstream.name?.toLowerCase().endsWith('.pdf') ||
+               bitstream.bundleName === 'ORIGINAL'),
           );
-          
+
           return pdfBitstream?._links?.content?.href || null;
         }
         return null;
-      })
+      }),
     );
   }
 }
