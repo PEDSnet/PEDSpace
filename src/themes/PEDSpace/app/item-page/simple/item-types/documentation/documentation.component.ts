@@ -15,7 +15,11 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {
+  filter,
+  map,
+  switchMap,
+} from 'rxjs/operators';
 import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component';
 // import copy from 'copy-to-clipboard';
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
@@ -24,6 +28,7 @@ import { BitstreamDataService } from '../../../../../../../app/core/data/bitstre
 import { PaginatedList } from '../../../../../../../app/core/data/paginated-list.model';
 import { RemoteData } from '../../../../../../../app/core/data/remote-data';
 import { RouteService } from '../../../../../../../app/core/services/route.service';
+import { FileService } from '../../../../../../../app/core/shared/file.service';
 import { Bitstream } from '../../../../../../../app/core/shared/bitstream.model';
 import { Context } from '../../../../../../../app/core/shared/context.model';
 import { ViewMode } from '../../../../../../../app/core/shared/view-mode.model';
@@ -97,12 +102,16 @@ export class DocumentationComponent extends BaseComponent implements OnInit {
     protected override routeService: RouteService,
     protected override router: Router,
     private bitstreamDataService: BitstreamDataService,
+    private fileService: FileService,
   ) {
     super(routeService, router);
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
+
+    console.log('[PDF Viewer] Component initializing...');
+    console.log('[PDF Viewer] Item object:', this.object);
 
     // Get the first PDF file from the item's bitstreams
     this.pdfSrc$ = this.bitstreamDataService.findAllByItemAndBundleName(
@@ -111,19 +120,50 @@ export class DocumentationComponent extends BaseComponent implements OnInit {
       { elementsPerPage: 100 },
     ).pipe(
       map((bitstreamsRD: RemoteData<PaginatedList<Bitstream>>) => {
-        if (bitstreamsRD?.payload?.page) {
+        console.log('[PDF Viewer] Bitstreams response:', bitstreamsRD);
+        
+        if (bitstreamsRD?.hasSucceeded && bitstreamsRD?.payload?.page) {
+          console.log('[PDF Viewer] Total bitstreams found:', bitstreamsRD.payload.page.length);
+          
           // Find the first PDF file
           const pdfBitstream = bitstreamsRD.payload.page.find(
             (bitstream: Bitstream) =>
-              bitstream._links?.content?.href &&
-              (bitstream.name?.toLowerCase().endsWith('.pdf') ||
-               bitstream.bundleName === 'ORIGINAL'),
+              bitstream.name?.toLowerCase().endsWith('.pdf'),
           );
 
-          return pdfBitstream?._links?.content?.href || null;
+          if (pdfBitstream?._links?.content?.href) {
+            console.log('[PDF Viewer] ✓ PDF found:', pdfBitstream.name);
+            console.log('[PDF Viewer] Base URL:', pdfBitstream._links.content.href);
+            return pdfBitstream._links.content.href;
+          }
         }
+        
+        console.log('[PDF Viewer] No PDF to display');
         return null;
       }),
+      switchMap((pdfUrl: string | null) => {
+        if (!pdfUrl) {
+          console.log('[PDF Viewer] No PDF URL, returning null');
+          return [null];
+        }
+        
+        // Get authenticated download link with short-lived token
+        return this.fileService.retrieveFileDownloadLink(pdfUrl).pipe(
+          map((authenticatedUrl: string) => {
+            console.log('[PDF Viewer] Authenticated URL generated:', authenticatedUrl);
+            return authenticatedUrl;
+          }),
+        );
+      }),
     );
+    
+    // Subscribe to see when the observable emits
+    this.pdfSrc$.subscribe(src => {
+      if (src) {
+        console.log('[PDF Viewer] Observable emitted PDF URL:', src);
+      } else {
+        console.log('[PDF Viewer] Observable emitted null - no PDF available');
+      }
+    });
   }
 }

@@ -40,7 +40,12 @@
             "aot": true,
             "assets": [
               "src/assets",
-              "src/robots.txt"
+              "src/robots.txt",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/styles/startup.scss",
