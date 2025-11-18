@@ -6,12 +6,21 @@ import {
 import {
   ChangeDetectionStrategy,
   Component,
+  OnInit,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 // import copy from 'copy-to-clipboard';
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
 
+import { BitstreamDataService } from '../../../../../../../app/core/data/bitstream-data.service';
+import { PaginatedList } from '../../../../../../../app/core/data/paginated-list.model';
+import { RemoteData } from '../../../../../../../app/core/data/remote-data';
+import { RouteService } from '../../../../../../../app/core/services/route.service';
+import { Bitstream } from '../../../../../../../app/core/shared/bitstream.model';
 import { Context } from '../../../../../../../app/core/shared/context.model';
 import { ViewMode } from '../../../../../../../app/core/shared/view-mode.model';
 import { CollectionsComponent } from '../../../../../../../app/item-page/field-components/collections/collections.component';
@@ -75,9 +84,43 @@ import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/r
     TranslateModule,
     ItemPageCcLicenseFieldComponent,
     ItemPageCitationFieldComponent,
-    TabbedRelatedEntitiesSearchComponent],
+    TabbedRelatedEntitiesSearchComponent,
+    NgxExtendedPdfViewerModule],
 })
-export class DocumentationComponent extends BaseComponent {
+export class DocumentationComponent extends BaseComponent implements OnInit {
+  pdfSrc$: Observable<string | null>;
 
+  constructor(
+    protected override routeService: RouteService,
+    protected override router: Router,
+    private bitstreamDataService: BitstreamDataService
+  ) {
+    super(routeService, router);
+  }
 
+  override ngOnInit(): void {
+    super.ngOnInit();
+    
+    // Get the first PDF file from the item's bitstreams
+    this.pdfSrc$ = this.bitstreamDataService.findAllByItemAndBundleName(
+      this.object, 
+      'ORIGINAL', 
+      { elementsPerPage: 100 }
+    ).pipe(
+      map((bitstreamsRD: RemoteData<PaginatedList<Bitstream>>) => {
+        if (bitstreamsRD?.payload?.page) {
+          // Find the first PDF file
+          const pdfBitstream = bitstreamsRD.payload.page.find(
+            (bitstream: Bitstream) => 
+              bitstream._links?.content?.href && 
+              (bitstream.name?.toLowerCase().endsWith('.pdf') || 
+               bitstream.bundleName === 'ORIGINAL')
+          );
+          
+          return pdfBitstream?._links?.content?.href || null;
+        }
+        return null;
+      })
+    );
+  }
 }

@@ -3,6 +3,19 @@
 
 ::ng-deep {
 
+  /* PDF Viewer styling */
+  .pdf-viewer-container {
+    margin: 1.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    ngx-extended-pdf-viewer {
+      display: block;
+    }
+  }
+
   /* documentation-table.scss */
   .documentation-table {
     width: 100%;
