@@ -3171,6 +3171,14 @@
 
   "item.page.collections.load-more": "Load more",
 
+  "item.page.csv.spreadsheet": "Data Table",
+
+  "csv-spreadsheet.error.header": "Error loading spreadsheet",
+
+  "csv-spreadsheet.error.load": "Failed to load CSV data",
+
+  "csv-spreadsheet.no-data": "No data available",
+
   "item.page.date": "Date",
 
   "item.page.description.cohort": "Cohort Description",
@@ -3196,6 +3204,14 @@
   "item.page.filesection.size": "Size:",
 
   "item.page.files": "Files",
+
+  "item.page.csv.spreadsheet": "Preview Concept Set",
+
+  "csv-spreadsheet.error.header": "Error loading CSV data",
+
+  "csv-spreadsheet.error.load": "Failed to load CSV file",
+
+  "csv-spreadsheet.no-data": "No CSV data available",
 
   "item.page.image.alt.ROR": "ROR logo",
 

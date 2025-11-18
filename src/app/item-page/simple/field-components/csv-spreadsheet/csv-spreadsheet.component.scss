@@ -1,0 +1,77 @@
+.csv-spreadsheet-section {
+  margin: 1rem 0;
+}
+
+.spreadsheet-header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 0;
+
+  &:hover {
+    background-color: #e9ecef;
+  }
+}
+
+.spreadsheet-toggle-icon {
+  margin-right: 0.75rem;
+  color: #495057;
+  font-size: 0.875rem;
+  transition: transform 0.2s ease;
+}
+
+.spreadsheet-info {
+  flex: 1;
+  
+  strong {
+    color: #212529;
+  }
+}
+
+.spreadsheet-meta {
+  color: #6c757d;
+  font-size: 0.875rem;
+  margin-left: 0.5rem;
+}
+
+.spreadsheet-container {
+  max-height: 400px;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+  margin-top: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  
+  &.collapsed {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    border: none;
+  }
+}
+
+/* Handsontable theme overrides */
+:host ::ng-deep {
+  .handsontable {
+    font-family: inherit;
+    font-size: 0.875rem;
+  }
+
+  .ht_master .wtHolder {
+    max-height: 400px;
+  }
+
+  /* Use Horizon theme styling */
+  .ht-theme-horizon {
+    --ht-wrapper-border-radius: 0.25rem;
+    --ht-font-size: 0.875rem;
+    --ht-cell-horizontal-padding: 0.5rem;
+    --ht-cell-vertical-padding: 0.5rem;
+  }
+}

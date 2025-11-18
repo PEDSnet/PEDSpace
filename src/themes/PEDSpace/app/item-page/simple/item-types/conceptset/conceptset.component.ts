@@ -20,6 +20,7 @@ import { CollectionsComponent } from '../../../../../../../app/item-page/field-c
 import { ThemedMediaViewerComponent } from '../../../../../../../app/item-page/media-viewer/themed-media-viewer.component';
 import { MiradorViewerComponent } from '../../../../../../../app/item-page/mirador-viewer/mirador-viewer.component';
 import { ThemedFileSectionComponent } from '../../../../../../../app/item-page/simple/field-components/file-section/themed-file-section.component';
+import { ThemedCsvSpreadsheetComponent } from '../../../../../../../app/item-page/simple/field-components/csv-spreadsheet/themed-csv-spreadsheet.component';
 import { ItemPageAbstractFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/abstract/item-page-abstract-field.component';
 // import { Item } from '../../../../../../../app/core/shared/item.model';
 import { ItemPageCcLicenseFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/cc-license/item-page-cc-license-field.component';
@@ -65,6 +66,7 @@ import { ItemPageExternalPublicationFieldComponent } from '../../field-component
     ThemedThumbnailComponent,
     ThemedMediaViewerComponent,
     ThemedFileSectionComponent,
+    ThemedCsvSpreadsheetComponent,
     ItemPageDateFieldComponent,
     ThemedMetadataRepresentationListComponent,
     GenericItemPageFieldComponent,

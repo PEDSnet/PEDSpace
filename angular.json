@@ -44,6 +44,8 @@
             ],
             "styles": [
               "src/styles/startup.scss",
+              "node_modules/handsontable/styles/handsontable.min.css",
+              "node_modules/handsontable/styles/ht-theme-horizon.min.css",
               {
                 "input": "src/styles/base-theme.scss",
                 "inject": false,
