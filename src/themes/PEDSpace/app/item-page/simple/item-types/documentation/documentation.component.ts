@@ -97,6 +97,7 @@ import { ItemPageExternalPublicationFieldComponent } from '../../field-component
 })
 export class DocumentationComponent extends BaseComponent implements OnInit {
   pdfSrc$: Observable<string | null>;
+  showPdfModal = false;
 
   constructor(
     protected override routeService: RouteService,
@@ -110,9 +111,6 @@ export class DocumentationComponent extends BaseComponent implements OnInit {
   override ngOnInit(): void {
     super.ngOnInit();
 
-    console.log('[PDF Viewer] Component initializing...');
-    console.log('[PDF Viewer] Item object:', this.object);
-
     // Get the first PDF file from the item's bitstreams
     this.pdfSrc$ = this.bitstreamDataService.findAllByItemAndBundleName(
       this.object,
@@ -120,11 +118,7 @@ export class DocumentationComponent extends BaseComponent implements OnInit {
       { elementsPerPage: 100 },
     ).pipe(
       map((bitstreamsRD: RemoteData<PaginatedList<Bitstream>>) => {
-        console.log('[PDF Viewer] Bitstreams response:', bitstreamsRD);
-        
         if (bitstreamsRD?.hasSucceeded && bitstreamsRD?.payload?.page) {
-          console.log('[PDF Viewer] Total bitstreams found:', bitstreamsRD.payload.page.length);
-          
           // Find the first PDF file
           const pdfBitstream = bitstreamsRD.payload.page.find(
             (bitstream: Bitstream) =>
@@ -132,38 +126,28 @@ export class DocumentationComponent extends BaseComponent implements OnInit {
           );
 
           if (pdfBitstream?._links?.content?.href) {
-            console.log('[PDF Viewer] ✓ PDF found:', pdfBitstream.name);
-            console.log('[PDF Viewer] Base URL:', pdfBitstream._links.content.href);
             return pdfBitstream._links.content.href;
           }
         }
         
-        console.log('[PDF Viewer] No PDF to display');
         return null;
       }),
       switchMap((pdfUrl: string | null) => {
         if (!pdfUrl) {
-          console.log('[PDF Viewer] No PDF URL, returning null');
           return [null];
         }
         
         // Get authenticated download link with short-lived token
-        return this.fileService.retrieveFileDownloadLink(pdfUrl).pipe(
-          map((authenticatedUrl: string) => {
-            console.log('[PDF Viewer] Authenticated URL generated:', authenticatedUrl);
-            return authenticatedUrl;
-          }),
-        );
+        return this.fileService.retrieveFileDownloadLink(pdfUrl);
       }),
     );
-    
-    // Subscribe to see when the observable emits
-    this.pdfSrc$.subscribe(src => {
-      if (src) {
-        console.log('[PDF Viewer] Observable emitted PDF URL:', src);
-      } else {
-        console.log('[PDF Viewer] Observable emitted null - no PDF available');
-      }
-    });
+  }
+
+  openPdfModal(): void {
+    this.showPdfModal = true;
+  }
+
+  closePdfModal(): void {
+    this.showPdfModal = false;
   }
 }
