@@ -117,6 +117,7 @@
     "morgan": "^1.10.0",
     "ng2-file-upload": "5.0.0",
     "ng2-nouislider": "^2.0.0",
+    "ngx-extended-pdf-viewer": "^25.6.0-alpha.3",
     "ngx-infinite-scroll": "^16.0.0",
     "ngx-pagination": "6.0.3",
     "ngx-skeleton-loader": "^9.0.0",
