@@ -34,7 +34,21 @@
         separator=", "></ds-item-page-date-field>
 
       <!-- Thumbnail -->
-      <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
+      <div *ngIf="(mediaViewer.image || mediaViewer.video) && (pdfSrc$ | async)" 
+           class="mb-2 pdf-thumbnail-container" 
+           (click)="openPdfModal()"
+           role="button"
+           tabindex="0"
+           (keydown.enter)="openPdfModal()"
+           (keydown.space)="openPdfModal()"
+           title="Click to view PDF">
+        <ds-media-viewer [item]="object"></ds-media-viewer>
+        <div class="pdf-overlay">
+          <i class="fas fa-file-pdf"></i>
+          <span>Click to view PDF</span>
+        </div>
+      </div>
+      <div *ngIf="(mediaViewer.image || mediaViewer.video) && !(pdfSrc$ | async)" class="mb-2">
         <ds-media-viewer [item]="object"></ds-media-viewer>
       </div>
 
@@ -137,3 +151,39 @@
   ]">
     </ds-tabbed-related-entities-search>
   </div>
+<!-- PDF Modal -->
+<div *ngIf="showPdfModal && (pdfSrc$ | async) as pdfSrc" 
+     class="pdf-modal-backdrop" 
+     (click)="closePdfModal()">
+  <div class="pdf-modal-container" (click)="$event.stopPropagation()">
+    <div class="pdf-modal-header">
+      <h3>Document Preview</h3>
+      <button class="close-button" 
+              (click)="closePdfModal()" 
+              aria-label="Close PDF viewer"
+              title="Close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="pdf-modal-content">
+      <ngx-extended-pdf-viewer 
+        [src]="pdfSrc"
+        [height]="'calc(90vh - 60px)'"
+        [showToolbar]="true"
+        [showSidebarButton]="false"
+        [showFindButton]="false"
+        [showPagingButtons]="false"
+        [showZoomButtons]="true"
+        [showPresentationModeButton]="false"
+        [showOpenFileButton]="false"
+        [showPrintButton]="true"
+        [showDownloadButton]="true"
+        [showCommentEditor]="false"
+        [showSecondaryToolbarButton]="false"
+        [showRotateButton]="false"
+        [showHandToolButton]="false"
+        [showPropertiesButton]="false">
+      </ngx-extended-pdf-viewer>
+    </div>
+  </div>
+</div>

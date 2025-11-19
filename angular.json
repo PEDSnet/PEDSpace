@@ -40,7 +40,12 @@
             "aot": true,
             "assets": [
               "src/assets",
-              "src/robots.txt"
+              "src/robots.txt",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/styles/startup.scss",
@@ -101,8 +106,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "6mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
