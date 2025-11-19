@@ -8,8 +8,6 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
-
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -71,13 +69,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://pedsdspace01.research.chop.edu/home)
+[![Product Name Screen Shot][product-screenshot]](https://pedsnet.org/metadata/)
 
 PEDSpace is an open source repository application intended to host and serve PEDSnet-generated data on demand, as well as accept submissions from qualified users.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
 
