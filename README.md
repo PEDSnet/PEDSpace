@@ -46,7 +46,6 @@
     ·
     <a href="https://github.com/PEDSnet/PEDSpace/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
-  <p>*PEDSpace is currently behind the CHOP firewall, meaning that you need a VPN connection to view. We eventually intend on making it publicly available.</p>
 </div>
 
 
