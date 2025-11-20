@@ -3179,6 +3179,8 @@
 
   "csv-spreadsheet.no-data": "No data available",
 
+  "csv-spreadsheet.browser-only": "Interactive spreadsheet view available in browser",
+
   "item.page.date": "Date",
 
   "item.page.description.cohort": "Cohort Description",

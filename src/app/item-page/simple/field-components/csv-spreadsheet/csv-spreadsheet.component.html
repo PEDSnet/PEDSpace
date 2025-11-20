@@ -15,13 +15,18 @@
           </span>
         </div>
 
-        <!-- Expandable Spreadsheet Container -->
-        <div class="spreadsheet-container" [class.collapsed]="isCollapsed">
+        <!-- Expandable Spreadsheet Container (only in browser) -->
+        <div *ngIf="isBrowser" class="spreadsheet-container" [class.collapsed]="isCollapsed">
           <hot-table 
             [data]="spreadsheetData" 
             [settings]="gridSettings"
             class="ht-theme-horizon">
           </hot-table>
+        </div>
+        
+        <!-- SSR placeholder -->
+        <div *ngIf="!isBrowser" class="spreadsheet-container">
+          <p class="text-muted">{{ 'csv-spreadsheet.browser-only' | translate }}</p>
         </div>
       </div>
       

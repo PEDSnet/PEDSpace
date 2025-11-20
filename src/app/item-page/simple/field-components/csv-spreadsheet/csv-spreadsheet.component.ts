@@ -1,9 +1,13 @@
-import { CommonModule } from '@angular/common';
+import {
+  isPlatformBrowser,
+  CommonModule,
+} from '@angular/common';
 import {
   Component,
   Inject,
   Input,
   OnInit,
+  PLATFORM_ID,
 } from '@angular/core';
 import {
   TranslateModule,
@@ -30,9 +34,6 @@ import { MetadataFieldWrapperComponent } from '../../../../shared/metadata-field
 import { NotificationsService } from '../../../../shared/notifications/notifications.service';
 import { VarDirective } from '../../../../shared/utils/var.directive';
 import { HttpClient } from '@angular/common/http';
-
-// Register Handsontable modules
-registerAllModules();
 
 /**
  * This component renders CSV files from the item's bitstreams
@@ -63,6 +64,8 @@ export class CsvSpreadsheetComponent implements OnInit {
   isLoading: boolean;
 
   isCollapsed: boolean = true;
+
+  isBrowser: boolean;
 
   spreadsheetData: any[][] = [];
 
@@ -95,7 +98,15 @@ export class CsvSpreadsheetComponent implements OnInit {
     protected translateService: TranslateService,
     protected httpClient: HttpClient,
     @Inject(APP_CONFIG) protected appConfig: AppConfig,
-  ) {}
+    @Inject(PLATFORM_ID) private platformId: Object,
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+    
+    // Only register Handsontable modules in the browser
+    if (this.isBrowser) {
+      registerAllModules();
+    }
+  }
 
   ngOnInit(): void {
     this.csvBitstreams$ = new BehaviorSubject([]);
