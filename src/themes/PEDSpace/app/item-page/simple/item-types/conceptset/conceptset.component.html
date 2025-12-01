@@ -19,7 +19,7 @@
   </div>
   
   <div class="row">
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-3">
       <div class="subtitle-container" *ngIf="object?.metadata?.['local.variable.name']?.length > 0 || object?.metadata?.['dc.title.alternative']?.length > 0">
         <ds-generic-item-page-field class="subtitle" [renderAsCode]="true" [codeType]="'variable'" [item]="object" [fields]="['local.variable.name']" [label]="'item.preview.local.variable.name'">
         </ds-generic-item-page-field>
@@ -49,7 +49,7 @@
 
     </div>
 
-    <div class="col-12 col-md-8">
+    <div class="col-12 col-md-9">
 
       <ds-item-page-abstract-field [item]="object" [label]="'item.page.abstract'"></ds-item-page-abstract-field>
 
@@ -87,6 +87,8 @@
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
+      <!-- CSV Spreadsheet Viewer -->
+      <ds-item-page-csv-spreadsheet [item]="object"></ds-item-page-csv-spreadsheet>
 
       <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfConceptSet'"
         [label]="'relationships.isDocumentationOf' | translate">

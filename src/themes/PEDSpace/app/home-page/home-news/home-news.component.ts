@@ -28,50 +28,52 @@ export class HomeNewsComponent extends BaseComponent implements OnInit, OnDestro
 
   private targetIpAddress = 'pedsnet.org';
   
+  // Debug mode: when true, carousel plays at 5x speed
+  debugMode: boolean = false;
+  
   // Image array 
   images = [
     {
       path: 'assets/PEDSpace/images/dandy-full.jpg',
       alt: 'Dandelion',
       credit: 'inspiredimages',
-      showCredit: true,
+      creditUrl: 'https://www.pexels.com/@inspiredimages',
       position: 'left bottom'
     },
     {
       path: 'assets/PEDSpace/images/stock_images/kid_with_stripedShirt_CROPPED.jpeg',
       alt: 'Child speaking with a pediatrician on bed.',
-      showCredit: false,
+      credit: '',
+      creditUrl: '',
       position: 'right'
     },
-    // {
-    //   path: 'assets/PEDSpace/images/stock_images/kid_with_bandaid_CROPPED.jpg',
-    //   alt: 'A child receiving a band-aid.',
-    //   showCredit: false,
-    //   position: 'right 30%'
-    // },
-    // {
-    //   path: 'assets/PEDSpace/images/stock_images/kid_with_necklace_CROPPED.jpeg',
-    //   alt: 'A teenager speaking with a pediatrician.',
-    //   showCredit: false,
-    //   position: 'right'
-    // },
     {
       path: 'assets/PEDSpace/images/stock_images/kid_with_stethoscope_CROPPED.jpg',
       alt: 'A child receiving a stethoscope reading with their mother',
-      showCredit: false,
+      credit: '',
+      creditUrl: '',
       position: 'right'
     },
     // {
     //   path: 'assets/PEDSpace/images/stock_images/kid_with_yellowShirt.jpg',
     //   alt: 'A child receiving a stethoscope reading with his mother.',
-    //   showCredit: false,
+    //   credit: '',
+    //   creditUrl: '',
     //   position: 'right center'
     // },
     {
       path: 'assets/PEDSpace/images/stock_images/three_kids_chillin_CROPPED.jpg',
       alt: 'Three children sitting closely together.',
-      showCredit: false,
+      credit: '',
+      creditUrl: '',
       position: 'center'
+    },
+    {
+      path: 'assets/PEDSpace/images/stock_images/children_on_bike.jpg',
+      alt: 'Three children riding bikes together.',
+      credit: 'sylwiaaptacy',
+      creditUrl: 'https://pixabay.com/users/sylwiaaptacy-246079/',
+      position: 'top'
     }
   ];
   
@@ -142,12 +144,15 @@ export class HomeNewsComponent extends BaseComponent implements OnInit, OnDestro
   startCarousel(): void {
     // Run outside Angular zone for better performance
     this.ngZone.runOutsideAngular(() => {
+      // Use 5x speed (1500ms) in debug mode, normal speed (7500ms) otherwise
+      const interval = this.debugMode ? 1500 : 7500;
+      
       this.carouselTimer = setTimeout(() => {
         // Run change detection inside Angular zone
         this.ngZone.run(() => {
           this.nextImage();
         });
-      }, 7500);
+      }, interval);
     });
   }
   

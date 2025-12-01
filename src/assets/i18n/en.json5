@@ -3171,6 +3171,16 @@
 
   "item.page.collections.load-more": "Load more",
 
+  "item.page.csv.spreadsheet": "Data Table",
+
+  "csv-spreadsheet.error.header": "Error loading spreadsheet",
+
+  "csv-spreadsheet.error.load": "Failed to load CSV data",
+
+  "csv-spreadsheet.no-data": "No data available",
+
+  "csv-spreadsheet.browser-only": "Interactive spreadsheet view available in browser",
+
   "item.page.date": "Date",
 
   "item.page.description.cohort": "Cohort Description",
@@ -3196,6 +3206,14 @@
   "item.page.filesection.size": "Size:",
 
   "item.page.files": "Files",
+
+  "item.page.csv.spreadsheet": "Preview Concept Set",
+
+  "csv-spreadsheet.error.header": "Error loading CSV data",
+
+  "csv-spreadsheet.error.load": "Failed to load CSV file",
+
+  "csv-spreadsheet.no-data": "No CSV data available",
 
   "item.page.image.alt.ROR": "ROR logo",
 
@@ -6738,6 +6756,10 @@
   "submission.sections.describe.relationship-lookup.selection-tab.title.wos": "Search Results",
 
   "submission.sections.describe.relationship-lookup.title.ConceptSet": "Concept Sets",
+  
+  "submission.sections.describe.relationship-lookup.title.isStudyofPerson": "Studies",
+  
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.isStudyofPerson": "Studies",
   
   "submission.sections.describe.relationship-lookup.title.isDocumentationOfDocumentation": "Resources",
 

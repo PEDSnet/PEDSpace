@@ -43,8 +43,8 @@ JAVA_OPTS="-Xmx512M -Xms512M -Dfile.encoding=UTF-8"
 # Cleanup Web Spiders from DSpace Statistics Solr Index at 01:00 every day
 0 1 * * * echo "$(date): Running DSpace Statistics cleanup." && $DSPACE/bin/dspace stats-util -f
 
-# CUSTOM: 3 AM daily: Run deploy_shiny script and log output. See here: https://github.research.chop.edu/SEYEDIANA1/PEDSpace_Solr_Analytics/blob/main/deploy_shiny.bash
-0 3 * * * echo "$(date): Running SOLR Analytics script..." && /bin/bash /data/PEDSpace_Solr_Analytics/deploy_shiny.bash  >> /data/PEDSpace_Solr_Analytics/logs/deploy_shiny.log 2>&1
+# CUSTOM: Every hour: Run deploy_shiny script and log output. See here: https://github.research.chop.edu/SEYEDIANA1/PEDSpace_Solr_Analytics/blob/main/deploy_shiny.bash
+0 * * * * echo "$(date): Running SOLR Analytics script..." && /bin/bash /data/PEDSpace_Solr_Analytics/deploy_shiny.bash  >> /data/PEDSpace_Solr_Analytics/logs/deploy_shiny.log 2>&1
 
 # Send out "daily" update subscription e-mails at 02:00 every day
 0 2 * * * echo "$(date): Sending daily DSpace subscription emails." && $DSPACE/bin/dspace subscription-send -f D

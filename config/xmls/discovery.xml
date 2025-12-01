@@ -6114,6 +6114,7 @@
         search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
+                <!-- Basic metadata filters -->
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
@@ -6125,21 +6126,39 @@
                 <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterCreated" />
                 <ref bean="searchFilterLastModified" />
+                <ref bean="searchFilterAffiliation" />
+                <ref bean="searchFilterFunder" />
+                <ref bean="searchFilterClinicalSubject" />
+                <ref bean="searchFilterEntityType" />
+                
+                <!-- File-related filters -->
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />
                 <ref bean="searchFilterFileDescriptionInOriginalBundle" />
-                <ref bean="searchFilterEntityType" />
+                
+                <!-- Publication relationships -->
                 <ref bean="searchFilterIsAuthorOfPublicationRelation" />
                 <ref bean="searchFilterIsProjectOfPublicationRelation" />
                 <ref bean="searchFilterIsOrgUnitOfPublicationRelation" />
                 <!-- <ref bean="searchFilterIsPublicationOfJournalIssueRelation"/> -->
                 <ref bean="searchFilterIsJournalOfPublicationRelation" />
+                
+                <!-- Study relationships -->
                 <ref bean="searchFilterIsStudyOfPhenotypeRelation" />
+                <ref bean="searchFilterIsPhenotypeOfStudyRelation" />
                 <ref bean="searchFilterIsStudyOfConceptSetRelation" />
+                <ref bean="searchFilterIsConceptSetOfStudyRelation" />
                 <ref bean="searchFilterIsStudyOfDocumentationRelation" />
-                <ref bean="searchFilterAffiliation" />
-                <ref bean="searchFilterFunder" />
-                <ref bean="searchFilterClinicalSubject" />
+                <ref bean="searchFilterIsDocumentationOfStudyRelation" />
+                <ref bean="searchFilterIsStudyOfPersonRelation" />
+                <ref bean="searchFilterIsPersonOfStudyRelation" />
+                <ref bean="searchFilterIsStudyOfOrgUnitRelation" />
+                <ref bean="searchFilterIsOrgUnitOfStudyRelation" />
+                <ref bean="searchFilterIsStudyOfCodeRelation" />
+                <ref bean="searchFilterIsCodeOfStudyRelation" />
+                <ref bean="searchFilterIsStudyOfDQResultRelation" />
+                <ref bean="searchFilterIsDQResultOfStudyRelation" />
+                <ref bean="searchFilterIsStudyOfDQCheckRelation" />
             </list>
         </property>
         <!--The

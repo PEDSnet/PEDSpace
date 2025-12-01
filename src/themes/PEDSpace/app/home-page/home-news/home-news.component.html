@@ -48,8 +48,8 @@
     <div class="overlay"></div>
   </div>
 
-  <small *ngIf="activeImage?.showCredit" class="credits">
-    Photo by <a [href]="'https://www.pexels.com/@' + activeImage?.credit">
+  <small *ngIf="activeImage?.creditUrl" class="credits">
+    Photo by <a [href]="activeImage.creditUrl" target="_blank">
       &#64;{{activeImage?.credit}}
     </a>
   </small>
