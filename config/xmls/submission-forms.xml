@@ -3541,6 +3541,10 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>NDC</stored-value>
             </pair>
             <pair>
+                <displayed-value>CVX</displayed-value>
+                <stored-value>CVX</stored-value>
+            </pair>
+            <pair>
                 <displayed-value>ICD-03</displayed-value>
                 <stored-value>ICD-03</stored-value>
             </pair>
