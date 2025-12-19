@@ -286,6 +286,7 @@
 
                 <ref bean="searchFilterEntityType" />
                 <ref bean="searchFilterQuality" />
+                <ref bean="searchFilterCommittee" />
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -339,6 +340,7 @@
                 <ref bean="searchFilterQuality" />
                 <ref bean="searchFilterCheckReq" />
                 <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterCommittee" />
             </list>
         </property>
         <!--The
@@ -3706,6 +3708,15 @@
         <property name="metadataFields">
             <list>
                 <value>dc.subject</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="searchFilterCommittee"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="committee" />
+        <property name="metadataFields">
+            <list>
+                <value>local.contributor.committee</value>
             </list>
         </property>
     </bean>

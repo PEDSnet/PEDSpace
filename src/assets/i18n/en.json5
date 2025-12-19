@@ -5641,6 +5641,10 @@
 
   "search.filters.filter.birthDate.placeholder": "Birth Date",
 
+  "search.filters.filter.committee": "Research Committee",
+  
+  "search.filters.filter.committee.head": "Research Committee",
+  
   "search.filters.filter.checkReq.head": "Required Input",
 
   "search.filters.filter.checkReq.label": "Required Input",

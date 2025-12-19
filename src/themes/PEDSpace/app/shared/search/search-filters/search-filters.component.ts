@@ -97,6 +97,7 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
       'dateCreated',
       'itemClinicalSubject',
       'entityType',
+      'committee'
     ],
     '3ba287c6-7a99-4ae4-807b-3cf10970033b': [
       'subject',
