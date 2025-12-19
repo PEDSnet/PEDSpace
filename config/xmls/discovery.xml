@@ -362,7 +362,7 @@
             <list>
                 <!--Only
                 find items, communities and collections-->
-                <value>search.resourcetype:Item OR
+                <value>(search.resourcetype:Item AND latestVersion:true) OR
                     search.resourcetype:Collection OR search.resourcetype:Community</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
@@ -1676,6 +1676,7 @@
             <list>
                 <!--Only
                 find items, communities and collections-->
+                <!--  AND latestVersion:true -->
                 <value>search.resourcetype:Item AND
                     entityType_keyword:Publication</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
@@ -1856,8 +1857,9 @@
 
         <!-- Optimized filter queries -->
         <property name="defaultFilterQueries">
+            <!--  AND latestVersion:true -->
             <list>
-                <value>search.resourcetype:Item AND entityType_keyword:Person</value>
+                <value>search.resourcetype:Item AND latestVersion:true AND entityType_keyword:Person</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>
@@ -2032,6 +2034,7 @@
             <list>
                 <!--Only
                 find items, communities and collections-->
+                <!--  AND latestVersion:true -->
                 <value>search.resourcetype:Item AND
                     entityType_keyword:Project</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
@@ -2171,6 +2174,7 @@
             <list>
                 <!--Only
                 find items, communities and collections-->
+                <!--  AND latestVersion:true -->
                 <value>search.resourcetype:Item AND
                     entityType_keyword:OrgUnit</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
@@ -2317,6 +2321,7 @@
             <list>
                 <!--Only
                 find items, communities and collections-->
+                <!--  AND latestVersion:true -->
                 <value>search.resourcetype:Item AND
                     entityType_keyword:JournalIssue</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
@@ -2453,6 +2458,7 @@
             <list>
                 <!--Only
                 find items, communities and collections-->
+                <!--  AND latestVersion:true -->
                 <value>search.resourcetype:Item AND
                     entityType_keyword:JournalVolume</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
@@ -2588,7 +2594,7 @@
             <list>
                 <!--Only
                 find items, communities and collections-->
-                <value>search.resourcetype:Item AND
+                <value>search.resourcetype:Item AND latestVersion:true AND
                     entityType_keyword:Journal</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
@@ -4761,6 +4767,7 @@
             <list>
                 <!--Only
                 find items, communities and collections-->
+                <!--  AND latestVersion:true -->
                 <value>search.resourcetype:Item AND entityType_keyword:ConceptSet</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
@@ -4974,6 +4981,7 @@
         filter queries-->
         <property name="defaultFilterQueries">
             <list>
+            <!--  AND latestVersion:true -->
                 <value>search.resourcetype:Item AND 
                     entityType_keyword:DQResult</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
@@ -5303,6 +5311,7 @@
             <list>
                 <!--Only
                 find items, communities and collections-->
+                <!--  AND latestVersion:true -->
                 <value>search.resourcetype:Item AND entityType_keyword:Documentation</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
@@ -5527,6 +5536,7 @@
             <list>
                 <!--Only
                 find items, communities and collections-->
+                <!--  AND latestVersion:true -->
                 <value>search.resourcetype:Item AND
                     entityType_keyword:DQCheck</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
@@ -5848,6 +5858,7 @@
         filter queries-->
         <property name="defaultFilterQueries">
             <list>
+            <!--  AND latestVersion:true -->
                 <value>search.resourcetype:Item AND
                     entityType_keyword:Phenotype</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
@@ -6182,6 +6193,7 @@
             <list>
                 <!--Only
                 find items, communities and collections-->
+                <!--  AND latestVersion:true -->
                 <value>search.resourcetype:Item AND entityType_keyword:Study</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
@@ -6333,6 +6345,7 @@
             queries done by discovery for this configuration -->
         <property name="defaultFilterQueries">
             <list>
+            <!--  AND latestVersion:true -->
                 <value>search.resourcetype:Item AND entityType_keyword:Code</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
