@@ -3,11 +3,19 @@ import {
   NgIf,
 } from '@angular/common';
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  Inject,
+  PLATFORM_ID,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  Router,
+  RouterLink,
+} from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { RouteService } from 'src/app/core/services/route.service';
 
 import { Context } from '../../../../../../../app/core/shared/context.model';
 import { ViewMode } from '../../../../../../../app/core/shared/view-mode.model';
@@ -33,17 +41,63 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
  * Component that represents a publication Item page
  */
 
-@listableObjectComponent('Publication', ViewMode.StandalonePage, Context.Any, 'custom')
+@listableObjectComponent('Publication', ViewMode.StandalonePage, Context.Any, 'PEDSpace')
 @Component({
   selector: 'ds-publication',
   // styleUrls: ['./publication.component.scss'],
   styleUrls: ['../../../../../../../app/item-page/simple/item-types/publication/publication.component.scss'],
-  // templateUrl: './publication.component.html',
-  templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
+  templateUrl: './publication.component.html',
+  // templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [NgIf, ThemedResultsBackButtonComponent, MiradorViewerComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, ThemedMediaViewerComponent, ThemedFileSectionComponent, ItemPageDateFieldComponent, ThemedMetadataRepresentationListComponent, GenericItemPageFieldComponent, RelatedItemsComponent, ItemPageAbstractFieldComponent, ItemPageUriFieldComponent, CollectionsComponent, RouterLink, AsyncPipe, TranslateModule],
 })
-export class PublicationComponent extends BaseComponent {
+export class PublicationComponent extends BaseComponent implements AfterViewInit {
 
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    protected routeService: RouteService,
+    protected router: Router
+  ) {
+    super(routeService, router);
+  }
+
+  /**
+   * Get the DOI from the item metadata for Altmetric badge
+   */
+  get doi(): string {
+    return this.object?.firstMetadataValue('dc.identifier.doi') || '';
+  }
+
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.loadAltmetricBadge();
+    }
+  }
+
+  private loadAltmetricBadge(): void {
+    // Check if script is already loaded
+    const existingScript = document.querySelector('script[src*="altmetric.com"]');
+    
+    if (existingScript) {
+      // Script already loaded, just reinitialize
+      this.initAltmetric();
+    } else {
+      // Load the script
+      const script = document.createElement('script');
+      script.src = 'https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js';
+      script.type = 'text/javascript';
+      script.onload = () => this.initAltmetric();
+      document.body.appendChild(script);
+    }
+  }
+
+  private initAltmetric(): void {
+    // Give Angular a moment to render the DOM, then initialize
+    setTimeout(() => {
+      if (typeof (window as any)._altmetric_embed_init === 'function') {
+        (window as any)._altmetric_embed_init();
+      }
+    }, 100);
+  }
 }

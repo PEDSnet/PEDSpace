@@ -5,7 +5,8 @@
 https://wiki.lyrasis.org/display/DSDOC8x/Configurable+Entities#ConfigurableEntities-DefaultEntityModels -->
 
 <!-- Don't forget to call the following command after committing changes:
-cat /data/dspace-angular-dspace-8.1/config/xmls/relationship-types.xml > /data/dspace/config/entities/relationship-types.xml -->
+cat /data/dspace-angular-dspace-8.1/config/xmls/relationship-types.xml > /data/dspace/config/entities/relationship-types.xml 
+-->
 
 <!-- Also don't forget to init the entities:
 # The -f command requires a full path to an Entities model configuration file.
@@ -574,6 +575,147 @@ sudo -u dspace bash;
         <rightType>DQCheck</rightType>
         <leftwardType>isDQCheckOfCode</leftwardType>
         <rightwardType>isCodeOfDQCheck</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Publication Relationships -->
+    <!-- Publication to OrgUnit -->
+    <type>
+        <leftType>Publication</leftType>
+        <rightType>OrgUnit</rightType>
+        <leftwardType>isOrgUnitOfPublication</leftwardType>
+        <rightwardType>isPublicationOfOrgUnit</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Publication to Person -->
+    <type>
+        <leftType>Publication</leftType>
+        <rightType>Person</rightType>
+        <leftwardType>isPersonOfPublication</leftwardType>
+        <rightwardType>isPublicationOfPerson</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Publication to ConceptSet -->
+    <type>
+        <leftType>Publication</leftType>
+        <rightType>ConceptSet</rightType>
+        <leftwardType>isConceptSetOfPublication</leftwardType>
+        <rightwardType>isPublicationOfConceptSet</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Publication to Study -->
+    <type>
+        <leftType>Publication</leftType>
+        <rightType>Study</rightType>
+        <leftwardType>isStudyOfPublication</leftwardType>
+        <rightwardType>isPublicationOfStudy</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Publication to DQCheck -->
+    <type>
+        <leftType>Publication</leftType>
+        <rightType>DQCheck</rightType>
+        <leftwardType>isDQCheckOfPublication</leftwardType>
+        <rightwardType>isPublicationOfDQCheck</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Publication to Documentation -->
+    <type>
+        <leftType>Publication</leftType>
+        <rightType>Documentation</rightType>
+        <leftwardType>isDocumentationOfPublication</leftwardType>
+        <rightwardType>isPublicationOfDocumentation</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Publication to Phenotype -->
+    <type>
+        <leftType>Publication</leftType>
+        <rightType>Phenotype</rightType>
+        <leftwardType>isPhenotypeOfPublication</leftwardType>
+        <rightwardType>isPublicationOfPhenotype</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Publication to DQResult -->
+    <type>
+        <leftType>Publication</leftType>
+        <rightType>DQResult</rightType>
+        <leftwardType>isDQResultOfPublication</leftwardType>
+        <rightwardType>isPublicationOfDQResult</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Publication to Code -->
+    <type>
+        <leftType>Publication</leftType>
+        <rightType>Code</rightType>
+        <leftwardType>isCodeOfPublication</leftwardType>
+        <rightwardType>isPublicationOfCode</rightwardType>
+        <leftCardinality>
+            <min>0</min>
+        </leftCardinality>
+        <rightCardinality>
+            <min>0</min>
+        </rightCardinality>
+    </type>
+
+    <!-- Publication to Publication -->
+    <type>
+        <leftType>Publication</leftType>
+        <rightType>Publication</rightType>
+        <leftwardType>isPublicationOfPublication</leftwardType>
+        <rightwardType>isPublicationOfPublication</rightwardType>
         <leftCardinality>
             <min>0</min>
         </leftCardinality>

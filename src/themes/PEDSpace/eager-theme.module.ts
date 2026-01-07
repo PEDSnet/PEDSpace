@@ -40,6 +40,7 @@ import { ItemSearchResultListElementComponent } from './app/shared/object-list/s
 import { PublicationSidebarSearchListElementComponent } from './app/shared/object-list/sidebar-search-list-element/item-types/publication/publication-sidebar-search-list-element.component';
 import { StartsWithDateComponent } from './app/shared/starts-with/date/starts-with-date.component';
 import { StartsWithTextComponent } from './app/shared/starts-with/text/starts-with-text.component';
+import { PublicationComponent } from './app/item-page/simple/item-types/publication/publication.component';
 
 /**
  * Add components that use a custom decorator to ENTRY_COMPONENTS as well as DECLARATIONS.
@@ -56,6 +57,7 @@ const ENTRY_COMPONENTS = [
   StudyComponent,
   CodeComponent,
   ConceptSetComponent,
+  PublicationComponent,
   DQResultComponent,
   PhenotypeComponent,
   UntypedItemComponent,
