@@ -1,4 +1,4 @@
-<!-- ./bin/dspace registry-loader -metadata config/registries/relationship-formats.xml -->
+<!-- /data/dspace/bin/dspace registry-loader -metadata /data/dspace/config/registries/relationship-formats.xml -->
 <dspace-dc-types>
   <dspace-header>
     <title>DSpace Entity Relationships</title>
