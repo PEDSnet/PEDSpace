@@ -5741,9 +5741,9 @@
 
   "search.filters.filter.itemClinicalSubject.label": "Clinical Subject",
 
-  "search.filters.filter.dqCheckDomain.head": "DQ Result Domain",
+  "search.filters.filter.dqCheckDomain.head": "DQ Check Domain",
 
-  "search.filters.filter.dqCheckDomain.label": "DQ Result Domain",
+  "search.filters.filter.dqCheckDomain.label": "DQ Check Domain",
 
   "search.filters.filter.dqCheckOutcomes.head": "DQ Check Outcomes",
   
