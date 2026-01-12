@@ -5745,10 +5745,12 @@
 
   "search.filters.filter.dqCheckDomain.label": "DQ Result Domain",
 
-  "search.filters.filter.dqCheckOutcomes.head": "DQ Result Outcome",
+  "search.filters.filter.dqCheckOutcomes.head": "DQ Check Outcomes",
   
-  "search.filters.filter.dqCheckOutcomes.Label": "DQ Result Outcome",
+  "search.filters.filter.dqCheckOutcomes.Label": "DQ Check Outcomes",
 
+  "search.filters.filter.dqCheckOutcomes.placeholder": "DQ Check Outcomes...",
+  
   "search.filters.filter.itemClinicalSubject.placeholder": "Terms...",
 
   "search.filters.filter.itemFunder.head": "Funder",
