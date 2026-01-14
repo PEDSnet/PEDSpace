@@ -29,7 +29,7 @@
                 <node id="INST.23" label="General Research Hospital"></node>
                 <node id="INST.24" label="Private, Nonprofit Hospital"></node>
                 <node id="INST.25" label="Public, Nonprofit Hospital"></node>
-                <node id="INST.26" label=">University Affiliate Hospital"></node>
+                <node id="INST.26" label="University Affiliate Hospital"></node>
 	</isComposedBy>
 	<hasNote>Taxonomy developed by Annabel Pinkney</hasNote>
 </node>

@@ -2402,33 +2402,8 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
 
         </form>
 
-
-        <!-- Form which defines the *first* metadata page/section for depositing Publication Entities.
-             Since Publication Entities are very similar to normal Items, this is nearly identical to the
-             'traditionalpageone' form. The only difference is the Author field can be used to link the
-             Publication Entity to a Person Entity. -->
+        <!-- Publication Form-->
         <form name="publicationStep">
-            <row>
-                <relation-field>
-                    <relationship-type>isAuthorOfPublication</relationship-type>
-                    <search-configuration>person</search-configuration>
-                    <repeatable>true</repeatable>
-                    <label>Author</label>
-                    <hint>Enter the author's name (Family name, Given names).</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>author</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
-                    <externalsources>orcid</externalsources>
-                    <required></required>
-                    <!-- You may choose to validate author names via a Regular Expression if it's appropriate for
-                         your institution. The below regex requires a comma to be present in the author field.
-                         However, this is disabled by default to support organizations as authors, etc. -->
-                    <!--<regex>\w+(,)+\w+</regex>-->
-                </relation-field>
-            </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -2438,19 +2413,31 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <label>Title</label>
                     <input-type>onebox</input-type>
                     <hint>Enter the main title of the item.</hint>
-                    <required>You must enter a main title for this item.</required>
+                    <required>You must enter a main title for this published manuscript.</required>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
-                    <dc-element>title</dc-element>
-                    <dc-qualifier>alternative</dc-qualifier>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>author</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Other Titles</label>
-                    <input-type>onebox</input-type>
-                    <hint>If the item has any alternative titles, please enter them here.</hint>
-                    <required></required>
+                    <label>Authors</label>
+                    <input-type>name</input-type>
+                    <hint>Enter the article authors' names (Family name, INITIALS).</hint>
+                    <required>You must enter at least one author for this item.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Affiliations</label>
+                    <input-type>name</input-type>
+                    <hint>List the affiliations of the authors e.g. "Applied Clinical Research Center, Children's Hospital of Philadelphia, Philadelphia, PA".</hint>
+                    <required>You must enter at least affiliation to correspond with your author(s).</required>
                 </field>
             </row>
             <row>
@@ -2459,12 +2446,10 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <dc-element>date</dc-element>
                     <dc-qualifier>issued</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Date of Issue</label>
+                    <label>Date of Publication</label>
                     <style>col-sm-4</style>
                     <input-type>date</input-type>
-                    <hint>Please give the date of previous publication or public distribution.
-                        You can leave out the day and/or month if they aren't applicable.
-                    </hint>
+                    <hint>Please give the date of journal publication. Not the date published digitally, if different.</hint>
                     <required>You must enter at least the year.</required>
                 </field>
                 <field>
@@ -2475,7 +2460,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <label>Publisher</label>
                     <style>col-sm-8</style>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the publisher of the previously issued instance of this item.</hint>
+                    <hint>Enter the full name of the Journal this article is published in, e.g. "Journal of the American Medical Informatics Association".</hint>
                     <required></required>
                 </field>
             </row>
@@ -2486,8 +2471,21 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <dc-qualifier>citation</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Citation</label>
+                    <input-type>textbox</input-type>
+                    <hint>Enter the standard citation for this item.</hint>
+                    <required></required>
+                </field>
+            </row>
+                        <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <dc-qualifier>doi</dc-qualifier>
+                    <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
+                    <repeatable>false</repeatable>
+                    <label>Digital Object Identifier (DOI)</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the standard citation for the previously issued instance of this item.</hint>
+                    <hint>Provide the DOI for the article, beginning with "10."</hint>
                     <required></required>
                 </field>
             </row>
@@ -2495,41 +2493,12 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>relation</dc-element>
-                    <dc-qualifier>ispartofseries</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Series/Report No.</label>
-                    <input-type>series</input-type>
-                    <hint>Enter the series and number assigned to this item by your community.</hint>
+                    <dc-qualifier>uri</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>PubMed Link</label>
+                    <input-type>onebox</input-type>
+                    <hint>Provide a link to the PubMed record for the article, if applicable.</hint>
                     <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>identifier</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
-                    <repeatable>true</repeatable>
-                    <label>Identifiers</label>
-                    <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
-                    <hint>If the item has any identification numbers or codes associated with
-                        it, please enter the types and the actual numbers or codes.
-                    </hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>type</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Type</label>
-                    <input-type value-pairs-name="common_types">dropdown</input-type>
-                    <hint>Select the type(s) of content of the item. To select more than one value in the list, you may
-                        have to hold down the "CTRL" or "Shift" key.
-                    </hint>
-                    <required>You must choose at least one type.</required>
                 </field>
             </row>
             <row>
@@ -2547,7 +2516,48 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <required></required>
                 </field>
             </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>abstract</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Abstract</label>
+                    <input-type>textbox</input-type>
+                    <hint>Enter the article abstract provided by the publisher.</hint>
+                    <required></required>
+                </field>
+            </row>            
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>mesh</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Keywords</label>
+                    <input-type>tag</input-type>
+                    <hint>Input terms that characterize the content of the article. Reference https://meshb.nlm.nih.gov/ for terms or use the MeSH Terms listed on the PubMed article entry.</hint>
+                    <required></required> 
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <repeatable>false</repeatable>
+                    <label>Copyright Statement</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the item's copyright statement, e.g., "Copyright © 2025 by the American Academy of Pediatrics".</hint>
+                    <required></required> 
+                </field>
+            </row>
         </form>
+
+        <!-- Form which defines the *first* metadata page/section for depositing Publication Entities.
+             Since Publication Entities are very similar to normal Items, this is nearly identical to the
+             'traditionalpageone' form. The only difference is the Author field can be used to link the
+             Publication Entity to a Person Entity. -->
+        
         <!-- Form which defines the metadata page/section for depositing Person Entities -->
         <form name="personStep">
             <row>
