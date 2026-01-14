@@ -411,6 +411,12 @@
             <step id="itemAccessConditions"/>
         </submission-process>
 
+        <submission-process name="Publication">
+            <step id="collection"/>
+            <step id="publicationStep"/>
+            <step id="upload"/>
+        </submission-process>
+
 
         <!--
         Submission Process for 'Person' Entities
