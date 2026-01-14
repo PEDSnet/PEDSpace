@@ -65,6 +65,7 @@
         <name-map collection-entity-type="DQResult" submission-name="DQResult"/>
         <name-map collection-entity-type="Documentation" submission-name="Documentation"/>
         <name-map collection-entity-type="Code" submission-name="Code"/>
+        <name-map collection-entity-type="Publication" submission-name="Publication"/>
 
         <!-- Example of configuration using a community handle to map an Item Submission Process.
 
