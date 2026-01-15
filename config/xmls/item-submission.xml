@@ -118,11 +118,7 @@
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
             <type>submission-form</type>
         </step-definition>
-        <step-definition id="publicationStep" mandatory="true">
-            <heading>submit.progressbar.describe.stepone</heading>
-            <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
-            <type>submission-form</type>
-        </step-definition>
+
         <step-definition id="personStep" mandatory="true">
             <heading>submit.progressbar.describe.stepone</heading>
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
@@ -155,6 +151,11 @@
         </step-definition>
 
         <!-- NEW ENTITY BASED STEP DEFINITIONS-->
+        <step-definition id="publicationStep" mandatory="true">
+            <heading>submit.progressbar.describe.stepone</heading>
+            <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+            <type>submission-form</type>
+        </step-definition>         
         <step-definition id="DQCheckForm" mandatory="true">
             <heading>submit.progressbar.describe.stepone</heading>
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
@@ -222,7 +223,6 @@
             <processing-class>org.dspace.app.rest.submit.step.CCLicenseStep</processing-class>
 	        <type>cclicense</type>
         </step-definition>
-
 		<!-- This optional step may allow the user to select access conditions on the item -->
         <step-definition id="itemAccessConditions">
             <heading>submit.progressbar.accessCondition</heading>
@@ -417,8 +417,6 @@
             <step id="publicationStep"/>
             <step id="upload"/>
         </submission-process>
-
-
         <!--
         Submission Process for 'Person' Entities
         To enable: create a collection for Persons and add it to the <submission-map> tag linking to this process
@@ -443,11 +441,11 @@
 
 
         <!--
-        Submission Process for 'Publication' Entities.
+        Submission Process for 'Publication' Entities - OLD.
         These are not to be confused with default Items, as Publications may be linked with other Entities
         (e.g. Person, JournalIssue, etc).
         To enable: create a collection for Publications and add it to the <submission-map> tag linking to this process
-         -->
+        
         <submission-process name="Publication">
             <step id="collection"/>
             <!-- Publications use a custom first step, but share page 2 with "traditional" Item form -->
@@ -456,6 +454,7 @@
             <step id="upload"/>
             <step id="license"/>
         </submission-process>
+         -->
         
         <!--
         Submission Process for 'Pproject' Entities
