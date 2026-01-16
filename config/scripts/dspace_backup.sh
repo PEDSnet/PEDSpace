@@ -57,6 +57,8 @@ LOCAL_ONLY=false
 DRY_RUN=false
 FORCE_MODE=false
 IS_INTERACTIVE=false
+CUSTOM_LABEL=""
+CUSTOM_RETENTION_OVERRIDE=""
 
 # Base backup directory and subdirectories
 BACKUP_BASE_DIR="/data/backups"
@@ -82,6 +84,7 @@ TIMESTAMP=$(date +"%Y-%m-%d-%H-%M-%S")
 # Retention periods in days
 LOCAL_RETENTION_DAYS=30      # On-site backups retention
 OFFSITE_RETENTION_DAYS=90    # Isilon backups retention
+CUSTOM_RETENTION_DAYS=365    # Custom-labeled backups retention (kept longer)
 
 # Log file
 LOG_FILE="${LOG_DIR}/backup_${TIMESTAMP}.log"
@@ -187,7 +190,15 @@ setup_directories() {
 
 # Function to perform PostgreSQL dump
 backup_database() {
-    SQL_BACKUP_FILE="${SQL_DIR}/dspace_${TIMESTAMP}.sql"
+    if [ -n "$CUSTOM_LABEL" ]; then
+        if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+            SQL_BACKUP_FILE="${SQL_DIR}/dspace_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_OVERRIDE}.sql"
+        else
+            SQL_BACKUP_FILE="${SQL_DIR}/dspace_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_DAYS}.sql"
+        fi
+    else
+        SQL_BACKUP_FILE="${SQL_DIR}/dspace_${TIMESTAMP}.sql"
+    fi
     log "Starting PostgreSQL dump to file: ${SQL_BACKUP_FILE}"
     
     if [ "$DRY_RUN" = true ]; then
@@ -220,7 +231,15 @@ backup_database() {
 
 # Function to compress assetstore
 backup_assetstore() {
-    ASSETSTORE_BACKUP_FILE="${ASSETSTORE_DIR}/assetstore_${TIMESTAMP}.tar.gz"
+    if [ -n "$CUSTOM_LABEL" ]; then
+        if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+            ASSETSTORE_BACKUP_FILE="${ASSETSTORE_DIR}/assetstore_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_OVERRIDE}.tar.gz"
+        else
+            ASSETSTORE_BACKUP_FILE="${ASSETSTORE_DIR}/assetstore_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_DAYS}.tar.gz"
+        fi
+    else
+        ASSETSTORE_BACKUP_FILE="${ASSETSTORE_DIR}/assetstore_${TIMESTAMP}.tar.gz"
+    fi
     log "Starting assetstore compression to file: ${ASSETSTORE_BACKUP_FILE}"
     
     # Check if assetstore source exists
@@ -253,7 +272,15 @@ backup_assetstore() {
 
 # Function to backup statistics data
 backup_statistics() {
-    STATISTICS_BACKUP_FILE="${STATISTICS_DIR}/statistics_${TIMESTAMP}.tar.gz"
+    if [ -n "$CUSTOM_LABEL" ]; then
+        if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+            STATISTICS_BACKUP_FILE="${STATISTICS_DIR}/statistics_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_OVERRIDE}.tar.gz"
+        else
+            STATISTICS_BACKUP_FILE="${STATISTICS_DIR}/statistics_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_DAYS}.tar.gz"
+        fi
+    else
+        STATISTICS_BACKUP_FILE="${STATISTICS_DIR}/statistics_${TIMESTAMP}.tar.gz"
+    fi
     log "Starting statistics data compression to file: ${STATISTICS_BACKUP_FILE}"
     
     # Check if statistics source exists
@@ -287,7 +314,15 @@ backup_statistics() {
 
 # Function to backup authority data
 backup_authority() {
-    AUTHORITY_BACKUP_FILE="${AUTHORITY_DIR}/authority_${TIMESTAMP}.tar.gz"
+    if [ -n "$CUSTOM_LABEL" ]; then
+        if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+            AUTHORITY_BACKUP_FILE="${AUTHORITY_DIR}/authority_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_OVERRIDE}.tar.gz"
+        else
+            AUTHORITY_BACKUP_FILE="${AUTHORITY_DIR}/authority_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_DAYS}.tar.gz"
+        fi
+    else
+        AUTHORITY_BACKUP_FILE="${AUTHORITY_DIR}/authority_${TIMESTAMP}.tar.gz"
+    fi
     log "Starting authority data compression to file: ${AUTHORITY_BACKUP_FILE}"
     
     # Check if authority source exists
@@ -321,19 +356,46 @@ backup_authority() {
 
 # Function to cleanup old local backups
 cleanup_local_backups() {
-    log "Cleaning up on-site backups older than ${LOCAL_RETENTION_DAYS} days..."
+    log "Starting cleanup of on-site backups based on retention policies..."
     
     if [ "$DRY_RUN" = true ]; then
-        log "Dry run: would execute: find ${SQL_DIR} -type f -name \"*.sql\" -mtime +${LOCAL_RETENTION_DAYS} -delete"
-        log "Dry run: would execute: find ${ASSETSTORE_DIR} -type f -name \"*.tar.gz\" -mtime +${LOCAL_RETENTION_DAYS} -delete"
-        log "Dry run: would execute: find ${STATISTICS_DIR} -type f -name \"*.tar.gz\" -mtime +${LOCAL_RETENTION_DAYS} -delete"
-        log "Dry run: would execute: find ${AUTHORITY_DIR} -type f -name \"*.tar.gz\" -mtime +${LOCAL_RETENTION_DAYS} -delete"
-    else
-        find "${SQL_DIR}" -type f -name "*.sql" -mtime +${LOCAL_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old SQL files"
-        find "${ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old assetstore backups"
-        find "${STATISTICS_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old statistics backups"
-        find "${AUTHORITY_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old authority backups"
+        log "Dry run: would execute cleanup with intelligent retention parsing"
+        return 0
     fi
+    
+    # Function to clean a directory with intelligent retention parsing
+    cleanup_directory() {
+        local dir="$1"
+        local default_retention="$2"
+        
+        [ ! -d "$dir" ] && return 0
+        
+        find "$dir" -type f \( -name "*.sql" -o -name "*.tar.gz" \) | while read -r file; do
+            local filename=$(basename "$file")
+            local file_age_days=$(( ($(date +%s) - $(stat -c %Y "$file")) / 86400 ))
+            
+            # Extract retention from filename if present (format: _R<days>)
+            if [[ "$filename" =~ _R([0-9]+)\. ]]; then
+                local file_retention="${BASH_REMATCH[1]}"
+                if [ "$file_age_days" -gt "$file_retention" ]; then
+                    log "Deleting $filename (age: ${file_age_days}d, retention: ${file_retention}d)"
+                    rm -f "$file" 2>> "${LOG_FILE}"
+                fi
+            else
+                # No retention in filename, use default
+                if [ "$file_age_days" -gt "$default_retention" ]; then
+                    log "Deleting $filename (age: ${file_age_days}d, default retention: ${default_retention}d)"
+                    rm -f "$file" 2>> "${LOG_FILE}"
+                fi
+            fi
+        done
+    }
+    
+    # Clean each directory with appropriate default retention
+    cleanup_directory "${SQL_DIR}" "${LOCAL_RETENTION_DAYS}"
+    cleanup_directory "${ASSETSTORE_DIR}" "${LOCAL_RETENTION_DAYS}"
+    cleanup_directory "${STATISTICS_DIR}" "${LOCAL_RETENTION_DAYS}"
+    cleanup_directory "${AUTHORITY_DIR}" "${LOCAL_RETENTION_DAYS}"
     
     log "Cleanup of old backups completed."
 }
@@ -379,19 +441,46 @@ copy_to_offsite() {
 
 # Function to cleanup old offsite backups
 cleanup_offsite_backups() {
-    log "Cleaning up Isilon backups older than ${OFFSITE_RETENTION_DAYS} days..."
+    log "Starting cleanup of Isilon backups based on retention policies..."
     
     if [ "$DRY_RUN" = true ]; then
-        log "Dry run: would execute: find ${OFFSITE_SQL_DIR} -type f -name \"*.sql\" -mtime +${OFFSITE_RETENTION_DAYS} -delete"
-        log "Dry run: would execute: find ${OFFSITE_ASSETSTORE_DIR} -type f -name \"*.tar.gz\" -mtime +${OFFSITE_RETENTION_DAYS} -delete"
-        log "Dry run: would execute: find ${OFFSITE_STATISTICS_DIR} -type f -name \"*.tar.gz\" -mtime +${OFFSITE_RETENTION_DAYS} -delete"
-        log "Dry run: would execute: find ${OFFSITE_AUTHORITY_DIR} -type f -name \"*.tar.gz\" -mtime +${OFFSITE_RETENTION_DAYS} -delete"
-    else
-        find "${OFFSITE_SQL_DIR}" -type f -name "*.sql" -mtime +${OFFSITE_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old offsite SQL files"
-        find "${OFFSITE_ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old offsite assetstore backups"
-        find "${OFFSITE_STATISTICS_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old offsite statistics backups"
-        find "${OFFSITE_AUTHORITY_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old offsite authority backups"
+        log "Dry run: would execute offsite cleanup with intelligent retention parsing"
+        return 0
     fi
+    
+    # Function to clean a directory with intelligent retention parsing
+    cleanup_directory() {
+        local dir="$1"
+        local default_retention="$2"
+        
+        [ ! -d "$dir" ] && return 0
+        
+        find "$dir" -type f \( -name "*.sql" -o -name "*.tar.gz" \) | while read -r file; do
+            local filename=$(basename "$file")
+            local file_age_days=$(( ($(date +%s) - $(stat -c %Y "$file")) / 86400 ))
+            
+            # Extract retention from filename if present (format: _R<days>)
+            if [[ "$filename" =~ _R([0-9]+)\. ]]; then
+                local file_retention="${BASH_REMATCH[1]}"
+                if [ "$file_age_days" -gt "$file_retention" ]; then
+                    log "Deleting offsite $filename (age: ${file_age_days}d, retention: ${file_retention}d)"
+                    rm -f "$file" 2>> "${LOG_FILE}"
+                fi
+            else
+                # No retention in filename, use default
+                if [ "$file_age_days" -gt "$default_retention" ]; then
+                    log "Deleting offsite $filename (age: ${file_age_days}d, default retention: ${default_retention}d)"
+                    rm -f "$file" 2>> "${LOG_FILE}"
+                fi
+            fi
+        done
+    }
+    
+    # Clean each directory with appropriate default retention
+    cleanup_directory "${OFFSITE_SQL_DIR}" "${OFFSITE_RETENTION_DAYS}"
+    cleanup_directory "${OFFSITE_ASSETSTORE_DIR}" "${OFFSITE_RETENTION_DAYS}"
+    cleanup_directory "${OFFSITE_STATISTICS_DIR}" "${OFFSITE_RETENTION_DAYS}"
+    cleanup_directory "${OFFSITE_AUTHORITY_DIR}" "${OFFSITE_RETENTION_DAYS}"
     
     log "Cleanup of offsite backups completed."
 }
@@ -528,12 +617,34 @@ perform_offsite_copy() {
 
 # Function to display usage information
 usage() {
-    echo "Usage: $0 [-l] [-d] [-f]"
-    echo "  -l    Local backup only (skip offsite copy flag creation)"
-    echo "  -d    Dry run mode (log actions without executing them)"
-    echo "  -f    Force mode (override directory permission checks)"
+    echo "Usage: $0 [-l] [-d] [-f] [-c <label>] [-r <days>]"
+    echo "  -l           Local backup only (skip offsite copy flag creation)"
+    echo "  -d           Dry run mode (log actions without executing them)"
+    echo "  -f           Force mode (override directory permission checks)"
+    echo "  -c <label>   Custom backup label (e.g., 'pre-upgrade', 'before-psql-update')"
+    echo "               Backups will be named: prefix_YYYY-MM-DD-HH-MM-SS_label_R<days>.ext"
+    echo "               Retention is embedded in filename and persists across script runs"
+    echo "               Default retention: ${CUSTOM_RETENTION_DAYS} days (longer than routine backups)"
+    echo "  -r <days>    Override retention period in days (applies to current backup only)"
+    echo "               Use with -c for custom-labeled backups, or alone for routine backups"
     echo
-    echo "For cron usage:"
+    echo "Default retention periods:"
+    echo "  - Routine backups (local):   ${LOCAL_RETENTION_DAYS} days"
+    echo "  - Routine backups (offsite): ${OFFSITE_RETENTION_DAYS} days"
+    echo "  - Custom-labeled backups:    ${CUSTOM_RETENTION_DAYS} days"
+    echo
+    echo "Examples:"
+    echo "  Routine backup:                    $0"
+    echo "  Pre-upgrade backup (1 year):       $0 -c pre-upgrade-8.2"
+    echo "    → Creates: dspace_2026-01-16-14-30-00_pre-upgrade-8.2_R365.sql"
+    echo "  Pre-PSQL mod (2 years):            $0 -c before-psql-16 -r 730"
+    echo "    → Creates: dspace_2026-01-16-14-30-00_before-psql-16_R730.sql"
+    echo "  Critical backup (5 years):         $0 -c critical-pre-migration -r 1825"
+    echo "    → Creates: dspace_2026-01-16-14-30-00_critical-pre-migration_R1825.sql"
+    echo "  Routine backup (60 days):          $0 -r 60"
+    echo "  Dry run custom backup:             $0 -d -c test-label"
+    echo
+    echo "For cron usage (routine backups):"
     echo "  - As dspace:     0 2 * * * /path/to/dspace_backup.sh # Executes at 2am every day." 
     echo "  - As seyediana1: 0 3 * * * /path/to/dspace_backup.sh # Executes at 3am every day."
     exit 1
@@ -542,7 +653,7 @@ usage() {
 # ---------------------------- Main Script -------------------------------------
 
 # Parse command line options
-while getopts ":ldf" opt; do
+while getopts ":ldfc:r:" opt; do
     case ${opt} in
         l)
             LOCAL_ONLY=true
@@ -553,8 +664,25 @@ while getopts ":ldf" opt; do
         f)
             FORCE_MODE=true
             ;;
+        c)
+            CUSTOM_LABEL="${OPTARG}"
+            # Sanitize the label - remove special characters, replace spaces with hyphens
+            CUSTOM_LABEL=$(echo "$CUSTOM_LABEL" | sed 's/[^a-zA-Z0-9._-]/-/g' | sed 's/--*/-/g')
+            ;;
+        r)
+            CUSTOM_RETENTION_OVERRIDE="${OPTARG}"
+            # Validate that it's a number
+            if ! [[ "$CUSTOM_RETENTION_OVERRIDE" =~ ^[0-9]+$ ]]; then
+                echo "ERROR: Retention period must be a positive integer (days)"
+                exit 1
+            fi
+            ;;
         \?)
             echo "Invalid option: -$OPTARG"
+            usage
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument."
             usage
             ;;
     esac
@@ -562,6 +690,18 @@ done
 
 # Get current user
 CURRENT_USER=$(id -un)
+
+# Apply retention override if specified
+if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+    if [ -n "$CUSTOM_LABEL" ]; then
+        # Override custom backup retention
+        CUSTOM_RETENTION_DAYS=$CUSTOM_RETENTION_OVERRIDE
+    else
+        # Override routine backup retention (both local and offsite)
+        LOCAL_RETENTION_DAYS=$CUSTOM_RETENTION_OVERRIDE
+        OFFSITE_RETENTION_DAYS=$CUSTOM_RETENTION_OVERRIDE
+    fi
+fi
 
 # Determine if running interactively (must be done BEFORE any functions are called)
 if [ -t 0 ]; then
@@ -578,6 +718,19 @@ if [ "$IS_INTERACTIVE" = true ]; then
     echo "  - Dry run: ${DRY_RUN}"
     echo "  - Local only: ${LOCAL_ONLY}"
     echo "  - Force mode: ${FORCE_MODE}"
+    if [ -n "$CUSTOM_LABEL" ]; then
+        echo "  - Custom label: ${CUSTOM_LABEL}"
+        echo "  - Retention: ${CUSTOM_RETENTION_DAYS} days (custom backups)"
+        if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+            echo "  - Retention override: ${CUSTOM_RETENTION_OVERRIDE} days applied"
+        fi
+    else
+        echo "  - Backup type: Routine"
+        echo "  - Retention: ${LOCAL_RETENTION_DAYS} days (local), ${OFFSITE_RETENTION_DAYS} days (offsite)"
+        if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+            echo "  - Retention override: ${CUSTOM_RETENTION_OVERRIDE} days applied to both"
+        fi
+    fi
     echo "---------------------------------------------------------------------"
 fi
 
@@ -588,7 +741,11 @@ validate_hostname
 setup_directories
 
 # Log start of process
-log "========== Starting DSpace Backup Process (User: ${CURRENT_USER}) =========="
+if [ -n "$CUSTOM_LABEL" ]; then
+    log "========== Starting DSpace CUSTOM Backup Process (User: ${CURRENT_USER}, Label: ${CUSTOM_LABEL}) =========="
+else
+    log "========== Starting DSpace Backup Process (User: ${CURRENT_USER}) =========="
+fi
 
 # Execute operations based on current user
 if [ "$CURRENT_USER" = "$BACKUP_USER" ]; then
