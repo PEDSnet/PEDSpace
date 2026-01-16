@@ -232,18 +232,7 @@
         <!-- ENTITY-BASED FORM DEFINITIONS-->
         <!-- Data Quality Check Form-->
         <form name="DQCheckForm">
-            <row>
-                <field>
-                    <dc-schema>dspace</dc-schema>
-                    <dc-element>entity</dc-element>
-                    <dc-qualifier>type</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Resource Type</label>
-                    <input-type value-pairs-name="EntityType">dropdown</input-type>
-                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
-                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
-                </field>
-            </row>
+
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1095,18 +1084,7 @@
 
         <!-- Study Form-->
         <form name="StudyForm">
-            <row>
-                <field>
-                    <dc-schema>dspace</dc-schema>
-                    <dc-element>entity</dc-element>
-                    <dc-qualifier>type</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Resource Type</label>
-                    <input-type value-pairs-name="EntityType">dropdown</input-type>
-                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
-                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
-                </field>
-            </row>
+
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1325,18 +1303,7 @@
 
         <!-- Documentation Forms-->
         <form name="DocumentationFormStepOne">
-            <row>
-                <field>
-                    <dc-schema>dspace</dc-schema>
-                    <dc-element>entity</dc-element>
-                    <dc-qualifier>type</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Resource Type</label>
-                    <input-type value-pairs-name="EntityType">dropdown</input-type>
-                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
-                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
-                </field>
-            </row>
+
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1652,18 +1619,7 @@
 
         <!-- Reusable Code Form -->
         <form name="CodeForm">
-            <row>
-                <field>
-                    <dc-schema>dspace</dc-schema>
-                    <dc-element>entity</dc-element>
-                    <dc-qualifier>type</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Resource Type</label>
-                    <input-type value-pairs-name="EntityType">dropdown</input-type>
-                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
-                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
-                </field>
-            </row>
+
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
