@@ -448,7 +448,7 @@
         
         <submission-process name="Publication">
             <step id="collection"/>
-            <!-- Publications use a custom first step, but share page 2 with "traditional" Item form -->
+             Publications use a custom first step, but share page 2 with "traditional" Item form
             <step id="publicationStep"/>
             <step id="traditionalpagetwo"/>
             <step id="upload"/>
