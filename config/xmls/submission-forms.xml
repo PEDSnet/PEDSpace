@@ -1237,6 +1237,15 @@
             </row>
             <row>
                 <relation-field>
+                    <relationship-type>isPublicationOfStudy</relationship-type>
+                    <search-configuration>publication</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Publications</label>
+                    <hint>Link the project to any published manuscripts that resulted from the research, if applicable.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
                     <relationship-type>isConceptSetOfStudy</relationship-type>
                     <search-configuration>conceptset</search-configuration>
                     <repeatable>true</repeatable>
@@ -2379,7 +2388,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <dc-qualifier>author</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Authors</label>
-                    <input-type>name</input-type>
+                    <input-type>onebox</input-type>
                     <hint>Enter the article authors' names (Family name, INITIALS).</hint>
                     <required>You must enter at least one author for this item.</required>
                 </field>
@@ -2457,7 +2466,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <required></required>
                 </field>
             </row>
-            <row>
+            <!-- <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>language</dc-element>
@@ -2471,7 +2480,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     </hint>
                     <required></required>
                 </field>
-            </row>
+            </row> -->
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
