@@ -1167,8 +1167,8 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Funding Organization(s)</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the name(s) of the organizations (according to ror.org) who funded or provided financial assitance to the study.</hint>
+                    <input-type value-pairs-name="Funders">dropdown</input-type>
+                    <hint>Select the name(s) of the organizations who funded or provided financial assitance to the project.</hint>
                     <required></required>
                 </field>
             </row>
@@ -3637,6 +3637,228 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             <pair>
                 <displayed-value>UK Biobank</displayed-value>
                 <stored-value>UK Biobank</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="Funders" dc-term="funding_orgs">
+            <pair>
+                <displayed-value>Patient-Centered Outcomes Research Institute</displayed-value>
+                <stored-value>Patient-Centered Outcomes Research Institute</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institutes of Health (NIH)</displayed-value>
+                <stored-value>National Institutes of Health (NIH)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Environmental Influences on Child Health Outcomes (ECHO)</displayed-value>
+                <stored-value>Environmental Influences on Child Health Outcomes (ECHO)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>John E. Fogarty International Center (FIC)</displayed-value>
+                <stored-value>John E. Fogarty International Center (FIC)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Advancing Translational Sciences (NCATS)</displayed-value>
+                <stored-value>National Center for Advancing Translational Sciences (NCATS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Complementary and Integrative Health (NCCIH)</displayed-value>
+                <stored-value>National Center for Complementary and Integrative Health (NCCIH)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Cancer Institute (NCI)</displayed-value>
+                <stored-value>National Cancer Institute (NCI)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Minority Health and Health Disparities (NCMHD)</displayed-value>
+                <stored-value>National Center for Minority Health and Health Disparities (NCMHD)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Research Resources (NCRR)</displayed-value>
+                <stored-value>National Center for Research Resources (NCRR)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Eye Insitute (NEI)</displayed-value>
+                <stored-value>National Eye Insitute (NEI)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Human Genome Research Institute (NHGRI)</displayed-value>
+                <stored-value>National Human Genome Research Institute (NHGRI)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National, Heart, Lung, and Blood Institute (NHBLI)</displayed-value>
+                <stored-value>National, Heart, Lung, and Blood Institute (NHBLI)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute on Aging (NIA)</displayed-value>
+                <stored-value>National Institute on Aging (NIA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute on Alcohol Abuse and Alcoholism(NIAAA)</displayed-value>
+                <stored-value>National Institute on Alcohol Abuse and Alcoholism(NIAAA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute Allergy and Infectious Diseases (NIAID)</displayed-value>
+                <stored-value>National Institute Allergy and Infectious Diseases (NIAID)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Arthitis and Musculoskeletal and Skin Diseases (NIAMS)</displayed-value>
+                <stored-value>National Institute of Arthitis and Musculoskeletal and Skin Diseases (NIAMS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Biomedical Imaging and Bioengineering (NIBIB)</displayed-value>
+                <stored-value>National Institute of Biomedical Imaging and Bioengineering (NIBIB)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Child Health and Human Development (NICHD)</displayed-value>
+                <stored-value>National Institute of Child Health and Human Development (NICHD)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute on Drug Abuse (NIDA)</displayed-value>
+                <stored-value>National Institute on Drug Abuse (NIDA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute on Deafness and Other Communication Disorders (NIDCD)</displayed-value>
+                <stored-value>National Institute on Deafness and Other Communication Disorders (NIDCD)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Dental and Craniofacial Research (NIDCR)</displayed-value>
+                <stored-value>National Institute of Dental and Craniofacial Research (NIDCR)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK)</displayed-value>
+                <stored-value>National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Environmental Health Sciences (NIEHS)</displayed-value>
+                <stored-value>National Institute of Environmental Health Sciences (NIEHS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute General Medical Sciences (NIGMS)</displayed-value>
+                <stored-value>National Institute General Medical Sciences (NIGMS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Mental Health (NIMH)</displayed-value>
+                <stored-value>National Institute of Mental Health (NIMH)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute on Minority Health and Health Disparities (NIMHD)</displayed-value>
+                <stored-value>National Institute on Minority Health and Health Disparities (NIMHD)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Neurological Disorders and Stroke (NINDS)</displayed-value>
+                <stored-value>National Institute of Neurological Disorders and Stroke (NINDS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Nursing Research (NINR)</displayed-value>
+                <stored-value>National Institute of Nursing Research (NINR)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Library of Medicine (NLM)</displayed-value>
+                <stored-value>National Library of Medicine (NLM)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Behavioral and Social Sciences Research (OBSSR)</displayed-value>
+                <stored-value>Office of Behavioral and Social Sciences Research (OBSSR)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of the Director, NIH (OD)</displayed-value>
+                <stored-value>Office of the Director, NIH (OD)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Disease Prevention (ODP)</displayed-value>
+                <stored-value>Office of Disease Prevention (ODP)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Dietary Supplements (ODS)</displayed-value>
+                <stored-value>Office of Dietary Supplements (ODS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Data Science Strategy (ODSS)</displayed-value>
+                <stored-value>Office of Data Science Strategy (ODSS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>NIH Basic Begavioral and Social Science Opportunity Network (OPPNET)</displayed-value>
+                <stored-value>NIH Basic Begavioral and Social Science Opportunity Network (OPPNET)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Division of Program Coodination, Planning and Strategic Initiatives, Office of Research Infrastructure Programs (ORIP)</displayed-value>
+                <stored-value>Division of Program Coodination, Planning and Strategic Initiatives, Office of Research Infrastructure Programs (ORIP)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Research on Women's Health (ORWH)</displayed-value>
+                <stored-value>Office of Research on Women's Health (ORWH)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Strategic Coordination (OSC)</displayed-value>
+                <stored-value>Office of Strategic Coordination (OSC)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Agency for Healthcare Research and Quality (AHRQ)</displayed-value>
+                <stored-value>Agency for Healthcare Research and Quality (AHRQ)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Centers for Disease Control and Prevention (CDC)</displayed-value>
+                <stored-value>Centers for Disease Control and Prevention (CDC)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Birth Defects and Developmental Disabilities (NCBDDD)</displayed-value>
+                <stored-value>National Center for Birth Defects and Developmental Disabilities (NCBDDD)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Chronic Disease Prevention and Health Promotion (NCCDPHP)</displayed-value>
+                <stored-value>National Center for Chronic Disease Prevention and Health Promotion (NCCDPHP)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Infectious Disease (NCID)</displayed-value>
+                <stored-value>National Center for Infectious Disease (NCID)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Injury Prevention and Control (NCIPC)</displayed-value>
+                <stored-value>National Center for Injury Prevention and Control (NCIPC)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Occupational Safety and Health (OPHR)</displayed-value>
+                <stored-value>National Center for Occupational Safety and Health (OPHR)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Department of Health and Human Services (DHHS)</displayed-value>
+                <stored-value>Department of Health and Human Services (DHHS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Food and Drug Administration (FDA)</displayed-value>
+                <stored-value>Food and Drug Administration (FDA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Health Resources and Services Administration (HRSA)</displayed-value>
+                <stored-value>Health Resources and Services Administration (HRSA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Department of Justice (DOJ)</displayed-value>
+                <stored-value>Department of Justice (DOJ)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Environmental Protection Agency (EPA)</displayed-value>
+                <stored-value>Environmental Protection Agency (EPA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Public Health Informatics (NCPHI)</displayed-value>
+                <stored-value>National Center for Public Health Informatics (NCPHI)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Immunization Program (NIP)</displayed-value>
+                <stored-value>National Immunization Program (NIP)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Nutrition Research (ONR)</displayed-value>
+                <stored-value>Office of Nutrition Research (ONR)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Department of Veteran's Affairs (VA)</displayed-value>
+                <stored-value>Department of Veteran's Affairs (VA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Rare Diseases (ORD)</displayed-value>
+                <stored-value>Office of Rare Diseases (ORD)</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="DataModel" dc-term="subject_DataModel">
