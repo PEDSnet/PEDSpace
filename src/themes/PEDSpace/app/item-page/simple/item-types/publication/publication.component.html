@@ -68,6 +68,11 @@
       [label]="'relationships.isJournalIssueOf' | translate">
     </ds-related-items>
     <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
+    
+    <!-- 7. Clinical Subject Headings -->
+    <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
+      [label]="'Clinical Subject Headings'"></ds-generic-item-page-field>
+    
     <ds-generic-item-page-field [item]="object"
       [fields]="['dc.description']"
       [label]="'publication.page.description'">
