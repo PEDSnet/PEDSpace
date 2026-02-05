@@ -1552,6 +1552,8 @@
   "collection.form.title": "Name",
 
   "collection.listelement.badge": "Domain",
+  
+  "publication.collection.listelement.badge": "Publication Domain",
 
   "collection.logo": "Domain logo",
 

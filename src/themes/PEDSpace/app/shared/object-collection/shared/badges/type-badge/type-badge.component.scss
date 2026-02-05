@@ -30,6 +30,7 @@ $phenotype-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
 $dqresult-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNxdWFyZS1saWJyYXJ5Ij48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIi8+PHBhdGggZD0iTTcgN3YxMCIvPjxwYXRoIGQ9Ik0xMSA3djEwIi8+PHBhdGggZD0ibTE1IDcgMiAxMCIvPjwvc3ZnPg==";
 $orgunit-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXVuaXZlcnNpdHkiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTAiIHI9IjEiLz48cGF0aCBkPSJNMjIgMjBWOGgtNGwtNi00LTYgNEgydjEyYTIgMiAwIDAgMCAyIDJoMTZhMiAyIDAgMCAwIDItMiIvPjxwYXRoIGQ9Ik02IDE3di4wMSIvPjxwYXRoIGQ9Ik02IDEzdi4wMSIvPjxwYXRoIGQ9Ik0xOCAxN3YuMDEiLz48cGF0aCBkPSJNMTggMTN2LjAxIi8+PHBhdGggZD0iTTE0IDIydi01YTIgMiAwIDAgMC0yLTJhMiAyIDAgMCAwLTIgMnY1Ii8+PC9zdmc+";
 $person-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXVzZXIiPjxwYXRoIGQ9Ik0xOSAyMXYtMmE0IDQgMCAwIDAtNC00SDlhNCA0IDAgMCAwLTQgNHYyIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSI3IiByPSI0Ii8+PC9zdmc+";
+$publication-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWZpbGUtdGV4dC1pY29uIGx1Y2lkZS1maWxlLXRleHQiPjxwYXRoIGQ9Ik02IDIyYTIgMiAwIDAgMS0yLTJWNGEyIDIgMCAwIDEgMi0yaDhhMi40IDIuNCAwIDAgMSAxLjcwNC43MDZsMy41ODggMy41ODhBMi40IDIuNCAwIDAgMSAyMCA4djEyYTIgMiAwIDAgMS0yIDJ6Ii8+PHBhdGggZD0iTTE0IDJ2NWExIDEgMCAwIDAgMSAxaDUiLz48cGF0aCBkPSJNMTAgOUg4Ii8+PHBhdGggZD0iTTE2IDEzSDgiLz48cGF0aCBkPSJNMTYgMTdIOCIvPjwvc3ZnPg==";
 
 // ======================
 // Badge Type Styles
@@ -438,6 +439,40 @@ $person-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmc
         }
     }
 
+    // Publication Badge
+    &.badge-publication {
+        background-color: $tropical-indigo;
+        transition: all 0.3s ease;
+
+        &::before {
+            mask-image: url($publication-icon);
+            -webkit-mask-image: url($publication-icon);
+        }
+
+        &:not(.badge-community):hover,
+        &:not(.badge-community):focus {
+            background-color: lighten($tropical-indigo, 10%);
+        }
+
+        &.badge-collection {
+            border: 2px solid $tropical-indigo;
+            background-color: #e5e5f7; // Light background color
+            opacity: $badge-opacity; // Using the universal opacity variable
+            background-size: 4px 4px;
+            background-image: generateBadgePattern($tropical-indigo); // Using the gradient function
+            transition: all 0.3s ease;
+
+            &:hover,
+            &:focus {
+                opacity: 1; // Fully opaque on hover/focus
+                background-color: lighten($tropical-indigo, 15%); // Lighten the background color
+                background-image: generateBadgePattern(lighten($tropical-indigo, 25%)); // Generate a lighter pattern
+                transform: translateY(-2px); // Slight upward movement
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Add shadow for depth
+            }
+        }
+    }
+
     // Community Badge
     &.badge-community {
         background-color: theme-color('info');
@@ -450,7 +485,7 @@ $person-icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmc
     }
 
     // Default Collection Badge Style for Undefined Types
-    &.badge-collection:not([class*="badge-conceptset"]):not([class*="badge-dqcheck"]):not([class*="badge-dqresult"]):not([class*="badge-documentation"]):not([class*="badge-study"]):not([class*="badge-phenotype"]) {
+    &.badge-collection:not([class*="badge-conceptset"]):not([class*="badge-dqcheck"]):not([class*="badge-dqresult"]):not([class*="badge-documentation"]):not([class*="badge-study"]):not([class*="badge-phenotype"]):not([class*="badge-publication"]) {
         border: 2px solid theme-color('info');
         background-color: #e5e5f7; // Light background color
         opacity: $badge-opacity; // Using the universal opacity variable
