@@ -118,7 +118,6 @@
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
             <type>submission-form</type>
         </step-definition>
-
         <step-definition id="personStep" mandatory="true">
             <heading>submit.progressbar.describe.stepone</heading>
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
@@ -260,6 +259,7 @@
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
             <type>submission-form</type>
         </step-definition>
+        <!-- 
         <step-definition id="openairePublicationPageoneForm" mandatory="true">
             <heading>submit.progressbar.describe.stepone</heading>
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
@@ -270,7 +270,7 @@
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
             <type>submission-form</type>
         </step-definition>
-
+        -->
         <!-- This is the Sample/Fake Step which is used for testing only -->
         <step-definition id="sample">
             <heading>Sample</heading>
@@ -502,20 +502,17 @@
         </submission-process>
 
         <!-- Openaire submission processes -->
-        <submission-process name="openairePublicationSubmission">
+        <!--<submission-process name="openairePublicationSubmission">
             <step id="collection"/>
-
-            <!--Step will be to Describe the item. -->
+           
             <step id="openairePublicationPageoneForm"/>
             <step id="openairePublicationPagetwoForm"/>
-
-            <!--Step will be to Upload the item -->
-            <!-- step id="upload-with-embargo"/-->
+           
             <step id="upload"/>
 
-            <!--Step will be to Sign off on the License -->
             <step id="license"/>
-        </submission-process>
+        </submission-process> -->
+
         <submission-process name="openairePersonSubmission">
             <step id="collection"/>
             <step id="openairePersonForm"/>

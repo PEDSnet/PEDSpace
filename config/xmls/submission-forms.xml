@@ -2466,21 +2466,6 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <required></required>
                 </field>
             </row>
-            <!-- <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>language</dc-element>
-                    <dc-qualifier>iso</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Language</label>
-                    <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
-                    <hint>Select the language of the main content of the item. If the language does not appear in the
-                        list, please select 'Other'. If the content does not really have a language (for example, if it
-                        is a dataset or an image) please select 'N/A'.
-                    </hint>
-                    <required></required>
-                </field>
-            </row> -->
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -2500,9 +2485,10 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Keywords</label>
-                    <input-type>tag</input-type>
+                    <input-type >tag</input-type>
                     <hint>Input terms that characterize the content of the article. Reference https://meshb.nlm.nih.gov/ for terms or use the MeSH Terms listed on the PubMed article entry.</hint>
                     <required></required> 
+                    <vocabulary>dc_subject_mesh</vocabulary>
                 </field>
             </row>
             <row>
