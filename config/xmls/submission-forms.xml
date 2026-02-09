@@ -2436,7 +2436,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <dc-qualifier>citation</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Citation</label>
-                    <input-type>textbox</input-type>
+                    <input-type>textarea</input-type>
                     <hint>Enter the standard citation for this item.</hint>
                     <required></required>
                 </field>
@@ -2473,7 +2473,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Abstract</label>
-                    <input-type>textbox</input-type>
+                    <input-type>textarea</input-type>
                     <hint>Enter the article abstract provided by the publisher.</hint>
                     <required></required>
                 </field>
