@@ -7094,6 +7094,8 @@
   "submission.sections.upload.info.conceptset": "Please deposit a <code>.CSV</code> file with an intuitive, human-readable filename e.g., \"<code>dx_asthma.csv</code>\". <strong>Upload files by dragging & dropping them anywhere on the page</strong>.",
 
   "submission.sections.upload.info.phenotype": "Please deposit a <code>.ZIP</code> file with an intuitive, human-readable filename. In the <code>zip</code> file, include a specs folder containing the utilized codesets and at least one code file (typically <code>cohorts.R</code> and <code>driver.R</code>) to run the algorithm. <strong>Upload files by dragging & dropping them anywhere on the page</strong>.",
+  
+  "submission.sections.upload.info.publication": "Please deposit any supplemental study files with an intuitive, human-readable filename. <strong>Upload files by dragging & dropping them anywhere on the page</strong>.",
 
   "submission.sections.upload.no-entry": "No",
 

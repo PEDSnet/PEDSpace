@@ -30,6 +30,36 @@
             [type]="AlertTypeEnum.Info"
             [attr.data-type]="'conceptset'"></ds-alert>
   
+  <ds-alert *ngSwitchCase="'Code'"
+            [content]="'submission.sections.upload.info.code'"
+            [dismissible]="true"
+            [type]="AlertTypeEnum.Info"
+            [attr.data-type]="'code'"></ds-alert>
+  
+  <ds-alert *ngSwitchCase="'Study'"
+            [content]="'submission.sections.upload.info.study'"
+            [dismissible]="true"
+            [type]="AlertTypeEnum.Info"
+            [attr.data-type]="'study'"></ds-alert>
+  
+  <ds-alert *ngSwitchCase="'OrgUnit'"
+            [content]="'submission.sections.upload.info.orgunit'"
+            [dismissible]="true"
+            [type]="AlertTypeEnum.Info"
+            [attr.data-type]="'orgunit'"></ds-alert>
+  
+  <ds-alert *ngSwitchCase="'Person'"
+            [content]="'submission.sections.upload.info.person'"
+            [dismissible]="true"
+            [type]="AlertTypeEnum.Info"
+            [attr.data-type]="'person'"></ds-alert>
+  
+  <ds-alert *ngSwitchCase="'Publication'"
+            [content]="'submission.sections.upload.info.publication'"
+            [dismissible]="true"
+            [type]="AlertTypeEnum.Info"
+            [attr.data-type]="'publication'"></ds-alert>
+  
   <ds-alert *ngSwitchDefault
             [content]="'submission.sections.upload.info'"
             [dismissible]="true"
