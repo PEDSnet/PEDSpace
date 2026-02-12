@@ -13,16 +13,18 @@
     <ds-badges *ngIf="showLabel" [object]="object" [showAccessStatus]="true"></ds-badges>
   </div>
 
-<div class="d-flex flex-row">
-  <ds-item-page-title-field [item]="object" class="mr-auto">
-  </ds-item-page-title-field>
-  <ds-dso-edit-menu [object]="object"></ds-dso-edit-menu>
-</div>
+  <div class="d-flex flex-row">
+    <ds-item-page-title-field [item]="object" class="mr-auto">
+    </ds-item-page-title-field>
+    <ds-dso-edit-menu [object]="object"></ds-dso-edit-menu>
+  </div>
 
   <div class="row">
     <div class="col-12 col-md-4">
-      <div class="subtitle-container" *ngIf="object?.metadata?.['local.variable.name']?.length > 0 || object?.metadata?.['dc.title.alternative']?.length > 0">
-        <ds-generic-item-page-field class="subtitle" [renderAsCode]="true" [codeType]="'variable'" [item]="object" [fields]="['local.variable.name']" [label]="'item.preview.local.variable.name'">
+      <div class="subtitle-container"
+        *ngIf="object?.metadata?.['local.variable.name']?.length > 0 || object?.metadata?.['dc.title.alternative']?.length > 0">
+        <ds-generic-item-page-field class="subtitle" [renderAsCode]="true" [codeType]="'variable'" [item]="object"
+          [fields]="['local.variable.name']" [label]="'item.preview.local.variable.name'">
         </ds-generic-item-page-field>
         <!-- <span class="tooltip-container" 
               title="Analysts, use this name to reference this variable in your study DAP."
@@ -79,53 +81,61 @@
         [label]="'item.page.description'"></ds-item-page-description-field>
 
       <!-- <ng-container *ngIf="isLoggedIn"> -->
-        <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
-        </ds-item-page-uri-field>
+      <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
+      </ds-item-page-uri-field>
       <!-- </ng-container> -->
 
-      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.other']" [separator]="' '"
-        [label]="'browse.metadata.vocab'"></ds-generic-item-page-field>
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.other']"
+        [separator]="' '" [label]="'browse.metadata.vocab'"></ds-generic-item-page-field>
 
-      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
-        [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']"
+        [separator]="' '" [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
       <!-- <div class="col-xs-12 col-md-7"> -->
 
-      <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfStudy'"
-        [label]="'relationships.isConceptSetOf' | translate">
+      <ds-related-items [parentItem]="object" [relationType]="'isCodeOfStudy'"
+        [label]="'relationships.isCodeOf' | translate">
       </ds-related-items>
 
-      <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfStudy'"
-        [label]="'Data Source'">
+      <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfStudy'" [label]="'Data Source'">
       </ds-related-items>
 
       <ds-related-items [parentItem]="object" [relationType]="'isDQCheckOfStudy'"
         [label]="'relationships.isPersonOf' | translate">
       </ds-related-items>
 
-      <ds-related-items [parentItem]="object" [relationType]="'isDQResultOfStudy'"
-        [label]="'relationships.isDQResultOf' | translate">
-      </ds-related-items>
-
-      <ds-related-items [parentItem]="object" [relationType]="'isPersonOfStudy'"
-        [label]="'Parent Partner'">
-      </ds-related-items>
-
-      <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfStudy'"
-        [label]="'relationships.isPhenotypeOf' | translate">
+      <ds-related-items [parentItem]="object" [relationType]="'isPersonOfStudy'" [label]="'Parent Partner'">
       </ds-related-items>
 
       <ds-related-items [parentItem]="object" [relationType]="'isStudyOfStudy'"
         [label]="'relationships.isStudyOf' | translate">
       </ds-related-items>
 
-      <ds-related-items [parentItem]="object" [relationType]="'isCodeOfStudy'"
-        [label]="'relationships.isCodeOf' | translate">
-      </ds-related-items>
-
-      <ds-item-page-external-publication-field [item]="object" [label]="'item.preview.dc.relation.isreferencedby'" [applyCitationStyling]="true">
-      </ds-item-page-external-publication-field>
-      <!-- </div> -->
+      <div class="mt-5 w-100">
+        <ds-tabbed-related-entities-search [item]="object" [relationTypes]="[
+                                              {
+                                                label: 'isStudyOfPublication',
+                                                filter: 'isStudyOfPublication',
+                                                configuration: 'publication-relationships'
+                                              },
+                                              {
+                                                label: 'isStudyOfPhenotype',
+                                                filter: 'isStudyOfPhenotype',
+                                                configuration: 'phenotype-relationships'
+                                              },
+                                              {
+                                                label: 'isStudyOfConceptSet',
+                                                filter: 'isStudyOfConceptSet',
+                                                configuration: 'conceptset-relationships'
+                                              },
+                                              {
+                                                label: 'isStudyOfDQResult',
+                                                filter: 'isStudyOfDQResult',
+                                                configuration: 'dqresult-relationships'
+                                              }
+                                            ]">
+        </ds-tabbed-related-entities-search>
+      </div>
 
       <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
       </ds-item-page-cc-license-field>
