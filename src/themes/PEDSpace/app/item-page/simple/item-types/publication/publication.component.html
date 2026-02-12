@@ -83,6 +83,12 @@
     <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
       [label]="'Clinical Subject Headings'"></ds-generic-item-page-field>
     
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPublicationOfStudy'"
+      [label]="'Studies'">
+    </ds-related-items>
+
     <ds-generic-item-page-field [item]="object"
       [fields]="['dc.description']"
       [label]="'publication.page.description'">
