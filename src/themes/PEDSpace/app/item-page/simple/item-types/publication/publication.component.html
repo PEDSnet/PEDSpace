@@ -21,7 +21,11 @@
     </div>
 
     <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
-    <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+
+      <!-- Date Created -->
+      <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'Publication Date'"
+        separator=", "></ds-item-page-date-field>
+
     <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
       [parentItem]="object"
       [itemType]="'Person'"
