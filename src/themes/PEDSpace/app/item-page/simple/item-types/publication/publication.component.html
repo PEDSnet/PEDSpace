@@ -1,13 +1,15 @@
 <ds-results-back-button *ngIf="showBackButton$ | async" [back]="back"></ds-results-back-button>
 <div class="row" *ngIf="iiifEnabled">
   <div class="col-12">
-    <ds-mirador-viewer  id="iiif-viewer"
-                        [object]="object"
-                        [searchable]="iiifSearchEnabled"
-                        [query]="iiifQuery$ | async">
+    <ds-mirador-viewer id="iiif-viewer" [object]="object" [searchable]="iiifSearchEnabled" [query]="iiifQuery$ | async">
     </ds-mirador-viewer>
   </div>
 </div>
+
+<div class="d-flex">
+  <ds-badges *ngIf="showLabel" [object]="object" [showAccessStatus]="true"></ds-badges>
+</div>
+
 <div class="d-flex flex-row">
   <ds-item-page-title-field [item]="object" class="mr-auto">
   </ds-item-page-title-field>
@@ -22,101 +24,72 @@
 
     <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
 
-      <!-- Date Created -->
-      <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'Publication Date'"
-        separator=", "></ds-item-page-date-field>
+    <!-- Date Created -->
+    <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'Publication Date'"
+      separator=", "></ds-item-page-date-field>
 
-    <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
-      [parentItem]="object"
-      [itemType]="'Person'"
-      [metadataFields]="['dc.contributor.author', 'dc.creator']"
-      [label]="'relationships.isAuthorOf' | translate">
+    <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object" [itemType]="'Person'"
+      [metadataFields]="['dc.contributor.author', 'dc.creator']" [label]="'relationships.isAuthorOf' | translate">
     </ds-metadata-representation-list>
-    <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
-      [parentItem]="object"
-      [itemType]="'OrgUnit'"
-      [metadataFields]="['dc.contributor.other']"
-      [label]="'Affiliations'">
+    <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
+      [itemType]="'OrgUnit'" [metadataFields]="['dc.contributor.other']" [label]="'Affiliations'">
     </ds-metadata-representation-list>
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['journal.title']"
-      [label]="'publication.page.journal-title'">
+    <ds-generic-item-page-field [item]="object" [fields]="['journal.title']" [label]="'publication.page.journal-title'">
     </ds-generic-item-page-field>
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['journal.identifier.issn']"
+    <ds-generic-item-page-field [item]="object" [fields]="['journal.identifier.issn']"
       [label]="'publication.page.journal-issn'">
     </ds-generic-item-page-field>
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['journalvolume.identifier.name']"
+    <ds-generic-item-page-field [item]="object" [fields]="['journalvolume.identifier.name']"
       [label]="'publication.page.volume-title'">
     </ds-generic-item-page-field>
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.publisher']"
-      [label]="'publication.page.publisher'">
+    <ds-generic-item-page-field [item]="object" [fields]="['dc.publisher']" [label]="'publication.page.publisher'">
     </ds-generic-item-page-field>
-    
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.rights']"
-      [label]="'Rights'">
+
+    <ds-generic-item-page-field [item]="object" [fields]="['dc.rights']" [label]="'Rights'">
     </ds-generic-item-page-field>
 
 
   </div>
   <div class="col-xs-12 col-md-7">
-    <ds-related-items
-      [parentItem]="object"
-      [relationType]="'isProjectOfPublication'"
+    <ds-related-items [parentItem]="object" [relationType]="'isProjectOfPublication'"
       [label]="'relationships.isProjectOf' | translate">
     </ds-related-items>
-    <ds-related-items
-      [parentItem]="object"
-      [relationType]="'isOrgUnitOfPublication'"
+    <ds-related-items [parentItem]="object" [relationType]="'isOrgUnitOfPublication'"
       [label]="'relationships.isOrgUnitOf' | translate">
     </ds-related-items>
-    <ds-related-items
-      [parentItem]="object"
-      [relationType]="'isJournalIssueOfPublication'"
+    <ds-related-items [parentItem]="object" [relationType]="'isJournalIssueOfPublication'"
       [label]="'relationships.isJournalIssueOf' | translate">
     </ds-related-items>
     <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
-    
+
     <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
       [label]="'Clinical Subject Headings'"></ds-generic-item-page-field>
-    
-    <ds-related-items
-      [parentItem]="object"
-      [relationType]="'isPublicationOfStudy'"
-      [label]="'Studies'">
+
+    <ds-related-items [parentItem]="object" [relationType]="'isPublicationOfStudy'" [label]="'Studies'">
     </ds-related-items>
 
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.description']"
-      [label]="'publication.page.description'">
+    <ds-generic-item-page-field [item]="object" [fields]="['dc.description']" [label]="'publication.page.description'">
     </ds-generic-item-page-field>
 
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.subject']"
-      [separator]="', '"
+    <ds-generic-item-page-field [item]="object" [fields]="['dc.subject']" [separator]="', '"
       [label]="'item.page.subject'">
     </ds-generic-item-page-field>
 
-    <ds-generic-item-page-field [item]="object" [label]="'Cite this Publication'" [fields]="'dc.identifier.citation'" [enableMarkdown]="true">
+    <ds-generic-item-page-field [item]="object" [label]="'Cite this Publication'" [fields]="'dc.identifier.citation'"
+      [enableMarkdown]="true">
     </ds-generic-item-page-field>
 
-    <ds-item-page-uri-field [item]="object"
-      [fields]="['coar.notify.endorsedBy']"
-      [label]="'item.page.endorsement'">
+    <ds-related-items [parentItem]="object" [relationType]="'isStudyOfPublication'" [label]="'PEDSnet Project'">
+    </ds-related-items>
+
+    <ds-item-page-uri-field [item]="object" [fields]="['coar.notify.endorsedBy']" [label]="'item.page.endorsement'">
     </ds-item-page-uri-field>
-    <ds-item-page-uri-field [item]="object"
-      [fields]="['datacite.relation.isReviewedBy']"
-      [label]="'item.page.review'">
+    <ds-item-page-uri-field [item]="object" [fields]="['datacite.relation.isReviewedBy']" [label]="'item.page.review'">
     </ds-item-page-uri-field>
-    <ds-item-page-uri-field [item]="object"
-      [fields]="['datacite.relation.isSupplementedBy']"
+    <ds-item-page-uri-field [item]="object" [fields]="['datacite.relation.isSupplementedBy']"
       [label]="'item.page.supplemented'">
     </ds-item-page-uri-field>
-    <ds-item-page-uri-field [item]="object"
-      [fields]="['datacite.relation.isReferencedBy']"
+    <ds-item-page-uri-field [item]="object" [fields]="['datacite.relation.isReferencedBy']"
       [label]="'item.page.referenced'">
     </ds-item-page-uri-field>
     <div>

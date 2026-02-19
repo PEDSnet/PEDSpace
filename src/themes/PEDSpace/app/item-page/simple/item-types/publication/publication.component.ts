@@ -7,6 +7,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   Inject,
+  NgZone,
   PLATFORM_ID,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
@@ -36,6 +37,7 @@ import { MetadataFieldWrapperComponent } from '../../../../../../../app/shared/m
 import { listableObjectComponent } from '../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
+import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
 
 /**
  * Component that represents a publication Item page
@@ -50,14 +52,15 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
   // templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, ThemedResultsBackButtonComponent, MiradorViewerComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, ThemedMediaViewerComponent, ThemedFileSectionComponent, ItemPageDateFieldComponent, ThemedMetadataRepresentationListComponent, GenericItemPageFieldComponent, RelatedItemsComponent, ItemPageAbstractFieldComponent, ItemPageUriFieldComponent, CollectionsComponent, RouterLink, AsyncPipe, TranslateModule],
+  imports: [NgIf, ThemedBadgesComponent, ThemedResultsBackButtonComponent, MiradorViewerComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, ThemedMediaViewerComponent, ThemedFileSectionComponent, ItemPageDateFieldComponent, ThemedMetadataRepresentationListComponent, GenericItemPageFieldComponent, RelatedItemsComponent, ItemPageAbstractFieldComponent, ItemPageUriFieldComponent, CollectionsComponent, RouterLink, AsyncPipe, TranslateModule],
 })
 export class PublicationComponent extends BaseComponent implements AfterViewInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     protected routeService: RouteService,
-    protected router: Router
+    protected router: Router,
+    private ngZone: NgZone,
   ) {
     super(routeService, router);
   }
@@ -76,24 +79,27 @@ export class PublicationComponent extends BaseComponent implements AfterViewInit
   }
 
   private loadAltmetricBadge(): void {
-    // Check if script is already loaded
-    const existingScript = document.querySelector('script[src*="altmetric.com"]');
-    
-    if (existingScript) {
-      // Script already loaded, just reinitialize
-      this.initAltmetric();
-    } else {
-      // Load the script
-      const script = document.createElement('script');
-      script.src = 'https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js';
-      script.type = 'text/javascript';
-      script.onload = () => this.initAltmetric();
-      document.body.appendChild(script);
-    }
+    // Run entirely outside Angular's zone so the script load and setTimeout
+    // do NOT trigger a change detection cycle (which would cause the async
+    // pipe on browseDefinition to recreate its Observable, momentarily passing
+    // null to MetadataValuesComponent and making fields disappear via d-none).
+    this.ngZone.runOutsideAngular(() => {
+      const existingScript = document.querySelector('script[src*="altmetric.com"]');
+
+      if (existingScript) {
+        this.initAltmetric();
+      } else {
+        const script = document.createElement('script');
+        script.src = 'https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js';
+        script.type = 'text/javascript';
+        script.onload = () => this.initAltmetric();
+        document.body.appendChild(script);
+      }
+    });
   }
 
   private initAltmetric(): void {
-    // Give Angular a moment to render the DOM, then initialize
+    // Already outside Angular's zone; setTimeout here won't trigger CD.
     setTimeout(() => {
       if (typeof (window as any)._altmetric_embed_init === 'function') {
         (window as any)._altmetric_embed_init();
