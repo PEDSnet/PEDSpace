@@ -1655,6 +1655,15 @@
                 <ref bean="searchFilterIsOrgUnitOfPublicationRelation" />
                 <ref bean="searchFilterIsPublicationOfJournalIssueRelation" />
                 <ref bean="searchFilterIsJournalOfPublicationRelation" />
+                <ref bean="searchFilterIsPersonOfPublicationRelation" />
+                <ref bean="searchFilterIsConceptSetOfPublicationRelation" />
+                <ref bean="searchFilterIsStudyOfPublicationRelation" />
+                <ref bean="searchFilterIsDQCheckOfPublicationRelation" />
+                <ref bean="searchFilterIsDocumentationOfPublicationRelation" />
+                <ref bean="searchFilterIsPhenotypeOfPublicationRelation" />
+                <ref bean="searchFilterIsDQResultOfPublicationRelation" />
+                <ref bean="searchFilterIsCodeOfPublicationRelation" />
+                <ref bean="searchFilterIsPublicationOfPublicationRelation" />
             </list>
         </property>
         <!--The
@@ -1733,6 +1742,15 @@
                 <ref bean="searchFilterIsOrgUnitOfPublicationRelation" />
                 <ref bean="searchFilterIsPublicationOfJournalIssueRelation" />
                 <ref bean="searchFilterIsJournalOfPublicationRelation" />
+                <ref bean="searchFilterIsPersonOfPublicationRelation" />
+                <ref bean="searchFilterIsConceptSetOfPublicationRelation" />
+                <ref bean="searchFilterIsStudyOfPublicationRelation" />
+                <ref bean="searchFilterIsDQCheckOfPublicationRelation" />
+                <ref bean="searchFilterIsDocumentationOfPublicationRelation" />
+                <ref bean="searchFilterIsPhenotypeOfPublicationRelation" />
+                <ref bean="searchFilterIsDQResultOfPublicationRelation" />
+                <ref bean="searchFilterIsCodeOfPublicationRelation" />
+                <ref bean="searchFilterIsPublicationOfPublicationRelation" />
             </list>
         </property>
         <!--The
@@ -1942,6 +1960,7 @@
                 <ref bean="searchFilterIsPhenotypeOfPersonRelation" />
                 <ref bean="searchFilterIsPersonOfPersonRelation" />
                 <ref bean="searchFilterIsCodeOfPersonRelation" />
+                <ref bean="searchFilterIsPublicationOfPersonRelation" />
             </list>
         </property>
         <!--The
@@ -3435,6 +3454,230 @@
         <property name="isOpenByDefault" value="false" />
         <property name="pageSize" value="10" />
     </bean>
+
+    <!-- Additional Publication Relationship Search Filters -->
+    <bean id="searchFilterIsPersonOfPublicationRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPersonOfPublication" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPersonOfPublication.latestForDiscovery</value>
+                <value>relation.isPersonOfPublication</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsConceptSetOfPublicationRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isConceptSetOfPublication" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isConceptSetOfPublication.latestForDiscovery</value>
+                <value>relation.isConceptSetOfPublication</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsStudyOfPublicationRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isStudyOfPublication" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isStudyOfPublication.latestForDiscovery</value>
+                <value>relation.isStudyOfPublication</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsDQCheckOfPublicationRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isDQCheckOfPublication" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isDQCheckOfPublication.latestForDiscovery</value>
+                <value>relation.isDQCheckOfPublication</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsDocumentationOfPublicationRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isDocumentationOfPublication" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isDocumentationOfPublication.latestForDiscovery</value>
+                <value>relation.isDocumentationOfPublication</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsPhenotypeOfPublicationRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPhenotypeOfPublication" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPhenotypeOfPublication.latestForDiscovery</value>
+                <value>relation.isPhenotypeOfPublication</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsDQResultOfPublicationRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isDQResultOfPublication" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isDQResultOfPublication.latestForDiscovery</value>
+                <value>relation.isDQResultOfPublication</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsCodeOfPublicationRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isCodeOfPublication" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isCodeOfPublication.latestForDiscovery</value>
+                <value>relation.isCodeOfPublication</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsPublicationOfPublicationRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPublicationOfPublication" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPublicationOfPublication.latestForDiscovery</value>
+                <value>relation.isPublicationOfPublication</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <!-- Reverse Publication Relationship Search Filters (isPublicationOf* - indexed on related entity) -->
+    <bean id="searchFilterIsPublicationOfStudyRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPublicationOfStudy" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPublicationOfStudy.latestForDiscovery</value>
+                <value>relation.isPublicationOfStudy</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsPublicationOfConceptSetRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPublicationOfConceptSet" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPublicationOfConceptSet.latestForDiscovery</value>
+                <value>relation.isPublicationOfConceptSet</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsPublicationOfPhenotypeRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPublicationOfPhenotype" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPublicationOfPhenotype.latestForDiscovery</value>
+                <value>relation.isPublicationOfPhenotype</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsPublicationOfDQResultRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPublicationOfDQResult" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPublicationOfDQResult.latestForDiscovery</value>
+                <value>relation.isPublicationOfDQResult</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsPublicationOfDQCheckRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPublicationOfDQCheck" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPublicationOfDQCheck.latestForDiscovery</value>
+                <value>relation.isPublicationOfDQCheck</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsPublicationOfDocumentationRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPublicationOfDocumentation" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPublicationOfDocumentation.latestForDiscovery</value>
+                <value>relation.isPublicationOfDocumentation</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsPublicationOfPersonRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPublicationOfPerson" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPublicationOfPerson.latestForDiscovery</value>
+                <value>relation.isPublicationOfPerson</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
+    <bean id="searchFilterIsPublicationOfCodeRelation"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="isPublicationOfCode" />
+        <property name="metadataFields">
+            <list>
+                <value>relation.isPublicationOfCode.latestForDiscovery</value>
+                <value>relation.isPublicationOfCode</value>
+            </list>
+        </property>
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
+
     <!-- Documentation Relationship Search Filters -->
     <!-- Self-referential relationship -->
     <bean id="searchFilterIsDocumentationOfDocumentationRelation"
@@ -4840,6 +5083,7 @@
                 <ref bean="searchFilterAffiliation" />
 
                 <ref bean="searchFilterClinicalSubject" />
+                <ref bean="searchFilterIsPublicationOfConceptSetRelation" />
             </list>
         </property>
         <!--The
@@ -5150,6 +5394,7 @@
 
                 <!-- Self-referential relationships -->
                 <ref bean="searchFilterIsDQResultOfDQResultRelation" />
+                <ref bean="searchFilterIsPublicationOfDQResultRelation" />
 
                 <!-- File-related filters -->
                 <ref bean="searchFilterContentInOriginalBundle" />
@@ -5399,6 +5644,7 @@
                 <ref bean="searchFilterIsConceptSetOfDocumentationRelation" />
 
                 <ref bean="searchFilterIsPhenotypeOfDocumentationRelation" />
+                <ref bean="searchFilterIsPublicationOfDocumentationRelation" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />
@@ -5668,7 +5914,7 @@
                 <!-- <ref bean="searchFilterIsProjectOfDQCheckRelation"/> -->
 
                 <!-- Publication relationships -->
-                <!-- <ref bean="searchFilterIsPublicationOfDQCheckRelation"/> -->
+                <ref bean="searchFilterIsPublicationOfDQCheckRelation" />
 
                 <!-- Study relationships -->
                 <ref bean="searchFilterIsStudyOfDQCheckRelation" />
@@ -6008,6 +6254,7 @@
                 <ref bean="searchFilterIsDQCheckOfPhenotypeRelation" />
 
                 <ref bean="searchFilterIsOrgUnitOfPhenotypeRelation" />
+                <ref bean="searchFilterIsPublicationOfPhenotypeRelation" />
 
                 <!-- File-related filters -->
                 <ref bean="searchFilterContentInOriginalBundle" />
@@ -6260,6 +6507,7 @@
                 <ref bean="searchFilterIsOrgUnitOfStudyRelation" />
                 <ref bean="searchFilterIsPublicationOfJournalIssueRelation" />
                 <ref bean="searchFilterIsJournalOfPublicationRelation" />
+                <ref bean="searchFilterIsPublicationOfStudyRelation" />
             </list>
         </property>
         <!--The
@@ -6411,6 +6659,7 @@
                 <ref bean="searchFilterIsCodeOfStudyRelation" />
                 <ref bean="searchFilterIsDocumentationOfCodeRelation" />
                 <ref bean="searchFilterIsCodeOfDocumentationRelation" />
+                <ref bean="searchFilterIsPublicationOfCodeRelation" />
             </list>
         </property>
         <!--The
