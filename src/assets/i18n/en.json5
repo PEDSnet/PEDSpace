@@ -3296,6 +3296,14 @@
   "item.page.relationships.isPublicationOfCode": "Related Code",
 
   "item.page.relationships.isStudyOfCode": "Related Code",
+  
+  "item.page.relationships.isStudyOfPublication": "Publications",
+  
+  "item.page.relationships.isStudyOfPhenotype": "Phenotypes",
+  
+  "item.page.relationships.isStudyOfDQResult": "Data Quality Results",
+  
+  "item.page.relationships.isStudyOfConceptSet": "Concept Sets",
 
   "item.page.relationships.isDocumentationOfStudy": "Related Studies",
 
@@ -5320,6 +5328,8 @@
   "relationships.isSingleVolumeOf": "Journal Volume",
 
   "relationships.isStudyOf": "Related Study",
+  
+  "relationships.isStudyOf.DQCheck": "Related Data Quality Check",
 
   "relationships.isVolumeOf.JournalVolume": "Journal Volume",
 
