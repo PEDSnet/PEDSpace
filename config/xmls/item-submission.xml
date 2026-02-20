@@ -210,6 +210,15 @@
             <processing-class>org.dspace.app.rest.submit.step.UploadStep</processing-class>
             <type>upload</type>
         </step-definition>
+        <!-- Optional upload step for entities where file attachment is not required.
+             This step references the "uploadOptional" key defined in
+             uploadConfigurationServiceWithoutMandatory in access-conditions.xml,
+             which sets required=false on the UploadConfiguration. -->
+        <step-definition id="uploadOptional">
+            <heading>submit.progressbar.upload</heading>
+            <processing-class>org.dspace.app.rest.submit.step.UploadStep</processing-class>
+            <type>upload</type>
+        </step-definition>
         <step-definition id="license">
             <heading>submit.progressbar.license</heading>
             <processing-class>org.dspace.app.rest.submit.step.LicenseStep</processing-class>
@@ -373,6 +382,7 @@
         <submission-process name="Study">
             <step id="collection"/>
             <step id="StudyForm"/>
+            <step id="uploadOptional"/>
         </submission-process>
 
         <submission-process name="Code">
@@ -400,7 +410,7 @@
             <step id="collection"/>
             <step id="DocumentationFormStepOne"/>
             <step id="DocumentationFormStepTwo"/>
-            <step id="upload"/>
+            <step id="uploadOptional"/>
             <step id="itemAccessConditions"/>
         </submission-process>
 
@@ -415,7 +425,7 @@
         <submission-process name="Publication">
             <step id="collection"/>
             <step id="publicationStep"/>
-            <step id="upload"/>
+            <step id="uploadOptional"/>
         </submission-process>
         <!--
         Submission Process for 'Person' Entities
