@@ -72,6 +72,13 @@ export class PublicationComponent extends BaseComponent implements AfterViewInit
     return this.object?.firstMetadataValue('dc.identifier.doi') || '';
   }
 
+  /**
+   * Get the PubMed URI from dc.relation.uri
+   */
+  get pubmedUri(): string {
+    return this.object?.firstMetadataValue('dc.relation.uri') || '';
+  }
+
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.loadAltmetricBadge();

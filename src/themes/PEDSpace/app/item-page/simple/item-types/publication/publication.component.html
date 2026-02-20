@@ -28,6 +28,42 @@
     <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'Publication Date'"
       separator=", "></ds-item-page-date-field>
 
+    <!-- External link buttons -->
+    <div class="pub-action-buttons" *ngIf="doi || pubmedUri">
+      <a *ngIf="doi"
+         [href]="'https://doi.org/' + doi"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn pub-btn me-2 mb-2">
+        <!-- Lucide external-link icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2.5"
+             stroke-linecap="round" stroke-linejoin="round"
+             class="pub-btn-icon" aria-hidden="true">
+          <path d="M15 3h6v6"/>
+          <path d="M10 14 21 3"/>
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+        </svg>
+        View on Publisher Site
+      </a>
+      <a *ngIf="pubmedUri"
+         [href]="pubmedUri"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn pub-btn pub-btn-pubmed mb-2">
+        <!-- PubMed icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 64 64"
+             fill="currentColor" class="pub-btn-icon" aria-hidden="true">
+          <rect x="2" y="2" width="60" height="60" rx="8" ry="8"
+                fill="none" stroke="currentColor" stroke-width="4"/>
+          <text x="32" y="44" text-anchor="middle"
+                font-family="sans-serif" font-size="30" font-weight="900"
+                fill="currentColor">PM</text>
+        </svg>
+        View on PubMed
+      </a>
+    </div>
+
     <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object" [itemType]="'Person'"
       [metadataFields]="['dc.contributor.author', 'dc.creator']" [label]="'relationships.isAuthorOf' | translate">
     </ds-metadata-representation-list>

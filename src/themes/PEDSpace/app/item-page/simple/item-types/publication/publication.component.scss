@@ -2,3 +2,57 @@
 @import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
 @import 'src/themes/PEDSpace/styles/_global-styles.scss';
 @import 'src/themes/PEDSpace/app/item-page/simple/item-types/dqcheck/dqcheck.component.scss';
+
+// External link buttons on the publication page
+.pub-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+
+  .pub-btn {
+    background-color: $midnight-green;
+    color: #ffffff;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.4rem 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    transition: background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+
+    &:hover,
+    &:focus {
+      background-color: darken($midnight-green, 8%);
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 2px 8px rgba(13, 66, 84, 0.35);
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $cambridge-blue;
+      outline-offset: 2px;
+    }
+
+    // PubMed button gets a subtle accent to differentiate it
+    &.pub-btn-pubmed {
+      background-color: $deep-sea-blue;
+
+      &:hover,
+      &:focus {
+        background-color: darken($deep-sea-blue, 8%);
+        box-shadow: 0 2px 8px rgba(0, 75, 135, 0.35);
+      }
+    }
+  }
+
+  .pub-btn-icon {
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+}
