@@ -1,3 +1,4 @@
+# DSpace service user crontab
 ## NOTE: You may also need to add additional sysadmin related tasks to your crontab
 ## (e.g. zipping up old log files, or even removing old logs, etc).
 ## Install by either calling `sudo crontab [path to this file]` or by copying the contents to `sudo crontab -e`.
@@ -11,14 +12,14 @@ DSPACE=/data/dspace
 DSPACE_ANGULAR=/data/dspace-angular-dspace-8.1
 SOLR_STATS=/data/PEDSpace_Solr_Analytics
 
-# Shell to use
-SHELL=/bin/bash
-
 # Add all major 'bin' directories to path
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # Set JAVA_OPTS with defaults for DSpace Cron Jobs.
 JAVA_OPTS="-Xmx512M -Xms512M -Dfile.encoding=UTF-8"
+
+# On reboot: wait 5 minutes for systemd services to initialize, then rebuild frontend
+@reboot sleep 300 && bash $DSPACE_ANGULAR/config/scripts/rebuild_frontend.sh >> /data/backups/logs/rebuild_frontend.log 2>&1
 
 #--------------
 # HOURLY TASKS
@@ -44,7 +45,7 @@ JAVA_OPTS="-Xmx512M -Xms512M -Dfile.encoding=UTF-8"
 0 1 * * * echo "$(date): Running DSpace Statistics cleanup." && $DSPACE/bin/dspace stats-util -f
 
 # CUSTOM: Every hour: Run deploy_shiny script and log output. See here: https://github.research.chop.edu/SEYEDIANA1/PEDSpace_Solr_Analytics/blob/main/deploy_shiny.bash
-0 * * * * echo "$(date): Running SOLR Analytics script..." && /bin/bash /data/PEDSpace_Solr_Analytics/deploy_shiny.bash  >> /data/PEDSpace_Solr_Analytics/logs/deploy_shiny.log 2>&1
+0 * * * * echo "$(date): Running SOLR Analytics script..." && /bin/bash $SOLR_STATS/deploy_shiny.bash  >> $SOLR_STATS/logs/deploy_shiny.log 2>&1
 
 # Send out "daily" update subscription e-mails at 02:00 every day
 0 2 * * * echo "$(date): Sending daily DSpace subscription emails." && $DSPACE/bin/dspace subscription-send -f D
