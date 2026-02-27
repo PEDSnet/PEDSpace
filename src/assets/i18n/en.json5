@@ -4733,6 +4733,8 @@
   
   "documentation-relationships.search.results.head": "Documentation Search Results",
 
+  "person.collection.listelement.badge": "Person Domain",
+  
   "phenotype.collection.listelement.badge": "Phenotype Domain",
 
   "phenotype.listelement.badge": "Phenotype",

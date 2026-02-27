@@ -13,7 +13,16 @@
                     [placeholder]="'thumbnail.person.placeholder'">
       </ds-thumbnail>
     </ds-metadata-field-wrapper>
-    
+
+    <div *ngIf="object.firstMetadataValue('dc.relation.uri')" class="mt-2">
+      <a class="btn btn-primary w-100"
+         href="https://pedsnet.org/youth-families/utilize-advisory-councils/"
+         target="_blank"
+         rel="noopener noreferrer">
+        Apply for Services
+      </a>
+    </div>
+
     <!-- Parent Name -->
     <!-- <ds-generic-item-page-field [item]="object"
       [fields]="['dc.title']"
@@ -32,6 +41,13 @@
       [separator]="' - '"
       [label]="'Years Active'">
     </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+      [fields]="['dc.subject']"
+      [label]="'Tags'"
+      [renderAsButton]="true">
+    </ds-generic-item-page-field>
+
   </div>
   <div class="col-xs-12 col-md-7">
     <!-- Bio -->
@@ -51,8 +67,12 @@
     <!-- Committee -->
     <ds-generic-item-page-field [item]="object"
       [fields]="['local.contributor.committee']"
-      [label]="'Committee'">
+      [label]="'Committee'"
+      [renderAsButton]="true">
     </ds-generic-item-page-field>
+
+    <ds-related-items [parentItem]="object" [relationType]="'isOrgUnitOfPerson'" [label]="'PEDSnet Site'">
+    </ds-related-items>
     
     <div>
       <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="link" tabindex="0">
