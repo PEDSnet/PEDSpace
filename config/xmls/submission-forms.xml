@@ -1048,8 +1048,9 @@
                     <label>Research Suitability</label>
                     <input-type value-pairs-name="Quality">dropdown</input-type>
                     <hint>Select the term that best describes the reusability of the Concept Set.
-                    Research Ready - concept set is broadly applicable; it could be reused easily as is. 
-                    Needs Refinement - concept set is designed to fit a specific study purpose; it may need revision prior to reuse.
+                    PEDSnet Definition - concept set is broadly applicable, recently-refreshed and able to be reused as-is. 
+                    Requires Refresh - concept set is very broad, but requires a refresh to be up-to-date.
+                    Study-Specific - concept set designed to fit a specific study purpose; it may need revision prior to reuse.
                     Deprecated - concept set is outdated and undescribed; its reusability cannot be determined.</hint>
                     <required></required>
                 </field>
@@ -2116,10 +2117,11 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <repeatable>false</repeatable>
                     <label>Research-Readiness</label>
                     <input-type value-pairs-name="Quality">dropdown</input-type>
-                    <hint>Select the term that best describes the reusability of the phenotype for research purposes.
-                    Research Ready - phenotype is broadly applicable; it could be reused easily as is. 
-                    Needs Refinement - phenotype is designed to fit a specific study purpose; it may need revision prior to reuse.
-                    Deprecated - phenotype is outdated and undescribed; its reusability cannot be determined. </hint>
+                    <hint>Select the term that best describes the reusability of the Concept Set.
+                    PEDSnet Definition - concept set is broadly applicable, recently-refreshed and able to be reused as-is. 
+                    Requires Refresh - concept set is very broad, but requires a refresh to be up-to-date.
+                    Study-Specific - concept set designed to fit a specific study purpose; it may need revision prior to reuse.
+                    Deprecated - concept set is outdated and undescribed; its reusability cannot be determined</hint>
                 </field>
             </row>
             <row>
@@ -3872,12 +3874,16 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
         </value-pairs>
         <value-pairs value-pairs-name="Quality" dc-term="quality_status">
             <pair>
-                <displayed-value>Research-Ready</displayed-value>
-                <stored-value>Research-Ready</stored-value>
+                <displayed-value>PEDSnet Definition</displayed-value>
+                <stored-value>PEDSnet Definition</stored-value>
             </pair>
             <pair>
-                <displayed-value>Needs Refinement</displayed-value>
-                <stored-value>Needs Refinement</stored-value>
+                <displayed-value>Requires Refresh</displayed-value>
+                <stored-value>Requires Refresh</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Study-Specific</displayed-value>
+                <stored-value>Study-Specific</stored-value>
             </pair>
             <pair>
                 <displayed-value>Deprecated</displayed-value>
@@ -4782,6 +4788,10 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             <pair>
                 <displayed-value>Natural Language Processing</displayed-value>
                 <stored-value>Natural Laguange Processing</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Large Language Models</displayed-value>
+                <stored-value>Large Language Models</stored-value>
             </pair>
             <pair>
                 <displayed-value>Data Mining</displayed-value>
