@@ -4733,6 +4733,8 @@
   
   "documentation-relationships.search.results.head": "Documentation Search Results",
 
+  "pedsnetdefinition.listelement.badge": "PEDSnet Definition",
+
   "person.collection.listelement.badge": "Person Domain",
   
   "phenotype.collection.listelement.badge": "Phenotype Domain",
@@ -5390,6 +5392,8 @@
   "researcher.profile.view": "View",
 
   "research-ready.listelement.badge": "Research-Ready",
+
+  "requiresrefresh.listelement.badge": "Requires Refresh",
 
   "resource-policies.add.button": "Add",
 
@@ -6284,6 +6288,8 @@
   "statistics.title": "Statistics",
 
   "study-relationships.search.results.head": "Study Search Results",
+
+  "study-specific.listelement.badge": "Study-Specific",
 
   "study.collection.listelement.badge": "Study Domain",
   

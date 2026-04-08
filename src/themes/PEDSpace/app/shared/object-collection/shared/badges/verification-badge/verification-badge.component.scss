@@ -1,14 +1,15 @@
 @import "src/styles/_variables.scss";
 @import "src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss";
 
-$negative: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW1pbnVzIj48cGF0aCBkPSJNNSAxMmgxNCIvPjwvc3ZnPg==";
+$octagon-x: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLW9jdGFnb24teCI+PHBhdGggZD0ibTE1IDktNiA2Ii8+PHBhdGggZD0iTTIuNTg2IDE2LjcyNkEyIDIgMCAwIDEgMiAxNS4zMTJWOC42ODhhMiAyIDAgMCAxIC41ODYtMS40MTRsNC42ODgtNC42ODhBMiAyIDAgMCAxIDguNjg4IDJoNi42MjRhMiAyIDAgMCAxIDEuNDE0LjU4Nmw0LjY4OCA0LjY4OEEyIDIgMCAwIDEgMjIgOC42ODh2Ni42MjRhMiAyIDAgMCAxLS41ODYgMS40MTRsLTQuNjg4IDQuNjg4YTIgMiAwIDAgMS0xLjQxNC41ODZIOC42ODhhMiAyIDAgMCAxLTEuNDE0LS41ODZ6Ii8+PHBhdGggZD0ibTkgOSA2IDYiLz48L3N2Zz4=";
 $check: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJhZGdlLWNoZWNrIj48cGF0aCBkPSJNMy44NSA4LjYyYTQgNCAwIDAgMSA0Ljc4LTQuNzcgNCA0IDAgMCAxIDYuNzQgMCA0IDQgMCAwIDEgNC43OCA0Ljc4IDQgNCAwIDAgMSAwIDYuNzQgNCA0IDAgMCAxLTQuNzcgNC43OCA0IDQgMCAwIDEtNi43NSAwIDQgNCAwIDAgMS00Ljc4LTQuNzcgNCA0IDAgMCAxIDAtNi43NloiLz48cGF0aCBkPSJtOSAxMiAyIDIgNC00Ii8+PC9zdmc+";
-$study-specific: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJhZGdlLWluZm8iPjxwYXRoIGQ9Ik0zLjg1IDguNjJhNCA0IDAgMCAxIDQuNzgtNC43NyA0IDQgMCAwIDEgNi43NCAwIDQgNCAwIDAgMSA0Ljc4IDQuNzggNCA0IDAgMCAxIDAgNi43NCA0IDQgMCAwIDEtNC43NyA0Ljc4IDQgNCAwIDAgMS02Ljc1IDAgNCA0IDAgMCAxLTQuNzgtNC43NyA0IDQgMCAwIDEgMC02Ljc2WiIvPjxsaW5lIHgxPSIxMiIgeDI9IjEyIiB5MT0iMTYiIHkyPSIxMiIvPjxsaW5lIHgxPSIxMiIgeDI9IjEyLjAxIiB5MT0iOCIgeTI9IjgiLz48L3N2Zz4=";
+$refresh-cw: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ii8+PHBhdGggZD0iTTIxIDN2NWgtNSIvPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiIvPjxwYXRoIGQ9Ik04IDE2SDN2NSIvPjwvc3ZnPg==";
+$graduation-cap: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdyYWR1YXRpb24tY2FwIj48cGF0aCBkPSJNMjEuNDIgMTAuOTIyYTEgMSAwIDAgMC0uMDE5LTEuODM4TDEyLjgzIDUuMThhMiAyIDAgMCAwLTEuNjYgMEwyLjYgOS4wOGExIDEgMCAwIDAgMCAxLjgzMmw4LjU3IDMuOTA4YTIgMiAwIDAgMCAxLjY2IDB6Ii8+PHBhdGggZD0iTTIyIDEwdjYiLz48cGF0aCBkPSJNNiAxMi41VjE2YTYgMyAwIDAgMCAxMiAwdi0zLjUiLz48L3N2Zz4=";
 
-.badge-check,
-.badge-negative,
-.badge-study-specific {
-    color: $black-bean;
+.badge-pedsnet-definition,
+.badge-requires-refresh,
+.badge-study-specific,
+.badge-deprecated {
     padding: 5px 10px 5px 30px; 
     border-radius: 5px;
     display: inline-flex;
@@ -65,58 +66,66 @@ $study-specific: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     }
 }
 
-.badge-check {
-    background-color: theme-color('success');
-    
+.badge-pedsnet-definition {
+    background-color: #011936;
+    color: #ffffff;
+
     &::before {
-        background-color: $black-bean;
+        background-color: #ffffff;
         mask-image: url($check);
         mask-size: cover;
     }
 
     &:hover, &:focus {
-        background-color: lighten(theme-color('success'), 10%);
+        background-color: lighten(#011936, 10%);
     }
 }
 
-.badge-negative {
-    background-color: #fee7e5;
-    // opacity: 0.8;
-    background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #fee7e5 13px ), repeating-linear-gradient( #fdcdc955, #fdcdc9 );
-    background-size: 13px 13px;
+.badge-requires-refresh {
+    background-color: #B370B0;
+    color: $black-bean;
 
     &::before {
         background-color: $black-bean;
-        mask-image: url($negative);
+        mask-image: url($refresh-cw);
         mask-size: cover;
         opacity: 1;
     }
 
     &:hover, &:focus {
-        opacity: 1;
-        background-color: lighten(#fee7e5, 20%);
+        background-color: lighten(#B370B0, 10%);
     }
 }
-
-$refinment-design: linear-gradient(135deg, #ffeeb8 25%, transparent 25%), linear-gradient(225deg, #ffeeb8 25%, transparent 25%), linear-gradient(45deg, #ffeeb8 25%, transparent 25%), linear-gradient(315deg, #ffeeb8 25%, #fffaec 25%);
 
 .badge-study-specific {
-    background-color: #fffaec;
-    // opacity: 0.8;
-    background-image: $refinment-design;
-    background-position: 4px 0, 4px 0, 0 0, 0 0;
-    background-size: 8px 8px;
-    background-repeat: repeat;
-    
+    background-color: #F9DC5C;
+    color: $black-bean;
+
     &::before {
         background-color: $black-bean;
-        mask-image: url($study-specific);
+        mask-image: url($graduation-cap);
         mask-size: cover;
         opacity: 1;
     }
 
     &:hover, &:focus {
-                opacity: 1;
-                background-color: lighten(#ffeeb8, 50%);
+        background-color: lighten(#F9DC5C, 10%);
     }
 }
+
+.badge-deprecated {
+    background-color: #F26430;
+    color: $black-bean;
+
+    &::before {
+        background-color: $black-bean;
+        mask-image: url($octagon-x);
+        mask-size: cover;
+        opacity: 1;
+    }
+
+    &:hover, &:focus {
+        background-color: lighten(#F26430, 10%);
+    }
+}
+
