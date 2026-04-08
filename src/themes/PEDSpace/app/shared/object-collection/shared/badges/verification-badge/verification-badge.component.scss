@@ -6,6 +6,11 @@ $check: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwM
 $refresh-cw: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXJlZnJlc2gtY3ciPjxwYXRoIGQ9Ik0zIDEyYTkgOSAwIDAgMSA5LTkgOS43NSA5Ljc1IDAgMCAxIDYuNzQgMi43NEwyMSA4Ii8+PHBhdGggZD0iTTIxIDN2NWgtNSIvPjxwYXRoIGQ9Ik0yMSAxMmE5IDkgMCAwIDEtOSA5IDkuNzUgOS43NSAwIDAgMS02Ljc0LTIuNzRMMyAxNiIvPjxwYXRoIGQ9Ik04IDE2SDN2NSIvPjwvc3ZnPg==";
 $graduation-cap: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdyYWR1YXRpb24tY2FwIj48cGF0aCBkPSJNMjEuNDIgMTAuOTIyYTEgMSAwIDAgMC0uMDE5LTEuODM4TDEyLjgzIDUuMThhMiAyIDAgMCAwLTEuNjYgMEwyLjYgOS4wOGExIDEgMCAwIDAgMCAxLjgzMmw4LjU3IDMuOTA4YTIgMiAwIDAgMCAxLjY2IDB6Ii8+PHBhdGggZD0iTTIyIDEwdjYiLz48cGF0aCBkPSJNNiAxMi41VjE2YTYgMyAwIDAgMCAxMiAwdi0zLjUiLz48L3N2Zz4=";
 
+$badge-pedsnet-definition-bg: #011936;
+$badge-requires-refresh-bg: #B370B0;
+$badge-study-specific-bg: #F9DC5C;
+$badge-deprecated-bg: #F26430;
+
 .badge-pedsnet-definition,
 .badge-requires-refresh,
 .badge-study-specific,
@@ -67,7 +72,7 @@ $graduation-cap: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
 }
 
 .badge-pedsnet-definition {
-    background-color: #011936;
+    background-color: $badge-pedsnet-definition-bg;
     color: #ffffff;
 
     &::before {
@@ -77,12 +82,12 @@ $graduation-cap: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     }
 
     &:hover, &:focus {
-        background-color: lighten(#011936, 10%);
+        background-color: lighten($badge-pedsnet-definition-bg, 10%);
     }
 }
 
 .badge-requires-refresh {
-    background-color: #B370B0;
+    background-color: $badge-requires-refresh-bg;
     color: $black-bean;
 
     &::before {
@@ -93,12 +98,12 @@ $graduation-cap: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     }
 
     &:hover, &:focus {
-        background-color: lighten(#B370B0, 10%);
+        background-color: lighten($badge-requires-refresh-bg, 10%);
     }
 }
 
 .badge-study-specific {
-    background-color: #F9DC5C;
+    background-color: $badge-study-specific-bg;
     color: $black-bean;
 
     &::before {
@@ -109,12 +114,12 @@ $graduation-cap: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     }
 
     &:hover, &:focus {
-        background-color: lighten(#F9DC5C, 10%);
+        background-color: lighten($badge-study-specific-bg, 10%);
     }
 }
 
 .badge-deprecated {
-    background-color: #F26430;
+    background-color: $badge-deprecated-bg;
     color: $black-bean;
 
     &::before {
@@ -125,7 +130,7 @@ $graduation-cap: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
     }
 
     &:hover, &:focus {
-        background-color: lighten(#F26430, 10%);
+        background-color: lighten($badge-deprecated-bg, 10%);
     }
 }
 
