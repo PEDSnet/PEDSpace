@@ -91,7 +91,7 @@ $badge-deprecated-bg: $tomato;
     color: $snow;
 
     &::before {
-        background-color: $black-bean;
+        background-color: $snow;
         mask-image: url($refresh-cw);
         mask-size: cover;
         opacity: 1;
