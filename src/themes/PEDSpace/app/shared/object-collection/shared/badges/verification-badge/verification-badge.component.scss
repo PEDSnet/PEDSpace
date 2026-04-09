@@ -9,7 +9,7 @@ $graduation-cap: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5v
 $badge-pedsnet-definition-bg: #011936;
 $badge-requires-refresh-bg: #B370B0;
 $badge-study-specific-bg: #F9DC5C;
-$badge-deprecated-bg: #F26430;
+$badge-deprecated-bg: $tomato;
 
 .badge-pedsnet-definition,
 .badge-requires-refresh,
@@ -88,7 +88,7 @@ $badge-deprecated-bg: #F26430;
 
 .badge-requires-refresh {
     background-color: $badge-requires-refresh-bg;
-    color: $black-bean;
+    color: $snow;
 
     &::before {
         background-color: $black-bean;
