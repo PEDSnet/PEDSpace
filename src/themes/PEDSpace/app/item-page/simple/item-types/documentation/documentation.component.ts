@@ -53,6 +53,7 @@ import { ThemedResultsBackButtonComponent } from '../../../../../../../app/share
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { ItemPageDescriptionFieldComponent } from '../../field-components/specific-field/description/item-page-description.component';
 import { ItemPageExternalPublicationFieldComponent } from '../../field-components/specific-field/external/item-page-external-publication.component';
+import { ItemHeroBannerComponent } from '../../item-hero-banner/item-hero-banner.component';
 
 /**
  * Component that represents a Documentation Item page
@@ -68,7 +69,8 @@ import { ItemPageExternalPublicationFieldComponent } from '../../field-component
   // templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ItemPageExternalPublicationFieldComponent,
+  imports: [
+    ItemHeroBannerComponent,ItemPageExternalPublicationFieldComponent,
     ItemPageDescriptionFieldComponent, NgIf,
     ThemedBadgesComponent,
     ThemedResultsBackButtonComponent,

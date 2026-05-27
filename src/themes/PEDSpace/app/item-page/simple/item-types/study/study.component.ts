@@ -1,16 +1,30 @@
 import {
   AsyncPipe,
   CommonModule,
+  KeyValuePipe,
+  NgFor,
   NgIf,
 } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  inject,
+  OnInit,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
+import {
+  BehaviorSubject,
+  Observable,
+} from 'rxjs';
+import { map } from 'rxjs/operators';
 // import copy from 'copy-to-clipboard';
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
+
+import { BitstreamDataService } from 'src/app/core/data/bitstream-data.service';
+import { getFirstCompletedRemoteData } from 'src/app/core/shared/operators';
+import { ItemHeroBannerComponent } from '../../item-hero-banner/item-hero-banner.component';
 
 import { Context } from '../../../../../../../app/core/shared/context.model';
 import { ViewMode } from '../../../../../../../app/core/shared/view-mode.model';
@@ -46,14 +60,19 @@ import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/r
   ViewMode.StandalonePage, Context.Any, 'PEDSpace')
 @Component({
   selector: 'ds-publication',
-  // styleUrls: ['./publication.component.scss'],
-  styleUrls: ['../../../../../../../app/item-page/simple/item-types/publication/publication.component.scss'],
+  styleUrls: [
+    '../../../../../../../app/item-page/simple/item-types/publication/publication.component.scss',
+    './study.component.scss',
+  ],
   templateUrl: './study.component.html',
-  // templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [ItemPageExternalPublicationFieldComponent,
     ItemPageDescriptionFieldComponent, NgIf,
+    NgFor,
+    KeyValuePipe,
+    NgbNavModule,
+    ItemHeroBannerComponent,
     TabbedRelatedEntitiesSearchComponent,
     ThemedBadgesComponent,
     ThemedResultsBackButtonComponent,
@@ -79,7 +98,31 @@ import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/r
     ItemPageCitationFieldComponent,
     ItemPageFunderFieldComponent],
 })
-export class StudyComponent extends BaseComponent {
+export class StudyComponent extends BaseComponent implements OnInit {
 
+  /**
+   * Currently active tab in the main study tab interface.
+   * Valid IDs: 'overview' | 'analytics' | 'metadata'
+   */
+  activeTab: 'overview' | 'analytics' | 'metadata' = 'overview';
+
+  /**
+   * Emits `true` when the item has at least one downloadable bitstream in the
+   * ORIGINAL bundle, `false` otherwise. Used to render a fallback message in
+   * the Files section when no downloads are available.
+   */
+  hasFiles$: Observable<boolean> = new BehaviorSubject<boolean>(true).asObservable();
+
+  private bitstreamDataService = inject(BitstreamDataService);
+
+  ngOnInit(): void {
+    super.ngOnInit();
+    this.hasFiles$ = this.bitstreamDataService
+      .findAllByItemAndBundleName(this.object, 'ORIGINAL', { elementsPerPage: 1, currentPage: 1 })
+      .pipe(
+        getFirstCompletedRemoteData(),
+        map((rd) => rd?.hasSucceeded && (rd.payload?.totalElements ?? 0) > 0),
+      );
+  }
 
 }

@@ -3297,6 +3297,8 @@
 
   "item.page.relationships.isStudyOfCode": "Related Code",
   
+  "item.page.relationships.isStudyOfOrgUnit": "Participating Sites",
+  
   "item.page.relationships.isStudyOfPublication": "Publications",
   
   "item.page.relationships.isStudyOfPhenotype": "Phenotypes",

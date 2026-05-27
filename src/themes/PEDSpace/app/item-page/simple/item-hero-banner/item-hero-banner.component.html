@@ -1,0 +1,17 @@
+<div class="pedspace-item-hero-wrapper">
+  <div class="pedspace-item-hero">
+    <div class="container">
+      <a class="pedspace-item-hero-badge"
+         [routerLink]="['/search']"
+         [queryParams]="badgeQueryParams">
+        <span class="badge-text">{{ entityType }}</span>
+      </a>
+
+      <div class="d-flex flex-row align-items-start pedspace-item-hero-title-row">
+        <ds-item-page-title-field class="mr-auto pedspace-item-hero-title" [item]="item">
+        </ds-item-page-title-field>
+        <ds-dso-edit-menu *ngIf="showEditMenu" [object]="item"></ds-dso-edit-menu>
+      </div>
+    </div>
+  </div>
+</div>

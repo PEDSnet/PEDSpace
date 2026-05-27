@@ -1,1 +1,124 @@
 @import '../../../../../../../styles/variables.scss';
+
+/* ============================================
+   Hero banner styling lives in the shared
+   ItemHeroBannerComponent — this file only
+   handles study-specific layout below the banner.
+   ============================================ */
+:host {
+  display: block;
+}
+
+/* ============================================
+   Centered static metadata block
+   ============================================ */
+.study-meta-block {
+  max-width: 900px;
+
+  .study-meta-grid {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    row-gap: 0.4rem;
+    column-gap: 1.5rem;
+    margin-bottom: 0;
+
+    dt {
+      font-weight: 700;
+      color: #333;
+    }
+
+    dd {
+      margin: 0;
+
+      ::ng-deep .simple-view-element-header,
+      ::ng-deep h5 {
+        display: none;
+      }
+
+      ::ng-deep .simple-view-element {
+        margin: 0;
+      }
+    }
+  }
+
+  .study-abstract {
+    ::ng-deep .simple-view-element-header {
+      display: none;
+    }
+  }
+}
+
+/* ============================================
+   "No files available" fallback note
+   ============================================ */
+.study-files-section {
+  .study-no-files {
+    margin: 0.5rem 0 0;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   Main tabbed interface
+   ============================================ */
+.study-main-tabs.nav-tabs {
+  border-bottom: 1px solid #ddd;
+
+  .nav-link {
+    color: #555;
+    border: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+
+    &:hover {
+      color: var(--bs-primary, #6f1d46);
+      border-bottom-color: rgba(111, 29, 70, 0.25);
+      background-color: transparent;
+    }
+
+    &.active {
+      color: var(--bs-primary, #6f1d46);
+      background-color: transparent;
+      border-bottom-color: var(--bs-primary, #6f1d46);
+    }
+  }
+}
+
+.study-tab-outlet {
+  padding-top: 0.5rem;
+}
+
+.sidebar-heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #444;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   Metadata table tab
+   ============================================ */
+.study-metadata-table {
+  font-size: 0.9rem;
+
+  .metadata-key {
+    font-family: monospace;
+    color: var(--bs-primary, #6f1d46);
+    white-space: nowrap;
+    width: 1%;
+  }
+
+  .metadata-value {
+    word-break: break-word;
+  }
+
+  .metadata-language {
+    color: #888;
+    width: 1%;
+    white-space: nowrap;
+  }
+}

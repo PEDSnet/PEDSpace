@@ -1,0 +1,106 @@
+@import "src/styles/_variables.scss";
+@import "src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss";
+
+/* ============================================
+   Full-bleed mint banner (matches collection/community pages)
+   ============================================ */
+:host {
+  display: block;
+  width: 100%;
+}
+
+.pedspace-item-hero-wrapper {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.pedspace-item-hero {
+  background-color: $cambridge-blue;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  min-height: 350px;
+  padding: 2.25rem 0 2rem;
+}
+
+/* ============================================
+   Clickable entity-type badge
+   Transparent bg with redwood outline
+   ============================================ */
+.pedspace-item-hero-badge {
+  display: inline-block;
+  background-color: transparent;
+  color: $redwood;
+  border: 2px solid $redwood;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  font-family: proxima-nova, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+  transition: background-color 0.15s ease,
+              color 0.15s ease,
+              transform 0.15s ease;
+
+  .badge-text {
+    font-variant: small-caps;
+    text-transform: uppercase;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $redwood;
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+}
+
+/* ============================================
+   Title row — matches collection-page style
+   ============================================ */
+.pedspace-item-hero-title-row {
+  width: 100%;
+}
+
+.pedspace-item-hero-title {
+  display: block;
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.pedspace-item-hero-title ::ng-deep h1,
+.pedspace-item-hero-title ::ng-deep h2 {
+  box-sizing: border-box;
+  color: $midnight-green;
+  display: inline;
+  font-family: proxima-nova, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: normal;
+  overflow-wrap: break-word;
+  text-align: left;
+}
+
+/* Underline accent below the title */
+.pedspace-item-hero-title ::ng-deep h1::after,
+.pedspace-item-hero-title ::ng-deep h2::after {
+  content: "";
+  border-top-color: $china-rose;
+  border-top-style: solid;
+  border-top-width: 5px;
+  box-sizing: border-box;
+  display: block;
+  height: 5px;
+  max-width: 80px;
+  width: 80px;
+  margin-top: 10px;
+}
