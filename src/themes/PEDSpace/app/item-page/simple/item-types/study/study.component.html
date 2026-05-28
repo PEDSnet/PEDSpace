@@ -72,8 +72,8 @@
         <div class="row mt-4">
           <!-- Left column -->
           <div class="col-12 col-md-4">
-            <h5 class="sidebar-heading">Files</h5>
-            <div class="study-files-section">
+            <h2 class="sidebar-heading">Files</h2>
+            <div class="study-files-section mb-3">
               <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
               <p *ngIf="(hasFiles$ | async) === false" class="study-no-files text-muted">
                 <i class="fas fa-info-circle me-1"></i>
@@ -120,7 +120,7 @@
         <div class="row mt-4">
           <!-- Left column -->
           <div class="col-12 col-md-4">
-            <h5 class="sidebar-heading">Files</h5>
+            <h2 class="sidebar-heading">Files</h2>
             <div class="study-files-section">
               <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
               <p *ngIf="(hasFiles$ | async) === false" class="study-no-files text-muted">
@@ -129,7 +129,7 @@
               </p>
             </div>
 
-            <h5 class="sidebar-heading mt-4">Related Repositories</h5>
+            <h2 class="sidebar-heading mt-4">Related Repositories</h2>
             <div class="d-flex flex-column gap-2 mb-3">
               <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.github']"
                 [label]="''" [repo]="'github'">
