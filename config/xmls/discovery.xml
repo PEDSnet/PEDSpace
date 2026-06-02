@@ -267,6 +267,8 @@
                 <ref bean="searchFilterAffiliation" />
                 <ref bean="searchFilterFunder" />
                 <ref bean="searchFilterCreated" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
@@ -287,6 +289,7 @@
                 <ref bean="searchFilterEntityType" />
                 <ref bean="searchFilterQuality" />
                 <ref bean="searchFilterCommittee" />
+                <ref bean="searchFilterSiteLead" />
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -336,11 +339,14 @@
                 <!-- New Search Filters -->
                 <ref bean="searchFilterAffiliation" />
                 <ref bean="searchFilterCreated" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterClinicalSubject" />
                 <ref bean="searchFilterQuality" />
                 <ref bean="searchFilterCheckReq" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterCommittee" />
+                <ref bean="searchFilterSiteLead" />
             </list>
         </property>
         <!--The
@@ -828,6 +834,8 @@
             <list>
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterEntityType" />
@@ -842,6 +850,8 @@
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />
@@ -2012,6 +2022,8 @@
         sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
@@ -2024,6 +2036,8 @@
         search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
@@ -2083,6 +2097,8 @@
         sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
@@ -2095,6 +2111,8 @@
         search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
@@ -3920,6 +3938,37 @@
         <property name="pageSize" value="10" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
+    <bean id="searchFilterProjectStartDate"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="projectStartDate" />
+        <property name="metadataFields">
+            <list>
+                <value>project.startDate</value>
+            </list>
+        </property>
+        <property name="type" value="date" />
+        <property name="facetLimit" value="5" />
+        <property name="sortOrderSidebar" value="COUNT" />
+        <property name="sortOrderFilterPage" value="COUNT" />
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+        <property name="exposeMinAndMaxValue" value="true" />
+    </bean>
+    <bean id="searchFilterProjectEndDate"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="projectEndDate" />
+        <property name="metadataFields">
+            <list>
+                <value>project.endDate</value>
+            </list>
+        </property>
+        <property name="type" value="text" />
+        <property name="facetLimit" value="5" />
+        <property name="sortOrderSidebar" value="COUNT" />
+        <property name="sortOrderFilterPage" value="COUNT" />
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="10" />
+    </bean>
     <bean id="searchFilterLastModified"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="dateModified" />
@@ -3960,6 +4009,15 @@
         <property name="metadataFields">
             <list>
                 <value>local.contributor.committee</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="searchFilterSiteLead"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="siteLead" />
+        <property name="metadataFields">
+            <list>
+                <value>local.contributor.siteLead</value>
             </list>
         </property>
     </bean>
@@ -6364,6 +6422,8 @@
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterCreated" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterAffiliation" />
                 <ref bean="searchFilterFunder" />
                 <ref bean="searchFilterClinicalSubject" />
@@ -6394,6 +6454,8 @@
                 <ref bean="searchFilterSubjectMedTermChar" />
                 <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterCreated" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterLastModified" />
                 <ref bean="searchFilterAffiliation" />
                 <ref bean="searchFilterFunder" />
@@ -6481,6 +6543,8 @@
             <list>
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterEntityType" />
@@ -6495,6 +6559,8 @@
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />

@@ -1,0 +1,28 @@
+@import "src/styles/_variables.scss";
+
+/* PEDSpace grey strip behind the search bar (#176) */
+.pedspace-search-strip {
+    background-color: #f1f3f4;
+    padding: 1.5rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+}
+
+.pedspace-search-strip-col {
+    /* Make the search bar span the full center column */
+    ds-search-form,
+    ::ng-deep ds-search-form,
+    ::ng-deep form.form-inline,
+    ::ng-deep .form-group,
+    ::ng-deep input.form-control {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* Hide thumbnails inside search result lists (list & grid) per #176 */
+::ng-deep ds-search-results ds-thumbnail,
+::ng-deep ds-search-results .thumbnail,
+::ng-deep ds-search-results .card-img-top {
+    display: none !important;
+}

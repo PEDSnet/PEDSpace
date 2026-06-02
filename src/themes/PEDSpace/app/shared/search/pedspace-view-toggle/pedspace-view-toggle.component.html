@@ -1,0 +1,26 @@
+<div class="pedspace-view-toggle" *ngIf="visible$ | async">
+    <span class="label">{{ 'pedspace.view-toggle.label' | translate }}</span>
+    <div class="btn-group" role="group" aria-label="View toggle">
+        <button type="button"
+                class="btn"
+                [class.btn-primary]="(currentMode$ | async) === 'past'"
+                [class.btn-outline-primary]="(currentMode$ | async) !== 'past'"
+                (click)="setMode('past')">
+            {{ 'pedspace.view-toggle.past' | translate }}
+        </button>
+        <button type="button"
+                class="btn"
+                [class.btn-primary]="(currentMode$ | async) === 'all'"
+                [class.btn-outline-primary]="(currentMode$ | async) !== 'all'"
+                (click)="setMode('all')">
+            {{ 'pedspace.view-toggle.all' | translate }}
+        </button>
+        <button type="button"
+                class="btn"
+                [class.btn-primary]="(currentMode$ | async) === 'active'"
+                [class.btn-outline-primary]="(currentMode$ | async) !== 'active'"
+                (click)="setMode('active')">
+            {{ 'pedspace.view-toggle.active' | translate }}
+        </button>
+    </div>
+</div>

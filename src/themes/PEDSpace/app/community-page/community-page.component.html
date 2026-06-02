@@ -18,9 +18,6 @@
           <ds-comcol-page-logo *ngIf="logoRD$" [logo]="(logoRD$ | async)?.payload"
             [alternateText]="'community.logo' | translate">
           </ds-comcol-page-logo>
-          <!-- Handle -->
-          <ds-comcol-page-handle [content]="communityPayload.handle" [title]="'community.page.handle'">
-          </ds-comcol-page-handle>
           <!-- Introductory text -->
           <ds-comcol-page-content [content]="communityPayload.introductoryText" [hasInnerHtml]="true">
           </ds-comcol-page-content>
@@ -29,12 +26,15 @@
             [title]="'community.page.news'">
           </ds-comcol-page-content>
         </header>
-        <ds-dso-edit-menu></ds-dso-edit-menu>
+        <div class="comcol-header-actions d-flex flex-column align-items-end">
+          <!-- Permalink moved per #176: top-right of the header, above edit menu -->
+          <ds-comcol-page-handle [content]="communityPayload.handle" [title]="'community.page.handle'">
+          </ds-comcol-page-handle>
+          <ds-dso-edit-menu></ds-dso-edit-menu>
+        </div>
       </div>
       <section class="comcol-page-browse-section">
-        <!-- Browse-By Links -->
-        <ds-comcol-page-browse-by [id]="communityPayload.id" [contentType]="communityPayload.type">
-        </ds-comcol-page-browse-by>
+        <!-- Browse-By bar removed per #176 -->
         <router-outlet></router-outlet>
       </section>
       <footer *ngIf="communityPayload.copyrightText" class="border-top my-5 pt-4">

@@ -34,11 +34,6 @@
                                        [alternateText]="'collection.logo' | translate">
                   </ds-comcol-page-logo>
       
-                  <!-- Handle -->
-                  <ds-comcol-page-handle
-                      [content]="collection.handle"
-                      [title]="'collection.page.handle'">
-                  </ds-comcol-page-handle>
                   <!-- Introductory text -->
                   <ds-comcol-page-content
                       [content]="collection.introductoryText"
@@ -51,15 +46,17 @@
                       [title]="'collection.page.news'">
                   </ds-comcol-page-content>
                 </header>
-                <ds-dso-edit-menu></ds-dso-edit-menu>
+                <div class="comcol-header-actions d-flex flex-column align-items-end">
+                  <!-- Permalink moved per #176 -->
+                  <ds-comcol-page-handle
+                      [content]="collection.handle"
+                      [title]="'collection.page.handle'">
+                  </ds-comcol-page-handle>
+                  <ds-dso-edit-menu></ds-dso-edit-menu>
+                </div>
               </div>
               <section class="comcol-page-browse-section">
-                <!-- Browse-By Links -->
-                <ds-comcol-page-browse-by
-                    [id]="collection.id"
-                    [contentType]="collection.type">
-                </ds-comcol-page-browse-by>
-      
+                <!-- Browse-By bar removed per #176 -->
                 <router-outlet></router-outlet>
               </section>
               <footer *ngIf="collection.copyrightText" class="border-top my-5 pt-4">

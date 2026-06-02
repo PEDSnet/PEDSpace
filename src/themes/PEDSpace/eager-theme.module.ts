@@ -41,6 +41,8 @@ import { PublicationSidebarSearchListElementComponent } from './app/shared/objec
 import { StartsWithDateComponent } from './app/shared/starts-with/date/starts-with-date.component';
 import { StartsWithTextComponent } from './app/shared/starts-with/text/starts-with-text.component';
 import { PublicationComponent } from './app/item-page/simple/item-types/publication/publication.component';
+import { ProjectSearchResultGridElementComponent as PedspaceProjectSearchResultGridElementComponent } from './app/entity-groups/research-entities/item-grid-elements/search-result-grid-elements/project/project-search-result-grid-element.component';
+import { StudySearchResultGridElementComponent as PedspaceStudySearchResultGridElementComponent } from './app/entity-groups/research-entities/item-grid-elements/search-result-grid-elements/study/study-search-result-grid-element.component';
 
 /**
  * Add components that use a custom decorator to ENTRY_COMPONENTS as well as DECLARATIONS.
@@ -71,6 +73,8 @@ const ENTRY_COMPONENTS = [
   ItemSearchResultListElementComponent,
   TopLevelCommunityListComponent,
   BrowseEntryListElementComponent,
+  PedspaceProjectSearchResultGridElementComponent,
+  PedspaceStudySearchResultGridElementComponent,
 ];
 
 const DECLARATIONS = [
