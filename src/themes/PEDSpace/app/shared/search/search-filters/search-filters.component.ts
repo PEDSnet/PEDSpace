@@ -73,7 +73,7 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
   // Parameters to control which search filters are shown
   // Add the names of filters you want to hide to this array
   // Example: hiddenFilters = ['subject', 'author'];
-  hiddenFilters: string[] = ['projectStartDate', 'projectEndDate'];
+  hiddenFilters: string[] = ['projectStartDate', 'projectEndDate', 'siteLead'];
 
   // Parameters to control which search filters are shown
   // If this array is not empty, only these filters will be shown
