@@ -9,8 +9,8 @@
         </button>
     </div>
     <div id="search-sidebar-content">
-        <!-- View toggle: Past / All / Active (#176) — PEDSnet Studies community only, when results have project end dates -->
-        <ds-pedspace-view-toggle></ds-pedspace-view-toggle>
+        <!-- View toggle: Past / All / Active (#176) — PEDSnet Studies community only -->
+        <ds-pedspace-view-toggle *ngIf="showProjectToggle$"></ds-pedspace-view-toggle>
         <ds-view-mode-switch *ngIf="showViewModes" class="d-none d-md-block"
                              [viewModeList]="viewModeList"
                              (changeViewMode)="changeViewMode.emit($event)"></ds-view-mode-switch>

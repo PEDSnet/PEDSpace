@@ -11,8 +11,6 @@ import {
 } from '@angular/common';
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { SearchConfigurationService } from '../../../../../../app/core/shared/search/search-configuration.service';
 import { SEARCH_CONFIG_SERVICE } from '../../../../../../app/my-dspace-page/my-dspace-configuration.service';

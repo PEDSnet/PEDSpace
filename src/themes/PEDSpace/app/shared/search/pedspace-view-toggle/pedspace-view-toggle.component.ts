@@ -62,7 +62,13 @@ export class PedspaceViewToggleComponent implements OnInit, OnDestroy {
     @Inject(PLATFORM_ID) protected platformId: any,
   ) {}
 
+  static readonly STUDIES_UUID = '92eba3a4-d7d3-43bd-b3f9-0f84c68c08f6';
+
   ngOnInit(): void {
+    const scopeId: string = this.route.snapshot.params['id'] ?? '';
+    if (!scopeId.includes(PedspaceViewToggleComponent.STUDIES_UUID)) {
+      return;
+    }
     this.subs.push(combineLatest([
       this.route.queryParamMap,
       this.searchConfigService.getCurrentConfiguration(''),
