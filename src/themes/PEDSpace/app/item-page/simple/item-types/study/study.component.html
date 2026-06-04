@@ -72,7 +72,6 @@
         <div class="row mt-4">
           <!-- Left column -->
           <div class="col-12 col-md-4">
-            <h2 class="sidebar-heading">Files</h2>
             <div class="study-files-section mb-3">
               <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
               <p *ngIf="(hasFiles$ | async) === false" class="study-no-files text-muted">
@@ -120,7 +119,6 @@
         <div class="row mt-4">
           <!-- Left column -->
           <div class="col-12 col-md-4">
-            <h2 class="sidebar-heading">Files</h2>
             <div class="study-files-section">
               <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
               <p *ngIf="(hasFiles$ | async) === false" class="study-no-files text-muted">
@@ -129,8 +127,7 @@
               </p>
             </div>
 
-            <h2 class="sidebar-heading mt-4">Related Repositories</h2>
-            <div class="d-flex flex-column gap-2 mb-3">
+            <div class="d-flex flex-column gap-2 mb-3 mt-4">
               <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.github']"
                 [label]="''" [repo]="'github'">
               </ds-item-page-external-publication-field>
@@ -150,6 +147,9 @@
             <ds-generic-item-page-field [item]="object" [fields]="['local.contributor.siteLead']"
               [label]="'Site Analytics Lead'" [separator]="', '">
             </ds-generic-item-page-field>
+
+            <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfStudy'" [label]="'Database Version'">
+            </ds-related-items>
 
             <ds-generic-item-page-field [item]="object" [fields]="['local.description.analytics']"
               [label]="'Analytic Details'" [enableMarkdown]="true">
