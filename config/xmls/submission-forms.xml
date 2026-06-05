@@ -1117,8 +1117,8 @@
                     <repeatable>false</repeatable>
                     <label>Study End Date</label>
                     <style>col-sm-8</style>
-                    <input-type>date</input-type>
-                    <hint>Enter the date or year the study ended.</hint>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the date or year the study ended. If the study is still in progress, input "Present".</hint>
                     <required></required>
                 </field>
             </row>
@@ -1135,31 +1135,16 @@
                 </field>
             </row>
             <row>
-                <relation-field>
-                    <relationship-type>isPersonOfStudy</relationship-type>
-                    <search-configuration>person</search-configuration>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Linked Persons</label>
-                    <hint>Link to any related persons.</hint>
-                    <required></required>
-                    <visibility>workflow</visibility>
-                </relation-field>
-            </row>
-            <row>
-                <relation-field>
-                    <relationship-type>isOrgUnitOfStudy</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
-                    <repeatable>true</repeatable>
-                    <label>Affliated Organization(s)</label>
+                    <label>PI Affiliation(s)</label>
+                    <input-type>onebox</input-type>
                     <hint>Enter the name(s) of the institutions employing any of the individuals listed as PIs above or associated with the study.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>other</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                     <required></required>
-                </relation-field>
+                </field>
             </row>
             <row>
                 <field>
@@ -1175,11 +1160,58 @@
             </row>
             <row>
                 <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>siteLead</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Site Lead</label>
+                    <input-type value-pairs-name="PEDSnetSites">dropdown</input-type>
+                    <hint></hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>siteSponsor</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Site Sponsor</label>
+                    <input-type value-pairs-name="PEDSnetSites">dropdown</input-type>
+                    <hint></hint>
+                    <required>Please select a site sponsor.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <dc-qualifier>pedsnetid</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>PEDSnet ID</label>
+                    <input-type>onebox</input-type>
+                    <hint>Study ID should follow the format: [Year begun]_[PI Initials]_[Funder Shorthand]_[Sponsor Site Shorthand]</hint>
+                    <required>Please enter the study ID.</required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPersonOfStudy</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Parent Partners</label>
+                    <hint>Link to the Family Advisory Council member who partnered with this study.</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </relation-field>
+            </row>
+            <row>
+                <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>description</dc-element>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Study Abstract</label>
+                    <label>Brief Description</label>
                     <input-type>textarea</input-type>
                     <hint>Enter a brief, 1-3 sentence overview of the study purpose and design.</hint>
                     <required>You must provide some descriptive context for the study.</required>
@@ -1191,9 +1223,49 @@
                     <dc-element>description</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Study Description</label>
+                    <label>Description</label>
                     <input-type>textarea</input-type>
                     <hint>Enter a description of the study aims, study design, and intended cohort characteristics and the cohort formation strategy. Use Markdown headings to delineate each section.</hint>
+                    <required></required>
+                </field>
+            </row>      
+            <row>
+                <relation-field>
+                    <relationship-type>isOrgUnitOfStudy</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Participating Sites</label>
+                    <hint></hint>
+                    <linked-metadata-field>
+                        <dc-schema>local</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>sites</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>analytics</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Analytics Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a description of the intended cohort characteristics and the cohort formation strategy. Use Markdown headings to delineate each section.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>code</dc-element>
+                    <dc-qualifier>github</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>GitHub Repository</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter a permanent link to the originating GitHub Repository (if applicable).</hint>
                     <required></required>
                 </field>
             </row>
@@ -1220,20 +1292,6 @@
                     <input-type>onebox</input-type>
                     <hint>Apply the clinical subject(s) most associated with the study, then input terms for up to two term hierarchy-levels higher, and others as applicable.</hint>
                     <required>At least one clinical subject heading must be applied to the study.</required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>relation</dc-element>
-                    <dc-qualifier>isreferencedby</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Publications</label>
-                    <input-type>textarea</input-type>
-                    <hint>Enter a citation for any subsequent manuscript publication from this study. 
-                            Markdown format is accepted. Please provide a linked DOI for each publication using "[]()".
-                        </hint>
-                    <required></required>
                 </field>
             </row>
             <row>
@@ -1265,11 +1323,30 @@
             </row>
             <row>
                 <relation-field>
+                    <relationship-type>isDQResultOfStudy</relationship-type>
+                    <search-configuration>dqresult</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related DQ Results</label>
+                    <hint>Link the study to any data quality results generated in the course of research, if applicable.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
                     <relationship-type>isDocumentationOfStudy</relationship-type>
                     <search-configuration>documentation</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Database Version Linkage</label>
                     <hint>If PEDSnet Data Model dependent, select the record that represents the database version this concept set was created with.</hint>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isCodeOfStudy</relationship-type>
+                    <search-configuration>code</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Code</label>
+                    <hint>Link to any reusable code or scripts that were created in the course of research, if applicable.</hint>
                     <required></required>
                 </relation-field>
             </row>
@@ -1306,6 +1383,18 @@
                     <label>Rights License</label>
                     <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
                     <hint>https://creativecommons.org/licenses/by/4.0/</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>admin</dc-element>
+                    <dc-qualifier>note</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Publisher</label>
+                    <input-type>textarea</input-type>
+                    <hint>Include any internal notes about the study, including PM and Data Analysis staff, study extensions, etc.</hint>
                     <required></required>
                 </field>
             </row>
@@ -3871,6 +3960,56 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <displayed-value>OMOP Data Model</displayed-value>
                 <stored-value>OMOP Data Model</stored-value>
             </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="PEDSnetSites" dc-term="contributor">
+            <pair>
+                <displayed-value>Children's Hospital of Philadelphia</displayed-value>
+                <stored-value>Children's Hospital of Philadelphia</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Children's Hospital Colorado</displayed-value>
+                <stored-value>Children's Hospital Colorado</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Stanford Medicine</displayed-value>
+                <stored-value>Stanford Medicine</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Nationwide Children's Hospital</displayed-value>
+                <stored-value>Nationwide Children's Hospital</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Nemours Children's Health System</displayed-value>
+                <stored-value>Nemours Children's Health System</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Seattle Children's Hospital</displayed-value>
+                <stored-value>Seattle Children's Hospital</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Texas Children's Hospital</displayed-value>
+                <stored-value>Texas Children's Hospital</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Ann &amp; Robert H. Lurie Children's Hospital of Chicago</displayed-value>
+                <stored-value>Ann &amp; Robert H. Lurie Children's Hospital of Chicago</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Children's Minnesota</displayed-value>
+                <stored-value>Children's Minnesota</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Children's National</displayed-value>
+                <stored-value>Children's National</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Children's Healthcare of Atlanta</displayed-value>
+                <stored-value>Children's Healthcare of Atlanta</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Cincinnati Children's Hospital Medical Center</displayed-value>
+                <stored-value>Cincinnati Children's Hospital Medical Center</stored-value>
+            </pair>      
         </value-pairs>
         <value-pairs value-pairs-name="Quality" dc-term="quality_status">
             <pair>
