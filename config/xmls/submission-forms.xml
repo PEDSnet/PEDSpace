@@ -1190,7 +1190,6 @@
                     <label>Parent Partners</label>
                     <hint>Link to the Family Advisory Council member(s) who partnered with this study.</hint>
                     <required></required>
-                    <visibility>workflow</visibility>
                 </relation-field>
             </row>
             <row>
@@ -1392,7 +1391,7 @@
                     <dc-element>admin</dc-element>
                     <dc-qualifier>note</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Publisher</label>
+                    <label>Administrative Notes</label>
                     <input-type>textarea</input-type>
                     <hint>Include any internal notes about the study, including PM and Data Analysis staff, study extensions, etc.</hint>
                     <required></required>
@@ -1718,7 +1717,6 @@
 
         <!-- Reusable Code Form -->
         <form name="CodeForm">
-
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1871,8 +1869,8 @@
                     <repeatable>true</repeatable>
                     <label>R Package Install Code</label>
                     <input-type>onebox</input-type>
-                    <hint>If you are submitting an R package, enter the install code here, e.g., `install.packages("devtools")
-devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
+                    <hint>If you are submitting an R package, enter the install code here, e.g., `install.packages("devtools") 
+                        devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <required></required>
                 </field>
             </row>
