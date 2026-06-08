@@ -1162,18 +1162,6 @@
                 <field>
                     <dc-schema>local</dc-schema>
                     <dc-element>contributor</dc-element>
-                    <dc-qualifier>siteLead</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Site Lead</label>
-                    <input-type value-pairs-name="PEDSnetSites">dropdown</input-type>
-                    <hint></hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>local</dc-schema>
-                    <dc-element>contributor</dc-element>
                     <dc-qualifier>siteSponsor</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Site Sponsor</label>
@@ -1200,7 +1188,7 @@
                     <search-configuration>person</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Parent Partners</label>
-                    <hint>Link to the Family Advisory Council member who partnered with this study.</hint>
+                    <hint>Link to the Family Advisory Council member(s) who partnered with this study.</hint>
                     <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
@@ -1234,7 +1222,7 @@
                     <relationship-type>isOrgUnitOfStudy</relationship-type>
                     <search-configuration>orgunit</search-configuration>
                     <repeatable>true</repeatable>
-                    <label>Participating Sites</label>
+                    <label>Participating PEDSnet Sites</label>
                     <hint></hint>
                     <linked-metadata-field>
                         <dc-schema>local</dc-schema>
@@ -1253,7 +1241,19 @@
                     <repeatable>false</repeatable>
                     <label>Analytics Description</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter a description of the intended cohort characteristics and the cohort formation strategy. Use Markdown headings to delineate each section.</hint>
+                    <hint>Enter a description of the intended cohort characteristics, the cohort formation strategy, and the study variables. Use Markdown headings to delineate each section.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>siteLead</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Site Analytics Lead</label>
+                    <input-type value-pairs-name="PEDSnetSites">dropdown</input-type>
+                    <hint></hint>
                     <required></required>
                 </field>
             </row>
@@ -3962,6 +3962,10 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="PEDSnetSites" dc-term="contributor">
+            <pair>
+                <displayed-value>PEDSnet Data Coordinating Center</displayed-value>
+                <stored-value>PEDSnet Data Coordinating Center</stored-value>
+            </pair>
             <pair>
                 <displayed-value>Children's Hospital of Philadelphia</displayed-value>
                 <stored-value>Children's Hospital of Philadelphia</stored-value>
