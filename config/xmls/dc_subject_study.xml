@@ -555,7 +555,7 @@
         </node>  
         <node id="STUDY.3" label="Data Provenance">
             <isComposedBy>
-                <node id="STUDY.3A" label="CHOP Data Source">
+                <!-- <node id="STUDY.3A" label="CHOP Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the Children's Hospital of Philadelphia electronic health records.</hasNote>
                 </node>
                 <node id="STUDY.3B" label="CHCO Data Source">
@@ -584,7 +584,7 @@
                 </node>
                 <node id="STUDY.3J" label="Texas Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the Texas Children's Hospital electronic health records.</hasNote>
-                </node>
+                </node> -->
                 <node id="STUDY.3K" label="PEDSnet Data Source">
                     <hasNote>The data analyzed in the course of the study was derived wholly or in part from the PEDSnet learning health system.</hasNote>
                 </node>
@@ -615,6 +615,12 @@
                 <node id="STUDY.3T" label="Anonymized Data Source">
                     <hasNote>The source of data analyzed in the course was anonymized for privacy.</hasNote>
                 </node>
+            </isComposedBy>
+        </node>
+        <node id="STUDY.4" label="PEDSnet Administrative Tags">
+            <isComposedBy>
+                <node id="STUDY.4A" label="PEDSnet Scholars Project"></node>
+                <node id="STUDY.4B" label="FCC Project"/>
             </isComposedBy>
         </node>
 	</isComposedBy>
