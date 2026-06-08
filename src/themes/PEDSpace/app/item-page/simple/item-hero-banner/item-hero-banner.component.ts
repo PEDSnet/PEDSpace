@@ -6,6 +6,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
+  signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -49,6 +50,28 @@ export class ItemHeroBannerComponent {
    * Whether to render the DSO edit menu on the right side of the banner.
    */
   @Input() showEditMenu = true;
+
+  /** Transient copied-confirmation flag. */
+  copied = signal(false);
+
+  /** Returns the best available persistent identifier URL (DOI preferred, then handle). */
+  get shareUrl(): string | null {
+    const doi = this.item?.firstMetadataValue('dc.identifier.doi');
+    if (doi) {
+      return doi.startsWith('http') ? doi : `https://doi.org/${doi}`;
+    }
+    const uri = this.item?.firstMetadataValue('dc.identifier.uri');
+    return uri ?? null;
+  }
+
+  copyShareUrl(): void {
+    const url = this.shareUrl;
+    if (!url) { return; }
+    navigator.clipboard.writeText(url).then(() => {
+      this.copied.set(true);
+      setTimeout(() => this.copied.set(false), 2000);
+    });
+  }
 
   /**
    * The current entity type derived from the item metadata.

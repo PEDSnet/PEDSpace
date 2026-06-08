@@ -1,0 +1,13 @@
+/* Keep the search button inline with the search input */
+.input-group {
+  flex-wrap: nowrap;
+
+  .input-group-append {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .search-button {
+    white-space: nowrap;
+  }
+}

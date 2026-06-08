@@ -77,19 +77,29 @@
 
 /* ============================================
    Metadata block link hover — underline only,
-   no background hover-box.
+   no background hover-box, no layout offset.
    ============================================ */
 .study-meta-block {
+  ::ng-deep a,
   ::ng-deep a.ds-simple-metadata-link,
-  ::ng-deep a {
+  ::ng-deep a.ds-browse-link {
+    display: inline !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    vertical-align: baseline !important;
     background: none !important;
+    background-color: transparent !important;
     box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
     text-decoration: underline;
     text-underline-offset: 2px;
 
-    &:hover {
+    &:hover, &:focus {
       background: none !important;
+      background-color: transparent !important;
       box-shadow: none !important;
+      outline: none !important;
       text-decoration: underline;
     }
   }
@@ -142,6 +152,15 @@
       }
     }
   }
+}
+
+/* ============================================
+   Hide applied-filter label chips inside the
+   related-entities widget tabs.
+   ============================================ */
+::ng-deep ds-tabbed-related-entities-search ds-search-labels,
+::ng-deep ds-related-entities-search ds-search-labels {
+  display: none !important;
 }
 
 /* ============================================
