@@ -1,3 +1,5 @@
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
+
 :host {
   display: flex;
   align-items: center;
@@ -23,13 +25,19 @@
   }
 
   .navbar-nav .nav-link {
-    color: var(--ds-header-icon-color);
+    color: $midnight-green;
+    font-family: "proxima-nova", sans-serif;
     transition: color 0.3s ease;
 
     &:hover,
     &:focus {
-      color: var(--ds-header-icon-color-hover, var(--ds-header-icon-color));
+      color: darken($midnight-green, 15%);
     }
+  }
+
+  /* Remove Bootstrap dropdown caret from nav links */
+  .nav-link.dropdown-toggle::after {
+    display: none;
   }
 
   /* Dropdown styling for desktop view */

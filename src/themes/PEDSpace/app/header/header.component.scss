@@ -1,14 +1,27 @@
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
+
 :host {
   header {
     background-color: var(--ds-header-bg);
   }
 
   .pedsnet-logo {
-    max-height: 48px;
+    max-height: 64px;
     width: auto;
 
     @media screen and (max-width: map-get($grid-breakpoints, md)-0.02) {
-      max-height: 38px;
+      max-height: 44px;
+    }
+  }
+
+  /* Log In and other utility icons in header */
+  .navbar {
+    font-family: "proxima-nova", sans-serif;
+
+    ::ng-deep .nav-link,
+    ::ng-deep button.btn {
+      color: $midnight-green;
+      font-family: "proxima-nova", sans-serif;
     }
   }
 
