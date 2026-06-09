@@ -1,7 +1,18 @@
-.pedsnet-header {
+:host {
+  display: flex;
+  align-items: center;
+}
+
+.pedsnet-main-nav {
   font-family: "proxima-nova", sans-serif;
   font-size: 15px;
   line-height: 1.7;
+  display: flex;
+  align-items: center;
+
+  .navbar-nav {
+    flex-wrap: nowrap;
+  }
 
   a {
     text-decoration: none !important;
@@ -12,7 +23,13 @@
   }
 
   .navbar-nav .nav-link {
+    color: var(--ds-header-icon-color);
     transition: color 0.3s ease;
+
+    &:hover,
+    &:focus {
+      color: var(--ds-header-icon-color-hover, var(--ds-header-icon-color));
+    }
   }
 
   /* Dropdown styling for desktop view */
@@ -107,4 +124,5 @@
     border: 0;
     box-shadow: none;
   }
+
 }

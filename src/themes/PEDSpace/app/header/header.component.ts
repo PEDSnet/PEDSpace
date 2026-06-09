@@ -10,7 +10,6 @@ import { ThemedLangSwitchComponent } from 'src/app/shared/lang-switch/themed-lan
 
 import { ContextHelpToggleComponent } from '../../../../app/header/context-help-toggle/context-help-toggle.component';
 import { HeaderComponent as BaseComponent } from '../../../../app/header/header.component';
-import { ThemedSearchNavbarComponent } from '../../../../app/search-navbar/themed-search-navbar.component';
 import { ThemedAuthNavMenuComponent } from '../../../../app/shared/auth-nav-menu/themed-auth-nav-menu.component';
 import { ImpersonateNavbarComponent } from '../../../../app/shared/impersonate-navbar/impersonate-navbar.component';
 import { PEDSnetHeaderComponent } from '../pedsnet-header/pedsnet-header.component';
@@ -20,12 +19,11 @@ import { PEDSnetHeaderComponent } from '../pedsnet-header/pedsnet-header.compone
  */
 @Component({
   selector: 'ds-themed-header',
-  // styleUrls: ['header.component.scss'],
-  styleUrls: ['../../../../app/header/header.component.scss'],
+  styleUrls: ['./header.component.scss'],
   templateUrl: 'header.component.html',
   // templateUrl: '../../../../app/header/header.component.html',
   standalone: true,
-  imports: [RouterLink, ThemedLangSwitchComponent, NgbDropdownModule, ThemedSearchNavbarComponent, ContextHelpToggleComponent, ThemedAuthNavMenuComponent, ImpersonateNavbarComponent, TranslateModule, AsyncPipe, NgIf, PEDSnetHeaderComponent],
+  imports: [RouterLink, ThemedLangSwitchComponent, NgbDropdownModule, ContextHelpToggleComponent, ThemedAuthNavMenuComponent, ImpersonateNavbarComponent, TranslateModule, AsyncPipe, NgIf, PEDSnetHeaderComponent],
 })
 export class HeaderComponent extends BaseComponent {
 }
