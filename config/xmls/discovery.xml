@@ -495,14 +495,15 @@
             <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
                 <property name="sortFields">
                     <list>
-                        <ref bean="sortDateAccessioned" />
                         <ref bean="sortScore" />
+                        <ref bean="sortDateAccessioned" />
                         <ref bean="sortTitle" />
                         <ref bean="sortDateIssued" />
                     </list>
                 </property>
             </bean>
         </property>
+        <property name="defaultRpp" value="12" />
     </bean>
     <bean id="collectionConfiguration"
         class="org.dspace.discovery.configuration.DiscoveryConfiguration"
@@ -513,14 +514,15 @@
             <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
                 <property name="sortFields">
                     <list>
-                        <ref bean="sortDateAccessioned" />
                         <ref bean="sortScore" />
+                        <ref bean="sortDateAccessioned" />
                         <ref bean="sortTitle" />
                         <ref bean="sortDateIssued" />
                     </list>
                 </property>
             </bean>
         </property>
+        <property name="defaultRpp" value="12" />
     </bean>
     <bean id="defaultRelationshipsConfiguration"
         class="org.dspace.discovery.configuration.DiscoveryConfiguration" scope="prototype">

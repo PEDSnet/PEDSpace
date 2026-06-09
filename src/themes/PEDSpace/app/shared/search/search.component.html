@@ -1,8 +1,31 @@
-<div class="pedspace-search-strip" *ngIf="searchEnabled && (isXsOrSm$ | async)">
+<ng-template #searchForm>
+    <ds-search-form id="search-form"
+                    [query]="(searchOptions$ | async)?.query"
+                    [scope]="(searchOptions$ | async)?.scope"
+                    [hideScopeInUrl]="hideScopeInUrl"
+                    [currentUrl]="searchLink"
+                    [showScopeSelector]="showScopeSelector"
+                    [inPlaceSearch]="inPlaceSearch"
+                    [searchPlaceholder]="searchFormPlaceholder | translate">
+    </ds-search-form>
+    <div class="row mb-3 mb-md-1" *ngIf="!fixedFilterQuery">
+        <div class="labels col-12">
+            <ds-search-labels [inPlaceSearch]="inPlaceSearch">
+            </ds-search-labels>
+        </div>
+    </div>
+</ng-template>
+
+<div class="pedspace-search-strip pedspace-search-strip-global" *ngIf="searchEnabled">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <ng-template *ngTemplateOutlet="searchForm"></ng-template>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <ng-content select="[additionalSearchOptions]"></ng-content>
             </div>
         </div>
     </div>
@@ -19,14 +42,6 @@
 
 <ng-template #searchContent>
     <div class="row">
-        <div class="col-12 pedspace-search-strip-col" *ngIf="(isXsOrSm$ | async) !== true">
-            <ng-container *ngIf="searchEnabled">
-                <div class="pedspace-search-strip">
-                    <ng-template *ngTemplateOutlet="searchForm"></ng-template>
-                </div>
-            </ng-container>
-            <ng-content select="[additionalSearchOptions]"></ng-content>
-        </div>
         <div id="search-content" class="col-12">
             <div class="d-block d-md-none search-controls clearfix">
                 <ds-view-mode-switch *ngIf="inPlaceSearch && showViewModes" [viewModeList]="viewModeList"
@@ -92,20 +107,4 @@
     </ds-search-sidebar>
 </ng-template>
 
-<ng-template #searchForm>
-    <ds-search-form id="search-form"
-                    [query]="(searchOptions$ | async)?.query"
-                    [scope]="(searchOptions$ | async)?.scope"
-                    [hideScopeInUrl]="hideScopeInUrl"
-                    [currentUrl]="searchLink"
-                    [showScopeSelector]="showScopeSelector"
-                    [inPlaceSearch]="inPlaceSearch"
-                    [searchPlaceholder]="searchFormPlaceholder | translate">
-    </ds-search-form>
-    <div class="row mb-3 mb-md-1">
-        <div class="labels col-12">
-            <ds-search-labels [inPlaceSearch]="inPlaceSearch">
-            </ds-search-labels>
-        </div>
-    </div>
-</ng-template>
+

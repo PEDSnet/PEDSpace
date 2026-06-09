@@ -12,6 +12,12 @@
                 [name]="collection ? dsoNameService.getName(collection) : ''"
                 class="cambridge-blue-header">
               </ds-comcol-page-header>
+              <div class="header-share-row" *ngIf="collection?.handle">
+                <ds-comcol-page-handle
+                    [content]="collection.handle"
+                    [title]="''">
+                </ds-comcol-page-handle>
+              </div>
             </div>
           </div>
         </div>
@@ -45,13 +51,14 @@
                       [hasInnerHtml]="true"
                       [title]="'collection.page.news'">
                   </ds-comcol-page-content>
+
+                  <div class="subdomain-access mt-3">
+                    <h3 class="subdomain-title">Subdomains</h3>
+                    <p class="subdomain-text">Browse PEDSpace domains and their collections.</p>
+                    <a class="btn btn-outline-primary btn-sm" [routerLink]="['/community-list']">Browse domains</a>
+                  </div>
                 </header>
                 <div class="comcol-header-actions d-flex flex-column align-items-end">
-                  <!-- Permalink moved per #176 -->
-                  <ds-comcol-page-handle
-                      [content]="collection.handle"
-                      [title]="'collection.page.handle'">
-                  </ds-comcol-page-handle>
                   <ds-dso-edit-menu></ds-dso-edit-menu>
                 </div>
               </div>

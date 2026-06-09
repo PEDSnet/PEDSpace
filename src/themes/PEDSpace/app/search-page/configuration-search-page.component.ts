@@ -44,14 +44,30 @@ import { PedspaceViewToggleComponent } from '../shared/search/pedspace-view-togg
  * This component renders a search page using a configuration as input.
  */
 export class ConfigurationSearchPageComponent extends BaseComponent implements OnInit {
+  /** Hide the scope selector on PEDSpace search pages. */
+  override showScopeSelector = false;
+
+  /** Public collection/community search pages (exclude selection widgets/modals). */
+  get usePublicSearchLayout(): boolean {
+    const router: Router = (this as any).router;
+    const url = router?.url ?? '';
+    const isPublicComcolRoute = url.includes('/communities/') || url.includes('/collections/');
+    return !this.selectable
+      && !this.fixedFilterQuery
+      && isPublicComcolRoute;
+  }
+
   ngOnInit(): void {
     super.ngOnInit();
     this.applyDefaultGridView();
   }
 
-  /** Default the results view to grid when no `view` query param is set (#176). */
+  /** Public page defaults: grid view, 12 results/page, most relevant sort. */
   protected applyDefaultGridView(): void {
     if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+    if (!this.usePublicSearchLayout) {
       return;
     }
     const router: Router = (this as any).router;
@@ -62,11 +78,25 @@ export class ConfigurationSearchPageComponent extends BaseComponent implements O
     while (leaf?.firstChild) {
       leaf = leaf.firstChild;
     }
-    if (leaf?.queryParams?.view) {
+    const params = leaf?.queryParams ?? {};
+    const queryParams: Record<string, string | number> = {};
+    if (params.view !== 'grid') {
+      queryParams.view = 'grid';
+    }
+    if (!params.size) {
+      queryParams.size = 12;
+    }
+    if (!params.sortField) {
+      queryParams.sortField = 'score';
+    }
+    if (!params.sortDirection) {
+      queryParams.sortDirection = 'DESC';
+    }
+    if (Object.keys(queryParams).length === 0) {
       return;
     }
     void router.navigate([], {
-      queryParams: { view: 'grid' },
+      queryParams,
       queryParamsHandling: 'merge',
       replaceUrl: true,
     });
