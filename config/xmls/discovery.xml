@@ -370,8 +370,7 @@
             <list>
                 <!--Only
                 find items, communities and collections-->
-                <value>(search.resourcetype:Item AND latestVersion:true) OR
-                    search.resourcetype:Collection OR search.resourcetype:Community</value>
+                <value>(search.resourcetype:Item AND latestVersion:true)</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>
@@ -389,7 +388,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
                 <property name="metadataFields">
@@ -725,7 +724,7 @@
 
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
 
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
