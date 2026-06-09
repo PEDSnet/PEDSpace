@@ -8,7 +8,7 @@
                               [showScopeSelector]="false">
   <ng-container searchContentTop *ngTemplateOutlet="homeContent"></ng-container>
 </ds-configuration-search-page>
-<div *ngIf="!showDiscoverFilters" class="container">
+<div *ngIf="!showDiscoverFilters" class="container home-content-container">
   <ng-container *ngTemplateOutlet="homeContent"></ng-container>
 </div>
 <ds-suggestions-popup></ds-suggestions-popup>
@@ -17,6 +17,40 @@
   <ds-search-form [inPlaceSearch]="false"
                          [searchPlaceholder]="'home.search-form.placeholder' | translate">
   </ds-search-form>
+
+  <!-- Action buttons beneath search bar -->
+  <div class="home-action-buttons">
+    <a routerLink="/submit" class="btn btn-home-action">Deposit Data</a>
+    <a routerLink="/info/about" class="btn btn-home-action">About</a>
+    <a routerLink="/statistics" class="btn btn-home-action">Statistics</a>
+    <div class="dropdown" ngbDropdown display="dynamic" placement="bottom">
+      <button class="btn btn-home-action dropdown-toggle" type="button"
+              ngbDropdownToggle>
+        Browse By
+      </button>
+      <ul ngbDropdownMenu class="dropdown-menu">
+        <li><a ngbDropdownItem routerLink="/browse/title">Title</a></li>
+        <li><a ngbDropdownItem routerLink="/browse/author">Author</a></li>
+        <li><a ngbDropdownItem routerLink="/browse/subject">Subject</a></li>
+        <li><a ngbDropdownItem routerLink="/browse/dateissued">Issue Date</a></li>
+      </ul>
+    </div>
+    <a routerLink="/login" class="btn btn-home-action">Login</a>
+  </div>
+
+  <hr class="pink-separator">
   <ds-community-list-page></ds-community-list-page>
+  <hr class="pink-separator">
   <ds-recent-item-list *ngIf="recentSubmissionspageSize>0"></ds-recent-item-list>
+
+  <!-- Image carousel moved to bottom -->
+  <!-- <div class="home-image-carousel">
+    <div class="carousel-track" [style.transform]="'translateX(-' + (carouselIndex * 100) + '%)'">
+      <div class="carousel-slide" *ngFor="let image of carouselImages">
+        <img [src]="image.path" [alt]="image.alt">
+      </div>
+    </div>
+    <button class="carousel-btn carousel-prev" (click)="prevCarouselImage()" aria-label="Previous">&#8249;</button>
+    <button class="carousel-btn carousel-next" (click)="nextCarouselImage()" aria-label="Next">&#8250;</button>
+  </div> -->
 </ng-template>
