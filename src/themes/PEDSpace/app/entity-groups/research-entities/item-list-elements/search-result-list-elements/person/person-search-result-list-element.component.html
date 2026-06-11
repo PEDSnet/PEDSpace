@@ -1,0 +1,46 @@
+<div class="row">
+  <div *ngIf="showThumbnails" class="col-3 col-md-2">
+    <a *ngIf="linkType !== linkTypes.None" [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
+       [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
+       [routerLink]="[itemPageRoute]" class="dont-break-out" role="link" tabindex="-1">
+      <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
+                    [defaultImage]="'assets/images/person-placeholder.svg'"
+                    [alt]="'thumbnail.person.alt'"
+                    [placeholder]="'thumbnail.person.placeholder'"
+                    [limitWidth]="true">
+      </ds-thumbnail>
+    </a>
+    <span *ngIf="linkType === linkTypes.None" class="dont-break-out">
+      <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
+                    [defaultImage]="'assets/images/person-placeholder.svg'"
+                    [alt]="'thumbnail.person.alt'"
+                    [placeholder]="'thumbnail.person.placeholder'"
+                    [limitWidth]="true">
+      </ds-thumbnail>
+    </span>
+  </div>
+  <div [ngClass]="showThumbnails ? 'col-9 col-md-10' : 'col-12'">
+    <div class="d-flex">
+      <ds-badges *ngIf="showLabel" [object]="dso" [context]="context" [showAccessStatus]="true"></ds-badges>
+    </div>
+
+    <ds-truncatable [id]="dso.id" *ngIf="object !== undefined && object !== null">
+      <a *ngIf="linkType !== linkTypes.None" [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
+         [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
+         [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out"
+         [innerHTML]="dsoTitle || ('person.listelement.no-title' | translate)" role="link" tabindex="0"></a>
+      <span *ngIf="linkType === linkTypes.None" class="lead item-list-title dont-break-out"
+            [innerHTML]="dsoTitle || ('person.listelement.no-title' | translate)"></span>
+      <span class="text-muted">
+        <ds-truncatable-part [id]="dso.id" [minLines]="1">
+          <span *ngIf="dso.allMetadata(['person.jobTitle']).length > 0" class="item-list-job-title">
+            <strong>Title:</strong>
+            <span *ngFor="let value of allMetadataValues(['person.jobTitle']); let last=last;">
+              <span [innerHTML]="value"></span><span *ngIf="!last">; </span>
+            </span>
+          </span>
+        </ds-truncatable-part>
+      </span>
+    </ds-truncatable>
+  </div>
+</div>
