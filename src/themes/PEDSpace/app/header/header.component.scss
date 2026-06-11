@@ -19,7 +19,7 @@
     font-family: "proxima-nova", sans-serif;
 
     ::ng-deep .nav-link,
-    ::ng-deep button.btn {
+    ::ng-deep button.btn:not(.btn-primary):not(.btn-secondary):not(.btn-danger):not(.btn-success):not(.btn-warning) {
       color: $midnight-green;
       font-family: "proxima-nova", sans-serif;
     }
