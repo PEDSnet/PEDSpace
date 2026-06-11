@@ -1,0 +1,6 @@
+<div *ngIf="content" class="content-with-optional-title mb-2">
+    <h2 *ngIf="title">{{ title | translate }}</h2>
+    <div *ngIf="hasInnerHtml" [innerHtml]="displayContent"></div>
+    <div *ngIf="!hasInnerHtml">{{content}}</div>
+    <ds-pedspace-browse-subdomains *ngIf="showBrowseSubdomains"></ds-pedspace-browse-subdomains>
+</div>

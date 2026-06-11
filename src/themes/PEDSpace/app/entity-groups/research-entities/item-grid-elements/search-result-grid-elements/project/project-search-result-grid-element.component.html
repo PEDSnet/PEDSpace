@@ -12,7 +12,7 @@
       </div>
 
       <!-- Linked title (no View button) -->
-      <ds-truncatable-part [id]="dso.id" [minLines]="2" type="h4">
+      <ds-truncatable-part [id]="dso.id" [minLines]="3" type="h4">
         <h4 class="card-title">
           <a *ngIf="linkType !== linkTypes.None"
              [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"

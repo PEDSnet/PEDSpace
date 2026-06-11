@@ -43,6 +43,7 @@ import { StartsWithTextComponent } from './app/shared/starts-with/text/starts-wi
 import { PublicationComponent } from './app/item-page/simple/item-types/publication/publication.component';
 import { ProjectSearchResultGridElementComponent as PedspaceProjectSearchResultGridElementComponent } from './app/entity-groups/research-entities/item-grid-elements/search-result-grid-elements/project/project-search-result-grid-element.component';
 import { StudySearchResultGridElementComponent as PedspaceStudySearchResultGridElementComponent } from './app/entity-groups/research-entities/item-grid-elements/search-result-grid-elements/study/study-search-result-grid-element.component';
+import { BrowseSubdomainsComponent } from './app/shared/comcol/comcol-page-content/browse-subdomains/browse-subdomains.component';
 
 /**
  * Add components that use a custom decorator to ENTRY_COMPONENTS as well as DECLARATIONS.
@@ -73,6 +74,7 @@ const ENTRY_COMPONENTS = [
   ItemSearchResultListElementComponent,
   TopLevelCommunityListComponent,
   BrowseEntryListElementComponent,
+  BrowseSubdomainsComponent,
   PedspaceProjectSearchResultGridElementComponent,
   PedspaceStudySearchResultGridElementComponent,
 ];

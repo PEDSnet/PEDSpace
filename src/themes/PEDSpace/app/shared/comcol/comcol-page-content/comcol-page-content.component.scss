@@ -1,0 +1,35 @@
+@import 'src/styles/_variables.scss';
+
+/* ============================================================
+   Styling for HTML injected into collection/community intro
+   text via [innerHtml]. Author the content with class names
+   (NOT markdown / NOT {.attrs} — this path does not run
+   markdown-it). Wrap the whole block in:
+       <div class="community-styling"> … </div>
+
+   The "Browse Subdomains" dropdown is no longer authored here:
+   it is a real Angular component ({@link BrowseSubdomainsComponent})
+   rendered via the [[browse-subdomains]] marker in the content.
+
+   ::ng-deep is required because innerHTML content does not
+   receive Angular's view-encapsulation attributes, so scoped
+   selectors would never match it.
+   ============================================================ */
+:host ::ng-deep .community-styling {
+  font-family: 'Montserrat', 'proxima-nova', sans-serif;
+  color: #2d3748;
+
+  // --- Intro paragraphs -------------------------------------
+  .cs-intro {
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+
+    p {
+      margin-bottom: 0.75rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
