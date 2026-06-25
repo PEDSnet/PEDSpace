@@ -17,10 +17,16 @@
         <ds-generic-item-page-field class="subtitle" [renderAsCode]="true" [codeType]="'variable'" [item]="object" [fields]="['local.variable.name']" [label]="'item.preview.local.variable.name'">
         </ds-generic-item-page-field>
       </div>
-      <!-- Date Created -->
-      <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'item.preview.dc.date.issued'"
+      
+      <!-- Date Updated -->
+      <ds-item-page-date-field [item]="object" [fields]="['dc.date.updated']" [label]="'Refreshed Date'"
         separator=", "></ds-item-page-date-field>
-      <!-- Date Modified -->
+
+      <!-- Date Created -->
+      <ds-item-page-date-field *ngIf="object?.metadata?.['dc.date.updated']?.length === 0" [item]="object" [fields]="['dc.date.created']" [label]="'item.preview.dc.date.issued'"
+        separator=", "></ds-item-page-date-field>
+      
+        <!-- Date Modified -->
       <ds-item-page-date-field [item]="object" [fields]="['dc.date']" [label]="'item.preview.dc.date'"
         separator="; "></ds-item-page-date-field>
 
