@@ -4,214 +4,60 @@
 :host {
   display: block;
 
-  .pedsnet-hero-banner {
-    position: relative;
-    min-height: 500px;
-    border-radius: 1.5rem;
-    overflow: hidden;
-    margin: 2rem 3rem;
+  .pedsnet-title-banner {
+    background-color: $midnight-green;
     color: $snow;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    padding: 2.5rem 0;
 
-    @media (max-width: 768px) {
-      margin: 1rem 1.5rem;
-      border-radius: 1rem;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
     }
 
-    // Background image carousel
-    .background-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-      z-index: -1;
-      
-      &.active {
-        opacity: 1;
-      }
-      
-      .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
+    .banner-content h1 {
+      color: $snow;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+
+      @media (max-width: 768px) {
+        font-size: 1.8rem;
       }
     }
+  }
 
-    .content-overlay {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      padding: 2.5rem 0 2rem;
-      z-index: 2;
+  .dev-alert-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
 
-      .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
+  .alert-container {
+    background-color: rgba(255, 200, 0, 0.15);
+    border: 2px solid orange;
+    color: $gray-800;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    margin: 1rem 0;
 
-      .hero-content {
-        max-width: 750px;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-
-        h1 {
-          color: $snow;
-          font-size: 3rem;
-          font-weight: 700;
-          margin-bottom: 1rem;
-        }
-        
-        h2 {
-          font-size: 32px;
-          margin-top: 15px;
-          margin-bottom: 10px;
-        }
-        
-        h3 {
-          font-size: 27px;
-          margin-top: 10px;
-          margin-bottom: 5px;
-        }
-        
-        h4 {
-          font-size: 19px;
-          margin-top: 5px;
-          margin-bottom: 0px;
-        }
-
-        .tagline {
-          color: $snow;
-          font-size: 1.4rem;
-          font-weight: 400;
-          line-height: 1.4;
-          margin-bottom: 1.2rem;
-          font-family: "proxima-nova", sans-serif;
-        }
-
-        .description {
-          color: $snow;
-          font-size: 1.1rem;
-          line-height: 1.5;
-          margin-bottom: 1.5rem;
-          font-family: "proxima-nova", sans-serif;
-        }
-      }
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      color: darken(orange, 20%);
     }
 
-    .button-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 1.5rem;
-      margin-bottom: 1rem;
-
-      .btn {
-        padding: 0.6rem 1.4rem;
-        font-size: 0.9rem;
-        font-weight: 600;
-        border-radius: 2rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        min-width: 120px;
-        text-align: center;
-
-        &:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-      }
-
-      .btn-primary {
-        background-color: $midnight-green;
-        border-color: $midnight-green;
-        color: $snow;
-
-        &:hover,
-        &:focus {
-          background-color: darken($midnight-green, 10%);
-          border-color: darken($midnight-green, 10%);
-        }
-      }
-
-      .btn-secondary {
-        background-color: $deep-sea-blue;
-        border-color: $deep-sea-blue;
-        color: $snow;
-
-        &:hover,
-        &:focus {
-          background-color: darken($deep-sea-blue, 10%);
-          border-color: darken($deep-sea-blue, 10%);
-        }
-      }
-
-      .btn-custom {
-        background-color: map-get($theme-colors, 'dark');
-        border-color: map-get($theme-colors, 'dark');
-        color: $snow;
-
-        &:hover,
-        &:focus {
-          background-color: darken(map-get($theme-colors, 'dark'), 10%);
-          border-color: darken(map-get($theme-colors, 'dark'), 10%);
-        }
-      }
+    p {
+      margin: 0.4rem 0;
     }
 
-    .alert-container {
-      background-color: rgba(0, 0, 0, 0.7);
-      color: orange;
-      padding: 1.25rem;
-      border-radius: 1rem;
-      margin-bottom: 1.5rem;
-      max-width: 100%;
-      display: inline-block;
+    a {
+      color: $deep-sea-blue;
+      text-decoration: underline;
 
-      h2 {
-        font-size: 1.5rem;
-        margin-top: 0;
-        margin-bottom: 0.75rem;
-        color: $snow !important;
-      }
-
-      p {
-        margin: 0.5rem 0;
-        color: $snow !important;
-      }
-
-      a {
-        color: lightblue;
-        text-decoration: underline;
-
-        &:hover {
-          color: white;
-        }
-      }
-    }
-
-    .credits {
-      position: absolute;
-      bottom: 0.5rem;
-      right: 1rem;
-      z-index: 2;
-      opacity: 0.6;
-      font-size: 0.75rem;
-
-      a {
-        color: $snow !important;
-        text-decoration: underline;
-
-        &:hover {
-          opacity: 1;
-        }
+      &:hover {
+        color: darken($deep-sea-blue, 15%);
       }
     }
   }

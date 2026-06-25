@@ -1,0 +1,76 @@
+@import "src/styles/_variables.scss";
+
+/* PEDSpace grey strip behind the search bar (#176) */
+.pedspace-search-strip {
+    background-color: #f1f3f4;
+    padding: 1.5rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+}
+
+.pedspace-search-strip-global {
+    margin-top: 0.25rem;
+}
+
+/* Widen the sidebar + results two-column layout on search pages. */
+::ng-deep ds-page-with-sidebar#search-page > .container {
+    @media (min-width: 1200px) {
+        max-width: 1560px;
+        width: 96vw;
+    }
+}
+
+.pedspace-search-strip-col {
+    /* Make the search bar span the full center column */
+    ds-search-form,
+    ::ng-deep ds-search-form,
+    ::ng-deep form.form-inline,
+    ::ng-deep .form-group,
+    ::ng-deep input.form-control {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* Public collection/community results tuning */
+::ng-deep ds-page-with-sidebar.pedspace-public-layout {
+    .col-md-10 {
+        max-width: 84%;
+        flex: 0 0 84%;
+    }
+
+    .col-md-2.sidebar-content {
+        max-width: 16%;
+        flex: 0 0 16%;
+    }
+
+    ds-search-results {
+        .badge-type {
+            padding: 6px 14px 6px 34px;
+            border-radius: 999px;
+            font-size: 0.92rem;
+            line-height: 1.25;
+        }
+
+        .card-columns .card-title,
+        .card-columns h4.card-title {
+            font-size: 1.85rem;
+            line-height: 1.25;
+        }
+
+        .card-columns .card-title a,
+        .card-columns h4.card-title a {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        ds-thumbnail,
+        .thumbnail,
+        .card-img-top {
+            display: none !important;
+        }
+    }
+}

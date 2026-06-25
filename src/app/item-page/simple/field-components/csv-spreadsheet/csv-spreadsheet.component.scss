@@ -1,0 +1,148 @@
+.csv-spreadsheet-section {
+  margin: 1rem 0;
+}
+
+.spreadsheet-header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 0;
+
+  &:hover {
+    background-color: #e9ecef;
+  }
+}
+
+.spreadsheet-toggle-icon {
+  margin-right: 0.75rem;
+  color: #495057;
+  font-size: 0.875rem;
+  transition: transform 0.2s ease;
+}
+
+.spreadsheet-info {
+  flex: 1;
+  
+  strong {
+    color: #212529;
+    font-weight: 600;
+  }
+}
+
+.spreadsheet-meta {
+  color: #6c757d;
+  font-size: 0.875rem;
+  margin-left: 0.5rem;
+}
+
+.spreadsheet-container {
+  max-height: 400px;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+  margin-top: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  
+  &.collapsed {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+/* Handsontable theme overrides - Clean, minimal look */
+:host ::ng-deep {
+  .handsontable {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.875rem;
+    color: #212529;
+  }
+
+  .ht_master .wtHolder {
+    max-height: 400px;
+  }
+
+  /* Horizon theme customization for cleaner look */
+  .ht-theme-horizon {
+    --ht-wrapper-border-radius: 0.375rem;
+    --ht-font-size: 0.875rem;
+    --ht-cell-horizontal-padding: 0.75rem;
+    --ht-cell-vertical-padding: 0.625rem;
+    
+    /* Softer borders */
+    --ht-border-color: #e9ecef;
+    --ht-cell-horizontal-border-color: #f1f3f5;
+    --ht-cell-vertical-border-color: transparent;
+    
+    /* Clean background colors */
+    --ht-background-color: #ffffff;
+    --ht-row-cell-odd-background-color: #ffffff;
+    --ht-row-cell-even-background-color: #fafbfc;
+    
+    /* Header styling */
+    --ht-header-background-color: #f8f9fa;
+    --ht-header-foreground-color: #495057;
+    --ht-header-font-weight: 600;
+    
+    /* Selection colors */
+    --ht-cell-selection-border-color: #0D4254;
+    --ht-cell-selection-background-color: rgba(13, 66, 84, 0.08);
+    
+    /* Scrollbar */
+    --ht-scrollbar-thumb-color: #ced4da;
+    --ht-scrollbar-track-color: #f8f9fa;
+  }
+
+  /* Remove excess borders and gridlines */
+  .ht-theme-horizon {
+    .wtBorder {
+      visibility: visible;
+    }
+
+    /* Soften the outer wrapper border */
+    .handsontable.ht_wrapper {
+      border: 1px solid #e9ecef !important;
+    }
+
+    /* Clean header look */
+    thead th {
+      background-color: #f8f9fa;
+      border-bottom: 2px solid #dee2e6;
+      font-weight: 600;
+      color: #495057;
+      letter-spacing: 0.01em;
+    }
+
+    /* Remove vertical borders from cells */
+    tbody td {
+      border-right: none !important;
+    }
+
+    /* Subtle horizontal borders */
+    tbody tr td {
+      border-bottom: 1px solid #f1f3f5;
+    }
+
+    /* Hover effect on rows */
+    tbody tr:hover td {
+      background-color: #f8f9fa !important;
+    }
+
+    /* First frozen row styling */
+    .ht__manualRowMove.after-selection--rows tbody tr:first-child td,
+    tbody tr:first-child td {
+      font-weight: 500;
+      background-color: #f8f9fa;
+      border-bottom: 2px solid #dee2e6 !important;
+    }
+  }
+}

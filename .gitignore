@@ -47,3 +47,9 @@ config/configs/authentication-oidc.linked.cfg
 config/configs/authentication-oidc_backup.cfg
 .github/instructions/lint.instructions.md
 config/configs/authentication-oidc.cfg
+domain_transfer.sql
+uuid_transition.csv
+config/configs/README-issue-176-backend.md
+config/scripts/dspace_restore.sh
+config/scripts/root_crontab.sh
+config/xmls/uuid_transition.csv

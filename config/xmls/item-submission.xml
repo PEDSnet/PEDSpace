@@ -65,6 +65,7 @@
         <name-map collection-entity-type="DQResult" submission-name="DQResult"/>
         <name-map collection-entity-type="Documentation" submission-name="Documentation"/>
         <name-map collection-entity-type="Code" submission-name="Code"/>
+        <name-map collection-entity-type="Publication" submission-name="Publication"/>
 
         <!-- Example of configuration using a community handle to map an Item Submission Process.
 
@@ -117,11 +118,6 @@
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
             <type>submission-form</type>
         </step-definition>
-        <step-definition id="publicationStep" mandatory="true">
-            <heading>submit.progressbar.describe.stepone</heading>
-            <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
-            <type>submission-form</type>
-        </step-definition>
         <step-definition id="personStep" mandatory="true">
             <heading>submit.progressbar.describe.stepone</heading>
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
@@ -154,6 +150,11 @@
         </step-definition>
 
         <!-- NEW ENTITY BASED STEP DEFINITIONS-->
+        <step-definition id="publicationStep" mandatory="true">
+            <heading>submit.progressbar.describe.stepone</heading>
+            <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+            <type>submission-form</type>
+        </step-definition>         
         <step-definition id="DQCheckForm" mandatory="true">
             <heading>submit.progressbar.describe.stepone</heading>
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
@@ -209,6 +210,15 @@
             <processing-class>org.dspace.app.rest.submit.step.UploadStep</processing-class>
             <type>upload</type>
         </step-definition>
+        <!-- Optional upload step for entities where file attachment is not required.
+             This step references the "uploadOptional" key defined in
+             uploadConfigurationServiceWithoutMandatory in access-conditions.xml,
+             which sets required=false on the UploadConfiguration. -->
+        <step-definition id="uploadOptional">
+            <heading>submit.progressbar.upload</heading>
+            <processing-class>org.dspace.app.rest.submit.step.UploadStep</processing-class>
+            <type>upload</type>
+        </step-definition>
         <step-definition id="license">
             <heading>submit.progressbar.license</heading>
             <processing-class>org.dspace.app.rest.submit.step.LicenseStep</processing-class>
@@ -221,7 +231,6 @@
             <processing-class>org.dspace.app.rest.submit.step.CCLicenseStep</processing-class>
 	        <type>cclicense</type>
         </step-definition>
-
 		<!-- This optional step may allow the user to select access conditions on the item -->
         <step-definition id="itemAccessConditions">
             <heading>submit.progressbar.accessCondition</heading>
@@ -259,6 +268,7 @@
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
             <type>submission-form</type>
         </step-definition>
+        <!-- 
         <step-definition id="openairePublicationPageoneForm" mandatory="true">
             <heading>submit.progressbar.describe.stepone</heading>
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
@@ -269,7 +279,7 @@
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
             <type>submission-form</type>
         </step-definition>
-
+        -->
         <!-- This is the Sample/Fake Step which is used for testing only -->
         <step-definition id="sample">
             <heading>Sample</heading>
@@ -372,6 +382,7 @@
         <submission-process name="Study">
             <step id="collection"/>
             <step id="StudyForm"/>
+            <step id="uploadOptional"/>
         </submission-process>
 
         <submission-process name="Code">
@@ -399,7 +410,7 @@
             <step id="collection"/>
             <step id="DocumentationFormStepOne"/>
             <step id="DocumentationFormStepTwo"/>
-            <step id="upload"/>
+            <step id="uploadOptional"/>
             <step id="itemAccessConditions"/>
         </submission-process>
 
@@ -411,7 +422,11 @@
             <step id="itemAccessConditions"/>
         </submission-process>
 
-
+        <submission-process name="Publication">
+            <step id="collection"/>
+            <step id="publicationStep"/>
+            <step id="uploadOptional"/>
+        </submission-process>
         <!--
         Submission Process for 'Person' Entities
         To enable: create a collection for Persons and add it to the <submission-map> tag linking to this process
@@ -419,8 +434,8 @@
         <submission-process name="Person">
             <step id="collection"/>
             <step id="personStep"/>
-            <step id="upload"/>
-            <step id="license"/>
+            <!-- <step id="upload"/>
+            <step id="license"/>-->
         </submission-process>
 
         <!--
@@ -430,25 +445,26 @@
         <submission-process name="OrgUnit">
             <step id="collection"/>
             <step id="orgUnitStep"/>
-            <step id="upload"/>
-            <step id="license"/>
+            <!-- <step id="upload"/>
+            <step id="license"/>-->
         </submission-process>
 
 
         <!--
-        Submission Process for 'Publication' Entities.
+        Submission Process for 'Publication' Entities - OLD.
         These are not to be confused with default Items, as Publications may be linked with other Entities
         (e.g. Person, JournalIssue, etc).
         To enable: create a collection for Publications and add it to the <submission-map> tag linking to this process
-         -->
+        
         <submission-process name="Publication">
             <step id="collection"/>
-            <!-- Publications use a custom first step, but share page 2 with "traditional" Item form -->
+             Publications use a custom first step, but share page 2 with "traditional" Item form
             <step id="publicationStep"/>
             <step id="traditionalpagetwo"/>
             <step id="upload"/>
             <step id="license"/>
         </submission-process>
+         -->
         
         <!--
         Submission Process for 'Pproject' Entities
@@ -496,20 +512,17 @@
         </submission-process>
 
         <!-- Openaire submission processes -->
-        <submission-process name="openairePublicationSubmission">
+        <!--<submission-process name="openairePublicationSubmission">
             <step id="collection"/>
-
-            <!--Step will be to Describe the item. -->
+           
             <step id="openairePublicationPageoneForm"/>
             <step id="openairePublicationPagetwoForm"/>
-
-            <!--Step will be to Upload the item -->
-            <!-- step id="upload-with-embargo"/-->
+           
             <step id="upload"/>
 
-            <!--Step will be to Sign off on the License -->
             <step id="license"/>
-        </submission-process>
+        </submission-process> -->
+
         <submission-process name="openairePersonSubmission">
             <step id="collection"/>
             <step id="openairePersonForm"/>

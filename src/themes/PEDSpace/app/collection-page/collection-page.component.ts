@@ -9,6 +9,7 @@ import {
 import {
   ActivatedRoute,
   Router,
+  RouterLink,
   RouterOutlet,
 } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -58,6 +59,7 @@ import { ViewTrackerComponent } from '../../../../app/statistics/angulartics/dsp
     DsoEditMenuComponent,
     ThemedComcolPageBrowseByComponent,
     ObjectCollectionComponent,
+    RouterLink,
     RouterOutlet,
   ],
 })

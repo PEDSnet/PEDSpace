@@ -1,0 +1,47 @@
+/* PEDSpace Handsontable Theme Customization */
+/* Using the Horizon theme as base with custom PEDSpace colors */
+
+:root {
+  /* Primary colors from PEDSpace theme */
+  --ht-accent-color: #0D4254; /* Midnight green - primary */
+  --ht-foreground-color: #343a40; /* Gray 800 */
+  --ht-foreground-secondary-color: #6c757d; /* Gray 600 */
+  --ht-background-color: #ffffff;
+  --ht-border-color: #dee2e6;
+  
+  /* Header colors */
+  --ht-header-background-color: #f8f9fa;
+  --ht-header-foreground-color: #212529;
+  --ht-header-highlighted-background-color: #e9ecef;
+  --ht-header-active-background-color: #8BBBB2; /* Cambridge Blue */
+  --ht-header-active-foreground-color: #ffffff;
+  
+  /* Cell colors */
+  --ht-row-cell-odd-background-color: #ffffff;
+  --ht-row-cell-even-background-color: #f8f9fa;
+  
+  /* Selection colors */
+  --ht-cell-selection-border-color: #0D4254; /* Midnight green */
+  --ht-cell-selection-background-color: rgba(13, 66, 84, 0.1);
+  
+  /* Button and interaction colors */
+  --ht-primary-button-background-color: #0D4254; /* Midnight green */
+  --ht-primary-button-hover-background-color: #0a3342;
+  
+  /* Scrollbar */
+  --ht-scrollbar-thumb-color: #8BBBB2; /* Cambridge Blue */
+  --ht-scrollbar-track-color: #f8f9fa;
+  
+  /* Typography */
+  --ht-font-size: 0.875rem;
+  --ht-line-height: 1.5;
+  
+  /* Spacing */
+  --ht-cell-horizontal-padding: 0.75rem;
+  --ht-cell-vertical-padding: 0.5rem;
+  
+  /* Borders */
+  --ht-wrapper-border-radius: 0.25rem;
+  --ht-cell-horizontal-border-color: #e9ecef;
+  --ht-cell-vertical-border-color: transparent; /* Horizon theme hides vertical borders */
+}

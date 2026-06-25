@@ -1,0 +1,173 @@
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
+
+.citation-wrapper {
+  margin-top: 0.75rem;
+}
+
+.citation-box {
+  position: relative;
+  background: linear-gradient(135deg, rgba($midnight-green, 0.04) 0%, rgba($cambridge-blue, 0.06) 100%);
+  border: 1px solid rgba($midnight-green, 0.15);
+  border-left: 3px solid $midnight-green;
+  border-radius: 12px;
+  padding: 1.5rem;
+  padding-right: 7rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: linear-gradient(135deg, rgba($midnight-green, 0.06) 0%, rgba($cambridge-blue, 0.08) 100%);
+    border-color: rgba($midnight-green, 0.25);
+    box-shadow: 0 8px 24px rgba($midnight-green, 0.12);
+    transform: translateY(-2px);
+  }
+}
+
+.citation-text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: $midnight-green;
+  letter-spacing: 0.01em;
+  word-break: break-word;
+  padding-right: 0.5rem;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 50%;
+  right: 1.25rem;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background: $snow;
+  border: 2px solid $midnight-green;
+  border-radius: 8px;
+  color: $midnight-green;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba($midnight-green, 0.1);
+  white-space: nowrap;
+
+  &:hover {
+    background: $midnight-green;
+    color: $snow;
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 6px 16px rgba($midnight-green, 0.25);
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.98);
+  }
+
+  i {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .btn-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  // Copied state
+  &.copied {
+    background: linear-gradient(135deg, $deep-sea-blue 0%, darken($deep-sea-blue, 5%) 100%);
+    border-color: $deep-sea-blue;
+    color: $snow;
+    
+    &:hover {
+      background: linear-gradient(135deg, darken($deep-sea-blue, 5%) 0%, darken($deep-sea-blue, 10%) 100%);
+      border-color: darken($deep-sea-blue, 5%);
+    }
+
+    i {
+      animation: checkBounce 0.5s ease;
+    }
+  }
+}
+
+@keyframes checkBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .citation-box {
+    padding-right: 1.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: auto;
+    bottom: 1rem;
+    right: 1.25rem;
+    left: 1.25rem;
+    transform: none;
+    justify-content: center;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .citation-box {
+    padding: 1.25rem;
+    padding-bottom: 4.25rem;
+  }
+
+  .citation-text {
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+
+  .copy-btn {
+    bottom: 0.875rem;
+    right: 1rem;
+    left: 1rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+// Accessibility: Reduce motion for users who prefer it
+@media (prefers-reduced-motion: reduce) {
+  .citation-box,
+  .copy-btn {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+
+  .copy-btn.copied i {
+    animation: none;
+  }
+}
+
+// Print styles
+@media print {
+  .copy-btn {
+    display: none;
+  }
+
+  .citation-box {
+    border: 1px solid #000;
+    box-shadow: none;
+  }
+}

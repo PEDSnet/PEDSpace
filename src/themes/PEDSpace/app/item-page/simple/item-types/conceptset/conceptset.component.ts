@@ -20,10 +20,13 @@ import { CollectionsComponent } from '../../../../../../../app/item-page/field-c
 import { ThemedMediaViewerComponent } from '../../../../../../../app/item-page/media-viewer/themed-media-viewer.component';
 import { MiradorViewerComponent } from '../../../../../../../app/item-page/mirador-viewer/mirador-viewer.component';
 import { ThemedFileSectionComponent } from '../../../../../../../app/item-page/simple/field-components/file-section/themed-file-section.component';
+import { ThemedCsvSpreadsheetComponent } from '../../../../../../../app/item-page/simple/field-components/csv-spreadsheet/themed-csv-spreadsheet.component';
 import { ItemPageAbstractFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/abstract/item-page-abstract-field.component';
 // import { Item } from '../../../../../../../app/core/shared/item.model';
 import { ItemPageCcLicenseFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/cc-license/item-page-cc-license-field.component';
+import { ItemPageCitationFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/citation/item-page-citation-field.component';
 import { ItemPageDateFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/date/item-page-date-field.component';
+import { ItemPageFunderFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/funder/item-page-funder-field.component';
 import { GenericItemPageFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/generic/generic-item-page-field.component';
 import { ThemedItemPageTitleFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/title/themed-item-page-field.component';
 import { ItemPageUriFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/uri/item-page-uri-field.component';
@@ -37,6 +40,7 @@ import { ThemedResultsBackButtonComponent } from '../../../../../../../app/share
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { ItemPageDescriptionFieldComponent } from '../../field-components/specific-field/description/item-page-description.component';
 import { ItemPageExternalPublicationFieldComponent } from '../../field-components/specific-field/external/item-page-external-publication.component';
+import { ItemHeroBannerComponent } from '../../item-hero-banner/item-hero-banner.component';
 
 /**
  * Component that represents a Concept Set Item page
@@ -52,7 +56,8 @@ import { ItemPageExternalPublicationFieldComponent } from '../../field-component
   // templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ItemPageExternalPublicationFieldComponent, 
+  imports: [
+    ItemHeroBannerComponent,ItemPageExternalPublicationFieldComponent,
     ItemPageDescriptionFieldComponent, NgIf,
     ThemedResultsBackButtonComponent,
     CommonModule,
@@ -63,6 +68,7 @@ import { ItemPageExternalPublicationFieldComponent } from '../../field-component
     ThemedThumbnailComponent,
     ThemedMediaViewerComponent,
     ThemedFileSectionComponent,
+    ThemedCsvSpreadsheetComponent,
     ItemPageDateFieldComponent,
     ThemedMetadataRepresentationListComponent,
     GenericItemPageFieldComponent,
@@ -74,6 +80,8 @@ import { ItemPageExternalPublicationFieldComponent } from '../../field-component
     AsyncPipe,
     TranslateModule,
     ItemPageCcLicenseFieldComponent,
+    ItemPageCitationFieldComponent,
+    ItemPageFunderFieldComponent,
     ThemedBadgesComponent],
 })
 export class ConceptSetComponent extends BaseComponent {

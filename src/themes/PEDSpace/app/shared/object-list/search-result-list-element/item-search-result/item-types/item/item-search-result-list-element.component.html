@@ -23,13 +23,16 @@
               [innerHTML]="dsoTitle"></span>
         <span class="text-muted">
           <ds-truncatable-part [id]="dso.id" [minLines]="1">
+            <ng-container *ngIf="dso.firstMetadataValue('dc.date')">
+              <strong>Last Updated:</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date')"></span> 
+            </ng-container>
             <ng-container *ngIf="dso.firstMetadataValue('dc.date.created')">
-              (<span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date.created')"></span>)
+              <strong>{{ dso.firstMetadataValue('dspace.entity.type') === 'OrgUnit' ? 'Onboarded:' : 'Created:' }}</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date.created')"></span> 
             </ng-container>
             <span *ngIf="dso.allMetadata(['dc.contributor.other']).length > 0" class="item-list-contributors">
+              <strong>Affiliation:</strong> 
               <span *ngFor="let contributor of allMetadataValues(['dc.contributor.other']); let last=last;">
-                  <span [innerHTML]="contributor"><span [innerHTML]="contributor"></span></span>
-                  <span *ngIf="!last">; </span>
+                  <span [innerHTML]="contributor"></span><span *ngIf="!last">; </span>
               </span>
             </span>
           </ds-truncatable-part>

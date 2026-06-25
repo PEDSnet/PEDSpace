@@ -22,10 +22,10 @@ import { listableObjectComponent } from '../../../../../../../app/shared/object-
 @listableObjectComponent('Person', ViewMode.StandalonePage, Context.Any, 'PEDSpace')
 @Component({
   selector: 'ds-person',
-  // styleUrls: ['./person.component.scss'],
-  styleUrls: ['../../../../../../../app/entity-groups/research-entities/item-pages/person/person.component.scss'],
-  // templateUrl: './person.component.html',
-  templateUrl: '../../../../../../../app/entity-groups/research-entities/item-pages/person/person.component.html',
+  styleUrls: ['./person.component.scss'],
+  // styleUrls: ['../../../../../../../app/entity-groups/research-entities/item-pages/person/person.component.scss'],
+  templateUrl: './person.component.html',
+  // templateUrl: '../../../../../../../app/entity-groups/research-entities/item-pages/person/person.component.html',
   standalone: true,
   imports: [NgIf, ThemedResultsBackButtonComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, GenericItemPageFieldComponent, RelatedItemsComponent, RouterLink, TabbedRelatedEntitiesSearchComponent, AsyncPipe, TranslateModule],
 })

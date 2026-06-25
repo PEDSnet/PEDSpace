@@ -40,6 +40,16 @@ import { ItemSearchResultListElementComponent } from './app/shared/object-list/s
 import { PublicationSidebarSearchListElementComponent } from './app/shared/object-list/sidebar-search-list-element/item-types/publication/publication-sidebar-search-list-element.component';
 import { StartsWithDateComponent } from './app/shared/starts-with/date/starts-with-date.component';
 import { StartsWithTextComponent } from './app/shared/starts-with/text/starts-with-text.component';
+import { PublicationComponent } from './app/item-page/simple/item-types/publication/publication.component';
+import { ProjectSearchResultGridElementComponent as PedspaceProjectSearchResultGridElementComponent } from './app/entity-groups/research-entities/item-grid-elements/search-result-grid-elements/project/project-search-result-grid-element.component';
+import { StudySearchResultGridElementComponent as PedspaceStudySearchResultGridElementComponent } from './app/entity-groups/research-entities/item-grid-elements/search-result-grid-elements/study/study-search-result-grid-element.component';
+import { BrowseSubdomainsComponent } from './app/shared/comcol/comcol-page-content/browse-subdomains/browse-subdomains.component';
+import { OrgUnitSearchResultListElementComponent } from './app/entity-groups/research-entities/item-list-elements/search-result-list-elements/org-unit/org-unit-search-result-list-element.component';
+import { PersonSearchResultListElementComponent } from './app/entity-groups/research-entities/item-list-elements/search-result-list-elements/person/person-search-result-list-element.component';
+import { ProjectSearchResultListElementComponent } from './app/entity-groups/research-entities/item-list-elements/search-result-list-elements/project/project-search-result-list-element.component';
+import { OrgUnitListElementComponent } from './app/entity-groups/research-entities/item-list-elements/org-unit/org-unit-list-element.component';
+import { PersonListElementComponent } from './app/entity-groups/research-entities/item-list-elements/person/person-list-element.component';
+import { ProjectListElementComponent } from './app/entity-groups/research-entities/item-list-elements/project/project-list-element.component';
 
 /**
  * Add components that use a custom decorator to ENTRY_COMPONENTS as well as DECLARATIONS.
@@ -56,6 +66,7 @@ const ENTRY_COMPONENTS = [
   StudyComponent,
   CodeComponent,
   ConceptSetComponent,
+  PublicationComponent,
   DQResultComponent,
   PhenotypeComponent,
   UntypedItemComponent,
@@ -69,6 +80,15 @@ const ENTRY_COMPONENTS = [
   ItemSearchResultListElementComponent,
   TopLevelCommunityListComponent,
   BrowseEntryListElementComponent,
+  BrowseSubdomainsComponent,
+  PedspaceProjectSearchResultGridElementComponent,
+  PedspaceStudySearchResultGridElementComponent,
+  OrgUnitSearchResultListElementComponent,
+  PersonSearchResultListElementComponent,
+  ProjectSearchResultListElementComponent,
+  OrgUnitListElementComponent,
+  PersonListElementComponent,
+  ProjectListElementComponent,
 ];
 
 const DECLARATIONS = [

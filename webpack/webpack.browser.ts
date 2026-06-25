@@ -31,6 +31,12 @@ module.exports = Object.assign({}, commonExports, {
     }),
   ],
   devServer: {
+    static: [
+      {
+        directory: join(process.cwd(), 'node_modules/ngx-extended-pdf-viewer/assets'),
+        publicPath: '/metadata/assets',
+      },
+    ],
     setupMiddlewares(middlewares, server) {
       buildAppConfig(join(process.cwd(), 'src/assets/config.json'));
       return middlewares;

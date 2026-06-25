@@ -62,6 +62,8 @@ export class MediaViewerComponent implements OnDestroy, OnInit {
 
   @Input() mediaOptions: MediaViewerConfig = environment.mediaViewer;
 
+  @Input() showThumbnail: boolean = true;
+
   mediaList$: BehaviorSubject<MediaViewerItem[]> = new BehaviorSubject([]);
 
   captions$: BehaviorSubject<Bitstream[]> = new BehaviorSubject([]);

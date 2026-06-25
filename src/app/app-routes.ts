@@ -66,7 +66,6 @@ export const APP_ROUTES: Route[] = [
         loadChildren: () => import('./home-page/home-page-routes')
           .then((m) => m.ROUTES),
         data: {
-          showBreadcrumbs: false,
           dsoPath: 'site',
         },
         providers: [provideSuggestionNotificationsState()],

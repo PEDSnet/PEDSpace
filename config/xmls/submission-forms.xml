@@ -232,18 +232,7 @@
         <!-- ENTITY-BASED FORM DEFINITIONS-->
         <!-- Data Quality Check Form-->
         <form name="DQCheckForm">
-            <row>
-                <field>
-                    <dc-schema>dspace</dc-schema>
-                    <dc-element>entity</dc-element>
-                    <dc-qualifier>type</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Resource Type</label>
-                    <input-type value-pairs-name="EntityType">dropdown</input-type>
-                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
-                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
-                </field>
-            </row>
+
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -613,7 +602,7 @@
                     <type-bind>study</type-bind>
                     <input-type value-pairs-name="DQEval">list</input-type>
                     <hint>Select the parameters applied to your check.</hint>
-                    <required>Parameters must be selected.</required>
+                    <required></required>
                 </field>
             </row>
             <row>
@@ -623,28 +612,13 @@
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Check Summary</label>
-                    <type-bind>study</type-bind>
                     <input-type>textarea</input-type>
                     <hint>In 2-3 brief sentences, list the parameters of the check you used and the purpose of the check. 
                     Example:
                     "The results of a Source and Concept Vocabularies check using the Single Site, Exploratory, Cross-Sectional parameters. This check investigates SNOMED mappings to ICD codes for epilepsy diagnoses. This check was run to analyze data being prepared for a grant proposal to the CDC."</hint>
                     <required>This field is required.</required>
-                    <visibility>workflow</visibility>
                 </field>
             </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>description</dc-element>
-                    <dc-qualifier>abstract</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Check Summary</label>
-                    <type-bind>network</type-bind>
-                    <input-type>textarea</input-type>
-                    <hint>In 2-3 brief sentences, enter a description of the network check and the parameters and thresholds used.</hint>
-                    <required>This field is required.</required>
-                </field>
-            </row> 
             <row>
                 <field>
                     <dc-schema>local</dc-schema>
@@ -717,7 +691,7 @@
                     <type-bind>network</type-bind>
                     <input-type value-pairs-name="DQDomain">dropdown</input-type>
                     <hint>Select the domains analyzed in the network.</hint>
-                    <required>A selection is required.</required>
+                    <required></required>
                 </field>
             </row>    
         </form>
@@ -776,7 +750,6 @@
                     <search-configuration>dqcheck</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Data Quality Check Linkage</label>
-                    <type-bind>study</type-bind>
                     <hint>Link to the data quality check record which corresponds to the check run to produce these results.</hint>
                     <required></required>
                     <visibility>workflow</visibility>
@@ -788,8 +761,18 @@
                     <search-configuration>study</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Study Record Linkage</label>
-                    <type-bind>study</type-bind>
                     <hint>Link to the study record which corresponds to the investigation.</hint>
+                    <required></required>
+                    <visibility>workflow</visibility>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isDQResultOfDQResult</relationship-type>
+                    <search-configuration>dqresult</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Data Quality Results</label>
+                    <hint>Link to other data quality result records that are related to this result.</hint>
                     <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
@@ -1065,8 +1048,9 @@
                     <label>Research Suitability</label>
                     <input-type value-pairs-name="Quality">dropdown</input-type>
                     <hint>Select the term that best describes the reusability of the Concept Set.
-                    Research Ready - concept set is broadly applicable; it could be reused easily as is. 
-                    Needs Refinement - concept set is designed to fit a specific study purpose; it may need revision prior to reuse.
+                    PEDSnet Definition - concept set is broadly applicable, recently-refreshed and able to be reused as-is. 
+                    Requires Refresh - concept set is very broad, but requires a refresh to be up-to-date.
+                    Study-Specific - concept set designed to fit a specific study purpose; it may need revision prior to reuse.
                     Deprecated - concept set is outdated and undescribed; its reusability cannot be determined.</hint>
                     <required></required>
                 </field>
@@ -1101,18 +1085,7 @@
 
         <!-- Study Form-->
         <form name="StudyForm">
-            <row>
-                <field>
-                    <dc-schema>dspace</dc-schema>
-                    <dc-element>entity</dc-element>
-                    <dc-qualifier>type</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Resource Type</label>
-                    <input-type value-pairs-name="EntityType">dropdown</input-type>
-                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
-                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
-                </field>
-            </row>
+
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1144,8 +1117,8 @@
                     <repeatable>false</repeatable>
                     <label>Study End Date</label>
                     <style>col-sm-8</style>
-                    <input-type>date</input-type>
-                    <hint>Enter the date or year the study ended.</hint>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the date or year the study ended. If the study is still in progress, input "Present".</hint>
                     <required></required>
                 </field>
             </row>
@@ -1162,31 +1135,16 @@
                 </field>
             </row>
             <row>
-                <relation-field>
-                    <relationship-type>isPersonOfStudy</relationship-type>
-                    <search-configuration>person</search-configuration>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Linked Persons</label>
-                    <hint>Link to any related persons.</hint>
-                    <required></required>
-                    <visibility>workflow</visibility>
-                </relation-field>
-            </row>
-            <row>
-                <relation-field>
-                    <relationship-type>isOrgUnitOfStudy</relationship-type>
-                    <search-configuration>orgunit</search-configuration>
-                    <repeatable>true</repeatable>
-                    <label>Affliated Organization(s)</label>
+                    <label>PI Affiliation(s)</label>
+                    <input-type>onebox</input-type>
                     <hint>Enter the name(s) of the institutions employing any of the individuals listed as PIs above or associated with the study.</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>other</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
                     <required></required>
-                </relation-field>
+                </field>
             </row>
             <row>
                 <field>
@@ -1195,10 +1153,44 @@
                     <dc-qualifier></dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Funding Organization(s)</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the name(s) of the organizations (according to ror.org) who funded or provided financial assitance to the study.</hint>
+                    <input-type value-pairs-name="Funders">dropdown</input-type>
+                    <hint>Select the name(s) of the organizations who funded or provided financial assitance to the project.</hint>
                     <required></required>
                 </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>siteSponsor</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Site Sponsor</label>
+                    <input-type value-pairs-name="PEDSnetSites">dropdown</input-type>
+                    <hint></hint>
+                    <required>Please select a site sponsor.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <dc-qualifier>pedsnetid</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>PEDSnet ID</label>
+                    <input-type>onebox</input-type>
+                    <hint>Study ID should follow the format: [Year begun]_[PI Initials]_[Funder Shorthand]_[Sponsor Site Shorthand]</hint>
+                    <required>Please enter the study ID.</required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPersonOfStudy</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Parent Partners</label>
+                    <hint>Link to the Family Advisory Council member(s) who partnered with this study.</hint>
+                    <required></required>
+                </relation-field>
             </row>
             <row>
                 <field>
@@ -1206,7 +1198,7 @@
                     <dc-element>description</dc-element>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Study Abstract</label>
+                    <label>Brief Description</label>
                     <input-type>textarea</input-type>
                     <hint>Enter a brief, 1-3 sentence overview of the study purpose and design.</hint>
                     <required>You must provide some descriptive context for the study.</required>
@@ -1218,9 +1210,61 @@
                     <dc-element>description</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Study Description</label>
+                    <label>Description</label>
                     <input-type>textarea</input-type>
                     <hint>Enter a description of the study aims, study design, and intended cohort characteristics and the cohort formation strategy. Use Markdown headings to delineate each section.</hint>
+                    <required></required>
+                </field>
+            </row>      
+            <row>
+                <relation-field>
+                    <relationship-type>isOrgUnitOfStudy</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Participating PEDSnet Sites</label>
+                    <hint></hint>
+                    <linked-metadata-field>
+                        <dc-schema>local</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>sites</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>analytics</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Analytics Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a description of the intended cohort characteristics, the cohort formation strategy, and the study variables. Use Markdown headings to delineate each section.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>siteLead</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Site Analytics Lead</label>
+                    <input-type value-pairs-name="PEDSnetSites">dropdown</input-type>
+                    <hint></hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>code</dc-element>
+                    <dc-qualifier>github</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>GitHub Repository</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter a permanent link to the originating GitHub Repository (if applicable).</hint>
                     <required></required>
                 </field>
             </row>
@@ -1250,18 +1294,13 @@
                 </field>
             </row>
             <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>relation</dc-element>
-                    <dc-qualifier>isreferencedby</dc-qualifier>
+                <relation-field>
+                    <relationship-type>isPublicationOfStudy</relationship-type>
+                    <search-configuration>publication</search-configuration>
                     <repeatable>true</repeatable>
-                    <label>Publications</label>
-                    <input-type>textarea</input-type>
-                    <hint>Enter a citation for any subsequent manuscript publication from this study. 
-                            Markdown format is accepted. Please provide a linked DOI for each publication using "[]()".
-                        </hint>
-                    <required></required>
-                </field>
+                    <label>Related Publications</label>
+                    <hint>Link the project to any published manuscripts that resulted from the research, if applicable.</hint>
+                </relation-field>
             </row>
             <row>
                 <relation-field>
@@ -1283,11 +1322,30 @@
             </row>
             <row>
                 <relation-field>
+                    <relationship-type>isDQResultOfStudy</relationship-type>
+                    <search-configuration>dqresult</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related DQ Results</label>
+                    <hint>Link the study to any data quality results generated in the course of research, if applicable.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
                     <relationship-type>isDocumentationOfStudy</relationship-type>
                     <search-configuration>documentation</search-configuration>
                     <repeatable>true</repeatable>
                     <label>Database Version Linkage</label>
                     <hint>If PEDSnet Data Model dependent, select the record that represents the database version this concept set was created with.</hint>
+                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isCodeOfStudy</relationship-type>
+                    <search-configuration>code</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Code</label>
+                    <hint>Link to any reusable code or scripts that were created in the course of research, if applicable.</hint>
                     <required></required>
                 </relation-field>
             </row>
@@ -1327,22 +1385,23 @@
                     <required></required>
                 </field>
             </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>admin</dc-element>
+                    <dc-qualifier>note</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Administrative Notes</label>
+                    <input-type>textarea</input-type>
+                    <hint>Include any internal notes about the study, including PM and Data Analysis staff, study extensions, etc.</hint>
+                    <required></required>
+                </field>
+            </row>
         </form>
 
         <!-- Documentation Forms-->
         <form name="DocumentationFormStepOne">
-            <row>
-                <field>
-                    <dc-schema>dspace</dc-schema>
-                    <dc-element>entity</dc-element>
-                    <dc-qualifier>type</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Resource Type</label>
-                    <input-type value-pairs-name="EntityType">dropdown</input-type>
-                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
-                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
-                </field>
-            </row>
+
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1660,18 +1719,6 @@
         <form name="CodeForm">
             <row>
                 <field>
-                    <dc-schema>dspace</dc-schema>
-                    <dc-element>entity</dc-element>
-                    <dc-qualifier>type</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Resource Type</label>
-                    <input-type value-pairs-name="EntityType">dropdown</input-type>
-                    <hint>Select the item type. This item type MUST match the Domain Entity type!</hint>
-                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
-                </field>
-            </row>
-            <row>
-                <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
                     <dc-qualifier></dc-qualifier>
@@ -1822,8 +1869,8 @@
                     <repeatable>true</repeatable>
                     <label>R Package Install Code</label>
                     <input-type>onebox</input-type>
-                    <hint>If you are submitting an R package, enter the install code here, e.g., `install.packages("devtools")
-devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
+                    <hint>If you are submitting an R package, enter the install code here, e.g., `install.packages("devtools") 
+                        devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <required></required>
                 </field>
             </row>
@@ -2157,10 +2204,11 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <repeatable>false</repeatable>
                     <label>Research-Readiness</label>
                     <input-type value-pairs-name="Quality">dropdown</input-type>
-                    <hint>Select the term that best describes the reusability of the phenotype for research purposes.
-                    Research Ready - phenotype is broadly applicable; it could be reused easily as is. 
-                    Needs Refinement - phenotype is designed to fit a specific study purpose; it may need revision prior to reuse.
-                    Deprecated - phenotype is outdated and undescribed; its reusability cannot be determined. </hint>
+                    <hint>Select the term that best describes the reusability of the Concept Set.
+                    PEDSnet Definition - concept set is broadly applicable, recently-refreshed and able to be reused as-is. 
+                    Requires Refresh - concept set is very broad, but requires a refresh to be up-to-date.
+                    Study-Specific - concept set designed to fit a specific study purpose; it may need revision prior to reuse.
+                    Deprecated - concept set is outdated and undescribed; its reusability cannot be determined</hint>
                 </field>
             </row>
             <row>
@@ -2215,6 +2263,16 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             </row>
             <row>
                 <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>created</dc-qualifier>
+                    <label>PEDSnet Site Since</label>
+                    <input-type>date</input-type>
+                    <hint>Enter the year that the institution joined the network.</hint>
+                </field>
+            </row>
+            <!-- <row>
+                <field>
                     <dc-schema>organization</dc-schema>
                     <dc-element>address</dc-element>
                     <dc-qualifier>addressCountry</dc-qualifier>
@@ -2222,7 +2280,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <input-type value-pairs-name="Countries">dropdown</input-type>
                     <hint>Enter the country of the institution.</hint>
                 </field>
-            </row>
+            </row> -->
             <row>
                 <field>
                     <dc-schema>organization</dc-schema>
@@ -2362,7 +2420,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>date</dc-element>
-                    <dc-qualifier>created</dc-qualifier>
+                    <dc-qualifier></dc-qualifier>
                     <label>Date Last Updated</label>
                     <input-type>date</input-type>
                     <hint>Enter the date that the table 1 information provided in the description field was last updated.</hint>
@@ -2398,33 +2456,8 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
 
         </form>
 
-
-        <!-- Form which defines the *first* metadata page/section for depositing Publication Entities.
-             Since Publication Entities are very similar to normal Items, this is nearly identical to the
-             'traditionalpageone' form. The only difference is the Author field can be used to link the
-             Publication Entity to a Person Entity. -->
+        <!-- Publication Form-->
         <form name="publicationStep">
-            <row>
-                <relation-field>
-                    <relationship-type>isAuthorOfPublication</relationship-type>
-                    <search-configuration>person</search-configuration>
-                    <repeatable>true</repeatable>
-                    <label>Author</label>
-                    <hint>Enter the author's name (Family name, Given names).</hint>
-                    <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>author</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
-                    <externalsources>orcid</externalsources>
-                    <required></required>
-                    <!-- You may choose to validate author names via a Regular Expression if it's appropriate for
-                         your institution. The below regex requires a comma to be present in the author field.
-                         However, this is disabled by default to support organizations as authors, etc. -->
-                    <!--<regex>\w+(,)+\w+</regex>-->
-                </relation-field>
-            </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -2434,19 +2467,31 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <label>Title</label>
                     <input-type>onebox</input-type>
                     <hint>Enter the main title of the item.</hint>
-                    <required>You must enter a main title for this item.</required>
+                    <required>You must enter a main title for this published manuscript.</required>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
-                    <dc-element>title</dc-element>
-                    <dc-qualifier>alternative</dc-qualifier>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>author</dc-qualifier>
                     <repeatable>true</repeatable>
-                    <label>Other Titles</label>
+                    <label>Authors</label>
                     <input-type>onebox</input-type>
-                    <hint>If the item has any alternative titles, please enter them here.</hint>
-                    <required></required>
+                    <hint>Enter the article authors' names (Family name, INITIALS).</hint>
+                    <required>You must enter at least one author for this item.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>other</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Affiliations</label>
+                    <input-type>name</input-type>
+                    <hint>List the affiliations of the authors e.g. "Applied Clinical Research Center, Children's Hospital of Philadelphia, Philadelphia, PA".</hint>
+                    <required>You must enter at least affiliation to correspond with your author(s).</required>
                 </field>
             </row>
             <row>
@@ -2455,12 +2500,10 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <dc-element>date</dc-element>
                     <dc-qualifier>issued</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Date of Issue</label>
+                    <label>Date of Publication</label>
                     <style>col-sm-4</style>
                     <input-type>date</input-type>
-                    <hint>Please give the date of previous publication or public distribution.
-                        You can leave out the day and/or month if they aren't applicable.
-                    </hint>
+                    <hint>Please give the date of journal publication. Not the date published digitally, if different.</hint>
                     <required>You must enter at least the year.</required>
                 </field>
                 <field>
@@ -2471,7 +2514,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <label>Publisher</label>
                     <style>col-sm-8</style>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the publisher of the previously issued instance of this item.</hint>
+                    <hint>Enter the full name of the Journal this article is published in, e.g. "Journal of the American Medical Informatics Association".</hint>
                     <required></required>
                 </field>
             </row>
@@ -2482,8 +2525,21 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <dc-qualifier>citation</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Citation</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter the standard citation for this item.</hint>
+                    <required></required>
+                </field>
+            </row>
+                        <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <dc-qualifier>doi</dc-qualifier>
+                    <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
+                    <repeatable>false</repeatable>
+                    <label>Digital Object Identifier (DOI)</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the standard citation for the previously issued instance of this item.</hint>
+                    <hint>Provide the DOI for the article, beginning with "10."</hint>
                     <required></required>
                 </field>
             </row>
@@ -2491,96 +2547,145 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>relation</dc-element>
-                    <dc-qualifier>ispartofseries</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Series/Report No.</label>
-                    <input-type>series</input-type>
-                    <hint>Enter the series and number assigned to this item by your community.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>identifier</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
-                    <repeatable>true</repeatable>
-                    <label>Identifiers</label>
-                    <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
-                    <hint>If the item has any identification numbers or codes associated with
-                        it, please enter the types and the actual numbers or codes.
-                    </hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>type</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Type</label>
-                    <input-type value-pairs-name="common_types">dropdown</input-type>
-                    <hint>Select the type(s) of content of the item. To select more than one value in the list, you may
-                        have to hold down the "CTRL" or "Shift" key.
-                    </hint>
-                    <required>You must choose at least one type.</required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>language</dc-element>
-                    <dc-qualifier>iso</dc-qualifier>
+                    <dc-qualifier>uri</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Language</label>
-                    <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
-                    <hint>Select the language of the main content of the item. If the language does not appear in the
-                        list, please select 'Other'. If the content does not really have a language (for example, if it
-                        is a dataset or an image) please select 'N/A'.
-                    </hint>
+                    <label>PubMed Link</label>
+                    <input-type>onebox</input-type>
+                    <hint>Provide a link to the PubMed record for the article, if applicable.</hint>
                     <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>abstract</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Abstract</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter the article abstract provided by the publisher.</hint>
+                    <required></required>
+                </field>
+            </row>            
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>mesh</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Keywords</label>
+                    <input-type >tag</input-type>
+                    <hint>Input terms that characterize the content of the article. Reference https://meshb.nlm.nih.gov/ for terms or use the MeSH Terms listed on the PubMed article entry.</hint>
+                    <required></required> 
+                    <vocabulary>dc_subject_mesh</vocabulary>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <repeatable>false</repeatable>
+                    <label>Copyright Statement</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the item's copyright statement, e.g., "Copyright © 2025 by the American Academy of Pediatrics".</hint>
+                    <required></required> 
                 </field>
             </row>
         </form>
+
+        <!-- Form which defines the *first* metadata page/section for depositing Publication Entities.
+             Since Publication Entities are very similar to normal Items, this is nearly identical to the
+             'traditionalpageone' form. The only difference is the Author field can be used to link the
+             Publication Entity to a Person Entity. -->
+        
         <!-- Form which defines the metadata page/section for depositing Person Entities -->
         <form name="personStep">
             <row>
-                <relation-field>
-                    <relationship-type>isPublicationOfAuthor</relationship-type>
-                    <search-configuration>publication</search-configuration>
-                    <label>Publication</label>
-                    <hint>import a publicaton</hint>
-                    <externalsources>pubmed</externalsources>
-                </relation-field>
-            </row>
-            <row>
                 <field>
-                    <dc-schema>person</dc-schema>
-                    <dc-element>familyName</dc-element>
-                    <label>Last name</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the last name of the person</hint>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <repeatable>false</repeatable>
+                    <label>Parent Name</label>
+                    <input-type>name</input-type>
+                    <hint>Enter the name of the parent partner.</hint>
+                    <required>This field is required.</required>
                 </field>
             </row>
             <row>
                 <field>
-                    <dc-schema>person</dc-schema>
-                    <dc-element>givenName</dc-element>
-                    <label>First name</label>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>startDate</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Year Partnership Began</label>
+                    <style>col-sm-4</style>
                     <input-type>onebox</input-type>
-                    <hint>Enter the first name of the person</hint>
+                    <hint>Enter the date or year the individual began being a parent partner.</hint>
+                    <required>This field is required.</required>
+                </field>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>endDate</dc-element>
+                    <repeatable>false</repeatable>
+                    <label>Year Partnership Ended</label>
+                    <style>col-sm-8</style>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the year the individual stopped being a parent partner. If currently a parent partner, enter "Current"</hint>
+                    <required>This field is required.</required>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>email</dc-element>
+                    <repeatable>false</repeatable>
                     <label>Email</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the email of the person</hint>
+                    <hint>Please provide the email contact information for the parent partner</hint>
                 </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>committee</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Committee Membership</label>
+                    <input-type value-pairs-name="CommitteeType">dropdown</input-type>
+                    <hint>Please select the committee this person is part of.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <repeatable>false</repeatable>
+                    <label>Bio</label>
+                    <input-type>textarea</input-type>
+                    <hint>Please provide a brief bio. You might include information about you, how you became involved with PEDSnet, and what makes you a passionate parent partner.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>mesh</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Clinical Specialty Interests</label>
+                    <input-type>tag</input-type> 
+                    <hint>Input terms that characterize your clinical specialty interests e.g., Nephrology, Population Characteristics, Cardiovascular Diseases. Reference https://meshb.nlm.nih.gov/ for terms.</hint>
+                    <required></required>
+                    <vocabulary>dc_subject_mesh</vocabulary>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isStudyofPerson</relationship-type>
+                    <search-configuration>study</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Studies</label>
+                    <hint>Select the studies represented by the parent partner.</hint>
+                </relation-field>
             </row>
             <!--     <row>-->
             <!--     <field>-->
@@ -2592,7 +2697,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             <!--       <hint>Enter the orcid of the person</hint>-->
             <!--     </field>-->
             <!--     </row>-->
-            <row>
+            <!-- <row>
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>birthDate</dc-element>
@@ -2600,7 +2705,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <input-type>date</input-type>
                     <hint>Enter the birth date of the person</hint>
                 </field>
-            </row>
+            </row> -->
             <!--            <row>-->
             <!--                <field>-->
             <!--                    <dc-schema>person</dc-schema>-->
@@ -2611,7 +2716,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             <!--                    <hint>Enter the staff id of the person</hint>-->
             <!--                </field>-->
             <!--            </row>-->
-            <row>
+           <!--  <row>
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>jobTitle</dc-element>
@@ -2619,7 +2724,7 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                     <input-type>onebox</input-type>
                     <hint>Enter the job title of the person</hint>
                 </field>
-            </row>
+            </row> -->
         </form>
         <!-- Form which defines the metadata page/section for depositing Project Entities -->
        <form name="projectStep">
@@ -3486,6 +3591,10 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>NDC</stored-value>
             </pair>
             <pair>
+                <displayed-value>CVX</displayed-value>
+                <stored-value>CVX</stored-value>
+            </pair>
+            <pair>
                 <displayed-value>ICD-03</displayed-value>
                 <stored-value>ICD-03</stored-value>
             </pair>
@@ -3614,6 +3723,228 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>UK Biobank</stored-value>
             </pair>
         </value-pairs>
+        <value-pairs value-pairs-name="Funders" dc-term="funding_orgs">
+            <pair>
+                <displayed-value>Patient-Centered Outcomes Research Institute</displayed-value>
+                <stored-value>Patient-Centered Outcomes Research Institute</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institutes of Health (NIH)</displayed-value>
+                <stored-value>National Institutes of Health (NIH)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Environmental Influences on Child Health Outcomes (ECHO)</displayed-value>
+                <stored-value>Environmental Influences on Child Health Outcomes (ECHO)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>John E. Fogarty International Center (FIC)</displayed-value>
+                <stored-value>John E. Fogarty International Center (FIC)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Advancing Translational Sciences (NCATS)</displayed-value>
+                <stored-value>National Center for Advancing Translational Sciences (NCATS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Complementary and Integrative Health (NCCIH)</displayed-value>
+                <stored-value>National Center for Complementary and Integrative Health (NCCIH)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Cancer Institute (NCI)</displayed-value>
+                <stored-value>National Cancer Institute (NCI)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Minority Health and Health Disparities (NCMHD)</displayed-value>
+                <stored-value>National Center for Minority Health and Health Disparities (NCMHD)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Research Resources (NCRR)</displayed-value>
+                <stored-value>National Center for Research Resources (NCRR)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Eye Insitute (NEI)</displayed-value>
+                <stored-value>National Eye Insitute (NEI)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Human Genome Research Institute (NHGRI)</displayed-value>
+                <stored-value>National Human Genome Research Institute (NHGRI)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National, Heart, Lung, and Blood Institute (NHBLI)</displayed-value>
+                <stored-value>National, Heart, Lung, and Blood Institute (NHBLI)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute on Aging (NIA)</displayed-value>
+                <stored-value>National Institute on Aging (NIA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute on Alcohol Abuse and Alcoholism(NIAAA)</displayed-value>
+                <stored-value>National Institute on Alcohol Abuse and Alcoholism(NIAAA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute Allergy and Infectious Diseases (NIAID)</displayed-value>
+                <stored-value>National Institute Allergy and Infectious Diseases (NIAID)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Arthitis and Musculoskeletal and Skin Diseases (NIAMS)</displayed-value>
+                <stored-value>National Institute of Arthitis and Musculoskeletal and Skin Diseases (NIAMS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Biomedical Imaging and Bioengineering (NIBIB)</displayed-value>
+                <stored-value>National Institute of Biomedical Imaging and Bioengineering (NIBIB)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Child Health and Human Development (NICHD)</displayed-value>
+                <stored-value>National Institute of Child Health and Human Development (NICHD)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute on Drug Abuse (NIDA)</displayed-value>
+                <stored-value>National Institute on Drug Abuse (NIDA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute on Deafness and Other Communication Disorders (NIDCD)</displayed-value>
+                <stored-value>National Institute on Deafness and Other Communication Disorders (NIDCD)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Dental and Craniofacial Research (NIDCR)</displayed-value>
+                <stored-value>National Institute of Dental and Craniofacial Research (NIDCR)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK)</displayed-value>
+                <stored-value>National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Environmental Health Sciences (NIEHS)</displayed-value>
+                <stored-value>National Institute of Environmental Health Sciences (NIEHS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute General Medical Sciences (NIGMS)</displayed-value>
+                <stored-value>National Institute General Medical Sciences (NIGMS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Mental Health (NIMH)</displayed-value>
+                <stored-value>National Institute of Mental Health (NIMH)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute on Minority Health and Health Disparities (NIMHD)</displayed-value>
+                <stored-value>National Institute on Minority Health and Health Disparities (NIMHD)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Neurological Disorders and Stroke (NINDS)</displayed-value>
+                <stored-value>National Institute of Neurological Disorders and Stroke (NINDS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Institute of Nursing Research (NINR)</displayed-value>
+                <stored-value>National Institute of Nursing Research (NINR)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Library of Medicine (NLM)</displayed-value>
+                <stored-value>National Library of Medicine (NLM)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Behavioral and Social Sciences Research (OBSSR)</displayed-value>
+                <stored-value>Office of Behavioral and Social Sciences Research (OBSSR)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of the Director, NIH (OD)</displayed-value>
+                <stored-value>Office of the Director, NIH (OD)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Disease Prevention (ODP)</displayed-value>
+                <stored-value>Office of Disease Prevention (ODP)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Dietary Supplements (ODS)</displayed-value>
+                <stored-value>Office of Dietary Supplements (ODS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Data Science Strategy (ODSS)</displayed-value>
+                <stored-value>Office of Data Science Strategy (ODSS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>NIH Basic Begavioral and Social Science Opportunity Network (OPPNET)</displayed-value>
+                <stored-value>NIH Basic Begavioral and Social Science Opportunity Network (OPPNET)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Division of Program Coodination, Planning and Strategic Initiatives, Office of Research Infrastructure Programs (ORIP)</displayed-value>
+                <stored-value>Division of Program Coodination, Planning and Strategic Initiatives, Office of Research Infrastructure Programs (ORIP)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Research on Women's Health (ORWH)</displayed-value>
+                <stored-value>Office of Research on Women's Health (ORWH)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Strategic Coordination (OSC)</displayed-value>
+                <stored-value>Office of Strategic Coordination (OSC)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Agency for Healthcare Research and Quality (AHRQ)</displayed-value>
+                <stored-value>Agency for Healthcare Research and Quality (AHRQ)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Centers for Disease Control and Prevention (CDC)</displayed-value>
+                <stored-value>Centers for Disease Control and Prevention (CDC)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Birth Defects and Developmental Disabilities (NCBDDD)</displayed-value>
+                <stored-value>National Center for Birth Defects and Developmental Disabilities (NCBDDD)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Chronic Disease Prevention and Health Promotion (NCCDPHP)</displayed-value>
+                <stored-value>National Center for Chronic Disease Prevention and Health Promotion (NCCDPHP)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Infectious Disease (NCID)</displayed-value>
+                <stored-value>National Center for Infectious Disease (NCID)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Injury Prevention and Control (NCIPC)</displayed-value>
+                <stored-value>National Center for Injury Prevention and Control (NCIPC)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Occupational Safety and Health (OPHR)</displayed-value>
+                <stored-value>National Center for Occupational Safety and Health (OPHR)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Department of Health and Human Services (DHHS)</displayed-value>
+                <stored-value>Department of Health and Human Services (DHHS)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Food and Drug Administration (FDA)</displayed-value>
+                <stored-value>Food and Drug Administration (FDA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Health Resources and Services Administration (HRSA)</displayed-value>
+                <stored-value>Health Resources and Services Administration (HRSA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Department of Justice (DOJ)</displayed-value>
+                <stored-value>Department of Justice (DOJ)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Environmental Protection Agency (EPA)</displayed-value>
+                <stored-value>Environmental Protection Agency (EPA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Center for Public Health Informatics (NCPHI)</displayed-value>
+                <stored-value>National Center for Public Health Informatics (NCPHI)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>National Immunization Program (NIP)</displayed-value>
+                <stored-value>National Immunization Program (NIP)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Nutrition Research (ONR)</displayed-value>
+                <stored-value>Office of Nutrition Research (ONR)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Department of Veteran's Affairs (VA)</displayed-value>
+                <stored-value>Department of Veteran's Affairs (VA)</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Office of Rare Diseases (ORD)</displayed-value>
+                <stored-value>Office of Rare Diseases (ORD)</stored-value>
+            </pair>
+        </value-pairs>
         <value-pairs value-pairs-name="DataModel" dc-term="subject_DataModel">
             <pair>
                 <displayed-value>PEDSnet Data Model</displayed-value>
@@ -3628,14 +3959,72 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>OMOP Data Model</stored-value>
             </pair>
         </value-pairs>
-        <value-pairs value-pairs-name="Quality" dc-term="quality_status">
+        <value-pairs value-pairs-name="PEDSnetSites" dc-term="contributor">
             <pair>
-                <displayed-value>Research-Ready</displayed-value>
-                <stored-value>Research-Ready</stored-value>
+                <displayed-value>PEDSnet Data Coordinating Center</displayed-value>
+                <stored-value>PEDSnet Data Coordinating Center</stored-value>
             </pair>
             <pair>
-                <displayed-value>Needs Refinement</displayed-value>
-                <stored-value>Needs Refinement</stored-value>
+                <displayed-value>Children's Hospital of Philadelphia</displayed-value>
+                <stored-value>Children's Hospital of Philadelphia</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Children's Hospital Colorado</displayed-value>
+                <stored-value>Children's Hospital Colorado</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Stanford Medicine</displayed-value>
+                <stored-value>Stanford Medicine</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Nationwide Children's Hospital</displayed-value>
+                <stored-value>Nationwide Children's Hospital</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Nemours Children's Health System</displayed-value>
+                <stored-value>Nemours Children's Health System</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Seattle Children's Hospital</displayed-value>
+                <stored-value>Seattle Children's Hospital</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Texas Children's Hospital</displayed-value>
+                <stored-value>Texas Children's Hospital</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Ann &amp; Robert H. Lurie Children's Hospital of Chicago</displayed-value>
+                <stored-value>Ann &amp; Robert H. Lurie Children's Hospital of Chicago</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Children's Minnesota</displayed-value>
+                <stored-value>Children's Minnesota</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Children's National</displayed-value>
+                <stored-value>Children's National</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Children's Healthcare of Atlanta</displayed-value>
+                <stored-value>Children's Healthcare of Atlanta</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Cincinnati Children's Hospital Medical Center</displayed-value>
+                <stored-value>Cincinnati Children's Hospital Medical Center</stored-value>
+            </pair>      
+        </value-pairs>
+        <value-pairs value-pairs-name="Quality" dc-term="quality_status">
+            <pair>
+                <displayed-value>PEDSnet Definition</displayed-value>
+                <stored-value>PEDSnet Definition</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Requires Refresh</displayed-value>
+                <stored-value>Requires Refresh</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Study-Specific</displayed-value>
+                <stored-value>Study-Specific</stored-value>
             </pair>
             <pair>
                 <displayed-value>Deprecated</displayed-value>
@@ -3644,8 +4033,8 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
         </value-pairs>
         <value-pairs value-pairs-name="CSChar" dc-term="subject">
             <pair>
-                <displayed-value>Broad Concept Set</displayed-value>
-                <stored-value>Broad</stored-value>
+                <displayed-value>Broad/Sensitive Concept Set</displayed-value>
+                <stored-value>Sensitive</stored-value>
             </pair>
             <pair>
                 <displayed-value>Specific Concept Set</displayed-value>
@@ -3662,6 +4051,10 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             <pair>
                 <displayed-value>Used for Cohort Inclusion Criteria</displayed-value>
                 <stored-value>Inclusion Criteria</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Developed for a Feasibility Query</displayed-value>
+                <stored-value>Feasibility Query</stored-value>
             </pair>
             <pair>
                 <displayed-value>Investigates a Covariate Variable</displayed-value>
@@ -3810,6 +4203,20 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             <pair>
                 <displayed-value>Was not formally reviewed.</displayed-value>
                 <stored-value>No Formal Review</stored-value>
+            </pair>
+        </value-pairs>
+        <value-pairs value-pairs-name="CommitteeType" dc-term="contributor">
+            <pair>
+                <displayed-value>Data Committee</displayed-value>
+                <stored-value>Data Committee</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Research Committee</displayed-value>
+                <stored-value>Research Committee</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Steering Committee</displayed-value>
+                <stored-value>Steering Committee</stored-value>
             </pair>
         </value-pairs>
         <value-pairs value-pairs-name="PhenoChar" dc-term="subject">
@@ -4386,6 +4793,10 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
                 <stored-value>Coordinating Center Intervention</stored-value>
             </pair>
             <pair>
+                <displayed-value>Additional DQ Investigation</displayed-value>
+                <stored-value>Additional DQ Investigation</stored-value>
+            </pair>
+            <pair>
                 <displayed-value>No Interventions</displayed-value>
                 <stored-value>No Interventions</stored-value>
             </pair>
@@ -4518,6 +4929,10 @@ devtools::install_github("Query-Fulfillment/countmaskr")`</hint>
             <pair>
                 <displayed-value>Natural Language Processing</displayed-value>
                 <stored-value>Natural Laguange Processing</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Large Language Models</displayed-value>
+                <stored-value>Large Language Models</stored-value>
             </pair>
             <pair>
                 <displayed-value>Data Mining</displayed-value>

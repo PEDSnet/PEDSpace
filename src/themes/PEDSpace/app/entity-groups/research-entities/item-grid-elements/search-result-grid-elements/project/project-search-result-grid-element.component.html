@@ -1,0 +1,40 @@
+<div class="card pedspace-project-card" [@focusShadow]="(isCollapsed$ | async)?'blur':'focus'">
+  <ds-truncatable [id]="dso.id">
+    <div class="position-absolute ml-1">
+      <ng-content></ng-content>
+    </div>
+    <div class="card-body">
+
+      <!-- Date pill + entity-type badge row -->
+      <div class="header-row mb-2">
+        <span *ngIf="dateRange" class="date-pill">{{ dateRange }}</span>
+        <ds-badges *ngIf="showLabel" [object]="dso" [context]="context"></ds-badges>
+      </div>
+
+      <!-- Linked title (no View button) -->
+      <ds-truncatable-part [id]="dso.id" [minLines]="3" type="h4">
+        <h4 class="card-title">
+          <a *ngIf="linkType !== linkTypes.None"
+             [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
+             [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
+             [routerLink]="[itemPageRoute]">{{ plainTitle }}</a>
+          <span *ngIf="linkType === linkTypes.None">{{ plainTitle }}</span>
+        </h4>
+      </ds-truncatable-part>
+
+      <!-- Lead Site -->
+      <p *ngIf="leadSite" class="lead-site card-text">
+        <strong>{{ 'pedspace.project.lead-site' | translate }}:</strong> {{ leadSite }}
+      </p>
+
+      <!-- Abstract -->
+      <ds-truncatable-part *ngIf="abstract" [id]="dso.id" [minLines]="3">
+        <p class="item-description card-text text-muted mb-0">
+          <span [innerHTML]="abstract"></span>
+        </p>
+      </ds-truncatable-part>
+
+    </div>
+  </ds-truncatable>
+  <ng-content></ng-content>
+</div>

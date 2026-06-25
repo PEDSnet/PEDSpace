@@ -1,0 +1,129 @@
+<ds-results-back-button *ngIf="showBackButton$ | async" [back]="back"></ds-results-back-button>
+<div class="row" *ngIf="iiifEnabled">
+  <div class="col-12">
+    <ds-mirador-viewer id="iiif-viewer" [object]="object" [searchable]="iiifSearchEnabled" [query]="iiifQuery$ | async">
+    </ds-mirador-viewer>
+  </div>
+</div>
+
+<ds-pedspace-item-hero-banner [item]="object"></ds-pedspace-item-hero-banner>
+<div class="row">
+  <div class="col-xs-12 col-md-4">
+
+    <div class="text-center mb-3">
+      <div class="altmetric-embed" data-badge-type="donut" [attr.data-doi]="doi"></div>
+    </div>
+
+    <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
+
+    <!-- Date Created -->
+    <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'Publication Date'"
+      separator=", "></ds-item-page-date-field>
+
+    <!-- External link buttons -->
+    <div class="pub-action-buttons" *ngIf="doi || pubmedUri">
+      <a *ngIf="doi"
+         [href]="'https://doi.org/' + doi"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn pub-btn me-2 mb-2">
+        <!-- Lucide external-link icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2.5"
+             stroke-linecap="round" stroke-linejoin="round"
+             class="pub-btn-icon" aria-hidden="true">
+          <path d="M15 3h6v6"/>
+          <path d="M10 14 21 3"/>
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+        </svg>
+        View on Publisher Site
+      </a>
+      <a *ngIf="pubmedUri"
+         [href]="pubmedUri"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn pub-btn pub-btn-pubmed mb-2">
+        <!-- PubMed icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 64 64"
+             fill="currentColor" class="pub-btn-icon" aria-hidden="true">
+          <rect x="2" y="2" width="60" height="60" rx="8" ry="8"
+                fill="none" stroke="currentColor" stroke-width="4"/>
+          <text x="32" y="44" text-anchor="middle"
+                font-family="sans-serif" font-size="30" font-weight="900"
+                fill="currentColor">PM</text>
+        </svg>
+        View on PubMed
+      </a>
+    </div>
+
+    <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object" [itemType]="'Person'"
+      [metadataFields]="['dc.contributor.author', 'dc.creator']" [label]="'relationships.isAuthorOf' | translate">
+    </ds-metadata-representation-list>
+    <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
+      [itemType]="'OrgUnit'" [metadataFields]="['dc.contributor.other']" [label]="'Affiliations'">
+    </ds-metadata-representation-list>
+    <ds-generic-item-page-field [item]="object" [fields]="['journal.title']" [label]="'publication.page.journal-title'">
+    </ds-generic-item-page-field>
+    <ds-generic-item-page-field [item]="object" [fields]="['journal.identifier.issn']"
+      [label]="'publication.page.journal-issn'">
+    </ds-generic-item-page-field>
+    <ds-generic-item-page-field [item]="object" [fields]="['journalvolume.identifier.name']"
+      [label]="'publication.page.volume-title'">
+    </ds-generic-item-page-field>
+    <ds-generic-item-page-field [item]="object" [fields]="['dc.publisher']" [label]="'publication.page.publisher'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object" [fields]="['dc.rights']" [label]="'Rights'">
+    </ds-generic-item-page-field>
+
+
+  </div>
+  <div class="col-xs-12 col-md-7">
+    <ds-related-items [parentItem]="object" [relationType]="'isProjectOfPublication'"
+      [label]="'relationships.isProjectOf' | translate">
+    </ds-related-items>
+    <ds-related-items [parentItem]="object" [relationType]="'isOrgUnitOfPublication'"
+      [label]="'relationships.isOrgUnitOf' | translate">
+    </ds-related-items>
+    <ds-related-items [parentItem]="object" [relationType]="'isJournalIssueOfPublication'"
+      [label]="'relationships.isJournalIssueOf' | translate">
+    </ds-related-items>
+    <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
+
+    <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
+      [label]="'Clinical Subject Headings'"></ds-generic-item-page-field>
+
+    <ds-related-items [parentItem]="object" [relationType]="'isPublicationOfStudy'" [label]="'Studies'">
+    </ds-related-items>
+
+    <ds-generic-item-page-field [item]="object" [fields]="['dc.description']" [label]="'publication.page.description'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object" [fields]="['dc.subject']" [separator]="', '"
+      [label]="'item.page.subject'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object" [label]="'Cite this Publication'" [fields]="'dc.identifier.citation'"
+      [enableMarkdown]="true">
+    </ds-generic-item-page-field>
+
+    <ds-related-items [parentItem]="object" [relationType]="'isStudyOfPublication'" [label]="'PEDSnet Project'">
+    </ds-related-items>
+
+    <ds-item-page-uri-field [item]="object" [fields]="['coar.notify.endorsedBy']" [label]="'item.page.endorsement'">
+    </ds-item-page-uri-field>
+    <ds-item-page-uri-field [item]="object" [fields]="['datacite.relation.isReviewedBy']" [label]="'item.page.review'">
+    </ds-item-page-uri-field>
+    <ds-item-page-uri-field [item]="object" [fields]="['datacite.relation.isSupplementedBy']"
+      [label]="'item.page.supplemented'">
+    </ds-item-page-uri-field>
+    <ds-item-page-uri-field [item]="object" [fields]="['datacite.relation.isReferencedBy']"
+      [label]="'item.page.referenced'">
+    </ds-item-page-uri-field>
+    <div>
+      <a class="btn btn-outline-primary" role="button" [routerLink]="[itemPageRoute + '/full']" tabindex="0">
+        <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
+      </a>
+    </div>
+  </div>
+</div>

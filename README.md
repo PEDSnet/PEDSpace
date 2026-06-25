@@ -8,8 +8,6 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
-
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -46,7 +44,6 @@
     ·
     <a href="https://github.com/PEDSnet/PEDSpace/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
-  <p>*PEDSpace is currently behind the CHOP firewall, meaning that you need a VPN connection to view. We eventually intend on making it publicly available.</p>
 </div>
 
 
@@ -61,7 +58,6 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -73,13 +69,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://pedsdspace01.research.chop.edu/home)
+[![Product Name Screen Shot][product-screenshot]](https://pedsnet.org/metadata/)
 
 PEDSpace is an open source repository application intended to host and serve PEDSnet-generated data on demand, as well as accept submissions from qualified users.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
 
@@ -90,26 +84,6 @@ PEDSpace is an open source repository application intended to host and serve PED
 [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 [![Apache Solr][Solr]][Solr-url]
 [![Apache Tomcat][Tomcat]][Tomcat-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ROADMAP -->
-## Roadmap
-
-### DSpace 8.0 Upgrade and Enhancements
-
-- [x] Upgrade DSpace to version 8.0
-- [x] Adapt and test custom theme for DSpace 8.0
-- [x] Configure and initialize entity types and relationships
-- [x] Set up email functionality and SMTP server
-- [x] Implement deposit forms and workflow system
-- [x] Resolve version information display issue
-- [x] Implement default "item created" sort for search queries
-- [x] Develop process for handling non-character sequences in data
-- [x] Make PEDSpace site publicly accessible with proper security measures
-- [ ] Update user guides and administrative documentation for DSpace 8.0
-
-See the [open issues](https://github.com/PEDSnet/PEDSpace/issues) or the [project board](https://github.com/orgs/PEDSnet/projects/2) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -135,8 +109,6 @@ For questions about PEDSnet
 * [PEDSnet](https://www.pedsnet.org/) - For supporting the implementation of PEDSpace and contributing valuable resources.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

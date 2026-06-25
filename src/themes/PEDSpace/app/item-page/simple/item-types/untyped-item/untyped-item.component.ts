@@ -21,7 +21,9 @@ import { MiradorViewerComponent } from '../../../../../../../app/item-page/mirad
 import { ThemedFileSectionComponent } from '../../../../../../../app/item-page/simple/field-components/file-section/themed-file-section.component';
 import { ItemPageAbstractFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/abstract/item-page-abstract-field.component';
 import { ItemPageCcLicenseFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/cc-license/item-page-cc-license-field.component';
+import { ItemPageCitationFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/citation/item-page-citation-field.component';
 import { ItemPageDateFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/date/item-page-date-field.component';
+import { ItemPageFunderFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/funder/item-page-funder-field.component';
 import { GenericItemPageFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/generic/generic-item-page-field.component';
 import { ThemedItemPageTitleFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/title/themed-item-page-field.component';
 import { ItemPageUriFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/uri/item-page-uri-field.component';
@@ -34,6 +36,7 @@ import { ThemedResultsBackButtonComponent } from '../../../../../../../app/share
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { ItemPageDescriptionFieldComponent } from '../../field-components/specific-field/description/item-page-description.component';
 import { ItemPageExternalPublicationFieldComponent } from '../../field-components/specific-field/external/item-page-external-publication.component';
+import { ItemHeroBannerComponent } from '../../item-hero-banner/item-hero-banner.component';
 
 /**
  * Component that represents an untyped Item page
@@ -51,6 +54,7 @@ import { ItemPageExternalPublicationFieldComponent } from '../../field-component
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
+    ItemHeroBannerComponent,
     NgIf,
     ItemPageExternalPublicationFieldComponent,
     ItemPageDescriptionFieldComponent,
@@ -74,6 +78,8 @@ import { ItemPageExternalPublicationFieldComponent } from '../../field-component
     AsyncPipe,
     TranslateModule,
     ItemPageCcLicenseFieldComponent,
+    ItemPageCitationFieldComponent,
+    ItemPageFunderFieldComponent,
   ],
 })
 

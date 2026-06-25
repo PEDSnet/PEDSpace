@@ -1,0 +1,38 @@
+<ng-container *ngVar="(csvBitstreams$ | async) as csvBitstreams">
+  <ds-metadata-field-wrapper *ngIf="csvBitstreams?.length > 0" [label]="label | translate">
+    <div class="csv-spreadsheet-section">
+      <ds-loading *ngIf="isLoading" message="{{'loading.default' | translate}}"></ds-loading>
+      
+      <div *ngIf="!isLoading && spreadsheetData.length > 0">
+        <!-- Collapsible Header -->
+        <div class="spreadsheet-header" (click)="toggleCollapse()">
+          <span class="spreadsheet-toggle-icon">
+            <i [class]="isCollapsed ? 'fas fa-chevron-right' : 'fas fa-chevron-down'"></i>
+          </span>
+          <span class="spreadsheet-info">
+            <strong>{{ csvBitstreams[0]?.name }}</strong>
+            <span class="spreadsheet-meta"> ({{ totalRows }} rows)</span>
+          </span>
+        </div>
+
+        <!-- Expandable Spreadsheet Container (only in browser) -->
+        <div *ngIf="isBrowser" class="spreadsheet-container" [class.collapsed]="isCollapsed">
+          <hot-table 
+            [data]="spreadsheetData" 
+            [settings]="gridSettings"
+            class="ht-theme-horizon">
+          </hot-table>
+        </div>
+        
+        <!-- SSR placeholder -->
+        <div *ngIf="!isBrowser" class="spreadsheet-container">
+          <p class="text-muted">{{ 'csv-spreadsheet.browser-only' | translate }}</p>
+        </div>
+      </div>
+      
+      <div *ngIf="!isLoading && spreadsheetData.length === 0" class="alert alert-info">
+        {{ 'csv-spreadsheet.no-data' | translate }}
+      </div>
+    </div>
+  </ds-metadata-field-wrapper>
+</ng-container>

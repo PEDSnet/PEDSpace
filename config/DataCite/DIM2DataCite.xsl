@@ -35,9 +35,9 @@
     <!-- The content of the following parameter will be used as element publisher. -->
     <xsl:param name="publisher">PEDSnet</xsl:param>
     <!-- The content of the following variable will be used as element contributor with contributorType datamanager. -->
-    <xsl:param name="datamanager"><xsl:value-of select="$publisher" /></xsl:param>
+    <xsl:param name="datamanager">PEDSnet Data Coordinating Center</xsl:param>
     <!-- The content of the following variable will be used as element contributor with contributorType hostingInstitution. -->
-    <xsl:param name="hostinginstitution">Children's Hospital of Philadelphia</xsl:param>
+    <xsl:param name="hostinginstitution">PEDSnet</xsl:param>
     <!-- Please take a look into the DataCite schema documentation if you want to know how to use these elements.
          http://schema.datacite.org -->
     <!-- Metadata-field to retrieve DOI from items -->
@@ -162,9 +162,10 @@
                 Format: open
                 Attribute: subjectSchema (optional), schemeURI (optional)
             -->  
-            <xsl:if test="//dspace:field[@mdschema='dc' and @element='subject']">
+            <xsl:if test="//dspace:field[@mdschema='dc' and @element='subject'] or //dspace:field[@mdschema='local' and (@element='subject' or @element='dqcheck')]">
                 <subjects>
                     <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='subject']" />
+                    <xsl:apply-templates select="//dspace:field[@mdschema='local' and (@element='subject' or @element='dqcheck')]" />
                 </subjects>
             </xsl:if>
 
@@ -220,7 +221,7 @@
 
             <!-- 
                 DataCite (9)
-                Templacte Call for Language
+                Template Call for Language
                 Occ: 0-1
                 Format: IETF BCP 47 or ISO 639-1
             -->
@@ -229,12 +230,12 @@
             <!--
                 DataCite (10)
                 Template call for ResourceType
-                DataCite allows the ResourceType to ouccre not more than once.
+                DataCite allows the ResourceType to occur not more than once.
             -->
             <!--<xsl:apply-templates select="(//dspace:field[@mdschema='dc' and @element='type'])[1]" />-->
             <xsl:choose>
-                <xsl:when test="(//dspace:field[@mdschema='dc' and @element='type'])[1]">
-                    <xsl:apply-templates select="(//dspace:field[@mdschema='dc' and @element='type'])[1]" />
+                <xsl:when test="(//dspace:field[@mdschema='dspace' and @element='entity' and @qualifier='type'])[1]">
+                    <xsl:apply-templates select="(//dspace:field[@mdschema='dspace' and @element='entity' and @qualifier='type'])[1]" />
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:element name="resourceType">
@@ -310,9 +311,11 @@
                 Occ: 0-n
                 Required Attribute: descriptionType - controlled list
             -->
-            <xsl:if test="//dspace:field[@mdschema='dc' and @element='description' and (@qualifier='abstract' or @qualifier='tableofcontents' or not(@qualifier))]">
+            <xsl:if test="//dspace:field[@mdschema='dc' and @element='description' and (@qualifier='abstract' or @qualifier='tableofcontents' or not(@qualifier))] or //dspace:field[@mdschema='local' and @element='description'] or //dspace:field[@mdschema='dc' and @element='provenance']">
                 <xsl:element name="descriptions">
                     <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='description' and (@qualifier='abstract' or @qualifier='tableofcontents' or not(@qualifier))]" />
+                    <xsl:apply-templates select="//dspace:field[@mdschema='local' and @element='description']" />
+                    <xsl:apply-templates select="//dspace:field[@mdschema='dc' and @element='provenance']" />
                 </xsl:element>
             </xsl:if>
             
@@ -406,36 +409,46 @@
         </xsl:element>
     </xsl:template>
 
+    <xsl:template match="//dspace:field[@mdschema='local' and (@element='subject' or @element='dqcheck')]">
+        <xsl:element name="subject">
+            <xsl:attribute name="xml:lang"><xsl:value-of select="translate(@lang, '_', '-')" /></xsl:attribute>
+            <xsl:if test="@qualifier">
+                <xsl:attribute name="subjectScheme"><xsl:value-of select="@qualifier" /></xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="." />
+        </xsl:element>
+    </xsl:template>
+
     <!--
         DataCite (7), DataCite (7.1)
         Adds contributor and contributorType information
     -->
     <xsl:template match="//dspace:field[@mdschema='dc' and @element='contributor'][not(@qualifier='author')]">
         <xsl:choose>
-            <xsl:when test="@qualifier='editor'"> 
+            <!-- <xsl:when test="@qualifier='editor'"> 
                 <xsl:element name="contributor">
                     <xsl:attribute name="contributorType">Editor</xsl:attribute>
                     <contributorName>
                         <xsl:value-of select="." />
                     </contributorName>
                 </xsl:element>
-            </xsl:when>
+            </xsl:when> -->
             <xsl:when test="@qualifier='advisor'"> 
                 <xsl:element name="contributor">
-                    <xsl:attribute name="contributorType">RelatedPerson</xsl:attribute>
+                    <xsl:attribute name="contributorType">Supervisor</xsl:attribute>
                     <contributorName>
                         <xsl:value-of select="." />
                     </contributorName>
                 </xsl:element>
             </xsl:when>
-            <xsl:when test="@qualifier='illustrator'"> 
+            <!-- <xsl:when test="@qualifier='illustrator'"> 
                 <xsl:element name="contributor">
                     <xsl:attribute name="contributorType">Other</xsl:attribute>
                     <contributorName>
                         <xsl:value-of select="." />
                     </contributorName>
                 </xsl:element>
-            </xsl:when>
+            </xsl:when> --> 
             <xsl:when test="@qualifier='other'"> 
                 <xsl:element name="contributor">
                     <xsl:attribute name="contributorType">Other</xsl:attribute>
@@ -446,7 +459,7 @@
             </xsl:when>
             <xsl:when test="not(@qualifier)"> 
                 <xsl:element name="contributor">
-                    <xsl:attribute name="contributorType">Other</xsl:attribute>
+                    <xsl:attribute name="contributorType">Sponsor</xsl:attribute>
                     <contributorName>
                         <xsl:value-of select="." />
                     </contributorName>
@@ -460,22 +473,16 @@
         Adds Date and dateType information
     -->
     <xsl:template match="//dspace:field[@mdschema='dc' and @element='date' and 
-                        (@qualifier='accessioned' 
-                         or @qualifier='available' 
-                         or @qualifier='copyright' 
-                         or @qualifier='created' 
+                        (@qualifier='created'  
                          or @qualifier='issued' 
                          or @qualifier='submitted'
                          or @qualifier='updated')]">
-    	<xsl:if test="@qualifier='accessioned' 
-                        or @qualifier='available' 
-                        or @qualifier='copyright' 
-                        or @qualifier='created' 
+    	<xsl:if test="@qualifier='created' 
                         or @qualifier='issued' 
                         or @qualifier='submitted'
                         or @qualifier='updated'">
             <xsl:element name="date">
-                <xsl:if test="@qualifier='accessioned'">
+                <!-- <xsl:if test="@qualifier='accessioned'">
                     <xsl:attribute name="dateType">Accepted</xsl:attribute>
                 </xsl:if>
                 <xsl:if test="@qualifier='available'">
@@ -483,7 +490,7 @@
                 </xsl:if>
                 <xsl:if test="@qualifier='copyright'">
                     <xsl:attribute name="dateType">Copyrighted</xsl:attribute>
-                </xsl:if>
+                </xsl:if> -->
                 <xsl:if test="@qualifier='created'">
                     <xsl:attribute name="dateType">Created</xsl:attribute>
                 </xsl:if>
@@ -526,32 +533,16 @@
         DataCite (10), DataCite (10.1)
         Adds resourceType and resourceTypeGeneral information
     -->
-    <xsl:template match="//dspace:field[@mdschema='dc' and @element='type'][1]">
+    <xsl:template match="//dspace:field[@mdschema='dspace' and @element='entity' and @qualifier='type'][1]">
         <xsl:element name="resourceType">
             <xsl:attribute name="resourceTypeGeneral">
                 <xsl:choose>
-                    <xsl:when test="string(text())='Animation'">Audiovisual</xsl:when>
-                    <xsl:when test="string(text())='Article'">JournalArticle</xsl:when>
-                    <xsl:when test="string(text())='Book'">Book</xsl:when>
-                    <xsl:when test="string(text())='Book chapter'">BookChapter</xsl:when>
-                    <xsl:when test="string(text())='Dataset'">Dataset</xsl:when>
-                    <xsl:when test="string(text())='Learning Object'">InteractiveResource</xsl:when>
-                    <xsl:when test="string(text())='Image'">Image</xsl:when>
-                    <xsl:when test="string(text())='Image, 3-D'">Image</xsl:when>
-                    <xsl:when test="string(text())='Map'">Model</xsl:when>
-                    <xsl:when test="string(text())='Musical Score'">Other</xsl:when>
-                    <xsl:when test="string(text())='Plan or blueprint'">Model</xsl:when>
-                    <xsl:when test="string(text())='Preprint'">Preprint</xsl:when>
-                    <xsl:when test="string(text())='Presentation'">Other</xsl:when>
-                    <xsl:when test="string(text())='Recording, acoustical'">Sound</xsl:when>
-                    <xsl:when test="string(text())='Recording, musical'">Sound</xsl:when>
-                    <xsl:when test="string(text())='Recording, oral'">Sound</xsl:when>
-                    <xsl:when test="string(text())='Software'">Software</xsl:when>
-                    <xsl:when test="string(text())='Technical Report'">Report</xsl:when>
-                    <xsl:when test="string(text())='Thesis'">Dissertation</xsl:when>
-                    <xsl:when test="string(text())='Video'">Audiovisual</xsl:when>
-                    <xsl:when test="string(text())='Working Paper'">Text</xsl:when>
-                    <xsl:when test="string(text())='Other'">Other</xsl:when>
+                    <xsl:when test="string(text())='ConceptSet'">Dataset</xsl:when>
+                    <xsl:when test="string(text())='Phenotype'">Model</xsl:when>
+                    <xsl:when test="string(text())='DQCheck'">Model</xsl:when>
+                    <xsl:when test="string(text())='DQResult'">Dataset</xsl:when>
+                    <xsl:when test="string(text())='Code'">Software</xsl:when>
+                    <xsl:when test="string(text())='Documentation'">Text</xsl:when>
                     <xsl:otherwise>Other</xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
@@ -565,7 +556,7 @@
         Adds all identifiers except the doi.
 
         This element is important as it is used to recognize for which DSpace
-        objet a DOI is reserved for. The DataCiteConnector will test all
+        object a DOI is reserved for. The DataCiteConnector will test all
         AlternativeIdentifiers by using HandleManager.
         resolveUrlToHandle(context, altId) until one is recognized or all have
         been tested.
@@ -620,7 +611,10 @@
     -->
     <xsl:template match="//dspace:field[@mdschema='dc' and @element='rights']">
         <xsl:element name="rights">
-            <xsl:value-of select="." />
+            <xsl:choose>
+                <xsl:when test=". = 'a CC-BY Attribution 4.0 license.'">CC-BY Attribution 4.0</xsl:when>
+                <xsl:otherwise><xsl:value-of select="." /></xsl:otherwise>
+            </xsl:choose>
         </xsl:element>
     </xsl:template>
 
@@ -638,6 +632,30 @@
                	    <xsl:otherwise>Other</xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
+            <xsl:value-of select="." />
+        </xsl:element>
+    </xsl:template>
+
+    <!--
+        DataCite (17)
+        Description for local.description (always descriptionType "Other")
+    -->
+    <xsl:template match="//dspace:field[@mdschema='local' and @element='description']">
+        <xsl:element name="description">
+            <xsl:attribute name="xml:lang"><xsl:value-of select="translate(@lang, '_', '-')" /></xsl:attribute>
+            <xsl:attribute name="descriptionType">Other</xsl:attribute>
+            <xsl:value-of select="." />
+        </xsl:element>
+    </xsl:template>
+
+    <!--
+        DataCite (17)
+        Description for dc.provenance (always descriptionType "Other")
+    -->
+    <xsl:template match="//dspace:field[@mdschema='dc' and @element='provenance']">
+        <xsl:element name="description">
+            <xsl:attribute name="xml:lang"><xsl:value-of select="translate(@lang, '_', '-')" /></xsl:attribute>
+            <xsl:attribute name="descriptionType">Other</xsl:attribute>
             <xsl:value-of select="." />
         </xsl:element>
     </xsl:template>

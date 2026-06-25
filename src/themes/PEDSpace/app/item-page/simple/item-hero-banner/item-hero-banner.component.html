@@ -1,0 +1,25 @@
+<div class="pedspace-item-hero-wrapper">
+  <div class="pedspace-item-hero">
+    <div class="container">
+      <a class="pedspace-item-hero-badge"
+         [routerLink]="['/search']"
+         [queryParams]="badgeQueryParams">
+        <span class="badge-text">{{ entityType }}</span>
+      </a>
+
+      <div class="d-flex flex-row align-items-start pedspace-item-hero-title-row">
+        <ds-item-page-title-field class="mr-auto pedspace-item-hero-title" [item]="item">
+        </ds-item-page-title-field>
+        <ds-dso-edit-menu *ngIf="showEditMenu" [object]="item"></ds-dso-edit-menu>
+      </div>
+
+      <!-- Share / copy-link button — below the title, above the bottom padding -->
+      <div *ngIf="shareUrl" class="pedspace-item-hero-share mt-2">
+        <button type="button" class="btn btn-sm pedspace-share-btn" (click)="copyShareUrl()">
+          <i class="fas" [ngClass]="copied() ? 'fa-check' : 'fa-link'"></i>
+          {{ copied() ? 'Copied!' : 'Share' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

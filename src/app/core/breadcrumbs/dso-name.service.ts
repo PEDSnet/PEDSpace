@@ -65,10 +65,17 @@ export class DSONameService {
   /**
    * Get the name for the given {@link DSpaceObject}
    *
-   * @param dso  The {@link DSpaceObject} you want a name for
+   * @param dso      The {@link DSpaceObject} you want a name for
+   * @param options  Optional settings
+   * @param options.forceDcTitle  When true, always return the dc.title value instead of
+   *                              the entity-specific name (e.g. person.familyName / givenName)
    */
-  getName(dso: DSpaceObject | undefined): string {
+  getName(dso: DSpaceObject | undefined, options?: { forceDcTitle?: boolean }): string {
     if (dso) {
+      if (options?.forceDcTitle) {
+        return dso.firstMetadataValue('dc.title') || dso.name || this.translateService.instant('dso.name.untitled');
+      }
+
       const types = dso.getRenderTypes();
       const match = types
         .filter((type) => typeof type === 'string')

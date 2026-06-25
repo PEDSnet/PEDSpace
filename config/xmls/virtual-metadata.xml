@@ -12,7 +12,7 @@
         <property name="map">
             <map>
                 <!-- OrgUnit Relationships -->
-                <entry key="isOrgUnitOfPerson" value-ref="isOrgUnitOfPersonMap"/>
+                <!-- <entry key="isOrgUnitOfPerson" value-ref="isOrgUnitOfPersonMap"/>
                 <entry key="isPersonOfOrgUnit" value-ref="isPersonOfOrgUnitMap"/>
                 <entry key="isOrgUnitOfOrgUnit" value-ref="isOrgUnitOfOrgUnitMap"/>
                 <entry key="isOrgUnitOfConceptSet" value-ref="isOrgUnitOfConceptSetMap"/>
@@ -26,10 +26,10 @@
                 <entry key="isOrgUnitOfPhenotype" value-ref="isOrgUnitOfPhenotypeMap"/>
                 <entry key="isPhenotypeOfOrgUnit" value-ref="isPhenotypeOfOrgUnitMap"/>
                 <entry key="isOrgUnitOfDQResult" value-ref="isOrgUnitOfDQResultMap"/>
-                <entry key="isDQResultOfOrgUnit" value-ref="isDQResultOfOrgUnitMap"/>
+                <entry key="isDQResultOfOrgUnit" value-ref="isDQResultOfOrgUnitMap"/> -->
                 
                 <!-- Person Relationships -->
-                <entry key="isPersonOfConceptSet" value-ref="isPersonOfConceptSetMap"/>
+                <!-- <entry key="isPersonOfConceptSet" value-ref="isPersonOfConceptSetMap"/>
                 <entry key="isConceptSetOfPerson" value-ref="isConceptSetOfPersonMap"/>
                 <entry key="isPersonOfStudy" value-ref="isPersonOfStudyMap"/>
                 <entry key="isStudyOfPerson" value-ref="isStudyOfPersonMap"/>
@@ -41,10 +41,10 @@
                 <entry key="isPhenotypeOfPerson" value-ref="isPhenotypeOfPersonMap"/>
                 <entry key="isPersonOfPerson" value-ref="isPersonOfPersonMap"/>
                 <entry key="isPersonOfDQResult" value-ref="isPersonOfDQResultMap"/>
-                <entry key="isDQResultOfPerson" value-ref="isDQResultOfPersonMap"/>
+                <entry key="isDQResultOfPerson" value-ref="isDQResultOfPersonMap"/> -->
                 
                 <!-- ConceptSet Relationships -->
-                <entry key="isConceptSetOfStudy" value-ref="isConceptSetOfStudyMap"/>
+                <!-- <entry key="isConceptSetOfStudy" value-ref="isConceptSetOfStudyMap"/>
                 <entry key="isStudyOfConceptSet" value-ref="isStudyOfConceptSetMap"/>
                 <entry key="isConceptSetOfPhenotype" value-ref="isConceptSetOfPhenotypeMap"/>
                 <entry key="isPhenotypeOfConceptSet" value-ref="isPhenotypeOfConceptSetMap"/>
@@ -54,10 +54,10 @@
                 <entry key="isConceptSetOfDQCheck" value-ref="isConceptSetOfDQCheckMap"/>
                 <entry key="isDQCheckOfConceptSet" value-ref="isDQCheckOfConceptSetMap"/>
                 <entry key="isConceptSetOfDocumentation" value-ref="isConceptSetOfDocumentationMap"/>
-                <entry key="isDocumentationOfConceptSet" value-ref="isDocumentationOfConceptSetMap"/>
+                <entry key="isDocumentationOfConceptSet" value-ref="isDocumentationOfConceptSetMap"/> -->
                 
                 <!-- DQCheck Relationships -->
-                <entry key="isDQCheckOfDQCheck" value-ref="isDQCheckOfDQCheckMap"/>
+                <!-- <entry key="isDQCheckOfDQCheck" value-ref="isDQCheckOfDQCheckMap"/>
                 <entry key="isDQCheckOfDocumentation" value-ref="isDQCheckOfDocumentationMap"/>
                 <entry key="isDocumentationOfDQCheck" value-ref="isDocumentationOfDQCheckMap"/>
                 <entry key="isDQCheckOfPhenotype" value-ref="isDQCheckOfPhenotypeMap"/>
@@ -65,34 +65,34 @@
                 <entry key="isDQCheckOfStudy" value-ref="isDQCheckOfStudyMap"/>
                 <entry key="isStudyOfDQCheck" value-ref="isStudyOfDQCheckMap"/>
                 <entry key="isDQCheckOfDQResult" value-ref="isDQCheckOfDQResultMap"/>
-                <entry key="isDQResultOfDQCheck" value-ref="isDQResultOfDQCheckMap"/>
+                <entry key="isDQResultOfDQCheck" value-ref="isDQResultOfDQCheckMap"/> -->
                 
                 <!-- Documentation Relationships -->
-                <entry key="isDocumentationOfDocumentation" value-ref="isDocumentationOfDocumentationMap"/>
+                <!-- <entry key="isDocumentationOfDocumentation" value-ref="isDocumentationOfDocumentationMap"/>
                 <entry key="isDocumentationOfPhenotype" value-ref="isDocumentationOfPhenotypeMap"/>
                 <entry key="isPhenotypeOfDocumentation" value-ref="isPhenotypeOfDocumentationMap"/>
                 <entry key="isDocumentationOfStudy" value-ref="isDocumentationOfStudyMap"/>
                 <entry key="isStudyOfDocumentation" value-ref="isStudyOfDocumentationMap"/>
                 <entry key="isDocumentationOfDQResult" value-ref="isDocumentationOfDQResultMap"/>
-                <entry key="isDQResultOfDocumentation" value-ref="isDQResultOfDocumentationMap"/>
+                <entry key="isDQResultOfDocumentation" value-ref="isDQResultOfDocumentationMap"/> -->
                 
                 <!-- Phenotype Relationships -->
-                <entry key="isPhenotypeOfPhenotype" value-ref="isPhenotypeOfPhenotypeMap"/>
+                <!-- <entry key="isPhenotypeOfPhenotype" value-ref="isPhenotypeOfPhenotypeMap"/>
                 <entry key="isPhenotypeOfDQResult" value-ref="isPhenotypeOfDQResultMap"/>
-                <entry key="isDQResultOfPhenotype" value-ref="isDQResultOfPhenotypeMap"/>
+                <entry key="isDQResultOfPhenotype" value-ref="isDQResultOfPhenotypeMap"/> -->
                 
                 <!-- Study Relationships -->
-                <entry key="isStudyOfPhenotype" value-ref="isStudyOfPhenotypeMap"/>
+                <!-- <entry key="isStudyOfPhenotype" value-ref="isStudyOfPhenotypeMap"/>
                 <entry key="isPhenotypeOfStudy" value-ref="isPhenotypeOfStudyMap"/>
                 <entry key="isStudyOfStudy" value-ref="isStudyOfStudyMap"/>
                 <entry key="isStudyOfDQResult" value-ref="isStudyOfDQResultMap"/>
-                <entry key="isDQResultOfStudy" value-ref="isDQResultOfStudyMap"/>
+                <entry key="isDQResultOfStudy" value-ref="isDQResultOfStudyMap"/> -->
                 
                 <!-- DQResult Relationships -->
-                <entry key="isDQResultOfDQResult" value-ref="isDQResultOfDQResultMap"/>
+                <!-- <entry key="isDQResultOfDQResult" value-ref="isDQResultOfDQResultMap"/> -->
                 
                 <!-- Code Relationships -->
-                <entry key="isCodeOfConceptSet" value-ref="isCodeOfConceptSetMap"/>
+                <!-- <entry key="isCodeOfConceptSet" value-ref="isCodeOfConceptSetMap"/>
                 <entry key="isConceptSetOfCode" value-ref="isConceptSetOfCodeMap"/>
                 <entry key="isCodeOfDocumentation" value-ref="isCodeOfDocumentationMap"/>
                 <entry key="isDocumentationOfCode" value-ref="isDocumentationOfCodeMap"/>
@@ -100,7 +100,7 @@
                 <entry key="isStudyOfCode" value-ref="isStudyOfCodeMap"/>
                 <entry key="isCodeOfPhenotype" value-ref="isCodeOfPhenotypeMap"/>
                 <entry key="isPhenotypeOfCode" value-ref="isPhenotypeOfCodeMap"/>
-                <entry key="isCodeOfCode" value-ref="isCodeOfCodeMap"/>
+                <entry key="isCodeOfCode" value-ref="isCodeOfCodeMap"/> -->
             </map>
         </property>
     </bean>
@@ -108,7 +108,7 @@
     <bean class="org.dspace.content.virtual.EntityTypeToFilterQueryService">
         <property name="map">
             <map>
-                <entry key="OrgUnit" value="f.entityType=OrgUnit,equals"/>
+                <!-- <entry key="OrgUnit" value="f.entityType=OrgUnit,equals"/>
                 <entry key="Person" value="f.entityType=Person,equals"/>
                 <entry key="ConceptSet" value="f.entityType=ConceptSet,equals"/>
                 <entry key="Study" value="f.entityType=Study,equals"/>
@@ -116,7 +116,7 @@
                 <entry key="Documentation" value="f.entityType=Documentation,equals"/>
                 <entry key="Phenotype" value="f.entityType=Phenotype,equals"/>
                 <entry key="DQResult" value="f.entityType=DQResult,equals"/>
-                <entry key="Code" value="f.entityType=Code,equals"/>
+                <entry key="Code" value="f.entityType=Code,equals"/> -->
             </map>
         </property>
     </bean>
@@ -176,7 +176,7 @@
     </bean>
     
     <util:map id="isConceptSetOfOrgUnitMap">
-        <entry key="dc.subject" value-ref="orgUnitConceptSet_subject"/>
+        <entry key="dc.relation" value-ref="orgUnitConceptSet_subject"/>
     </util:map>
     <bean class="org.dspace.content.virtual.Collected" id="orgUnitConceptSet_subject">
         <property name="fields">
@@ -264,7 +264,7 @@
     </bean>
     
     <util:map id="isPhenotypeOfOrgUnitMap">
-        <entry key="dc.subject" value-ref="orgUnitPhenotype_subject"/>
+        <entry key="dc.relation" value-ref="orgUnitPhenotype_subject"/>
     </util:map>
     <bean class="org.dspace.content.virtual.Collected" id="orgUnitPhenotype_subject">
         <property name="fields">
@@ -319,7 +319,7 @@
     </bean>
     
     <util:map id="isConceptSetOfPersonMap">
-        <entry key="dc.subject" value-ref="personConceptSet_subject"/>
+        <entry key="dc.relation" value-ref="personConceptSet_subject"/>
     </util:map>
     <bean class="org.dspace.content.virtual.Collected" id="personConceptSet_subject">
         <property name="fields">
@@ -434,7 +434,7 @@
     </bean>
     
     <util:map id="isPhenotypeOfPersonMap">
-        <entry key="dc.subject" value-ref="personPhenotype_subject"/>
+        <entry key="dc.relation" value-ref="personPhenotype_subject"/>
     </util:map>
     <bean class="org.dspace.content.virtual.Collected" id="personPhenotype_subject">
         <property name="fields">
@@ -549,7 +549,7 @@
     </bean>
     
     <util:map id="isConceptSetOfDQResultMap">
-        <entry key="dc.subject" value-ref="dqResultConceptSet_subject"/>
+        <entry key="dc.relation" value-ref="dqResultConceptSet_subject"/>
     </util:map>
     <bean class="org.dspace.content.virtual.Collected" id="dqResultConceptSet_subject">
         <property name="fields">
@@ -571,7 +571,7 @@
     </bean>
     
     <util:map id="isConceptSetOfDQCheckMap">
-        <entry key="dc.subject" value-ref="dqCheckConceptSet_subject"/>
+        <entry key="dc.relation" value-ref="dqCheckConceptSet_subject"/>
     </util:map>
     <bean class="org.dspace.content.virtual.Collected" id="dqCheckConceptSet_subject">
         <property name="fields">
@@ -593,7 +593,7 @@
     </bean>
     
     <util:map id="isConceptSetOfDocumentationMap">
-        <entry key="dc.subject" value-ref="documentationConceptSet_subject"/>
+        <entry key="dc.relation" value-ref="documentationConceptSet_subject"/>
     </util:map>
     <bean class="org.dspace.content.virtual.Collected" id="documentationConceptSet_subject">
         <property name="fields">
@@ -663,7 +663,7 @@
     </bean>
     
     <util:map id="isPhenotypeOfDQCheckMap">
-        <entry key="dc.subject" value-ref="dqCheckPhenotype_subject"/>
+        <entry key="dc.relation" value-ref="dqCheckPhenotype_subject"/>
     </util:map>
     <bean class="org.dspace.content.virtual.Collected" id="dqCheckPhenotype_subject">
         <property name="fields">
@@ -744,7 +744,7 @@
     </bean>
     
     <util:map id="isPhenotypeOfDocumentationMap">
-        <entry key="dc.subject" value-ref="documentationPhenotype_subject"/>
+        <entry key="dc.relation" value-ref="documentationPhenotype_subject"/>
     </util:map>
     <bean class="org.dspace.content.virtual.Collected" id="documentationPhenotype_subject">
         <property name="fields">
@@ -814,7 +814,7 @@
     </bean>
     
     <util:map id="isPhenotypeOfDQResultMap">
-        <entry key="dc.subject" value-ref="dqResultPhenotype_subject"/>
+        <entry key="dc.relation" value-ref="dqResultPhenotype_subject"/>
     </util:map>
     <bean class="org.dspace.content.virtual.Collected" id="dqResultPhenotype_subject">
         <property name="fields">
@@ -851,7 +851,7 @@
     </bean>
     
     <util:map id="isPhenotypeOfStudyMap">
-        <entry key="dc.subject" value-ref="studyPhenotype_subject"/>
+        <entry key="dc.relation" value-ref="studyPhenotype_subject"/>
     </util:map>
     <bean class="org.dspace.content.virtual.Collected" id="studyPhenotype_subject">
         <property name="fields">

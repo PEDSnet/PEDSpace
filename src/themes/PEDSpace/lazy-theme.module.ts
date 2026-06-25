@@ -35,6 +35,7 @@ import { ForbiddenComponent } from './app/forbidden/forbidden.component';
 import { ForgotEmailComponent } from './app/forgot-password/forgot-password-email/forgot-email.component';
 import { ForgotPasswordFormComponent } from './app/forgot-password/forgot-password-form/forgot-password-form.component';
 import { HomePageComponent } from './app/home-page/home-page.component';
+import { AboutComponent } from './app/info/about/about.component';
 import { EndUserAgreementComponent } from './app/info/end-user-agreement/end-user-agreement.component';
 import { FeedbackComponent } from './app/info/feedback/feedback.component';
 import { FeedbackFormComponent } from './app/info/feedback/feedback-form/feedback-form.component';
@@ -70,6 +71,9 @@ import { GrantRequestCopyComponent } from './app/request-copy/grant-request-copy
 import { RootComponent } from './app/root/root.component';
 import { ConfigurationSearchPageComponent } from './app/search-page/configuration-search-page.component';
 import { SearchPageComponent } from './app/search-page/search-page.component';
+import { PedspaceViewToggleComponent } from './app/shared/search/pedspace-view-toggle/pedspace-view-toggle.component';
+import { ProjectSearchResultGridElementComponent as PedspaceProjectSearchResultGridElementComponent } from './app/entity-groups/research-entities/item-grid-elements/search-result-grid-elements/project/project-search-result-grid-element.component';
+import { StudySearchResultGridElementComponent as PedspaceStudySearchResultGridElementComponent } from './app/entity-groups/research-entities/item-grid-elements/search-result-grid-elements/study/study-search-result-grid-element.component';
 import { AuthNavMenuComponent } from './app/shared/auth-nav-menu/auth-nav-menu.component';
 import { UserMenuComponent } from './app/shared/auth-nav-menu/user-menu/user-menu.component';
 import { BrowseByComponent } from './app/shared/browse-by/browse-by.component';
@@ -122,6 +126,7 @@ const DECLARATIONS = [
   PageNotFoundComponent,
   ObjectNotFoundComponent,
   ForbiddenComponent,
+  AboutComponent,
   PrivacyComponent,
   CollectionStatisticsPageComponent,
   CommunityStatisticsPageComponent,
@@ -208,6 +213,9 @@ const DECLARATIONS = [
   ItemPageDescriptionFieldComponent,
   ItemPageExternalPublicationFieldComponent,
   ItemPageLocalFieldComponent,
+  PedspaceViewToggleComponent,
+  PedspaceProjectSearchResultGridElementComponent,
+  PedspaceStudySearchResultGridElementComponent,
 ];
 
 @NgModule({

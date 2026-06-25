@@ -50,12 +50,15 @@
 
 # Define user roles for different parts of the backup
 BACKUP_USER="dspace"
-OFFSITE_USER="seyediana1"
+OFFSITE_USER="seyediana"
 
 # Flags for operation modes
 LOCAL_ONLY=false
 DRY_RUN=false
 FORCE_MODE=false
+IS_INTERACTIVE=false
+CUSTOM_LABEL=""
+CUSTOM_RETENTION_OVERRIDE=""
 
 # Base backup directory and subdirectories
 BACKUP_BASE_DIR="/data/backups"
@@ -81,6 +84,7 @@ TIMESTAMP=$(date +"%Y-%m-%d-%H-%M-%S")
 # Retention periods in days
 LOCAL_RETENTION_DAYS=30      # On-site backups retention
 OFFSITE_RETENTION_DAYS=90    # Isilon backups retention
+CUSTOM_RETENTION_DAYS=365    # Custom-labeled backups retention (kept longer)
 
 # Log file
 LOG_FILE="${LOG_DIR}/backup_${TIMESTAMP}.log"
@@ -111,8 +115,15 @@ EXPECTED_HOSTNAME="pedsdspaceprod2.research.chop.edu"
 # Function to log messages with timestamp
 log() {
     # Create log directory if it doesn't exist
-    mkdir -p "${LOG_DIR}"
-    echo "$(date +"%Y-%m-%d %H:%M:%S") : $1" | tee -a "${LOG_FILE}"
+    mkdir -p "${LOG_DIR}" 2>/dev/null
+    local message="$(date +"%Y-%m-%d %H:%M:%S") : $1"
+    echo "${message}" | tee -a "${LOG_FILE}"
+}
+
+# Function to log to file only (not to console)
+log_file_only() {
+    mkdir -p "${LOG_DIR}" 2>/dev/null
+    echo "$(date +"%Y-%m-%d %H:%M:%S") : $1" >> "${LOG_FILE}"
 }
 
 # Function to validate that the script is running on the correct server
@@ -149,13 +160,13 @@ setup_directories() {
             if [ "$DRY_RUN" = true ]; then
                 log "Dry run: would execute: mkdir -p $dir"
             else
-                mkdir -p "$dir" || { 
+                if ! mkdir -p "$dir" 2>/dev/null; then
                     log "ERROR: Failed to create directory $dir"
                     if [ "$FORCE_MODE" = false ]; then
                         log "Use -f flag to override permission checks or create directories manually with proper permissions"
                         exit 1
                     fi
-                }
+                fi
             fi
         fi
         
@@ -179,27 +190,56 @@ setup_directories() {
 
 # Function to perform PostgreSQL dump
 backup_database() {
-    SQL_BACKUP_FILE="${SQL_DIR}/dspace_${TIMESTAMP}.sql"
+    if [ -n "$CUSTOM_LABEL" ]; then
+        if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+            SQL_BACKUP_FILE="${SQL_DIR}/dspace_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_OVERRIDE}.sql"
+        else
+            SQL_BACKUP_FILE="${SQL_DIR}/dspace_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_DAYS}.sql"
+        fi
+    else
+        SQL_BACKUP_FILE="${SQL_DIR}/dspace_${TIMESTAMP}.sql"
+    fi
     log "Starting PostgreSQL dump to file: ${SQL_BACKUP_FILE}"
     
     if [ "$DRY_RUN" = true ]; then
         log "Dry run: would execute: ${PG_DUMP_PATH} -U ${PG_USER} -h ${PG_HOST} -f ${SQL_BACKUP_FILE} ${PG_DB}"
         return 0
-    else
-        "${PG_DUMP_PATH}" -U "${PG_USER}" -h "${PG_HOST}" -f "${SQL_BACKUP_FILE}" "${PG_DB}" >> "${LOG_FILE}" 2>&1
-        if [ $? -eq 0 ]; then
-            log "PostgreSQL dump completed successfully."
+    fi
+    
+    # Check if pg_dump exists
+    if [ ! -x "${PG_DUMP_PATH}" ]; then
+        log "ERROR: pg_dump not found at ${PG_DUMP_PATH}"
+        return 1
+    fi
+    
+    # Run pg_dump
+    if "${PG_DUMP_PATH}" -U "${PG_USER}" -h "${PG_HOST}" -f "${SQL_BACKUP_FILE}" "${PG_DB}" >> "${LOG_FILE}" 2>&1; then
+        if [ -f "${SQL_BACKUP_FILE}" ]; then
+            local filesize=$(du -h "${SQL_BACKUP_FILE}" | cut -f1)
+            log "PostgreSQL dump completed successfully. File size: ${filesize}"
             return 0
         else
-            log "ERROR during PostgreSQL dump."
+            log "ERROR: PostgreSQL dump command succeeded but file was not created"
             return 1
         fi
+    else
+        log "ERROR during PostgreSQL dump. Check log file for details."
+        log_file_only "pg_dump exit code: $?"
+        return 1
     fi
 }
 
 # Function to compress assetstore
 backup_assetstore() {
-    ASSETSTORE_BACKUP_FILE="${ASSETSTORE_DIR}/assetstore_${TIMESTAMP}.tar.gz"
+    if [ -n "$CUSTOM_LABEL" ]; then
+        if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+            ASSETSTORE_BACKUP_FILE="${ASSETSTORE_DIR}/assetstore_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_OVERRIDE}.tar.gz"
+        else
+            ASSETSTORE_BACKUP_FILE="${ASSETSTORE_DIR}/assetstore_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_DAYS}.tar.gz"
+        fi
+    else
+        ASSETSTORE_BACKUP_FILE="${ASSETSTORE_DIR}/assetstore_${TIMESTAMP}.tar.gz"
+    fi
     log "Starting assetstore compression to file: ${ASSETSTORE_BACKUP_FILE}"
     
     # Check if assetstore source exists
@@ -211,21 +251,36 @@ backup_assetstore() {
     if [ "$DRY_RUN" = true ]; then
         log "Dry run: would execute: tar -czf ${ASSETSTORE_BACKUP_FILE} -C \"$(dirname "${ASSETSTORE_SOURCE}")\" \"$(basename "${ASSETSTORE_SOURCE}")\""
         return 0
-    else
-        tar -czf "${ASSETSTORE_BACKUP_FILE}" -C "$(dirname "${ASSETSTORE_SOURCE}")" "$(basename "${ASSETSTORE_SOURCE}")" >> "${LOG_FILE}" 2>&1
-        if [ $? -eq 0 ]; then
-            log "Assetstore compressed successfully."
+    fi
+    
+    # Run tar command
+    if tar -czf "${ASSETSTORE_BACKUP_FILE}" -C "$(dirname "${ASSETSTORE_SOURCE}")" "$(basename "${ASSETSTORE_SOURCE}")" 2>> "${LOG_FILE}"; then
+        if [ -f "${ASSETSTORE_BACKUP_FILE}" ]; then
+            local filesize=$(du -h "${ASSETSTORE_BACKUP_FILE}" | cut -f1)
+            log "Assetstore compressed successfully. File size: ${filesize}"
             return 0
         else
-            log "ERROR during assetstore compression."
+            log "ERROR: tar command succeeded but file was not created"
             return 1
         fi
+    else
+        log "ERROR during assetstore compression. Check log file for details."
+        log_file_only "tar exit code: $?"
+        return 1
     fi
 }
 
 # Function to backup statistics data
 backup_statistics() {
-    STATISTICS_BACKUP_FILE="${STATISTICS_DIR}/statistics_${TIMESTAMP}.tar.gz"
+    if [ -n "$CUSTOM_LABEL" ]; then
+        if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+            STATISTICS_BACKUP_FILE="${STATISTICS_DIR}/statistics_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_OVERRIDE}.tar.gz"
+        else
+            STATISTICS_BACKUP_FILE="${STATISTICS_DIR}/statistics_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_DAYS}.tar.gz"
+        fi
+    else
+        STATISTICS_BACKUP_FILE="${STATISTICS_DIR}/statistics_${TIMESTAMP}.tar.gz"
+    fi
     log "Starting statistics data compression to file: ${STATISTICS_BACKUP_FILE}"
     
     # Check if statistics source exists
@@ -238,21 +293,36 @@ backup_statistics() {
     if [ "$DRY_RUN" = true ]; then
         log "Dry run: would execute: tar -czf ${STATISTICS_BACKUP_FILE} -C \"$(dirname "${STATISTICS_SOURCE}")\" \"$(basename "${STATISTICS_SOURCE}")\""
         return 0
-    else
-        tar -czf "${STATISTICS_BACKUP_FILE}" -C "$(dirname "${STATISTICS_SOURCE}")" "$(basename "${STATISTICS_SOURCE}")" >> "${LOG_FILE}" 2>&1
-        if [ $? -eq 0 ]; then
-            log "Statistics data compressed successfully."
+    fi
+    
+    # Run tar command
+    if tar -czf "${STATISTICS_BACKUP_FILE}" -C "$(dirname "${STATISTICS_SOURCE}")" "$(basename "${STATISTICS_SOURCE}")" 2>> "${LOG_FILE}"; then
+        if [ -f "${STATISTICS_BACKUP_FILE}" ]; then
+            local filesize=$(du -h "${STATISTICS_BACKUP_FILE}" | cut -f1)
+            log "Statistics data compressed successfully. File size: ${filesize}"
             return 0
         else
-            log "ERROR during statistics data compression."
+            log "ERROR: tar command succeeded but file was not created"
             return 1
         fi
+    else
+        log "ERROR during statistics data compression. Check log file for details."
+        log_file_only "tar exit code: $?"
+        return 1
     fi
 }
 
 # Function to backup authority data
 backup_authority() {
-    AUTHORITY_BACKUP_FILE="${AUTHORITY_DIR}/authority_${TIMESTAMP}.tar.gz"
+    if [ -n "$CUSTOM_LABEL" ]; then
+        if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+            AUTHORITY_BACKUP_FILE="${AUTHORITY_DIR}/authority_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_OVERRIDE}.tar.gz"
+        else
+            AUTHORITY_BACKUP_FILE="${AUTHORITY_DIR}/authority_${TIMESTAMP}_${CUSTOM_LABEL}_R${CUSTOM_RETENTION_DAYS}.tar.gz"
+        fi
+    else
+        AUTHORITY_BACKUP_FILE="${AUTHORITY_DIR}/authority_${TIMESTAMP}.tar.gz"
+    fi
     log "Starting authority data compression to file: ${AUTHORITY_BACKUP_FILE}"
     
     # Check if authority source exists
@@ -265,33 +335,67 @@ backup_authority() {
     if [ "$DRY_RUN" = true ]; then
         log "Dry run: would execute: tar -czf ${AUTHORITY_BACKUP_FILE} -C \"$(dirname "${AUTHORITY_SOURCE}")\" \"$(basename "${AUTHORITY_SOURCE}")\""
         return 0
-    else
-        tar -czf "${AUTHORITY_BACKUP_FILE}" -C "$(dirname "${AUTHORITY_SOURCE}")" "$(basename "${AUTHORITY_SOURCE}")" >> "${LOG_FILE}" 2>&1
-        if [ $? -eq 0 ]; then
-            log "Authority data compressed successfully."
+    fi
+    
+    # Run tar command
+    if tar -czf "${AUTHORITY_BACKUP_FILE}" -C "$(dirname "${AUTHORITY_SOURCE}")" "$(basename "${AUTHORITY_SOURCE}")" 2>> "${LOG_FILE}"; then
+        if [ -f "${AUTHORITY_BACKUP_FILE}" ]; then
+            local filesize=$(du -h "${AUTHORITY_BACKUP_FILE}" | cut -f1)
+            log "Authority data compressed successfully. File size: ${filesize}"
             return 0
         else
-            log "ERROR during authority data compression."
+            log "ERROR: tar command succeeded but file was not created"
             return 1
         fi
+    else
+        log "ERROR during authority data compression. Check log file for details."
+        log_file_only "tar exit code: $?"
+        return 1
     fi
 }
 
 # Function to cleanup old local backups
 cleanup_local_backups() {
-    log "Cleaning up on-site backups older than ${LOCAL_RETENTION_DAYS} days..."
+    log "Starting cleanup of on-site backups based on retention policies..."
     
     if [ "$DRY_RUN" = true ]; then
-        log "Dry run: would execute: find ${SQL_DIR} -type f -name \"*.sql\" -mtime +${LOCAL_RETENTION_DAYS} -delete"
-        log "Dry run: would execute: find ${ASSETSTORE_DIR} -type f -name \"*.tar.gz\" -mtime +${LOCAL_RETENTION_DAYS} -delete"
-        log "Dry run: would execute: find ${STATISTICS_DIR} -type f -name \"*.tar.gz\" -mtime +${LOCAL_RETENTION_DAYS} -delete"
-        log "Dry run: would execute: find ${AUTHORITY_DIR} -type f -name \"*.tar.gz\" -mtime +${LOCAL_RETENTION_DAYS} -delete"
-    else
-        find "${SQL_DIR}" -type f -name "*.sql" -mtime +${LOCAL_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old SQL files"
-        find "${ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old assetstore backups"
-        find "${STATISTICS_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old statistics backups"
-        find "${AUTHORITY_DIR}" -type f -name "*.tar.gz" -mtime +${LOCAL_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old authority backups"
+        log "Dry run: would execute cleanup with intelligent retention parsing"
+        return 0
     fi
+    
+    # Function to clean a directory with intelligent retention parsing
+    cleanup_directory() {
+        local dir="$1"
+        local default_retention="$2"
+        
+        [ ! -d "$dir" ] && return 0
+        
+        find "$dir" -type f \( -name "*.sql" -o -name "*.tar.gz" \) | while read -r file; do
+            local filename=$(basename "$file")
+            local file_age_days=$(( ($(date +%s) - $(stat -c %Y "$file")) / 86400 ))
+            
+            # Extract retention from filename if present (format: _R<days>)
+            if [[ "$filename" =~ _R([0-9]+)\. ]]; then
+                local file_retention="${BASH_REMATCH[1]}"
+                if [ "$file_age_days" -gt "$file_retention" ]; then
+                    log "Deleting $filename (age: ${file_age_days}d, retention: ${file_retention}d)"
+                    rm -f "$file" 2>> "${LOG_FILE}"
+                fi
+            else
+                # No retention in filename, use default
+                if [ "$file_age_days" -gt "$default_retention" ]; then
+                    log "Deleting $filename (age: ${file_age_days}d, default retention: ${default_retention}d)"
+                    rm -f "$file" 2>> "${LOG_FILE}"
+                fi
+            fi
+        done
+    }
+    
+    # Clean each directory with appropriate default retention
+    cleanup_directory "${SQL_DIR}" "${LOCAL_RETENTION_DAYS}"
+    cleanup_directory "${ASSETSTORE_DIR}" "${LOCAL_RETENTION_DAYS}"
+    cleanup_directory "${STATISTICS_DIR}" "${LOCAL_RETENTION_DAYS}"
+    cleanup_directory "${AUTHORITY_DIR}" "${LOCAL_RETENTION_DAYS}"
     
     log "Cleanup of old backups completed."
 }
@@ -314,42 +418,69 @@ copy_to_offsite() {
     fi
     
     # Create destination directory if it doesn't exist
-    mkdir -p "${dest_dir}" 2>/dev/null || {
+    if ! mkdir -p "${dest_dir}" 2>/dev/null; then
         log "ERROR: Failed to create destination directory ${dest_dir}"
         return 1
-    }
+    fi
     
     log "Starting copy of ${backup_type} to Isilon backup: ${dest_dir}"
     if [ "$DRY_RUN" = true ]; then
         log "Dry run: would execute: rsync -rvptgD --no-group --progress \"${source_dir}/\" \"${dest_dir}/\""
         return 0
+    fi
+    
+    if rsync -rvptgD --no-group --progress "${source_dir}/" "${dest_dir}/" >> "${LOG_FILE}" 2>&1; then
+        log "Successfully copied ${backup_type} to Isilon backup."
+        return 0
     else
-        rsync -rvptgD --no-group --progress "${source_dir}/" "${dest_dir}/" >> "${LOG_FILE}" 2>&1
-        if [ $? -eq 0 ]; then
-            log "Successfully copied ${backup_type} to Isilon backup."
-            return 0
-        else
-            log "ERROR copying ${backup_type} to Isilon backup."
-            return 1
-        fi
+        log "ERROR copying ${backup_type} to Isilon backup."
+        log_file_only "rsync exit code: $?"
+        return 1
     fi
 }
 
 # Function to cleanup old offsite backups
 cleanup_offsite_backups() {
-    log "Cleaning up Isilon backups older than ${OFFSITE_RETENTION_DAYS} days..."
+    log "Starting cleanup of Isilon backups based on retention policies..."
     
     if [ "$DRY_RUN" = true ]; then
-        log "Dry run: would execute: find ${OFFSITE_SQL_DIR} -type f -name \"*.sql\" -mtime +${OFFSITE_RETENTION_DAYS} -delete"
-        log "Dry run: would execute: find ${OFFSITE_ASSETSTORE_DIR} -type f -name \"*.tar.gz\" -mtime +${OFFSITE_RETENTION_DAYS} -delete"
-        log "Dry run: would execute: find ${OFFSITE_STATISTICS_DIR} -type f -name \"*.tar.gz\" -mtime +${OFFSITE_RETENTION_DAYS} -delete"
-        log "Dry run: would execute: find ${OFFSITE_AUTHORITY_DIR} -type f -name \"*.tar.gz\" -mtime +${OFFSITE_RETENTION_DAYS} -delete"
-    else
-        find "${OFFSITE_SQL_DIR}" -type f -name "*.sql" -mtime +${OFFSITE_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old offsite SQL files"
-        find "${OFFSITE_ASSETSTORE_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old offsite assetstore backups"
-        find "${OFFSITE_STATISTICS_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old offsite statistics backups"
-        find "${OFFSITE_AUTHORITY_DIR}" -type f -name "*.tar.gz" -mtime +${OFFSITE_RETENTION_DAYS} -delete 2>> "${LOG_FILE}" || log "Warning: Error while cleaning up old offsite authority backups"
+        log "Dry run: would execute offsite cleanup with intelligent retention parsing"
+        return 0
     fi
+    
+    # Function to clean a directory with intelligent retention parsing
+    cleanup_directory() {
+        local dir="$1"
+        local default_retention="$2"
+        
+        [ ! -d "$dir" ] && return 0
+        
+        find "$dir" -type f \( -name "*.sql" -o -name "*.tar.gz" \) | while read -r file; do
+            local filename=$(basename "$file")
+            local file_age_days=$(( ($(date +%s) - $(stat -c %Y "$file")) / 86400 ))
+            
+            # Extract retention from filename if present (format: _R<days>)
+            if [[ "$filename" =~ _R([0-9]+)\. ]]; then
+                local file_retention="${BASH_REMATCH[1]}"
+                if [ "$file_age_days" -gt "$file_retention" ]; then
+                    log "Deleting offsite $filename (age: ${file_age_days}d, retention: ${file_retention}d)"
+                    rm -f "$file" 2>> "${LOG_FILE}"
+                fi
+            else
+                # No retention in filename, use default
+                if [ "$file_age_days" -gt "$default_retention" ]; then
+                    log "Deleting offsite $filename (age: ${file_age_days}d, default retention: ${default_retention}d)"
+                    rm -f "$file" 2>> "${LOG_FILE}"
+                fi
+            fi
+        done
+    }
+    
+    # Clean each directory with appropriate default retention
+    cleanup_directory "${OFFSITE_SQL_DIR}" "${OFFSITE_RETENTION_DAYS}"
+    cleanup_directory "${OFFSITE_ASSETSTORE_DIR}" "${OFFSITE_RETENTION_DAYS}"
+    cleanup_directory "${OFFSITE_STATISTICS_DIR}" "${OFFSITE_RETENTION_DAYS}"
+    cleanup_directory "${OFFSITE_AUTHORITY_DIR}" "${OFFSITE_RETENTION_DAYS}"
     
     log "Cleanup of offsite backups completed."
 }
@@ -359,27 +490,40 @@ perform_backup() {
     log "User ${CURRENT_USER} is performing backup operations..."
     
     # Create directories if they don't exist
-    mkdir -p "${SQL_DIR}" "${ASSETSTORE_DIR}" "${STATISTICS_DIR}" "${AUTHORITY_DIR}" "${LOG_DIR}"
+    for dir in "${SQL_DIR}" "${ASSETSTORE_DIR}" "${STATISTICS_DIR}" "${AUTHORITY_DIR}" "${LOG_DIR}"; do
+        if ! mkdir -p "$dir" 2>/dev/null; then
+            log "ERROR: Failed to create directory $dir"
+            return 1
+        fi
+    done
     
     local backup_failed=false
     
     # Perform database backup
-    backup_database || backup_failed=true
+    if ! backup_database; then
+        backup_failed=true
+    fi
     
     # Perform assetstore backup
-    backup_assetstore || backup_failed=true
+    if ! backup_assetstore; then
+        backup_failed=true
+    fi
     
     # Perform statistics backup
-    backup_statistics || backup_failed=true
+    if ! backup_statistics; then
+        backup_failed=true
+    fi
     
     # Perform authority backup
-    backup_authority || backup_failed=true
+    if ! backup_authority; then
+        backup_failed=true
+    fi
     
     # Clean up old backups regardless of success
     cleanup_local_backups
     
     if [ "$backup_failed" = false ]; then
-        log "Backup steps completed successfully."
+        log "All backup steps completed successfully."
         
         if [ "$LOCAL_ONLY" = false ]; then
             if [ "$DRY_RUN" = true ]; then
@@ -394,7 +538,7 @@ perform_backup() {
         
         return 0
     else
-        log "Backup steps encountered errors. Skipping success flag creation."
+        log "ERROR: One or more backup steps failed. Skipping success flag creation."
         return 1
     fi
 }
@@ -409,37 +553,47 @@ perform_offsite_copy() {
         log "This suggests the backup process did not complete successfully."
         
         # For manual runs, continue anyway with a warning
-        if [ -t 0 ]; then  # Check if script is running interactively
+        if [ "$IS_INTERACTIVE" = true ]; then
             log "Running in interactive mode. Continuing with offsite copy despite missing flag file."
         else
             log "Running in non-interactive mode. Exiting without performing offsite copy."
             if [ "$FORCE_MODE" = false ]; then
                 log "Use -f flag to override this check."
-                exit 0
+                return 1
             fi
             log "Force mode enabled. Continuing with offsite copy despite missing flag file."
         fi
     fi
     
     # Create offsite directories
-    mkdir -p "${OFFSITE_SQL_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "${OFFSITE_STATISTICS_DIR}" "${OFFSITE_AUTHORITY_DIR}"
+    for dir in "${OFFSITE_SQL_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "${OFFSITE_STATISTICS_DIR}" "${OFFSITE_AUTHORITY_DIR}"; do
+        if ! mkdir -p "$dir" 2>/dev/null; then
+            log "ERROR: Failed to create directory $dir"
+            return 1
+        fi
+    done
     
-    local copy_sql_success=false
-    local copy_asset_success=false
-    local copy_stats_success=false
-    local copy_auth_success=false
+    local copy_failed=false
     
     # Copy SQL backups to offsite location
-    copy_to_offsite "${SQL_DIR}" "${OFFSITE_SQL_DIR}" "SQL backups" && copy_sql_success=true
+    if ! copy_to_offsite "${SQL_DIR}" "${OFFSITE_SQL_DIR}" "SQL backups"; then
+        copy_failed=true
+    fi
     
     # Copy assetstore backups to offsite location
-    copy_to_offsite "${ASSETSTORE_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "Assetstore backups" && copy_asset_success=true
+    if ! copy_to_offsite "${ASSETSTORE_DIR}" "${OFFSITE_ASSETSTORE_DIR}" "Assetstore backups"; then
+        copy_failed=true
+    fi
     
     # Copy statistics backups to offsite location
-    copy_to_offsite "${STATISTICS_DIR}" "${OFFSITE_STATISTICS_DIR}" "Statistics backups" && copy_stats_success=true
+    if ! copy_to_offsite "${STATISTICS_DIR}" "${OFFSITE_STATISTICS_DIR}" "Statistics backups"; then
+        copy_failed=true
+    fi
     
     # Copy authority backups to offsite location
-    copy_to_offsite "${AUTHORITY_DIR}" "${OFFSITE_AUTHORITY_DIR}" "Authority backups" && copy_auth_success=true
+    if ! copy_to_offsite "${AUTHORITY_DIR}" "${OFFSITE_AUTHORITY_DIR}" "Authority backups"; then
+        copy_failed=true
+    fi
     
     # Clean up old offsite backups
     cleanup_offsite_backups
@@ -452,23 +606,45 @@ perform_offsite_copy() {
         log "Dry run: would remove success flag file: $SUCCESS_FLAG_FILE"
     fi
     
-    if [ "$copy_sql_success" = true ] && [ "$copy_asset_success" = true ] && [ "$copy_stats_success" = true ] && [ "$copy_auth_success" = true ]; then
+    if [ "$copy_failed" = false ]; then
         log "All offsite copy operations completed successfully."
         return 0
     else
-        log "One or more offsite copy operations failed."
+        log "ERROR: One or more offsite copy operations failed."
         return 1
     fi
 }
 
 # Function to display usage information
 usage() {
-    echo "Usage: $0 [-l] [-d] [-f]"
-    echo "  -l    Local backup only (skip offsite copy flag creation)"
-    echo "  -d    Dry run mode (log actions without executing them)"
-    echo "  -f    Force mode (override directory permission checks)"
+    echo "Usage: $0 [-l] [-d] [-f] [-c <label>] [-r <days>]"
+    echo "  -l           Local backup only (skip offsite copy flag creation)"
+    echo "  -d           Dry run mode (log actions without executing them)"
+    echo "  -f           Force mode (override directory permission checks)"
+    echo "  -c <label>   Custom backup label (e.g., 'pre-upgrade', 'before-psql-update')"
+    echo "               Backups will be named: prefix_YYYY-MM-DD-HH-MM-SS_label_R<days>.ext"
+    echo "               Retention is embedded in filename and persists across script runs"
+    echo "               Default retention: ${CUSTOM_RETENTION_DAYS} days (longer than routine backups)"
+    echo "  -r <days>    Override retention period in days (applies to current backup only)"
+    echo "               Use with -c for custom-labeled backups, or alone for routine backups"
     echo
-    echo "For cron usage:"
+    echo "Default retention periods:"
+    echo "  - Routine backups (local):   ${LOCAL_RETENTION_DAYS} days"
+    echo "  - Routine backups (offsite): ${OFFSITE_RETENTION_DAYS} days"
+    echo "  - Custom-labeled backups:    ${CUSTOM_RETENTION_DAYS} days"
+    echo
+    echo "Examples:"
+    echo "  Routine backup:                    $0"
+    echo "  Pre-upgrade backup (1 year):       $0 -c pre-upgrade-8.2"
+    echo "    → Creates: dspace_2026-01-16-14-30-00_pre-upgrade-8.2_R365.sql"
+    echo "  Pre-PSQL mod (2 years):            $0 -c before-psql-16 -r 730"
+    echo "    → Creates: dspace_2026-01-16-14-30-00_before-psql-16_R730.sql"
+    echo "  Critical backup (5 years):         $0 -c critical-pre-migration -r 1825"
+    echo "    → Creates: dspace_2026-01-16-14-30-00_critical-pre-migration_R1825.sql"
+    echo "  Routine backup (60 days):          $0 -r 60"
+    echo "  Dry run custom backup:             $0 -d -c test-label"
+    echo
+    echo "For cron usage (routine backups):"
     echo "  - As dspace:     0 2 * * * /path/to/dspace_backup.sh # Executes at 2am every day." 
     echo "  - As seyediana1: 0 3 * * * /path/to/dspace_backup.sh # Executes at 3am every day."
     exit 1
@@ -477,7 +653,7 @@ usage() {
 # ---------------------------- Main Script -------------------------------------
 
 # Parse command line options
-while getopts ":ldf" opt; do
+while getopts ":ldfc:r:" opt; do
     case ${opt} in
         l)
             LOCAL_ONLY=true
@@ -488,8 +664,25 @@ while getopts ":ldf" opt; do
         f)
             FORCE_MODE=true
             ;;
+        c)
+            CUSTOM_LABEL="${OPTARG}"
+            # Sanitize the label - remove special characters, replace spaces with hyphens
+            CUSTOM_LABEL=$(echo "$CUSTOM_LABEL" | sed 's/[^a-zA-Z0-9._-]/-/g' | sed 's/--*/-/g')
+            ;;
+        r)
+            CUSTOM_RETENTION_OVERRIDE="${OPTARG}"
+            # Validate that it's a number
+            if ! [[ "$CUSTOM_RETENTION_OVERRIDE" =~ ^[0-9]+$ ]]; then
+                echo "ERROR: Retention period must be a positive integer (days)"
+                exit 1
+            fi
+            ;;
         \?)
             echo "Invalid option: -$OPTARG"
+            usage
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument."
             usage
             ;;
     esac
@@ -498,8 +691,19 @@ done
 # Get current user
 CURRENT_USER=$(id -un)
 
-# Determine if running interactively
-IS_INTERACTIVE=false
+# Apply retention override if specified
+if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+    if [ -n "$CUSTOM_LABEL" ]; then
+        # Override custom backup retention
+        CUSTOM_RETENTION_DAYS=$CUSTOM_RETENTION_OVERRIDE
+    else
+        # Override routine backup retention (both local and offsite)
+        LOCAL_RETENTION_DAYS=$CUSTOM_RETENTION_OVERRIDE
+        OFFSITE_RETENTION_DAYS=$CUSTOM_RETENTION_OVERRIDE
+    fi
+fi
+
+# Determine if running interactively (must be done BEFORE any functions are called)
 if [ -t 0 ]; then
     IS_INTERACTIVE=true
 fi
@@ -514,6 +718,19 @@ if [ "$IS_INTERACTIVE" = true ]; then
     echo "  - Dry run: ${DRY_RUN}"
     echo "  - Local only: ${LOCAL_ONLY}"
     echo "  - Force mode: ${FORCE_MODE}"
+    if [ -n "$CUSTOM_LABEL" ]; then
+        echo "  - Custom label: ${CUSTOM_LABEL}"
+        echo "  - Retention: ${CUSTOM_RETENTION_DAYS} days (custom backups)"
+        if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+            echo "  - Retention override: ${CUSTOM_RETENTION_OVERRIDE} days applied"
+        fi
+    else
+        echo "  - Backup type: Routine"
+        echo "  - Retention: ${LOCAL_RETENTION_DAYS} days (local), ${OFFSITE_RETENTION_DAYS} days (offsite)"
+        if [ -n "$CUSTOM_RETENTION_OVERRIDE" ]; then
+            echo "  - Retention override: ${CUSTOM_RETENTION_OVERRIDE} days applied to both"
+        fi
+    fi
     echo "---------------------------------------------------------------------"
 fi
 
@@ -524,17 +741,33 @@ validate_hostname
 setup_directories
 
 # Log start of process
-log "========== Starting DSpace Backup Process (User: ${CURRENT_USER}) =========="
+if [ -n "$CUSTOM_LABEL" ]; then
+    log "========== Starting DSpace CUSTOM Backup Process (User: ${CURRENT_USER}, Label: ${CUSTOM_LABEL}) =========="
+else
+    log "========== Starting DSpace Backup Process (User: ${CURRENT_USER}) =========="
+fi
 
 # Execute operations based on current user
 if [ "$CURRENT_USER" = "$BACKUP_USER" ]; then
     # Running as backup user (dspace) - perform backup operations
-    perform_backup
-    backup_exit_code=$?
-    
-    log "========== Backup Process Completed (User: ${CURRENT_USER}) =========="
-    if [ "$IS_INTERACTIVE" = true ]; then
-        echo "Backup process completed. See log file for details: ${LOG_FILE}"
+    if perform_backup; then
+        backup_exit_code=0
+        log "========== Backup Process COMPLETED SUCCESSFULLY (User: ${CURRENT_USER}) =========="
+        if [ "$IS_INTERACTIVE" = true ]; then
+            echo ""
+            echo "SUCCESS: Backup process completed successfully!"
+            echo "Log file: ${LOG_FILE}"
+            echo ""
+        fi
+    else
+        backup_exit_code=1
+        log "========== Backup Process FAILED (User: ${CURRENT_USER}) =========="
+        if [ "$IS_INTERACTIVE" = true ]; then
+            echo ""
+            echo "ERROR: Backup process failed! Check the log file for details."
+            echo "Log file: ${LOG_FILE}"
+            echo ""
+        fi
     fi
     
     # Compress log file
@@ -551,12 +784,24 @@ if [ "$CURRENT_USER" = "$BACKUP_USER" ]; then
     
 elif [ "$CURRENT_USER" = "$OFFSITE_USER" ]; then
     # Running as offsite user (seyediana1) - perform offsite operations
-    perform_offsite_copy
-    offsite_exit_code=$?
-    
-    log "========== Offsite Copy Process Completed (User: ${CURRENT_USER}) =========="
-    if [ "$IS_INTERACTIVE" = true ]; then
-        echo "Offsite copy process completed. See log file for details: ${LOG_FILE}"
+    if perform_offsite_copy; then
+        offsite_exit_code=0
+        log "========== Offsite Copy Process COMPLETED SUCCESSFULLY (User: ${CURRENT_USER}) =========="
+        if [ "$IS_INTERACTIVE" = true ]; then
+            echo ""
+            echo "SUCCESS: Offsite copy process completed successfully!"
+            echo "Log file: ${LOG_FILE}"
+            echo ""
+        fi
+    else
+        offsite_exit_code=1
+        log "========== Offsite Copy Process FAILED (User: ${CURRENT_USER}) =========="
+        if [ "$IS_INTERACTIVE" = true ]; then
+            echo ""
+            echo "ERROR: Offsite copy process failed! Check the log file for details."
+            echo "Log file: ${LOG_FILE}"
+            echo ""
+        fi
     fi
     
     # Compress log file

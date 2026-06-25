@@ -73,7 +73,7 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
   // Parameters to control which search filters are shown
   // Add the names of filters you want to hide to this array
   // Example: hiddenFilters = ['subject', 'author'];
-  hiddenFilters: string[] = [];
+  hiddenFilters: string[] = ['projectStartDate', 'projectEndDate', 'siteLead'];
 
   // Parameters to control which search filters are shown
   // If this array is not empty, only these filters will be shown
@@ -97,6 +97,7 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
       'dateCreated',
       'itemClinicalSubject',
       'entityType',
+      'committee',
     ],
     '3ba287c6-7a99-4ae4-807b-3cf10970033b': [
       'subject',
@@ -159,23 +160,23 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
     }
 
     // Debug logging for search filters initialization
-    console.log('=== Search Filters Component Init ===');
-    console.log('Current scope:', this.currentScope);
-    console.log('Current configuration:', this.currentConfiguration);
-    console.log('Entity type:', this.entityType);
-    console.log('Filter configuration:');
-    console.log('  - hiddenFilters:', this.hiddenFilters);
-    console.log('  - allowedFilters:', this.allowedFilters);
-    console.log('  - scopeBasedFilters:', this.scopeBasedFilters);
-    console.log('  - entityBasedFilters:', this.entityBasedFilters);
-    console.log('=== End Init Debug Info ===');
+    // console.log('=== Search Filters Component Init ===');
+    // console.log('Current scope:', this.currentScope);
+    // console.log('Current configuration:', this.currentConfiguration);
+    // console.log('Entity type:', this.entityType);
+    // console.log('Filter configuration:');
+    // console.log('  - hiddenFilters:', this.hiddenFilters);
+    // console.log('  - allowedFilters:', this.allowedFilters);
+    // console.log('  - scopeBasedFilters:', this.scopeBasedFilters);
+    // console.log('  - entityBasedFilters:', this.entityBasedFilters);
+    // console.log('=== End Init Debug Info ===');
 
     // Log available filters when they become available
     if (this.filters) {
       this.filters.subscribe(filtersRD => {
-        console.log('=== Available Filters ===');
+        // // console.log('=== Available Filters ===');
         const filters = filtersRD?.payload;
-        console.log('Total filters:', filters?.length || 0);
+        // // console.log('Total filters:', filters?.length || 0);
 
         // Extract unique filter names
         const uniqueFilterNames: string[] = [];
@@ -187,8 +188,8 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
           });
         }
 
-        console.log('Unique filter names:', uniqueFilterNames);
-        console.log('=== End Available Filters ===');
+        // console.log('Unique filter names:', uniqueFilterNames);
+        // console.log('=== End Available Filters ===');
       });
     }
   }
@@ -198,7 +199,7 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
   shouldShowFilter(filter: { name: string }): boolean {
     // Only log each unique filter once
     if (!this.loggedFilters.has(filter.name)) {
-      console.log('Filter:', filter);
+      // // console.log('Filter:', filter);
       this.loggedFilters.add(filter.name);
     }
 

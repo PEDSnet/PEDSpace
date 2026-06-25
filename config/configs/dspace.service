@@ -1,0 +1,33 @@
+# DSpace systemd service file
+# sudo nano /etc/systemd/system/dspace.service
+[Unit]
+Description=DSpace Repository Backend
+After=network.target postgresql.service solr.service httpd.service
+Wants=postgresql.service solr.service httpd.service
+Documentation=https://wiki.lyrasis.org/display/DSDOC8x
+
+[Service]
+Type=simple
+User=dspace
+Group=dspace
+WorkingDirectory=/data/dspace
+
+# Set JAVA_HOME if needed (adjust path to your Java installation)
+# Environment="JAVA_HOME=/usr/lib/jvm/java-17-openjdk"
+
+ExecStart=/usr/bin/java -jar /data/dspace/webapps/server-boot.jar
+
+# Restart on failure
+Restart=on-failure
+RestartSec=10
+
+# Resource limits
+LimitNOFILE=65536
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=dspace
+
+[Install]
+WantedBy=multi-user.target

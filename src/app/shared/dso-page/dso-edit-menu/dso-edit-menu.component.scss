@@ -1,5 +1,118 @@
-@import 'src/styles/_variables.scss';
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
 
 .mb-2 {
     margin-left: 0.25rem !important
+}
+
+// Ensure button has position relative for badge positioning
+.private-link {
+    position: relative;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 1.1rem;
+    
+    i {
+        font-size: 1.1rem;
+    }
+}
+
+// DOI button styling - using Tomato/Redwood from your palette (academic/publishing)
+.btn-doi {
+    background: linear-gradient(135deg, $tomato 0%, $redwood 100%);
+    border: 1px solid $redwood;
+    color: $snow;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba($redwood, 0.2);
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: linear-gradient(135deg, $redwood 0%, darken($redwood, 10%) 100%);
+        border-color: darken($redwood, 10%);
+        color: $snow;
+        box-shadow: 0 4px 8px rgba($redwood, 0.3);
+        transform: translateY(-1px);
+    }
+    
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba($redwood, 0.2);
+    }
+    
+    &:focus {
+        outline: 2px solid $redwood;
+        outline-offset: 2px;
+        box-shadow: 0 0 0 3px rgba($redwood, 0.2);
+    }
+}
+
+// Handle button styling - using Midnight Green/Cambridge Blue from your palette (professional)
+.btn-handle {
+    background: linear-gradient(135deg, $midnight-green 0%, darken($midnight-green, 8%) 100%);
+    border: 1px solid darken($midnight-green, 8%);
+    color: $snow;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba($midnight-green, 0.2);
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: linear-gradient(135deg, darken($midnight-green, 5%) 0%, $cambridge-blue 100%);
+        border-color: $cambridge-blue;
+        color: $snow;
+        box-shadow: 0 4px 8px rgba($midnight-green, 0.3);
+        transform: translateY(-1px);
+    }
+    
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba($midnight-green, 0.2);
+    }
+    
+    &:focus {
+        outline: 2px solid $cambridge-blue;
+        outline-offset: 2px;
+        box-shadow: 0 0 0 3px rgba($midnight-green, 0.2);
+    }
+}
+
+// DOI badge indicator - using theme colors
+.btn-doi::before {
+    content: 'DOI';
+    font-size: 0.6rem;
+    font-weight: 700;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: $china-rose;
+    color: $snow;
+    padding: 2px 4px;
+    border-radius: 3px;
+    line-height: 1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+// Handle badge indicator - using theme colors
+.btn-handle::before {
+    content: 'HDL';
+    font-size: 0.6rem;
+    font-weight: 700;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: $deep-sea-blue;
+    color: $snow;
+    padding: 2px 4px;
+    border-radius: 3px;
+    line-height: 1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+// Accessibility: Reduce motion for users who prefer it
+@media (prefers-reduced-motion: reduce) {
+    .btn-doi,
+    .btn-handle {
+        transition: none;
+        
+        &:hover {
+            transform: none;
+        }
+    }
 }

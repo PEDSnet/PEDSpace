@@ -26,6 +26,7 @@ import { ItemPageLocalFieldComponent } from 'src/themes/PEDSpace/app/item-page/s
 import { ItemPageAbstractFieldComponent } from 'src/app/item-page/simple/field-components/specific-field/abstract/item-page-abstract-field.component';
 // import { BadgesComponent } from 'src/themes/PEDSpace/app/shared/object-collection/shared/badges/badges.component';
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
+import { ItemHeroBannerComponent } from 'src/themes/PEDSpace/app/item-page/simple/item-hero-banner/item-hero-banner.component';
 
 @listableObjectComponent('OrgUnit', ViewMode.StandalonePage, Context.Any, 'PEDSpace')
 @Component({
@@ -35,7 +36,7 @@ import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/b
   templateUrl: './org-unit.component.html',
   // templateUrl: '../../../../../../../app/entity-groups/research-entities/item-pages/person/person.component.html',
   standalone: true,
-  imports: [NgIf, ThemedResultsBackButtonComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, GenericItemPageFieldComponent, RelatedItemsComponent, RouterLink, TabbedRelatedEntitiesSearchComponent, AsyncPipe, TranslateModule, ItemPageImgFieldComponent, ItemPageLocalFieldComponent, KeyValuePipe, NgForOf, ItemPageAbstractFieldComponent, ThemedBadgesComponent, NgbAccordionModule],
+  imports: [NgIf, ItemHeroBannerComponent, ThemedResultsBackButtonComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, GenericItemPageFieldComponent, RelatedItemsComponent, RouterLink, TabbedRelatedEntitiesSearchComponent, AsyncPipe, TranslateModule, ItemPageImgFieldComponent, ItemPageLocalFieldComponent, KeyValuePipe, NgForOf, ItemPageAbstractFieldComponent, ThemedBadgesComponent, NgbAccordionModule],
 })
 export class OrgUnitComponent extends BaseComponent {
 }

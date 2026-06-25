@@ -1,0 +1,111 @@
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
+
+// Breathing room between the title banner and search content
+.home-content-container {
+  padding-top: 2rem;
+}
+
+// Action buttons row beneath search bar
+.home-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin: 1.25rem 0 0.5rem;
+
+  .btn-home-action {
+    border: 2px solid $midnight-green;
+    color: $midnight-green;
+    background: transparent;
+    border-radius: 2rem;
+    padding: 0.45rem 1.4rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-color: $midnight-green;
+      color: $snow;
+    }
+  }
+
+  .dropdown-toggle::after {
+    margin-left: 0.4em;
+  }
+
+  .dropdown-menu {
+    border-radius: 0.75rem;
+    border: 1px solid $midnight-green;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+    .dropdown-item:hover {
+      background-color: $alice-blue;
+      color: $midnight-green;
+    }
+  }
+}
+
+// Pink horizontal separator
+.pink-separator {
+  border: none;
+  border-top: 3px solid $china-rose;
+  opacity: 1;
+  margin: 1.75rem 0;
+}
+
+// Bottom image carousel
+.home-image-carousel {
+  position: relative;
+  margin: 1.5rem 0 2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  width: 100%;
+
+  .carousel-track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      width: 100%;
+
+      img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+    }
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    &.carousel-prev { left: 0.75rem; }
+    &.carousel-next { right: 0.75rem; }
+  }
+}

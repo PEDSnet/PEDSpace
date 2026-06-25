@@ -345,7 +345,7 @@ export class MetadataValuesComponent implements OnChanges {
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
-    
+
     try {
       const successful = document.execCommand('copy');
       if (successful) {
@@ -368,13 +368,13 @@ export class MetadataValuesComponent implements OnChanges {
     if (buttonElement) {
       // Add visual feedback to the button
       buttonElement.classList.add('copied');
-      
+
       // Change icon to checkmark temporarily
       const icon = buttonElement.querySelector('i');
       if (icon) {
         const originalClass = icon.className;
         icon.className = 'fas fa-check';
-        
+
         // Reset after animation
         setTimeout(() => {
           icon.className = originalClass;
@@ -382,7 +382,7 @@ export class MetadataValuesComponent implements OnChanges {
         }, 1000);
       }
     }
-    
+
     console.log('Code copied to clipboard successfully!');
   }
 

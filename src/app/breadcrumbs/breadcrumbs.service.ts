@@ -20,7 +20,6 @@ import {
 import {
   hasNoValue,
   hasValue,
-  isUndefined,
 } from '../shared/empty.util';
 import { Breadcrumb } from './breadcrumb/breadcrumb.model';
 
@@ -69,8 +68,6 @@ export class BreadcrumbsService {
     if (last) {
       if (hasValue(data.showBreadcrumbs)) {
         this.showBreadcrumbs$.next(data.showBreadcrumbs);
-      } else if (isUndefined(data.breadcrumb)) {
-        this.showBreadcrumbs$.next(false);
       }
     }
 

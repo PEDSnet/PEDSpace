@@ -1,142 +1,221 @@
 <ds-results-back-button *ngIf="showBackButton$ | async" [back]="back"></ds-results-back-button>
 
+<!-- Shared mint hero banner with clickable entity-type badge + title -->
+<ds-pedspace-item-hero-banner [item]="object"></ds-pedspace-item-hero-banner>
+
 <div class="container">
-  <div class="row" *ngIf="iiifEnabled">
-    <div class="col-12">
-      <ds-mirador-viewer id="iiif-viewer" [object]="object" [searchable]="iiifSearchEnabled"
-        [query]="iiifQuery$ | async">
-      </ds-mirador-viewer>
+
+  <!-- ============================== -->
+  <!-- Centered static metadata block -->
+  <!-- ============================== -->
+  <div class="study-meta-block mx-auto mt-4">
+    <dl class="study-meta-grid">
+      <ng-container *ngIf="object?.metadata?.['project.startDate']?.length || object?.metadata?.['project.endDate']?.length">
+        <dt>Study Dates</dt>
+        <dd>
+          <ds-generic-item-page-field [renderAsButton]="false" [item]="object" [isDateRange]="true"
+            [fields]="['project.startDate', 'project.endDate']" [separator]="' - '" [label]="''">
+          </ds-generic-item-page-field>
+        </dd>
+      </ng-container>
+
+      <ng-container *ngIf="object?.metadata?.['dc.contributor.author']?.length">
+        <dt>Principal Investigator</dt>
+        <dd>
+          <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.author']" [label]="''"
+            [separator]="', '">
+          </ds-generic-item-page-field>
+        </dd>
+      </ng-container>
+
+      <ng-container *ngIf="object?.metadata?.['dc.contributor.other']?.length">
+        <dt>Affiliation</dt>
+        <dd>
+          <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']" [label]="''"
+            [separator]="', '">
+          </ds-generic-item-page-field>
+        </dd>
+      </ng-container>
+
+      <ng-container *ngIf="object?.metadata?.['local.contributor.siteSponsor']?.length">
+        <dt>Sponsor Site</dt>
+        <dd>
+          <ds-generic-item-page-field [item]="object" [fields]="['local.contributor.siteSponsor']" [label]="''"
+            [separator]="', '">
+          </ds-generic-item-page-field>
+        </dd>
+      </ng-container>
+
+      <ng-container *ngIf="object?.metadata?.['local.identifier.pedsnetid']?.length">
+        <dt>PEDSnet Study ID</dt>
+        <dd>
+          <ds-generic-item-page-field [item]="object" [fields]="['local.identifier.pedsnetid']" [label]="''">
+          </ds-generic-item-page-field>
+        </dd>
+      </ng-container>
+    </dl>
+
+    <div class="study-abstract mt-3">
+      <ds-item-page-abstract-field [item]="object" [label]="''"></ds-item-page-abstract-field>
     </div>
   </div>
 
-  <div class="d-flex">
-    <ds-badges *ngIf="showLabel" [object]="object" [showAccessStatus]="true"></ds-badges>
-  </div>
+  <!-- ============================== -->
+  <!-- Main tabbed interface          -->
+  <!-- ============================== -->
+  <ul ngbNav #studyNav="ngbNav" [(activeId)]="activeTab" class="nav-tabs study-main-tabs mt-4">
 
-<div class="d-flex flex-row">
-  <ds-item-page-title-field [item]="object" class="mr-auto">
-  </ds-item-page-title-field>
-  <ds-dso-edit-menu [object]="object"></ds-dso-edit-menu>
-</div>
+    <!-- ============ Study Overview Tab ============ -->
+    <li [ngbNavItem]="'overview'">
+      <a ngbNavLink>Study Overview</a>
+      <ng-template ngbNavContent>
+        <div class="row mt-4">
+          <!-- Left column -->
+          <div class="col-12 col-md-4">
+            <div class="study-files-section mb-3">
+              <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
+              <p *ngIf="(hasFiles$ | async) === false" class="study-no-files text-muted">
+                <i class="fas fa-info-circle me-1"></i>
+                No files are available for download.
+              </p>
+            </div>
 
-  <div class="row">
-    <div class="col-12 col-md-4">
-      <div class="subtitle-container" *ngIf="object?.metadata?.['local.variable.name']?.length > 0 || object?.metadata?.['dc.title.alternative']?.length > 0">
-        <ds-generic-item-page-field class="subtitle" [renderAsCode]="true" [codeType]="'variable'" [item]="object" [fields]="['local.variable.name']" [label]="'item.preview.local.variable.name'">
-        </ds-generic-item-page-field>
-        <!-- <span class="tooltip-container" 
-              title="Analysts, use this name to reference this variable in your study DAP."
-              [attr.aria-label]="'Analysts, use this name to reference this variable in your study DAP.'"> -->
+            <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject']"
+              [separator]="'<br>'" [label]="'Tags'">
+            </ds-generic-item-page-field>
 
-      </div>
-      <!-- Date Created -->
-      <ds-generic-item-page-field [renderAsButton]="false" [item]="object" [isDateRange]="true"
-        [fields]="['project.startDate', 'project.endDate']" [separator]="' - '" [label]="'Study Dates'">
-      </ds-generic-item-page-field>
+            <ds-item-page-funder-field [item]="object" [label]="'Funding'">
+            </ds-item-page-funder-field>
+            <ds-generic-item-page-field [item]="object" [fields]="['local.contributor.grant']" [label]="''">
+            </ds-generic-item-page-field>
 
-      <!-- Date Modified -->
-      <ds-item-page-date-field [item]="object" [fields]="['dc.date']" [label]="'item.preview.dc.date'"
-        separator="; "></ds-item-page-date-field>
+            <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
+            </ds-item-page-cc-license-field>
 
-      <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
-        <ds-media-viewer [item]="object"></ds-media-viewer>
-      </div>
+            <ds-generic-item-page-field [item]="object" [fields]="['dc.publisher']" [label]="'Publisher'">
+            </ds-generic-item-page-field>
+          </div>
 
-      <!-- Download link(s) -->
-      <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
+          <!-- Right column -->
+          <div class="col-12 col-md-8">
+            <ds-item-page-description-field [item]="object" [label]="'Project Description'">
+            </ds-item-page-description-field>
 
-      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject']" [separator]="'<br>'"
-        [label]="'item.preview.dc.subject'"></ds-generic-item-page-field>
+            <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']"
+              [separator]="' '" [label]="'Clinical Subject Headings'">
+            </ds-generic-item-page-field>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.publisher']" [label]="'item.page.publisher'">
-      </ds-generic-item-page-field>
-    </div>
+            <ds-related-items [parentItem]="object" [relationType]="'isPersonOfStudy'" [label]="'Parent Partners'">
+            </ds-related-items>
+          </div>
+        </div>
+      </ng-template>
+    </li>
 
-    <div class="col-12 col-md-8">
+    <!-- ============ Analytic Details Tab ============ -->
+    <li [ngbNavItem]="'analytics'">
+      <a ngbNavLink>Analytic Details</a>
+      <ng-template ngbNavContent>
+        <div class="row mt-4">
+          <!-- Left column -->
+          <div class="col-12 col-md-4">
+            <div class="study-files-section">
+              <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
+              <p *ngIf="(hasFiles$ | async) === false" class="study-no-files text-muted">
+                <i class="fas fa-info-circle me-1"></i>
+                No files are available for download.
+              </p>
+            </div>
 
-      <ds-item-page-abstract-field [item]="object" [label]="'item.page.abstract'"></ds-item-page-abstract-field>
+            <div class="d-flex flex-column gap-2 mb-3 mt-4">
+              <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.github']"
+                [label]="''" [repo]="'github'">
+              </ds-item-page-external-publication-field>
+              <ds-related-items [parentItem]="object" [relationType]="'isCodeOfStudy'" [label]="''">
+              </ds-related-items>
+            </div>
 
-      <!-- <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
-        [itemType]="'Person'" [metadataFields]="['dc.contributor.author', 'dc.creator']"
-        [label]="'item.preview.dc.contributor.author' | translate">
-      </ds-metadata-representation-list>
+            <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
+            </ds-item-page-cc-license-field>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.advisor']"
-        [label]="'item.preview.dc.contributor.advisor'">
-      </ds-generic-item-page-field> -->
+            <ds-generic-item-page-field [item]="object" [fields]="['dc.publisher']" [label]="'Publisher'">
+            </ds-generic-item-page-field>
+          </div>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
-        [label]="'item.preview.dc.contributor.other'">
-      </ds-generic-item-page-field>
+          <!-- Right column -->
+          <div class="col-12 col-md-8">
+            <ds-generic-item-page-field [item]="object" [fields]="['local.contributor.siteLead']"
+              [label]="'Site Analytics Lead'" [separator]="', '">
+            </ds-generic-item-page-field>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor']" [label]="'item.preview.dc.contributor'"
-        [sentenceTemplate]="'This research was made possible through the generous support of the [value].'">
-      </ds-generic-item-page-field>
+            <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfStudy'" [label]="'Database Version'">
+            </ds-related-items>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
-      </ds-generic-item-page-field>
+            <ds-generic-item-page-field [item]="object" [fields]="['local.description.analytics']"
+              [label]="'Analytic Details'" [enableMarkdown]="true">
+            </ds-generic-item-page-field>
+          </div>
+        </div>
+      </ng-template>
+    </li>
 
-      <ds-item-page-description-field [item]="object"
-        [label]="'item.page.description'"></ds-item-page-description-field>
+    <!-- ============ Metadata Tab ============ -->
+    <li [ngbNavItem]="'metadata'">
+      <a ngbNavLink>Metadata</a>
+      <ng-template ngbNavContent>
+        <div class="mt-4">
+          <div class="table-responsive">
+            <table class="table table-striped study-metadata-table">
+              <tbody>
+                <ng-container *ngFor="let mdEntry of (object?.metadata | keyvalue)">
+                  <tr *ngFor="let mdValue of mdEntry.value">
+                    <td class="metadata-key">{{ mdEntry.key }}</td>
+                    <td class="metadata-value">{{ mdValue.value }}</td>
+                    <td class="metadata-language">{{ mdValue.language }}</td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
 
-      <!-- <ng-container *ngIf="isLoggedIn"> -->
-        <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
-        </ds-item-page-uri-field>
-      <!-- </ng-container> -->
+  <div [ngbNavOutlet]="studyNav" class="study-tab-outlet"></div>
 
-      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.other']" [separator]="' '"
-        [label]="'browse.metadata.vocab'"></ds-generic-item-page-field>
-
-      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
-        [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
-
-      <!-- <div class="col-xs-12 col-md-7"> -->
-
-      <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfStudy'"
-        [label]="'relationships.isConceptSetOf' | translate">
-      </ds-related-items>
-
-      <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfStudy'"
-        [label]="'Data Source'">
-      </ds-related-items>
-
-      <ds-related-items [parentItem]="object" [relationType]="'isDQCheckOfStudy'"
-        [label]="'relationships.isPersonOf' | translate">
-      </ds-related-items>
-
-      <ds-related-items [parentItem]="object" [relationType]="'isDQResultOfStudy'"
-        [label]="'relationships.isDQResultOf' | translate">
-      </ds-related-items>
-
-      <ds-related-items [parentItem]="object" [relationType]="'isPersonOfStudy'"
-        [label]="'relationships.isPersonOf' | translate">
-      </ds-related-items>
-
-      <ds-related-items [parentItem]="object" [relationType]="'isPhenotypeOfStudy'"
-        [label]="'relationships.isPhenotypeOf' | translate">
-      </ds-related-items>
-
-      <ds-related-items [parentItem]="object" [relationType]="'isStudyOfStudy'"
-        [label]="'relationships.isStudyOf' | translate">
-      </ds-related-items>
-
-      <ds-related-items [parentItem]="object" [relationType]="'isCodeOfStudy'"
-        [label]="'relationships.isCodeOf' | translate">
-      </ds-related-items>
-
-      <ds-item-page-external-publication-field [item]="object" [label]="'item.preview.dc.relation.isreferencedby'" [applyCitationStyling]="true">
-      </ds-item-page-external-publication-field>
-      <!-- </div> -->
-
-      <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
-      </ds-item-page-cc-license-field>
-
-      <div>
-        <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="link" tabindex="0">
-          <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
-        </a>
-      </div>
-    </div>
+  <!-- ============================== -->
+  <!-- Bottom tabbed related entities -->
+  <!-- ============================== -->
+  <div class="mt-5 w-100">
+    <ds-tabbed-related-entities-search [item]="object" [relationTypes]="[
+                                              {
+                                                label: 'isStudyOfOrgUnit',
+                                                filter: 'isStudyOfOrgUnit',
+                                                configuration: 'orgunit-relationships'
+                                              },
+                                              {
+                                                label: 'isStudyOfPublication',
+                                                filter: 'isStudyOfPublication',
+                                                configuration: 'publication-relationships'
+                                              },
+                                              {
+                                                label: 'isStudyOfPhenotype',
+                                                filter: 'isStudyOfPhenotype',
+                                                configuration: 'phenotype-relationships'
+                                              },
+                                              {
+                                                label: 'isStudyOfConceptSet',
+                                                filter: 'isStudyOfConceptSet',
+                                                configuration: 'conceptset-relationships'
+                                              },
+                                              {
+                                                label: 'isStudyOfDQResult',
+                                                filter: 'isStudyOfDQResult',
+                                                configuration: 'dqresult-relationships'
+                                              }
+                                            ]">
+    </ds-tabbed-related-entities-search>
   </div>
 
   <div *ngIf="!(object?.metadata['dc.relation']?.length > 0)">

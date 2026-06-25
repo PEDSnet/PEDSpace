@@ -1,5 +1,7 @@
 <ds-results-back-button *ngIf="showBackButton$ | async" [back]="back"></ds-results-back-button>
 
+<ds-pedspace-item-hero-banner [item]="object"></ds-pedspace-item-hero-banner>
+
 <div class="container">
   <div class="row" *ngIf="iiifEnabled">
     <div class="col-12">
@@ -9,14 +11,6 @@
     </div>
   </div>
 
-  <div class="d-flex">
-    <ds-badges *ngIf="showLabel" [object]="object" [showAccessStatus]="true"></ds-badges>
-  </div>
-<div class="d-flex flex-row">
-  <ds-item-page-title-field [item]="object" class="mr-auto">
-  </ds-item-page-title-field>
-  <ds-dso-edit-menu [object]="object"></ds-dso-edit-menu>
-</div>
   
   <div class="row">
     <div class="col-12 col-md-4">
@@ -76,9 +70,8 @@
         [label]="'item.preview.dc.contributor.other'">
       </ds-generic-item-page-field>
       
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor']" [label]="'item.preview.dc.contributor'"
-        [sentenceTemplate]="'This research was made possible through the generous support of the [value].'">
-      </ds-generic-item-page-field>
+      <ds-item-page-funder-field [item]="object" [label]="'item.preview.dc.contributor'">
+      </ds-item-page-funder-field>
       
       <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
       </ds-generic-item-page-field>
@@ -97,6 +90,9 @@
 
       <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
       </ds-item-page-cc-license-field>
+
+      <ds-item-page-citation-field [item]="object" [label]="'Cite this Item'">
+      </ds-item-page-citation-field>
 
       <div>
         <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="button">

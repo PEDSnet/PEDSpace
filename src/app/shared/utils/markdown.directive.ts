@@ -4,6 +4,7 @@ import {
   Inject,
   InjectionToken,
   Input,
+  NgZone,
   OnDestroy,
   OnInit,
   SecurityContext,
@@ -51,12 +52,26 @@ export class MarkdownDirective implements OnInit, OnDestroy {
     @Inject(MARKDOWN_IT) private markdownItService: LazyMarkdownIt,
     protected sanitizer: DomSanitizer,
     private mathService: MathService,
-    private elementRef: ElementRef) {
+    private elementRef: ElementRef,
+    private ngZone: NgZone) {
     this.el = elementRef.nativeElement;
   }
 
-  async ngOnInit() {
-    await this.render(this.dsMarkdown);
+  ngOnInit() {
+    // Synchronously populate the element with the raw text so that
+    // MetadataFieldWrapperComponent never sees an empty textContent during
+    // the window between now and when the async markdown render completes.
+    // Without this, Angular's post-microtask-drain tick (drainMicroTaskQueue
+    // → checkStable → tick) fires while the element is still empty, which
+    // causes the wrapper to apply d-none, hiding the field until the next
+    // user-triggered CD cycle.
+    if (this.dsMarkdown) {
+      this.el.textContent = this.dsMarkdown;
+    }
+    this.ngZone.runOutsideAngular(async () => {
+      await this.render(this.dsMarkdown);
+      this.ngZone.run(() => { /* re-enter zone to schedule a CD pass */ });
+    });
   }
 
   async render(value: string, forcePreview = false): Promise<SafeHtml> {

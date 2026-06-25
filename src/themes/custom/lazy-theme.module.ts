@@ -35,6 +35,7 @@ import { ForbiddenComponent } from './app/forbidden/forbidden.component';
 import { ForgotEmailComponent } from './app/forgot-password/forgot-password-email/forgot-email.component';
 import { ForgotPasswordFormComponent } from './app/forgot-password/forgot-password-form/forgot-password-form.component';
 import { HomePageComponent } from './app/home-page/home-page.component';
+import { AboutComponent } from './app/info/about/about.component';
 import { EndUserAgreementComponent } from './app/info/end-user-agreement/end-user-agreement.component';
 import { FeedbackComponent } from './app/info/feedback/feedback.component';
 import { FeedbackFormComponent } from './app/info/feedback/feedback-form/feedback-form.component';
@@ -119,6 +120,7 @@ const DECLARATIONS = [
   ObjectNotFoundComponent,
   ForbiddenComponent,
   PrivacyComponent,
+  AboutComponent,
   CollectionStatisticsPageComponent,
   CommunityStatisticsPageComponent,
   ItemStatisticsPageComponent,

@@ -32,6 +32,7 @@ import { ThemedFileSectionComponent } from '../../../../../../../app/item-page/s
 import { ItemPageAbstractFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/abstract/item-page-abstract-field.component';
 // import { Item } from '../../../../../../../app/core/shared/item.model';
 import { ItemPageCcLicenseFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/cc-license/item-page-cc-license-field.component';
+import { ItemPageCitationFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/citation/item-page-citation-field.component';
 import { ItemPageDateFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/date/item-page-date-field.component';
 import { GenericItemPageFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/generic/generic-item-page-field.component';
 import { ThemedItemPageTitleFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/title/themed-item-page-field.component';
@@ -47,6 +48,7 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
 import { ItemPageDescriptionFieldComponent } from '../../field-components/specific-field/description/item-page-description.component';
 import { ItemPageExternalPublicationFieldComponent } from '../../field-components/specific-field/external/item-page-external-publication.component';
 import { ItemPageLocalFieldComponent } from '../../field-components/specific-field/local/item-page-local.component';
+import { ItemHeroBannerComponent } from '../../item-hero-banner/item-hero-banner.component';
 
 /**
  * Component that represents a Code Item page
@@ -62,7 +64,8 @@ import { ItemPageLocalFieldComponent } from '../../field-components/specific-fie
   // templateUrl: '../../../../../../../app/item-page/simple/item-types/publication/publication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ItemPageExternalPublicationFieldComponent,
+  imports: [
+    ItemHeroBannerComponent,ItemPageExternalPublicationFieldComponent,
     ItemPageExternalPublicationFieldComponent,
     ItemPageDescriptionFieldComponent, NgIf,
     ThemedResultsBackButtonComponent,
@@ -86,6 +89,7 @@ import { ItemPageLocalFieldComponent } from '../../field-components/specific-fie
     AsyncPipe,
     TranslateModule,
     ItemPageCcLicenseFieldComponent,
+    ItemPageCitationFieldComponent,
     ThemedBadgesComponent],
 })
 export class CodeComponent extends BaseComponent implements OnInit {

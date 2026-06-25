@@ -1,7 +1,20 @@
-.pedsnet-header {
+@import 'src/themes/PEDSpace/styles/_theme_sass_variable_overrides.scss';
+
+:host {
+  display: flex;
+  align-items: center;
+}
+
+.pedsnet-main-nav {
   font-family: "proxima-nova", sans-serif;
   font-size: 15px;
   line-height: 1.7;
+  display: flex;
+  align-items: center;
+
+  .navbar-nav {
+    flex-wrap: nowrap;
+  }
 
   a {
     text-decoration: none !important;
@@ -12,7 +25,19 @@
   }
 
   .navbar-nav .nav-link {
+    color: $midnight-green;
+    font-family: "proxima-nova", sans-serif;
     transition: color 0.3s ease;
+
+    &:hover,
+    &:focus {
+      color: darken($midnight-green, 15%);
+    }
+  }
+
+  /* Remove Bootstrap dropdown caret from nav links */
+  .nav-link.dropdown-toggle::after {
+    display: none;
   }
 
   /* Dropdown styling for desktop view */
@@ -107,4 +132,5 @@
     border: 0;
     box-shadow: none;
   }
+
 }

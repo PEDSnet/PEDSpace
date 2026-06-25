@@ -1,0 +1,17 @@
+<ds-metadata-field-wrapper [label]="label">
+  <div class="citation-wrapper">
+    <div class="citation-box">
+      <div class="citation-text">
+        {{ citation }}
+      </div>
+      <button class="copy-btn" 
+              (click)="copyCitation()"
+              [class.copied]="isCopied"
+              [title]="isCopied ? 'Citation copied!' : 'Copy citation'"
+              [attr.aria-label]="isCopied ? 'Citation copied!' : 'Copy citation'">
+        <i class="fa" [ngClass]="isCopied ? 'fa-check' : 'fa-copy'"></i>
+        <span class="btn-label">{{ isCopied ? 'Copied!' : 'Copy' }}</span>
+      </button>
+    </div>
+  </div>
+</ds-metadata-field-wrapper>

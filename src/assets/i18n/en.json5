@@ -1552,6 +1552,8 @@
   "collection.form.title": "Name",
 
   "collection.listelement.badge": "Domain",
+  
+  "publication.collection.listelement.badge": "Publication Domain",
 
   "collection.logo": "Domain logo",
 
@@ -2255,6 +2257,8 @@
 
   "footer.copyright": "copyright © 2002-{{ year }}",
 
+  "footer.link.about": "About",
+
   "footer.link.accessibility": "Accessibility settings",
 
   "footer.link.coar-notify-support": "COAR Notify",
@@ -2487,7 +2491,7 @@
 
   "health-page.title": "Health",
 
-  "home.breadcrumbs": "Home",
+  "home.breadcrumbs": "Digital Library Home",
 
   "home.description": "",
 
@@ -2624,6 +2628,26 @@
   "info.privacy.head": "Privacy Statement",
 
   "info.privacy.title": "Privacy Statement",
+
+  "info.about.breadcrumbs": "About",
+
+  "info.about.head": "About This Repository",
+
+  "info.about.title": "About",
+
+  "info.about.description": "Welcome to our DSpace repository. This digital repository is built using DSpace, an open-source platform for preserving and providing access to scholarly materials and digital assets.",
+
+  "info.about.mission.title": "Our Mission",
+
+  "info.about.mission.content": "Our mission is to provide open access to research outputs and scholarly materials, supporting the academic community and advancing knowledge dissemination.",
+
+  "info.about.team.title": "Repository Team",
+
+  "info.about.team.content": "Our repository is maintained by a dedicated team committed to preserving and sharing scholarly content. For more information about our team, please contact us.",
+
+  "info.about.contact.title": "Contact Information",
+
+  "info.about.contact.content": "For questions about this repository, content submissions, or technical support, please use our feedback form or contact your repository administrator.",
 
   "inReplyTo.notify-detail-modal": "In reply to",
 
@@ -3149,6 +3173,16 @@
 
   "item.page.collections.load-more": "Load more",
 
+  "item.page.csv.spreadsheet": "Data Table",
+
+  "csv-spreadsheet.error.header": "Error loading spreadsheet",
+
+  "csv-spreadsheet.error.load": "Failed to load CSV data",
+
+  "csv-spreadsheet.no-data": "No data available",
+
+  "csv-spreadsheet.browser-only": "Interactive spreadsheet view available in browser",
+
   "item.page.date": "Date",
 
   "item.page.description.cohort": "Cohort Description",
@@ -3174,6 +3208,14 @@
   "item.page.filesection.size": "Size:",
 
   "item.page.files": "Files",
+
+  "item.page.csv.spreadsheet": "Preview Concept Set",
+
+  "csv-spreadsheet.error.header": "Error loading CSV data",
+
+  "csv-spreadsheet.error.load": "Failed to load CSV file",
+
+  "csv-spreadsheet.no-data": "No CSV data available",
 
   "item.page.image.alt.ROR": "ROR logo",
 
@@ -3214,6 +3256,10 @@
   "item.page.relationships.isOrgUnitOfProject": "Research Projects",
 
   "item.page.relationships.isOrgUnitOfStudy": "Studies",
+
+  "item.page.relationships.isOrgUnitOfConceptSet": "Concept Sets",
+
+  "item.page.relationships.isOrgUnitOfPhenotype": "Phenotypes",
   
   "item.page.relationships.isDocumentationOfDocumentation": "Related Documentation",
 
@@ -3227,6 +3273,40 @@
 
   "item.page.relationships.isDocumentationOfDQResult": "Related Quality Results",
   
+  "item.page.relationships.isDocumentationOfStudy": "Related Studies",
+  
+  "item.page.relationships.isAuthorOfCode": "Related Code",
+
+  "item.page.relationships.isConceptSetOfCode": "Related Code",
+
+  "item.page.relationships.isDocumentationOfCode": "Related Code",
+
+  "item.page.relationships.isDQCheckOfCode": "Related Code",
+
+  "item.page.relationships.isDQResultOfCode": "Related Code",
+
+  "item.page.relationships.isOrgUnitOfCode": "Related Code",
+
+  "item.page.relationships.isPersonOfCode": "Related Code",
+
+  "item.page.relationships.isPhenotypeOfCode": "Related Code",
+
+  "item.page.relationships.isProjectOfCode": "Related Code",
+
+  "item.page.relationships.isPublicationOfCode": "Related Code",
+
+  "item.page.relationships.isStudyOfCode": "Related Code",
+  
+  "item.page.relationships.isStudyOfOrgUnit": "Participating Sites",
+  
+  "item.page.relationships.isStudyOfPublication": "Publications",
+  
+  "item.page.relationships.isStudyOfPhenotype": "Phenotypes",
+  
+  "item.page.relationships.isStudyOfDQResult": "Data Quality Results",
+  
+  "item.page.relationships.isStudyOfConceptSet": "Concept Sets",
+
   "item.page.relationships.isDocumentationOfStudy": "Related Studies",
 
   "item.page.return": "Back",
@@ -4655,6 +4735,10 @@
   
   "documentation-relationships.search.results.head": "Documentation Search Results",
 
+  "pedsnetdefinition.listelement.badge": "PEDSnet Definition",
+
+  "person.collection.listelement.badge": "Person Domain",
+  
   "phenotype.collection.listelement.badge": "Phenotype Domain",
 
   "phenotype.listelement.badge": "Phenotype",
@@ -5250,6 +5334,8 @@
   "relationships.isSingleVolumeOf": "Journal Volume",
 
   "relationships.isStudyOf": "Related Study",
+  
+  "relationships.isStudyOf.DQCheck": "Related Data Quality Check",
 
   "relationships.isVolumeOf.JournalVolume": "Journal Volume",
 
@@ -5308,6 +5394,8 @@
   "researcher.profile.view": "View",
 
   "research-ready.listelement.badge": "Research-Ready",
+
+  "requiresrefresh.listelement.badge": "Requires Refresh",
 
   "resource-policies.add.button": "Add",
 
@@ -5573,6 +5661,10 @@
 
   "search.filters.filter.birthDate.placeholder": "Birth Date",
 
+  "search.filters.filter.committee": "Research Committee",
+  
+  "search.filters.filter.committee.head": "Research Committee",
+  
   "search.filters.filter.checkReq.head": "Required Input",
 
   "search.filters.filter.checkReq.label": "Required Input",
@@ -5665,18 +5757,36 @@
 
   "search.filters.filter.itemAffiliation.placeholder": "Affiliation...",
 
+  "search.filters.filter.leadSite.head": "Lead Site",
+
+  "search.filters.filter.leadSite.label": "Search Lead Site",
+
+  "search.filters.filter.leadSite.placeholder": "Lead Site...",
+
+  "pedspace.project.lead-site": "Lead Site",
+
+  "pedspace.view-toggle.label": "View",
+
+  "pedspace.view-toggle.past": "Past",
+
+  "pedspace.view-toggle.all": "All",
+
+  "pedspace.view-toggle.active": "Active",
+
   "search.filters.filter.itemClinicalSubject.head": "Clinical Subject",
 
   "search.filters.filter.itemClinicalSubject.label": "Clinical Subject",
 
-  "search.filters.filter.dqCheckDomain.head": "DQ Result Domain",
+  "search.filters.filter.dqCheckDomain.head": "DQ Check Domain",
 
-  "search.filters.filter.dqCheckDomain.label": "DQ Result Domain",
+  "search.filters.filter.dqCheckDomain.label": "DQ Check Domain",
 
-  "search.filters.filter.dqCheckOutcomes.head": "DQ Result Outcome",
+  "search.filters.filter.dqCheckOutcomes.head": "DQ Check Outcomes",
   
-  "search.filters.filter.dqCheckOutcomes.Label": "DQ Result Outcome",
+  "search.filters.filter.dqCheckOutcomes.Label": "DQ Check Outcomes",
 
+  "search.filters.filter.dqCheckOutcomes.placeholder": "DQ Check Outcomes...",
+  
   "search.filters.filter.itemClinicalSubject.placeholder": "Terms...",
 
   "search.filters.filter.itemFunder.head": "Funder",
@@ -6197,6 +6307,8 @@
 
   "study-relationships.search.results.head": "Study Search Results",
 
+  "study-specific.listelement.badge": "Study-Specific",
+
   "study.collection.listelement.badge": "Study Domain",
   
   "orgunit.collection.listelement.badge": "Institution Domain",
@@ -6529,6 +6641,8 @@
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.DQCheck": "Local Data Quality Checks ({{ count }})",
 
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.DQResult": "Local Data Quality Results ({{ count }})",
+
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isAuthorOfPublication": "Local Authors ({{ count }})",
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isChildOrgUnitOf": "Search for Institutions",
@@ -6687,6 +6801,10 @@
 
   "submission.sections.describe.relationship-lookup.title.ConceptSet": "Concept Sets",
   
+  "submission.sections.describe.relationship-lookup.title.isStudyofPerson": "Studies",
+  
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.isStudyofPerson": "Studies",
+  
   "submission.sections.describe.relationship-lookup.title.isDocumentationOfDocumentation": "Resources",
 
   "submission.sections.describe.relationship-lookup.title.DataFile": "Data Files",
@@ -6698,6 +6816,8 @@
   "submission.sections.describe.relationship-lookup.title.dqCheck": "Data Quality Checks",
 
   "submission.sections.describe.relationship-lookup.title.DQCheck": "Data Quality Checks",
+
+  "submission.sections.describe.relationship-lookup.title.DQResult": "Data Quality Results",
 
   "submission.sections.describe.relationship-lookup.title.Funding Agency": "Funding Agency",
 
@@ -7010,6 +7130,8 @@
   "submission.sections.upload.info.conceptset": "Please deposit a <code>.CSV</code> file with an intuitive, human-readable filename e.g., \"<code>dx_asthma.csv</code>\". <strong>Upload files by dragging & dropping them anywhere on the page</strong>.",
 
   "submission.sections.upload.info.phenotype": "Please deposit a <code>.ZIP</code> file with an intuitive, human-readable filename. In the <code>zip</code> file, include a specs folder containing the utilized codesets and at least one code file (typically <code>cohorts.R</code> and <code>driver.R</code>) to run the algorithm. <strong>Upload files by dragging & dropping them anywhere on the page</strong>.",
+  
+  "submission.sections.upload.info.publication": "Please deposit any supplemental study files with an intuitive, human-readable filename. <strong>Upload files by dragging & dropping them anywhere on the page</strong>.",
 
   "submission.sections.upload.no-entry": "No",
 
