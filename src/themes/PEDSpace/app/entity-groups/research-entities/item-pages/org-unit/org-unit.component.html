@@ -110,6 +110,22 @@
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
+      <ngb-accordion #acc="ngbAccordion" [destroyOnHide]="false">
+        <ngb-panel id="dataProvenancePanel">
+          <ng-template ngbPanelTitle>
+            <div class="d-flex align-items-center">
+              <i class="fa fa-database me-2"></i>
+              <span class="section-title">&nbsp;Data Provenance</span>
+            </div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div class="description-wrapper col-lg-12">
+              <ds-item-page-local-field [item]="object" [fields]="['dc.provenance']"
+                [label]="''"></ds-item-page-local-field>
+            </div>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
     </div>
     <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="link" tabindex="0">
       {{"item.page.link.full" | translate}}
