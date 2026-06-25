@@ -5,9 +5,13 @@
   display: block;
 
   .pedsnet-title-banner {
-    background-color: $midnight-green;
-    color: $snow;
-    padding: 2.5rem 0;
+      background-color: $midnight-green; /* $midnight-green */
+      // padding: 2rem 0;
+      width: 100%;
+      display: flex;
+      align-items: center; /* Centers items vertically */
+      min-height: 350px;
+
 
     .container {
       max-width: 1200px;
@@ -15,50 +19,46 @@
       padding: 0 2rem;
     }
 
-    .banner-content h1 {
-      color: $snow;
-      font-size: 2.5rem;
+    .banner-content h1,
+    .banner-content h2 {
+      box-sizing: border-box;
+      color: rgb(255, 255, 255);
+      display: inline;
+      font-family: proxima-nova, sans-serif;
+      font-size: 64px;
       font-weight: 700;
-      margin: 0;
+      height: auto;
+      line-height: normal;
+      overflow-wrap: break-word;
+      text-align: left;
+      width: auto;
+    }
 
-      @media (max-width: 768px) {
+    /* Create custom underline with space */
+    .banner-content ::ng-deep h1::after,
+    .banner-content ::ng-deep h2::after {
+      content: "";
+      border-top-color: rgb(147, 88, 112);
+      border-top-style: solid;
+      border-top-width: 5px;
+      box-sizing: border-box;
+      color: rgb(255, 255, 255);
+      display: block;
+      font-family: proxima-nova, sans-serif;
+      font-size: 18px;
+      height: 5px;
+      line-height: 30.6px;
+      max-width: 80px;
+      overflow-wrap: break-word;
+      width: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .banner-content h1,
+      .banner-content h2 {
         font-size: 1.8rem;
       }
     }
   }
 
-  .dev-alert-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .alert-container {
-    background-color: rgba(255, 200, 0, 0.15);
-    border: 2px solid orange;
-    color: $gray-800;
-    padding: 1.25rem;
-    border-radius: 0.75rem;
-    margin: 1rem 0;
-
-    h2 {
-      font-size: 1.4rem;
-      margin-top: 0;
-      margin-bottom: 0.75rem;
-      color: darken(orange, 20%);
-    }
-
-    p {
-      margin: 0.4rem 0;
-    }
-
-    a {
-      color: $deep-sea-blue;
-      text-decoration: underline;
-
-      &:hover {
-        color: darken($deep-sea-blue, 15%);
-      }
-    }
-  }
 }

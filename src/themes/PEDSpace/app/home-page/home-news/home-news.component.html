@@ -1,28 +1,8 @@
 <div class="pedsnet-title-banner">
   <div class="container">
     <div class="banner-content">
-      <h1>Welcome to the PEDSnet Digital Library</h1>
+      <h1>PEDSpace Knowledge Bank</h1>
     </div>
   </div>
 </div>
 
-<ng-container *ngIf="showMessageAtAll">
-  <div class="container dev-alert-wrapper">
-    <div *ngIf="!isProduction && !ipAddressMatch" class="alert-container">
-      <h2>DEVELOPMENT INSTANCE</h2>
-      <p>This is a development instance of PEDSpace.</p>
-      <p>Data and resources may not be current or accurate.</p>
-      <p>You may experience poor app performance.</p>
-      <p>Please visit the <a href="https://pedsnet.org/metadata/home" target="_blank">official PEDSpace instance</a> for up-to-date entries.</p>
-      <p style="font-size: 1.5em; font-weight: bold;">Do NOT deposit items to this site!</p>
-    </div>
-
-    <div *ngIf="!isProduction && ipAddressMatch" class="alert-container">
-      <h2>DEVELOPMENT INSTANCE ON PRODUCTION SERVER</h2>
-      <p>This is the development instance on the production server.</p>
-      <p>The data here on this site is the most accurate and up-to-date iteration of PEDSpace.</p>
-      <p>However, for whatever reason, the development instance of the UI is running, so you may encounter interruptions or poor performance.</p>
-      <p>Avoid depositing items if you can.</p>
-    </div>
-  </div>
-</ng-container>

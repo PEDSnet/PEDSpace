@@ -7,10 +7,7 @@
 
 // Hero Section - Bold and Inviting with Animated Gradient
 .hero-section {
-  // background: linear-gradient(-45deg, $midnight-green 0%, $cambridge-blue 25%, $mauve 51%, $china-rose 100%);
   background: $midnight-green;
-  background-size: 300% 300%;
-  // Start at random position in the animation
   position: relative;
   overflow: hidden;
   width: 100vw;
@@ -21,22 +18,46 @@
   .container {
     position: relative;
     z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
   }
 
   h1 {
-    font-size: 4.75rem !important;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    display: inline;
+    font-family: proxima-nova, sans-serif;
+    font-size: 64px;
     font-weight: 700;
-    color: white;
-    font-size: 2.75rem;
+    height: auto;
+    line-height: normal;
     margin: 0;
-    letter-spacing: -0.5px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    overflow-wrap: break-word;
     text-align: left;
-    height: 100%;
+    width: auto;
     min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  h1::after {
+    content: "";
+    border-top-color: rgb(147, 88, 112);
+    border-top-style: solid;
+    border-top-width: 5px;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    display: block;
+    font-family: proxima-nova, sans-serif;
+    font-size: 18px;
+    height: 5px;
+    line-height: 30.6px;
+    max-width: 80px;
+    overflow-wrap: break-word;
+    width: 80px;
   }
 }
 
@@ -57,17 +78,30 @@
 
 // Section Heading
 .section-heading {
+  font-family: proxima-nova, sans-serif;
   font-weight: 700;
   color: $midnight-green;
   font-size: 1.85rem;
   margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 3px solid $cambridge-blue;
+  padding-bottom: 0.6rem;
+  border-bottom: none;
   letter-spacing: -0.3px;
   position: relative;
   display: flex;
   align-items: center;
   gap: 0.75rem;
+
+  &::after {
+    content: '';
+    border-top-color: rgb(147, 88, 112);
+    border-top-style: solid;
+    border-top-width: 5px;
+    display: block;
+    height: 5px;
+    max-width: 80px;
+    width: 80px;
+    margin-left: 0.15rem;
+  }
 
   .header-anchor {
     color: $cambridge-blue;
@@ -498,18 +532,13 @@ section {
 
 // Responsive Design
 @media (max-width: 768px) {
-  .hero-section {
-    padding: 3.5rem 0;
-
-    .hero-content h1 {
+  .hero-section h1 {
       font-size: 2.2rem;
 
       &::after {
         width: 60px;
         height: 4px;
-        margin-top: 1rem;
       }
-    }
   }
 
   .section-heading {
@@ -550,17 +579,13 @@ section {
 }
 
 @media (max-width: 576px) {
-  .hero-section {
-    padding: 2.75rem 0;
-
-    .hero-content h1 {
+  .hero-section h1 {
       font-size: 1.85rem;
 
       &::after {
         width: 50px;
         height: 3px;
       }
-    }
   }
 
   .section-heading {
