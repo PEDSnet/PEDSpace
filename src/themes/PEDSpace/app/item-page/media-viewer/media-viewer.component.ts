@@ -2,7 +2,7 @@ import {
   AsyncPipe,
   NgIf,
 } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { MediaViewerComponent as BaseComponent } from '../../../../../app/item-page/media-viewer/media-viewer.component';
@@ -31,4 +31,5 @@ import { ThemedThumbnailComponent } from '../../../../../app/thumbnail/themed-th
   ],
 })
 export class MediaViewerComponent extends BaseComponent {
+  @Input() showThumbnail: boolean = true;
 }

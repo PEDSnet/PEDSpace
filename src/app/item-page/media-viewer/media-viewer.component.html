@@ -16,7 +16,7 @@
     </ng-container>
   </div>
   <ng-template #showThumbnail>
-    <ds-thumbnail [thumbnail]="(thumbnailsRD$ | async)?.payload?.page[0]">
+    <ds-thumbnail *ngIf="showThumbnail" [thumbnail]="(thumbnailsRD$ | async)?.payload?.page[0]">
     </ds-thumbnail>
   </ng-template>
 </ng-container>

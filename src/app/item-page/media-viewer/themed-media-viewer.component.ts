@@ -22,10 +22,12 @@ export class ThemedMediaViewerComponent extends ThemedComponent<MediaViewerCompo
 
   @Input() item: Item;
   @Input() mediaOptions: MediaViewerConfig;
+  @Input() showThumbnail = true;
 
   protected inAndOutputNames: (keyof MediaViewerComponent & keyof this)[] = [
     'item',
     'mediaOptions',
+    'showThumbnail',
   ];
 
   protected getComponentName(): string {

@@ -25,7 +25,7 @@
         separator="; "></ds-item-page-date-field>
 
       <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
-        <ds-media-viewer [item]="object"></ds-media-viewer>
+        <ds-media-viewer [item]="object" [showThumbnail]="false"></ds-media-viewer>
       </div>
 
       <!-- Download link(s) -->
