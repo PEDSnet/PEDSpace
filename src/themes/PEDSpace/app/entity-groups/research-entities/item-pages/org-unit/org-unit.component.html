@@ -1,12 +1,5 @@
 <ds-results-back-button *ngIf="showBackButton$ | async" [back]="back"></ds-results-back-button>
-<div class="d-flex">
-  <ds-badges *ngIf="showLabel" [object]="object" [showAccessStatus]="true"></ds-badges>
-</div>
-<div class="d-flex flex-row">
-  <ds-item-page-title-field [item]="object" class="mr-auto">
-  </ds-item-page-title-field>
-  <ds-dso-edit-menu [object]="object"></ds-dso-edit-menu>
-</div>
+<ds-pedspace-item-hero-banner [item]="object"></ds-pedspace-item-hero-banner>
 
 <ds-generic-item-page-field class="subtitle h3" [item]="object" [fields]="['dc.title.alternative']">
 </ds-generic-item-page-field>
