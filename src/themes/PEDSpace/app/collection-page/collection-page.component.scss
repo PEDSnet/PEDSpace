@@ -21,6 +21,9 @@
 
 .title-container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 /* Style for the entity type above the title */
@@ -30,10 +33,11 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   margin-bottom: 10px;
-  display: inline-flex;
+  display: flex;
   background-color: #c8f0e0;
   border-radius: 999px;
   padding: 0.2rem 0.75rem;
+  width: fit-content;
 
   .badge-text {
     font-variant: small-caps;
@@ -65,13 +69,14 @@
 
 .cambridge-blue-header {
   width: 100%; /* Ensure the header takes full width */
+  display: block;
 }
 
 .cambridge-blue-header ::ng-deep h1,
 .cambridge-blue-header ::ng-deep h2 {
   box-sizing: border-box;
   color: $midnight-green;
-  display: inline;
+  display: block;
   font-family: proxima-nova, sans-serif;
   font-size: 64px;
   font-weight: 700;
@@ -80,6 +85,7 @@
   overflow-wrap: break-word;
   text-align: left;
   width: auto;
+  margin: 0;
 }
 
 /* Create custom underline with space */
