@@ -26,13 +26,14 @@
       <ds-item-page-date-field *ngIf="object?.metadata?.['dc.date.updated']?.length === 0" [item]="object" [fields]="['dc.date.created']" [label]="'item.preview.dc.date.issued'"
         separator=", "></ds-item-page-date-field>
       
-        <!-- Date Modified -->
+      <!-- Date Modified -->
       <ds-item-page-date-field [item]="object" [fields]="['dc.date']" [label]="'item.preview.dc.date'"
         separator="; "></ds-item-page-date-field>
 
-      <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
+      <!-- Thumbnail -->  
+      <!-- <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
         <ds-media-viewer [item]="object" [showThumbnail]="false"></ds-media-viewer>
-      </div>
+      </div> -->
 
       <!-- Download link(s) -->
       <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
@@ -46,11 +47,19 @@
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.DataModel']" [separator]="'<br>'"
         [label]="'Data Model'"></ds-generic-item-page-field>
 
+      <!-- </ng-container> -->
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.other']" [separator]="' '"
+        [label]="'Vocabularies'"></ds-generic-item-page-field>        
+
     </div>
 
     <div class="col-12 col-md-9">
 
+      
+
       <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
+
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.quality.status']" [separator]="' '" [label]="'Variable Status'"></ds-generic-item-page-field>
 
       <!-- <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
         [itemType]="'Person'" [metadataFields]="['dc.contributor.author', 'dc.creator']"
@@ -61,24 +70,28 @@
         [label]="'item.preview.dc.contributor.advisor'">
       </ds-generic-item-page-field> -->
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
-        [label]="'item.preview.dc.contributor.other'">
-      </ds-generic-item-page-field>
 
+      <!-- Affiliations -->
+      <!-- <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
+        [label]="'item.preview.dc.contributor.other'">
+      </ds-generic-item-page-field> -->
+      
+      <!-- Funder-->
       <ds-item-page-funder-field [item]="object" [label]="'item.preview.dc.contributor'">
       </ds-item-page-funder-field>
 
+      <!-- Provenance-->
       <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
       </ds-generic-item-page-field>
 
+      <!-- Description-->
       <ds-item-page-description-field [item]="object" [label]="'item.page.description'"></ds-item-page-description-field>
 
       <!-- <ng-container *ngIf="isLoggedIn"> -->
         <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
         </ds-item-page-uri-field>
-      <!-- </ng-container> -->
-      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.other']" [separator]="' '"
-        [label]="'browse.metadata.vocab'"></ds-generic-item-page-field>
+
+
 
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.MedTermChar']" [separator]="'<br>'"
         [label]="'Medication Classification Level'"></ds-generic-item-page-field>
