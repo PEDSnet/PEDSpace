@@ -55,10 +55,10 @@
 
     <div class="col-12 col-md-9">
 
-      
-
+      <!--Abstract-->
       <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
 
+      <!--Variable Status-->
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.quality.status']" [separator]="' '" [label]="'Variable Status'"></ds-generic-item-page-field>
 
       <!-- <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
@@ -69,7 +69,6 @@
       <!-- <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.advisor']"
         [label]="'item.preview.dc.contributor.advisor'">
       </ds-generic-item-page-field> -->
-
 
       <!-- Affiliations -->
       <!-- <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
@@ -88,19 +87,24 @@
       <ds-item-page-description-field [item]="object" [label]="'item.page.description'"></ds-item-page-description-field>
 
       <!-- <ng-container *ngIf="isLoggedIn"> -->
-        <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
-        </ds-item-page-uri-field>
+        <!--<ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
+        </ds-item-page-uri-field>-->
 
+      <!-- Medication Class-->
+        <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.MedTermChar']" [separator]="'<br>'"
+        [label]="'Medication Term Classes'"></ds-generic-item-page-field>
 
-
-      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.MedTermChar']" [separator]="'<br>'"
-        [label]="'Medication Classification Level'"></ds-generic-item-page-field>
-
-      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
+      <!--Clinical Subject Headings-->
+        <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
       <!-- CSV Spreadsheet Viewer -->
       <ds-item-page-csv-spreadsheet [item]="object"></ds-item-page-csv-spreadsheet>
+
+      <!--Code to create codeset-->
+      <ds-generic-item-page-field [renderAsCode]="true" [codeType]="'package'" [item]="object" [fields]="['local.code.package']"
+        [label]="'Development Code'">
+      </ds-generic-item-page-field>
 
       <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfConceptSet'"
         [label]="'relationships.isDocumentationOf' | translate">
