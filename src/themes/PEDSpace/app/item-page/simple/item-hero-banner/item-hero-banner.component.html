@@ -13,13 +13,28 @@
         <ds-dso-edit-menu *ngIf="showEditMenu" [object]="item"></ds-dso-edit-menu>
       </div>
 
-      <!-- Share / copy-link button — below the title, above the bottom padding -->
-      <div *ngIf="shareUrl" class="pedspace-item-hero-share mt-2">
-        <button type="button" class="btn btn-sm pedspace-share-btn" (click)="copyShareUrl()">
-          <i class="fas" [ngClass]="copied() ? 'fa-check' : 'fa-link'"></i>
-          {{ copied() ? 'Copied!' : 'Share' }}
-        </button>
+      
+      <div class="d-flex align-items-center mt-2" *ngIf="shareUrl">
+        <!-- Share button-->
+        <div class="pedspace-item-hero-share">
+          <button type="button" class="btn btn-sm pedspace-share-btn" (click)="copyShareUrl()">
+            <i class="fas" [ngClass]="copied() ? 'fa-check' : 'fa-link'"></i>
+            {{ copied() ? 'Copied!' : 'Share' }}
+          </button>
+        </div>
+        <!-- Cite button -->  
+        <div class="pedspace-item-hero-cite ml-2">
+          <button type="button" class="btn btn-sm pedspace-cite-btn" 
+                (click)="copyCitation()"
+                [class.copied]="citeCopied()"
+                [title]="citeCopied() ? 'Citation copied!' : 'Copy citation'"
+                [attr.aria-label]="citeCopied() ? 'Citation copied!' : 'Copy citation'">
+            <i class="fa" [ngClass]="citeCopied() ? 'fa-check' : 'fa-copy'"></i>
+            <span class="btn-label">{{ citeCopied() ? 'Copied!' : 'Cite' }}</span>
+          </button>
+        </div>
       </div>
+
     </div>
   </div>
 </div>
