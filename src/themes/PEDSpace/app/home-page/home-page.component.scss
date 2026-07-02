@@ -9,26 +9,39 @@
 .home-action-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 1.25rem;
   justify-content: center;
-  margin: 1.25rem 0 0.5rem;
+  margin: 2rem 0 1rem;
 
   .btn-home-action {
     border: 2px solid $midnight-green;
-    color: $midnight-green;
-    background: transparent;
+    color: $snow;
+    background-color: $midnight-green;
     border-radius: 2rem;
-    padding: 0.45rem 1.4rem;
-    font-size: 0.9rem;
-    font-weight: 500;
+    width: 180px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
     cursor: pointer;
+    box-shadow: 0 2px 6px rgba($midnight-green, 0.25);
+    transition: background-color 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
 
     &:hover,
     &:focus {
-      background-color: $midnight-green;
+      background-color: darken($midnight-green, 8%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba($midnight-green, 0.35);
       color: $snow;
+      text-decoration: none;
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba($midnight-green, 0.25);
     }
   }
 
