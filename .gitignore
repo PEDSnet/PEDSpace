@@ -53,3 +53,11 @@ config/configs/README-issue-176-backend.md
 config/scripts/dspace_restore.sh
 config/scripts/root_crontab.sh
 config/xmls/uuid_transition.csv
+AGENTS.md
+skills-lock.json
+.agents/
+.clinerules/
+.cursor/
+.github/copilot-instructions.md
+.opencode/
+.windsurf/
