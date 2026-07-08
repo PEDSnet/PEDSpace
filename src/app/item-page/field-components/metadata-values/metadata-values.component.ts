@@ -301,7 +301,12 @@ export class MetadataValuesComponent implements OnChanges {
    * Get the appropriate text for the repository type
    * @param repo - The repository type
    */
-  getRepoText(repo: string): string {
+  getRepoText(repo: string, urlValue?: string): string {
+    const repoName = this.getRepoNameFromUrl(urlValue);
+    if (repoName) {
+      return repoName;
+    }
+
     switch (repo) {
       case 'github':
         return 'View on GitHub';
@@ -309,6 +314,39 @@ export class MetadataValuesComponent implements OnChanges {
         return 'View on Bitbucket';
       default:
         return 'View Repository';
+    }
+  }
+
+  private getRepoNameFromUrl(urlValue?: string): string | null {
+    if (!urlValue) {
+      return null;
+    }
+
+    try {
+      const parsedUrl = new URL(urlValue);
+      const pathSegments = parsedUrl.pathname
+        .split('/')
+        .filter((segment) => segment.length > 0);
+
+      if (pathSegments.length === 0) {
+        return null;
+      }
+
+      const hostname = parsedUrl.hostname.toLowerCase();
+      let repoSegment = pathSegments[pathSegments.length - 1];
+
+      if (hostname === 'github.com' || hostname === 'www.github.com') {
+        repoSegment = pathSegments.length > 1 ? pathSegments[1] : pathSegments[0];
+      } else if (hostname === 'bitbucket.org' || hostname === 'www.bitbucket.org') {
+        repoSegment = pathSegments[0] === 'scm' && pathSegments.length > 2
+          ? pathSegments[2]
+          : (pathSegments.length > 1 ? pathSegments[1] : pathSegments[0]);
+      }
+
+      repoSegment = repoSegment.replace(/\.git$/i, '');
+      return repoSegment || null;
+    } catch {
+      return null;
     }
   }
 

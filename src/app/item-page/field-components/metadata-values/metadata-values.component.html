@@ -37,7 +37,7 @@
       {{ sentenceTemplateParts[0] }}
       <a [ngClass]="['repo-link', 'repo-' + repo]" target="_blank" rel="noopener noreferrer" [href]="value">
         <i [ngClass]="getRepoIcon(repo)" aria-hidden="true"></i>
-        <span class="repo-text">{{ getRepoText(repo) }}</span>
+        <span class="repo-text">{{ getRepoText(repo, value) }}</span>
         <i class="fas fa-external-link-alt external-icon" aria-hidden="true"></i>
       </a>
       {{ sentenceTemplateParts[1] }}
@@ -45,7 +45,7 @@
     <ng-template #defaultRepoContent>
       <a [ngClass]="['repo-link', 'repo-' + repo]" target="_blank" rel="noopener noreferrer" [href]="value">
         <i [ngClass]="getRepoIcon(repo)" aria-hidden="true"></i>
-        <span class="repo-text">{{ getRepoText(repo) }}</span>
+        <span class="repo-text">{{ getRepoText(repo, value) }}</span>
         <i class="fas fa-external-link-alt external-icon" aria-hidden="true"></i>
       </a>
     </ng-template>
