@@ -74,8 +74,14 @@ export class SearchNavbarComponent {
    * @param data  Data for the searchForm, containing the search query
    */
   onSubmit(data: any) {
+    const query = data?.query?.trim();
+
+    if (!query) {
+      return;
+    }
+
     this.collapse();
-    const queryParams = Object.assign({}, data);
+    const queryParams = Object.assign({}, data, { query });
     const linkToNavigateTo = [this.searchService.getSearchLink().replace('/', '')];
     this.searchForm.reset();
 
