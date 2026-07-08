@@ -42,32 +42,32 @@ export class DsoEditMenuComponent extends MenuComponent {
    * The menu ID of this component is DSO_EDIT
    * @type {MenuID.DSO_EDIT}
    */
-  menuID = MenuID.DSO_EDIT;
+  menuID: MenuID.DSO_EDIT = MenuID.DSO_EDIT;
 
-  copyPermalink() {
-    const uriMetadata = this.object.metadata['dc.identifier.uri'];
+  // copyPermalink() {
+  //   const uriMetadata = this.object.metadata['dc.identifier.uri'];
 
-    // Find the first URI containing 'doi.org'
-    let targetUri = uriMetadata?.find(uri => uri.value.includes('doi.org'));
-    let isDOI = false;
+  //   // Find the first URI containing 'doi.org'
+  //   let targetUri = uriMetadata?.find(uri => uri.value.includes('doi.org'));
+  //   let isDOI = false;
 
-    // If no DOI found, look for hdl.handle.net
-    if (targetUri) {
-      isDOI = true;
-    } else {
-      targetUri = uriMetadata?.find(uri => uri.value.includes('hdl.handle.net'));
-    }
+  //   // If no DOI found, look for hdl.handle.net
+  //   if (targetUri) {
+  //     isDOI = true;
+  //   } else {
+  //     targetUri = uriMetadata?.find(uri => uri.value.includes('hdl.handle.net'));
+  //   }
 
-    const permalink = targetUri?.value || '';
-    copy(permalink);
-    this.showCopyMessage = true;
-    this.isCopied = true; // show the checkmark icon
+  //   const permalink = targetUri?.value || '';
+  //   copy(permalink);
+  //   this.showCopyMessage = true;
+  //   this.isCopied = true; // show the checkmark icon
 
-    setTimeout(() => {
-      this.showCopyMessage = false;
-      this.isCopied = false; // revert back to clipboard icon after 3 seconds
-    }, 3000);
-  }
+  //   setTimeout(() => {
+  //     this.showCopyMessage = false;
+  //     this.isCopied = false; // revert back to clipboard icon after 3 seconds
+  //   }, 3000);
+  // }
 
   /**
    * Get the permalink type for the current item

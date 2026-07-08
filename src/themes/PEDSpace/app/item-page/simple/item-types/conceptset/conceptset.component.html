@@ -17,16 +17,23 @@
         <ds-generic-item-page-field class="subtitle" [renderAsCode]="true" [codeType]="'variable'" [item]="object" [fields]="['local.variable.name']" [label]="'item.preview.local.variable.name'">
         </ds-generic-item-page-field>
       </div>
-      <!-- Date Created -->
-      <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'item.preview.dc.date.issued'"
+      
+      <!-- Date Updated -->
+      <ds-item-page-date-field [item]="object" [fields]="['dc.date.updated']" [label]="'Refreshed Date'"
         separator=", "></ds-item-page-date-field>
+
+      <!-- Date Created -->
+      <ds-item-page-date-field *ngIf="object?.metadata?.['dc.date.updated']?.length === 0" [item]="object" [fields]="['dc.date.created']" [label]="'item.preview.dc.date.issued'"
+        separator=", "></ds-item-page-date-field>
+      
       <!-- Date Modified -->
       <ds-item-page-date-field [item]="object" [fields]="['dc.date']" [label]="'item.preview.dc.date'"
         separator="; "></ds-item-page-date-field>
 
-      <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
-        <ds-media-viewer [item]="object"></ds-media-viewer>
-      </div>
+      <!-- Thumbnail -->  
+      <!-- <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
+        <ds-media-viewer [item]="object" [showThumbnail]="false"></ds-media-viewer>
+      </div> -->
 
       <!-- Download link(s) -->
       <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
@@ -40,11 +47,19 @@
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.DataModel']" [separator]="'<br>'"
         [label]="'Data Model'"></ds-generic-item-page-field>
 
+      <!-- </ng-container> -->
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.other']" [separator]="'<br>'"
+        [label]="'Vocabularies'"></ds-generic-item-page-field>        
+
     </div>
 
     <div class="col-12 col-md-9">
 
-      <ds-item-page-abstract-field [item]="object" [label]="'item.page.abstract'"></ds-item-page-abstract-field>
+      <!--Abstract-->
+      <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
+
+      <!--Variable Status-->
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.quality.status']" [separator]="' '" [label]="'Variable Status'"></ds-generic-item-page-field>
 
       <!-- <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
         [itemType]="'Person'" [metadataFields]="['dc.contributor.author', 'dc.creator']"
@@ -55,33 +70,41 @@
         [label]="'item.preview.dc.contributor.advisor'">
       </ds-generic-item-page-field> -->
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
+      <!-- Affiliations -->
+      <!-- <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
         [label]="'item.preview.dc.contributor.other'">
-      </ds-generic-item-page-field>
-
+      </ds-generic-item-page-field> -->
+      
+      <!-- Funder-->
       <ds-item-page-funder-field [item]="object" [label]="'item.preview.dc.contributor'">
       </ds-item-page-funder-field>
 
+      <!-- Provenance-->
       <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
       </ds-generic-item-page-field>
 
+      <!-- Description-->
       <ds-item-page-description-field [item]="object" [label]="'item.page.description'"></ds-item-page-description-field>
 
       <!-- <ng-container *ngIf="isLoggedIn"> -->
-        <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
-        </ds-item-page-uri-field>
-      <!-- </ng-container> -->
-      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.other']" [separator]="' '"
-        [label]="'browse.metadata.vocab'"></ds-generic-item-page-field>
+        <!--<ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
+        </ds-item-page-uri-field>-->
 
-      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.MedTermChar']" [separator]="'<br>'"
-        [label]="'Medication Classification Level'"></ds-generic-item-page-field>
+      <!-- Medication Class-->
+        <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.MedTermChar']" [separator]="'<br>'"
+        [label]="'Medication Term Classes'"></ds-generic-item-page-field>
 
-      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
+      <!--Clinical Subject Headings-->
+        <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
       <!-- CSV Spreadsheet Viewer -->
       <ds-item-page-csv-spreadsheet [item]="object"></ds-item-page-csv-spreadsheet>
+
+      <!--Code to create codeset-->
+      <ds-generic-item-page-field [renderAsCode]="true" [codeType]="'package'" [item]="object" [fields]="['local.code.package']"
+        [label]="'Development Code'">
+      </ds-generic-item-page-field>
 
       <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfConceptSet'"
         [label]="'relationships.isDocumentationOf' | translate">
@@ -96,7 +119,7 @@
       </ds-related-items>
 
       <ds-related-items [parentItem]="object" [relationType]="'isStudyOfConceptSet'"
-        [label]="'relationships.isStudyOf' | translate">
+        [label]="'Variable Applications'">
       </ds-related-items>
 
       <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfConceptSet'"
@@ -114,8 +137,8 @@
       <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
       </ds-item-page-cc-license-field>
 
-      <ds-item-page-citation-field [item]="object" [label]="'Cite this Concept Set'">
-      </ds-item-page-citation-field>
+      <!-- <ds-item-page-citation-field [item]="object" [label]="'Cite this Concept Set'">
+      </ds-item-page-citation-field>-->
 
       <div>
         <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="link" tabindex="0">

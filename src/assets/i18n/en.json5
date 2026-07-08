@@ -2491,7 +2491,7 @@
 
   "health-page.title": "Health",
 
-  "home.breadcrumbs": "Home",
+  "home.breadcrumbs": "Digital Library Home",
 
   "home.description": "",
 
@@ -5756,6 +5756,22 @@
   "search.filters.filter.itemAffiliation.label": "Search Affiliation",
 
   "search.filters.filter.itemAffiliation.placeholder": "Affiliation...",
+
+  "search.filters.filter.leadSite.head": "Lead Site",
+
+  "search.filters.filter.leadSite.label": "Search Lead Site",
+
+  "search.filters.filter.leadSite.placeholder": "Lead Site...",
+
+  "pedspace.project.lead-site": "Lead Site",
+
+  "pedspace.view-toggle.label": "View",
+
+  "pedspace.view-toggle.past": "Past",
+
+  "pedspace.view-toggle.all": "All",
+
+  "pedspace.view-toggle.active": "Active",
 
   "search.filters.filter.itemClinicalSubject.head": "Clinical Subject",
 

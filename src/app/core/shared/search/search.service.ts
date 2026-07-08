@@ -363,7 +363,7 @@ export class SearchService {
         if (viewMode === ViewMode.DetailedListElement) {
           pageParams = Object.assign(pageParams, { pageSize: 1 });
         } else if (config.pageSize === 1) {
-          pageParams = Object.assign(pageParams, { pageSize: 10 });
+          pageParams = Object.assign(pageParams, { pageSize: 12 });
         }
         this.paginationService.updateRouteWithUrl(this.searchConfigurationService.paginationID, hasValue(searchLinkParts) ? searchLinkParts : [this.getSearchLink()], pageParams, queryParams);
       });

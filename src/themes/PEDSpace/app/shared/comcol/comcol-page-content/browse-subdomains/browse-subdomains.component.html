@@ -1,0 +1,23 @@
+<div class="browse-subdomains" [class.open]="isOpen">
+  <button
+    type="button"
+    class="browse-header"
+    [attr.aria-expanded]="isOpen"
+    aria-haspopup="true"
+    (click)="toggle()">
+    Browse Subdomains
+    <span class="caret" aria-hidden="true"></span>
+  </button>
+
+  <ul class="subdomain-list" role="menu">
+    <li *ngFor="let subdomain of subdomains" role="none">
+      <a
+        class="subdomain-link"
+        role="menuitem"
+        [routerLink]="subdomain.href"
+        (click)="close()">
+        {{ subdomain.label }}
+      </a>
+    </li>
+  </ul>
+</div>

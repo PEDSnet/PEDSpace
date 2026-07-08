@@ -1,12 +1,5 @@
 <ds-results-back-button *ngIf="showBackButton$ | async" [back]="back"></ds-results-back-button>
-<div class="d-flex">
-  <ds-badges *ngIf="showLabel" [object]="object" [showAccessStatus]="true"></ds-badges>
-</div>
-<div class="d-flex flex-row">
-  <ds-item-page-title-field [item]="object" class="mr-auto">
-  </ds-item-page-title-field>
-  <ds-dso-edit-menu [object]="object"></ds-dso-edit-menu>
-</div>
+<ds-pedspace-item-hero-banner [item]="object"></ds-pedspace-item-hero-banner>
 
 <ds-generic-item-page-field class="subtitle h3" [item]="object" [fields]="['dc.title.alternative']">
 </ds-generic-item-page-field>
@@ -112,6 +105,22 @@
           <ng-template ngbPanelContent>
             <div class="description-wrapper col-lg-12">
               <ds-item-page-local-field [item]="object" [fields]="['dc.description']"
+                [label]="''"></ds-item-page-local-field>
+            </div>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+      <ngb-accordion #acc="ngbAccordion" [destroyOnHide]="false">
+        <ngb-panel id="dataProvenancePanel">
+          <ng-template ngbPanelTitle>
+            <div class="d-flex align-items-center">
+              <i class="fa fa-database me-2"></i>
+              <span class="section-title">&nbsp;Data Provenance</span>
+            </div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div class="description-wrapper col-lg-12">
+              <ds-item-page-local-field [item]="object" [fields]="['dc.provenance']"
                 [label]="''"></ds-item-page-local-field>
             </div>
           </ng-template>

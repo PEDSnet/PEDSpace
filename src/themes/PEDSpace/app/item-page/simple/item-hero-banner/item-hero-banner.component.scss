@@ -104,3 +104,53 @@
   width: 80px;
   margin-top: 10px;
 }
+
+/* Share button — sits beneath the red underline */
+.pedspace-item-hero-share {
+  display: flex;
+}
+
+.pedspace-share-btn {
+  color: $midnight-green;
+  border: 1.5px solid rgba($midnight-green, 0.5);
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  i { margin-right: 0.3rem; }
+
+  &:hover, &:focus {
+    background: rgba($midnight-green, 0.12);
+    color: $midnight-green;
+    border-color: $midnight-green;
+  }
+}
+
+/* Share button — sits beneath the red underline */
+.pedspace-item-hero-cite {
+  display: flex;
+}
+
+.pedspace-cite-btn {
+  color: $midnight-green;
+  border: 1.5px solid rgba($midnight-green, 0.5);
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  i { margin-right: 0.3rem; }
+
+  &:hover, &:focus {
+    background: rgba($midnight-green, 0.12);
+    color: $midnight-green;
+    border-color: $midnight-green;
+  }
+}

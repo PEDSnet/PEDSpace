@@ -61,6 +61,121 @@
 }
 
 /* ============================================
+   Style ds-metadata-field-wrapper headers
+   (Files, Related Repositories, etc.) to match
+   the .sidebar-heading format so they blend in
+   without the default bold-h5 treatment.
+   ============================================ */
+::ng-deep .simple-view-element-header,
+::ng-deep .item-page-field > ds-metadata-values > .simple-view-element-header {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #444;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   Metadata block link hover — underline only,
+   no background hover-box, no layout offset.
+   ============================================ */
+.study-meta-block {
+  ::ng-deep a,
+  ::ng-deep a.ds-simple-metadata-link,
+  ::ng-deep a.ds-browse-link {
+    display: inline !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    vertical-align: baseline !important;
+    background: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover, &:focus {
+      background: none !important;
+      background-color: transparent !important;
+      box-shadow: none !important;
+      outline: none !important;
+      text-decoration: underline;
+    }
+  }
+}
+
+/* ============================================
+   CC license — stack statement above image
+   ============================================ */
+::ng-deep ds-item-page-cc-license-field .item-page-field {
+  .row {
+    flex-direction: column;
+
+    > div {
+      width: 100% !important;
+      max-width: 100%;
+    }
+  }
+
+  // statement first (it's the second div in DOM order), image second
+  .col-auto { order: 2; margin-top: 0.5rem; }
+  .col      { order: 1; }
+}
+
+/* ============================================
+   Bottom tabbed related entities — match top
+   study-main-tabs styling.
+   ============================================ */
+::ng-deep ds-tabbed-related-entities-search {
+  ul.nav-tabs {
+    border-bottom: 1px solid #ddd;
+
+    .nav-link {
+      color: #555;
+      border: none;
+      border-bottom: 3px solid transparent;
+      border-radius: 0;
+      padding: 0.75rem 1.25rem;
+      font-weight: 600;
+
+      &:hover {
+        color: var(--bs-primary, #6f1d46);
+        border-bottom-color: rgba(111, 29, 70, 0.25);
+        background-color: transparent;
+      }
+
+      &.active {
+        color: var(--bs-primary, #6f1d46);
+        background-color: transparent;
+        border-bottom-color: var(--bs-primary, #6f1d46);
+      }
+    }
+  }
+}
+
+/* ============================================
+   Hide applied-filter label chips inside the
+   related-entities widget tabs.
+   ============================================ */
+::ng-deep ds-tabbed-related-entities-search ds-search-labels,
+::ng-deep ds-related-entities-search ds-search-labels {
+  display: none !important;
+}
+
+/* ============================================
+   Markdown tables in Analytic Details field —
+   apply dqcheck-table prettiness automatically.
+   Use {.dqcheck-table} in markdown or rely on
+   the blanket rule below for all tables.
+   ============================================ */
+::ng-deep ds-generic-item-page-field[ng-reflect-fields*="local.description.analytics"] {
+  table {
+    @extend .dqcheck-table;
+  }
+}
+
+/* ============================================
    Main tabbed interface
    ============================================ */
 .study-main-tabs.nav-tabs {

@@ -6,7 +6,7 @@
   --ds-home-news-link-color: #{$link-color};
   --ds-home-news-link-hover-color: #{darken($link-color, 15%)};
   --ds-header-navbar-border-bottom-color: #{$tomato};
-  --ds-navbar-link-color: $midnight-green;
+  --ds-navbar-link-color: #{$midnight-green};
 
   // Add typography variables
   --dark-font-color: #333;

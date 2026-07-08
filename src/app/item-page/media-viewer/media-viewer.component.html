@@ -5,18 +5,18 @@
     [showMessage]="false"
   ></ds-loading>
   <div class="media-viewer" *ngIf="!isLoading">
-    <ng-container *ngIf="mediaList.length > 0; else showThumbnail">
+    <ng-container *ngIf="mediaList.length > 0; else thumbnailFallback">
       <ng-container *ngVar="mediaOptions.video && ['audio', 'video'].includes(mediaList[0]?.format) as showVideo">
         <ng-container *ngVar="mediaOptions.image && mediaList[0]?.format === 'image' as showImage">
           <ds-media-viewer-video *ngIf="showVideo" [medias]="mediaList" [captions]="captions$ | async"></ds-media-viewer-video>
           <ds-media-viewer-image *ngIf="showImage" [images]="mediaList"></ds-media-viewer-image>
-          <ng-container *ngIf="showImage || showVideo; else showThumbnail"></ng-container>
+          <ng-container *ngIf="showImage || showVideo; else thumbnailFallback"></ng-container>
         </ng-container>
       </ng-container>
     </ng-container>
   </div>
-  <ng-template #showThumbnail>
-    <ds-thumbnail [thumbnail]="(thumbnailsRD$ | async)?.payload?.page[0]">
+  <ng-template #thumbnailFallback>
+    <ds-thumbnail *ngIf="showThumbnail" [thumbnail]="(thumbnailsRD$ | async)?.payload?.page[0]">
     </ds-thumbnail>
   </ng-template>
 </ng-container>

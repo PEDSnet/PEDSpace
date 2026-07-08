@@ -1,11 +1,13 @@
 import {
   AsyncPipe,
+  isPlatformBrowser,
   NgIf,
   NgTemplateOutlet,
 } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  OnInit,
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -20,10 +22,10 @@ import { ViewModeSwitchComponent } from '../../../../../app/shared/view-mode-swi
 
 @Component({
   selector: 'ds-themed-search',
-  // styleUrls: ['./search.component.scss'],
-  styleUrls: ['../../../../../app/shared/search/search.component.scss'],
-  // templateUrl: './search.component.html',
-  templateUrl: '../../../../../app/shared/search/search.component.html',
+  styleUrls: ['./search.component.scss'],
+  // styleUrls: ['../../../../../app/shared/search/search.component.scss'],
+  templateUrl: './search.component.html',
+  // templateUrl: '../../../../../app/shared/search/search.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [pushInOut],
   standalone: true,
@@ -40,5 +42,37 @@ import { ViewModeSwitchComponent } from '../../../../../app/shared/view-mode-swi
     ViewModeSwitchComponent,
   ],
 })
-export class SearchComponent extends BaseComponent {
+export class SearchComponent extends BaseComponent implements OnInit {
+  ngOnInit(): void {
+    super.ngOnInit();
+    this.applyDefaultGridView();
+  }
+
+  protected applyDefaultGridView(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    const url = this.router?.url ?? '';
+    const isPublicComcolRoute = url.includes('/communities/') || url.includes('/collections/');
+    if (!isPublicComcolRoute || this.selectable || this.fixedFilterQuery) {
+      return;
+    }
+
+    let leaf = this.router.routerState?.snapshot?.root;
+    while (leaf?.firstChild) {
+      leaf = leaf.firstChild;
+    }
+
+    const params = leaf?.queryParams ?? {};
+    if (params.view === 'grid') {
+      return;
+    }
+
+    void this.router.navigate([], {
+      queryParams: { view: 'grid' },
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
+  }
 }

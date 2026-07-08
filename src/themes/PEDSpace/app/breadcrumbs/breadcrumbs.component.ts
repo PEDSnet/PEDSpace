@@ -17,8 +17,7 @@ import { VarDirective } from '../../../../app/shared/utils/var.directive';
  */
 @Component({
   selector: 'ds-themed-breadcrumbs',
-  // templateUrl: './breadcrumbs.component.html',
-  templateUrl: '../../../../app/breadcrumbs/breadcrumbs.component.html',
+  templateUrl: './breadcrumbs.component.html',
   styleUrls: ['./breadcrumbs.component.scss'],
   // styleUrls: ['../../../../app/breadcrumbs/breadcrumbs.component.scss'],
   standalone: true,

@@ -20,14 +20,13 @@ import { ThemedSearchSettingsComponent } from '../../../../../../app/shared/sear
 import { SearchSidebarComponent as BaseComponent } from '../../../../../../app/shared/search/search-sidebar/search-sidebar.component';
 import { SearchSwitchConfigurationComponent } from '../../../../../../app/shared/search/search-switch-configuration/search-switch-configuration.component';
 import { ViewModeSwitchComponent } from '../../../../../../app/shared/view-mode-switch/view-mode-switch.component';
+import { PedspaceViewToggleComponent } from '../pedspace-view-toggle/pedspace-view-toggle.component';
 
 
 @Component({
   selector: 'ds-themed-search-sidebar',
-  // styleUrls: ['./search-sidebar.component.scss'],
   styleUrls: ['../../../../../../app/shared/search/search-sidebar/search-sidebar.component.scss'],
-  // templateUrl: './search-sidebar.component.html',
-  templateUrl: '../../../../../../app/shared/search/search-sidebar/search-sidebar.component.html',
+  templateUrl: './search-sidebar.component.html',
   providers: [
     {
       provide: SEARCH_CONFIG_SERVICE,
@@ -35,7 +34,20 @@ import { ViewModeSwitchComponent } from '../../../../../../app/shared/view-mode-
     },
   ],
   standalone: true,
-  imports: [NgIf, ViewModeSwitchComponent, SearchSwitchConfigurationComponent, ThemedSearchFiltersComponent, ThemedSearchSettingsComponent, TranslateModule, AdvancedSearchComponent, AsyncPipe],
+  imports: [NgIf, ViewModeSwitchComponent, SearchSwitchConfigurationComponent, ThemedSearchFiltersComponent, ThemedSearchSettingsComponent, TranslateModule, AdvancedSearchComponent, AsyncPipe, PedspaceViewToggleComponent],
 })
 export class SearchSidebarComponent extends BaseComponent {
+  /** UUID of the PEDSnet Studies community — the only scope that shows the project toggle. */
+  readonly STUDIES_COMMUNITY_UUID = '92eba3a4-d7d3-43bd-b3f9-0f84c68c08f6';
+
+  /**
+   * True only when we're inside the Studies community AND the backend
+   * reports that at least one result has a projectEndDate value (hasFacets).
+   */
+  get showProjectToggle$(): boolean {
+        if (this.currentScope !== this.STUDIES_COMMUNITY_UUID) {
+          return false;
+        }
+        return true;
+  }
 }

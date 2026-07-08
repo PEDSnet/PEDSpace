@@ -267,6 +267,8 @@
                 <ref bean="searchFilterAffiliation" />
                 <ref bean="searchFilterFunder" />
                 <ref bean="searchFilterCreated" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
@@ -287,6 +289,7 @@
                 <ref bean="searchFilterEntityType" />
                 <ref bean="searchFilterQuality" />
                 <ref bean="searchFilterCommittee" />
+                <ref bean="searchFilterSiteLead" />
             </list>
         </property>
         <!-- Set TagCloud configuration per discovery configuration -->
@@ -336,11 +339,14 @@
                 <!-- New Search Filters -->
                 <ref bean="searchFilterAffiliation" />
                 <ref bean="searchFilterCreated" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterClinicalSubject" />
                 <ref bean="searchFilterQuality" />
                 <ref bean="searchFilterCheckReq" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterCommittee" />
+                <ref bean="searchFilterSiteLead" />
             </list>
         </property>
         <!--The
@@ -364,8 +370,7 @@
             <list>
                 <!--Only
                 find items, communities and collections-->
-                <value>(search.resourcetype:Item AND latestVersion:true) OR
-                    search.resourcetype:Collection OR search.resourcetype:Community</value>
+                <value>(search.resourcetype:Item AND latestVersion:true)</value>
                 <value>-withdrawn:true AND -discoverable:false</value>
             </list>
         </property>
@@ -383,7 +388,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
                 <property name="metadataFields">
@@ -489,14 +494,15 @@
             <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
                 <property name="sortFields">
                     <list>
-                        <ref bean="sortDateAccessioned" />
                         <ref bean="sortScore" />
+                        <ref bean="sortDateAccessioned" />
                         <ref bean="sortTitle" />
                         <ref bean="sortDateIssued" />
                     </list>
                 </property>
             </bean>
         </property>
+        <property name="defaultRpp" value="12" />
     </bean>
     <bean id="collectionConfiguration"
         class="org.dspace.discovery.configuration.DiscoveryConfiguration"
@@ -507,14 +513,15 @@
             <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
                 <property name="sortFields">
                     <list>
-                        <ref bean="sortDateAccessioned" />
                         <ref bean="sortScore" />
+                        <ref bean="sortDateAccessioned" />
                         <ref bean="sortTitle" />
                         <ref bean="sortDateIssued" />
                     </list>
                 </property>
             </bean>
         </property>
+        <property name="defaultRpp" value="12" />
     </bean>
     <bean id="defaultRelationshipsConfiguration"
         class="org.dspace.discovery.configuration.DiscoveryConfiguration" scope="prototype">
@@ -717,7 +724,7 @@
 
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
 
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
@@ -828,6 +835,8 @@
             <list>
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterEntityType" />
@@ -842,6 +851,8 @@
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />
@@ -894,7 +905,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
                 <property name="metadataFields">
@@ -1073,7 +1084,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
                 <property name="metadataFields">
@@ -1228,7 +1239,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
                 <property name="metadataFields">
@@ -1314,7 +1325,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
                 <property name="metadataFields">
@@ -1400,7 +1411,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
                 <property name="metadataFields">
@@ -1504,7 +1515,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
                 <property name="metadataFields">
@@ -1587,7 +1598,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="hitHighlightingConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightingConfiguration">
                 <property name="metadataFields">
@@ -1992,7 +2003,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="recentSubmissionConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryRecentSubmissionsConfiguration">
                 <property name="metadataSortField" value="dc.date.accessioned" />
@@ -2012,6 +2023,8 @@
         sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
@@ -2024,6 +2037,8 @@
         search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
@@ -2063,7 +2078,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="recentSubmissionConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryRecentSubmissionsConfiguration">
                 <property name="metadataSortField" value="dc.date.accessioned" />
@@ -2083,6 +2098,8 @@
         sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
@@ -2095,6 +2112,8 @@
         search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterSubject" />
                 <ref bean="searchFilterSubjectPop" />
                 <ref bean="searchFilterSubjectDataModel" />
@@ -2133,7 +2152,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="recentSubmissionConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryRecentSubmissionsConfiguration">
                 <property name="metadataSortField" value="dc.date.accessioned" />
@@ -2215,7 +2234,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true" />
     </bean>
@@ -2293,7 +2312,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true" />
     </bean>
@@ -2362,7 +2381,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true" />
     </bean>
@@ -2431,7 +2450,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true" />
     </bean>
@@ -2499,7 +2518,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true" />
     </bean>
@@ -2567,7 +2586,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true" />
     </bean>
@@ -2634,7 +2653,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true" />
     </bean>
@@ -2702,7 +2721,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true" />
     </bean>
@@ -2772,7 +2791,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true" />
     </bean>
@@ -2834,7 +2853,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true" />
     </bean>
@@ -2939,7 +2958,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
     </bean>
     <!--TagCloud
     configuration bean for default discovery configuration-->
@@ -3226,7 +3245,7 @@
             </list>
         </property>
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterWithdrawn"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -3237,7 +3256,7 @@
             </list>
         </property>
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterTitle" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
         <property name="indexFieldName" value="title" />
@@ -3247,7 +3266,7 @@
             </list>
         </property>
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     
     <!-- DQ Check specific search filters -->
@@ -3263,7 +3282,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     
     <bean id="searchFilterDQCheckCategory"
@@ -3278,7 +3297,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     
     <bean id="searchFilterDQCheckProbe"
@@ -3293,7 +3312,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     
     <bean id="searchFilterDQCheckClinicalAssessment"
@@ -3308,7 +3327,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     
     <bean id="searchFilterDQCheckVisualization"
@@ -3323,7 +3342,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     
     <bean id="searchFilterDQCheckMeasure"
@@ -3338,7 +3357,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsAuthorOfPublicationRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -3346,11 +3365,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isAuthorOfPublication.latestForDiscovery</value>
-                <value>relation.isAuthorOfPublication</value>
+                <!-- <value>relation.isAuthorOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsProjectOfPublicationRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -3358,11 +3377,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isProjectOfPublication.latestForDiscovery</value>
-                <value>relation.isProjectOfPublication</value>
+                <!-- <value>relation.isProjectOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsOrgUnitOfPublicationRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -3370,11 +3389,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfPublication.latestForDiscovery</value>
-                <value>relation.isOrgUnitOfPublication</value>
+                <!-- <value>relation.isOrgUnitOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- <value>relation.isOrgUnitOfStudy.latestForDiscovery OR relation.isOrgUnitOfStudy</value> -->
@@ -3384,11 +3403,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfStudy.latestForDiscovery</value>
-                <value>relation.isOrgUnitOfStudy</value>
+                <!-- <value>relation.isOrgUnitOfStudy</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPersonOfStudyRelation"
@@ -3397,11 +3416,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfStudy.latestForDiscovery</value>
-                <value>relation.isPersonOfStudy</value>
+                <!-- <value>relation.isPersonOfStudy</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPersonOfPhenotypeRelation"
@@ -3410,11 +3429,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfPhenotype.latestForDiscovery</value>
-                <value>relation.isPersonOfPhenotype</value>
+                <!-- <value>relation.isPersonOfPhenotype</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPersonOfDQCheckRelation"
@@ -3423,11 +3442,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfDQCheck.latestForDiscovery</value>
-                <value>relation.isPersonOfDQCheck</value>
+                <!-- <value>relation.isPersonOfDQCheck</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPublicationOfJournalIssueRelation"
@@ -3436,11 +3455,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfJournalIssue.latestForDiscovery</value>
-                <value>relation.isPublicationOfJournalIssue</value>
+                <!-- <value>relation.isPublicationOfJournalIssue</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsJournalOfPublicationRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -3448,11 +3467,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isJournalOfPublication.latestForDiscovery</value>
-                <value>relation.isJournalOfPublication</value>
+                <!-- <value>relation.isJournalOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Additional Publication Relationship Search Filters -->
@@ -3462,11 +3481,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfPublication.latestForDiscovery</value>
-                <value>relation.isPersonOfPublication</value>
+                <!-- <value>relation.isPersonOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsConceptSetOfPublicationRelation"
@@ -3475,11 +3494,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfPublication.latestForDiscovery</value>
-                <value>relation.isConceptSetOfPublication</value>
+                <!-- <value>relation.isConceptSetOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsStudyOfPublicationRelation"
@@ -3488,11 +3507,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfPublication.latestForDiscovery</value>
-                <value>relation.isStudyOfPublication</value>
+                <!-- <value>relation.isStudyOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsDQCheckOfPublicationRelation"
@@ -3501,11 +3520,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQCheckOfPublication.latestForDiscovery</value>
-                <value>relation.isDQCheckOfPublication</value>
+                <!-- <value>relation.isDQCheckOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsDocumentationOfPublicationRelation"
@@ -3514,11 +3533,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfPublication.latestForDiscovery</value>
-                <value>relation.isDocumentationOfPublication</value>
+                <!-- <value>relation.isDocumentationOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPhenotypeOfPublicationRelation"
@@ -3527,11 +3546,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfPublication.latestForDiscovery</value>
-                <value>relation.isPhenotypeOfPublication</value>
+                <!-- <value>relation.isPhenotypeOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsDQResultOfPublicationRelation"
@@ -3540,11 +3559,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfPublication.latestForDiscovery</value>
-                <value>relation.isDQResultOfPublication</value>
+                <!-- <value>relation.isDQResultOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsCodeOfPublicationRelation"
@@ -3553,11 +3572,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfPublication.latestForDiscovery</value>
-                <value>relation.isCodeOfPublication</value>
+                <!-- <value>relation.isCodeOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPublicationOfPublicationRelation"
@@ -3566,11 +3585,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfPublication.latestForDiscovery</value>
-                <value>relation.isPublicationOfPublication</value>
+                <!-- <value>relation.isPublicationOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Reverse Publication Relationship Search Filters (isPublicationOf* - indexed on related entity) -->
@@ -3580,11 +3599,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfStudy.latestForDiscovery</value>
-                <value>relation.isPublicationOfStudy</value>
+                <!-- <value>relation.isPublicationOfStudy</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPublicationOfConceptSetRelation"
@@ -3593,11 +3612,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfConceptSet.latestForDiscovery</value>
-                <value>relation.isPublicationOfConceptSet</value>
+                <!-- <value>relation.isPublicationOfConceptSet</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPublicationOfPhenotypeRelation"
@@ -3606,11 +3625,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfPhenotype.latestForDiscovery</value>
-                <value>relation.isPublicationOfPhenotype</value>
+                <!-- <value>relation.isPublicationOfPhenotype</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPublicationOfDQResultRelation"
@@ -3619,11 +3638,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfDQResult.latestForDiscovery</value>
-                <value>relation.isPublicationOfDQResult</value>
+                <!-- <value>relation.isPublicationOfDQResult</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPublicationOfDQCheckRelation"
@@ -3632,11 +3651,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfDQCheck.latestForDiscovery</value>
-                <value>relation.isPublicationOfDQCheck</value>
+                <!-- <value>relation.isPublicationOfDQCheck</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPublicationOfDocumentationRelation"
@@ -3645,11 +3664,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfDocumentation.latestForDiscovery</value>
-                <value>relation.isPublicationOfDocumentation</value>
+                <!-- <value>relation.isPublicationOfDocumentation</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPublicationOfPersonRelation"
@@ -3658,11 +3677,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfPerson.latestForDiscovery</value>
-                <value>relation.isPublicationOfPerson</value>
+                <!-- <value>relation.isPublicationOfPerson</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPublicationOfCodeRelation"
@@ -3671,11 +3690,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfCode.latestForDiscovery</value>
-                <value>relation.isPublicationOfCode</value>
+                <!-- <value>relation.isPublicationOfCode</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Documentation Relationship Search Filters -->
@@ -3686,11 +3705,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfDocumentation.latestForDiscovery</value>
-                <value>relation.isDocumentationOfDocumentation</value>
+                <!-- <value>relation.isDocumentationOfDocumentation</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Organization relationships -->
@@ -3699,11 +3718,12 @@
         <property name="indexFieldName" value="isOrgUnitOfDocumentation" />
         <property name="metadataFields">
             <list>
-                <value>relation.isOrgUnitOfDocumentation</value>
+                <value>relation.isOrgUnitOfDocumentation.latestForDiscovery</value>
+                <!-- <value>relation.isOrgUnitOfDocumentation</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsDocumentationOfOrgUnitRelation"
@@ -3712,11 +3732,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfOrgUnit.latestForDiscovery</value>
-                <value>relation.isDocumentationOfOrgUnit</value>
+                <!-- <value>relation.isDocumentationOfOrgUnit</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Person relationships -->
@@ -3726,11 +3746,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfPerson.latestForDiscovery</value>
-                <value>relation.isDocumentationOfPerson</value>
+                <!-- <value>relation.isDocumentationOfPerson</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPersonOfDocumentationRelation"
@@ -3739,11 +3759,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfDocumentation.latestForDiscovery</value>
-                <value>relation.isPersonOfDocumentation</value>
+                <!-- <value>relation.isPersonOfDocumentation</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Study relationships -->
@@ -3753,11 +3773,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfStudy.latestForDiscovery</value>
-                <value>relation.isDocumentationOfStudy</value>
+                <!-- <value>relation.isDocumentationOfStudy</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsStudyOfDocumentationRelation"
@@ -3766,11 +3786,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfDocumentation.latestForDiscovery</value>
-                <value>relation.isStudyOfDocumentation</value>
+                <!-- <value>relation.isStudyOfDocumentation</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsStudyOfOrgUnitRelation"
@@ -3779,11 +3799,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfOrgUnit.latestForDiscovery</value>
-                <value>relation.isStudyOfOrgUnit</value>
+                <!-- <value>relation.isStudyOfOrgUnit</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- ConceptSet relationships -->
@@ -3793,11 +3813,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfConceptSet.latestForDiscovery</value>
-                <value>relation.isDocumentationOfConceptSet</value>
+                <!-- <value>relation.isDocumentationOfConceptSet</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsConceptSetOfDocumentationRelation"
@@ -3806,11 +3826,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfDocumentation.latestForDiscovery</value>
-                <value>relation.isConceptSetOfDocumentation</value>
+                <!-- <value>relation.isConceptSetOfDocumentation</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsConceptSetOfOrgUnitRelation"
@@ -3819,11 +3839,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfOrgUnit.latestForDiscovery</value>
-                <value>relation.isConceptSetOfOrgUnit</value>
+                <!-- <value>relation.isConceptSetOfOrgUnit</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Phenotype relationships -->
@@ -3833,11 +3853,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfPhenotype.latestForDiscovery</value>
-                <value>relation.isDocumentationOfPhenotype</value>
+                <!-- <value>relation.isDocumentationOfPhenotype</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsPhenotypeOfDocumentationRelation"
@@ -3846,11 +3866,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfDocumentation.latestForDiscovery</value>
-                <value>relation.isPhenotypeOfDocumentation</value>
+                <!-- <value>relation.isPhenotypeOfDocumentation</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- DQCheck relationships -->
@@ -3860,11 +3880,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfDQCheck.latestForDiscovery</value>
-                <value>relation.isDocumentationOfDQCheck</value>
+                <!-- <value>relation.isDocumentationOfDQCheck</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
 
@@ -3882,7 +3902,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterFunder"
@@ -3917,8 +3937,39 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
+    </bean>
+    <bean id="searchFilterProjectStartDate"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="projectStartDate" />
+        <property name="metadataFields">
+            <list>
+                <value>project.startDate</value>
+            </list>
+        </property>
+        <property name="type" value="date" />
+        <property name="facetLimit" value="5" />
+        <property name="sortOrderSidebar" value="COUNT" />
+        <property name="sortOrderFilterPage" value="COUNT" />
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="12" />
+        <property name="exposeMinAndMaxValue" value="true" />
+    </bean>
+    <bean id="searchFilterProjectEndDate"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="projectEndDate" />
+        <property name="metadataFields">
+            <list>
+                <value>project.endDate</value>
+            </list>
+        </property>
+        <property name="type" value="text" />
+        <property name="facetLimit" value="5" />
+        <property name="sortOrderSidebar" value="COUNT" />
+        <property name="sortOrderFilterPage" value="COUNT" />
+        <property name="isOpenByDefault" value="false" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterLastModified"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -3933,7 +3984,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterClinicalSubject"
@@ -3960,6 +4011,15 @@
         <property name="metadataFields">
             <list>
                 <value>local.contributor.committee</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="searchFilterSiteLead"
+        class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="siteLead" />
+        <property name="metadataFields">
+            <list>
+                <value>local.contributor.siteLead</value>
             </list>
         </property>
     </bean>
@@ -4073,7 +4133,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterEntityType"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -4127,11 +4187,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQCheckOfDocumentation.latestForDiscovery</value>
-                <value>relation.isDQCheckOfDocumentation</value>
+                <!-- <value>relation.isDQCheckOfDocumentation</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsDQCheckOfOrgUnitRelation"
@@ -4140,11 +4200,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQCheckOfOrgUnit.latestForDiscovery</value>
-                <value>relation.isDQCheckOfOrgUnit</value>
+                <!-- <value>relation.isDQCheckOfOrgUnit</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsDQCheckOfPersonRelation"
@@ -4153,11 +4213,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQCheckOfPerson.latestForDiscovery</value>
-                <value>relation.isDQCheckOfPerson</value>
+                <!-- <value>relation.isDQCheckOfPerson</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsDQCheckOfPhenotypeRelation"
@@ -4166,11 +4226,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQCheckOfPhenotype.latestForDiscovery</value>
-                <value>relation.isDQCheckOfPhenotype</value>
+                <!-- <value>relation.isDQCheckOfPhenotype</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsDQCheckOfDQResultRelation"
@@ -4179,11 +4239,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQCheckOfDQResult.latestForDiscovery</value>
-                <value>relation.isDQCheckOfDQResult</value>
+                <!-- <value>relation.isDQCheckOfDQResult</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsDocumentationOfDQResultRelation"
@@ -4192,11 +4252,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfDQResult.latestForDiscovery</value>
-                <value>relation.isDocumentationOfDQResult</value>
+                <!-- <value>relation.isDocumentationOfDQResult</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIssued"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -4211,7 +4271,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterType"
@@ -4244,7 +4304,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterKnowsLanguage"
@@ -4272,7 +4332,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterFamilyName"
@@ -4284,7 +4344,7 @@
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterGivenName"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4295,7 +4355,7 @@
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsOrgUnitOfPersonRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4303,11 +4363,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfPerson.latestForDiscovery</value>
-                <value>relation.isOrgUnitOfPerson</value>
+                <!-- <value>relation.isOrgUnitOfPerson</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsProjectOfPersonRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4315,11 +4375,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isProjectOfPerson.latestForDiscovery</value>
-                <value>relation.isProjectOfPerson</value>
+                <!-- <value>relation.isProjectOfPerson</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPublicationOfAuthorRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4327,11 +4387,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfAuthor.latestForDiscovery</value>
-                <value>relation.isPublicationOfAuthor</value>
+                <!-- <value>relation.isPublicationOfAuthor</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterOrganizationAddressCountry"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -4345,7 +4405,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterOrganizationAddressLocality"
@@ -4360,7 +4420,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterOrganizationFoundingDate"
@@ -4376,7 +4436,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterOrganizationLegalName"
@@ -4388,7 +4448,7 @@
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPersonOfOrgUnitRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4396,11 +4456,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfOrgUnit.latestForDiscovery</value>
-                <value>relation.isPersonOfOrgUnit</value>
+                <!-- <value>relation.isPersonOfOrgUnit</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsProjectOfOrgUnitRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4408,11 +4468,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isProjectOfOrgUnit.latestForDiscovery</value>
-                <value>relation.isProjectOfOrgUnit</value>
+                <!-- <value>relation.isProjectOfOrgUnit</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPublicationOfOrgUnitRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4420,11 +4480,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfOrgUnit.latestForDiscovery</value>
-                <value>relation.isPublicationOfOrgUnit</value>
+                <!-- <value>relation.isPublicationOfOrgUnit</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterCreativeWorkKeywords"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -4438,7 +4498,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterCreativeWorkDatePublished"
@@ -4454,7 +4514,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterPublicationIssueNumber"
@@ -4466,7 +4526,7 @@
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPublicationOfJournalIssue"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4474,11 +4534,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfJournalIssue.latestForDiscovery</value>
-                <value>relation.isPublicationOfJournalIssue</value>
+                <!-- <value>relation.isPublicationOfJournalIssue</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterPublicationVolumeNumber"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4489,7 +4549,7 @@
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsIssueOfJournalVolumeRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4497,11 +4557,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isIssueOfJournalVolume.latestForDiscovery</value>
-                <value>relation.isIssueOfJournalVolume</value>
+                <!-- <value>relation.isIssueOfJournalVolume</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsJournalVolumeRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4509,11 +4569,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isJournalOfVolume.latestForDiscovery</value>
-                <value>relation.isJournalOfVolume</value>
+                <!-- <value>relation.isJournalOfVolume</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterCreativeWorkPublisher"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -4527,7 +4587,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterCreativeWorkEditor"
@@ -4542,7 +4602,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterIsVolumeOfJournalRelation"
@@ -4551,11 +4611,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isVolumeOfJournal.latestForDiscovery</value>
-                <value>relation.isVolumeOfJournal</value>
+                <!-- <value>relation.isVolumeOfJournal</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <!-- Used only to READ "submitter" facets (managed programmatically at SolrServiceImpl) -->
     <bean id="searchFilterSubmitter"
@@ -4574,11 +4634,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfProject.latestForDiscovery</value>
-                <value>relation.isOrgUnitOfProject</value>
+                <!-- <value>relation.isOrgUnitOfProject</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPersonOfProjectRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4586,11 +4646,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfProject.latestForDiscovery</value>
-                <value>relation.isPersonOfProject</value>
+                <!-- <value>relation.isPersonOfProject</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPublicationOfProjectRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4598,11 +4658,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfProject.latestForDiscovery</value>
-                <value>relation.isPublicationOfProject</value>
+                <!-- <value>relation.isPublicationOfProject</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsContributorOfPublicationRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4610,11 +4670,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isContributorOfPublication.latestForDiscovery</value>
-                <value>relation.isContributorOfPublication</value>
+                <!-- <value>relation.isContributorOfPublication</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPublicationOfContributorRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4622,11 +4682,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPublicationOfContributor.latestForDiscovery</value>
-                <value>relation.isPublicationOfContributor</value>
+                <!-- <value>relation.isPublicationOfContributor</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsFundingAgencyOfProjectRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4634,11 +4694,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isFundingAgencyOfProject.latestForDiscovery</value>
-                <value>relation.isFundingAgencyOfProject</value>
+                <!-- <value>relation.isFundingAgencyOfProject</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsProjectOfFundingAgencyRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -4646,11 +4706,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isProjectOfFundingAgency.latestForDiscovery</value>
-                <value>relation.isProjectOfFundingAgency</value>
+                <!-- <value>relation.isProjectOfFundingAgency</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <!-- Used only to READ "supervisedBy" facets -->
     <bean id="searchFilterSupervision"
@@ -4674,7 +4734,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterNotifyLdnService"
@@ -4688,7 +4748,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterNotifyOrigin"
@@ -4702,7 +4762,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterNotifyTarget"
@@ -4716,7 +4776,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterNotifyQueueStatus"
@@ -4730,7 +4790,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterNotifyActivityStreamType"
@@ -4744,7 +4804,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterNotifyCoarNotifyType"
@@ -4758,7 +4818,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterNotifyNotificationType"
@@ -4772,7 +4832,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <bean id="searchFilterNotifyRelation"
@@ -4788,7 +4848,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterNotifyEndorsement"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -4802,7 +4862,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterNotifyReview"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -4816,7 +4876,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="true" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterNotifyLastStartTime"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -4831,7 +4891,7 @@
         <property name="sortOrderSidebar" value="COUNT" />
         <property name="sortOrderFilterPage" value="COUNT" />
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
         <property name="exposeMinAndMaxValue" value="true" />
     </bean>
     <!--Sort
@@ -5028,7 +5088,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="recentSubmissionConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryRecentSubmissionsConfiguration">
                 <property name="metadataSortField" value="dc.date.accessioned" />
@@ -5112,7 +5172,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <property name="recentSubmissionConfiguration">
             <bean class="org.dspace.discovery.configuration.DiscoveryRecentSubmissionsConfiguration">
                 <property name="metadataSortField" value="dc.date.accessioned" />
@@ -5586,7 +5646,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true" />
     </bean>
@@ -5693,7 +5753,7 @@
         </property>
         <!--Default
         result per page  -->
-        <property name="defaultRpp" value="10" />
+        <property name="defaultRpp" value="12" />
         <!-- When true a "did you mean" example will be displayed, value can be true or false -->
         <property name="spellCheckEnabled" value="true" />
     </bean>
@@ -6364,6 +6424,8 @@
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterCreated" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterAffiliation" />
                 <ref bean="searchFilterFunder" />
                 <ref bean="searchFilterClinicalSubject" />
@@ -6394,6 +6456,8 @@
                 <ref bean="searchFilterSubjectMedTermChar" />
                 <ref bean="searchFilterIssued" />
                 <ref bean="searchFilterCreated" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
                 <ref bean="searchFilterLastModified" />
                 <ref bean="searchFilterAffiliation" />
                 <ref bean="searchFilterFunder" />
@@ -6481,6 +6545,8 @@
             <list>
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterEntityType" />
@@ -6495,6 +6561,8 @@
                 <ref bean="searchFilterTitle" />
                 <ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterSubject" />
+                <ref bean="searchFilterProjectStartDate" />
+                <ref bean="searchFilterProjectEndDate" />
 
                 <ref bean="searchFilterContentInOriginalBundle" />
                 <ref bean="searchFilterFileNameInOriginalBundle" />
@@ -6708,11 +6776,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfPhenotype.latestForDiscovery</value>
-                <value>relation.isConceptSetOfPhenotype</value>
+                <!-- <value>relation.isConceptSetOfPhenotype</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsConceptSetOfStudyRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -6720,11 +6788,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfStudy.latestForDiscovery</value>
-                <value>relation.isConceptSetOfStudy</value>
+                <!-- <value>relation.isConceptSetOfStudy</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsStudyOfConceptSetRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -6732,11 +6800,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfConceptSet.latestForDiscovery</value>
-                <value>relation.isStudyOfConceptSet</value>
+                <!-- <value>relation.isStudyOfConceptSet</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsStudyOfPersonRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -6744,11 +6812,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfPerson.latestForDiscovery</value>
-                <value>relation.isStudyOfPerson</value>
+                <!-- <value>relation.isStudyOfPerson</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsStudyOfPhenotypeRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -6756,11 +6824,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfPhenotype.latestForDiscovery</value>
-                <value>relation.isStudyOfPhenotype</value>
+                <!-- <value>relation.isStudyOfPhenotype</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPhenotypeOfConceptSetRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -6768,11 +6836,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfConceptSet.latestForDiscovery</value>
-                <value>relation.isPhenotypeOfConceptSet</value>
+                <!-- <value>relation.isPhenotypeOfConceptSet</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPhenotypeOfPersonRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -6780,11 +6848,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfPerson.latestForDiscovery</value>
-                <value>relation.isPhenotypeOfPerson</value>
+                <!-- <value>relation.isPhenotypeOfPerson</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPhenotypeOfStudyRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -6792,11 +6860,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfStudy.latestForDiscovery</value>
-                <value>relation.isPhenotypeOfStudy</value>
+                <!-- <value>relation.isPhenotypeOfStudy</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPersonOfConceptSetRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -6804,11 +6872,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfConceptSet.latestForDiscovery</value>
-                <value>relation.isPersonOfConceptSet</value>
+                <!-- <value>relation.isPersonOfConceptSet</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsConceptSetOfPersonRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -6816,11 +6884,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfPerson.latestForDiscovery</value>
-                <value>relation.isConceptSetOfPerson</value>
+                <!-- <value>relation.isConceptSetOfPerson</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <!-- DQResult Relationship with OrgUnit -->
     <bean id="searchFilterIsDQResultOfOrgUnitRelation"
@@ -6829,11 +6897,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfOrgUnit.latestForDiscovery</value>
-                <value>relation.isDQResultOfOrgUnit</value>
+                <!-- <value>relation.isDQResultOfOrgUnit</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsOrgUnitOfDQResultRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -6841,11 +6909,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfDQResult.latestForDiscovery</value>
-                <value>relation.isOrgUnitOfDQResult</value>
+                <!-- <value>relation.isOrgUnitOfDQResult</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsOrgUnitOfDQCheckRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -6853,11 +6921,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfDQCheck.latestForDiscovery</value>
-                <value>relation.isOrgUnitOfDQCheck</value>
+                <!-- <value>relation.isOrgUnitOfDQCheck</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsOrgUnitOfOrgUnitRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -6865,11 +6933,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfOrgUnit.latestForDiscovery</value>
-                <value>relation.isOrgUnitOfOrgUnit</value>
+                <!-- <value>relation.isOrgUnitOfOrgUnit</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsOrgUnitOfPhenotypeRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -6877,11 +6945,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfPhenotype.latestForDiscovery</value>
-                <value>relation.isOrgUnitOfPhenotype</value>
+                <!-- <value>relation.isOrgUnitOfPhenotype</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsOrgUnitOfConceptSetRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -6889,11 +6957,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfConceptSet.latestForDiscovery</value>
-                <value>relation.isOrgUnitOfConceptSet</value>
+                <!-- <value>relation.isOrgUnitOfConceptSet</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- DQResult Relationship with Person -->
@@ -6903,11 +6971,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfPerson.latestForDiscovery</value>
-                <value>relation.isDQResultOfPerson</value>
+                <!-- <value>relation.isDQResultOfPerson</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPersonOfDQResultRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -6915,11 +6983,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfDQResult.latestForDiscovery</value>
-                <value>relation.isPersonOfDQResult</value>
+                <!-- <value>relation.isPersonOfDQResult</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPersonOfPersonRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -6927,11 +6995,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfPerson.latestForDiscovery</value>
-                <value>relation.isPersonOfPerson</value>
+                <!-- <value>relation.isPersonOfPerson</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- DQResult Relationship with ConceptSet -->
@@ -6941,11 +7009,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfConceptSet.latestForDiscovery</value>
-                <value>relation.isDQResultOfConceptSet</value>
+                <!-- <value>relation.isDQResultOfConceptSet</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsConceptSetOfDQResultRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -6953,11 +7021,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfDQResult.latestForDiscovery</value>
-                <value>relation.isConceptSetOfDQResult</value>
+                <!-- <value>relation.isConceptSetOfDQResult</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsConceptSetOfDQCheckRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -6965,11 +7033,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfDQCheck.latestForDiscovery</value>
-                <value>relation.isConceptSetOfDQCheck</value>
+                <!-- <value>relation.isConceptSetOfDQCheck</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsConceptSetOfConceptSetRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -6977,11 +7045,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfConceptSet.latestForDiscovery</value>
-                <value>relation.isConceptSetOfConceptSet</value>
+                <!-- <value>relation.isConceptSetOfConceptSet</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- DQResult Relationship with Study -->
@@ -6991,11 +7059,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfStudy.latestForDiscovery</value>
-                <value>relation.isDQResultOfStudy</value>
+                <!-- <value>relation.isDQResultOfStudy</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsStudyOfDQCheckRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -7003,11 +7071,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfDQCheck.latestForDiscovery</value>
-                <value>relation.isStudyOfDQCheck</value>
+                <!-- <value>relation.isStudyOfDQCheck</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsStudyOfDQResultRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -7015,11 +7083,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfDQResult.latestForDiscovery</value>
-                <value>relation.isStudyOfDQResult</value>
+                <!-- <value>relation.isStudyOfDQResult</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- DQResult Relationship with DQCheck -->
@@ -7029,11 +7097,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfDQCheck.latestForDiscovery</value>
-                <value>relation.isDQResultOfDQCheck</value>
+                <!-- <value>relation.isDQResultOfDQCheck</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <!-- DQResult Relationship with Documentation -->
     <bean id="searchFilterIsDQResultOfDocumentationRelation"
@@ -7042,11 +7110,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfDocumentation.latestForDiscovery</value>
-                <value>relation.isDQResultOfDocumentation</value>
+                <!-- <value>relation.isDQResultOfDocumentation</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- DQResult Relationship with Phenotype -->
@@ -7056,11 +7124,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfPhenotype.latestForDiscovery</value>
-                <value>relation.isDQResultOfPhenotype</value>
+                <!-- <value>relation.isDQResultOfPhenotype</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPhenotypeOfDQResultRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -7068,11 +7136,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfDQResult.latestForDiscovery</value>
-                <value>relation.isPhenotypeOfDQResult</value>
+                <!-- <value>relation.isPhenotypeOfDQResult</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
     <bean id="searchFilterIsPhenotypeOfDQCheckRelation"
         class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -7080,11 +7148,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfDQCheck.latestForDiscovery</value>
-                <value>relation.isPhenotypeOfDQCheck</value>
+                <!-- <value>relation.isPhenotypeOfDQCheck</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- DQResult Self Relationship -->
@@ -7094,11 +7162,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfDQResult.latestForDiscovery</value>
-                <value>relation.isDQResultOfDQResult</value>
+                <!-- <value>relation.isDQResultOfDQResult</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Code Relationship Search Filters -->
@@ -7109,11 +7177,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfCode.latestForDiscovery</value>
-                <value>relation.isCodeOfCode</value>
+                <!-- <value>relation.isCodeOfCode</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Code to ConceptSet -->
@@ -7123,11 +7191,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isConceptSetOfCode.latestForDiscovery</value>
-                <value>relation.isConceptSetOfCode</value>
+                <!-- <value>relation.isConceptSetOfCode</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsCodeOfConceptSetRelation"
@@ -7136,11 +7204,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfConceptSet.latestForDiscovery</value>
-                <value>relation.isCodeOfConceptSet</value>
+                <!-- <value>relation.isCodeOfConceptSet</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Code to Study -->
@@ -7150,11 +7218,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isStudyOfCode.latestForDiscovery</value>
-                <value>relation.isStudyOfCode</value>
+                <!-- <value>relation.isStudyOfCode</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsCodeOfStudyRelation"
@@ -7163,11 +7231,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfStudy.latestForDiscovery</value>
-                <value>relation.isCodeOfStudy</value>
+                <!-- <value>relation.isCodeOfStudy</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Code to Documentation -->
@@ -7177,11 +7245,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDocumentationOfCode.latestForDiscovery</value>
-                <value>relation.isDocumentationOfCode</value>
+                <!-- <value>relation.isDocumentationOfCode</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsCodeOfDocumentationRelation"
@@ -7190,11 +7258,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfDocumentation.latestForDiscovery</value>
-                <value>relation.isCodeOfDocumentation</value>
+                <!-- <value>relation.isCodeOfDocumentation</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Code to Person -->
@@ -7204,11 +7272,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPersonOfCode.latestForDiscovery</value>
-                <value>relation.isPersonOfCode</value>
+                <!-- <value>relation.isPersonOfCode</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsCodeOfPersonRelation"
@@ -7217,11 +7285,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfPerson.latestForDiscovery</value>
-                <value>relation.isCodeOfPerson</value>
+                <!-- <value>relation.isCodeOfPerson</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Code to OrgUnit -->
@@ -7231,11 +7299,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isOrgUnitOfCode.latestForDiscovery</value>
-                <value>relation.isOrgUnitOfCode</value>
+                <!-- <value>relation.isOrgUnitOfCode</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsCodeOfOrgUnitRelation"
@@ -7244,11 +7312,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfOrgUnit.latestForDiscovery</value>
-                <value>relation.isCodeOfOrgUnit</value>
+                <!-- <value>relation.isCodeOfOrgUnit</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Code to Phenotype -->
@@ -7258,11 +7326,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isPhenotypeOfCode.latestForDiscovery</value>
-                <value>relation.isPhenotypeOfCode</value>
+                <!-- <value>relation.isPhenotypeOfCode</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsCodeOfPhenotypeRelation"
@@ -7271,11 +7339,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfPhenotype.latestForDiscovery</value>
-                <value>relation.isCodeOfPhenotype</value>
+                <!-- <value>relation.isCodeOfPhenotype</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Code to DQCheck -->
@@ -7285,11 +7353,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQCheckOfCode.latestForDiscovery</value>
-                <value>relation.isDQCheckOfCode</value>
+                <!-- <value>relation.isDQCheckOfCode</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsCodeOfDQCheckRelation"
@@ -7298,11 +7366,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfDQCheck.latestForDiscovery</value>
-                <value>relation.isCodeOfDQCheck</value>
+                <!-- <value>relation.isCodeOfDQCheck</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <!-- Code to DQResult -->
@@ -7312,11 +7380,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isDQResultOfCode.latestForDiscovery</value>
-                <value>relation.isDQResultOfCode</value>
+                <!-- <value>relation.isDQResultOfCode</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
     <bean id="searchFilterIsCodeOfDQResultRelation"
@@ -7325,11 +7393,11 @@
         <property name="metadataFields">
             <list>
                 <value>relation.isCodeOfDQResult.latestForDiscovery</value>
-                <value>relation.isCodeOfDQResult</value>
+                <!-- <value>relation.isCodeOfDQResult</value> -->
             </list>
         </property>
         <property name="isOpenByDefault" value="false" />
-        <property name="pageSize" value="10" />
+        <property name="pageSize" value="12" />
     </bean>
 
 </beans>

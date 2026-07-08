@@ -1,0 +1,15 @@
+.pedspace-view-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+
+    .label {
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    .btn {
+        min-width: 70px;
+    }
+}
