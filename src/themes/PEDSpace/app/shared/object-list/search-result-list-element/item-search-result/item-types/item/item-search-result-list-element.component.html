@@ -1,16 +1,18 @@
 <div class="row">
-    <div *ngIf="showThumbnails" class="col-3 col-md-2">
+    <!-- <div *ngIf="showThumbnails" class="col-3 col-md-2">
       <a *ngIf="linkType !== linkTypes.None" [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
          [routerLink]="[itemPageRoute]" class="dont-break-out">
       <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="true">
       </ds-thumbnail>
+
       </a>
       <span *ngIf="linkType === linkTypes.None" class="dont-break-out">
       <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="true">
       </ds-thumbnail>
       </span>
-    </div>
-    <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
+    </div> -->
+    <!-- <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'"> -->
+    <div class='col-md-12'>
       <div class="d-flex">
         <ds-badges *ngIf="showLabel" [object]="dso" [context]="context" [showAccessStatus]="true"></ds-badges>
       </div>
@@ -45,3 +47,4 @@
       </ds-truncatable>
     </div>
   </div>
+  
