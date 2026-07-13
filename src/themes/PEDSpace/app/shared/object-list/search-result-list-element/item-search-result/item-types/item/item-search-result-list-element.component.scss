@@ -72,20 +72,16 @@
 
 // Title styling
 .item-list-title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  line-height: 1.4;
-  // color: $midnight-green;
-  text-decoration: underline;
-  text-decoration-color: rgba($redwood, 0.4);
-  text-underline-offset: 3px;
+  font-size: 1.1rem;
+  font-weight: 550;
+  color: #1a4d4a;
+  text-decoration: none;
   margin-bottom: 0.5rem;
   display: block;
   transition: all 0.2s ease;
   
   &:hover {
-    color: darken($redwood, 25%);
-    text-decoration: none;
+    text-decoration: underline;
   }
   
   &:focus {
@@ -96,20 +92,21 @@
 
 // Metadata styling (publisher, date, authors)
 .text-muted {
-  font-size: 0.9rem;
+  font-size: 1.0rem;
   line-height: 1.5;
   // color: #6c757d !important;
   margin-bottom: 0.75rem;
   
   .item-list-publisher {
     font-weight: 500;
-    color: #495057;
+    color: #2C2C2C;
   }
   
   .item-list-date {
     font-weight: 400;
-    color: #495057;
+    color: #2C2C2C;
     margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
     
     &::after {
       content: "";
@@ -119,10 +116,10 @@
   
   .item-list-contributors {
     display: inline-block;
-    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
     
     span {
-      color: #495057;
+      color: #2C2C2C;
       
       &:hover {
         color: #2c3e50;
@@ -132,10 +129,10 @@
   
   .item-list-authors {
     display: block;
-    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
     
     span {
-      color: #495057;
+      color: #2C2C2C;
       
       &:hover {
         color: #2c3e50;
@@ -146,8 +143,9 @@
   // Date field container styling
   strong {
     font-weight: 600;
-    color: #495057;
+    color: #2C2C2C;
     margin-right: 0.25rem;
+    margin-bottom: 0.5rem;
   }
   
   ng-container {
@@ -162,14 +160,11 @@
 
 // Abstract styling
 .item-list-abstract {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: #6c757d;
-  margin-top: 0.75rem;
-  // padding: 0.4rem;
-  // background-color: #f8f9fa;
-  // border-radius: 6px;
-  // border-left: 3px solid #e9ecef;
+  font-size: 1.0rem;
+  font-weight: 350;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  color: #2C2C2C;
   
   span {
     display: block;

@@ -208,7 +208,7 @@ ds-object-grid .card {
         ds-truncatable-part .h4 {
             .expandButton,
             .collapseButton {
-                display: none !important;
+                display: flex !important;
             }
         }
 
@@ -223,11 +223,13 @@ ds-object-grid .card {
         .item-abstract,
         .item-description {
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 7;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
             flex: 1;
+            font-size: 1.0rem;
+            color: #333739
         }
     }
 }
