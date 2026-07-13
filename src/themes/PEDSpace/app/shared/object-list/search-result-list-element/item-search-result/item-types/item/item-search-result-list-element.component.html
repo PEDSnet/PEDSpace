@@ -48,12 +48,13 @@
           <span class="text-muted">
             <ds-truncatable-part [id]="dso.id" [minLines]="1">
               <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type')">
+                
                 <!-- ConceptSet & Phenotype: Last Updated (dc.date), fallback to Created (dc.date.created) -->
                 <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'ConceptSet'">
-                  <strong>Last Updated:</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date')"></span> 
+                  <strong>Refreshed:</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date')"></span> 
                 </ng-container>
                 <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Phenotype'">
-                  <strong>Last Updated:</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date')"></span> 
+                  <strong>Refreshed:</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date')"></span> 
                 </ng-container>
                 
                 <!-- Study: Study Dates + Sponsor Site -->
