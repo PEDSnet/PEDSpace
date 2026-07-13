@@ -10,7 +10,7 @@
 <ng-template #clickableBadge let-browseDefinition>
   <a [routerLink]="['/browse', browseDefinition.id]"
      [queryParams]="getQueryParams(verificationStatus)"
-     class="badge" 
+     class="badge verification-badge" 
      [ngClass]="getBadgeClasses()">
     {{ verificationStatus | translate }}
   </a>
