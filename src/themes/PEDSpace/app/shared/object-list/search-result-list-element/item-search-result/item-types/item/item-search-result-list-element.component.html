@@ -23,13 +23,18 @@
            [innerHTML]="dsoTitle"></a>
         <span *ngIf="linkType === linkTypes.None" class="lead item-list-title dont-break-out"
               [innerHTML]="dsoTitle"></span>
-        <span class="text-muted">
+
+        <!--<span class="text-muted">
           <ds-truncatable-part [id]="dso.id" [minLines]="1">
             <ng-container *ngIf="dso.firstMetadataValue('dc.date')">
               <strong>Last Updated:</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date')"></span> 
             </ng-container>
             <ng-container *ngIf="dso.firstMetadataValue('dc.date.created')">
               <strong>{{ dso.firstMetadataValue('dspace.entity.type') === 'OrgUnit' ? 'Onboarded:' : 'Created:' }}</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date.created')"></span> 
+            </ng-container>
+            <ng-container *ngIf="dso.allMetadataValue('dc.contributor.other')">
+              <strong>{{ dso.firstMetadataValue('dspace.entity.type') === 'ConceptSet' || dso.firstMetadataValue('dspace.entity.type') === 'OrgUnit' ? 'Onboarded:' : 'Created:' }}</strong> 
+              <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date')"></span> 
             </ng-container>
             <span *ngIf="dso.allMetadata(['dc.contributor.other']).length > 0" class="item-list-contributors">
               <strong>Affiliation:</strong> 
@@ -38,7 +43,97 @@
               </span>
             </span>
           </ds-truncatable-part>
-        </span>
+        </span> -->
+
+          <span class="text-muted">
+            <ds-truncatable-part [id]="dso.id" [minLines]="1">
+              <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type')">
+                <!-- ConceptSet & Phenotype: Last Updated (dc.date), fallback to Created (dc.date.created) -->
+                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'ConceptSet'">
+                  <strong>Last Updated:</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date')"></span> 
+                </ng-container>
+                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Phenotype'">
+                  <strong>Last Updated:</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date')"></span> 
+                </ng-container>
+                
+                <!-- Study: Study Dates + Sponsor Site -->
+                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Study'">
+                  <ng-container *ngIf="dso.firstMetadataValue('project.startDate') || dso.firstMetadataValue('project.endDate')">
+                    <strong>Study Dates:</strong>
+                    <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('project.startDate')"></span> - <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('project.endDate')"></span>
+                  </ng-container>
+                  <!-- <ng-container *ngIf="dso.allMetadata('local.contributor.siteLead')">
+                    <strong>Sponsor Site:</strong> <span [innerHTML]="dso.firstMetadataValue('local.contributor.siteLead')"></span>
+                  </ng-container> -->
+                  <span *ngIf="dso.allMetadata(['local.contributor.siteLead']).length > 0" class="item-list-contributors">
+                    <strong>Sponsor Site:</strong>
+                    <span *ngFor="let siteLead of dso.allMetadataValues(['local.contributor.siteLead']); let last=last;">
+                      <span [innerHTML]="siteLead"></span><span *ngIf="!last">; </span>
+                    </span>
+                  </span>
+                </ng-container>
+
+                <!-- Publication: Published + Journal -->
+                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Publication'">
+                  <ng-container *ngIf="dso.firstMetadataValue('dc.date.created')">
+                    <strong>Published:</strong> <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
+                  </ng-container>
+                  <!-- <ng-container *ngIf="dso.allMetadataValue('dc.publisher')">
+                    <strong>Journal:</strong> <span [innerHTML]="dso.firstMetadataValue('dc.publisher')"></span>
+                  </ng-container> -->
+                  <span *ngIf="dso.allMetadata(['dc.publisher']).length > 0" class="item-list-contributors">
+                    <strong>Journal:</strong>
+                    <span *ngFor="let publisher of dso.allMetadataValues(['dc.publisher']); let last=last;">
+                      <span [innerHTML]="publisher"></span><span *ngIf="!last">; </span>
+                    </span>
+                  </span>
+                </ng-container>
+
+                <!-- DQCheck, DQResult, Documentation: Created only -->
+                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'DQCheck'">
+                  <strong>Created:</strong> <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
+                </ng-container>
+                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'DQResult'">
+                  <strong>Created:</strong> <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
+                </ng-container>
+                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Documentation'">
+                  <<strong>Created:</strong> <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
+                </ng-container>
+
+                <!-- Code: Created + Developer Affiliation -->
+                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Code'">
+                  <ng-container *ngIf="dso.firstMetadataValue('dc.date.created')">
+                    <strong>Created:</strong> <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
+                  </ng-container>
+                  <span *ngIf="dso.allMetadata(['dc.creator.other']).length > 0" class="item-list-contributors">
+                    <strong>Developer Affiliation:</strong>
+                    <span *ngFor="let contributor of dso.allMetadataValues(['dc.creator.other']); let last=last;">
+                      <span [innerHTML]="contributor"></span><span *ngIf="!last">; </span>
+                    </span>
+                  </span>
+                </ng-container>
+              </ng-container>  
+            </ds-truncatable-part>
+          </span>
+
+        <!-- Reusable templates -->
+        <ng-template #conceptSetPhenotypeFields>
+          <ng-container *ngIf="dso.firstMetadataValue('dc.date'); else createdFallback">
+            <strong>Last Updated:</strong> <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('dc.date')"></span>
+          </ng-container>
+          <ng-template #createdFallback>
+            <ng-container *ngIf="dso.firstMetadataValue('dc.date.created')">
+              <strong>Created:</strong> <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
+            </ng-container>
+          </ng-template>
+        </ng-template>
+
+        <ng-template #createdOnly>
+          <ng-container *ngIf="dso.firstMetadataValue('dc.date.created')">
+            <strong>Created:</strong> <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
+          </ng-container>
+        </ng-template>
+
         <div *ngIf="dso.firstMetadataValue('dc.description.abstract')" class="item-list-abstract">
           <ds-truncatable-part [id]="dso.id" [minLines]="3"><span
             [innerHTML]="firstMetadataValue('dc.description.abstract')"></span>
