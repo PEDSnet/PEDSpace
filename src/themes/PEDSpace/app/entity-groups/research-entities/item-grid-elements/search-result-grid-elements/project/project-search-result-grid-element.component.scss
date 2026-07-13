@@ -1,6 +1,9 @@
 .pedspace-project-card {
     border: 1px solid #e3e6e8;
     border-radius: 6px;
+    box-shadow: none;
+    padding: 0;
+    height: 100%;
 
     .header-row {
         display: flex;
@@ -15,12 +18,14 @@
         padding: 0.15rem 0.65rem;
         border-radius: 999px;
         font-size: 0.8rem;
-        font-weight: 600;
+        font-weight: bold;
         line-height: 1.4;
     }
 
     .card-title a {
-        color: inherit;
+        font-size: 1.0rem;
+        font-weight: 550;
+        color: #1a4d4a;
         text-decoration: none;
     }
 
@@ -28,8 +33,10 @@
         text-decoration: underline;
     }
 
-    .lead-site {
-        font-size: 0.9rem;
+    .lead-site,
+    .item-description {
+        font-size: 0.75 rem;
         margin-bottom: 0.5rem;
+        color: #6c757d;
     }
 }

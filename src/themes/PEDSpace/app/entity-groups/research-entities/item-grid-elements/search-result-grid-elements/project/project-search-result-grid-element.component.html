@@ -11,7 +11,16 @@
         <ds-badges *ngIf="showLabel" [object]="dso" [context]="context"></ds-badges>
       </div>
 
-      <!-- Linked title (no View button) -->
+
+      <div class="card-title">
+        <a *ngIf="linkType !== linkTypes.None"
+             [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
+             [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
+             [routerLink]="[itemPageRoute]">{{ plainTitle }}</a>
+        <span *ngIf="linkType === linkTypes.None">{{ plainTitle }}</span>
+      </div>
+
+      <!-- Linked title (no View button) 
       <ds-truncatable-part [id]="dso.id" [minLines]="3" type="h4">
         <h4 class="card-title">
           <a *ngIf="linkType !== linkTypes.None"
@@ -20,7 +29,7 @@
              [routerLink]="[itemPageRoute]">{{ plainTitle }}</a>
           <span *ngIf="linkType === linkTypes.None">{{ plainTitle }}</span>
         </h4>
-      </ds-truncatable-part>
+      </ds-truncatable-part> -->
 
       <!-- Lead Site -->
       <p *ngIf="leadSite" class="lead-site card-text">
@@ -29,9 +38,9 @@
 
       <!-- Abstract -->
       <ds-truncatable-part *ngIf="abstract" [id]="dso.id" [minLines]="3">
-        <p class="item-description card-text text-muted mb-0">
+        <div class="item-description card-text text-muted mb-0">
           <span [innerHTML]="abstract"></span>
-        </p>
+        </div>
       </ds-truncatable-part>
 
     </div>
