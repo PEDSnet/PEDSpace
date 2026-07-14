@@ -80,6 +80,21 @@ $badge-deprecated-bg: $tomato;
             background-color: lighten($badge-pedsnet-definition-bg, 10%);
         }
     }
+    
+    &.badge-ready {
+        background-color: $badge-pedsnet-definition-bg;
+        color: #20453f;
+
+        &::before {
+            background-color: #20453f;
+            mask-image: url($star);
+            mask-size: cover;
+        }
+
+        &:hover, &:focus {
+            background-color: lighten($badge-pedsnet-definition-bg, 10%);
+        }
+    }
 
     &.badge-requires-refresh {
         background-color: $badge-requires-refresh-bg;

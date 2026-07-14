@@ -67,6 +67,7 @@ export class VerificationBadgeComponent extends BaseComponent implements OnInit 
       'badge-requires-refresh': this.verificationStatus.includes('requiresrefresh'),
       'badge-study-specific': this.verificationStatus.includes('study-specific'),
       'badge-deprecated': this.verificationStatus.includes('deprecated'),
+      'badge-ready': this.verificationStatus.includes('ready'),
       'badge-secondary': !this.verificationStatus.includes('pedsnetdefinition') &&
                          !this.verificationStatus.includes('requiresrefresh') &&
                          !this.verificationStatus.includes('study-specific') &&
