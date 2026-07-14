@@ -2251,7 +2251,7 @@
                     <required>Required field.</required>
                 </field>
             </row>
-            <row>
+            <!-- <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
@@ -2260,7 +2260,7 @@
                     <input-type>onebox</input-type>
                     <hint>Enter an abbreviation for the institution, if applicable, e.g., (CHOP).</hint>
                 </field>
-            </row>
+            </row> -->
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -2419,6 +2419,15 @@
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
+                    <dc-element>provenance</dc-element>
+                    <label>Data Provenance Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter EHR system, census block group, and registry information in tabular format using markdown.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
                     <dc-element>date</dc-element>
                     <dc-qualifier></dc-qualifier>
                     <label>Date Last Updated</label>
@@ -2444,7 +2453,7 @@
                     <hint>Select the studies for which this site had affilitated employees as primary investigator or co-investigator.</hint>
                 </relation-field>
             </row>
-            <row>
+            <!-- <row>
                 <relation-field>
                     <relationship-type>isPersonOfOrgUnit</relationship-type>
                     <search-configuration>documentation</search-configuration>
@@ -2452,7 +2461,7 @@
                     <label>Related People</label>
                     <hint>Select any employees of the institution.</hint>
                 </relation-field>
-            </row>
+            </row> -->
 
         </form>
 

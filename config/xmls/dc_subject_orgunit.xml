@@ -30,6 +30,11 @@
                 <node id="INST.24" label="Private, Nonprofit Hospital"></node>
                 <node id="INST.25" label="Public, Nonprofit Hospital"></node>
                 <node id="INST.26" label="University Affiliate Hospital"></node>
+                <node id="INST.27" label="2010 Census Block Groups"></node>
+                <node id="INST.28" label="2020 Census Block Groups"></node>
+                <node id="INST.29" label="Vaccine Data Registries"></node>
+                <node id="INST.30" label="Regional Data Registries"></node>
+                <node id="INST.31" label="Medicaid Claims Registries"></node>
 	</isComposedBy>
 	<hasNote>Taxonomy developed by Annabel Pinkney</hasNote>
 </node>
