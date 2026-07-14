@@ -150,6 +150,15 @@ body {
     margin: 0;
 }
 
+
+::ng-deep .simple-view-element-header,
+::ng-deep .item-page-field-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #444;
+}
+
+
 // ─── Uniform-height grid cards (#176) ──────────────────────────────────────
 // 3-column grid (3×4 with 12 results/page) to match the main PEDSnet website.
 ds-object-grid .card-columns.row {

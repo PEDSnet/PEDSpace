@@ -36,44 +36,30 @@
         <strong>{{ 'pedspace.project.lead-site' | translate }}:</strong> {{ leadSite }}
       </p>
 
-      <p *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Publication'" class="leadSite card-text">
+      <p *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Publication'" class="item-description card-text">
         <strong>Journal: </strong> <span [innerHTML]="dso.firstMetadataValue('dc.publisher')"></span>
       </p>
 
-      <span class="leadSite card-text">
-          <ds-truncatable-part [id]="dso.id" [minLines]="1">
-              <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type')">
+      <p *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'DQCheck'">
+        <strong>Created: </strong> <span class="item-description card-text" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
+      </p>
 
-                <!-- ConceptSet & Phenotype -->
-                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'ConceptSet'">
-                  <strong>Refreshed: </strong> <span class="leadSite card-text" [innerHTML]="firstMetadataValue('dc.date')"></span> 
-                </ng-container>
-                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Phenotype'">
-                  <strong>Refreshed: </strong> <span class="leadSite card-text" [innerHTML]="firstMetadataValue('dc.date')"></span> 
-                </ng-container>
+      <p *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'DQResult'">
+        <strong>Created: </strong> <span class="item-description card-text" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
+      </p>
 
-                <!-- Publication: Journal 
-                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Publication'">
-                  <strong>Journal: </strong> <span class="leadSite card-text" [innerHTML]="dso.firstMetadataValue('dc.publisher')"></span>
-                </ng-container> -->
+      <p *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Code'">
+        <strong>Last Modified: </strong> <span class="item-description card-text" [innerHTML]="dso.firstMetadataValue('dc.date')"></span>
+      </p>
 
-                <!-- DQCheck, DQResult, Documentation, Code: Created only -->
-                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'DQCheck'">
-                  <strong>Created: </strong> <span class="leadSite card-text" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
-                </ng-container>
-                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'DQResult'">
-                  <strong>Created: </strong> <span class="leadSite card-text" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
-                </ng-container>
-                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Documentation'">
-                  <strong>Created: </strong> <span class="leadSite card-text" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
-                </ng-container>
-                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Code'">
-                  <strong>Created: </strong> <span class="leadSite card-text" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
-                </ng-container>
+      <p *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'ConceptSet'">
+        <strong>Refreshed: </strong> <span class="item-description card-text" [innerHTML]="firstMetadataValue('dc.date.created')"></span> 
+      </p>
 
-              </ng-container>  
-          </ds-truncatable-part>
-      </span>
+      <p *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Phenotype'">
+        <strong>Refreshed: </strong> <span class="item-description card-text" [innerHTML]="firstMetadataValue('dc.date')"></span> 
+      </p>
+
 
       <!-- Abstract -->
       <ds-truncatable-part *ngIf="abstract" [id]="dso.id" [minLines]="3">

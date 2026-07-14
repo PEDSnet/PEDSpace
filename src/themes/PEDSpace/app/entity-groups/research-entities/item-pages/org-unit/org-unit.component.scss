@@ -8,6 +8,19 @@
     border-collapse: collapse;
   }
 
+
+/* Match Study page metadata heading styling */
+::ng-deep .simple-view-element-header,
+::ng-deep .item-page-field > ds-metadata-values > .simple-view-element-header {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #444;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
+
   .description-wrapper th,
   .description-wrapper td {
     width: auto !important;
@@ -146,6 +159,39 @@
     color: $gray-600;
   }
 }
+
+
+/* ============================================
+   Bottom tabbed related entities
+   ============================================ */
+::ng-deep ds-tabbed-related-entities-search {
+  ul.nav-tabs {
+    border-bottom: 1px solid #ddd;
+
+    .nav-link {
+      color: #555;
+      border: none;
+      border-bottom: 3px solid transparent;
+      border-radius: 0;
+      padding: 0.75rem 1.25rem;
+      font-weight: 600;
+
+      &:hover {
+        color: var(--bs-primary, #6f1d46);
+        border-bottom-color: rgba(111, 29, 70, 0.25);
+        background-color: transparent;
+      }
+
+      &.active {
+        color: var(--bs-primary, #6f1d46);
+        background-color: transparent;
+        border-bottom-color: var(--bs-primary, #6f1d46);
+      }
+    }
+  }
+}
+
+
 
 ::ng-deep .card-header {
   // background-color: #f8f9fa;
