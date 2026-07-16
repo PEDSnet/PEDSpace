@@ -28,9 +28,17 @@
       <ds-item-page-date-field [item]="object" [fields]="['dc.date']" [label]="'item.preview.dc.date'"
         separator="; "></ds-item-page-date-field>
 
-      <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.author']"
+        [label]="'Developers'">
+      </ds-generic-item-page-field>
+
+        <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
+        [label]="'item.preview.dc.contributor.other'">
+      </ds-generic-item-page-field>
+
+      <!-- <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
         <ds-media-viewer [item]="object"></ds-media-viewer>
-      </div>
+      </div> -->
 
       <!-- Download link(s) -->
       <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
@@ -44,11 +52,28 @@
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.DataModel']" [separator]="'<br>'"
         [label]="'Data Model'"></ds-generic-item-page-field>
 
+      <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfPhenotype'"
+        [label]="' ' | translate">
+      </ds-related-items>
+
+      <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.github']"
+        [label]="'Development Code'" [repo]="'github'">
+      </ds-item-page-external-publication-field>
+      
+      <!-- <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.bitbucket']"
+        [label]="' '" [repo]="'bitbucket'">
+      </ds-item-page-external-publication-field> -->
+
     </div>
 
     <div class="col-12 col-md-8">
-
+      <ds-item-page-funder-field [item]="object" [label]="'item.preview.dc.contributor'">
+      </ds-item-page-funder-field>
+      
       <ds-item-page-abstract-field [item]="object" [label]="'Phenotype Description'"></ds-item-page-abstract-field>
+
+      <ds-item-page-description-field [item]="object" [label]="'Algothrithm Description'"></ds-item-page-description-field>
+
 
       <!-- <ds-metadata-representation-list class="ds-item-page-mixed-author-field" [parentItem]="object"
         [itemType]="'Person'" [metadataFields]="['dc.contributor.author', 'dc.creator']"
@@ -59,24 +84,14 @@
         [label]="'item.preview.dc.contributor.advisor'">
       </ds-generic-item-page-field> -->
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
-        [label]="'item.preview.dc.contributor.other'">
-      </ds-generic-item-page-field>
-
-      <ds-item-page-funder-field [item]="object" [label]="'item.preview.dc.contributor'">
-      </ds-item-page-funder-field>
-
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
-      </ds-generic-item-page-field>
-
-      <ds-item-page-description-field [item]="object" [label]="'Algothrithm Description'"></ds-item-page-description-field>
 
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.DevPop']" [separator]="'<br>'"
         [label]="'Development Population'"></ds-generic-item-page-field>
 
+
       <!-- <ng-container *ngIf="isLoggedIn"> -->
-        <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
-        </ds-item-page-uri-field>
+       <!-- <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'item.preview.dc.relation.uri'">
+        </ds-item-page-uri-field> -->
       <!-- </ng-container> -->
        
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.other']" [separator]="' '"
@@ -85,8 +100,11 @@
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
         [label]="'item.page.subject.mesh'"></ds-generic-item-page-field>
 
-      <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfPhenotype'"
-        [label]="'relationships.isDocumentationOf' | translate">
+      <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
+      </ds-generic-item-page-field>
+
+      <ds-related-items [parentItem]="object" [relationType]="'isStudyOfPhenotype'"
+        [label]="' '">
       </ds-related-items>
 
       <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfPhenotype'"
@@ -101,24 +119,24 @@
         [label]="'relationships.isPhenotypeOf' | translate">
       </ds-related-items>
 
-      <ds-related-items [parentItem]="object" [relationType]="'isStudyOfPhenotype'"
-        [label]="'Variable Applications'">
-      </ds-related-items>
-
       <ds-related-items [parentItem]="object" [relationType]="'isCodeOfPhenotype'"
         [label]="'relationships.isCodeOf' | translate">
       </ds-related-items>
 
+      <ds-related-items [parentItem]="object" [relationType]="'isPublicationOfPhenotype'"
+        [label]="'relationships.isPublicationOf' | translate">
+      </ds-related-items>
 
-      <ds-item-page-external-publication-field [item]="object"
+
+      <!-- <ds-item-page-external-publication-field [item]="object"
         [label]="'item.preview.dc.relation.isreferencedby'">
-      </ds-item-page-external-publication-field>
+      </ds-item-page-external-publication-field> -->
 
       <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
       </ds-item-page-cc-license-field>
 
-      <ds-item-page-citation-field [item]="object" [label]="'Cite this Phenotype'">
-      </ds-item-page-citation-field>
+      <!-- <ds-item-page-citation-field [item]="object" [label]="'Cite this Phenotype'">
+      </ds-item-page-citation-field> -->
 
       <div>
         <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="link" tabindex="0">
