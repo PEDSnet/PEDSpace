@@ -212,7 +212,7 @@ $quinacridone-magenta: #8A3D63;
 // Browse link styles
 .ds-browse-link {
   color: $redwood;
-  text-decoration: underline;
+  text-decoration: none;
   text-underline-offset: 0.2em;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -241,8 +241,8 @@ $quinacridone-magenta: #8A3D63;
     color: darken($redwood, 25%);
     text-decoration: underline;
     text-decoration-thickness: 2px;
-    border: 1px solid darken($redwood, 25%);
-    border-radius: 2px;
+    // border: 1px solid darken($redwood, 25%);
+    // border-radius: 2px;
   }
 
   &:active {
