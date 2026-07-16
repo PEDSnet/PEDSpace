@@ -9,20 +9,19 @@ cdk-tree {
 }
 
 span a {
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 550;
+  color: #1a4d4a;
   line-height: 1.4;
-  // color: $midnight-green;
-  text-decoration: underline;
-  text-decoration-color: rgba($redwood, 0.4);
-  text-underline-offset: 3px;
-  // margin-bottom: 0.5rem;
+  // text-decoration: underline;
+  // text-decoration-color: #1a4d4a;
+  // text-underline-offset: 3px;
   display: block;
   transition: all 0.2s ease;
   
   &:hover {
     color: darken($redwood, 25%);
-    text-decoration: none;
+    text-decoration: underline;
   }
   
   &:focus {
@@ -39,11 +38,11 @@ span a {
   transition: all 0.2s ease;
   
   &:hover {
-    background-color: rgba($cambridge-blue, 0.08);
-    border-radius: 8px;
+    // background-color: rgba($cambridge-blue, 0.08);
+    // border-radius: 8px;
     // padding: 0.4rem 0.75rem;
     // margin: 0.05rem -0.25rem;
-    box-shadow: 0 1px 4px rgba($cambridge-blue, 0.15);
+    //box-shadow: 0 1px 4px rgba($cambridge-blue, 0.15);
   }
   
   // Remove default indentation for top-level nodes
