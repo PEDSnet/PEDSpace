@@ -40,6 +40,9 @@
         [label]="'Developers'">
       </ds-generic-item-page-field>
 
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.subject.DataModel']" [separator]="'<br>'"
+        [label]="'Data Model'"></ds-generic-item-page-field>
+
       <!-- 3. Tags -->
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject']"
         [label]="'Tags'">

@@ -1815,6 +1815,18 @@
             </row>
             <row>
                 <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier>DataModel</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Data Model</label>                   
+                    <input-type value-pairs-name="DataModel">dropdown</input-type>
+                    <hint>Select the data models compatible with the code.</hint>
+                    <required>A selection is required.</required>
+                </field>
+            </row>    
+            <row>
+                <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>subject</dc-element>
                     <dc-qualifier></dc-qualifier>
@@ -2482,6 +2494,18 @@
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
+                    <dc-element>type</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Publication Type</label>
+                    <input-type value-pairs-name="PubType">dropdown</input-type>
+                    <hint>Select the type of publication.</hint>
+                    <required>You must make a selection.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
                     <dc-element>contributor</dc-element>
                     <dc-qualifier>author</dc-qualifier>
                     <repeatable>true</repeatable>
@@ -2507,7 +2531,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>date</dc-element>
-                    <dc-qualifier>issued</dc-qualifier>
+                    <dc-qualifier>created</dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Date of Publication</label>
                     <style>col-sm-4</style>
@@ -2539,7 +2563,7 @@
                     <required></required>
                 </field>
             </row>
-                        <row>
+            <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>identifier</dc-element>
@@ -2687,7 +2711,7 @@
                     <vocabulary>dc_subject_mesh</vocabulary>
                 </field>
             </row>
-            <row>
+            <!-- <row>
                 <relation-field>
                     <relationship-type>isStudyofPerson</relationship-type>
                     <search-configuration>study</search-configuration>
@@ -2695,7 +2719,7 @@
                     <label>Studies</label>
                     <hint>Select the studies represented by the parent partner.</hint>
                 </relation-field>
-            </row>
+            </row> -->
             <!--     <row>-->
             <!--     <field>-->
             <!--       <dc-schema>person</dc-schema>-->
@@ -4021,6 +4045,20 @@
                 <displayed-value>Cincinnati Children's Hospital Medical Center</displayed-value>
                 <stored-value>Cincinnati Children's Hospital Medical Center</stored-value>
             </pair>      
+        </value-pairs>
+        <value-pairs value-pairs-name="PubType" dc-term="type">
+            <pair>
+                <displayed-value>Journal Article</displayed-value>
+                <stored-value>Journal Article</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Abstract</displayed-value>
+                <stored-value>Abstract</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Presentation</displayed-value>
+                <stored-value>Presentation</stored-value>
+            </pair>
         </value-pairs>
         <value-pairs value-pairs-name="Quality" dc-term="quality_status">
             <pair>
