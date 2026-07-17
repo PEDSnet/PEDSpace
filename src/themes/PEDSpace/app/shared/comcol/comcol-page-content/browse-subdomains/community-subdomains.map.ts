@@ -70,16 +70,16 @@ export const COMMUNITY_SUBDOMAINS: Record<string, Subdomain[]> = {
   '92eba3a4-d7d3-43bd-b3f9-0f84c68c08f6': [
     { label: 'PEDSnet Projects',
       href: '/collections/b79d302e-1157-4d32-83ac-32d4411ac3b6' },
-    { label: 'National Evaluation System for Health Technology Coordinating Center (NESTcc) Program',
-      href: '/collections/d65d5d72-51c6-4e78-88f3-08a790c854c8' },
+    { label: 'PEDSnet Publications',
+      href: '/collections/61d66a9f-af60-4522-bab8-f2c14cdfb9a1' },
     { label: 'PCORnet® Designated Studies',
       href: '/collections/6c8dedcf-c919-45f8-882b-e92de1bbcb55' },
     { label: 'PEDSnet Infrastructure',
       href: '/collections/f23ec374-e99b-4de4-9c83-8cc9b7618dbd' },
     { label: 'PEDSnet Nephrology Research Program',
       href: '/collections/fde608a7-1771-4bab-85de-eb23c2810732' },
-    { label: 'PEDSnet Publications',
-      href: '/collections/61d66a9f-af60-4522-bab8-f2c14cdfb9a1' },
+    { label: 'National Evaluation System for Health Technology Coordinating Center (NESTcc) Program',
+      href: '/collections/d65d5d72-51c6-4e78-88f3-08a790c854c8' },
     { label: 'PEDSnet Scholars Program',
       href: '/collections/9170ce17-76c5-4c82-b9b2-fd1f2e07c6fb' },
     { label: 'Preserving Kidney Function in Children with Chronic Kidney Disease (PRESERVE) Project',
@@ -101,6 +101,50 @@ export const COMMUNITY_SUBDOMAINS: Record<string, Subdomain[]> = {
   '20a103f9-6690-4f17-a523-9abc168f0801': [
     { label: 'Algorithms',   href: '/communities/5a20af3d-06f0-42d2-8d01-0a17f3ecf27b' },
     { label: 'Concept Sets', href: '/communities/b6f6e99f-d383-4fb2-952d-daec4cadfc9c' },
+  ],
+
+  // ── Data Quality Results ──────────────────────────────────────────────────
+  '9fc9a893-4a07-4773-9ac1-c368ede59dcb': [
+    { label: 'Study-Specific DQ Results',   href: '/communities/998efbff-1df0-4bd3-b5c2-8b247d2a650b' },
+    { label: 'Network DQ Results', href: '/communities/dd255df3-7cd3-41b7-9f9f-8ad982b91ac9' },
+  ],
+
+  // ── Study-Specific DQ Results ──────────────────────────────────────────────────
+  '998efbff-1df0-4bd3-b5c2-8b247d2a650b': [
+    { label: 'Categorical Variable Distribution Data Quality Results',   href: '/collections/58c0ca53-1d61-42f3-9cf8-39d4b21020b8' },
+    { label: 'Clinical Data Values and Ranges Data Quality Results',   href: '/collections/f26a7940-6607-4875-9f18-a41d4bed486f' },
+    { label: 'Clinical Events and Specialty Agreement Data Quality Results',   href: '/collections/d8f55cf6-681c-47b6-8139-6f1926626c80' },
+    { label: 'Clinical Metadata Data Quality Results',   href: '/collections/f635679e-6b89-47c8-872e-826c410d3b36' },
+    { label: 'Cohort Attrition Data Quality Results',   href: '/collections/81bf61ff-ecfd-4de2-b5c2-6fa6d63b09fd' },
+    { label: 'Concept Set Distributions Data Quality Results',   href: '/collections/f73a7630-dd00-4b9b-8043-8ee875c8eb41' },
+    { label: 'Data Sequencing Data Quality Results',   href: '/collections/1d71cb16-dbea-4764-89ce-83ce91ad56bc' },
+    { label: 'Duplicate Record Data Quality Results',   href: '/collections/f4b2b60a-e1b7-458e-9a27-16577bf1e442' },
+    { label: 'Expected Facts Present Data Quality Results',   href: '/collections/e8a71b55-4d0d-46fb-abf3-dad0cc5a52ca' },
+    { label: 'Expected Variables Present Data Quality Results',   href: '/collections/f433b0f2-f7ad-4295-972e-c8e973a1e057' },
+    { label: 'Patient Event Sequencing Data Quality Results',   href: '/collections/9837e033-3d7e-483e-a82c-cad7cde21ca4' },
+    { label: 'Patient Facts Data Quality Results',   href: '/collections/7e65b8d7-8985-4196-bd3a-baca6e470868' },
+    { label: 'Patient Records Consistency Data Quality Results',   href: '/collections/ae711720-5ebd-4a76-acc2-831baa7e9af6' },
+    { label: 'Quantitative Variable Distributions Data Quality Results',   href: '/collections/cd9dddfc-eabb-415a-93fd-154dd2d87667' },
+    { label: 'Sensitivity to Selection Criteria Data Quality Results',   href: '/collections/0337018b-dae8-4719-8a95-82cf23c9771d' },
+    { label: 'Source and Concept Vocabularies Data Quality Results',   href: '/collections/3cad40e3-456c-48eb-a219-7ecd8221cabc' },
+    { label: 'Unit and Value Alignment Data Quality Results',   href: '/collections/52412893-6693-4260-b78b-c30afe560d78' },
+    { label: 'Unmapped Concepts Data Quality Results',   href: '/collections/2e2bf603-da91-4cba-8d9e-bb752d005a7d' },
+    { label: 'Visit Clinical Data Agreement Data Quality Results',   href: '/collections/8e577267-5f31-4e40-b292-ff64cf783ee2' },
+  ],
+
+
+  // ── Network DQ Results ──────────────────────────────────────────────────
+  'dd255df3-7cd3-41b7-9f9f-8ad982b91ac9': [
+    { label: 'Best Mapped Concepts Network Results',   href: '/collections/12a64dca-a525-4c01-af93-b258662f5b49' },
+    { label: 'Clinical Fact Documentation Network Results', href: '/collections/2659da58-f25e-43a8-8926-e6f204a15a64' },
+    { label: 'Data Cycle Changes Network Results', href: '/collections/74d2b7ed-4591-4048-8ebf-ca4522de4331' },
+    { label: 'Domain Concordance Network Results', href: '/collections/e25de3a1-b0a2-4dd6-ab8c-b8802541a8e1' },
+    { label: 'Expected Concepts Present Network Results', href: '/collections/8fd5bbf7-7f88-4d4e-84b0-a620a5460e91' },
+    { label: 'Facts Over Time Network Results', href: '/collections/a107d27a-5fe8-468c-852b-87a5ddb808b7' },
+    { label: 'Facts with Associated Visit ID Network Results', href: '/collections/8cea22b5-37bd-45c5-b720-ad05adad6091' },
+    { label: 'Unmapped Concepts Network Results', href: '/collections/13cc0daa-ea79-47f4-94ed-17f2e03dc470' },
+    { label: 'Value Set Conformance Network Results', href: '/collections/954da5b4-50d6-4a5b-9fc1-6594acc2b060' },
+    { label: 'Vocabulary Conformance Network Results', href: '/collections/bcea6b97-0535-46a5-a5ec-7fbd5fca8d6f' },
   ],
 
   // ── Algorithms ───────────────────────────────────────────────────────────

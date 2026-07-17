@@ -49,7 +49,7 @@
       </p>
 
       <p *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Code'">
-        <strong>Last Modified: </strong> <span class="item-description card-text" [innerHTML]="dso.firstMetadataValue('dc.date')"></span>
+        <strong>Developed: </strong> <span class="item-description card-text" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
       </p>
 
       <p *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'ConceptSet'">
