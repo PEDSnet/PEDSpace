@@ -103,8 +103,13 @@
       <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
       </ds-generic-item-page-field>
 
+      <!--Related Items --> 
       <ds-related-items [parentItem]="object" [relationType]="'isStudyOfPhenotype'"
         [label]="' '">
+      </ds-related-items>
+
+      <ds-related-items [parentItem]="object" [relationType]="'isPublicationOfPhenotype'"
+        [label]="'Published Research Applications' | translate">
       </ds-related-items>
 
       <ds-related-items [parentItem]="object" [relationType]="'isConceptSetOfPhenotype'"
@@ -122,11 +127,6 @@
       <ds-related-items [parentItem]="object" [relationType]="'isCodeOfPhenotype'"
         [label]="'relationships.isCodeOf' | translate">
       </ds-related-items>
-
-      <ds-related-items [parentItem]="object" [relationType]="'isPublicationOfPhenotype'"
-        [label]="'relationships.isPublicationOf' | translate">
-      </ds-related-items>
-
 
       <!-- <ds-item-page-external-publication-field [item]="object"
         [label]="'item.preview.dc.relation.isreferencedby'">
