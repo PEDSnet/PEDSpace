@@ -16,7 +16,9 @@
     </ng-container>
   </div>
   <ng-template #thumbnailFallback>
-    <ds-thumbnail *ngIf="showThumbnail" [thumbnail]="(thumbnailsRD$ | async)?.payload?.page[0]">
-    </ds-thumbnail>
+    <ng-container *ngVar="(thumbnailsRD$ | async)?.payload?.page[0] as thumbnailBitstream">
+      <ds-thumbnail *ngIf="showThumbnail && thumbnailBitstream" [thumbnail]="thumbnailBitstream">
+      </ds-thumbnail>
+    </ng-container>
   </ng-template>
 </ng-container>
