@@ -17,11 +17,15 @@
       <div class="d-flex align-items-center mt-2" *ngIf="shareUrl">
         <!-- Share button-->
         <div class="pedspace-item-hero-share">
-          <button type="button" class="btn btn-sm pedspace-share-btn" (click)="copyShareUrl()">
-            <i class="fas" [ngClass]="copied() ? 'fa-check' : 'fa-link'"></i>
-            {{ copied() ? 'Copied!' : 'Share' }}
+          <button type="button"
+            class="btn btn-sm pedspace-share-btn"
+            [class.is-doi]="isDoiShare"
+            (click)="copyShareUrl()">
+            <i class="fas" [ngClass]="copied() ? 'fa-check' : (isDoiShare ? 'fa-external-link-alt' : 'fa-link')"></i>
+            {{ copied() ? 'Copied!' : shareButtonLabel }}
           </button>
         </div>
+        
         <!-- Cite button -->  
         <div class="pedspace-item-hero-cite ml-2">
           <button type="button" class="btn btn-sm pedspace-cite-btn" 

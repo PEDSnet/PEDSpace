@@ -63,8 +63,22 @@ export class ItemHeroBannerComponent {
     if (doi) {
       return doi.startsWith('http') ? doi : `https://doi.org/${doi}`;
     }
-    const uri = this.item?.firstMetadataValue('dc.identifier.uri');
-    return uri ?? null;
+    const uriValues = this.item?.allMetadataValues('dc.identifier.uri') ?? [];
+    const doiUri = uriValues.find((uri) => uri.includes('doi.org'));
+    if (doiUri) {
+      return doiUri;
+    }
+    return uriValues[0] ?? null;
+  }
+
+  /** Whether the current shareUrl is a DOI link (as opposed to a handle). */
+  get isDoiShare(): boolean {
+    return !!this.shareUrl && this.shareUrl.includes('doi.org');
+  }
+
+  /** Label for the share button — "Copy DOI" when the item has a DOI, "Share" otherwise. */
+  get shareButtonLabel(): string {
+    return this.isDoiShare ? 'Copy DOI' : 'Share';
   }
 
   copyShareUrl(): void {
