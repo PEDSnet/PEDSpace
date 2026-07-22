@@ -16,7 +16,7 @@ $navy-dark: #142d47;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: $navy;
+  background-color: #0D4254;
   color: #ffffff;
   border: none;
   border-radius: 6px;
@@ -29,7 +29,7 @@ $navy-dark: #142d47;
 
   &:hover,
   &:focus {
-    background-color: $navy-dark;
+    background-color: darken(#0D4254, 5%);
     outline: none;
   }
 
@@ -80,7 +80,7 @@ $navy-dark: #142d47;
 .subdomain-link {
   display: block;
   padding: 0.55rem 1rem;
-  color: $navy;
+  color: #0D4254;
   text-decoration: none;
   font-size: 0.92rem;
   font-weight: 500;
@@ -88,7 +88,7 @@ $navy-dark: #142d47;
 
   &:hover,
   &:focus {
-    background-color: $navy;
+    background-color: darken(#0D4254, 5%);
     color: #ffffff;
     padding-left: 1.35rem;
     text-decoration: none;
