@@ -197,6 +197,11 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
   // Here we crudely filter the little sidebar search facet widgets
   // if we are either on the DQCheck community page or a DQCheck collection page
   shouldShowFilter(filter: { name: string }): boolean {
+    // Do not apply any conditional filter visibility rules on workspace pages.
+    if (this.router.url?.includes('/workspace/')) {
+      return true;
+    }
+
     // Only log each unique filter once
     if (!this.loggedFilters.has(filter.name)) {
       // // console.log('Filter:', filter);

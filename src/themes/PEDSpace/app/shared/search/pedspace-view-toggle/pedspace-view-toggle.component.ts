@@ -62,28 +62,22 @@ export class PedspaceViewToggleComponent implements OnInit, OnDestroy {
     @Inject(PLATFORM_ID) protected platformId: any,
   ) {}
 
-  static readonly STUDIES_UUID = '92eba3a4-d7d3-43bd-b3f9-0f84c68c08f6';
-
-  ngOnInit(): void {
-    const scopeId: string = this.route.snapshot.params['id'] ?? '';
-    if (!scopeId.includes(PedspaceViewToggleComponent.STUDIES_UUID)) {
-      return;
+ngOnInit(): void {
+  this.visible$.next(true);
+  this.subs.push(combineLatest([
+    this.route.queryParamMap,
+    this.searchConfigService.getCurrentConfiguration(''),
+  ]).subscribe(([params, _configuration]) => {
+    const endDateVal = params.get(PedspaceViewToggleComponent.FILTER_FIELD);
+    if (endDateVal === PedspaceViewToggleComponent.PRESENT_EQUALS) {
+      this.currentMode$.next('active');
+    } else if (endDateVal === PedspaceViewToggleComponent.PRESENT_NOTEQUALS) {
+      this.currentMode$.next('past');
+    } else {
+      this.currentMode$.next('all');
     }
-    this.subs.push(combineLatest([
-      this.route.queryParamMap,
-      this.searchConfigService.getCurrentConfiguration(''),
-    ]).subscribe(([params, _configuration]) => {
-      this.visible$.next(true);
-      const endDateVal = params.get(PedspaceViewToggleComponent.FILTER_FIELD);
-      if (endDateVal === PedspaceViewToggleComponent.PRESENT_EQUALS) {
-        this.currentMode$.next('active');
-      } else if (endDateVal === PedspaceViewToggleComponent.PRESENT_NOTEQUALS) {
-        this.currentMode$.next('past');
-      } else {
-        this.currentMode$.next('all');
-      }
-    }));
-  }
+  }));
+}
 
   setMode(mode: ProjectViewMode): void {
     const field = PedspaceViewToggleComponent.FILTER_FIELD;
