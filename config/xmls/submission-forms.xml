@@ -2522,7 +2522,7 @@
                     <dc-qualifier>other</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Affiliations</label>
-                    <input-type>name</input-type>
+                    <input-type>onebox</input-type>
                     <hint>List the affiliations of the authors e.g. "Applied Clinical Research Center, Children's Hospital of Philadelphia, Philadelphia, PA".</hint>
                     <required>You must enter at least affiliation to correspond with your author(s).</required>
                 </field>
@@ -2548,18 +2548,6 @@
                     <style>col-sm-8</style>
                     <input-type>onebox</input-type>
                     <hint>Enter the full name of the Journal this article is published in, e.g. "Journal of the American Medical Informatics Association".</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>identifier</dc-element>
-                    <dc-qualifier>citation</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Citation</label>
-                    <input-type>textarea</input-type>
-                    <hint>Enter the standard citation for this item.</hint>
                     <required></required>
                 </field>
             </row>
@@ -2612,6 +2600,28 @@
                     <required></required> 
                     <vocabulary>dc_subject_mesh</vocabulary>
                 </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <dc-qualifier>citation</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Citation</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter the standard citation for this item.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isStudyOfPublication</relationship-type>
+                    <search-configuration>study</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Study Record Linkage</label>
+                    <hint>Link to the project record which corresponds to the publication.</hint>
+                    <required></required>
+                </relation-field>
             </row>
             <row>
                 <field>
