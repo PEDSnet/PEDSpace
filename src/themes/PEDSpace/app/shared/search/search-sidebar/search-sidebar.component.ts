@@ -5,13 +5,30 @@
  *
  * https://www.atmire.com/software-license/
  */
+
 import {
   AsyncPipe,
   NgIf,
 } from '@angular/common';
-import { Component } from '@angular/core';
+import {
+  Component,
+  DoCheck,
+  inject,
+} from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import {
+  BehaviorSubject,
+  Observable,
+  of,
+} from 'rxjs';
+import {
+  distinctUntilChanged,
+  map,
+  switchMap,
+} from 'rxjs/operators';
 
+import { DSpaceObjectDataService } from '../../../../../../app/core/data/dspace-object-data.service';
+import { getFirstCompletedRemoteData } from '../../../../../../app/core/shared/operators';
 import { SearchConfigurationService } from '../../../../../../app/core/shared/search/search-configuration.service';
 import { SEARCH_CONFIG_SERVICE } from '../../../../../../app/my-dspace-page/my-dspace-configuration.service';
 import { AdvancedSearchComponent } from '../../../../../../app/shared/search/advanced-search/advanced-search.component';
@@ -36,18 +53,46 @@ import { PedspaceViewToggleComponent } from '../pedspace-view-toggle/pedspace-vi
   standalone: true,
   imports: [NgIf, ViewModeSwitchComponent, SearchSwitchConfigurationComponent, ThemedSearchFiltersComponent, ThemedSearchSettingsComponent, TranslateModule, AdvancedSearchComponent, AsyncPipe, PedspaceViewToggleComponent],
 })
-export class SearchSidebarComponent extends BaseComponent {
-  /** UUID of the PEDSnet Studies community — the only scope that shows the project toggle. */
+export class SearchSidebarComponent extends BaseComponent implements DoCheck {
+  /** UUID of the PEDSnet Studies community — always shows the project toggle. */
   readonly STUDIES_COMMUNITY_UUID = '92eba3a4-d7d3-43bd-b3f9-0f84c68c08f6';
 
+  /** Entity type that also qualifies a scope (e.g. a Collection) to show the toggle. */
+  readonly STUDY_ENTITY_TYPE = 'Study';
+
+  private dspaceObjectDataService = inject(DSpaceObjectDataService);
+
+  private scopeId$ = new BehaviorSubject<string>('');
+  private lastScope: string;
+
   /**
-   * True only when we're inside the Studies community AND the backend
-   * reports that at least one result has a projectEndDate value (hasFacets).
+   * True when we're inside the Studies community, OR when the current scope
+   * (e.g. a Collection) has dspace.entity.type = "Study".
    */
-  get showProjectToggle$(): boolean {
-        if (this.currentScope !== this.STUDIES_COMMUNITY_UUID) {
-          return false;
-        }
-        return true;
+  showProjectToggle$: Observable<boolean> = this.scopeId$.pipe(
+    distinctUntilChanged(),
+    switchMap((scopeId) => {
+      if (!scopeId) {
+        return of(false);
+      }
+      if (scopeId === this.STUDIES_COMMUNITY_UUID) {
+        return of(true);
+      }
+      return this.dspaceObjectDataService.findById(scopeId).pipe(
+        getFirstCompletedRemoteData(),
+        map((rd) => rd.hasSucceeded && rd.payload?.firstMetadataValue('dspace.entity.type') === this.STUDY_ENTITY_TYPE),
+      );
+    }),
+  );
+
+  /**
+   * currentScope (from the base component) isn't itself an Observable, so we
+   * watch it via DoCheck and only push into scopeId$ when it actually changes.
+   */
+  ngDoCheck(): void {
+    if (this.currentScope !== this.lastScope) {
+      this.lastScope = this.currentScope;
+      this.scopeId$.next(this.currentScope ?? '');
+    }
   }
 }
