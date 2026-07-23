@@ -1,5 +1,6 @@
 import {
   AsyncPipe,
+  Location,
   NgFor,
   NgIf,
 } from '@angular/common';
@@ -66,7 +67,8 @@ export class TabbedRelatedEntitiesSearchComponent implements OnInit {
   activeTab$: Observable<string>;
 
   constructor(private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private location: Location) {
   }
 
   /**
@@ -83,13 +85,15 @@ export class TabbedRelatedEntitiesSearchComponent implements OnInit {
    * @param event
    */
   onTabChange(event) {
-    this.router.navigate([], {
+    const urlTree = this.router.createUrlTree([], {
       relativeTo: this.route,
       queryParams: {
         tab: event.nextId,
       },
       queryParamsHandling: 'merge',
     });
+
+    this.location.replaceState(this.router.serializeUrl(urlTree));
   }
 
 }

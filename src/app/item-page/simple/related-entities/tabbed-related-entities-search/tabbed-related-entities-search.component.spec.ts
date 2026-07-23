@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import {
   ComponentFixture,
@@ -35,6 +36,7 @@ describe('TabbedRelatedEntitiesSearchComponent', () => {
   ];
 
   const router = new RouterMock();
+  const location = jasmine.createSpyObj('location', ['replaceState']);
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -47,6 +49,7 @@ describe('TabbedRelatedEntitiesSearchComponent', () => {
           },
         },
         { provide: Router, useValue: router },
+        { provide: Location, useValue: location },
       ],
       schemas: [NO_ERRORS_SCHEMA],
     })
@@ -81,17 +84,22 @@ describe('TabbedRelatedEntitiesSearchComponent', () => {
     };
 
     beforeEach(() => {
+      spyOn(router, 'createUrlTree').and.callThrough();
+      spyOn(router, 'serializeUrl').and.callThrough();
       comp.onTabChange(event);
     });
 
-    it('should call router natigate with the correct arguments', () => {
-      expect(router.navigate).toHaveBeenCalledWith([], {
+    it('should update the URL with the correct tab query parameter without navigating', () => {
+      expect(router.createUrlTree).toHaveBeenCalledWith([], {
         relativeTo: (comp as any).route,
         queryParams: {
           tab: event.nextId,
         },
         queryParamsHandling: 'merge',
       });
+      expect(router.serializeUrl).toHaveBeenCalled();
+      expect(location.replaceState).toHaveBeenCalledWith('/testing-url');
+      expect(router.navigate).not.toHaveBeenCalled();
     });
   });
 
