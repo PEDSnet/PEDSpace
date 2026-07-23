@@ -67,6 +67,10 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
   /** pulled once from the resolver */
   public entityType: string;
 
+  public get isWorkspacePage(): boolean {
+    return this.router.url?.includes('workspace') || this.router.url?.includes('admin') || false;
+  }
+
   // Track logged filters to avoid duplicate logging
   private loggedFilters = new Set<string>();
 
@@ -198,7 +202,7 @@ export class SearchFiltersComponent extends BaseComponent implements OnInit {
   // if we are either on the DQCheck community page or a DQCheck collection page
   shouldShowFilter(filter: { name: string }): boolean {
     // Do not apply any conditional filter visibility rules on workspace pages.
-    if (this.router.url?.includes('/workspace/')) {
+    if (this.isWorkspacePage) {
       return true;
     }
 

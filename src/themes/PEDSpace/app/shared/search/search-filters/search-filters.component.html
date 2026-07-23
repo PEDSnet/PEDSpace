@@ -1,5 +1,46 @@
 <ng-container *ngIf="filters | async as rd">
 
+  <ng-container *ngIf="isWorkspacePage; else themedFilters">
+    <h3 *ngIf="inPlaceSearch; else workspaceH2">
+      {{ (filterLabel + '.filters.head') | translate }}
+    </h3>
+    <ng-template #workspaceH2>
+      <h2>{{ (filterLabel + '.filters.head') | translate }}</h2>
+    </ng-template>
+
+    <div *ngIf="rd.hasSucceeded"
+         [class.visually-hidden]="getCurrentFiltersComputed(this.currentConfiguration) < rd?.payload?.length">
+      <ng-container *ngFor="let filter of rd.payload; trackBy: trackUpdate">
+        <ds-search-filter
+          [scope]="currentScope"
+          [filter]="filter"
+          [inPlaceSearch]="inPlaceSearch"
+          [refreshFilters]="refreshFilters"
+          (isVisibilityComputed)="countFiltersWithComputedVisibility($event)"
+        ></ds-search-filter>
+      </ng-container>
+    </div>
+
+    <ngx-skeleton-loader
+      *ngIf="getCurrentFiltersComputed(this.currentConfiguration) < rd?.payload?.length"
+      [count]="defaultFilterCount"
+    ></ngx-skeleton-loader>
+
+    <button
+      *ngIf="inPlaceSearch"
+      class="btn btn-primary"
+      [routerLink]="[searchLink]"
+      [queryParams]="clearParams | async"
+      queryParamsHandling="merge"
+      (click)="minimizeFilters()"
+    >
+      <i class="fas fa-undo"></i>
+      {{ 'search.filters.reset' | translate }}
+    </button>
+  </ng-container>
+
+  <ng-template #themedFilters>
+
   <!-- Skeleton while loading -->
   <ng-container *ngIf="!rd.hasSucceeded; else showFilters">
     <ngx-skeleton-loader [count]="defaultFilterCount"></ngx-skeleton-loader>
@@ -39,6 +80,8 @@
       <i class="fas fa-undo"></i>
       {{ 'search.filters.reset' | translate }}
     </button>
+  </ng-template>
+
   </ng-template>
 
 </ng-container>
