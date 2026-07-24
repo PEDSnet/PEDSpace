@@ -1,164 +1,266 @@
 #!/bin/bash
 
 # =============================================================================
-# Restore Script for DSpace from Isilon Backup
+# Restore Script for DSpace from Isilon Backup (v2)
 # =============================================================================
 #
-# This script automates the restoration process for the DSpace system, including:
-# 
-# 1. **Assetstore Restoration:**
-#    - Identifies the most recent assetstore backup from Isilon.
-#    - Extracts the backup to `/data/dspace/assetstore`.
+# Restores the DSpace assetstore and PostgreSQL database from Isilon or local
+# backups, with pre-flight validation, version-matched PostgreSQL binaries,
+# atomic assetstore swap, and automatic rollback on failure.
 #
-# 2. **PostgreSQL Database Restoration:**
-#    - Identifies the most recent SQL dump from Isilon.
-#    - Restores the `dspace` database using `psql`.
+# Key changes from v1:
+#   - PG binaries are matched to the SERVER major version (fixes the RHEL
+#     problem where /usr/bin/pg_dump is the AppStream v13 client while the
+#     real server lives in /usr/pgsql-16/bin).
+#   - Backup archives are validated BEFORE anything destructive happens.
+#   - Assetstore is extracted to a staging dir and swapped atomically, so a
+#     corrupt tarball can never leave you with no assetstore at all.
+#   - psql restores run with ON_ERROR_STOP=1 so failures actually fail
+#     (previously psql returned 0 even if the restore was full of errors).
+#   - DROP DATABASE ... WITH (FORCE) used as fallback for stubborn sessions.
+#   - Disk-space pre-flight check before creating safety backups.
+#   - Fixed double-logging/gzip bug at end of script.
 #
-# 3. **Logging:**
-#    - Logs all restoration operations, errors, and activities.
-#    - Compresses the log file to save space.
-#
-# ---------------------------- Configuration Notes ----------------------------
-# - Requires `psql` for PostgreSQL restoration.
-# - Assumes the Isilon backup directory is a mounted network location.
-# - Runs with `seyediana1` user privileges.
-# - Set this script as a non-interactive `sudo` script at `/etc/sudoers`.
-#   - `ALL ALL = (root) NOPASSWD: /path/to/dspace_restore.sh`
-# - Ensure the script is executable (`chmod +x dspace_restore.sh`).
+# Configuration notes:
+#   - Assumes the Isilon backup directory is a mounted network location.
+#   - Runs with `seyediana1` user privileges; needs sudo for rm/chown/postgres.
+#   - Set as non-interactive sudo in /etc/sudoers if desired:
+#       ALL ALL = (root) NOPASSWD: /path/to/dspace_restore.sh
 # =============================================================================
+
+set -o pipefail
 
 # ---------------------------- Configuration -----------------------------------
 
-# Base backup directory on Isilon
 OFFSITE_BACKUP_BASE_DIR="/mnt/isilon/pedsnet/DSpace/PEDSpace"
-
-# Subdirectories for different backup types on Isilon
 OFFSITE_SQL_DIR="${OFFSITE_BACKUP_BASE_DIR}/sql_files"
 OFFSITE_ASSETSTORE_DIR="${OFFSITE_BACKUP_BASE_DIR}/assetstore_backups"
 
-# Local backup directories
 LOCAL_BACKUP_BASE_DIR="/data/backups"
 LOCAL_SQL_DIR="${LOCAL_BACKUP_BASE_DIR}/sql_files"
 LOCAL_ASSETSTORE_DIR="${LOCAL_BACKUP_BASE_DIR}/assetstore_backups"
 
-# Active directories
 ASSETSTORE_TARGET="/data/dspace/assetstore"
+ASSETSTORE_OWNER="dspace:dspace"
 
-# Log directory and file
 LOG_DIR="/data/backups/logs"
 TIMESTAMP=$(date +"%Y-%m-%d-%H-%M-%S")
 LOG_FILE="${LOG_DIR}/restore_${TIMESTAMP}.log"
 
-# PostgreSQL credentials
 PG_USER="dspace"
-PG_HOST="localhost"
 PG_DB="dspace"
 
-# Auto-detect PostgreSQL installation paths
-DETECTED_PSQL_PATH=$(which psql 2>/dev/null)
-DETECTED_PG_DUMP_PATH=$(which pg_dump 2>/dev/null)
+EXPECTED_HOSTNAME="pedsdspace01.research.chop.edu"
 
-# Set default paths if detection fails
-PG_RESTORE_PATH="${DETECTED_PSQL_PATH:-/usr/bin/psql}"
-PG_DUMP_PATH="${DETECTED_PG_DUMP_PATH:-/usr/pgsql-15/bin/pg_dump}" 
+# Populated by detect_pg_binaries()
+PSQL_BIN=""
+PG_DUMP_BIN=""
+SERVER_MAJOR=""
 
-# Global variables for rollback tracking
+# Rollback tracking
 BACKUP_CURRENT_ASSETSTORE=""
 CURRENT_DB_BACKUP=""
+ASSETSTORE_STAGING=""
+ASSETSTORE_OLD=""
 ASSETSTORE_RESTORED=false
 DATABASE_DROPPED=false
 DATABASE_CREATED=false
+LOG_FINALIZED=false
 
-# Trap Ctrl+C (SIGINT) and other signals for graceful exit
 trap 'handle_interrupt' SIGINT SIGTERM
 
-# ---------------------------- Functions ---------------------------------------
+# ---------------------------- Logging -----------------------------------------
 
-# Function to handle interruption signals
-handle_interrupt() {
-    echo
-    echo
-    echo "=========================================="
-    echo "  RESTORATION INTERRUPTED BY USER"
-    echo "=========================================="
-    
-    if [ "${ASSETSTORE_RESTORED}" = true ] || [ "${DATABASE_DROPPED}" = true ] || [ "${DATABASE_CREATED}" = true ]; then
-        echo "WARNING: Restoration was interrupted after some changes were made."
-        echo "Attempting automatic rollback..."
-        rollback_changes "User interrupted restoration process"
-    else
-        echo "Restoration was safely cancelled before any changes were made."
-        log "Restoration interrupted by user before any changes were made."
-        
-        # Compress log file
-        gzip "${LOG_FILE}" 2>/dev/null
-        
-        echo "Log file: ${LOG_FILE}.gz"
-        echo "=========================================="
-        exit 130
-    fi
-}
-
-# Function to log messages with timestamp
 log() {
     echo "$(date +"%Y-%m-%d %H:%M:%S") : $1" | tee -a "${LOG_FILE}"
 }
 
-# Function to perform rollback in case of failure
+# Compress the log exactly once, as the very last action before exit.
+finalize_log() {
+    if [ "${LOG_FINALIZED}" = false ] && [ -f "${LOG_FILE}" ]; then
+        gzip -f "${LOG_FILE}" 2>/dev/null
+        LOG_FINALIZED=true
+    fi
+}
+
+die() {
+    log "FATAL: $1"
+    finalize_log
+    exit 1
+}
+
+# ---------------------------- PostgreSQL helpers -------------------------------
+
+# Run a psql command as the postgres superuser against a given database.
+# Usage: run_psql <dbname> <sql>
+run_psql() {
+    local db="$1"; shift
+    sudo -u postgres "${PSQL_BIN}" -v ON_ERROR_STOP=1 -d "${db}" -c "$@" >> "${LOG_FILE}" 2>&1
+}
+
+# Run a psql query and print the trimmed scalar result.
+run_psql_scalar() {
+    local db="$1"; shift
+    sudo -u postgres "${PSQL_BIN}" -tAc "$@" -d "${db}" 2>/dev/null | tr -d '[:space:]'
+}
+
+# Detect PostgreSQL binaries that MATCH the running server's major version.
+#
+# On RHEL, /usr/bin/psql and /usr/bin/pg_dump come from the AppStream module
+# (often v13) while PGDG installs the real server tools in /usr/pgsql-NN/bin.
+# pg_dump refuses to dump from a newer server, so we must find the matching
+# major version rather than trusting `which`.
+detect_pg_binaries() {
+    echo
+    echo "=========================================="
+    echo "  PostgreSQL Binary Detection"
+    echo "=========================================="
+
+    # Step 1: find ANY psql just to ask the server its version.
+    local bootstrap_psql
+    bootstrap_psql=$(command -v psql 2>/dev/null)
+    if [ -z "${bootstrap_psql}" ]; then
+        # Try PGDG locations directly, newest first
+        bootstrap_psql=$(ls -1 /usr/pgsql-*/bin/psql 2>/dev/null | sort -V | tail -n 1)
+    fi
+    [ -n "${bootstrap_psql}" ] || die "No psql binary found anywhere. Install PostgreSQL client tools."
+
+    # Step 2: ask the server what version it actually is.
+    local server_version
+    server_version=$(sudo -u postgres "${bootstrap_psql}" -tAc "SHOW server_version;" 2>/dev/null | tr -d '[:space:]')
+    [ -n "${server_version}" ] || die "Could not query server version (is PostgreSQL running?)."
+    SERVER_MAJOR="${server_version%%.*}"
+
+    echo "  Server version: ${server_version} (major: ${SERVER_MAJOR})"
+
+    # Step 3: search candidate bin dirs for tools matching the server major.
+    local candidates=(
+        "/usr/pgsql-${SERVER_MAJOR}/bin"
+        "/usr/lib/postgresql/${SERVER_MAJOR}/bin"
+        "/usr/local/pgsql/bin"
+        "/usr/bin"
+    )
+
+    local dir
+    for dir in "${candidates[@]}"; do
+        if [ -x "${dir}/pg_dump" ]; then
+            local major
+            major=$("${dir}/pg_dump" --version 2>/dev/null | grep -oE '[0-9]+' | head -n 1)
+            if [ "${major}" = "${SERVER_MAJOR}" ]; then
+                PG_DUMP_BIN="${dir}/pg_dump"
+                # Prefer the psql that ships alongside the matching pg_dump
+                [ -x "${dir}/psql" ] && PSQL_BIN="${dir}/psql"
+                break
+            fi
+        fi
+    done
+
+    # psql tolerates version skew, so fall back to bootstrap psql if needed.
+    [ -n "${PSQL_BIN}" ] || PSQL_BIN="${bootstrap_psql}"
+
+    if [ -z "${PG_DUMP_BIN}" ]; then
+        echo
+        echo "  ✗ ERROR: No pg_dump matching server major version ${SERVER_MAJOR} was found."
+        echo
+        echo "  The pg_dump on your PATH is probably the RHEL AppStream v13 client,"
+        echo "  which cannot dump from a v${SERVER_MAJOR} server. To fix, install the"
+        echo "  matching client tools from the PGDG repo:"
+        echo
+        echo "      sudo dnf install postgresql${SERVER_MAJOR}"
+        echo
+        echo "  (binaries will land in /usr/pgsql-${SERVER_MAJOR}/bin)"
+        die "No version-matched pg_dump available (server is v${SERVER_MAJOR})."
+    fi
+
+    echo "  ✓ psql:    ${PSQL_BIN} ($(${PSQL_BIN} --version 2>/dev/null))"
+    echo "  ✓ pg_dump: ${PG_DUMP_BIN} ($(${PG_DUMP_BIN} --version 2>/dev/null))"
+    echo
+
+    log "PostgreSQL binaries selected - psql: ${PSQL_BIN}, pg_dump: ${PG_DUMP_BIN}, server: ${server_version}"
+
+    read -p "Are these PostgreSQL paths correct? (yes/no): " paths_confirmed
+    if [[ "${paths_confirmed,,}" != "yes" ]]; then
+        echo "Edit PSQL_BIN / PG_DUMP_BIN detection in this script and re-run."
+        die "User rejected detected PostgreSQL paths."
+    fi
+}
+
+# ---------------------------- Interrupt / rollback -----------------------------
+
+handle_interrupt() {
+    echo
+    echo "=========================================="
+    echo "  RESTORATION INTERRUPTED BY USER"
+    echo "=========================================="
+
+    if [ "${ASSETSTORE_RESTORED}" = true ] || [ "${DATABASE_DROPPED}" = true ] || [ "${DATABASE_CREATED}" = true ]; then
+        echo "WARNING: Restoration was interrupted after changes were made."
+        echo "Attempting automatic rollback..."
+        rollback_changes "User interrupted restoration process"
+    else
+        log "Restoration interrupted by user before any changes were made."
+        # Clean up staging dir if it exists
+        [ -n "${ASSETSTORE_STAGING}" ] && sudo rm -rf "${ASSETSTORE_STAGING}" 2>/dev/null
+        finalize_log
+        echo "Restoration safely cancelled. Log: ${LOG_FILE}.gz"
+        exit 130
+    fi
+}
+
 rollback_changes() {
     local rollback_reason="$1"
-    
+
     log "========== ROLLBACK INITIATED =========="
     log "Rollback reason: ${rollback_reason}"
-    
+
     echo
     echo "ERROR: Restoration failed!"
     echo "Reason: ${rollback_reason}"
-    echo
     echo "Attempting to rollback changes..."
-    
-    # Rollback assetstore if it was modified
-    if [ "${ASSETSTORE_RESTORED}" = true ] && [ -n "${BACKUP_CURRENT_ASSETSTORE}" ] && [ -f "${BACKUP_CURRENT_ASSETSTORE}" ]; then
-        log "Rolling back assetstore changes..."
-        echo "- Restoring original assetstore from backup..."
-        
-        # Remove the restored assetstore
+
+    # --- Assetstore rollback ---------------------------------------------
+    # Fast path: if the old assetstore dir was only renamed aside, rename it back.
+    if [ "${ASSETSTORE_RESTORED}" = true ] && [ -n "${ASSETSTORE_OLD}" ] && [ -d "${ASSETSTORE_OLD}" ]; then
+        log "Rolling back assetstore via rename of preserved directory..."
         sudo rm -rf "${ASSETSTORE_TARGET}" 2>/dev/null
-        
-        # Restore original assetstore
-        tar -xzf "${BACKUP_CURRENT_ASSETSTORE}" -C "$(dirname "${ASSETSTORE_TARGET}")" >> "${LOG_FILE}" 2>&1
-        if [ $? -eq 0 ]; then
-            log "Original assetstore restored successfully."
+        if sudo mv "${ASSETSTORE_OLD}" "${ASSETSTORE_TARGET}" 2>/dev/null; then
+            log "Original assetstore directory restored via rename."
+            echo "  ✓ Assetstore rollback completed (instant rename)"
+        else
+            log "ERROR: Failed to rename ${ASSETSTORE_OLD} back to ${ASSETSTORE_TARGET}"
+            echo "  ✗ Assetstore rollback FAILED - manual intervention required"
+            echo "    Original data preserved at: ${ASSETSTORE_OLD}"
+        fi
+    # Slow path: restore from the safety tarball.
+    elif [ "${ASSETSTORE_RESTORED}" = true ] && [ -n "${BACKUP_CURRENT_ASSETSTORE}" ] && [ -f "${BACKUP_CURRENT_ASSETSTORE}" ]; then
+        log "Rolling back assetstore from safety tarball..."
+        sudo rm -rf "${ASSETSTORE_TARGET}" 2>/dev/null
+        if tar -xzf "${BACKUP_CURRENT_ASSETSTORE}" -C "$(dirname "${ASSETSTORE_TARGET}")" >> "${LOG_FILE}" 2>&1; then
+            sudo chown -R "${ASSETSTORE_OWNER}" "${ASSETSTORE_TARGET}" 2>/dev/null
+            log "Original assetstore restored from tarball."
             echo "  ✓ Assetstore rollback completed"
         else
-            log "ERROR: Failed to restore original assetstore from ${BACKUP_CURRENT_ASSETSTORE}"
+            log "ERROR: Failed to restore assetstore from ${BACKUP_CURRENT_ASSETSTORE}"
             echo "  ✗ Assetstore rollback FAILED - manual intervention required"
         fi
-        
-        # Set permissions
-        sudo chown -R dspace:dspace "${ASSETSTORE_TARGET}" 2>/dev/null
     elif [ "${ASSETSTORE_RESTORED}" = true ]; then
-        log "WARNING: Assetstore was modified but no backup was found for rollback."
+        log "WARNING: Assetstore was modified but no backup exists for rollback."
         echo "  ⚠ Assetstore cannot be rolled back - no backup available"
     fi
-    
-    # Rollback database if it was modified
+
+    # Clean up staging dir regardless
+    [ -n "${ASSETSTORE_STAGING}" ] && sudo rm -rf "${ASSETSTORE_STAGING}" 2>/dev/null
+
+    # --- Database rollback -----------------------------------------------
     if [ "${DATABASE_CREATED}" = true ] || [ "${DATABASE_DROPPED}" = true ]; then
         if [ -n "${CURRENT_DB_BACKUP}" ] && [ -f "${CURRENT_DB_BACKUP}" ]; then
             log "Rolling back database changes..."
             echo "- Restoring original database from backup..."
-            
-            # Drop the new database if it was created
-            if [ "${DATABASE_CREATED}" = true ]; then
-                sudo -u postgres "${PG_RESTORE_PATH}" -c "DROP DATABASE IF EXISTS ${PG_DB};" >> "${LOG_FILE}" 2>&1
-            fi
-            
-            # Recreate the database
-            sudo -u postgres "${PG_RESTORE_PATH}" -c "CREATE DATABASE ${PG_DB};" >> "${LOG_FILE}" 2>&1
-            
-            # Restore original database
-            sudo -u postgres "${PG_RESTORE_PATH}" -d "${PG_DB}" -f "${CURRENT_DB_BACKUP}" >> "${LOG_FILE}" 2>&1
-            if [ $? -eq 0 ]; then
+
+            sudo -u postgres "${PSQL_BIN}" -c "DROP DATABASE IF EXISTS ${PG_DB} WITH (FORCE);" >> "${LOG_FILE}" 2>&1
+            sudo -u postgres "${PSQL_BIN}" -c "CREATE DATABASE ${PG_DB} OWNER ${PG_USER};" >> "${LOG_FILE}" 2>&1
+
+            if sudo -u postgres "${PSQL_BIN}" -v ON_ERROR_STOP=1 -d "${PG_DB}" < "${CURRENT_DB_BACKUP}" >> "${LOG_FILE}" 2>&1; then
                 log "Original database restored successfully."
                 echo "  ✓ Database rollback completed"
             else
@@ -166,531 +268,366 @@ rollback_changes() {
                 echo "  ✗ Database rollback FAILED - manual intervention required"
             fi
         else
-            log "WARNING: Database was modified but no backup was found for rollback."
+            log "WARNING: Database was modified but no backup exists for rollback."
             echo "  ⚠ Database cannot be rolled back - no backup available"
         fi
     fi
-    
+
     log "========== ROLLBACK COMPLETED =========="
-    
+
     echo
     echo "========== ROLLBACK SUMMARY =========="
-    echo "The restoration process failed and rollback was attempted."
-    echo "Please check the log file for details: zcat ${LOG_FILE}.gz"
-    
-    if [ -n "${BACKUP_CURRENT_ASSETSTORE}" ] && [ -f "${BACKUP_CURRENT_ASSETSTORE}" ]; then
+    echo "Restoration failed; rollback was attempted."
+    echo "Log file: ${LOG_FILE}.gz (view with: zcat ${LOG_FILE}.gz)"
+    [ -n "${BACKUP_CURRENT_ASSETSTORE}" ] && [ -f "${BACKUP_CURRENT_ASSETSTORE}" ] && \
         echo "Original assetstore backup: ${BACKUP_CURRENT_ASSETSTORE}"
-    fi
-    
-    if [ -n "${CURRENT_DB_BACKUP}" ] && [ -f "${CURRENT_DB_BACKUP}" ]; then
+    [ -n "${ASSETSTORE_OLD}" ] && [ -d "${ASSETSTORE_OLD}" ] && \
+        echo "Original assetstore directory: ${ASSETSTORE_OLD}"
+    [ -n "${CURRENT_DB_BACKUP}" ] && [ -f "${CURRENT_DB_BACKUP}" ] && \
         echo "Original database backup: ${CURRENT_DB_BACKUP}"
-    fi
-    
-    echo "=================================="
-    
-    # Compress log file
-    gzip "${LOG_FILE}" 2>/dev/null
-    
+    echo "======================================"
+
+    finalize_log
     exit 1
 }
 
-# Function to find the latest file based on modification time
+# ---------------------------- File helpers -------------------------------------
+
+# Print the newest file (by mtime) in a directory matching a glob. Robust
+# against odd filenames; no `cd` or `ls` parsing.
 find_latest_file() {
     local directory="$1"
     local pattern="$2"
-    
-    # Check if directory exists
-    if [ ! -d "${directory}" ]; then
-        echo ""
-        return 1
-    fi
-    
-    # Use ls with proper globbing to find the most recent file
-    # First, change to the directory to make globbing work properly
-    local latest_file=""
-    if cd "${directory}" 2>/dev/null; then
-        # Use ls -t to sort by modification time (newest first)
-        latest_file=$(ls -t ${pattern} 2>/dev/null | head -n 1)
-        cd - >/dev/null 2>&1
-    fi
-    
-    if [ -n "${latest_file}" ] && [ -f "${directory}/${latest_file}" ]; then
-        echo "${latest_file}"
+
+    [ -d "${directory}" ] || { echo ""; return 1; }
+
+    local latest
+    latest=$(find "${directory}" -maxdepth 1 -type f -name "${pattern}" -printf '%T@\t%f\n' 2>/dev/null \
+             | sort -rn | head -n 1 | cut -f2-)
+
+    if [ -n "${latest}" ] && [ -f "${directory}/${latest}" ]; then
+        echo "${latest}"
         return 0
-    else
-        echo ""
-        return 1
     fi
-}
-extract_timestamp_from_backup() {
-    local filename="$1"
-    # Try to extract timestamp patterns like YYYY-MM-DD-HH-MM-SS or YYYY-MM-DD_HH-MM-SS
-    # This regex looks for patterns like 2025-01-07-14-30-45 or 2025-01-07_14-30-45
-    echo "$filename" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}[-_][0-9]{2}-[0-9]{2}-[0-9]{2}' | head -n 1
+    echo ""
+    return 1
 }
 
-# Function to find corresponding SQL backup based on assetstore timestamp
+extract_timestamp_from_backup() {
+    # Matches 2025-01-07-14-30-45 or 2025-01-07_14-30-45
+    echo "$1" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}[-_][0-9]{2}-[0-9]{2}-[0-9]{2}' | head -n 1
+}
+
 find_corresponding_sql_backup() {
     local assetstore_backup="$1"
     local sql_dir="$2"
-    
-    # Extract timestamp from assetstore backup filename
-    local assetstore_timestamp=$(extract_timestamp_from_backup "$assetstore_backup")
-    
-    if [ -z "$assetstore_timestamp" ]; then
-        return 1
-    fi
-    
-    # Look for SQL backup with the same timestamp
-    local matching_sql_backup=""
-    
-    # Find all SQL files and check for matching timestamp
+
+    local ts
+    ts=$(extract_timestamp_from_backup "${assetstore_backup}")
+    [ -n "${ts}" ] || return 1
+
+    local sql_file
     while IFS= read -r -d '' sql_file; do
-        local sql_filename=$(basename "$sql_file")
-        local sql_timestamp=$(extract_timestamp_from_backup "$sql_filename")
-        
-        if [ "$sql_timestamp" = "$assetstore_timestamp" ]; then
-            matching_sql_backup="$sql_filename"
-            break
+        local name
+        name=$(basename "${sql_file}")
+        if [ "$(extract_timestamp_from_backup "${name}")" = "${ts}" ]; then
+            echo "${name}"
+            return 0
         fi
-    done < <(find "$sql_dir" -maxdepth 1 -type f -name "*.sql" -print0 2>/dev/null)
-    
-    if [ -n "$matching_sql_backup" ]; then
-        echo "$matching_sql_backup"
-        return 0
-    else
-        return 1
-    fi
+    done < <(find "${sql_dir}" -maxdepth 1 -type f -name "*.sql" -print0 2>/dev/null)
+
+    return 1
 }
 
-# Function to list available backups with timestamps
 list_backups() {
     local directory="$1"
     local backup_type="$2"
-    
+
     echo "Available ${backup_type} backups in ${directory}:"
     echo "----------------------------------------"
-    
+
     if [ ! -d "${directory}" ]; then
         echo "Directory does not exist: ${directory}"
         return 1
     fi
-    
+
     local count=0
     local files=()
-    
-    # Store files in array for numbering
     while IFS= read -r -d '' file; do
         files+=("$file")
     done < <(find "${directory}" -maxdepth 1 -type f \( -name "*.tar.gz" -o -name "*.sql" \) -print0 | sort -z)
-    
+
     if [ ${#files[@]} -eq 0 ]; then
         echo "No backup files found in ${directory}"
         return 1
     fi
-    
+
     for file in "${files[@]}"; do
         count=$((count + 1))
-        local filename=$(basename "${file}")
-        local filedate=$(stat -c "%y" "${file}" | cut -d' ' -f1,2 | cut -d'.' -f1)
-        local filesize=$(du -h "${file}" | cut -f1)
-        printf "%2d) %-40s [%s] (%s)\n" "${count}" "${filename}" "${filedate}" "${filesize}"
+        printf "%2d) %-40s [%s] (%s)\n" "${count}" \
+            "$(basename "${file}")" \
+            "$(stat -c "%y" "${file}" | cut -d'.' -f1)" \
+            "$(du -h "${file}" | cut -f1)"
     done
-    
     echo "----------------------------------------"
     return 0
 }
 
-# Function to check for active database sessions
+# Validate backups BEFORE any destructive operation.
+validate_backup_files() {
+    local assetstore_path="${SELECTED_ASSETSTORE_DIR}/${SELECTED_ASSETSTORE_BACKUP}"
+    local sql_path="${SELECTED_SQL_DIR}/${SELECTED_SQL_BACKUP}"
+
+    echo
+    echo "Validating backup integrity (this may take a minute for large archives)..."
+
+    log "Validating assetstore archive: ${assetstore_path}"
+    if ! tar -tzf "${assetstore_path}" > /dev/null 2>>"${LOG_FILE}"; then
+        die "Assetstore backup is corrupt or unreadable: ${assetstore_path}"
+    fi
+    echo "  ✓ Assetstore archive is a valid gzip tarball"
+
+    log "Validating SQL dump: ${sql_path}"
+    if [ ! -s "${sql_path}" ]; then
+        die "SQL backup is empty or unreadable: ${sql_path}"
+    fi
+    # Sanity check: a pg_dump plain-format file should mention PostgreSQL early on
+    if ! head -c 4096 "${sql_path}" | grep -qi "postgresql database dump"; then
+        echo "  ⚠ WARNING: SQL file does not look like a pg_dump output (header check failed)."
+        read -p "  Continue anyway? (yes/no): " sql_header_ok
+        if [[ "${sql_header_ok,,}" != "yes" ]]; then
+            die "User aborted after SQL header validation warning."
+        fi
+    else
+        echo "  ✓ SQL dump header looks valid"
+    fi
+
+    log "Backup validation passed."
+}
+
+# Ensure enough free space on /data for safety backups (approximation:
+# assetstore size + current DB size + 10% headroom).
+check_disk_space() {
+    echo
+    echo "Checking disk space for safety backups..."
+
+    local assetstore_kb=0
+    [ -d "${ASSETSTORE_TARGET}" ] && assetstore_kb=$(sudo du -sk "${ASSETSTORE_TARGET}" 2>/dev/null | cut -f1)
+
+    local db_bytes
+    db_bytes=$(run_psql_scalar postgres "SELECT pg_database_size('${PG_DB}');")
+    local db_kb=$(( ${db_bytes:-0} / 1024 ))
+
+    local needed_kb=$(( (assetstore_kb + db_kb) * 11 / 10 ))
+    local avail_kb
+    avail_kb=$(df -k --output=avail "${LOCAL_BACKUP_BASE_DIR}" | tail -n 1 | tr -d ' ')
+
+    log "Disk space check - needed ~${needed_kb} KB, available ${avail_kb} KB on ${LOCAL_BACKUP_BASE_DIR}"
+
+    if [ "${avail_kb}" -lt "${needed_kb}" ]; then
+        echo "  ✗ Not enough free space for safety backups."
+        echo "    Needed:    ~$(( needed_kb / 1024 )) MB"
+        echo "    Available:  $(( avail_kb / 1024 )) MB"
+        die "Insufficient disk space on ${LOCAL_BACKUP_BASE_DIR} for safety backups."
+    fi
+    echo "  ✓ Sufficient space ($(( avail_kb / 1024 )) MB free, ~$(( needed_kb / 1024 )) MB needed)"
+}
+
+# ---------------------------- Session management -------------------------------
+
 check_active_sessions() {
     log "Checking for active database sessions..."
-    
-    local active_sessions=$(sudo -u postgres "${PG_RESTORE_PATH}" -t -c "
-        SELECT COUNT(*) 
-        FROM pg_stat_activity 
-        WHERE datname = '${PG_DB}' AND pid != pg_backend_pid();" 2>/dev/null | tr -d ' ')
-    
+
+    local active_sessions
+    active_sessions=$(run_psql_scalar postgres "
+        SELECT COUNT(*) FROM pg_stat_activity
+        WHERE datname = '${PG_DB}' AND pid != pg_backend_pid();")
+
     if [ -z "${active_sessions}" ] || [ "${active_sessions}" = "0" ]; then
         log "No active sessions found for database '${PG_DB}'."
         return 0
+    fi
+
+    log "Found ${active_sessions} active session(s) for database '${PG_DB}':"
+    sudo -u postgres "${PSQL_BIN}" -c "
+        SELECT pid, usename, application_name, client_addr, backend_start, state
+        FROM pg_stat_activity
+        WHERE datname = '${PG_DB}' AND pid != pg_backend_pid();" | tee -a "${LOG_FILE}"
+
+    echo
+    echo "WARNING: ${active_sessions} active session(s) are connected to the database."
+    echo "Tip: stop Tomcat/DSpace first so it doesn't immediately reconnect."
+    read -p "Terminate all active sessions and continue? (yes/no): " terminate_sessions
+
+    if [[ "${terminate_sessions,,}" != "yes" ]]; then
+        die "User chose not to terminate active sessions."
+    fi
+
+    log "Terminating active sessions..."
+    if run_psql postgres "
+        SELECT pg_terminate_backend(pid) FROM pg_stat_activity
+        WHERE datname = '${PG_DB}' AND pid != pg_backend_pid();"; then
+        log "Active sessions terminated."
+        sleep 2
     else
-        log "Found ${active_sessions} active session(s) for database '${PG_DB}':"
-        sudo -u postgres "${PG_RESTORE_PATH}" -c "
-            SELECT pid, usename, application_name, client_addr, backend_start, state, query
-            FROM pg_stat_activity 
-            WHERE datname = '${PG_DB}' AND pid != pg_backend_pid();" | tee -a "${LOG_FILE}"
-        
-        echo
-        echo "WARNING: There are ${active_sessions} active session(s) connected to the database."
-        echo "These sessions must be terminated before the database can be restored."
-        echo
-        read -p "Do you want to terminate all active sessions and continue? (yes/no): " terminate_sessions
-        
-        if [[ "${terminate_sessions,,}" != "yes" ]]; then
-            log "User chose not to terminate active sessions. Restoration cancelled."
-            exit 1
-        fi
-        
-        log "Terminating active sessions..."
-        sudo -u postgres "${PG_RESTORE_PATH}" -c "
-            SELECT pg_terminate_backend(pid)
-            FROM pg_stat_activity 
-            WHERE datname = '${PG_DB}' AND pid != pg_backend_pid();" >> "${LOG_FILE}" 2>&1
-        
-        if [ $? -eq 0 ]; then
-            log "Active sessions terminated successfully."
-            # Wait a moment for sessions to fully terminate
-            sleep 2
-        else
-            log "Error terminating active sessions."
-            exit 1
-        fi
+        die "Error terminating active sessions."
     fi
 }
 
-# Function to select backup source and files
+# ---------------------------- Selection ----------------------------------------
+
 select_backup_source() {
     echo "Select backup source:"
     echo "1) Isilon (offsite) - ${OFFSITE_BACKUP_BASE_DIR}"
     echo "2) Local backups - ${LOCAL_BACKUP_BASE_DIR}"
     echo
     read -p "Enter your choice (1 or 2): " source_choice
-    
+
     case "${source_choice}" in
-        1)
-            SELECTED_SQL_DIR="${OFFSITE_SQL_DIR}"
+        1)  SELECTED_SQL_DIR="${OFFSITE_SQL_DIR}"
             SELECTED_ASSETSTORE_DIR="${OFFSITE_ASSETSTORE_DIR}"
             SOURCE_TYPE="Isilon"
+            # Fail fast if the NFS mount is missing/hung
+            if ! timeout 10 ls "${OFFSITE_BACKUP_BASE_DIR}" > /dev/null 2>&1; then
+                die "Isilon backup directory is unreachable: ${OFFSITE_BACKUP_BASE_DIR} (mount missing or hung?)"
+            fi
             ;;
-        2)
-            SELECTED_SQL_DIR="${LOCAL_SQL_DIR}"
+        2)  SELECTED_SQL_DIR="${LOCAL_SQL_DIR}"
             SELECTED_ASSETSTORE_DIR="${LOCAL_ASSETSTORE_DIR}"
             SOURCE_TYPE="Local"
             ;;
-        *)
-            echo "Invalid choice. Please select 1 or 2."
-            exit 1
-            ;;
+        *)  echo "Invalid choice. Please select 1 or 2."; exit 1 ;;
     esac
-    
+
     log "Selected backup source: ${SOURCE_TYPE}"
 }
 
-# Function to select specific backup files
 select_backup_files() {
     echo
     echo "ASSETSTORE BACKUP SELECTION"
-    
+
     if ! list_backups "${SELECTED_ASSETSTORE_DIR}" "assetstore"; then
-        echo "No assetstore backups available. Exiting."
-        exit 1
+        die "No assetstore backups available."
     fi
-    
+
     echo
     read -p "Select assetstore backup number (or 'latest' for most recent): " assetstore_choice
-    
+
     if [[ "${assetstore_choice,,}" == "latest" ]]; then
-        echo "Finding latest assetstore backup..."
-        
-        # Enable debug mode if DEBUG_RESTORE is set
-        if [ "${DEBUG_RESTORE}" = "1" ]; then
-            debug_directory_contents "${SELECTED_ASSETSTORE_DIR}" "*.tar.gz"
-        fi
-        
         SELECTED_ASSETSTORE_BACKUP=$(find_latest_file "${SELECTED_ASSETSTORE_DIR}" "*.tar.gz")
-        
-        if [ -z "${SELECTED_ASSETSTORE_BACKUP}" ]; then
-            echo "ERROR: No assetstore backup files found in ${SELECTED_ASSETSTORE_DIR}"
-            echo "Please check if the directory exists and contains *.tar.gz files."
-            echo ""
-            echo "For debugging, you can run: DEBUG_RESTORE=1 $0"
-            exit 1
-        fi
-        
+        [ -n "${SELECTED_ASSETSTORE_BACKUP}" ] || die "No *.tar.gz files found in ${SELECTED_ASSETSTORE_DIR}"
         echo "Latest file found: ${SELECTED_ASSETSTORE_BACKUP}"
     else
-        local assetstore_files=($(find "${SELECTED_ASSETSTORE_DIR}" -maxdepth 1 -type f -name "*.tar.gz" | sort))
-        if [ "${assetstore_choice}" -ge 1 ] && [ "${assetstore_choice}" -le "${#assetstore_files[@]}" ]; then
+        local assetstore_files=()
+        while IFS= read -r -d '' f; do assetstore_files+=("$f"); done \
+            < <(find "${SELECTED_ASSETSTORE_DIR}" -maxdepth 1 -type f -name "*.tar.gz" -print0 | sort -z)
+        if [[ "${assetstore_choice}" =~ ^[0-9]+$ ]] && \
+           [ "${assetstore_choice}" -ge 1 ] && [ "${assetstore_choice}" -le "${#assetstore_files[@]}" ]; then
             SELECTED_ASSETSTORE_BACKUP=$(basename "${assetstore_files[$((assetstore_choice-1))]}")
         else
-            echo "Invalid selection. Exiting."
-            exit 1
+            die "Invalid selection."
         fi
     fi
-    
+
     echo "Selected: ${SELECTED_ASSETSTORE_BACKUP}"
     log "Selected assetstore backup: ${SELECTED_ASSETSTORE_BACKUP}"
-    
-    # Try to find corresponding SQL backup based on timestamp
+
     echo
     echo "Finding corresponding database backup..."
-    
-    # Extract timestamp for display
-    local assetstore_ts=$(extract_timestamp_from_backup "${SELECTED_ASSETSTORE_BACKUP}")
-    if [ -n "$assetstore_ts" ]; then
-        echo "Searching for database backup matching timestamp: ${assetstore_ts}"
-    else
-        echo "Searching for database backup (no timestamp detected)..."
-    fi
-    
-    local corresponding_sql_backup=$(find_corresponding_sql_backup "${SELECTED_ASSETSTORE_BACKUP}" "${SELECTED_SQL_DIR}")
-    
-    if [ $? -eq 0 ] && [ -n "$corresponding_sql_backup" ]; then
-        echo "Match found!"
+    local assetstore_ts
+    assetstore_ts=$(extract_timestamp_from_backup "${SELECTED_ASSETSTORE_BACKUP}")
+    [ -n "${assetstore_ts}" ] && echo "Searching for database backup matching timestamp: ${assetstore_ts}"
+
+    local corresponding_sql_backup
+    corresponding_sql_backup=$(find_corresponding_sql_backup "${SELECTED_ASSETSTORE_BACKUP}" "${SELECTED_SQL_DIR}")
+
+    if [ -n "${corresponding_sql_backup}" ]; then
         echo
         echo "AUTOMATIC MATCH:"
-        echo "Assetstore: ${SELECTED_ASSETSTORE_BACKUP}"
-        echo "Database: ${corresponding_sql_backup}"
-        
-        if [ -n "$assetstore_ts" ]; then
-            echo "Timestamp: ${assetstore_ts}"
-            
-            # Check if database has same timestamp
-            local database_ts=$(extract_timestamp_from_backup "${corresponding_sql_backup}")
-            if [ -n "$database_ts" ] && [ "$database_ts" != "$assetstore_ts" ]; then
-                echo "Status: Timestamps differ (DB: ${database_ts})"
-            else
-                echo "Status: Synchronized"
-            fi
-        fi
-        
+        echo "  Assetstore: ${SELECTED_ASSETSTORE_BACKUP}"
+        echo "  Database:   ${corresponding_sql_backup}"
         echo
         read -p "Use this matching pair? (yes/no/manual): " use_matching_pair
-        
+
         case "${use_matching_pair,,}" in
             yes|y)
-                SELECTED_SQL_BACKUP="$corresponding_sql_backup"
+                SELECTED_SQL_BACKUP="${corresponding_sql_backup}"
                 log "Using automatically matched database backup: ${SELECTED_SQL_BACKUP}"
-                echo "Using matched backup pair"
                 ;;
             manual|m)
-                echo
-                echo "Manual database backup selection:"
                 manual_sql_selection
                 ;;
             *)
-                echo
-                echo "Restoration cancelled - no database backup selected."
-                log "User cancelled restoration - no database backup selected for ${SELECTED_ASSETSTORE_BACKUP}"
-                exit 1
+                die "User cancelled restoration - no database backup selected."
                 ;;
         esac
     else
-        echo "No corresponding backup found"
         echo
         echo "WARNING: No corresponding database backup found for this assetstore."
-        echo "This means the backups may not be from the same point in time,"
-        echo "which could result in data inconsistencies after restoration."
+        echo "Backups may not be from the same point in time; restoring a mismatched"
+        echo "pair can produce data inconsistencies (orphaned bitstreams, broken items)."
         echo
-        echo "Options:"
         echo "  1) Cancel restoration (recommended)"
         echo "  2) Manually select a database backup (risk of inconsistency)"
         echo
         read -p "What would you like to do? (1-cancel / 2-manual): " mismatch_choice
-        
+
         case "${mismatch_choice}" in
-            1)
-                echo
-                echo "Restoration cancelled for safety"
-                log "Restoration cancelled - no corresponding database backup found for ${SELECTED_ASSETSTORE_BACKUP}"
-                exit 1
-                ;;
-            2)
-                echo
-                echo "Manual database backup selection:"
-                echo "WARNING: Manually selecting a non-matching database backup may cause data inconsistencies!"
-                echo
-                manual_sql_selection
-                ;;
-            *)
-                echo "Invalid choice. Restoration cancelled."
-                log "Restoration cancelled - invalid choice for timestamp mismatch handling"
-                exit 1
-                ;;
+            2)  manual_sql_selection ;;
+            *)  die "Restoration cancelled - no corresponding database backup found." ;;
         esac
     fi
-    
+
     log "Final selections - Assetstore: ${SELECTED_ASSETSTORE_BACKUP}, Database: ${SELECTED_SQL_BACKUP}"
 }
 
-# Function to handle manual SQL backup selection
 manual_sql_selection() {
     if ! list_backups "${SELECTED_SQL_DIR}" "database"; then
-        echo "No database backups available. Exiting."
-        exit 1
+        die "No database backups available."
     fi
-    
+
     echo
     read -p "Select database backup number (or 'latest' for most recent): " sql_choice
-    
+
     if [[ "${sql_choice,,}" == "latest" ]]; then
-        echo "Finding latest database backup..."
         SELECTED_SQL_BACKUP=$(find_latest_file "${SELECTED_SQL_DIR}" "*.sql")
-        
-        if [ -z "${SELECTED_SQL_BACKUP}" ]; then
-            echo "ERROR: No SQL backup files found in ${SELECTED_SQL_DIR}"
-            echo "Please check if the directory exists and contains *.sql files."
-            exit 1
-        fi
-        
+        [ -n "${SELECTED_SQL_BACKUP}" ] || die "No *.sql files found in ${SELECTED_SQL_DIR}"
         echo "Latest file found: ${SELECTED_SQL_BACKUP}"
     else
-        local sql_files=($(find "${SELECTED_SQL_DIR}" -maxdepth 1 -type f -name "*.sql" | sort))
-        if [ "${sql_choice}" -ge 1 ] && [ "${sql_choice}" -le "${#sql_files[@]}" ]; then
+        local sql_files=()
+        while IFS= read -r -d '' f; do sql_files+=("$f"); done \
+            < <(find "${SELECTED_SQL_DIR}" -maxdepth 1 -type f -name "*.sql" -print0 | sort -z)
+        if [[ "${sql_choice}" =~ ^[0-9]+$ ]] && \
+           [ "${sql_choice}" -ge 1 ] && [ "${sql_choice}" -le "${#sql_files[@]}" ]; then
             SELECTED_SQL_BACKUP=$(basename "${sql_files[$((sql_choice-1))]}")
         else
-            echo "Invalid selection. Exiting."
-            exit 1
+            die "Invalid selection."
         fi
     fi
-    
+
     echo "Selected: ${SELECTED_SQL_BACKUP}"
     log "Manually selected database backup: ${SELECTED_SQL_BACKUP}"
 }
 
-# Function to validate and confirm PostgreSQL paths
-validate_postgresql_paths() {
-    echo
-    echo "=========================================="
-    echo "  PostgreSQL Installation Detection"
-    echo "=========================================="
-    
-    echo "Auto-detected PostgreSQL paths:"
-    
-    if [ -n "${DETECTED_PSQL_PATH}" ] && [ -x "${DETECTED_PSQL_PATH}" ]; then
-        echo "  ✓ psql found at: ${DETECTED_PSQL_PATH}"
-        # Get version information
-        local psql_version=$("${DETECTED_PSQL_PATH}" --version 2>/dev/null | head -n 1)
-        echo "    Version: ${psql_version}"
-    else
-        echo "  ✗ psql not found or not executable"
-        echo "    Using fallback: ${PG_RESTORE_PATH}"
-    fi
-    
-    if [ -n "${DETECTED_PG_DUMP_PATH}" ] && [ -x "${DETECTED_PG_DUMP_PATH}" ]; then
-        echo "  ✓ pg_dump found at: ${DETECTED_PG_DUMP_PATH}"
-        # Get version information
-        local pg_dump_version=$("${DETECTED_PG_DUMP_PATH}" --version 2>/dev/null | head -n 1)
-        echo "    Version: ${pg_dump_version}"
-    else
-        echo "  ✗ pg_dump not found or not executable"
-        echo "    Using fallback: ${PG_DUMP_PATH}"
-    fi
-    
-    echo
-    echo "Final paths to be used:"
-    echo "  PG_RESTORE_PATH: ${PG_RESTORE_PATH}"
-    echo "  PG_DUMP_PATH: ${PG_DUMP_PATH}"
-    echo
-    
-    # Validate that the final paths are executable
-    local path_errors=false
-    
-    if [ ! -x "${PG_RESTORE_PATH}" ]; then
-        echo "  ✗ ERROR: psql not found or not executable at: ${PG_RESTORE_PATH}"
-        path_errors=true
-    fi
-    
-    if [ ! -x "${PG_DUMP_PATH}" ]; then
-        echo "  ✗ ERROR: pg_dump not found or not executable at: ${PG_DUMP_PATH}"
-        path_errors=true
-    fi
-    
-    if [ "${path_errors}" = true ]; then
-        echo
-        echo "PostgreSQL path validation failed. Please check your PostgreSQL installation."
-        echo "You may need to:"
-        echo "  1. Install PostgreSQL client tools"
-        echo "  2. Add PostgreSQL bin directory to your PATH"
-        echo "  3. Manually edit the paths in this script"
-        echo
-        read -p "Do you want to continue anyway? (yes/no): " continue_anyway
-        
-        if [[ "${continue_anyway,,}" != "yes" ]]; then
-            echo "Restoration cancelled due to PostgreSQL path issues."
-            log "Restoration cancelled - PostgreSQL path validation failed"
-            exit 1
-        else
-            echo "Continuing with potentially invalid paths (this may cause failures)..."
-            log "WARNING: Continuing with potentially invalid PostgreSQL paths"
-        fi
-    else
-        read -p "Are these PostgreSQL paths correct? (yes/no): " paths_confirmed
-        
-        if [[ "${paths_confirmed,,}" != "yes" ]]; then
-            echo
-            echo "Please manually edit the script to set the correct paths:"
-            echo "  PG_RESTORE_PATH (currently: ${PG_RESTORE_PATH})"
-            echo "  PG_DUMP_PATH (currently: ${PG_DUMP_PATH})"
-            echo
-            echo "Restoration cancelled."
-            log "Restoration cancelled - user rejected detected PostgreSQL paths"
-            exit 1
-        fi
-    fi
-    
-    log "PostgreSQL paths validated - PG_RESTORE_PATH: ${PG_RESTORE_PATH}, PG_DUMP_PATH: ${PG_DUMP_PATH}"
-    echo "PostgreSQL paths confirmed."
-}
-
-# Function to debug directory contents (for troubleshooting)
-debug_directory_contents() {
-    local directory="$1"
-    local pattern="$2"
-    
-    echo "DEBUG: Checking directory ${directory} for pattern ${pattern}"
-    
-    if [ ! -d "${directory}" ]; then
-        echo "DEBUG: Directory does not exist"
-        return 1
-    fi
-    
-    echo "DEBUG: Directory exists, listing contents:"
-    ls -la "${directory}" | head -10
-    
-    echo "DEBUG: Files matching pattern ${pattern}:"
-    find "${directory}" -maxdepth 1 -type f -name "${pattern}" -ls 2>/dev/null | head -5
-    
-    echo "DEBUG: Testing find_latest_file function:"
-    local result=$(find_latest_file "${directory}" "${pattern}")
-    echo "DEBUG: find_latest_file returned: '${result}'"
-    
-    if [ -n "${result}" ]; then
-        echo "DEBUG: File details: $(ls -la "${directory}/${result}" 2>/dev/null)"
-    fi
-}
-
 # ---------------------------- Main Script -------------------------------------
 
-# Ensure log directory exists
 mkdir -p "${LOG_DIR}"
 
-# Get the current hostname
 CURRENT_HOSTNAME=$(hostname -f)
-EXPECTED_HOSTNAME="pedsdspace01.research.chop.edu"
 
-# Display warning message and get user confirmation
 echo "WARNING: This script will perform the following operations:"
-echo "1. Back up and replace the existing assetstore directory at ${ASSETSTORE_TARGET}"
+echo "1. Back up and replace the existing assetstore at ${ASSETSTORE_TARGET}"
 echo "2. Back up and completely rebuild the PostgreSQL database '${PG_DB}'"
-echo "3. Restore data from the most recent backups in ${OFFSITE_BACKUP_BASE_DIR}"
+echo "3. Restore data from backups in the selected source"
 echo
 
-# Add extra warning if not running on expected hostname
 if [[ "${CURRENT_HOSTNAME}" != "${EXPECTED_HOSTNAME}" ]]; then
     echo "CRITICAL WARNING: This script is running on '${CURRENT_HOSTNAME}'"
-    echo "but is intended to run on '${EXPECTED_HOSTNAME}'"
-    echo "Running this script on the production server means that something"
-    echo "on the production server has gone wrong and you're restoring from"
-    echo "the most recent and available backup. Is this what you're intending to do?"
+    echo "but is intended to run on '${EXPECTED_HOSTNAME}'."
     echo
 fi
 
-echo "This process cannot be undone once started. Current data will be backed up,"
-echo "but it's recommended to verify you have additional backups if needed."
-echo
 read -p "Do you want to proceed? (yes/no): " confirmation
-
 if [[ "${confirmation,,}" != "yes" ]]; then
     echo "Restoration cancelled by user."
     exit 0
@@ -698,250 +635,202 @@ fi
 
 log "========== Starting Restoration Process =========="
 
-# Validate PostgreSQL installation paths
-validate_postgresql_paths
-
-# Check for active database sessions before proceeding
+detect_pg_binaries
 check_active_sessions
-
-# Select backup source and specific files
 select_backup_source
 select_backup_files
 
-# Final confirmation with selected backups
+# Validate everything BEFORE touching live data
+validate_backup_files
+check_disk_space
+
+# Final confirmation
 echo
 echo "FINAL CONFIRMATION"
-echo "Source: ${SOURCE_TYPE}"
-echo "Assetstore: ${SELECTED_ASSETSTORE_BACKUP}"
-echo "Database: ${SELECTED_SQL_BACKUP}"
+echo "  Source:     ${SOURCE_TYPE}"
+echo "  Assetstore: ${SELECTED_ASSETSTORE_BACKUP}"
+echo "  Database:   ${SELECTED_SQL_BACKUP}"
 
-# Show timestamp information
 assetstore_ts=$(extract_timestamp_from_backup "${SELECTED_ASSETSTORE_BACKUP}")
 database_ts=$(extract_timestamp_from_backup "${SELECTED_SQL_BACKUP}")
-
-if [ -n "$assetstore_ts" ] && [ -n "$database_ts" ]; then
-    echo "Timestamp: $assetstore_ts"
-    
-    if [ "$assetstore_ts" = "$database_ts" ]; then
-        echo "Status: Synchronized"
+if [ -n "${assetstore_ts}" ] && [ -n "${database_ts}" ]; then
+    if [ "${assetstore_ts}" = "${database_ts}" ]; then
+        echo "  Timestamps: Synchronized (${assetstore_ts})"
     else
-        echo "Status: WARNING - Timestamps do not match (DB: $database_ts)"
+        echo "  Timestamps: WARNING - MISMATCH (assetstore: ${assetstore_ts}, DB: ${database_ts})"
     fi
 fi
 
 echo
-echo "Operations to perform:"
-echo "  1. Replace ${ASSETSTORE_TARGET} with ${SELECTED_ASSETSTORE_BACKUP}"
-echo "  2. Drop and recreate database '${PG_DB}' with ${SELECTED_SQL_BACKUP}"
-echo
 read -p "Proceed with these selections? (yes/no): " final_confirmation
-
 if [[ "${final_confirmation,,}" != "yes" ]]; then
-    echo "Restoration cancelled by user."
     log "Restoration cancelled by user at final confirmation."
+    finalize_log
     exit 0
 fi
 
-echo "Proceeding with restoration..."
+# ---------------------------- Safety backups -----------------------------------
 
-# ---------------------------- Assetstore Restoration -------------------------
-
-log "Starting Assetstore Restoration."
-
-# Verify the selected assetstore backup exists
-if [[ ! -f "${SELECTED_ASSETSTORE_DIR}/${SELECTED_ASSETSTORE_BACKUP}" ]]; then
-    log "Error: Selected assetstore backup not found: ${SELECTED_ASSETSTORE_DIR}/${SELECTED_ASSETSTORE_BACKUP}"
-    exit 1
-else
-    log "Using assetstore backup: ${SELECTED_ASSETSTORE_DIR}/${SELECTED_ASSETSTORE_BACKUP}"
-fi
-
-# Backup current assetstore before restoring (optional)
+# 1. Safety tarball of current assetstore
 if [ -d "${ASSETSTORE_TARGET}" ]; then
-    BACKUP_CURRENT_ASSETSTORE="/data/backups/assetstore_current_backup_${TIMESTAMP}.tar.gz"
-    log "Creating backup of current assetstore at ${BACKUP_CURRENT_ASSETSTORE}."
-    tar -czf "${BACKUP_CURRENT_ASSETSTORE}" -C "$(dirname "${ASSETSTORE_TARGET}")" "$(basename "${ASSETSTORE_TARGET}")" >> "${LOG_FILE}" 2>&1
-    if [ $? -eq 0 ]; then
-        log "Current assetstore backed up successfully."
+    BACKUP_CURRENT_ASSETSTORE="${LOCAL_BACKUP_BASE_DIR}/assetstore_current_backup_${TIMESTAMP}.tar.gz"
+    log "Creating safety backup of current assetstore at ${BACKUP_CURRENT_ASSETSTORE}"
+    if tar -czf "${BACKUP_CURRENT_ASSETSTORE}" -C "$(dirname "${ASSETSTORE_TARGET}")" \
+           "$(basename "${ASSETSTORE_TARGET}")" >> "${LOG_FILE}" 2>&1; then
+        log "Current assetstore backed up."
     else
-        log "Error backing up current assetstore."
-        rollback_changes "Failed to backup current assetstore"
+        die "Failed to back up current assetstore."
     fi
 else
-    log "No existing assetstore found at ${ASSETSTORE_TARGET}. Skipping backup."
+    log "No existing assetstore at ${ASSETSTORE_TARGET}; skipping safety backup."
 fi
 
-# Remove existing assetstore directory
-log "Removing existing assetstore directory: ${ASSETSTORE_TARGET}"
-sudo rm -rf "${ASSETSTORE_TARGET}"
-if [ $? -eq 0 ]; then
-    log "Existing assetstore directory removed."
+# 2. Safety dump of current database (using the version-matched pg_dump)
+CURRENT_DB_BACKUP="${LOCAL_BACKUP_BASE_DIR}/current_db_backup_${TIMESTAMP}.sql"
+log "Creating safety backup of current database at ${CURRENT_DB_BACKUP}"
+if sudo -u postgres "${PG_DUMP_BIN}" "${PG_DB}" > "${CURRENT_DB_BACKUP}" 2>> "${LOG_FILE}"; then
+    log "Current database backed up."
 else
-    log "Error removing existing assetstore directory."
-    rollback_changes "Failed to remove existing assetstore directory"
+    die "Failed to back up current database (see ${LOG_FILE})."
 fi
 
-# Extract the latest assetstore backup
-log "Extracting assetstore backup: ${SELECTED_ASSETSTORE_BACKUP}"
-tar -xzf "${SELECTED_ASSETSTORE_DIR}/${SELECTED_ASSETSTORE_BACKUP}" -C "$(dirname "${ASSETSTORE_TARGET}")" >> "${LOG_FILE}" 2>&1
-if [ $? -eq 0 ]; then
-    log "Assetstore restored successfully to ${ASSETSTORE_TARGET}."
+# ---------------------------- Assetstore Restoration ---------------------------
+
+log "Starting assetstore restoration."
+
+# Extract into a staging directory first — the live assetstore stays untouched
+# until we know extraction succeeded.
+ASSETSTORE_STAGING="$(dirname "${ASSETSTORE_TARGET}")/.assetstore_staging_${TIMESTAMP}"
+log "Extracting to staging directory: ${ASSETSTORE_STAGING}"
+mkdir -p "${ASSETSTORE_STAGING}"
+
+if tar -xzf "${SELECTED_ASSETSTORE_DIR}/${SELECTED_ASSETSTORE_BACKUP}" \
+       -C "${ASSETSTORE_STAGING}" >> "${LOG_FILE}" 2>&1; then
+    log "Extraction to staging completed."
+else
+    sudo rm -rf "${ASSETSTORE_STAGING}"
+    die "Failed to extract assetstore backup (live assetstore untouched)."
+fi
+
+# The tarball contains the assetstore dir itself; locate it inside staging.
+STAGED_ASSETSTORE="${ASSETSTORE_STAGING}/$(basename "${ASSETSTORE_TARGET}")"
+if [ ! -d "${STAGED_ASSETSTORE}" ]; then
+    # Fallback: maybe the tarball contains the contents directly
+    STAGED_ASSETSTORE="${ASSETSTORE_STAGING}"
+fi
+
+# Atomic-ish swap: rename current aside, rename staged into place.
+ASSETSTORE_OLD="$(dirname "${ASSETSTORE_TARGET}")/.assetstore_old_${TIMESTAMP}"
+if [ -d "${ASSETSTORE_TARGET}" ]; then
+    log "Renaming current assetstore aside to ${ASSETSTORE_OLD}"
+    sudo mv "${ASSETSTORE_TARGET}" "${ASSETSTORE_OLD}" || die "Failed to move current assetstore aside."
+fi
+
+log "Moving staged assetstore into place."
+if sudo mv "${STAGED_ASSETSTORE}" "${ASSETSTORE_TARGET}"; then
     ASSETSTORE_RESTORED=true
+    log "Assetstore restored to ${ASSETSTORE_TARGET}."
 else
-    log "Error extracting assetstore backup."
-    rollback_changes "Failed to extract assetstore backup"
+    log "Failed to move staged assetstore into place."
+    rollback_changes "Failed to swap staged assetstore into place"
 fi
 
-# Set appropriate permissions (optional, adjust as needed)
-log "Setting permissions for assetstore directory."
-sudo chown -R dspace:dspace "${ASSETSTORE_TARGET}"
-if [ $? -eq 0 ]; then
-    log "Permissions set successfully."
+sudo rm -rf "${ASSETSTORE_STAGING}" 2>/dev/null
+
+log "Setting ownership on assetstore."
+if sudo chown -R "${ASSETSTORE_OWNER}" "${ASSETSTORE_TARGET}"; then
+    log "Ownership set."
 else
-    log "Error setting permissions."
-    rollback_changes "Failed to set assetstore permissions"
+    rollback_changes "Failed to set assetstore ownership"
 fi
 
-# ---------------------------- Database Restoration ----------------------------
+# ---------------------------- Database Restoration -----------------------------
 
-log "Starting PostgreSQL Database Restoration."
+log "Starting database restoration."
 
-# Verify the selected SQL backup exists
-if [[ ! -f "${SELECTED_SQL_DIR}/${SELECTED_SQL_BACKUP}" ]]; then
-    log "Error: Selected SQL backup not found: ${SELECTED_SQL_DIR}/${SELECTED_SQL_BACKUP}"
-    exit 1
-else
-    log "Using SQL backup: ${SELECTED_SQL_DIR}/${SELECTED_SQL_BACKUP}"
-fi
-
-# Double-check for active sessions before database operations
+# Re-check sessions right before the drop
 check_active_sessions
 
-# Optional: Backup current database before restoring
-CURRENT_DB_BACKUP="/data/backups/current_db_backup_${TIMESTAMP}.sql"
-log "Creating backup of current database at ${CURRENT_DB_BACKUP}."
-"${PG_DUMP_PATH}" -U "${PG_USER}" -h "${PG_HOST}" -f "${CURRENT_DB_BACKUP}" "${PG_DB}" >> "${LOG_FILE}" 2>&1
-if [ $? -eq 0 ]; then
-    log "Current database backed up successfully at ${CURRENT_DB_BACKUP}."
-else
-    log "Error backing up current database."
-    rollback_changes "Failed to backup current database"
-fi
-
-# Drop the existing database
 log "Dropping existing database: ${PG_DB}"
-sudo -u postgres "${PG_RESTORE_PATH}" -c "DROP DATABASE IF EXISTS ${PG_DB};" >> "${LOG_FILE}" 2>&1
-if [ $? -eq 0 ]; then
-    log "Database dropped successfully."
+if sudo -u postgres "${PSQL_BIN}" -c "DROP DATABASE IF EXISTS ${PG_DB} WITH (FORCE);" >> "${LOG_FILE}" 2>&1; then
+    log "Database dropped (WITH FORCE)."
     DATABASE_DROPPED=true
 else
-    log "Error dropping database. This may indicate remaining active sessions."
-    log "Attempting one final check for active sessions..."
-    sudo -u postgres "${PG_RESTORE_PATH}" -c "
-        SELECT pid, usename, application_name, client_addr, backend_start, state
-        FROM pg_stat_activity 
-        WHERE datname = '${PG_DB}';" >> "${LOG_FILE}" 2>&1
-    log "Check ${LOG_FILE} for active session details."
     rollback_changes "Failed to drop existing database"
 fi
 
-# Create the database
 log "Creating database: ${PG_DB}"
-sudo -u postgres "${PG_RESTORE_PATH}" -c "CREATE DATABASE ${PG_DB};" >> "${LOG_FILE}" 2>&1
-if [ $? -eq 0 ]; then
-    log "Database created successfully."
+if sudo -u postgres "${PSQL_BIN}" -c "CREATE DATABASE ${PG_DB} OWNER ${PG_USER};" >> "${LOG_FILE}" 2>&1; then
+    log "Database created."
     DATABASE_CREATED=true
 else
-    log "Error creating database."
     rollback_changes "Failed to create new database"
 fi
-# Copy SQL backup to local temp directory
-LOCAL_SQL_BACKUP="/tmp/${SELECTED_SQL_BACKUP##*/}"
-log "Copying SQL backup to local directory: ${LOCAL_SQL_BACKUP}"
-cp "${SELECTED_SQL_DIR}/${SELECTED_SQL_BACKUP}" "${LOCAL_SQL_BACKUP}"
-if [ $? -eq 0 ]; then
-    log "SQL backup copied successfully."
+
+# Ensure pgcrypto exists (DSpace requires it; a plain restore into a fresh DB
+# will fail on digest() calls if the extension is missing).
+sudo -u postgres "${PSQL_BIN}" -d "${PG_DB}" -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;" >> "${LOG_FILE}" 2>&1
+
+# Copy SQL to local tmp (avoids restoring over a potentially slow/flaky NFS read)
+LOCAL_SQL_BACKUP=$(mktemp "/tmp/${SELECTED_SQL_BACKUP%.sql}.XXXXXX.sql")
+log "Copying SQL backup to ${LOCAL_SQL_BACKUP}"
+if cp "${SELECTED_SQL_DIR}/${SELECTED_SQL_BACKUP}" "${LOCAL_SQL_BACKUP}"; then
+    log "SQL backup copied."
 else
-    log "Error copying SQL backup."
     rollback_changes "Failed to copy SQL backup to local directory"
 fi
 
-# Restore the database from local copy
-log "Restoring database from backup: ${LOCAL_SQL_BACKUP}"
-sudo -u postgres "${PG_RESTORE_PATH}" -d "${PG_DB}" -f "${LOCAL_SQL_BACKUP}" >> "${LOG_FILE}" 2>&1
-if [ $? -eq 0 ]; then
+log "Restoring database from ${LOCAL_SQL_BACKUP} (ON_ERROR_STOP enabled)"
+if sudo -u postgres "${PSQL_BIN}" -v ON_ERROR_STOP=1 -d "${PG_DB}" < "${LOCAL_SQL_BACKUP}" >> "${LOG_FILE}" 2>&1; then
     log "Database restored successfully from ${SELECTED_SQL_BACKUP}."
 else
-    log "Error restoring database."
     rm -f "${LOCAL_SQL_BACKUP}"
-    rollback_changes "Failed to restore database from backup"
+    rollback_changes "Database restore failed (psql reported an error)"
 fi
 
-# Remove local SQL backup
-log "Removing local SQL backup"
 rm -f "${LOCAL_SQL_BACKUP}"
-if [ $? -eq 0 ]; then
-    log "Local SQL backup removed successfully."
+
+# Quick sanity check: DSpace schema should have rows in eperson/item tables
+ITEM_COUNT=$(run_psql_scalar "${PG_DB}" "SELECT COUNT(*) FROM item;" 2>/dev/null)
+if [ -n "${ITEM_COUNT}" ]; then
+    log "Post-restore sanity check: item table contains ${ITEM_COUNT} rows."
 else
-    log "Warning: Could not remove local SQL backup at ${LOCAL_SQL_BACKUP}"
+    log "WARNING: Post-restore sanity check could not query the item table."
 fi
 
 # ---------------------------- Final Steps --------------------------------------
 
-# Clean up temporary files and old backups on successful completion
-log "Cleaning up temporary files..."
-rm -f "${LOCAL_SQL_BACKUP}" 2>/dev/null
+# Remove the preserved old assetstore dir only after full success
+if [ -n "${ASSETSTORE_OLD}" ] && [ -d "${ASSETSTORE_OLD}" ]; then
+    log "Removing preserved old assetstore directory (safety tarball is kept)."
+    sudo rm -rf "${ASSETSTORE_OLD}"
+fi
 
-log "========== Restoration Process Completed Successfully =========="
-log "Restoration Summary:"
+log "========== Restoration Completed Successfully =========="
 log "- Source: ${SOURCE_TYPE}"
 log "- Assetstore restored from: ${SELECTED_ASSETSTORE_BACKUP}"
 log "- Database restored from: ${SELECTED_SQL_BACKUP}"
-log "- Assetstore location: ${ASSETSTORE_TARGET}"
-log "- Database: ${PG_DB}"
-
-# Note the backup files created during the process
-if [ -n "${BACKUP_CURRENT_ASSETSTORE}" ] && [ -f "${BACKUP_CURRENT_ASSETSTORE}" ]; then
-    log "- Original assetstore backup preserved at: ${BACKUP_CURRENT_ASSETSTORE}"
-fi
-
-if [ -n "${CURRENT_DB_BACKUP}" ] && [ -f "${CURRENT_DB_BACKUP}" ]; then
-    log "- Original database backup preserved at: ${CURRENT_DB_BACKUP}"
-fi
+[ -f "${BACKUP_CURRENT_ASSETSTORE}" ] && log "- Pre-restore assetstore backup: ${BACKUP_CURRENT_ASSETSTORE}"
+[ -f "${CURRENT_DB_BACKUP}" ] && log "- Pre-restore database backup: ${CURRENT_DB_BACKUP}"
 
 echo
-echo "┌─────────────────────────────────────────────────────────────────┐"
-echo "│                  ✓ RESTORATION COMPLETED SUCCESSFULLY          │"
-echo "└─────────────────────────────────────────────────────────────────┘"
+echo "┌────────────────────────────────────────────────────────────────┐"
+echo "│              ✓ RESTORATION COMPLETED SUCCESSFULLY              │"
+echo "└────────────────────────────────────────────────────────────────┘"
 echo
-printf "  %-15s: %s\n" "Source" "${SOURCE_TYPE}"
+printf "  %-15s: %s\n" "Source"     "${SOURCE_TYPE}"
 printf "  %-15s: %s\n" "Assetstore" "${SELECTED_ASSETSTORE_BACKUP}"
-printf "  %-15s: %s\n" "Database" "${SELECTED_SQL_BACKUP}"
-printf "  %-15s: %s\n" "Log file" "${LOG_FILE}.gz"
-
+printf "  %-15s: %s\n" "Database"   "${SELECTED_SQL_BACKUP}"
+[ -n "${ITEM_COUNT}" ] && printf "  %-15s: %s rows\n" "Item table" "${ITEM_COUNT}"
+printf "  %-15s: %s\n" "Log file"   "${LOG_FILE}.gz"
 echo
-echo "  Emergency rollback files created:"
-
-if [ -n "${BACKUP_CURRENT_ASSETSTORE}" ] && [ -f "${BACKUP_CURRENT_ASSETSTORE}" ]; then
-    printf "    %-13s: %s\n" "Assetstore" "${BACKUP_CURRENT_ASSETSTORE}"
-fi
-
-if [ -n "${CURRENT_DB_BACKUP}" ] && [ -f "${CURRENT_DB_BACKUP}" ]; then
-    printf "    %-13s: %s\n" "Database" "${CURRENT_DB_BACKUP}"
-fi
-
+echo "  Emergency rollback files (kept):"
+[ -f "${BACKUP_CURRENT_ASSETSTORE}" ] && printf "    %-13s: %s\n" "Assetstore" "${BACKUP_CURRENT_ASSETSTORE}"
+[ -f "${CURRENT_DB_BACKUP}" ]         && printf "    %-13s: %s\n" "Database"   "${CURRENT_DB_BACKUP}"
 echo
-echo "  These backup files can be used for manual rollback if needed."
-echo "┌─────────────────────────────────────────────────────────────────┐"
-echo "│                        RESTORATION COMPLETE                    │"
-echo "└─────────────────────────────────────────────────────────────────┘"
+echo "  Reminder: restart Tomcat/DSpace and reindex discovery if needed:"
+echo "    [dspace]/bin/dspace index-discovery -b"
+echo
 
-# Optional: Compress the log file to save space
-gzip "${LOG_FILE}" 2>/dev/null
-if [ $? -eq 0 ]; then
-    log "Log file compressed successfully."
-else
-    log "Error compressing log file."
-fi
-
+finalize_log
 exit 0
