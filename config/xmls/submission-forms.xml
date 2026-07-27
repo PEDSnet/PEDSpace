@@ -998,7 +998,7 @@
                     <repeatable>false</repeatable>
                     <label>Provenance</label>
                     <input-type>textarea</input-type>
-                    <hint>Input the name of the study or query for which this concept set was created. Do not use shorthand to abbreviate the study, rather, write the full title. 
+                    <hint>Input the name of the study or query for which this concept set was created and how it was used in this study. Do not use shorthand to abbreviate the study, rather, write the full title. 
                     Note if the concept set was created for an initial study, then reused in another. Provide additional information about the specific purpose this item played in the study or studies as applicable.</hint>
                     <required></required>
                 </field>
@@ -1029,13 +1029,25 @@
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>relation</dc-element>
-                    <dc-qualifier>uri</dc-qualifier>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>code</dc-element>
+                    <dc-qualifier>github</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Development Code</label>
+                    <label>Development Code (GitHub Repository)</label>
                     <input-type>onebox</input-type>
                     <hint>Enter a link to a GitHub repository (or other public repository) where the development code is stored, if applicable.</hint>
+                    <required></required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>code</dc-element>
+                    <dc-qualifier>package</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Code</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter the code snippet (R or SQL) that generates the concept set, if available.</hint>
                     <required></required>
                 </field>
             </row>
