@@ -6,13 +6,15 @@ import {
   NgTemplateOutlet,
 } from '@angular/common';
 import { Component, OnInit, OnDestroy, NgZone, ChangeDetectorRef, Inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { APP_CONFIG, AppConfig } from 'src/config/app-config.interface';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ThemedCommunityListPageComponent } from 'src/app/community-list-page/themed-community-list-page.component';
+import { AuthService } from '../../../../app/core/auth/auth.service';
 import { AuthorizationDataService } from '../../../../app/core/data/feature-authorization/authorization-data.service';
 import { FeatureID } from '../../../../app/core/data/feature-authorization/feature-id';
 import { HomeCoarComponent } from '../../../../app/home-page/home-coar/home-coar.component';
@@ -22,6 +24,7 @@ import { RecentItemListComponent } from '../../../../app/home-page/recent-item-l
 import { ThemedTopLevelCommunityListComponent } from '../../../../app/home-page/top-level-community-list/themed-top-level-community-list.component';
 import { SuggestionsPopupComponent } from '../../../../app/notifications/suggestions-popup/suggestions-popup.component';
 import { ThemedConfigurationSearchPageComponent } from '../../../../app/search-page/themed-configuration-search-page.component';
+import { ThemedCreateItemParentSelectorComponent } from '../../../../app/shared/dso-selector/modal-wrappers/create-item-parent-selector/themed-create-item-parent-selector.component';
 import { ThemedSearchFormComponent } from '../../../../app/shared/search-form/themed-search-form.component';
 import { PageWithSidebarComponent } from '../../../../app/shared/sidebar/page-with-sidebar.component';
 
@@ -44,8 +47,26 @@ export class HomePageComponent extends BaseComponent implements OnInit, OnDestro
     private ngZone: NgZone,
     private cdr: ChangeDetectorRef,
     private authorizationService: AuthorizationDataService,
+    private modalService: NgbModal,
+    private authService: AuthService,
+    private router: Router,
   ) {
     super(appConfig, route);
+  }
+
+  /**
+   * Opens the collection selector modal used to deposit a new item, or sends
+   * unauthenticated users to the login page first
+   */
+  openDepositDialog(): void {
+    this.authService.isAuthenticated().pipe(take(1)).subscribe((authenticated) => {
+      if (authenticated) {
+        this.modalService.open(ThemedCreateItemParentSelectorComponent);
+      } else {
+        this.authService.setRedirectUrl(this.router.url);
+        this.authService.redirectToLogin();
+      }
+    });
   }
 
   carouselImages = [
