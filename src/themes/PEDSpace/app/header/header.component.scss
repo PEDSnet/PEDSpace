@@ -25,6 +25,17 @@
     }
   }
 
+  .home-link {
+    color: $midnight-green;
+    font-family: "proxima-nova", sans-serif;
+    white-space: nowrap;
+
+    &:hover, &:focus {
+      color: var(--ds-header-icon-color-hover);
+      text-decoration: none;
+    }
+  }
+
   .navbar-toggler {
     border: none;
     color: var(--ds-header-icon-color);
