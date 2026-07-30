@@ -8,10 +8,13 @@ import {
 import { Component, OnInit, OnDestroy, NgZone, ChangeDetectorRef, Inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
 import { APP_CONFIG, AppConfig } from 'src/config/app-config.interface';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ThemedCommunityListPageComponent } from 'src/app/community-list-page/themed-community-list-page.component';
+import { AuthorizationDataService } from '../../../../app/core/data/feature-authorization/authorization-data.service';
+import { FeatureID } from '../../../../app/core/data/feature-authorization/feature-id';
 import { HomeCoarComponent } from '../../../../app/home-page/home-coar/home-coar.component';
 import { ThemedHomeNewsComponent } from '../../../../app/home-page/home-news/themed-home-news.component';
 import { HomePageComponent as BaseComponent } from '../../../../app/home-page/home-page.component';
@@ -33,11 +36,14 @@ export class HomePageComponent extends BaseComponent implements OnInit, OnDestro
   carouselIndex = 0;
   private carouselTimer: ReturnType<typeof setTimeout> | null = null;
 
+  isSiteAdmin$: Observable<boolean>;
+
   constructor(
     @Inject(APP_CONFIG) appConfig: AppConfig,
     route: ActivatedRoute,
     private ngZone: NgZone,
     private cdr: ChangeDetectorRef,
+    private authorizationService: AuthorizationDataService,
   ) {
     super(appConfig, route);
   }
@@ -52,6 +58,7 @@ export class HomePageComponent extends BaseComponent implements OnInit, OnDestro
 
   override ngOnInit(): void {
     super.ngOnInit();
+    this.isSiteAdmin$ = this.authorizationService.isAuthorized(FeatureID.AdministratorOf);
     this.scheduleNext();
   }
 
