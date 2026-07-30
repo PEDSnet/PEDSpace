@@ -1317,6 +1317,8 @@
 
   "browse.startsWith.submit": "Browse",
 
+  "browse.startsWith.type_alphabet.all": "All",
+
   "browse.startsWith.type_date": "Filter results by date",
 
   "browse.startsWith.type_date.label": "Or type in a date (year-month) and click on the Browse button",

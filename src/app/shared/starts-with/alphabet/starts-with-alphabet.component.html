@@ -1,0 +1,14 @@
+<div class="starts-with-alphabet mb-3">
+  <ul class="nav nav-pills flex-wrap" role="tablist" [attr.aria-label]="'browse.startsWith.input' | translate">
+    <li class="nav-item" role="presentation">
+      <button type="button" class="nav-link" [ngClass]="{ active: !startsWith }" (click)="reset()">
+        {{ 'browse.startsWith.type_alphabet.all' | translate }}
+      </button>
+    </li>
+    <li class="nav-item" role="presentation" *ngFor="let letter of displayOptions">
+      <button type="button" class="nav-link" [ngClass]="{ active: isActive(letter) }" (click)="selectLetter(letter)">
+        {{ letter }}
+      </button>
+    </li>
+  </ul>
+</div>

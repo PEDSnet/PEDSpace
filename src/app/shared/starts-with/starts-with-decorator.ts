@@ -1,12 +1,13 @@
 import { StartsWithDateComponent } from './date/starts-with-date.component';
 import { StartsWithType } from './starts-with-type';
 import { StartsWithTextComponent } from './text/starts-with-text.component';
+import { StartsWithAlphabetComponent } from './alphabet/starts-with-alphabet.component';
 
-
-type StartsWithComponentType = typeof StartsWithDateComponent | typeof StartsWithTextComponent;
+type StartsWithComponentType = typeof StartsWithDateComponent | typeof StartsWithTextComponent | typeof StartsWithAlphabetComponent;
 export const STARTS_WITH_DECORATOR_MAP = new Map<StartsWithType, StartsWithComponentType>([
   [StartsWithType.text, StartsWithTextComponent],
   [StartsWithType.date, StartsWithDateComponent],
+  [StartsWithType.alphabet, StartsWithAlphabetComponent],
 ]);
 
 /**

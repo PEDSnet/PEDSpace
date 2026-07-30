@@ -6,6 +6,7 @@ import {
   BrowseByMetadataPageComponent,
   browseParamsToOptions, getBrowseSearchOptions
 } from '../browse-by-metadata-page/browse-by-metadata-page.component';
+import { StartsWithType } from '../../shared/starts-with/starts-with-type';
 import { DSpaceObjectDataService } from '../../core/data/dspace-object-data.service';
 import { BrowseService } from '../../core/browse/browse.service';
 import { SortDirection, SortOptions } from '../../core/cache/models/sort-options.model';
@@ -24,6 +25,11 @@ import { DSONameService } from '../../core/breadcrumbs/dso-name.service';
  * Component for browsing items by title (dc.title)
  */
 export class BrowseByTitlePageComponent extends BrowseByMetadataPageComponent {
+
+  /**
+   * Override the default StartsWith type (text) to use the alphabet strip instead
+   */
+  startsWithType = StartsWithType.alphabet;
 
   public constructor(protected route: ActivatedRoute,
                      protected browseService: BrowseService,
@@ -44,10 +50,10 @@ export class BrowseByTitlePageComponent extends BrowseByMetadataPageComponent {
     this.currentSort$ = this.paginationService.getCurrentSort(this.paginationConfig.id, sortConfig);
     this.subs.push(
       observableCombineLatest([this.route.params, this.route.queryParams, this.currentPagination$, this.currentSort$]).pipe(
-        map(([routeParams, queryParams, currentPage, currentSort]) => {
-          return [Object.assign({}, routeParams, queryParams),currentPage,currentSort];
+      map(([routeParams, queryParams, currentPage, currentSort]): [Params, PaginationComponentOptions, SortOptions] => {
+        return [Object.assign({}, routeParams, queryParams), currentPage, currentSort];
         })
-      ).subscribe(([params, currentPage, currentSort]: [Params, PaginationComponentOptions, SortOptions]) => {
+        ).subscribe(([params, currentPage, currentSort]: [Params, PaginationComponentOptions, SortOptions]) => {
         this.startsWith = +params.startsWith || params.startsWith;
         this.browseId = params.id || this.defaultBrowseId;
         this.updatePageWithItems(browseParamsToOptions(params, currentPage, currentSort, this.browseId, this.fetchThumbnails), undefined, undefined);

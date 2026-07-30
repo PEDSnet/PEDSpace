@@ -153,9 +153,9 @@ export class BrowseByMetadataComponent implements OnInit, OnChanges, OnDestroy {
 
   /**
    * The type of StartsWith options to render
-   * Defaults to text
+   * Defaults to the alphabet strip, since metadata browses are sorted alphabetically
    */
-  startsWithType = StartsWithType.text;
+  startsWithType = StartsWithType.alphabet;
 
   /**
    * The list of StartsWith options

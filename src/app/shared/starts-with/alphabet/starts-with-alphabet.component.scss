@@ -1,0 +1,25 @@
+:host {
+  .starts-with-alphabet {
+    .nav-pills {
+      gap: 0.25rem;
+    }
+    .nav-link {
+      padding: 0.25rem 0.65rem;
+      border: 1px solid var(--bs-border-color, #dee2e6);
+      border-radius: 0.25rem;
+      cursor: pointer;
+      background-color: transparent;
+      color: var(--bs-body-color);
+
+      &.active {
+        background-color: var(--bs-primary);
+        border-color: var(--bs-primary);
+        color: #fff;
+      }
+
+      &:hover:not(.active) {
+        background-color: var(--bs-light, #f8f9fa);
+      }
+    }
+  }
+}
