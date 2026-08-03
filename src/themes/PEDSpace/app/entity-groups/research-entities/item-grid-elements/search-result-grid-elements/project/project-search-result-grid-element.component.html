@@ -3,6 +3,20 @@
     <div class="position-absolute ml-1">
       <ng-content></ng-content>
     </div>
+
+    <!-- Thumbnail (DQCheck only) -->
+    <div *ngIf="isDQCheck" class="card-img-top-wrapper">
+      <a *ngIf="linkType !== linkTypes.None"
+         [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
+         [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
+         [routerLink]="[itemPageRoute]">
+        <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="false"></ds-thumbnail>
+      </a>
+      <span *ngIf="linkType === linkTypes.None">
+        <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="false"></ds-thumbnail>
+      </span>
+    </div>
+
     <div class="card-body">
 
       <!-- Date pill + entity-type badge row -->
@@ -41,7 +55,7 @@
       </p>
 
       <p *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'DQCheck'">
-        <strong>Created: </strong> <span class="item-description card-text" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
+        <strong>Category: </strong> <span class="item-description card-text" [innerHTML]="dso.firstMetadataValue('local.dqcheck.category')"></span>
       </p>
 
       <p *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'DQResult'">

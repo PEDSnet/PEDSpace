@@ -90,15 +90,23 @@
                   </span>
                 </ng-container>
 
-                <!-- DQCheck, DQResult, Documentation: Created only -->
-                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'DQCheck'">
-                  <strong>Created:</strong> <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
-                </ng-container>
+                <!-- DQResult, Documentation: Created only -->
+                
                 <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'DQResult'">
                   <strong>Created:</strong> <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
                 </ng-container>
                 <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Documentation'">
                   <strong>Created:</strong> <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
+                </ng-container>
+
+                <!-- DQCheck-->  
+                <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'DQCheck'">
+                  <ng-container>
+                    <strong>Created:</strong> <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('dc.date.created')"></span>
+                  </ng-container>
+                  <ng-container>
+                    <strong>Check Category:</strong> <span class="item-list-date" [innerHTML]="dso.firstMetadataValue('local.dqcheck.category')"></span>
+                  </ng-container>
                 </ng-container>
 
                 <!-- Code: Created + Developer Affiliation -->

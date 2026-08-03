@@ -15,6 +15,7 @@ import { listableObjectComponent } from '../../../../../../../../app/shared/obje
 import { ItemSearchResultGridElementComponent } from '../../../../../../../../app/shared/object-grid/search-result-grid-element/item-search-result/item/item-search-result-grid-element.component';
 import { TruncatableComponent } from '../../../../../../../../app/shared/truncatable/truncatable.component';
 import { TruncatablePartComponent } from '../../../../../../../../app/shared/truncatable/truncatable-part/truncatable-part.component';
+import { ThemedThumbnailComponent } from '../../../../../../../../app/thumbnail/themed-thumbnail.component';
 
 /**
  * PEDSpace-themed grid card for item search results (#176).
@@ -37,7 +38,7 @@ import { TruncatablePartComponent } from '../../../../../../../../app/shared/tru
   templateUrl: './project-search-result-grid-element.component.html',
   animations: [focusShadow],
   standalone: true,
-  imports: [TruncatableComponent, NgIf, RouterLink, ThemedBadgesComponent, TruncatablePartComponent, AsyncPipe, TranslateModule],
+  imports: [TruncatableComponent, NgIf, RouterLink, ThemedBadgesComponent, TruncatablePartComponent, AsyncPipe, TranslateModule, ThemedThumbnailComponent,],
 })
 export class ProjectSearchResultGridElementComponent extends ItemSearchResultGridElementComponent {
 
@@ -84,5 +85,12 @@ export class ProjectSearchResultGridElementComponent extends ItemSearchResultGri
    */
   get plainTitle(): string {
     return this.dsoNameService.getName(this.dso);
+  }  
+  /**
+   * Whether this result is a DQCheck item — used to show a thumbnail image
+   * at the top of the card for this entity type only (#XXX).
+   */
+  get isDQCheck(): boolean {
+    return this.firstMetadataValue('dspace.entity.type') === 'DQCheck';
   }
 }
