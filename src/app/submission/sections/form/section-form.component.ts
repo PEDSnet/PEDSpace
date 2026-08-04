@@ -444,8 +444,11 @@ export class SubmissionSectionFormComponent extends SectionModelComponent {
       this.hasStoredValue(this.formBuilderService.getId(event.model), this.formOperationsService.getArrayIndexFromEvent(event)));
     const metadata = this.formOperationsService.getFieldPathSegmentedFromChangeEvent(event);
     const value = this.formOperationsService.getFieldValueFromChangeEvent(event);
+    const autosaveMetadata = environment.submission.autosave.metadata;
+    // '*' triggers autosave for every metadata field, otherwise only the fields listed are watched
+    const triggersAutosave = autosaveMetadata.indexOf('*') !== -1 || autosaveMetadata.indexOf(metadata) !== -1;
 
-    if ((environment.submission.autosave.metadata.indexOf(metadata) !== -1 && isNotEmpty(value)) || this.hasRelatedCustomError(metadata)) {
+    if ((triggersAutosave && isNotEmpty(value)) || this.hasRelatedCustomError(metadata)) {
       this.submissionService.dispatchSave(this.submissionId);
     }
   }
