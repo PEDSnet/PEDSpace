@@ -59,6 +59,7 @@ import {
 import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
 import { PaginationComponentOptions } from '../../shared/pagination/pagination-component-options.model';
 import { StartsWithType } from '../../shared/starts-with/starts-with-type';
+import { ThemedBreadcrumbsComponent } from '../../breadcrumbs/themed-breadcrumbs.component';
 import { BrowseByDataType } from '../browse-by-switcher/browse-by-data-type';
 
 export const BBM_PAGINATION_ID = 'bbm';
@@ -71,6 +72,7 @@ export const BBM_PAGINATION_ID = 'bbm';
     AsyncPipe,
     NgIf,
     TranslateModule,
+    ThemedBreadcrumbsComponent,
     ThemedLoadingComponent,
     ThemedBrowseByComponent,
   ],

@@ -1,6 +1,7 @@
 import { Config } from './config.interface';
 
 interface AutosaveConfig extends Config {
+  // list of metadata fields that trigger an autosave when edited; use '*' to trigger on any field
   metadata: string[];
   timer: number;
 }

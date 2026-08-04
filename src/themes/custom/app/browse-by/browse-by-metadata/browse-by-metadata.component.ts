@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { BrowseByMetadataComponent as BaseComponent } from '../../../../../app/browse-by/browse-by-metadata/browse-by-metadata.component';
+import { ThemedBreadcrumbsComponent } from '../../../../../app/breadcrumbs/themed-breadcrumbs.component';
 import { ThemedBrowseByComponent } from '../../../../../app/shared/browse-by/themed-browse-by.component';
 import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed-loading.component';
 
@@ -20,6 +21,7 @@ import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed
     AsyncPipe,
     NgIf,
     TranslateModule,
+    ThemedBreadcrumbsComponent,
     ThemedLoadingComponent,
     ThemedBrowseByComponent,
   ],

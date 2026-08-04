@@ -150,7 +150,7 @@ export class DefaultAppConfig implements AppConfig {
   // Submission settings
   submission: SubmissionConfig = {
     autosave: {
-      // NOTE: which metadata trigger an autosave
+      // NOTE: which metadata trigger an autosave, use '*' to trigger on any metadata field
       metadata: [],
       /**
        * NOTE: after how many time (milliseconds) submission is saved automatically

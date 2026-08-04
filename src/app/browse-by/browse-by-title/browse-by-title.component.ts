@@ -24,6 +24,7 @@ import {
   SortDirection,
   SortOptions,
 } from '../../core/cache/models/sort-options.model';
+import { ThemedBreadcrumbsComponent } from '../../breadcrumbs/themed-breadcrumbs.component';
 import { ThemedBrowseByComponent } from '../../shared/browse-by/themed-browse-by.component';
 import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
 import { PaginationComponentOptions } from '../../shared/pagination/pagination-component-options.model';
@@ -41,6 +42,7 @@ import {
     AsyncPipe,
     NgIf,
     TranslateModule,
+    ThemedBreadcrumbsComponent,
     ThemedLoadingComponent,
     ThemedBrowseByComponent,
   ],

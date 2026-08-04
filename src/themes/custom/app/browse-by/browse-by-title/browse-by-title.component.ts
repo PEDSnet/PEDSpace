@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { BrowseByTitleComponent as BaseComponent } from '../../../../../app/browse-by/browse-by-title/browse-by-title.component';
+import { ThemedBreadcrumbsComponent } from '../../../../../app/breadcrumbs/themed-breadcrumbs.component';
 import { ThemedBrowseByComponent } from '../../../../../app/shared/browse-by/themed-browse-by.component';
 import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed-loading.component';
 
@@ -20,6 +21,7 @@ import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed
     AsyncPipe,
     NgIf,
     TranslateModule,
+    ThemedBreadcrumbsComponent,
     ThemedLoadingComponent,
     ThemedBrowseByComponent,
   ],

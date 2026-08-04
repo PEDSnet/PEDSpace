@@ -1,4 +1,16 @@
-<section class="comcol-page-browse-section" *ngIf="(!ssrRenderingDisabled)">
+<div class="w-100 bg-light border-bottom py-4" *ngIf="displayTitle">
+  <div class="container">
+    <h1 class="mb-0">{{'browse.title' | translate:{
+      field: 'browse.metadata.' + browseId | translate,
+      startsWith: (startsWith)? ('browse.startsWith' | translate: { startsWith: '&quot;' + startsWith + '&quot;' }) : '',
+      value: (value)? '&quot;' + value + '&quot;': ''
+    } }}</h1>
+  </div>
+</div>
+
+<ds-breadcrumbs></ds-breadcrumbs>
+
+<section class="comcol-page-browse-section container" *ngIf="(!ssrRenderingDisabled)">
   <div class="browse-by-metadata w-100">
     <ds-browse-by *ngIf="(loading$ | async) !== true" class="col-xs-12 w-100"
                          title="{{'browse.title' | translate:{
@@ -6,7 +18,7 @@
                            startsWith: (startsWith)? ('browse.startsWith' | translate: { startsWith: '&quot;' + startsWith + '&quot;' }) : '',
                            value: (value)? '&quot;' + value + '&quot;': ''
                          } }}"
-                         [displayTitle]="displayTitle"
+                         [displayTitle]="false"
                          [objects$]="(items$ !== undefined)? items$ : browseEntries$"
                          [paginationConfig]="(currentPagination$ |async)"
                          [sortConfig]="(currentSort$ |async)"

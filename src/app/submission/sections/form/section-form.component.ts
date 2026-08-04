@@ -446,7 +446,7 @@ export class SubmissionSectionFormComponent extends SectionModelComponent {
     const value = this.formOperationsService.getFieldValueFromChangeEvent(event);
     const autosaveMetadata = environment.submission.autosave.metadata;
     // '*' triggers autosave for every metadata field, otherwise only the fields listed are watched
-    const triggersAutosave = autosaveMetadata.indexOf('*') !== -1 || autosaveMetadata.indexOf(metadata) !== -1;
+    const triggersAutosave = autosaveMetadata.indexOf(metadata) !== -1 || autosaveMetadata.indexOf('*') !== -1;
 
     if ((triggersAutosave && isNotEmpty(value)) || this.hasRelatedCustomError(metadata)) {
       this.submissionService.dispatchSave(this.submissionId);

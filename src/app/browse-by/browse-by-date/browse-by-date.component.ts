@@ -47,6 +47,7 @@ import {
   hasValue,
   isNotEmpty,
 } from '../../shared/empty.util';
+import { ThemedBreadcrumbsComponent } from '../../breadcrumbs/themed-breadcrumbs.component';
 import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
 import { PaginationComponentOptions } from '../../shared/pagination/pagination-component-options.model';
 import { StartsWithType } from '../../shared/starts-with/starts-with-type';
@@ -64,6 +65,7 @@ import {
     AsyncPipe,
     NgIf,
     TranslateModule,
+    ThemedBreadcrumbsComponent,
     ThemedLoadingComponent,
     ThemedBrowseByComponent,
   ],

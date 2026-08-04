@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
+import { ThemedBreadcrumbsComponent } from '../breadcrumbs/themed-breadcrumbs.component';
 import { SearchConfigurationService } from '../core/shared/search/search-configuration.service';
 import { SEARCH_CONFIG_SERVICE } from '../my-dspace-page/my-dspace-configuration.service';
 import { ThemedSearchComponent } from '../shared/search/themed-search.component';
@@ -14,7 +16,7 @@ import { ThemedSearchComponent } from '../shared/search/themed-search.component'
     },
   ],
   standalone: true,
-  imports: [ThemedSearchComponent],
+  imports: [ThemedSearchComponent, ThemedBreadcrumbsComponent, TranslateModule],
 })
 /**
  * This component represents the whole search page
