@@ -27,13 +27,14 @@ import { ThemedConfigurationSearchPageComponent } from '../../../../app/search-p
 import { ThemedCreateItemParentSelectorComponent } from '../../../../app/shared/dso-selector/modal-wrappers/create-item-parent-selector/themed-create-item-parent-selector.component';
 import { ThemedSearchFormComponent } from '../../../../app/shared/search-form/themed-search-form.component';
 import { PageWithSidebarComponent } from '../../../../app/shared/sidebar/page-with-sidebar.component';
+import { BreadcrumbsComponent } from 'src/themes/PEDSpace/app/breadcrumbs/breadcrumbs.component';
 
 @Component({
   selector: 'ds-themed-home-page',
   styleUrls: ['./home-page.component.scss'],
   templateUrl: './home-page.component.html',
   standalone: true,
-  imports: [ThemedHomeNewsComponent, ThemedCommunityListPageComponent, NgTemplateOutlet, NgIf, NgFor, NgClass, RouterLink, ThemedSearchFormComponent, ThemedTopLevelCommunityListComponent, RecentItemListComponent, AsyncPipe, TranslateModule, SuggestionsPopupComponent, ThemedConfigurationSearchPageComponent, PageWithSidebarComponent, HomeCoarComponent, NgbDropdownModule],
+  imports: [ThemedHomeNewsComponent, ThemedCommunityListPageComponent, NgTemplateOutlet, NgIf, NgFor, NgClass, RouterLink, ThemedSearchFormComponent, ThemedTopLevelCommunityListComponent, RecentItemListComponent, AsyncPipe, TranslateModule, SuggestionsPopupComponent, ThemedConfigurationSearchPageComponent, PageWithSidebarComponent, HomeCoarComponent, NgbDropdownModule, BreadcrumbsComponent],
 })
 export class HomePageComponent extends BaseComponent implements OnInit, OnDestroy {
   carouselIndex = 0;

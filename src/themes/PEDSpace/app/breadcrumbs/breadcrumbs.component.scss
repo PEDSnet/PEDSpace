@@ -1,43 +1,52 @@
 .nav-breadcrumb {
-  background-color: var(--ds-breadcrumb-bg);
+  background-color: #ffffff;
 }
 
 .breadcrumb {
   border-radius: 0;
-  padding-bottom: calc(var(--ds-content-spacing) / 2);
-  padding-top: calc(var(--ds-content-spacing) / 2);
+  padding-top: .1rem;
+  padding-bottom: .1rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  background-color: var(--ds-breadcrumb-bg);
+  background-color: #ffffff;
   justify-content: flex-start;
+  font-size: 0.9rem;
 }
 
 li.breadcrumb-item {
   display: flex;
+  align-items: center;
 }
 
 .breadcrumb-item-limiter {
   display: inline-block;
   max-width: var(--ds-breadcrumb-max-length);
 
-  > * {
+  » * {
     max-width: 100%;
     display: block;
   }
 }
 
-li.breadcrumb-item {
-  a {
-    color: var(--ds-breadcrumb-link-color);
+li.breadcrumb-item a {
+  color: #8b3a5f;
+  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    color: #6d2c4a; // hardcoded darker shade instead of darken(), avoids needing sass color functions in scope
+    text-decoration: underline;
   }
 }
 
 li.breadcrumb-item.active {
-  color: var(--ds-breadcrumb-link-active-color);
+  color: #212529;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-  display: block;
+  display: inline-block;
   content: ">" !important;
+  color: #212529;
+  font-weight: 600;
+  padding: 0 0.5rem;
 }
-  

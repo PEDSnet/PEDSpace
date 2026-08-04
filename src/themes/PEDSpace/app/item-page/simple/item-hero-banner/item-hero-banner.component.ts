@@ -15,7 +15,7 @@ import { Item } from 'src/app/core/shared/item.model';
 
 import { DsoEditMenuComponent } from 'src/app/shared/dso-page/dso-edit-menu/dso-edit-menu.component';
 import { ThemedItemPageTitleFieldComponent } from 'src/app/item-page/simple/field-components/specific-field/title/themed-item-page-field.component';
-
+import { BreadcrumbsComponent } from 'src/themes/PEDSpace/app/breadcrumbs/breadcrumbs.component';
 /**
  * Shared mint hero banner used on every PEDSpace item SIV page.
  *
@@ -38,6 +38,7 @@ import { ThemedItemPageTitleFieldComponent } from 'src/app/item-page/simple/fiel
     TranslateModule,
     DsoEditMenuComponent,
     ThemedItemPageTitleFieldComponent,
+    BreadcrumbsComponent,
   ],
 })
 export class ItemHeroBannerComponent {

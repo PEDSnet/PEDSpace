@@ -12,6 +12,8 @@
   </div>
 </div>
 
+<ds-themed-breadcrumbs></ds-themed-breadcrumbs>
+
 <!-- Then continue with your original container structure but without the header -->
 <div class="container" *ngVar="(communityRD$ | async) as communityRD">
   <div class="community-page" *ngIf="communityRD?.hasSucceeded" @fadeInOut>

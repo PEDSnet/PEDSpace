@@ -33,6 +33,7 @@ import { ThemedLoadingComponent } from '../../../../app/shared/loading/themed-lo
 import { ObjectCollectionComponent } from '../../../../app/shared/object-collection/object-collection.component';
 import { VarDirective } from '../../../../app/shared/utils/var.directive';
 import { ViewTrackerComponent } from '../../../../app/statistics/angulartics/dspace/view-tracker.component';
+import { BreadcrumbsComponent } from 'src/themes/PEDSpace/app/breadcrumbs/breadcrumbs.component';
 
 @Component({
   selector: 'ds-themed-collection-page',
@@ -61,6 +62,7 @@ import { ViewTrackerComponent } from '../../../../app/statistics/angulartics/dsp
     ObjectCollectionComponent,
     RouterLink,
     RouterOutlet,
+    BreadcrumbsComponent,
   ],
 })
 /**

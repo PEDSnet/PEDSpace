@@ -14,6 +14,7 @@ import { listableObjectComponent } from '../../../../../../../../app/shared/obje
 import { TruncatableComponent } from '../../../../../../../../app/shared/truncatable/truncatable.component';
 import { TruncatablePartComponent } from '../../../../../../../../app/shared/truncatable/truncatable-part/truncatable-part.component';
 import { ProjectSearchResultGridElementComponent } from '../project/project-search-result-grid-element.component';
+import { ThemedThumbnailComponent } from '../../../../../../../../app/thumbnail/themed-thumbnail.component';
 
 /**
  * PEDSpace-themed grid card for Study search results (#176).
@@ -25,7 +26,7 @@ import { ProjectSearchResultGridElementComponent } from '../project/project-sear
   templateUrl: '../project/project-search-result-grid-element.component.html',
   animations: [focusShadow],
   standalone: true,
-  imports: [TruncatableComponent, NgIf, RouterLink, ThemedBadgesComponent, TruncatablePartComponent, AsyncPipe, TranslateModule],
+  imports: [TruncatableComponent, NgIf, RouterLink, ThemedBadgesComponent, TruncatablePartComponent, AsyncPipe, TranslateModule, ThemedThumbnailComponent],
 })
 export class StudySearchResultGridElementComponent extends ProjectSearchResultGridElementComponent {
 }
