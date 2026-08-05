@@ -24,6 +24,7 @@ import {
   SortDirection,
   SortOptions,
 } from '../../core/cache/models/sort-options.model';
+import { ComcolPageHeaderComponent } from '../../shared/comcol/comcol-page-header/comcol-page-header.component';
 import { ThemedBreadcrumbsComponent } from '../../breadcrumbs/themed-breadcrumbs.component';
 import { ThemedBrowseByComponent } from '../../shared/browse-by/themed-browse-by.component';
 import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
@@ -41,6 +42,7 @@ import {
   imports: [
     AsyncPipe,
     NgIf,
+    ComcolPageHeaderComponent,
     TranslateModule,
     ThemedBreadcrumbsComponent,
     ThemedLoadingComponent,

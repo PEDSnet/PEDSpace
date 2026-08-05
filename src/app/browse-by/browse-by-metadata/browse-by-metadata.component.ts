@@ -44,6 +44,7 @@ import {
   SortDirection,
   SortOptions,
 } from '../../core/cache/models/sort-options.model';
+import { ComcolPageHeaderComponent } from '../../shared/comcol/comcol-page-header/comcol-page-header.component';
 import { DSpaceObjectDataService } from '../../core/data/dspace-object-data.service';
 import { PaginatedList } from '../../core/data/paginated-list.model';
 import { RemoteData } from '../../core/data/remote-data';
@@ -71,6 +72,7 @@ export const BBM_PAGINATION_ID = 'bbm';
   imports: [
     AsyncPipe,
     NgIf,
+    ComcolPageHeaderComponent,
     TranslateModule,
     ThemedBreadcrumbsComponent,
     ThemedLoadingComponent,

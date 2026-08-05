@@ -1,10 +1,11 @@
-<div class="w-100 bg-light border-bottom py-4" *ngIf="displayTitle">
-  <div class="container">
-    <h1 class="mb-0">{{'browse.title' | translate:{
-      field: 'browse.metadata.' + browseId | translate,
-      startsWith: (startsWith)? ('browse.startsWith' | translate: { startsWith: '&quot;' + startsWith + '&quot;' }) : '',
-      value: (value)? '&quot;' + value + '&quot;': ''
-    } }}</h1>
+<div class="full-width-header-wrapper" *ngIf="displayTitle">
+  <div class="full-width-header">
+    <div class="container">
+      <ds-comcol-page-header
+        [name]="'PEDSpace Browse by ' + ('browse.metadata.' + browseId | translate)"
+        class="mint-header">
+      </ds-comcol-page-header>
+    </div>
   </div>
 </div>
 

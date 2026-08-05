@@ -4,14 +4,16 @@ import { SEARCH_CONFIG_SERVICE } from 'src/app/my-dspace-page/my-dspace-configur
 
 import { ThemedBreadcrumbsComponent } from '../../../../app/breadcrumbs/themed-breadcrumbs.component';
 import { SearchConfigurationService } from '../../../../app/core/shared/search/search-configuration.service';
+import { ComcolPageHeaderComponent } from '../../../../app/shared/comcol/comcol-page-header/comcol-page-header.component';
 import { SearchPageComponent as BaseComponent } from '../../../../app/search-page/search-page.component';
 import { ThemedSearchComponent } from '../../../../app/shared/search/themed-search.component';
 
 @Component({
   selector: 'ds-themed-search-page',
-  // styleUrls: ['./search-page.component.scss'],
+  // styleUrls: ['../../../../app/search-page/search-page.component.scss'],
+  styleUrls: ['./search-page.component.scss'],
   // templateUrl: './search-page.component.html'
-  templateUrl: '../../../../app/search-page/search-page.component.html',
+  templateUrl: './search-page.component.html',
   providers: [
     {
       provide: SEARCH_CONFIG_SERVICE,
@@ -19,7 +21,7 @@ import { ThemedSearchComponent } from '../../../../app/shared/search/themed-sear
     },
   ],
   standalone: true,
-  imports: [ThemedSearchComponent, ThemedBreadcrumbsComponent, TranslateModule],
+  imports: [ThemedSearchComponent, ThemedBreadcrumbsComponent, ComcolPageHeaderComponent, TranslateModule],
 })
 /**
  * This component represents the whole search page

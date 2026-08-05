@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { BrowseByMetadataComponent as BaseComponent } from '../../../../../app/browse-by/browse-by-metadata/browse-by-metadata.component';
 import { ThemedBreadcrumbsComponent } from '../../../../../app/breadcrumbs/themed-breadcrumbs.component';
 import { ThemedBrowseByComponent } from '../../../../../app/shared/browse-by/themed-browse-by.component';
+import { ComcolPageHeaderComponent } from '../../../../../app/shared/comcol/comcol-page-header/comcol-page-header.component';
 import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed-loading.component';
 
 @Component({
@@ -20,6 +21,7 @@ import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed
   imports: [
     AsyncPipe,
     NgIf,
+    ComcolPageHeaderComponent,
     TranslateModule,
     ThemedBreadcrumbsComponent,
     ThemedLoadingComponent,

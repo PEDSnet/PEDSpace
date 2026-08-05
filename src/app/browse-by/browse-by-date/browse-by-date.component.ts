@@ -47,6 +47,7 @@ import {
   hasValue,
   isNotEmpty,
 } from '../../shared/empty.util';
+import { ComcolPageHeaderComponent } from '../../shared/comcol/comcol-page-header/comcol-page-header.component';
 import { ThemedBreadcrumbsComponent } from '../../breadcrumbs/themed-breadcrumbs.component';
 import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
 import { PaginationComponentOptions } from '../../shared/pagination/pagination-component-options.model';
@@ -64,6 +65,7 @@ import {
   imports: [
     AsyncPipe,
     NgIf,
+    ComcolPageHeaderComponent,
     TranslateModule,
     ThemedBreadcrumbsComponent,
     ThemedLoadingComponent,
