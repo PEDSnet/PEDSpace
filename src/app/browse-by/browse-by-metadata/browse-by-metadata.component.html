@@ -3,13 +3,16 @@
     <div class="container">
       <ds-comcol-page-header
         [name]="'PEDSpace Browse by ' + ('browse.metadata.' + browseId | translate)"
-        class="mint-header">
+        class="cambridge-blue-header">
       </ds-comcol-page-header>
     </div>
   </div>
+
+  <ds-breadcrumbs></ds-breadcrumbs>
+  
 </div>
 
-<ds-breadcrumbs></ds-breadcrumbs>
+
 
 <section class="comcol-page-browse-section container" *ngIf="(!ssrRenderingDisabled)">
   <div class="browse-by-metadata w-100">
