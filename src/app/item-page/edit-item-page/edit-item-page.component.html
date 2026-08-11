@@ -1,7 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="border-bottom">{{'item.edit.head' | translate}}</h1>
+            <div class="tab-pane active">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="mb-0">{{'item.edit.head' | translate}}</h1>
+                    <div class="button-row">
+                        <a [routerLink]="getItemPage((itemRD$ | async)?.payload)" role="button" class="btn btn-outline-secondary"><i class="fas fa-arrow-left"></i> {{'item.edit.return' | translate}}</a>
+                    </div>
+                </div>
+            </div>    
             <div class="pt-2">
               <ul *ngIf="pages.length > 0" class="nav nav-tabs justify-content-start" role="tablist">
                     <li *ngFor="let page of pages" class="nav-item" role="presentation">
