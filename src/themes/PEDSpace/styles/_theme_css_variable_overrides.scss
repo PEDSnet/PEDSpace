@@ -41,7 +41,7 @@ body {
   box-sizing: border-box;
   font-family: "proxima-nova", sans-serif;
   color: var(--ds-dark-font-color);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 h1,
@@ -53,6 +53,14 @@ h6 {
   font-family: "proxima-nova", sans-serif;
   line-height: 1.2;
   color: var(--dark-font-color);
+}
+
+.item-page-field {
+  margin-bottom: 2rem; // adjust to taste
+}
+
+.simple-view-element-header {
+  margin-bottom: 0.25rem; // tightens gap between label and value, if you want it
 }
 
 .markdown-container.table-responsive p {
