@@ -20,11 +20,11 @@
 			<ng-container *ngIf="breadcrumbs.length > 2; else fullTrail">
 				<ng-container *ngTemplateOutlet="breadcrumb; context: breadcrumbs[0]"></ng-container>
 
-				<li class="breadcrumb-item breadcrumb-ellipsis" aria-hidden="true">
-					<div class="breadcrumb-item-limiter">
-						<span class="text-truncate">...</span>
-					</div>
-				</li>
+					<li class="breadcrumb-item breadcrumb-ellipsis">
+						<div class="breadcrumb-item-limiter" *ngIf="(breadcrumbs[breadcrumbs.length - 2].text | translate) as parentText">
+							<a [routerLink]="breadcrumbs[breadcrumbs.length - 2].url" class="text-truncate" [ngbTooltip]="parentText" placement="top" role="link" tabindex="0" [attr.aria-label]="parentText">...</a>
+						</div>
+					</li>
 
 				<ng-container *ngTemplateOutlet="activeBreadcrumb; context: breadcrumbs[breadcrumbs.length - 1]"></ng-container>
 			</ng-container>
@@ -40,7 +40,7 @@
 	<ng-template #breadcrumb let-text="text" let-url="url">
 		<li class="breadcrumb-item">
 			<div class="breadcrumb-item-limiter" *ngIf="(text | translate) as translatedText">
-				<a [routerLink]="url" class="text-truncate" [ngbTooltip]="translatedText" placement="bottom" role="link" tabindex="0">{{ translatedText.length > 15 ? (translatedText | slice:0:15) + '...' : translatedText }}</a>
+				<a [routerLink]="url" class="text-truncate" [ngbTooltip]="translatedText" placement="top" role="link" tabindex="0">{{ translatedText.length > 15 ? (translatedText | slice:0:15) + '...' : translatedText }}</a>
 			</div>
 		</li>
 	</ng-template>
