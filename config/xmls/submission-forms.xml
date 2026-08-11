@@ -2593,12 +2593,24 @@
                     <dc-element>description</dc-element>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Abstract</label>
+                    <label>Publisher Abstract</label>
                     <input-type>textarea</input-type>
                     <hint>Enter the article abstract provided by the publisher.</hint>
                     <required></required>
                 </field>
-            </row>            
+            </row> 
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>layabstract</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Lay Abstract</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a simplified abstract for a general audience.</hint>
+                    <required></required>
+                </field>
+            </row>           
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>

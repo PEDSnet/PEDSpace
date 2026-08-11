@@ -82,7 +82,7 @@
 
   </div>
   <div class="col-xs-12 col-md-7">
-    <ds-related-items [parentItem]="object" [relationType]="'isProjectOfPublication'"
+    <!-- <ds-related-items [parentItem]="object" [relationType]="'isProjectOfPublication'"
       [label]="'relationships.isProjectOf' | translate">
     </ds-related-items>
     <ds-related-items [parentItem]="object" [relationType]="'isOrgUnitOfPublication'"
@@ -90,8 +90,48 @@
     </ds-related-items>
     <ds-related-items [parentItem]="object" [relationType]="'isJournalIssueOfPublication'"
       [label]="'relationships.isJournalIssueOf' | translate">
-    </ds-related-items>
-    <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
+    </ds-related-items> -->
+    
+    <ng-container *ngIf="object?.firstMetadataValue('local.description.layabstract') as layAbstract; else publisherAbstractOnly">
+      <ngb-accordion [destroyOnHide]="false" class="mb-3">
+        <ngb-panel id="healthcareStatsPanel">
+          <ng-template ngbPanelTitle>
+            <div class="d-flex align-items-center">
+              <!-- <i class="fa fa-users me-2"></i> -->
+              <span class="section-title">&nbsp;Lay Abstract</span>
+            </div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div class="description-wrapper col-lg-12">
+              <ds-generic-item-page-field [item]="object" [fields]="['local.description.layabstract']"
+                [label]="''" [enableMarkdown]="true"></ds-generic-item-page-field>
+            </div>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+      <br>
+      <ngb-accordion [destroyOnHide]="false" class="mb-3">
+        <ngb-panel id="healthcareStatsPanel">
+          <ng-template ngbPanelTitle>
+            <div class="d-flex align-items-center">
+              <!-- <i class="fa fa-users me-2"></i> -->
+              <span class="section-title">&nbsp;Publisher Abstract</span>
+            </div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div class="description-wrapper col-lg-12">
+              <ds-item-page-abstract-field [item]="object" [label]="''"></ds-item-page-abstract-field>
+            </div>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+      <br>
+    </ng-container>
+    
+
+    <ng-template #publisherAbstractOnly>
+      <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
+    </ng-template>
 
     <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.mesh']" [separator]="' '"
       [label]="'Clinical Subject Headings'"></ds-generic-item-page-field>
