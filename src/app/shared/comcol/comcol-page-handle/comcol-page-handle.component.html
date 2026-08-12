@@ -1,6 +1,6 @@
 <a *ngIf="content" class="btn btn-primary btn-sm copy-handle-btn mb-2" 
    (click)="copyToClipboard()"
-   [title]="isCopied ? 'Handle copied!' : 'Copy Handle'"
-   [attr.aria-label]="isCopied ? 'Handle copied!' : 'Copy Handle'">
+   [title]="isCopied ? 'Handle copied!' : 'Copy Permalink'"
+   [attr.aria-label]="isCopied ? 'Handle copied!' : 'Copy Permalink'">
   <i class="fa" [ngClass]="isCopied ? 'fa-check' : 'fa-clipboard'"></i>
 </a>

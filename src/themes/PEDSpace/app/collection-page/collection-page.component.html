@@ -4,9 +4,9 @@
           <div class="container">
             <div *ngVar="(collectionRD$ | async)?.payload as collection" class="title-container">
                 <!-- Entity type display above title -->
-                <div class="entity-type" *ngIf="collection?.metadata?.['dspace.entity.type']?.[0]?.value">
+                <!-- <div class="entity-type" *ngIf="collection?.metadata?.['dspace.entity.type']?.[0]?.value">
                         <span class="badge-text">{{ getEntityTypeBadge(collection) | translate }}</span>
-                </div>
+                </div> ->
               <!-- Collection Name in the colored banner -->
               <ds-comcol-page-header 
                 [name]="collection ? dsoNameService.getName(collection) : ''"
