@@ -30,12 +30,13 @@ import {
   ProcessSortField,
 } from './process-overview.service';
 import { ProcessOverviewTableComponent } from './table/process-overview-table.component';
+import { BreadcrumbsComponent } from 'src/app/breadcrumbs/breadcrumbs.component';
 
 @Component({
   selector: 'ds-process-overview',
   templateUrl: './process-overview.component.html',
   standalone: true,
-  imports: [NgIf, RouterLink, PaginationComponent, NgFor, VarDirective, AsyncPipe, DatePipe, TranslateModule, NgTemplateOutlet, ProcessOverviewTableComponent, BtnDisabledDirective],
+  imports: [NgIf, RouterLink, PaginationComponent, NgFor, VarDirective, AsyncPipe, DatePipe, TranslateModule, NgTemplateOutlet, ProcessOverviewTableComponent, BtnDisabledDirective, BreadcrumbsComponent],
 })
 /**
  * Component displaying a list of all processes in a paginated table

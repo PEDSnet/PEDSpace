@@ -5,11 +5,12 @@
           {{ 'process.detail.title' | translate:{ id: process?.processId, name: process?.scriptName } }}
         </h1>
       </div>
+      
       <div *ngIf="isRefreshing$ | async" class="col-2 refresh-counter">
         {{ 'process.detail.refreshing' | translate }} <i class="fas fa-sync-alt fa-spin"></i>
       </div>
     </div>
-
+<ds-base-breadcrumbs></ds-base-breadcrumbs>
     <ds-process-detail-field id="process-name" [title]="'process.detail.script'">
         <div>{{ process?.scriptName }}</div>
     </ds-process-detail-field>
