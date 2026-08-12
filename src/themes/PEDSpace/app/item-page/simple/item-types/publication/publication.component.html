@@ -146,12 +146,12 @@
       [label]="'item.page.subject'">
     </ds-generic-item-page-field>
 
+    <ds-related-items [parentItem]="object" [relationType]="'isStudyOfPublication'" [label]="'PEDSnet Project'">
+    </ds-related-items>
+
     <ds-generic-item-page-field [renderAsCode]="true" [codeType]="'package'" [item]="object" [label]="'Cite this Publication'" [fields]="'dc.identifier.citation'"
       [enableMarkdown]="true">
     </ds-generic-item-page-field>
-
-    <ds-related-items [parentItem]="object" [relationType]="'isStudyOfPublication'" [label]="'PEDSnet Project'">
-    </ds-related-items>
 
     <ds-item-page-uri-field [item]="object" [fields]="['coar.notify.endorsedBy']" [label]="'item.page.endorsement'">
     </ds-item-page-uri-field>
@@ -163,10 +163,10 @@
     <ds-item-page-uri-field [item]="object" [fields]="['datacite.relation.isReferencedBy']"
       [label]="'item.page.referenced'">
     </ds-item-page-uri-field>
-    <div>
+    <!-- <div>
       <a class="btn btn-outline-primary" role="button" [routerLink]="[itemPageRoute + '/full']" tabindex="0">
         <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
       </a>
-    </div>
+    </div> -->
   </div>
 </div>
