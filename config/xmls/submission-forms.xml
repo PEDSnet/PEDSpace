@@ -778,7 +778,7 @@
 
         <!-- Concept Set Form-->
         <form name="ConceptSetForm">
-            <!-- <row>
+            <row>
                 <field>
                     <dc-schema>dspace</dc-schema>
                     <dc-element>entity</dc-element>
@@ -789,7 +789,7 @@
                     <hint>Concept Set must be selected for this item type.</hint>
                     <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
                 </field>
-            </row> -->
+            </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1094,7 +1094,18 @@
 
         <!-- Study Form-->
         <form name="StudyForm">
-
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Concept Set must be selected for this item type.</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1411,7 +1422,18 @@
 
         <!-- Documentation Forms-->
         <form name="DocumentationFormStepOne">
-
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Concept Set must be selected for this item type.</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1729,6 +1751,18 @@
         <form name="CodeForm">
             <row>
                 <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Concept Set must be selected for this item type.</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
+            <row>
+                <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
                     <dc-qualifier></dc-qualifier>
@@ -1977,6 +2011,18 @@
 
         <!-- Phenotype Form-->
         <form name="PhenotypeForm">
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Concept Set must be selected for this item type.</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
             <row>
                 <field>
                     <dc-schema>dspace</dc-schema>
@@ -2266,6 +2312,18 @@
         <form name="orgUnitStep">
             <row>
                 <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Concept Set must be selected for this item type.</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
+            <row>
+                <field>
                     <dc-schema>organization</dc-schema>
                     <dc-element>legalName</dc-element>
                     <label>Name</label>
@@ -2490,6 +2548,18 @@
 
         <!-- Publication Form-->
         <form name="publicationStep">
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Concept Set must be selected for this item type.</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
