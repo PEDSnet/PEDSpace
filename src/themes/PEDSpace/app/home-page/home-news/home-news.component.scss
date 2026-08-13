@@ -8,6 +8,7 @@
       background-color: $midnight-green; /* $midnight-green */
       // padding: 2rem 0;
       width: 100%;
+      position: relative;
       display: flex;
       align-items: center; /* Centers items vertically */
       min-height: 350px;
@@ -58,6 +59,52 @@
       .banner-content h2 {
         font-size: 1.8rem;
       }
+    }
+  }
+
+  // Single circular photo cutout, tucked into the top-right corner
+  .home-photo-bubble {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    right: max(1rem, calc((100% - 1200px) / 2 + 1rem));
+    transform: translateY(-50%);
+    width: 253px;
+    height: 253px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid $snow;
+    box-shadow: 0 0 0 3px $china-rose, 0 10px 26px rgba(0, 0, 0, 0.35);
+    background-color: $alice-blue;
+
+    // Faint dashed ring floating just outside the bubble for a little extra flourish
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 2px dashed rgba($snow, 0.5);
+      pointer-events: none;
+    }
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 992px) {
+      top: 50%;
+      right: 0.75rem;
+      width: 173px;
+      height: 173px;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
     }
   }
 
