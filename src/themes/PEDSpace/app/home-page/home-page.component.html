@@ -37,7 +37,7 @@
         <li><a ngbDropdownItem routerLink="/browse/datecreated">Date</a></li>
       </ul>
     </div>
-    <a routerLink="/login" class="btn btn-home-action">Login</a>
+    <a *ngIf="!(isAuthenticated$ | async)" routerLink="/login" class="btn btn-home-action">Login</a>
   </div>
 
   <hr class="pink-separator">
