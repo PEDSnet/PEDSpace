@@ -36,8 +36,8 @@
 .pedspace-item-hero-badge {
   display: inline-block;
   background-color: transparent;
-  color: $redwood;
-  border: 2px solid $redwood;
+  color: #90345A;
+  border: 2px solid #90345A;
   padding: 0.3rem 1rem;
   border-radius: 999px;
   font-family: proxima-nova, sans-serif;
@@ -57,7 +57,7 @@
 
   &:hover,
   &:focus {
-    background-color: $redwood;
+    background-color: #90345A;
     color: #ffffff;
     text-decoration: none;
     transform: translateY(-1px);

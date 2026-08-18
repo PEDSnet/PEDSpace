@@ -28,6 +28,10 @@
       <ds-item-page-date-field [item]="object" [fields]="['dc.date']" [label]="'item.preview.dc.date'"
         separator="; "></ds-item-page-date-field>
 
+      <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.github']"
+        [label]="'Development Code'" [repo]="'github'">
+      </ds-item-page-external-publication-field>
+
       <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.author']"
         [label]="'Developers'">
       </ds-generic-item-page-field>
@@ -56,9 +60,7 @@
         [label]="' ' | translate">
       </ds-related-items>
 
-      <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.github']"
-        [label]="'Development Code'" [repo]="'github'">
-      </ds-item-page-external-publication-field>
+      
       
       <!-- <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.bitbucket']"
         [label]="' '" [repo]="'bitbucket'">
@@ -102,8 +104,6 @@
 
       <ds-generic-item-page-field [item]="object" [fields]="['dc.provenance']" [label]="'collection.form.provenance'">
       </ds-generic-item-page-field>
-
-      <!--Related Items --> 
       <ds-related-items [parentItem]="object" [relationType]="'isStudyOfPhenotype'"
         [label]="' '">
       </ds-related-items>

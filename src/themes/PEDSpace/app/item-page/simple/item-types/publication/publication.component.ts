@@ -15,6 +15,11 @@ import {
   Router,
   RouterLink,
 } from '@angular/router';
+
+import {
+  NgbAccordionModule,
+} from '@ng-bootstrap/ng-bootstrap';
+
 import { TranslateModule } from '@ngx-translate/core';
 import { RouteService } from 'src/app/core/services/route.service';
 
@@ -40,6 +45,7 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
 import { ItemHeroBannerComponent } from '../../item-hero-banner/item-hero-banner.component';
 
+
 /**
  * Component that represents a publication Item page
  */
@@ -54,7 +60,29 @@ import { ItemHeroBannerComponent } from '../../item-hero-banner/item-hero-banner
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
-    ItemHeroBannerComponent,NgIf, ThemedBadgesComponent, ThemedResultsBackButtonComponent, MiradorViewerComponent, ThemedItemPageTitleFieldComponent, DsoEditMenuComponent, MetadataFieldWrapperComponent, ThemedThumbnailComponent, ThemedMediaViewerComponent, ThemedFileSectionComponent, ItemPageDateFieldComponent, ThemedMetadataRepresentationListComponent, GenericItemPageFieldComponent, RelatedItemsComponent, ItemPageAbstractFieldComponent, ItemPageUriFieldComponent, CollectionsComponent, RouterLink, AsyncPipe, TranslateModule],
+    NgbAccordionModule,
+    ItemHeroBannerComponent,
+    NgIf,
+    ThemedBadgesComponent,
+    ThemedResultsBackButtonComponent,
+    MiradorViewerComponent,
+    ThemedItemPageTitleFieldComponent,
+    DsoEditMenuComponent,
+    MetadataFieldWrapperComponent,
+    ThemedThumbnailComponent,
+    ThemedMediaViewerComponent,
+    ThemedFileSectionComponent,
+    ItemPageDateFieldComponent,
+    ThemedMetadataRepresentationListComponent,
+    GenericItemPageFieldComponent,
+    RelatedItemsComponent,
+    ItemPageAbstractFieldComponent,
+    ItemPageUriFieldComponent,
+    CollectionsComponent,
+    RouterLink,
+    AsyncPipe,
+    TranslateModule
+  ],
 })
 export class PublicationComponent extends BaseComponent implements AfterViewInit {
 

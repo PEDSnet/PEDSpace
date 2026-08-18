@@ -37,7 +37,7 @@
         <li><a ngbDropdownItem routerLink="/browse/datecreated">Date</a></li>
       </ul>
     </div>
-    <a routerLink="/login" class="btn btn-home-action">Login</a>
+    <a *ngIf="!(isAuthenticated$ | async)" routerLink="/login" class="btn btn-home-action">Login</a>
   </div>
 
   <hr class="pink-separator">
@@ -45,14 +45,4 @@
   <hr class="pink-separator">
   <ds-recent-item-list *ngIf="recentSubmissionspageSize>0"></ds-recent-item-list>
 
-  <!-- Image carousel moved to bottom -->
-  <!-- <div class="home-image-carousel">
-    <div class="carousel-track" [style.transform]="'translateX(-' + (carouselIndex * 100) + '%)'">
-      <div class="carousel-slide" *ngFor="let image of carouselImages">
-        <img [src]="image.path" [alt]="image.alt">
-      </div>
-    </div>
-    <button class="carousel-btn carousel-prev" (click)="prevCarouselImage()" aria-label="Previous">&#8249;</button>
-    <button class="carousel-btn carousel-next" (click)="nextCarouselImage()" aria-label="Next">&#8250;</button>
-  </div> -->
 </ng-template>

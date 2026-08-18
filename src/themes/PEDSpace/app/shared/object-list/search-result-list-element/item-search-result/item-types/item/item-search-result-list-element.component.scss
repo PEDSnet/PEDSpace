@@ -105,12 +105,13 @@
   .item-list-date {
     font-weight: 400;
     color: #2C2C2C;
-    margin-right: 0.5rem;
+    margin-right: 0.0 rem;
+    margin-left: 0.0rem;
     margin-bottom: 0.5rem;
     
     &::after {
       content: "";
-      margin-left: 0.5rem;
+      margin-left: 0.4rem;
     }
   }
   

@@ -41,6 +41,7 @@ export class HomePageComponent extends BaseComponent implements OnInit, OnDestro
   private carouselTimer: ReturnType<typeof setTimeout> | null = null;
 
   isSiteAdmin$: Observable<boolean>;
+  isAuthenticated$: Observable<boolean>;
 
   constructor(
     @Inject(APP_CONFIG) appConfig: AppConfig,
@@ -81,6 +82,7 @@ export class HomePageComponent extends BaseComponent implements OnInit, OnDestro
   override ngOnInit(): void {
     super.ngOnInit();
     this.isSiteAdmin$ = this.authorizationService.isAuthorized(FeatureID.AdministratorOf);
+    this.isAuthenticated$ = this.authService.isAuthenticated();
     this.scheduleNext();
   }
 

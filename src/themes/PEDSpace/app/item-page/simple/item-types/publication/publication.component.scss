@@ -56,3 +56,128 @@
     vertical-align: middle;
   }
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@700&display=swap');
+
+.healthcare-stats {
+  padding: 1.5rem;
+  background-color: #8BBBB2;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #0D4254;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #83225b;
+  /* Purple color like in the image */
+  line-height: 1;
+  font-family: 'Kodchasan', sans-serif;
+}
+
+.primary-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* Override DSpace component styles */
+.healthcare-stats ::ng-deep .item-page-field {
+  margin-bottom: 0 !important;
+}
+
+.healthcare-stats ::ng-deep .item-page-field .item-page-field-value {
+  color: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  font-family: 'Kodchasan', sans-serif !important;
+}
+
+::ng-deep .card-header {
+  background-color: rgba(139, 187, 178, 0.163);
+  border-radius: 8px;
+  margin-bottom: 5px;
+  border: 1px solid rgba(139, 187, 178, 0.7019607843);
+  // box-shadow: 2px 2px 4px rgba(139, 187, 178, 0.7019607843);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgba(139, 187, 178, 0.632);
+    // box-shadow: 2px 3px 6px rgba(139, 187, 178, 0.918);
+  }
+
+  button.btn-link {
+    color: #0D4254;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: calc(1.275rem + 0.3vw);
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    position: relative;
+
+    /* Option 1: Plus/Minus symbols */
+    &:after {
+      content: '+';
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      font-size: 1.2em;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    &[aria-expanded="true"]:after {
+      content: '−';
+    }
+
+    /* Option 2: CSS Triangle (uncomment to use) */
+    /*
+    &:after {
+      content: '';
+      position: absolute;
+      right: 15px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid #212529;
+      transition: transform 0.3s ease;
+    }
+    
+    &[aria-expanded="true"]:after {
+      transform: rotate(180deg);
+    }
+    */
+
+    /* Option 3: Simple text (uncomment to use) */
+    /*
+    &:after {
+      content: 'Show';
+      position: absolute;
+      right: 15px;
+      font-size: 0.8em;
+      background-color: #e2e6ea;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    
+    &[aria-expanded="true"]:after {
+      content: 'Hide';
+    }
+    */
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: #83225b;
+    }
+  }
+}

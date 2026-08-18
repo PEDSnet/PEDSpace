@@ -51,10 +51,10 @@
                 
                 <!-- ConceptSet & Phenotype: Last Updated (dc.date), fallback to Created (dc.date.created) -->
                 <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'ConceptSet'">
-                  <strong>Refreshed:</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date')"></span> 
+                  <strong>Refreshed:</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date.updated')"></span> 
                 </ng-container>
                 <ng-container *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Phenotype'">
-                  <strong>Refreshed:</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date')"></span> 
+                  <strong>Refreshed:</strong> <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date.updated')"></span> 
                 </ng-container>
                 
                 <!-- Study: Study Dates + Sponsor Site -->

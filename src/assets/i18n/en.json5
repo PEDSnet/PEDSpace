@@ -1195,7 +1195,7 @@
   
   "browse.metadata.observation": "Browse by Data Result Observation",
   
-  "browse.metadata.author.breadcrumbs": "Browse by Author",
+  "browse.metadata.author.breadcrumbs": "Browse by Creator",
   
   "browse.metadata.response.breadcrumbs": "Browse by Data Quality Result Outcome",
   
@@ -1211,7 +1211,7 @@
 
   "browse.metadata.author": "Author",
   
-  "browse.metadata.author": "Funder",
+  "browse.metadata.author": "Creator",
 
   "browse.metadata.datecreated.breadcrumbs": "Browse by Date",
 

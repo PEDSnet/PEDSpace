@@ -71,12 +71,13 @@ import { getProcessListRoute } from '../process-page-routing.paths';
 import { Process } from '../processes/process.model';
 import { ProcessStatus } from '../processes/process-status.model';
 import { ProcessDetailFieldComponent } from './process-detail-field/process-detail-field.component';
+import { BreadcrumbsComponent } from 'src/app/breadcrumbs/breadcrumbs.component';
 
 @Component({
   selector: 'ds-process-detail',
   templateUrl: './process-detail.component.html',
   standalone: true,
-  imports: [NgIf, ProcessDetailFieldComponent, NgFor, VarDirective, ThemedFileDownloadLinkComponent, ThemedLoadingComponent, RouterLink, AsyncPipe, DatePipe, FileSizePipe, TranslateModule, HasNoValuePipe],
+  imports: [NgIf, ProcessDetailFieldComponent, NgFor, VarDirective, ThemedFileDownloadLinkComponent, ThemedLoadingComponent, RouterLink, AsyncPipe, DatePipe, FileSizePipe, TranslateModule, HasNoValuePipe, BreadcrumbsComponent],
 })
 /**
  * A component displaying detailed information about a DSpace Process

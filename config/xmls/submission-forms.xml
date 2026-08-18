@@ -722,7 +722,7 @@
                     <required></required>
                 </field>
             </row>
-            <row>
+            <!-- <row>
                 <relation-field>
                     <relationship-type>isDocumentationOfDQResult</relationship-type>
                     <search-configuration>documentation</search-configuration>
@@ -732,8 +732,8 @@
                     <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
-            </row>
-            <row>
+            </row> -->
+            <!-- <row>
                 <relation-field>
                     <relationship-type>isOrgUnitOfDQResult</relationship-type>
                     <search-configuration>orgunit</search-configuration>
@@ -743,7 +743,7 @@
                     <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
-            </row>
+            </row> -->
             <row>
                 <relation-field>
                     <relationship-type>isDQCheckOfDQResult</relationship-type>
@@ -752,7 +752,6 @@
                     <label>Data Quality Check Linkage</label>
                     <hint>Link to the data quality check record which corresponds to the check run to produce these results.</hint>
                     <required></required>
-                    <visibility>workflow</visibility>
                 </relation-field>
             </row>
             <row>
@@ -763,7 +762,6 @@
                     <label>Study Record Linkage</label>
                     <hint>Link to the study record which corresponds to the investigation.</hint>
                     <required></required>
-                    <visibility>workflow</visibility>
                 </relation-field>
             </row>
             <row>
@@ -774,7 +772,6 @@
                     <label>Related Data Quality Results</label>
                     <hint>Link to other data quality result records that are related to this result.</hint>
                     <required></required>
-                    <visibility>workflow</visibility>
                 </relation-field>
             </row>
         </form>
@@ -855,7 +852,7 @@
                     <required></required>
                 </field>
             </row>
-            <row>
+            <!-- <row>
                 <relation-field>
                     <relationship-type>isPersonOfConceptSet</relationship-type>
                     <search-configuration>person</search-configuration>
@@ -865,7 +862,7 @@
                     <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
-            </row> 
+            </row> -->
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -878,7 +875,7 @@
                     <required></required>
                 </field>
             </row>
-            <row>    
+            <!-- <row>    
                 <relation-field>
                     <relationship-type>isOrgUnitOfConceptSet</relationship-type>
                     <search-configuration>orgunit</search-configuration>
@@ -888,7 +885,7 @@
                     <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
-            </row>
+            </row> -->
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1021,10 +1018,10 @@
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Clinical Subject</label>
-                    <input-type>onebox</input-type>
+                    <input-type>tag</input-type> 
                     <hint>Input the clinical subject terms most associated with the concept set.</hint>
-                    <required></required>
-                    <visibility>workflow</visibility>
+                    <required>A tag is required.</required>
+                    <vocabulary>dc_subject_mesh</vocabulary>
                 </field>                
             </row>
             <row>
@@ -1097,7 +1094,18 @@
 
         <!-- Study Form-->
         <form name="StudyForm">
-
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Concept Set must be selected for this item type.</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1300,9 +1308,10 @@
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Clinical Subjects</label>
-                    <input-type>onebox</input-type>
-                    <hint>Apply the clinical subject(s) most associated with the study, then input terms for up to two term hierarchy-levels higher, and others as applicable.</hint>
+                    <input-type>tag</input-type>
+                    <hint>Apply the clinical subject(s) most associated with the study.</hint>
                     <required>At least one clinical subject heading must be applied to the study.</required>
+                    <vocabulary>dc_subject_mesh</vocabulary>
                 </field>
             </row>
             <row>
@@ -1413,7 +1422,18 @@
 
         <!-- Documentation Forms-->
         <form name="DocumentationFormStepOne">
-
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Concept Set must be selected for this item type.</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -1731,6 +1751,18 @@
         <form name="CodeForm">
             <row>
                 <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Concept Set must be selected for this item type.</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
+            <row>
+                <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
                     <dc-qualifier></dc-qualifier>
@@ -1856,9 +1888,10 @@
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Clinical Subject Headings</label>
-                    <input-type>onebox</input-type>
+                    <input-type>tag</input-type>
                     <hint>Input any relevant clinical subject headings from the MeSH vocabulary.</hint>
                     <required></required>
+                    <vocabulary>dc_subject_mesh</vocabulary>
                 </field>
             </row>
             <row>
@@ -1986,6 +2019,18 @@
                     <repeatable>false</repeatable>
                     <label>Resource Type</label>
                     <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Concept Set must be selected for this item type.</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
                     <hint>Computable Phenotype must be selected for this item type.</hint>
                     <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
                 </field>
@@ -2039,7 +2084,7 @@
                     <required></required>
                 </field>
             </row>
-            <row>    
+            <!-- <row>    
                 <relation-field>
                     <relationship-type>isOrgUnitOfPhenotype</relationship-type>
                     <search-configuration>orgunit</search-configuration>
@@ -2049,7 +2094,7 @@
                     <required></required>
                     <visibility>workflow</visibility>
                 </relation-field>
-            </row>
+            </row> -->
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -2202,21 +2247,21 @@
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Clinical Subjects</label>
-                    <input-type>onebox</input-type>
+                    <input-type>tag</input-type>
                     <hint>Input the clinical subject terms most associated with the concept set.</hint>
                     <required></required>
-                    <visibility>workflow</visibility>
+                    <vocabulary>dc_subject_mesh</vocabulary>
                 </field>                
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>relation</dc-element>
-                    <dc-qualifier>uri</dc-qualifier>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>code</dc-element>
+                    <dc-qualifier>github</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Development Code</label>
+                    <label>Related GitHub Repository</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter a link to a related public repository where development code is stored (e.g., a  GitHub repository), if applicable.</hint>
+                    <hint>Enter a link to a related github repository where development code is stored (e.g., a  GitHub repository), if applicable.</hint>
                     <required></required>
                 </field>
             </row>
@@ -2265,6 +2310,18 @@
 
         <!-- Institution Form-->
         <form name="orgUnitStep">
+            <row>
+                <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Concept Set must be selected for this item type.</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
             <row>
                 <field>
                     <dc-schema>organization</dc-schema>
@@ -2493,6 +2550,18 @@
         <form name="publicationStep">
             <row>
                 <field>
+                    <dc-schema>dspace</dc-schema>
+                    <dc-element>entity</dc-element>
+                    <dc-qualifier>type</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="EntityType">dropdown</input-type>
+                    <hint>Concept Set must be selected for this item type.</hint>
+                    <required>You must select a type for this item. This item type MUST match the Domain Entity type!</required>
+                </field>
+            </row>
+            <row>
+                <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
                     <dc-qualifier></dc-qualifier>
@@ -2594,12 +2663,24 @@
                     <dc-element>description</dc-element>
                     <dc-qualifier>abstract</dc-qualifier>
                     <repeatable>false</repeatable>
-                    <label>Abstract</label>
+                    <label>Publisher Abstract</label>
                     <input-type>textarea</input-type>
                     <hint>Enter the article abstract provided by the publisher.</hint>
                     <required></required>
                 </field>
-            </row>            
+            </row> 
+            <row>
+                <field>
+                    <dc-schema>local</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>layabstract</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Lay Abstract</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a simplified abstract for a general audience.</hint>
+                    <required></required>
+                </field>
+            </row>           
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
@@ -2607,7 +2688,7 @@
                     <dc-qualifier>mesh</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Keywords</label>
-                    <input-type >tag</input-type>
+                    <input-type>tag</input-type>
                     <hint>Input terms that characterize the content of the article. Reference https://meshb.nlm.nih.gov/ for terms or use the MeSH Terms listed on the PubMed article entry.</hint>
                     <required></required> 
                     <vocabulary>dc_subject_mesh</vocabulary>
@@ -2782,7 +2863,7 @@
             </row> -->
         </form>
         <!-- Form which defines the metadata page/section for depositing Project Entities -->
-       <form name="projectStep">
+        <form name="projectStep">
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>

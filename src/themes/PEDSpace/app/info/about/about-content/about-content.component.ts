@@ -5,13 +5,14 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { BreadcrumbsComponent } from 'src/themes/PEDSpace/app/breadcrumbs/breadcrumbs.component';
 
 @Component({
   selector: 'ds-about-content',
   templateUrl: './about-content.component.html',
   styleUrls: ['./about-content.component.scss'],
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, BreadcrumbsComponent],
 })
 /**
  * Component displaying the content of the PEDSpace Knowledge Bank About page

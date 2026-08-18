@@ -67,11 +67,11 @@
       </p>
 
       <p *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'ConceptSet'">
-        <strong>Refreshed: </strong> <span class="item-description card-text" [innerHTML]="firstMetadataValue('dc.date.created')"></span> 
+        <strong>Refreshed: </strong> <span class="item-description card-text" [innerHTML]="firstMetadataValue('dc.date.updated')"></span> 
       </p>
 
       <p *ngIf="dso.firstMetadataValue('dspace.entity.type') === 'Phenotype'">
-        <strong>Refreshed: </strong> <span class="item-description card-text" [innerHTML]="firstMetadataValue('dc.date')"></span> 
+        <strong>Refreshed: </strong> <span class="item-description card-text" [innerHTML]="firstMetadataValue('dc.date.updated')"></span> 
       </p>
 
 
