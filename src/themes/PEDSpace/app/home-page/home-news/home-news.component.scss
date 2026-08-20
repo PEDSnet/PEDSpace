@@ -35,6 +35,10 @@
       width: auto;
     }
 
+    .banner-content {
+      max-width: calc(100% - 280px);
+    }
+
     /* Create custom underline with space */
     .banner-content ::ng-deep h1::after,
     .banner-content ::ng-deep h2::after {
