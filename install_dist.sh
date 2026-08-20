@@ -2,10 +2,12 @@
 
 # Function to print usage
 print_usage() {
-    echo "Usage: $0 [-s|--source <source_dir>] [-d|--destination <dest_dir>] [-b|--build]"
+    echo "Usage: $0 [-s|--source <source_dir>] [-d|--destination <dest_dir>] [-b|--build] [-o|--owner <user>]"
     echo "  -s, --source        Source directory path (default: current directory)"
     echo "  -d, --destination   Destination directory path (required)"
     echo "  -b, --build         Build production version before copying"
+    echo "  -o, --owner         User (and group) that should own the installed files (default: dspace)"
+    echo "                      Only used, along with the automatic reload, when this script is run via sudo"
     echo "  -h, --help          Display this help message"
 }
 
@@ -13,6 +15,11 @@ print_usage() {
 SRC_DIR=""
 DEST_DIR=""
 BUILD_PROD=false
+OWNER="dspace"
+RUN_AS_ROOT=false
+if [ "$EUID" -eq 0 ]; then
+    RUN_AS_ROOT=true
+fi
 
 # Parse command-line arguments
 while [[ $# -gt 0 ]]; do
@@ -28,6 +35,10 @@ while [[ $# -gt 0 ]]; do
         -b|--build)
             BUILD_PROD=true
             shift
+            ;;
+        -o|--owner)
+            OWNER="$2"
+            shift 2
             ;;
         -h|--help)
             print_usage
@@ -61,8 +72,13 @@ DEST_DIR=$(realpath "$DEST_DIR")
 # Build production version if requested
 if [ "$BUILD_PROD" = true ]; then
     echo "Building production version..."
-    cd "$SRC_DIR"
-    yarn build:prod
+    if [ "$RUN_AS_ROOT" = true ]; then
+        # Build as OWNER so the repo (node_modules, dist, git) stays owned by that user, not root
+        runuser -u "$OWNER" -- bash -c "cd '$SRC_DIR' && yarn build:prod"
+    else
+        cd "$SRC_DIR"
+        yarn build:prod
+    fi
     if [ $? -ne 0 ]; then
         echo "Error: Build failed."
         exit 1
@@ -96,6 +112,11 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+# When run via sudo, cp leaves the copy owned by root; fix it up so the service user can read/write it
+if [ "$RUN_AS_ROOT" = true ]; then
+    chown -R "$OWNER:$OWNER" "$STAGING_DIR"
+fi
+
 # Swap in the staged dist with two renames, minimizing the time the live site is missing dist
 if [ -d "$DEST_DIR/dist" ]; then
     mv "$DEST_DIR/dist" "$DEST_DIR/dist.$TIMESTAMP.bak"
@@ -112,4 +133,17 @@ else
 fi
 
 echo "Operation completed successfully."
-echo "To apply the update, run: sudo systemctl reload pm2-dspace"
+
+# Only root (i.e. invoked via sudo) has permission to reload the systemd service
+if [ "$RUN_AS_ROOT" = true ]; then
+    echo "Reloading pm2-dspace.service..."
+    systemctl reload pm2-dspace.service
+    if [ $? -eq 0 ]; then
+        echo "pm2-dspace.service reloaded successfully."
+    else
+        echo "Error: Failed to reload pm2-dspace.service."
+        exit 1
+    fi
+else
+    echo "To apply the update, run: sudo systemctl reload pm2-dspace"
+fi
