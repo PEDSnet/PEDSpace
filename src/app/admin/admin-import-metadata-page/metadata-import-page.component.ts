@@ -19,12 +19,14 @@ import { ProcessParameter } from '../../process-page/processes/process-parameter
 import { isNotEmpty } from '../../shared/empty.util';
 import { NotificationsService } from '../../shared/notifications/notifications.service';
 import { FileDropzoneNoUploaderComponent } from '../../shared/upload/file-dropzone-no-uploader/file-dropzone-no-uploader.component';
+import { BreadcrumbsComponent } from 'src/app/breadcrumbs/breadcrumbs.component';
 
 @Component({
   selector: 'ds-base-metadata-import-page',
   templateUrl: './metadata-import-page.component.html',
   imports: [
     FileDropzoneNoUploaderComponent,
+    BreadcrumbsComponent,
     FormsModule,
     TranslateModule,
   ],

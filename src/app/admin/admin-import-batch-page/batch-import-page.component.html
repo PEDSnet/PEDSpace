@@ -1,6 +1,8 @@
 <div class="container">
   <h1 id="header">{{'admin.batch-import.page.header' | translate}}</h1>
   <p>{{'admin.batch-import.page.help' | translate}}</p>
+  <ds-base-breadcrumbs></ds-base-breadcrumbs>
+  <br>
   <p *ngIf="dso">
     selected collection: <b>{{getDspaceObjectName()}}</b>&nbsp;
     <a href="javascript:void(0)" (click)="removeDspaceObject()">{{'admin.batch-import.page.remove' | translate}}</a>

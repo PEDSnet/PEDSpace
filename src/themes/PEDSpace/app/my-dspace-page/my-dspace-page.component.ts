@@ -18,6 +18,7 @@ import { SuggestionsNotificationComponent } from '../../../../app/notifications/
 import { pushInOut } from '../../../../app/shared/animations/push';
 import { RoleDirective } from '../../../../app/shared/roles/role.directive';
 import { ThemedSearchComponent } from '../../../../app/shared/search/themed-search.component';
+import { BreadcrumbsComponent } from 'src/app/breadcrumbs/breadcrumbs.component';
 
 /**
  * This component represents the whole mydspace page
@@ -45,6 +46,7 @@ import { ThemedSearchComponent } from '../../../../app/shared/search/themed-sear
     NgIf,
     SuggestionsNotificationComponent,
     MyDspaceQaEventsNotificationsComponent,
+    BreadcrumbsComponent,
   ],
 })
 export class MyDSpacePageComponent extends BaseComponent {

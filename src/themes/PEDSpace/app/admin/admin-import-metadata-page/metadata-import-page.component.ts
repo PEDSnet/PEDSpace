@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { MetadataImportPageComponent as BaseComponent } from '../../../../../app/admin/admin-import-metadata-page/metadata-import-page.component';
 import { FileDropzoneNoUploaderComponent } from '../../../../../app/shared/upload/file-dropzone-no-uploader/file-dropzone-no-uploader.component';
+import { BreadcrumbsComponent } from 'src/app/breadcrumbs/breadcrumbs.component';
 
 @Component({
   selector: 'ds-themed-metadata-import-page',
@@ -14,6 +15,7 @@ import { FileDropzoneNoUploaderComponent } from '../../../../../app/shared/uploa
     FileDropzoneNoUploaderComponent,
     FormsModule,
     TranslateModule,
+    BreadcrumbsComponent,
   ],
 })
 export class MetadataImportPageComponent extends BaseComponent {

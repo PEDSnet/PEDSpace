@@ -31,6 +31,7 @@ import {
 } from '../../shared/empty.util';
 import { NotificationsService } from '../../shared/notifications/notifications.service';
 import { FileDropzoneNoUploaderComponent } from '../../shared/upload/file-dropzone-no-uploader/file-dropzone-no-uploader.component';
+import { BreadcrumbsComponent } from 'src/app/breadcrumbs/breadcrumbs.component';
 
 @Component({
   selector: 'ds-batch-import-page',
@@ -41,6 +42,7 @@ import { FileDropzoneNoUploaderComponent } from '../../shared/upload/file-dropzo
     FormsModule,
     UiSwitchModule,
     FileDropzoneNoUploaderComponent,
+    BreadcrumbsComponent,
   ],
   standalone: true,
 })
