@@ -819,6 +819,21 @@
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>updated</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Date Updated</label>
+                    <input-type>date</input-type>
+                    <hint>Input the date that the concept set was last updated. 
+                            If the exact date is unknown, enter the first of the month.
+                        </hint>
+                    <required>You must enter at least the year.</required>
+                    <visibility>workflow</visibility>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
                     <dc-element>contributor</dc-element>
                     <dc-qualifier>author</dc-qualifier>
                     <repeatable>true</repeatable>
@@ -2058,6 +2073,20 @@
                     <hint>Input the date that the phenotype was created. If the exact date is unknown, enter to the nearest month.
                         </hint>
                     <required>You must enter at least a year.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>updated</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Date Updated</label>
+                    <input-type>date</input-type>
+                    <hint>Input the date that the phenotype was updated. If the exact date is unknown, enter to the nearest month.
+                        </hint>
+                    <required>You must enter at least a year.</required>
+                    <visibility>workflow</visibility>
                 </field>
             </row>
             <row>

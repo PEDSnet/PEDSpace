@@ -24,9 +24,10 @@
       <!-- Date Created -->
       <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'item.preview.dc.date.issued'"
         separator=", "></ds-item-page-date-field>
+
       <!-- Date Modified -->
-      <ds-item-page-date-field [item]="object" [fields]="['dc.date']" [label]="'item.preview.dc.date'"
-        separator="; "></ds-item-page-date-field>
+      <ds-item-page-date-field [item]="object" [fields]="['dc.date.updated']" [label]="'Refreshed'"
+        separator=", "></ds-item-page-date-field>
 
       <ds-item-page-external-publication-field [item]="object" [fields]="['local.code.github']"
         [label]="'Development Code'" [repo]="'github'">
