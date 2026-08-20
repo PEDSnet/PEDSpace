@@ -1215,7 +1215,7 @@
             <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
                 <!--The
                 default sort filter to use for the initial workspace loading-->
-                <property name="defaultSortField" ref="sortLastModified" />
+                <property name="defaultSortField" ref="sortScore" />
                 <property name="sortFields">
                     <list>
                         <ref bean="sortLastModified" />
@@ -1303,10 +1303,11 @@
             <bean class="org.dspace.discovery.configuration.DiscoverySortConfiguration">
                 <!--The
                 default sort filter to use for the initial workspace loading-->
-                <property name="defaultSortField" ref="sortLastModified" />
+                <property name="defaultSortField" ref="sortScore" />
                 <property name="sortFields">
                     <list>
                         <ref bean="sortLastModified" />
+                        <ref bean="sortScore"
                         <ref bean="sortTitleAsc" />
                         <ref bean="sortDateIssuedDesc" />
                     </list>
