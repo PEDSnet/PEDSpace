@@ -56,7 +56,15 @@
     <div class="col-12 col-md-9">
 
       <!--Abstract-->
-      <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
+      <div class="conceptset-abstract">
+        <h4>
+          <div [innerHTML]="object.firstMetadataValue('dc.description.abstract')">
+          </div>
+        </h4>  
+      </div>
+      <br>
+
+      <!-- <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field> -->
 
       <!--Variable Status-->
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['local.quality.status']" [separator]="' '" [label]="'Variable Status'"></ds-generic-item-page-field>
