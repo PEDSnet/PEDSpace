@@ -142,8 +142,9 @@ export class PEDSnetHeaderComponent extends BaseComponent {
         { label: 'Data Quality', url: 'https://pedsnet.org/database/data-quality/' },
         { label: 'PEDSnet Common Data Model', url: 'https://pedsnet.org/database/pedsnet-common-data-model/' },
         { label: 'Security and Privacy', url: 'https://pedsnet.org/database/security-and-privacy/' },
-        { label: 'Knowledge Bank', url: 'https://pedsnet.org/database/knowledge-bank/' },
+        { label: 'PEDSpace Knowledge Bank', url: 'https://pedsnet.org/metadata/home' },
         { label: 'Access to Data', url: 'https://pedsnet.org/database/access-to-data/' },
+        { label: 'PEDSnet Data Insights', url: 'https://pedsnet.org/research/pedsnet-data-insights/' },
       ]
     },
     {
@@ -151,8 +152,10 @@ export class PEDSnetHeaderComponent extends BaseComponent {
       url: 'https://pedsnet.org/work-with-us/',
       children: [
         { label: 'Contact', url: 'https://pedsnet.org/contact/' },
+        { label: 'Resources', url: 'https://pedsnet.org/work-with-us/resources/'},
         { label: 'Research Process', url: 'https://pedsnet.org/work-with-us/research-process/' },
         { label: 'Collaboration Request', url: 'https://pedsnet.org/work-with-us/collaboration-request/' },
+        { label: 'PEDSnet Institutional Opportunities', url: 'https://pedsnet.org/work-with-us/interest-groups/' },
       ]
     },
   ];
