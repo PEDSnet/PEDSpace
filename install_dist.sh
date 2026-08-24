@@ -74,7 +74,8 @@ if [ "$BUILD_PROD" = true ]; then
     echo "Building production version..."
     if [ "$RUN_AS_ROOT" = true ]; then
         # Build as OWNER so the repo (node_modules, dist, git) stays owned by that user, not root
-        runuser -u "$OWNER" -- bash -c "cd '$SRC_DIR' && yarn build:prod"
+        # -i (interactive) is required too: OWNER's .bashrc only loads nvm/yarn when $- contains "i"
+        runuser -u "$OWNER" -- bash -lic "cd '$SRC_DIR' && yarn build:prod"
     else
         cd "$SRC_DIR"
         yarn build:prod
