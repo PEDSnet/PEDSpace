@@ -110,7 +110,14 @@ export class CsvSpreadsheetComponent implements OnInit {
 
   ngOnInit(): void {
     this.csvBitstreams$ = new BehaviorSubject([]);
-    this.loadCsvBitstreams();
+
+    // Fetching and parsing the CSV content is expensive (it downloads the
+    // entire file) and isn't rendered during SSR anyway (see template),
+    // so skip it on the server to avoid slowing down/blocking the initial
+    // render and causing a hydration mismatch once the client takes over.
+    if (this.isBrowser) {
+      this.loadCsvBitstreams();
+    }
   }
 
   /**
