@@ -3,6 +3,7 @@ import {
   CommonModule,
 } from '@angular/common';
 import {
+  ChangeDetectorRef,
   Component,
   Inject,
   Input,
@@ -97,6 +98,7 @@ export class CsvSpreadsheetComponent implements OnInit {
     protected notificationsService: NotificationsService,
     protected translateService: TranslateService,
     protected httpClient: HttpClient,
+    protected cdr: ChangeDetectorRef,
     @Inject(APP_CONFIG) protected appConfig: AppConfig,
     @Inject(PLATFORM_ID) private platformId: Object,
   ) {
@@ -138,6 +140,7 @@ export class CsvSpreadsheetComponent implements OnInit {
           `${bitstreamsRD.statusCode} ${bitstreamsRD.errorMessage}`
         );
         this.isLoading = false;
+        this.cdr.markForCheck();
       } else if (hasValue(bitstreamsRD.payload)) {
         // Filter for CSV files
         const csvFiles = bitstreamsRD.payload.page.filter(
@@ -154,6 +157,7 @@ export class CsvSpreadsheetComponent implements OnInit {
           this.loadCsvData(csvFiles[0]);
         } else {
           this.isLoading = false;
+          this.cdr.markForCheck();
         }
       }
     });
@@ -167,6 +171,7 @@ export class CsvSpreadsheetComponent implements OnInit {
     
     if (!downloadUrl) {
       this.isLoading = false;
+      this.cdr.markForCheck();
       return;
     }
 
@@ -174,6 +179,7 @@ export class CsvSpreadsheetComponent implements OnInit {
       next: (csvText: string) => {
         this.spreadsheetData = this.parseCsv(csvText);
         this.isLoading = false;
+        this.cdr.markForCheck();
       },
       error: (error) => {
         this.notificationsService.error(
@@ -181,6 +187,7 @@ export class CsvSpreadsheetComponent implements OnInit {
           error.message
         );
         this.isLoading = false;
+        this.cdr.markForCheck();
       }
     });
   }
