@@ -54,6 +54,7 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
 import { ItemPageDescriptionFieldComponent } from '../../field-components/specific-field/description/item-page-description.component';
 import { ItemPageExternalPublicationFieldComponent } from '../../field-components/specific-field/external/item-page-external-publication.component';
 import { ItemHeroBannerComponent } from '../../item-hero-banner/item-hero-banner.component';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
 /**
  * Component that represents a Documentation Item page
@@ -95,6 +96,7 @@ import { ItemHeroBannerComponent } from '../../item-hero-banner/item-hero-banner
     ItemPageCcLicenseFieldComponent,
     ItemPageCitationFieldComponent,
     TabbedRelatedEntitiesSearchComponent,
+    NgbAccordionModule,
     NgxExtendedPdfViewerModule],
 })
 export class DocumentationComponent extends BaseComponent implements OnInit {

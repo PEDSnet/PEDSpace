@@ -24,12 +24,29 @@
               [attr.aria-label]="'Analysts, use this name to reference this variable in your study DAP.'"> -->
 
       </div>
-      <!-- dc.date.created -->
-      <ds-item-page-date-field [item]="object" [fields]="['dc.date.created']" [label]="'item.preview.dc.date.issued'"
-        separator=", "></ds-item-page-date-field>
+      <!-- Database Dates -->
+      <ds-item-page-date-field *ngIf="object.firstMetadataValue('dc.type') === 'Database'"
+                                  [item]="object"
+                                  [fields]="['dc.date.created']"
+                                  [label]="'Production Date'">
+      </ds-item-page-date-field>
+
+      <!-- Other Documentation Dates -->
+      <ds-item-page-date-field *ngIf="object.firstMetadataValue('dc.type') === 'Other'"
+                                  [item]="object"
+                                  [fields]="['dc.date.created']"
+                                  [label]="'item.preview.dc.date.issued'">
+      </ds-item-page-date-field>
+
+      <ds-item-page-date-field *ngIf="object.firstMetadataValue('dc.type') === 'Other'"
+                                  [item]="object"
+                                  [fields]="['dc.date']"
+                                  [label]="'item.preview.dc.date'">
+      </ds-item-page-date-field>
+
 
       <!-- Thumbnail -->
-      <div *ngIf="(mediaViewer.image || mediaViewer.video) && (pdfSrc$ | async)" 
+      <div *ngIf="(mediaViewer.image || mediaViewer.video) && (pdfSrc$ | async) && (object.firstMetadataValue('dc.type') === 'Other')" 
            class="mb-2 pdf-thumbnail-container" 
            (click)="openPdfModal()"
            role="button"
@@ -43,40 +60,99 @@
           <span>Click to view PDF</span>
         </div>
       </div>
-      <div *ngIf="(mediaViewer.image || mediaViewer.video) && !(pdfSrc$ | async)" class="mb-2">
+      <div *ngIf="(mediaViewer.image || mediaViewer.video) && !(pdfSrc$ | async) && (object.firstMetadataValue('dc.type') === 'Other')" class="mb-2">
         <ds-media-viewer [item]="object"></ds-media-viewer>
       </div>
 
       <!-- Date Submitted -->
-      <ds-item-page-date-field [item]="object" [fields]="['dc.date.submitted']" [label]="'Submission Date'"
-        separator=", "></ds-item-page-date-field>
+      <ds-item-page-date-field [item]="object" [fields]="['dc.date.submitted']" [label]="'Submission Date'"></ds-item-page-date-field>
 
       <!-- Data Collection Dates-->
       <ds-generic-item-page-field [renderAsButton]="false" [item]="object" [isDateRange]="true"
-        [fields]="['project.startDate', 'project.endDate']" [separator]="' - '" [label]="'Data Collection'">
+        [fields]="['project.startDate', 'project.endDate']" [separator]="' - '" [label]="'Collection Dates'">
       </ds-generic-item-page-field>
 
       <!-- Download link(s) -->
       <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
 
+      <!-- Github links -->
+      <div class="d-flex flex-column gap-4 mb-3 mt-4">
+              <ds-item-page-external-publication-field [item]="object" [fields]="['dc.relation.uri']"
+                [label]="'Related Code Repository'" [repo]="'github'">
+              </ds-item-page-external-publication-field>
+      </div>
+
+      <!-- Tags-->
+      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject']" [separator]="'<br>'"
+        [label]="'item.preview.dc.subject'">
+      </ds-generic-item-page-field>
+
+      <!-- Related Resources-->
       <ds-related-items [parentItem]="object" [relationType]="'isDocumentationOfDocumentation'"
         [label]="'Related Resources' | translate">
       </ds-related-items>
 
-      <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject']" [separator]="'<br>'"
-        [label]="'item.preview.dc.subject'"></ds-generic-item-page-field>
     </div>
 
     <!-- Right Column-->
     <div class="col-12 col-md-8">
 
-      <ds-item-page-abstract-field [item]="object" ></ds-item-page-abstract-field>
+      
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.author']"
+      <!-- Abstract 
+      <ds-item-page-abstract-field [item]="object" ></ds-item-page-abstract-field>-->
+      <div class="conceptset-abstract">
+        <h4>
+          <div [innerHTML]="object.firstMetadataValue('dc.description.abstract')">
+          </div>
+        </h4>  
+      </div>
+
+      <br>
+
+      <!-- Buttons -->
+      <div class="pub-action-buttons">
+        <a *ngIf="object.firstMetadataValue('dc.type') === 'Database'"
+          [href]="'https://pedsnet.org/database/access-to-data/'"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn pub-btn me-2 mb-2">
+          <!-- Lucide external-link icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="pub-btn-icon" aria-hidden="true">
+            <path d="M15 3h6v6"/>
+            <path d="M10 14 21 3"/>
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          </svg>
+          Database Access
+        </a>     
+        <a *ngIf="object.firstMetadataValue('dc.type') === 'Database'"
+          [href]="'https://pedsnet.org/work-with-us/collaboration-request/'"
+          target="_blank"
+          rel="noopener noreferrer"
+            class="btn pub-btn me-2 mb-2">
+          <!-- Lucide external-link icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="pub-btn-icon" aria-hidden="true">
+            <path d="M15 3h6v6"/>
+            <path d="M10 14 21 3"/>
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          </svg>
+          Collaboration Request
+        </a>
+      </div>
+      
+      <!--Author -->
+      <ds-generic-item-page-field *ngIf="object.firstMetadataValue('dc.type') === 'Other'" [item]="object" [fields]="['dc.contributor.author']"
         [label]="'Creator'">
       </ds-generic-item-page-field>
 
-      <ds-generic-item-page-field [item]="object" [fields]="['dc.contributor.other']"
+      <!-- Affiliation-->
+      <ds-generic-item-page-field *ngIf="object.firstMetadataValue('dc.type') === 'Other'" [item]="object" [fields]="['dc.contributor.other']"
         [label]="'item.preview.dc.contributor.other'">
       </ds-generic-item-page-field>
 
@@ -90,10 +166,79 @@
       <ds-item-page-description-field [item]="object"
         [label]="'item.page.description'"></ds-item-page-description-field>
 
-      <!-- <ng-container *ngIf="isLoggedIn"> -->
-        <ds-item-page-uri-field [item]="object" [fields]="['dc.relation.uri']" [label]="'Related Resources'">
-        </ds-item-page-uri-field>
-      <!-- </ng-container> -->
+
+
+      <!-- Database Summary Statistics-->
+      <ng-container *ngIf="object.firstMetadataValue('dc.type') === 'Database'">
+          <h4><b>Summary of PEDSnet Core Data</b></h4>
+          <div class="healthcare-stats mb-5 mt-4">
+            <div class="row mt-4">
+              <div class="col-12 mb-4">
+                <div class="text-center">
+                  <div class="stat-label">Total Patients</div>
+                  <div class="stat-value primary-value">
+                    <ds-generic-item-page-field [item]="object" [fields]="['local.count.patients']" [enableMarkdown]="false">
+                    </ds-generic-item-page-field>
+                  </div>
+                </div>
+              </div>  
+            </div>
+          </div>
+          <ngb-accordion [destroyOnHide]="false" class="mb-3">
+            <ngb-panel id="healthcareStatsPanel">
+              <ng-template ngbPanelTitle>
+                <div class="d-flex align-items-center">
+                  <!-- <i class="fa fa-users me-2"></i> -->
+                  <span class="section-title">&nbsp;PEDSnet Database Population</span>
+                </div>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                <div class="description-wrapper col-lg-12">
+                  <ds-generic-item-page-field [item]="object" [fields]="['local.description.raw']"
+                    [label]="''" [enableMarkdown]="true"></ds-generic-item-page-field>
+                </div>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+          <br>
+          <ngb-accordion [destroyOnHide]="false" class="mb-3">
+            <ngb-panel id="healthcareStatsPanel">
+              <ng-template ngbPanelTitle>
+                <div class="d-flex align-items-center">
+                  <!-- <i class="fa fa-users me-2"></i> -->
+                  <span class="section-title">&nbsp;Demographics</span>
+                </div>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                <div class="description-wrapper col-lg-12">
+                  <ds-generic-item-page-field [item]="object" [fields]="['local.description.outcomes']"
+                    [label]="''" [enableMarkdown]="true"></ds-generic-item-page-field>
+                </div>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+          <br>
+          <ngb-accordion [destroyOnHide]="false" class="mb-3">
+            <ngb-panel id="healthcareStatsPanel">
+              <ng-template ngbPanelTitle>
+                <div class="d-flex align-items-center">
+                  <!-- <i class="fa fa-users me-2"></i> -->
+                  <span class="section-title">&nbsp;Prevalence of Common Health Conditions</span>
+                </div>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                <div class="description-wrapper col-lg-12">
+                  <ds-generic-item-page-field [item]="object" [fields]="['local.description.analytics']"
+                    [label]="''" [enableMarkdown]="true"></ds-generic-item-page-field>
+                </div>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+
+      </ng-container>
+
+      <br> <br>
+
 
       <ds-generic-item-page-field [renderAsButton]="true" [item]="object" [fields]="['dc.subject.other']" [separator]="' '"
         [label]="'browse.metadata.vocab'"></ds-generic-item-page-field>
@@ -112,7 +257,7 @@
       </ds-related-items> -->
 
       <!-- Related Studies -->
-      <ds-related-items [parentItem]="object" [relationType]="'isStudyOfDocumentation'"
+      <ds-related-items *ngIf="object.firstMetadataValue('dc.type') === 'Other'"[parentItem]="object" [relationType]="'isStudyOfDocumentation'"
         [label]="'Related Studies'">
       </ds-related-items>
 
@@ -121,24 +266,26 @@
       </ds-related-items> -->
 
       <!-- Related Code -->
-      <ds-related-items [parentItem]="object" [relationType]="'isCodeOfDocumentation'"
+      <ds-related-items *ngIf="object.firstMetadataValue('dc.type') === 'Other'" [parentItem]="object" [relationType]="'isCodeOfDocumentation'"
         [label]="'relationships.isCodeOf' | translate">
       </ds-related-items>
 
       <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
       </ds-item-page-cc-license-field>
 
-      <!-- Citation 
-      <ds-item-page-citation-field [item]="object" [label]="'Cite this Documentation'">
-      </ds-item-page-citation-field>-->
+      <!-- Citation -->
+      <ds-item-page-citation-field *ngIf="object.firstMetadataValue('dc.type') === 'Other'" [item]="object" [label]="'Cite this Documentation'">
+      </ds-item-page-citation-field>
 
+      <ds-item-page-citation-field *ngIf="object.firstMetadataValue('dc.type') === 'Database'" [item]="object" [label]="'Cite this Database'">
+      </ds-item-page-citation-field>
+
+      <!-- Full item page button -->
       <div>
         <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="link" tabindex="0">
           <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
         </a>
       </div>
-
-
     </div>
   </div>
 

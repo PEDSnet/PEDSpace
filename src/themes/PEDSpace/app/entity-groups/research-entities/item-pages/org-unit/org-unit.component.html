@@ -117,6 +117,7 @@
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
+      <br>
       <ngb-accordion #acc="ngbAccordion" [destroyOnHide]="false">
         <ngb-panel id="dataProvenancePanel">
           <ng-template ngbPanelTitle>
@@ -134,6 +135,9 @@
         </ngb-panel>
       </ngb-accordion>
     </div>
+
+
+
     <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="link" tabindex="0">
       {{"item.page.link.full" | translate}}
     </a>
