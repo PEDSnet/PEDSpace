@@ -304,14 +304,15 @@
     }
   }
 
+  // Fun Display of Data // 
 @import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@700&display=swap');
 
 .healthcare-stats {
   padding: 0.2rem;
-  background-color: rgba(139, 187, 178, 0.163);
+  //background-color: rgba(139, 187, 178, 0.163);
   border-radius: 4px;
   margin-bottom: 1.5px;
-  border: 1px solid rgba(139, 187, 178, 0.7019607843);
+  // border: 1px solid rgba(139, 187, 178, 0.7019607843);
   // box-shadow: 2px 2px 4px rgba(139, 187, 178, 0.7019607843);
   transition: all 0.3s ease;
   width: 100%;
@@ -350,38 +351,41 @@
   font-family: 'Kodchasan', sans-serif !important;
 }
 
+// Information Accordion Card Styling
 ::ng-deep .card-header {
-  background-color: rgba(139, 187, 178, 0.163);
+  background-color: #f8f9fa;          // neutral light gray
+  border: 1px solid #dee2e6;
   border-radius: 8px;
   margin-bottom: 5px;
-  border: 1px solid rgba(139, 187, 178, 0.7019607843);
-  // box-shadow: 2px 2px 4px rgba(139, 187, 178, 0.7019607843);
-  transition: all 0.3s ease;
+  padding: 0;                         // let the button supply the padding
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 
   &:hover {
-    background-color: rgba(139, 187, 178, 0.632);
-    // box-shadow: 2px 3px 6px rgba(139, 187, 178, 0.918);
+    background-color: #eef0f2;
+    border-color: #ced4da;
   }
 
   button.btn-link {
-    color: #0D4254;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: calc(1.275rem + 0.3vw);
+    display: block;
+    position: relative;               // anchor for the absolutely positioned icon
     width: 100%;
     text-align: left;
-    padding: 15px;
-    position: relative;
+    padding: 15px 50px 15px 15px;     // extra right padding so text never runs under the icon
+    color: #0D4254;
+    font-weight: 550;
+    font-size: calc(1rem + 0.3vw);
+    text-decoration: none;
 
-    /* Option 1: Plus/Minus symbols */
+    // Plus/minus icon: far right, vertically centered
     &:after {
       content: '+';
       position: absolute;
-      right: 15px;
-      bottom: 15px;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
       font-size: 1.2em;
       font-weight: bold;
-      transition: transform 0.3s ease;
+      line-height: 1;
     }
 
     &[aria-expanded="true"]:after {
@@ -432,8 +436,7 @@
   }
 }
 
-
-// External link buttons on the publication page
+// External link buttons on the documentation page
 .pub-action-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -482,7 +485,6 @@
   } 
 }
 
-
 /* Responsive container */
 .documentation-table-container {
   width: 100%;
@@ -491,7 +493,6 @@
   margin-bottom: 1.5rem;
   border-radius: 4px;
 }
-
 
 /* Apply styles to all tables */
 ::ng-deep th,

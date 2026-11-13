@@ -44,6 +44,7 @@ import { ThemedResultsBackButtonComponent } from '../../../../../../../app/share
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { ThemedBadgesComponent } from 'src/app/shared/object-collection/shared/badges/themed-badges.component';
 import { ItemHeroBannerComponent } from '../../item-hero-banner/item-hero-banner.component';
+import { ItemPageCitationFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/citation/item-page-citation-field.component';
 
 
 /**
@@ -81,7 +82,8 @@ import { ItemHeroBannerComponent } from '../../item-hero-banner/item-hero-banner
     CollectionsComponent,
     RouterLink,
     AsyncPipe,
-    TranslateModule
+    TranslateModule,
+    ItemPageCitationFieldComponent,
   ],
 })
 export class PublicationComponent extends BaseComponent implements AfterViewInit {
