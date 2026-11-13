@@ -1209,7 +1209,7 @@
 
   "browse.metadata.funder.breadcrumbs": "Browse by Creator",
 
-  "browse.metadata.author": "Author",
+  "browse.metadata.author": "Creator",
   
   "browse.metadata.author": "Creator",
 
@@ -3457,7 +3457,7 @@
 
   "item.select.empty": "No items to show",
 
-  "item.select.table.author": "Author",
+  "item.select.table.author": "Creator",
 
   "item.select.table.collection": "Domain",
 
@@ -5535,7 +5535,7 @@
 
   "search.filters.applied.f.activity_stream_type": "Activity stream type",
 
-  "search.filters.applied.f.author": "Author",
+  "search.filters.applied.f.author": "Creator",
 
   "search.filters.applied.f.birthDate.max": "End birth date",
 
@@ -5651,11 +5651,11 @@
 
   "search.filters.filter.activity_stream_type.placeholder": "Activity stream type",
 
-  "search.filters.filter.author.head": "Author",
+  "search.filters.filter.author.head": "Creator",
 
-  "search.filters.filter.author.label": "Search author name",
+  "search.filters.filter.author.label": "Search Names",
 
-  "search.filters.filter.author.placeholder": "Author name",
+  "search.filters.filter.author.placeholder": "Last Name, First Name...",
 
   "search.filters.filter.birthDate.head": "Birth Date",
 
@@ -5755,15 +5755,15 @@
 
   "search.filters.filter.itemAffiliation.head": "Affiliation",
 
-  "search.filters.filter.itemAffiliation.label": "Search Affiliation",
+  "search.filters.filter.itemAffiliation.label": "Affiliation",
 
-  "search.filters.filter.itemAffiliation.placeholder": "Affiliation...",
+  "search.filters.filter.itemAffiliation.placeholder": "Search Affiliation...",
 
   "search.filters.filter.leadSite.head": "Lead Site",
 
-  "search.filters.filter.leadSite.label": "Search Lead Site",
+  "search.filters.filter.leadSite.label": "Lead Site",
 
-  "search.filters.filter.leadSite.placeholder": "Lead Site...",
+  "search.filters.filter.leadSite.placeholder": "Search Lead Site...",
 
   "pedspace.project.lead-site": "Lead Site",
 
@@ -5777,23 +5777,31 @@
 
   "search.filters.filter.itemClinicalSubject.head": "Clinical Subject",
 
-  "search.filters.filter.itemClinicalSubject.label": "Clinical Subject",
+  "search.filters.filter.itemClinicalSubject.label": "Search Subjects",
 
-  "search.filters.filter.dqCheckDomain.head": "DQ Check Domain",
+  "search.filters.filter.dqCheckDomain.head": "Network Data Domain",
 
-  "search.filters.filter.dqCheckDomain.label": "DQ Check Domain",
+  "search.filters.filter.dqCheckDomain.label": "Search Data Domains",
 
-  "search.filters.filter.dqCheckOutcomes.head": "DQ Check Outcomes",
+  "search.filters.filter.dqCheckDomain.placeholder": "Data Domains...",
+
+  "search.filters.filter.dqCheckOutcomes.head": "DQA Result Response",
   
-  "search.filters.filter.dqCheckOutcomes.Label": "DQ Check Outcomes",
+  "search.filters.filter.dqCheckOutcomes.label": "Search Responses",
 
-  "search.filters.filter.dqCheckOutcomes.placeholder": "DQ Check Outcomes...",
+  "search.filters.filter.dqCheckOutcomes.placeholder": "Responses...",
+
+  "search.filters.filter.assessmentParameters.head": "Assessment Parameters",
+
+  "search.filters.filter.assessmentParameters.placeholder": "Parameters...",
+
+  "search.filters.filter.assessmentParameters.label": "Search Parameters",
   
-  "search.filters.filter.itemClinicalSubject.placeholder": "Terms...",
+  "search.filters.filter.itemClinicalSubject.placeholder": "Subject Headings...",
 
   "search.filters.filter.itemFunder.head": "Funder",
 
-  "search.filters.filter.itemFunder.label": "Funder",
+  "search.filters.filter.itemFunder.label": "Search Funders",
 
   "search.filters.filter.itemFunder.placeholder": "Funder...",
 
@@ -5801,61 +5809,61 @@
 
   "search.filters.filter.itemTags.head": "Tags",
 
-  "search.filters.filter.itemTags.label": "Tags",
+  "search.filters.filter.itemTags.label": "Search Tags",
 
   "search.filters.filter.itemTags.placeholder": "Tags...",
 
   "search.filters.filter.dqCheckCategory.head": "Category",
 
-  "search.filters.filter.dqCheckCategory.label": "Category",
+  "search.filters.filter.dqCheckCategory.label": "Search Categories",
 
   "search.filters.filter.dqCheckCategory.placeholder": "Category...",
 
   "search.filters.filter.dqCheckProbe.head": "Probe",
 
-  "search.filters.filter.dqCheckProbe.label": "Probe",
+  "search.filters.filter.dqCheckProbe.label": "Search Probes",
 
   "search.filters.filter.dqCheckProbe.placeholder": "Probe...",
 
   "search.filters.filter.dqCheckClinicalAssessment.head": "Clinical Assessment",
 
-  "search.filters.filter.dqCheckClinicalAssessment.label": "Clinical Assessment",
+  "search.filters.filter.dqCheckClinicalAssessment.label": "Search Clinical Assessments",
 
   "search.filters.filter.dqCheckClinicalAssessment.placeholder": "Clinical Assessment...",
 
   "search.filters.filter.dqCheckVisualization.head": "Visualization",
 
-  "search.filters.filter.dqCheckVisualization.label": "Visualization",
+  "search.filters.filter.dqCheckVisualization.label": "Search Visualizations",
 
   "search.filters.filter.dqCheckVisualization.placeholder": "Visualization...",
 
   "search.filters.filter.dqCheckMeasure.head": "Measure",
 
-  "search.filters.filter.dqCheckMeasure.label": "Measure",
+  "search.filters.filter.dqCheckMeasure.label": "Search Measures",
 
   "search.filters.filter.dqCheckMeasure.placeholder": "Measure...",
 
   "search.filters.filter.itemtype.head": "Type",
 
-  "search.filters.filter.itemtype.label": "Search type",
+  "search.filters.filter.itemtype.label": "Search Type",
 
   "search.filters.filter.itemtype.placeholder": "Type",
 
   "search.filters.filter.itemVocab.head": "Vocabulary",
 
-  "search.filters.filter.itemVocab.label": "Search Vocabulary",
+  "search.filters.filter.itemVocab.label": "Search Vocabularies",
 
   "search.filters.filter.itemVocab.placeholder": "Vocabulary...",
 
   "search.filters.filter.itemVocabulary.head": "Vocabulary",
 
-  "search.filters.filter.itemVocabulary.label": "Search Vocabulary",
+  "search.filters.filter.itemVocabulary.label": "Search Vocabularies",
 
-  "search.filters.filter.dqCheckResultObs.head": "DQ Result Observation",
+  "search.filters.filter.dqCheckResultObs.head": "DQA Result",
   
-  "search.filters.filter.dqCheckResultObs.label": "DQ Result Observation",
+  "search.filters.filter.dqCheckResultObs.label": "Search Results",
 
-  "search.filters.filter.dqCheckResultObs.placeholder": "DQ Result Observation...",
+  "search.filters.filter.dqCheckResultObs.placeholder": "Results...",
 
   "search.filters.filter.itemVocabulary.placeholder": "Vocabulary...",
 
@@ -5989,19 +5997,19 @@
   
   "search.filters.filter.subjectPop.head": "Population",
 
-  "search.filters.filter.subjectPop.label": "Population",
+  "search.filters.filter.subjectPop.label": "Search Populations",
 
   "search.filters.filter.subjectPop.placeholder": "Population...",
   
   "search.filters.filter.subjectDataModel.head": "Data Model",
 
-  "search.filters.filter.subjectDataModel.label": "Data Model",
+  "search.filters.filter.subjectDataModel.label": "Search Data Models",
 
   "search.filters.filter.subjectDataModel.placeholder": "Data Model...",
 
   "search.filters.filter.subjectValidation.head": "Validation",
 
-  "search.filters.filter.subjectValidation.label": "Validation",
+  "search.filters.filter.subjectValidation.label": "Search Validation Types",
 
   "search.filters.filter.subjectValidation.placeholder": "Validation...",
 
@@ -6013,13 +6021,13 @@
   
   "search.filters.filter.subjectMedTermChar.head": "Drug Term Class",
 
-  "search.filters.filter.subjectMedTermChar.label": "Drug Term Class",
+  "search.filters.filter.subjectMedTermChar.label": "Search Term Classes",
 
   "search.filters.filter.subjectMedTermChar.placeholder": "Drug Term Class...",
   
   "search.filters.filter.subject.label": "Search Tags",
 
-  "search.filters.filter.subject.placeholder": "Tags (Tree View)",
+  "search.filters.filter.subject.placeholder": "Tags...",
 
   "search.filters.filter.submitter.head": "Submitter",
 
